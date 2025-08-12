@@ -4,12 +4,15 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import './index.css'
 import { FaBeer } from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <BrowserRouter >
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -31,7 +34,12 @@ function App() {
         <FaBeer />
         Click on the Vite and React logos to learn more
       </p>
-    </>
+      <Routes>
+        {/* <Route path='/partner/edit/:id' element={<Edit />}/> */}
+        
+      </Routes>
+      <ToastContainer />
+    </BrowserRouter >
   )
 }
 
