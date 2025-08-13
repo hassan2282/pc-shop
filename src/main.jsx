@@ -2,9 +2,9 @@ import './index.css'
 import App from './App.jsx'
 import ReactDOM from "react-dom/client";
 import { Provider } from 'react-redux'
-import store from './store'
-import Reducer from './Reducer';
-
+import Reducer from './Reducer.js';
+import { createStore } from "redux"; // Correct
+import React from 'react';
 
 const store = createStore(Reducer);
 const root = ReactDOM.createRoot(document.getElementById('root'));
