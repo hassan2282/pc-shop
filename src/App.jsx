@@ -11,6 +11,9 @@ import CategorySearch from './components/CategorySearch';
 import SingleProduct from './components/SingleProduct';
 import SingleBlog from './components/SingleBlog';
 import SuccessfulPayment from './components/SuccessfulPayment';
+import FinalPayment from './components/FinalPayment';
+import OrderAddress from './components/OrderAddress';
+import OrderCancelled from './components/OrderCancelled';
 
 function App() {
   return (
@@ -26,6 +29,9 @@ function App() {
         <Route path='/single-product' element={<SingleProduct />}/>
         <Route path='/single-blog' element={<SingleBlog />}/>
         <Route path='/successfull-payment' element={<SuccessfulPayment />}/>
+        <Route path='/final-payment' element={<FinalPayment />}/>
+        <Route path='/order-address' element={<OrderAddress />}/>
+        <Route path='/order-cancelled' element={<OrderCancelled />}/>
       </Routes>
       <ToastContainer />
 
