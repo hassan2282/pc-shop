@@ -1,11 +1,7 @@
-﻿import React from 'react'
-import Header from '../structure/Header'
-import Footer from '../structure/footer'
-
+﻿
 function Cart() {
   return (
     <div>
-        <Header />
         <main className="cart-page default space-top-30">
             <div className="container">
                 <div className="row">
@@ -136,9 +132,7 @@ function Cart() {
                    </div>
                       
                     </div>
-                    </div>
-        
-        <Footer />
+            </div>
         </main>
     </div>
   )

@@ -1,11 +1,6 @@
-﻿import Footer from "../structure/footer"
-import Header from "../structure/Header"
-
-function Index() {
+﻿function Index() {
   return (
     <>
-
-        <Header />
 
         <main className="main default space-top-10">
         
@@ -1457,8 +1452,6 @@ function Index() {
                
           </div>
 
-        <Footer />
-        
         </main>
         
 

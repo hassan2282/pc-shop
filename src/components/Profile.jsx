@@ -1,13 +1,7 @@
-﻿import React from 'react'
-import Header from '../structure/Header'
-import Footer from '../structure/footer'
-
-function Profile() {
+﻿function Profile() {
   return (
 
     <>
-        <Header />
-
             <main className="profile-user-page default space-top-30">
                 <div className="container">
                     <div className="row">
@@ -287,9 +281,6 @@ function Profile() {
                         </div>
                     </div>
                 </div>
-
-        <Footer />
-        
             </main>
 
     </>

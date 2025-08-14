@@ -1,10 +1,6 @@
-﻿import Footer from "../structure/footer"
-import Header from "../structure/Header"
-
-function SingleProduct() {
+﻿function SingleProduct() {
   return (
     <div>
-        <Header />
         <main className="single-product default">
             <div className="container">
                 <div className="row">
@@ -330,9 +326,6 @@ function SingleProduct() {
                     </div>
                 </div>
             </div>
-
-            <Footer />
-
         </main>
 
     </div>

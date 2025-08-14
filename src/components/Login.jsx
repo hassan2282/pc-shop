@@ -1,13 +1,6 @@
-﻿import Footer from "../structure/footer";
-import Header from "../structure/Header";
-
-function Login() {
+﻿function Login() {
   return (
     <>
-        {/* <!--start pc header --> */}
-        <Header />
-        {/* <!-- end pc header --> */}
-
         <main className="wrapper default">
             <div className="container">
                 <div className="row">
@@ -69,11 +62,7 @@ function Login() {
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-        <Footer />    
-            
+            </div>            
         </main>
     </>
 

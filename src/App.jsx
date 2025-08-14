@@ -9,11 +9,12 @@ import Cart from './components/Cart';
 import CategoryBlog from './components/CategoryBlog';
 import CategorySearch from './components/CategorySearch';
 import SingleProduct from './components/SingleProduct';
+import SingleBlog from './components/SingleBlog';
+import SuccessfulPayment from './components/SuccessfulPayment';
 
 function App() {
   return (
     <BrowserRouter >
-    
       <Routes>
         <Route path='/' element={<Index />}/>
         <Route path='/login' element={<Login />}/>
@@ -23,6 +24,8 @@ function App() {
         <Route path='/category-blog' element={<CategoryBlog />}/>
         <Route path='/category-search' element={<CategorySearch />}/>
         <Route path='/single-product' element={<SingleProduct />}/>
+        <Route path='/single-blog' element={<SingleBlog />}/>
+        <Route path='/successfull-payment' element={<SuccessfulPayment />}/>
       </Routes>
       <ToastContainer />
 

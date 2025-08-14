@@ -4,7 +4,6 @@ import Header from "../structure/Header"
 function CategoryBlog() {
   return (
     <div>
-      <Header />
       <main className="category-blog default space-top-30">
             <div className="container ">
                
@@ -210,8 +209,6 @@ function CategoryBlog() {
                     </div>
                 </div>
             </div>
-
-            <Footer />
 
         </main>
 

@@ -1,11 +1,6 @@
-﻿import Header from '../structure/Header'
-import Footer from '../structure/footer'
-
-function CategorySearch() {
+﻿function CategorySearch() {
   return (
     <div>
-        <Header />
-
         <main className="search-page default space-top-30">
             <div className="container">
                 <div className="row">
@@ -2084,8 +2079,6 @@ function CategorySearch() {
                     </div>
                 </div>
             </div>
-
-            <Footer />
 
         </main>
     </div>

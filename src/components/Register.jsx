@@ -1,10 +1,6 @@
-﻿import Header from '../structure/Header'
-import Footer from '../structure/footer'
-
-function Register() {
+﻿function Register() {
   return (
     <div>
-        <Header />
             <main className="wrapper default ">
                     <div className="container">
                         <div className="row">
@@ -78,9 +74,6 @@ function Register() {
                             </div>
                         </div>
                     </div>
-                    
-                    <Footer />
-
             </main>
     </div>
   )
