@@ -6,6 +6,7 @@ import Index from './components/Index';
 import Profile from './components/profile';
 import Register from './components/Register';
 import Cart from './components/Cart';
+import CategoryBlog from './components/CategoryBlog';
 
 function App() {
   return (
@@ -17,8 +18,10 @@ function App() {
         <Route path='/register' element={<Register />}/>
         <Route path='/profile' element={<Profile />}/>
         <Route path='/cart' element={<Cart />}/>
+        <Route path='/category-blog' element={<CategoryBlog />}/>
       </Routes>
       <ToastContainer />
+
     </BrowserRouter >
   )
 }
