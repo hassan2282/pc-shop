@@ -14,6 +14,10 @@ import SuccessfulPayment from './components/SuccessfulPayment';
 import FinalPayment from './components/FinalPayment';
 import OrderAddress from './components/OrderAddress';
 import OrderCancelled from './components/OrderCancelled';
+import OrderCurrent from './components/OrderCurrent';
+import OrderMessage from './components/OrderMessage';
+import OrdersReturn from './components/OrdersReturn';
+import ShoppingPayment from './components/ShoppingPayment';
 
 function App() {
   return (
@@ -32,6 +36,10 @@ function App() {
         <Route path='/final-payment' element={<FinalPayment />}/>
         <Route path='/order-address' element={<OrderAddress />}/>
         <Route path='/order-cancelled' element={<OrderCancelled />}/>
+        <Route path='/order-current' element={<OrderCurrent />}/>
+        <Route path='/order-message' element={<OrderMessage />}/>
+        <Route path='/orders-return' element={<OrdersReturn />}/>
+        <Route path='/shopping-payment' element={<ShoppingPayment />}/>
       </Routes>
       <ToastContainer />
 
