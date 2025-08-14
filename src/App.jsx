@@ -18,6 +18,8 @@ import OrderCurrent from './components/OrderCurrent';
 import OrderMessage from './components/OrderMessage';
 import OrdersReturn from './components/OrdersReturn';
 import ShoppingPayment from './components/ShoppingPayment';
+import ProfileFavorites from './components/ProfileFavorites';
+import PasswordUpdate from './components/PasswordUpdate';
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
         <Route path='/order-message' element={<OrderMessage />}/>
         <Route path='/orders-return' element={<OrdersReturn />}/>
         <Route path='/shopping-payment' element={<ShoppingPayment />}/>
+        <Route path='/profile-favorites' element={<ProfileFavorites />}/>
+        <Route path='/password-update' element={<PasswordUpdate />}/>
       </Routes>
       <ToastContainer />
 
