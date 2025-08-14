@@ -1,8 +1,8 @@
 function Header() {
   return (
-    <header className="Masai-header default">
+    <header className="Masai-header default relative top-[-15px]">
 
-                <div className="top-section fullscreen-container">
+                <div className="top-section fullscreen-container ">
             <img src="src/assets/img/banner_img/bg_top.jpg" className="h-100"/>
         </div>
         {/* <!--start mobile header --> */}

@@ -1456,10 +1456,12 @@ function Index() {
                   
                
           </div>
+
+        <Footer />
+        
         </main>
         
 
-        <Footer />
     </>
   )
 }
