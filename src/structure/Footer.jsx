@@ -1,6 +1,7 @@
 function Footer() {
   return (
     <footer className="main-footer default">
+    
                 <div className="back-to-top ">
                     <a href="#">
                         <span className="icon"><i className="fa fa-chevron-up"></i></span> <span>
@@ -89,10 +90,10 @@ function Footer() {
                                             <a href="#">تخفیف سازمانی</a>
                                         </li>
                                         <li>
-                                            <a href="#">تماس با ما</a>
+                                            <a href="/about-us">تماس با ما</a>
                                         </li>
                                         <li>
-                                            <a href="#">درباره ما</a>
+                                            <a href="/about-us">درباره ما</a>
                                         </li>
                                     </ul>
                                 </div>

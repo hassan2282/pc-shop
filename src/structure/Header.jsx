@@ -1028,7 +1028,7 @@ function Header() {
                     <div className="row">
                         <div className="col-lg-2 col-md-3 col-sm-4 col-5">
                             <div className="logo-area default">
-                                <a href="index.html">
+                                <a href="/">
                                     <img src="src/assets/img/logo.png" alt=""/>
                                 </a>
                             </div>
@@ -1043,7 +1043,7 @@ function Header() {
                         </div>
                         <div className="col-md-2 col-sm-12">
                             <div className="user_head">
-                                <a href="login.html" className="iconhead">
+                                <a href="/login" className="iconhead">
 
                                     <i className="fa fa-user-large font-20" aria-hidden="true"></i>
                                 </a>
@@ -1060,7 +1060,7 @@ function Header() {
                                     
                                     <ul className="m_cart-list">
                                         <li className="m_cart_li1">
-                                            <a href="single-product.html" className="m_cart-item">
+                                            <a href="/single-product" className="m_cart-item">
                                                 <i className="fa fa-times" aria-hidden="true"></i>
 
                                             
@@ -1083,7 +1083,7 @@ function Header() {
                                             </a>
                                         </li>
                                         <li className="m_cart_li2">
-                                            <a href="single-product.html" className="m_cart-item">
+                                            <a href="/single-product" className="m_cart-item">
                                                 <i className="fa fa-times" aria-hidden="true"></i>
 
 
@@ -2355,7 +2355,7 @@ function Header() {
                         <ul className="nav_header-2">
                             <li className="list_style">
                                 <i className="fa fa-map icon-icon" aria-hidden="true"></i>
-                                <a href="order-address.html" className="list__link">انتخاب موقعیت</a>
+                                <a href="/order-address" className="list__link">انتخاب موقعیت</a>
                             </li>
                         </ul>
                     </ul>

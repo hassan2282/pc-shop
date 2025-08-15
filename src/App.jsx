@@ -20,6 +20,7 @@ import OrdersReturn from './components/OrdersReturn';
 import ShoppingPayment from './components/ShoppingPayment';
 import ProfileFavorites from './components/ProfileFavorites';
 import PasswordUpdate from './components/PasswordUpdate';
+import AboutUs from './components/AboutUs';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path='/shopping-payment' element={<ShoppingPayment />}/>
         <Route path='/profile-favorites' element={<ProfileFavorites />}/>
         <Route path='/password-update' element={<PasswordUpdate />}/>
+        <Route path='/about-us' element={<AboutUs />}/>
       </Routes>
       <ToastContainer />
 
