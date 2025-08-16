@@ -13,7 +13,7 @@
                     <div className="lg:w-[60%] p-4 w-full h-full
                     flex flex-col justify-center items-center sm:px-6 px-4 rounded-xl">
                       <p className="md:text-md text-2xl text-center font-bold my-5 text-[#6edadc]">
-                        به فروشگاه دیتی شاپ خوش آمدید
+                        به فروشگاه دیتی شاپ خوش آمدید 
                       </p>
                       <p className="sm:text-lg text-sm mt-2 text-justify sm:px-2">
                         <p className="">
