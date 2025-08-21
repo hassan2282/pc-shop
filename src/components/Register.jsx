@@ -10,8 +10,6 @@
                                 </header>
                                 <div className="login_box">
 
-
-
                                     <form className="">
                                         <div className="row">
                                             <div className="col-md-12 col-sm-12">

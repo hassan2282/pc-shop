@@ -294,7 +294,7 @@
                                                             <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                         </span>
                                                     </div>
-                                                    <a className="product-box-img" href="single-product.html">
+                                                    <a className="product-box-img" href="single-product">
                                                         <img src="src/assets/img/product_img/p_7.jpg" alt=""/>
                                                         <ul>
                                                             <li className="color_pro bg-[#2fabd3] top-[7px]" ></li>
@@ -333,7 +333,7 @@
                                                             <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                         </span>
                                                     </div>
-                                                    <a className="product-box-img" href="single-product.html">
+                                                    <a className="product-box-img" href="single-product">
                                                         <img src="src/assets/img/product_img/p_17.jpg" alt=""/>
                                                         <ul>
                                                             <li className="color_pro bg-[#000] top-[7px]" ></li>
@@ -371,7 +371,7 @@
                                                             <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                         </span>
                                                     </div>
-                                                    <a className="product-box-img" href="single-product.html">
+                                                    <a className="product-box-img" href="single-product">
                                                         <img src="src/assets/img/product_img/p_9.jpg" alt=""/>
                                                         <ul>
                                                             <li className="color_pro bg-[#794cc3] top-[7px]"></li>
@@ -409,7 +409,7 @@
                                                             <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                         </span>
                                                     </div>
-                                                    <a className="product-box-img" href="single-product.html">
+                                                    <a className="product-box-img" href="single-product">
                                                         <img src="src/assets/img/product_img/p_15.jpg" alt=""/>
                                                         <ul>
                                                             <li className="color_pro bg-[#37d3c0] top-[7px]" ></li>
@@ -447,7 +447,7 @@
                                                             <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                         </span>
                                                     </div>
-                                                    <a className="product-box-img" href="single-product.html">
+                                                    <a className="product-box-img" href="single-product">
                                                         <img src="src/assets/img/product_img/p_19.jpg" alt=""/>
                                                         <ul>
                                                             <li className="color_pro bg-[#000] top-[7px]" ></li>
@@ -487,7 +487,7 @@
                                                             <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                         </span>
                                                     </div>
-                                                    <a className="product-box-img" href="single-product.html">
+                                                    <a className="product-box-img" href="single-product">
                                                         <img src="src/assets/img/product_img/p_21.jpg" alt=""/>
                                                         <ul>
                                                             <li className="color_pro bg-[#ff6a00] top-[7px]"></li>
@@ -527,7 +527,7 @@
                                                             <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                         </span>
                                                     </div>
-                                                    <a className="product-box-img" href="single-product.html">
+                                                    <a className="product-box-img" href="single-product">
                                                         <img src="src/assets/img/product_img/p_20.jpg" alt=""/>
                                                         <ul>
                                                             <li className="color_pro bg-[#ff6a00] top-[7px]"></li>
@@ -568,7 +568,7 @@
                                                             <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                         </span>
                                                     </div>
-                                                    <a className="product-box-img" href="single-product.html">
+                                                    <a className="product-box-img" href="single-product">
                                                         <img src="src/assets/img/product_img/p_22.jpg" alt=""/>
                                                         <ul>
                                                             <li className="color_pro bg-[#ff0075] top-[7px]"></li>
@@ -607,7 +607,7 @@
                                                             <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                         </span>
                                                     </div>
-                                                    <a className="product-box-img" href="single-product.html">
+                                                    <a className="product-box-img" href="single-product">
                                                         <img src="src/assets/img/product_img/p_23.jpg" alt=""/>
                                                         <ul>
                                                             <li className="color_pro bg-[#272082] top-[7px]"></li>
@@ -652,7 +652,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_21.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#ff6a00] top-[7px]"></li>
@@ -692,7 +692,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_20.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#ff6a00] top-[7px]"></li>
@@ -732,7 +732,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_15.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#37d3c0] top-[7px]"></li>
@@ -770,7 +770,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_19.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#000] top-[7px]"></li>
@@ -812,7 +812,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_17.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#000] top-[7px]"></li>
@@ -850,7 +850,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_9.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#794cc3] top-[7px]"></li>
@@ -888,7 +888,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_22.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#ff0075] top-[7px]"></li>
@@ -927,7 +927,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_23.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#272082] top-[7px]"></li>
@@ -967,7 +967,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_7.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#2fabd3] top-[7px]"></li>
@@ -1010,7 +1010,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_19.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#000] top-[7px]"></li>
@@ -1050,7 +1050,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_21.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#ff6a00] top-[7px]" ></li>
@@ -1089,7 +1089,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_9.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#794cc3] top-[7px]"></li>
@@ -1127,7 +1127,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_7.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#2fabd3] top-[7px]"></li>
@@ -1166,7 +1166,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_17.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#000] top-[7px]"></li>
@@ -1205,7 +1205,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_15.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#37d3c0] top-[7px]"></li>
@@ -1245,7 +1245,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_20.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#ff6a00] top-[7px]"></li>
@@ -1284,7 +1284,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_23.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#272082] top-[7px]"></li>
@@ -1325,7 +1325,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_22.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#ff0075] top-[7px]"></li>
@@ -1369,7 +1369,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_9.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#794cc3] top-[7px]"></li>
@@ -1407,7 +1407,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_7.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#2fabd3] top-[7px]"></li>
@@ -1446,7 +1446,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_17.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#000] top-[7px]"></li>
@@ -1484,7 +1484,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_23.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#272082] top-[7px]"></li>
@@ -1525,7 +1525,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_22.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#ff0075] top-[7px]"></li>
@@ -1564,7 +1564,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_19.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#000] top-[7px]"></li>
@@ -1604,7 +1604,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_21.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#ff6a00] top-[7px]"></li>
@@ -1645,7 +1645,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_15.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#37d3c0] top-[7px]"></li>
@@ -1685,7 +1685,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_20.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#ff6a00] top-[7px]"></li>
@@ -1731,7 +1731,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_22.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#ff0075] top-[7px]"></li>
@@ -1770,7 +1770,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_19.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#000] top-[7px]"></li>
@@ -1810,7 +1810,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_21.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#ff6a00] top-[7px]"></li>
@@ -1850,7 +1850,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_9.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#794cc3] top-[7px]"></li>
@@ -1888,7 +1888,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_7.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#2fabd3] top-[7px]"></li>
@@ -1927,7 +1927,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_17.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#000] top-[7px]"></li>
@@ -1965,7 +1965,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_23.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#272082] top-[7px]"></li>
@@ -2005,7 +2005,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_15.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#37d3c0] top-[7px]"></li>
@@ -2045,7 +2045,7 @@
                                                         <i className="fa fa fa-cart-arrow-down search_icon_cart" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <a className="product-box-img" href="single-product.html">
+                                                <a className="product-box-img" href="single-product">
                                                     <img src="src/assets/img/product_img/p_20.jpg" alt=""/>
                                                     <ul>
                                                         <li className="color_pro bg-[#ff6a00] top-[7px]"></li>

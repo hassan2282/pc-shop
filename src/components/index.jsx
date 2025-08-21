@@ -8,7 +8,7 @@
                 <div className="slider_main owl-carousel owl-theme">
                 
                     <div className="item">
-                        <a href="category-search.html">
+                        <a href="category-search">
                             <svg xmlns="http://www.w3.org/2000/svg"  className="svg_Masai mb-[-100px] relative z-10 mt-0 mr-[30px] float-right" width="231" height="75" viewBox="0 0 231 75" fill="none" >
                                 <path clip-rule="evenodd" d="M0 0C31.5006 0.949537 50.52 17.872 56.1955 26.4544L55.986 25.8011L82.4924 58.631C99.3032 79.4521 131.038 79.4521 147.849 58.6309L174.356 25.8011L174.146 26.4544C179.822 17.872 198.844 0.949537 230.349 0H0Z" fill="#FCFCFC" fill-rule="" className="text-red-500" ></path>
                             </svg>
@@ -19,7 +19,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" className="svg_Masai mb-[-100px] relative z-10 mt-0 mr-[30px] float-right" width="231" height="75" viewBox="0 0 231 75" fill="none">
                             <path clip-rule="evenodd" d="M0 0C31.5006 0.949537 50.52 17.872 56.1955 26.4544L55.986 25.8011L82.4924 58.631C99.3032 79.4521 131.038 79.4521 147.849 58.6309L174.356 25.8011L174.146 26.4544C179.822 17.872 198.844 0.949537 230.349 0H0Z" fill="#FCFCFC" fill-rule="" className="text-red-500" ></path>
                         </svg>
-                        <a href="category-search.html">
+                        <a href="category-search">
                             <img src="src/assets/img/banner_img/01/16785213091818.jpg" className="img-fluid imgslider" alt=""/>
                         </a>
                     </div>
@@ -27,7 +27,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg"  className="svg_Masai mb-[-100px] relative z-10 mt-0 mr-[30px] float-right" width="231" height="75" viewBox="0 0 231 75" fill="none">
                             <path clip-rule="evenodd" d="M0 0C31.5006 0.949537 50.52 17.872 56.1955 26.4544L55.986 25.8011L82.4924 58.631C99.3032 79.4521 131.038 79.4521 147.849 58.6309L174.356 25.8011L174.146 26.4544C179.822 17.872 198.844 0.949537 230.349 0H0Z" fill="#FCFCFC" fill-rule="" className="text-red-500" ></path>
                         </svg>
-                        <a href="category-search.html">
+                        <a href="category-search">
                             <img src="src/assets/img/banner_img/01/16789575390919.jpg" className="img-fluid imgslider" alt=""/>
                         </a>
                     </div>
@@ -141,7 +141,7 @@
                                     <div className="carousel-item active">
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
-                                                <a className="w-100 text-center" href="single-product.html">
+                                                <a className="w-100 text-center" href="single-product">
                                                     <img src="src/assets/img/product_img/p_1.jpg" className="img-fluid" alt=""/>
                                                     <span className="discount-percent">7 % تخفیف</span>
 
@@ -150,7 +150,7 @@
                                             <div className="left-col col-7">
                                                
                                                 <h2 className="product-title ">
-                                                    <a href="#">  هندزفری بلوتوث انکر   </a>
+                                                    <a href="single-product">  هندزفری بلوتوث انکر   </a>
 
                                                 </h2>
                                                 <hr className="hr-text" data-content="Soundcore Life A1 -مدل A3927"/>
@@ -216,7 +216,7 @@
                                     <div className="carousel-item">
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
-                                                <a className="w-100 text-center" href="single-product.html">
+                                                <a className="w-100 text-center" href="single-product">
                                                     <img src="src/assets/img/product_img/p_3.jpg" className="img-fluid" alt=""/>
                                                     <span className="discount-percent">4 % تخفیف</span>
 
@@ -225,7 +225,7 @@
                                             <div className="left-col col-7">
 
                                                 <h2 className="product-title ">
-                                                    <a href="#"> هدفون گیمینگ انکر مدل  </a>
+                                                    <a href="single-product"> هدفون گیمینگ انکر مدل  </a>
 
                                                 </h2>
                                                 <hr className="hr-text" data-content="انکر مدل Soundcore Strike 1"/>
@@ -292,7 +292,7 @@
                                     <div className="carousel-item">
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
-                                                <a className="w-100 text-center" href="single-product.html">
+                                                <a className="w-100 text-center" href="single-product">
                                                     <img src="src/assets/img/product_img/p_5.jpg" className="img-fluid" alt=""/>
                                                     <span className="discount-percent">11 % تخفیف</span>
 
@@ -301,7 +301,7 @@
                                             <div className="left-col col-7">
 
                                                 <h2 className="product-title ">
-                                                    <a href="#"> ساعت هوشمند امیزفیت  </a>
+                                                    <a href="single-product"> ساعت هوشمند امیزفیت  </a>
 
                                                 </h2>
                                                 <hr className="hr-text" data-content="ساعت هوشمند امیزفیت مدل Bip"/>
@@ -367,7 +367,7 @@
                                     <div className="carousel-item  finished">
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
-                                                <a className="w-100 text-center" href="single-product.html">
+                                                <a className="w-100 text-center" href="single-product">
                                                     <img src="src/assets/img/product_img/p_7.jpg" className="img-fluid" alt=""/>
                                                     <img src="src/assets/img/sell.png" className="imgfinish"/>
 
@@ -378,7 +378,7 @@
                                             <div className="left-col col-7">
 
                                                 <h2 className="product-title ">
-                                                    <a href="#">کاملترین گوشی اپل  </a>
+                                                    <a href="single-product">کاملترین گوشی اپل  </a>
 
                                                 </h2>
                                                 <hr className="hr-text" data-content="  اپل مدل Iphone 13 Pro Max "/>
@@ -418,7 +418,7 @@
                                     <div className="carousel-item  finished">
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
-                                                <a className="w-100 text-center" href="single-product.html">
+                                                <a className="w-100 text-center" href="single-product">
                                                     <img src="src/assets/img/product_img/p_9.jpg" className="img-fluid" alt=""/>
                                                     <span className="discount-percent">7 % تخفیف</span>
 
@@ -427,7 +427,7 @@
                                             <div className="left-col col-7">
 
                                                 <h2 className="product-title ">
-                                                    <a href="#">  شیائومی مدل Poco X4 Pro  </a>
+                                                    <a href="single-product">  شیائومی مدل Poco X4 Pro  </a>
 
                                                 </h2>
                                                 <hr className="hr-text" data-content=" مدل Poco X4 Pro 5G 2201116PG"/>
@@ -495,7 +495,7 @@
                                     <div className="carousel-item">
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
-                                                <a className="w-100 text-center" href="single-product.html">
+                                                <a className="w-100 text-center" href="single-product">
                                                     <img src="src/assets/img/product_img/p_11.jpg" className="img-fluid" alt=""/>
                                                     <span className="discount-percent">9 % تخفیف</span>
 
@@ -504,7 +504,7 @@
                                             <div className="left-col col-7">
 
                                                 <h2 className="product-title ">
-                                                    <a href="#">  کنسول خانگی سونی   </a>
+                                                    <a href="single-product">  کنسول خانگی سونی   </a>
                                                     
                                                 </h2>
                                                 <hr className="hr-text" data-content="کنسول بازی  Playstation 5 "/>
@@ -571,7 +571,7 @@
                                     <div className="carousel-item  finished">
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
-                                                <a className="w-100 text-center" href="single-product.html">
+                                                <a className="w-100 text-center" href="single-product">
                                                     <img src="src/assets/img/product_img/p_3.jpg" className="img-fluid" alt=""/>
                                                     <span className="discount-percent">4 % تخفیف</span>
 
@@ -580,7 +580,7 @@
                                             <div className="left-col col-7">
 
                                                 <h2 className="product-title ">
-                                                    <a href="#">  هدفون مخصوص بازی تی دگر  </a>
+                                                    <a href="single-product">  هدفون مخصوص بازی تی دگر  </a>
 
                                                 </h2>
                                                 <hr className="hr-text" data-content="مدل Caspian T-RGH211"/>
@@ -646,7 +646,7 @@
                                     <div className="carousel-item">
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
-                                                <a className="w-100 text-center finished" href="single-product.html">
+                                                <a className="w-100 text-center finished" href="single-product">
                                                     <img src="src/assets/img/product_img/p_15.jpg" className="img-fluid " alt=""/>
                                                     <img src="src/assets/img/sell.png" className="imgfinish"/>
                                                     <span className="discount-percent">3 % تخفیف</span>
@@ -656,7 +656,7 @@
                                             <div className="left-col col-7">
 
                                                 <h2 className="product-title ">
-                                                    <a href="#">  گوشی موبایل سامسونگ گلکسی A32  </a>
+                                                    <a href="single-product">  گوشی موبایل سامسونگ گلکسی A32  </a>
 
                                                 </h2>
                                                 <hr className="hr-text" data-content="سامسونگ مدل Galaxy A32 SM-A325F/DS "/>
@@ -693,7 +693,7 @@
                                     <div className="carousel-item">
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
-                                                <a className="w-100 text-center" href="single-product.html">
+                                                <a className="w-100 text-center" href="single-product">
                                                     <img src="src/assets/img/product_img/p_17.jpg" className="img-fluid" alt=""/>
                                                     <span className="discount-percent">3 % تخفیف</span>
 
@@ -702,7 +702,7 @@
                                             <div className="left-col col-7">
 
                                                 <h2 className="product-title ">
-                                                    <a href="#"> گوشی موبایل سامسونگ گلکسی A23  </a>
+                                                    <a href="single-product"> گوشی موبایل سامسونگ گلکسی A23  </a>
 
                                                 </h2>
                                                 <hr className="hr-text" data-content="مدل Galaxy A23 SM-A235 "/>
@@ -776,24 +776,24 @@
 
                             <div id="bid-s" className="owl-carousel owl-theme">
                                 <div className="item">
-                                    <a href="single-product.html">
+                                    <a href="single-product">
                                         <img src="src/assets/img/product_img/p_3.jpg" className="w-100" alt=""/>
                                     </a>
                                     <h3 className="product-title">
-                                        <a href="#"> هدفون مخصوص بازی تی دگر </a>
+                                        <a href="single-product"> هدفون مخصوص بازی تی دگر </a>
                                     </h3>
                                     <div className="price">
                                         <span className="amount">700,000<span>تومان</span></span>
                                     </div>
                                 </div>
                                 <div className="item">
-                                    <a href="single-product.html">
+                                    <a href="single-product">
                                         <img src="src/assets/img/product_img/p_15.jpg" className="w-100" alt=""/>
                                         <img src="src/assets/img/img_icon.png" className="type_icon"/>
 
                                     </a>
                                     <h3 className="product-title">
-                                        <a href="#">
+                                        <a href="single-product">
                                            
                                             گوشی موبایل سامسونگ گلکسی A32
                                         </a>
@@ -805,11 +805,11 @@
                                     </div>
                                 </div>
                                 <div className="item">
-                                    <a href="single-product.html">
+                                    <a href="single-product">
                                         <img src="src/assets/img/product_img/p_11.jpg" className="w-100" alt=""/>
                                     </a>
                                     <h3 className="product-title">
-                                        <a href="#">
+                                        <a href="single-product">
                                             کنسول خانگی سونی
                                         </a>
                                     </h3>
@@ -819,11 +819,11 @@
                                     </div>
                                 </div>
                                 <div className="item">
-                                    <a href="single-product.html">
+                                    <a href="single-product">
                                         <img src="src/assets/img/product_img/p_5.jpg" className="w-100" alt=""/>
                                     </a>
                                     <h3 className="product-title">
-                                        <a href="#">ساعت هوشمند امیزفیت </a>
+                                        <a href="single-product">ساعت هوشمند امیزفیت </a>
                                     </h3>
                                     <div className="price">
                                         <del><span className="amount">70,800,000<span>تومان</span></span></del>
@@ -844,28 +844,28 @@
                                 <div className="row">
                                     <div className="col-6 col-lg-3">
                                         <div className="widget-banner card border_all">
-                                            <a href="category-search.html" target="_blank">
+                                            <a href="category-search" target="_blank">
                                                 <img className="img-fluid" src="src/assets/img/banner_img/img-3.jpg" alt=""/>
                                             </a>
                                         </div>
                                     </div>
                                     <div className="col-6 col-lg-3">
                                         <div className="widget-banner card">
-                                            <a href="category-search.html" target="_top">
+                                            <a href="category-search" target="_top">
                                                 <img className="img-fluid" src="src/assets/img/banner_img/img-4.jpg" alt=""/>
                                             </a>
                                         </div>
                                     </div>
                                     <div className="col-6 col-lg-3">
                                         <div className="widget-banner card border_all">
-                                            <a href="category-search.html" target="_blank">
+                                            <a href="category-search" target="_blank">
                                                 <img className="img-fluid" src="src/assets/img/banner_img/img-5.jpg" alt=""/>
                                             </a>
                                         </div>
                                     </div>
                                     <div className="col-6 col-lg-3">
                                         <div className="widget-banner card">
-                                            <a href="category-search.html" target="_top">
+                                            <a href="category-search" target="_top">
                                                 <img className="img-fluid" src="src/assets/img/banner_img/img-6.jpg" alt=""/>
                                             </a>
                                         </div>
@@ -906,11 +906,11 @@
                                     </header>
                                     <div className="product-carousel owl-carousel owl-theme">
                                         <div className="item">
-                                            <a href="single-product.html">
+                                            <a href="single-product">
                                                 <img src="src/assets/img/product_img/p_14.jpg"  className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
-                                                <a href="single-product.html"> کیبورد مخصوص بازی برند تی دگر  </a>
+                                                <a href="single-product"> کیبورد مخصوص بازی برند تی دگر  </a>
                                             </h2>
                                             <div className="price">
                                                 <del><span>735,000<span>تومان</span></span></del>
@@ -919,11 +919,11 @@
                                             </div>
                                         </div>
                                         <div className="item">
-                                            <a href="single-product.html">
+                                            <a href="single-product">
                                                 <img src="src/assets/img/product_img/p_2.jpg" className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
-                                                <a href="single-product.html">  هندزفری بلوتوث مدل انکر با فرکانس بالا   </a>
+                                                <a href="single-product">  هندزفری بلوتوث مدل انکر با فرکانس بالا   </a>
                                             </h2>
                                             <div className="price">
                                                 <del><span>290,000<span>تومان</span></span></del>
@@ -933,11 +933,11 @@
                                             </div>
                                         </div>
                                         <div className="item">
-                                            <a href="single-product.html">
+                                            <a href="single-product">
                                                 <img src="src/assets/img/product_img/p_12.jpg"  className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
-                                                <a href="single-product.html">  کنسول بازی  Playstation 5 با هارد 870 مگابایت  </a>
+                                                <a href="single-product">  کنسول بازی  Playstation 5 با هارد 870 مگابایت  </a>
                                             </h2>
                                             <div className="price">
                                                 <del><span>29,799,000<span>تومان</span></span></del>
@@ -947,22 +947,22 @@
                                             </div>
                                         </div>
                                         <div className="item">
-                                            <a href="single-product.html">
+                                            <a href="single-product">
                                                 <img src="src/assets/img/product_img/p_6.jpg"  className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
-                                                <a href="single-product.html">  ساعت هوشمند مقاوم در برابر آب امیزفیت </a>
+                                                <a href="single-product">  ساعت هوشمند مقاوم در برابر آب امیزفیت </a>
                                             </h2>
                                             <div className="price">
                                                 <span>9,780,000<span>تومان</span></span>
                                             </div>
                                         </div>
                                         <div className="item">
-                                            <a href="single-product.html">
+                                            <a href="single-product">
                                                 <img src="src/assets/img/product_img/p_10.jpg" className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
-                                                <a href="single-product.html"> گوشی موبایل شیائومی مدل Poco X4 Pro  </a>
+                                                <a href="single-product"> گوشی موبایل شیائومی مدل Poco X4 Pro  </a>
                                             </h2>
                                             <div className="price">
                                                 <del><span>13,500,000<span>تومان</span></span></del>
@@ -972,40 +972,40 @@
                                             </div>
                                         </div>
                                         <div className="item">
-                                            <a href="single-product.html">
+                                            <a href="single-product">
                                                 <img src="src/assets/img/product_img/p_7.jpg"  className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
-                                                <a href="single-product.html">  گوشی موبایل اپل مدل Iphone 13 Pro Max  </a>
+                                                <a href="single-product">  گوشی موبایل اپل مدل Iphone 13 Pro Max  </a>
                                             </h2>
                                             <div className="price">
                                                 <span>72,279,000<span>تومان</span></span>
                                             </div>
                                         </div>
                                         <div className="item">
-                                            <a href="single-product.html">
+                                            <a href="single-product">
                                                 <img src="src/assets/img/product_img/p_17.jpg" className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
-                                                <a href="single-product.html">  گوشی موبایل سامسونگ مدل گلکسی A23  </a>
+                                                <a href="single-product">  گوشی موبایل سامسونگ مدل گلکسی A23  </a>
                                             </h2>
                                             <div className="price">
                                                 <span>32,279,000<span>تومان</span></span>
                                             </div>
                                         </div>
                                         <div className="item">
-                                            <a href="single-product.html">
+                                            <a href="single-product">
                                                 <img src="src/assets/img/product_img/p_9.jpg" className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
-                                                <a href="single-product.html">   گوشی موبایل شیائومی مدل Poco X4 Pro 5G  </a>
+                                                <a href="single-product">   گوشی موبایل شیائومی مدل Poco X4 Pro 5G  </a>
                                             </h2>
                                             <div className="price">
                                                 <span>15,279,000<span >تومان</span></span>
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="#" className="view_more">مشاهده بیشتر</a>
+                                    <a href="category-search" className="view_more">مشاهده بیشتر</a>
 
                                 </div>
                             </div>
@@ -1015,14 +1015,14 @@
                                 <div className="row">
                                     <div className="col-12 col-lg-6">
                                         <div className="widget-banner card border_all">
-                                            <a href="category-search.html" target="_blank">
+                                            <a href="category-search" target="_blank">
                                                 <img className="img-fluid" src="src/assets/img/banner_img/img-7.jpg" alt=""/>
                                             </a>
                                         </div>
                                     </div>
                                     <div className="col-12 col-lg-6">
                                         <div className="widget-banner card">
-                                            <a href="category-search.html" target="_top">
+                                            <a href="category-search" target="_top">
                                                 <img className="img-fluid" src="src/assets/img/banner_img/img-8.jpg" alt=""/>
                                             </a>
                                         </div>
@@ -1040,11 +1040,11 @@
                                     </header>
                                     <div className="product-carousel owl-carousel owl-theme">
                                         <div className="item">
-                                            <a href="#">
+                                            <a href="single-product">
                                                 <img src="src/assets/img/product_img/p_9.jpg"  className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
-                                                <a href="#"> گوشی شیائومی مدل Poco X4 Pro 5G </a>
+                                                <a href="single-product"> گوشی شیائومی مدل Poco X4 Pro 5G </a>
                                             </h2>
                                             <div className="price">
                                                 <del><span>13,159,000<span>تومان</span></span></del>
@@ -1054,11 +1054,11 @@
                                             </div>
                                         </div>
                                         <div className="item">
-                                            <a href="#">
+                                            <a href="single-product">
                                                 <img src="src/assets/img/product_img/p_7.jpg" className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
-                                                <a href="#">  گوشی اپل مدل Iphone 13 Pro Max  </a>
+                                                <a href="single-product">  گوشی اپل مدل Iphone 13 Pro Max  </a>
                                             </h2>
                                             <div className="price">
                                                 <del><span>72,990,000<span>تومان</span></span></del>
@@ -1068,11 +1068,11 @@
                                             </div>
                                         </div>
                                         <div className="item">
-                                            <a href="#">
+                                            <a href="single-product">
                                                 <img src="src/assets/img/product_img/p_15.jpg"  className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
-                                                <a href="#"> گوشی موبایل سامسونگ گلکسی A32 </a>
+                                                <a href="single-product"> گوشی موبایل سامسونگ گلکسی A32 </a>
                                             </h2>
                                             <div className="price">
                                                 <del><span>18,799,000<span>تومان</span></span></del>
@@ -1082,22 +1082,22 @@
                                             </div>
                                         </div>
                                         <div className="item">
-                                            <a href="#">
+                                            <a href="single-product">
                                                 <img src="src/assets/img/product_img/p_17.jpg" className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
-                                                <a href="#"> گوشی موبایل سامسونگ گلکسی A23</a>
+                                                <a href="single-product"> گوشی موبایل سامسونگ گلکسی A23</a>
                                             </h2>
                                             <div className="price">
                                                 <span>15,780,000<span>تومان</span></span>
                                             </div>
                                         </div>
                                         <div className="item">
-                                            <a href="#">
+                                            <a href="single-product">
                                                 <img src="src/assets/img/product_img/p_19.jpg"  className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
-                                                <a href="#"> گوشی موبایل ردمی نوت 11SE شیائومی </a>
+                                                <a href="single-product"> گوشی موبایل ردمی نوت 11SE شیائومی </a>
                                             </h2>
                                             <div className="price">
                                                 <del><span>25,156,000<span>تومان</span></span></del>
@@ -1107,29 +1107,29 @@
                                             </div>
                                         </div>
                                         <div className="item">
-                                            <a href="#">
+                                            <a href="single-product">
                                                 <img src="src/assets/img/product_img/p_21.jpg"  className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
-                                                <a href="#">  اپل مدل Iphone 14 Pro Max </a>
+                                                <a href="single-product">  اپل مدل Iphone 14 Pro Max </a>
                                             </h2>
                                             <div className="price">
                                                 <span>79,279,000<span>تومان</span></span>
                                             </div>
                                         </div>
                                         <div className="item">
-                                            <a href="#">
+                                            <a href="single-product">
                                                 <img src="src/assets/img/product_img/p_20.jpg" className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
-                                                <a href="#">  گوشی موبایل ردمی نوت 15  شیائومی  </a>
+                                                <a href="single-product">  گوشی موبایل ردمی نوت 15  شیائومی  </a>
                                             </h2>
                                             <div className="price">
                                                 <span>28,450,000<span>تومان</span></span>
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="#" className="view_more">مشاهده بیشتر  </a>
+                                    <a href="category-search" className="view_more">مشاهده بیشتر  </a>
 
                                 </div>
                             </div>
@@ -1145,7 +1145,7 @@
                         <div className="row">
                             <div className="col-12">
                                 <div className="widget widget-banner card border_all">
-                                    <a href="category-search.html" target="_blank">
+                                    <a href="category-search" target="_blank">
                                         <img className="img-fluid" src="src/assets/img/banner_img/img-9.jpg" alt=""/>
                                     </a>
                                 </div>
@@ -1165,7 +1165,7 @@
                                      <div className="row">
                                          <div className="col-6 col-md-2 contact-bigicon">
 
-                                             <a href="#" target="_blank">
+                                             <a href="category-search" target="_blank">
                                                  <img className="img-responsive imgpad" src="src/assets/img/Masai/bigicon/img-1.png" alt="" />
                                                  <b className="title-3 light-black">کالای دیجیتال</b>
                                              </a>
@@ -1173,7 +1173,7 @@
                                          </div>
                                          <div className="col-6 col-md-2 contact-bigicon">
 
-                                             <a href="#" target="_top">
+                                             <a href="category-search" target="_top">
                                                  <img className="img-responsive imgpad" src="src/assets/img/Masai/bigicon/img-2.png" alt="" />
                                                  <b className="title-3 light-black">مودم</b>
                                              </a>
@@ -1181,7 +1181,7 @@
                                          </div>
                                          <div className="col-6 col-md-2 contact-bigicon">
 
-                                             <a href="#" target="_blank">
+                                             <a href="category-search" target="_blank">
                                                  <img className="img-responsive imgpad" src="src/assets/img/Masai/bigicon/img-3.png" alt="" />
                                                  <b className="title-3 light-black">تبلت</b>
                                              </a>
@@ -1189,7 +1189,7 @@
                                          </div>
                                          <div className="col-6 col-md-2 contact-bigicon">
 
-                                             <a href="#" target="_top">
+                                             <a href="category-search" target="_top">
                                                  <img className="img-responsive imgpad" src="src/assets/img/Masai/bigicon/img-4.png" alt="" />
                                                  <b className="title-3 light-black">ماوس</b>
                                              </a>
@@ -1197,7 +1197,7 @@
                                          </div>
                                          <div className="col-6 col-md-2 contact-bigicon">
 
-                                             <a href="#" target="_top">
+                                             <a href="category-search" target="_top">
                                                  <img className="img-responsive imgpad" src="src/assets/img/Masai/bigicon/img-5.png" alt="" />
                                                  <b className="title-3 light-black">هندزفری</b>
                                              </a>
@@ -1205,7 +1205,7 @@
                                          </div>
                                          <div className="col-6 col-md-2 contact-bigicon">
 
-                                             <a href="#" target="_top">
+                                             <a href="category-search" target="_top">
                                                  <img className="img-responsive imgpad" src="src/assets/img/Masai/bigicon/img-6.png" alt="" />
                                                  <b className="title-3 light-black">ساعت هوشمند</b>
                                              </a>
@@ -1217,7 +1217,7 @@
                                      <div className="row">
                                          <div className="col-6 col-md-2 contact-bigicon">
 
-                                             <a href="#" target="_blank">
+                                             <a href="category-search" target="_blank">
                                                  <img className="img-responsive imgpad" src="src/assets/img/Masai/bigicon/img-7.png" alt="" />
                                                  <b className="title-3 light-black">کنسول خانگی</b>
                                              </a>
@@ -1225,7 +1225,7 @@
                                          </div>
                                          <div className="col-6 col-md-2 contact-bigicon">
 
-                                             <a href="#" target="_top">
+                                             <a href="category-search" target="_top">
                                                  <img className="img-responsive imgpad" src="src/assets/img/Masai/bigicon/img-8.png" alt="" />
                                                  <b className="title-3 light-black">کیبورد (صفحه کلید)</b>
                                              </a>
@@ -1233,7 +1233,7 @@
                                          </div>
                                          <div className="col-6 col-md-2 contact-bigicon">
 
-                                             <a href="#" target="_blank">
+                                             <a href="category-search" target="_blank">
                                                  <img className="img-responsive imgpad" src="src/assets/img/Masai/bigicon/img-9.png" alt="" />
                                                  <b className="title-3 light-black">اسپیکر (بلندگو)</b>
                                              </a>
@@ -1241,7 +1241,7 @@
                                          </div>
                                          <div className="col-6 col-md-2 contact-bigicon">
 
-                                             <a href="#" target="_top">
+                                             <a href="category-search" target="_top">
                                                  <img className="img-responsive imgpad" src="src/assets/img/Masai/bigicon/img-10.png" alt="" />
                                                  <b className="title-3 light-black">لپ تاپ و الترابوک</b>
                                              </a>
@@ -1249,7 +1249,7 @@
                                          </div>
                                          <div className="col-6 col-md-2 contact-bigicon">
 
-                                             <a href="#" target="_top">
+                                             <a href="category-search" target="_top">
                                                  <img className="img-responsive imgpad" src="src/assets/img/Masai/bigicon/img-11.png" alt="" />
                                                  <b className="title-3 light-black">موبایل</b>
                                              </a>
@@ -1257,7 +1257,7 @@
                                          </div>
                                          <div className="col-6 col-md-2 contact-bigicon">
 
-                                             <a href="#" target="_top">
+                                             <a href="category-search" target="_top">
                                                  <img className="img-responsive imgpad" src="src/assets/img/Masai/bigicon/img-12.png" alt="" />
                                                  <b className="title-3 light-black">هدفون، هدست </b>
                                              </a>
@@ -1279,34 +1279,34 @@
                             </header>
                             <div className="owl-carousel">
                                 <div className="item borderitem">
-                                    <a href="#"> <img src="src/assets/img/brands/brand-1.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="src/assets/img/brands/brand-1.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="#"> <img src="src/assets/img/brands/brand-2.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="src/assets/img/brands/brand-2.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="#"> <img src="src/assets/img/brands/brand-3.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="src/assets/img/brands/brand-3.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="#"> <img src="src/assets/img/brands/brand-4.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="src/assets/img/brands/brand-4.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="#"> <img src="src/assets/img/brands/brand-5.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="src/assets/img/brands/brand-5.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="#"> <img src="src/assets/img/brands/brand-6.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="src/assets/img/brands/brand-6.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="#"> <img src="src/assets/img/brands/brand-7.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="src/assets/img/brands/brand-7.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="#"> <img src="src/assets/img/brands/brand-8.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="src/assets/img/brands/brand-8.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="#"> <img src="src/assets/img/brands/brand-9.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="src/assets/img/brands/brand-9.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="#"> <img src="src/assets/img/brands/brand-10.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="src/assets/img/brands/brand-10.jpg" alt=""/> </a>
                                 </div>
                             </div>
                         </div>
@@ -1324,10 +1324,10 @@
                               </header>
                               <div className="Blog-carousel owl-carousel owl-theme">
                                   <div className="item">
-                                      <a href="single-blog.html">
+                                      <a href="single-blog">
                                           <img src="src/assets/img/blog/post-1.jpg" className="img-fluid" alt=""/>
                                       </a>
-                                      <a href="single-blog.html">
+                                      <a href="single-blog">
                                           <h2 className="Blog_title">
                                               این‌ بار هوش مصنوعی، تصاویری از کارخانه تولید عروس دریایی را افشا می‌کند!
                                           </h2>
@@ -1344,10 +1344,10 @@
                                       </div>
                                   </div>
                                   <div className="item">
-                                      <a href="single-blog.html">
+                                      <a href="single-blog">
                                           <img src="src/assets/img/blog/post-2.jpg" className="img-fluid" alt=""/>
                                       </a>
-                                      <a href="single-blog.html">
+                                      <a href="single-blog">
                                           <h2 className="Blog_title">
                                               خط سفید روی نمایشگر گلکسی A71 سامسونگ؛ ماجرا چیست؟
                                           </h2>
@@ -1364,10 +1364,10 @@
                                       </div>
                                   </div>
                                   <div className="item">
-                                      <a href="single-blog.html">
+                                      <a href="single-blog">
                                           <img src="src/assets/img/blog/post-3.jpg" className="img-fluid" alt=""/>
                                       </a>
-                                      <a href="single-blog.html">
+                                      <a href="single-blog">
                                           <h2 className="Blog_title">
                                               بهترین گوشی های مناسب عکاسی در بازار ایران
                                           </h2>
@@ -1384,10 +1384,10 @@
                                       </div>
                                   </div>
                                   <div className="item">
-                                      <a href="single-blog.html">
+                                      <a href="single-blog">
                                           <img src="src/assets/img/blog/post-4.jpg" className="img-fluid" alt=""/>
                                       </a>
-                                      <a href="single-blog.html">
+                                      <a href="single-blog">
                                           <h2 className="Blog_title">
                                               هزینه ساخت بازی‌های انحصاری پلی استیشن با فیلم‌های بلاک‌باستر برابری می‌کند
                                           </h2>
@@ -1404,10 +1404,10 @@
                                       </div>
                                   </div>
                                   <div className="item">
-                                      <a href="single-blog.html">
+                                      <a href="single-blog">
                                           <img src="src/assets/img/blog/post-5.jpg" className="img-fluid" alt=""/>
                                       </a>
-                                      <a href="single-blog.html">
+                                      <a href="single-blog">
                                           <h2 className="Blog_title">
                                               یک دهه سکوت شکست؛ مایکروسافت آمار فروش ایکس باکس را فاش کرد!
 
@@ -1425,10 +1425,10 @@
                                       </div>
                                   </div>
                                   <div className="item">
-                                      <a href="single-blog.html">
+                                      <a href="single-blog">
                                           <img src="src/assets/img/blog/post-6.jpg" className="img-fluid" alt=""/>
                                       </a>
-                                      <a href="single-blog.html">
+                                      <a href="single-blog">
                                           <h2 className="Blog_title">
                                               بررسی تلویزیون 4K اسنوا؛ ۵۵ اینچی اقتصادی برای فیلم‌بازها!
                                           </h2>

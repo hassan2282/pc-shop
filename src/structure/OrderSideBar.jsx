@@ -115,48 +115,48 @@ function OrderSideBar() {
                                     حساب کاربری شما
                                 </button>
                                 <div className="dropdown-menu dropdown-menu-right text-right">
-                                    <a href="order-delivered.jpg" className="dropdown-item  ">
+                                    <a href="order-message" className="dropdown-item  ">
                                         <i className="fa fa-cart-arrow-down colormain" aria-hidden="true"></i>
                                         تحویل داده شده
                                     </a>
-                                    <a href="order-current.jpg" className="dropdown-item ">
+                                    <a href="order-current" className="dropdown-item ">
                                         <i className="fa fa-cart-arrow-down colormain" aria-hidden="true"></i>   سفارش جاری
                                     </a>
-                                    <a href="order-cancelled.html" className="dropdown-item">
+                                    <a href="order-cancelled" className="dropdown-item">
                                         <i className="fa fa-times colormain" aria-hidden="true"></i>
                                         لغو شده
                                     </a>
-                                    <a href="orders-return.html" className="dropdown-item active-menu">
+                                    <a href="orders-return" className="dropdown-item active-menu">
                                         <i className="fa fa-thumbs-down colormain" aria-hidden="true"></i>
                                         مرجوع محصول
                                     </a>
 
-                                    <a href="profile-favorites.html" className="dropdown-item">
+                                    <a href="profile-favorites" className="dropdown-item">
                                         <i className="fa fa-bookmark colormain" aria-hidden="true"></i>
                                         لیست های من
                                     </a>
 
-                                    <a href="order-address.html" className="dropdown-item">
+                                    <a href="order-address" className="dropdown-item">
                                         <i className="fa fa-map icon-icon colormain" aria-hidden="true"></i>
                                         آدرس ها
                                     </a>
 
-                                    <a href="order-message.html" className="dropdown-item">
+                                    <a href="order-message" className="dropdown-item">
                                         <i className="fa fa-bell colormain" aria-hidden="true"></i>
                                         پیغام ها
                                     </a>
 
-                                    <a href="profile.html" className="dropdown-item">
+                                    <a href="profile" className="dropdown-item">
                                         <i className="fa fa-user-large colormain"></i>
                                         پروفایل
                                     </a>
 
-                                    <a href="edit-profile.jpg" className="dropdown-item">
+                                    <a href="profile" className="dropdown-item">
                                         <i className="fa fa-pencil colormain" aria-hidden="true"></i>
                                         ویرایش اطلاعات
                                     </a>
 
-                                    <a href="password-update.html" className="dropdown-item">
+                                    <a href="password-update" className="dropdown-item">
                                         <i className="fa fa-shield colormain" aria-hidden="true"></i>
                                         امنیت و تغییر رمز
                                     </a>
@@ -168,61 +168,61 @@ function OrderSideBar() {
                         <div className="profile-menu ">
                             <ul className="profile-menu-items">
                                 <li>
-                                    <a href="order-delivered.jpg" className="dropdown-item ">
+                                    <a href="order-current" className="dropdown-item ">
                                         <i className="fa fa-cart-arrow-down colormain" aria-hidden="true"></i>
                                         تحویل داده شده
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="order-current.jpg" className="dropdown-item ">
+                                    <a href="order-current" className="dropdown-item ">
                                         <i className="fa fa-cart-arrow-down colormain" aria-hidden="true"></i>    سفارش جاری
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="order-cancelled.html" className="dropdown-item">
+                                    <a href="order-cancelled" className="dropdown-item">
                                         <i className="fa fa-times colormain" aria-hidden="true"></i>
                                         لغو شده
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="orders-return.html" className="dropdown-item active">
+                                    <a href="orders-return" className="dropdown-item active">
                                         <i className="fa fa-thumbs-down colormain" aria-hidden="true"></i>
                                         مرجوع محصول
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="profile-favorites.html" className="dropdown-item">
+                                    <a href="profile-favorites" className="dropdown-item">
                                         <i className="fa fa-bookmark colormain" aria-hidden="true"></i>
                                         لیست های من
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="order-address.html" className="dropdown-item">
+                                    <a href="order-address" className="dropdown-item">
                                         <i className="fa fa-map icon-icon colormain" aria-hidden="true"></i>
                                         آدرس ها
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="order-message.html" className="dropdown-item">
+                                    <a href="order-message" className="dropdown-item">
                                         <i className="fa fa-bell colormain" aria-hidden="true"></i>
                                         پیغام ها
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="profile.html" className="dropdown-item">
+                                    <a href="profile" className="dropdown-item">
                                         <i className="fa fa-user-large colormain"></i>
                                         پروفایل
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="edit-profile.jpg" className="dropdown-item">
+                                    <a href="profile" className="dropdown-item">
                                         <i className="fa fa-pencil colormain" aria-hidden="true"></i>
                                         ویرایش اطلاعات
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="password-update.html" className="dropdown-item">
+                                    <a href="password-update" className="dropdown-item">
                                         <i className="fa fa-shield colormain" aria-hidden="true"></i>
                                         امنیت و تغییر رمز
                                     </a>
