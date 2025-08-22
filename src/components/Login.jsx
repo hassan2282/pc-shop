@@ -47,7 +47,7 @@
                                         <div className="col-12 footer_login_reg text--center">
                                             <p>
                                                 <span>کاربر جدید هستید؟</span>
-                                                 <a href="register.html" >ثبت نام</a>
+                                                 <a href="register" >ثبت نام</a>
 
                                             </p>
 
