@@ -1,6 +1,6 @@
 ﻿import axios from "axios";
 import { useState } from "react"
-import { toast, ToastContainer } from "react-toastify";
+import { toast} from "react-toastify";
 import { AiOutlineLoading } from "react-icons/ai";
 
 function Register() {
@@ -45,12 +45,13 @@ const handleSubmit = async (e) => {
         }
         
     }catch (err) {
-        console.log(err.response.data)
         if (err.response && err.response.data) {
                 setErrors(err.response.data);
+                errors.email && toast.error(errors.email[0]);
             } else {
                 // General server error
                 setErrors({ server: 'خطایی در ارتباط با سرور رخ داد' });
+                toast.error('خطا در ارتباط با سرور')
             }
     }finally {
         setIsLoading(false);
@@ -92,8 +93,7 @@ const handleSubmit = async (e) => {
                                                     onChange={handleChange}
                                                     value={FormData.email}
                                                     required
-                                                    className="input_second input_all" name="email" type="email" placeholder=" شماره تماس شما"/>
-                                                </div>
+                                                    className={`input_second input_all ${errors.email ? 'bg-red-500' : ''}`} name="email" type="email" placeholder="شماره تماس شما"/>                                                </div>
                                             </div>
                                             <div className="col-md-12 col-sm-12">
                                                 <div className="form-account-title"><span>*</span> کلمه عبور</div>
@@ -139,19 +139,19 @@ const handleSubmit = async (e) => {
                                             </div>
                                             <div className="col-12 footer_login_reg text--center">
                                             {(Object.keys(errors).length > 0 || errors.server) && (
-                                            <div className="col-12 mt-3">
-                                                <div className="w-full bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-                                                    <ul className="list-disc ml-5 mt-2 *:w-full w-full *:border-b *:border-b-gray text-right space-y-2 *:text-white *:p-2 *:bg-red-900 *:rounded">
-                                                        {errors.frontError && <li>{errors.frontError}</li>}
-                                                        {errors.server && <li>{errors.server}</li>}
-                                                        {errors.username && <li>{errors.username}</li>}
-                                                        {errors.email && <li>{errors.email}</li>}
-                                                        {errors.password && <li>{errors.password}</li>}
-                                                        {errors.password_confirmation && <li>{errors.password_confirmation}</li>}
-                                                    </ul>
+                                                <div className="col-12 mt-3">
+                                                    <div className="w-full bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                                                        <ul className="list-disc ml-5 mt-2 *:w-full w-full *:border-b *:border-b-gray text-right space-y-2 *:text-white *:p-2 *:bg-red-900 *:rounded">
+                                                            {errors.frontError && <li>{errors.frontError}</li>}
+                                                            {errors.server && <li>{errors.server}</li>}
+                                                            {errors.username && <li>{errors.username}</li>}
+                                                            {errors.email && <li>{errors.email}</li>}
+                                                            {errors.password && <li>{errors.password}</li>}
+                                                            {errors.password_confirmation && <li>{errors.password_confirmation}</li>}
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        )}
+                                            )}
 
                                                 <p>
                                                     <span>قبلا ثبت نام کرده اید؟</span>
