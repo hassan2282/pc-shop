@@ -87,17 +87,17 @@ const handleSubmit = async (e) => {
                                             </div>
                                             <div className="col-md-12 col-sm-12">
                                                 <div className="form-account-title"><span>*</span> ایمیل</div>
-                                                <div className="form-account-row">
+                                                <div className={`form-account-row  ${errors.email && 'border-red-500 border-2 rounded-full animate-pulse'} `}>
                                                     <input 
                                                     maxLength={255}
                                                     onChange={handleChange}
                                                     value={FormData.email}
                                                     required
-                                                    className={`input_second input_all ${errors.email ? 'bg-red-500' : ''}`} name="email" type="email" placeholder="شماره تماس شما"/>                                                </div>
+                                                    className="input_second input_all" name="email" type="email" placeholder="شماره تماس شما"/></div>
                                             </div>
                                             <div className="col-md-12 col-sm-12">
                                                 <div className="form-account-title"><span>*</span> کلمه عبور</div>
-                                                <div className="form-account-row">
+                                                <div className={`form-account-row  ${errors.frontError && 'border-red-500 border-2 rounded-full animate-pulse'} `}>
                                                     <input
                                                     minLength={6}
                                                     maxLength={255}
@@ -108,7 +108,7 @@ const handleSubmit = async (e) => {
                                             </div>
                                             <div className="col-md-12 col-sm-12">
                                                 <div className="form-account-title"><span>*</span> تکرار کلمه عبور</div>
-                                                <div className="form-account-row">
+                                                <div className={`form-account-row  ${errors.frontError && 'border-red-500 border-2 rounded-full animate-pulse'} `}>
                                                     <input
                                                     minLength={6}
                                                     maxLength={255}
@@ -140,8 +140,8 @@ const handleSubmit = async (e) => {
                                             <div className="col-12 footer_login_reg text--center">
                                             {(Object.keys(errors).length > 0 || errors.server) && (
                                                 <div className="col-12 mt-3">
-                                                    <div className="w-full bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-                                                        <ul className="list-disc ml-5 mt-2 *:w-full w-full *:border-b *:border-b-gray text-right space-y-2 *:text-white *:p-2 *:bg-red-900 *:rounded">
+                                                    <div className="w-full">
+                                                        <ul className="list-disc ml-5 mt-2 *:w-full w-full *:border-b *:rounded-2xl *:border-b-gray text-right space-y-2 *:text-white *:p-2 *:bg-red-900">
                                                             {errors.frontError && <li>{errors.frontError}</li>}
                                                             {errors.server && <li>{errors.server}</li>}
                                                             {errors.username && <li>{errors.username}</li>}
