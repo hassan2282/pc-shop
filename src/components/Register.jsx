@@ -2,6 +2,7 @@
 import { useState } from "react"
 import { toast} from "react-toastify";
 import { AiOutlineLoading } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
 const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ const [formData, setFormData] = useState({
 
 const [isLoading, setIsLoading] = useState(false);
 const [errors, setErrors] = useState({});
+const navigate = useNavigate();
 
 const handleChange = (e) => {
     const {name, value} = e.target;
@@ -42,6 +44,7 @@ const handleSubmit = async (e) => {
         )
         if(res.status >= 200 && res.status < 300){
             toast.success('کاربر با موفقیت افزوده شد');
+            navigate("/",{replace:true})
         }
         
     }catch (err) {
