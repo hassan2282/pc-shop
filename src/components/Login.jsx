@@ -10,7 +10,6 @@ function Login() {
     password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -21,7 +20,6 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setErrors({});
 
     try {
       const res = await axios.post(
@@ -38,12 +36,7 @@ function Login() {
 
       }
     } catch (err) {
-      if (err.response && err.response.data) {
-        setErrors({error: err.response.data.message})
-      } else {
-        setErrors({ server: "متاسفانه خطایی از سمت سرور رخ داده است" });
-        toast.error('');
-      }
+        toast.error('نام کاربری یا رمز عبور نادرست است');
     } finally {
       setIsLoading(false);
     }
@@ -63,16 +56,6 @@ function Login() {
               <div className="login_box">
                 <form onSubmit={handleSubmit}>
                   <div className="row">
-                    {(Object.keys(errors).length > 0 || errors.server) && (
-                      <div className="col-12 mt-3">
-                        <div className="w-full bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-                          <ul className="list-disc ml-5 mt-2 *:w-full w-full *:border-b *:border-b-gray text-right space-y-2 *:text-white *:p-2 *:bg-red-900 *:rounded">
-                            {errors.email && <li>{errors.email[0]}</li>}
-                            {errors.password && <li>{errors.password[0]}</li>}
-                          </ul>
-                        </div>
-                      </div>
-                    )}
 
                     <div className="col-md-12 col-sm-12">
                       <div className="form-account-title">
