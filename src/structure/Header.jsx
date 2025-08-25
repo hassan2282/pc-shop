@@ -1047,7 +1047,6 @@ function Header() {
 
                                     <i className="fa fa-user-large font-20" aria-hidden="true"></i>
                                 </a>
-
                             </div>
                             <div className="cart dropdown masai_dropdown">
                                 <span className="divider"></span>

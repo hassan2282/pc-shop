@@ -11,6 +11,7 @@ function Login() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,6 +32,7 @@ function Login() {
       );
       if (res.status >= 200 && res.status < 300) {
         toast.success("خوش آمدید");
+        // console.log(res.data.access_token)
         navigate("/", { replace: true });
       }else{
 
