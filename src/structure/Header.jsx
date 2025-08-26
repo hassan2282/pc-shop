@@ -1,5 +1,6 @@
 import { TbLogout2 } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux"
+import { toast } from "react-toastify";
 
 function Header() {
 const isAuthenticated = useSelector((state) => state.isAuthenticated);
@@ -8,9 +9,11 @@ const dispatch = useDispatch();
 const handleLogout = (e) => {
     e.preventDefault();
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     dispatch({
         type: "logout",
     })
+    toast.success('شما با موفقیت از حساب کاربری خود خارج شدید');
 }
 
   return (
@@ -1056,11 +1059,13 @@ const handleLogout = (e) => {
                             </div>
                         </div>
                         <div className="col-md-2 col-sm-12 flex flex-row justify-start items-center" dir="ltr">
-                                <div className="user_head">
-                                    <a href={`${isAuthenticated ? "/logout" : ""} `} onClick={handleLogout} className="flex flex-row justify-center items-center h-full bg-indigo-300">
-                                    <TbLogout2 size={24} color="#57b6bb"/>
-                                    </a>
-                                </div>
+                                {isAuthenticated &&
+                                    <div className="user_head">
+                                        <a href="/logout" onClick={handleLogout} className="flex flex-row justify-center items-center h-full bg-indigo-300">
+                                        <TbLogout2 size={24} color="#57b6bb"/>
+                                        </a>
+                                    </div>
+                                }
                                 <span className="divider mx-1"></span>
                                 <div className="user_head">
                                     <a href={`${isAuthenticated ? "/profile" : "/login"} `} className="iconhead">

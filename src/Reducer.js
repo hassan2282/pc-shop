@@ -5,6 +5,7 @@ const initialState = {
 };
 
 const Reducer = (state = initialState, action) => {
+    console.log(action);
     switch(action.type) {
         case "login":
             return {

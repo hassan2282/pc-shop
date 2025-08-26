@@ -1,4 +1,9 @@
+import { useSelector } from "react-redux"
+
 function OrderSideBar() {
+    // console.log(useSelector(state => state.user));
+// const user = useSelector(state => state.user)
+
   return (
     <div className="profile-page-aside col-xl-3 col-lg-4 col-md-6 center-section order-1">
                         <div className="profile-card-1">
@@ -86,7 +91,7 @@ function OrderSideBar() {
                                 </div>
                             </div>
                             <div className="mid-section">
-                                <div className="name">حسین رضایی</div>
+                                <div className="name">سید حسن تقوی</div>
                                 <div className="description">
                                     <a href="#" className="btn btn-main-masai">افزایش موجودی</a>
                                     <a href="#" className="btn btn-second-masai">مسای کلاب</a>

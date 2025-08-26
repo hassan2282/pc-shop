@@ -34,7 +34,6 @@ const handleSubmit = async (e) => {
             return;
         }
 
-
         const res = await axios.post(
             'http://127.0.0.1:8000/api/auth/register',
             formData,
@@ -44,6 +43,9 @@ const handleSubmit = async (e) => {
         )
         if(res.status >= 200 && res.status < 300){
             toast.success('کاربر با موفقیت افزوده شد');
+            const token = res.data.authorisation.original.access_token;
+            localStorage.setItem('token', token )
+            localStorage.setItem('user', JSON.stringify(res.data.user));
             navigate("/",{replace:true})
         }
         
