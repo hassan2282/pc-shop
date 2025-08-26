@@ -1,57 +1,155 @@
-import './index.css'
-import { ToastContainer, toast } from 'react-toastify';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import Login from './components/Login';
-import Index from './components/Index';
-import Profile from './components/profile';
-import Register from './components/Register';
-import Cart from './components/Cart';
-import CategoryBlog from './components/CategoryBlog';
-import CategorySearch from './components/CategorySearch';
-import SingleProduct from './components/SingleProduct';
-import SingleBlog from './components/SingleBlog';
-import SuccessfulPayment from './components/SuccessfulPayment';
-import FinalPayment from './components/FinalPayment';
-import OrderAddress from './components/OrderAddress';
-import OrderCancelled from './components/OrderCancelled';
-import OrderCurrent from './components/OrderCurrent';
-import OrderMessage from './components/OrderMessage';
-import OrdersReturn from './components/OrdersReturn';
-import ShoppingPayment from './components/ShoppingPayment';
-import ProfileFavorites from './components/ProfileFavorites';
-import PasswordUpdate from './components/PasswordUpdate';
-import AboutUs from './components/AboutUs';
+import "./index.css";
+import { ToastContainer, toast } from "react-toastify";
+import { BrowserRouter, Link, Navigate, Route, Routes } from "react-router-dom";
+import Login from "./components/Login";
+import Index from "./components/Index";
+import Profile from "./components/profile";
+import Register from "./components/Register";
+import Cart from "./components/Cart";
+import CategoryBlog from "./components/CategoryBlog";
+import CategorySearch from "./components/CategorySearch";
+import SingleProduct from "./components/SingleProduct";
+import SingleBlog from "./components/SingleBlog";
+import SuccessfulPayment from "./components/SuccessfulPayment";
+import FinalPayment from "./components/FinalPayment";
+import OrderAddress from "./components/OrderAddress";
+import OrderCancelled from "./components/OrderCancelled";
+import OrderCurrent from "./components/OrderCurrent";
+import OrderMessage from "./components/OrderMessage";
+import OrdersReturn from "./components/OrdersReturn";
+import ShoppingPayment from "./components/ShoppingPayment";
+import ProfileFavorites from "./components/ProfileFavorites";
+import PasswordUpdate from "./components/PasswordUpdate";
+import AboutUs from "./components/AboutUs";
+import { useSelector } from "react-redux";
+import PrivateRoute from "./structure/PrivateRoute";
 
 function App() {
-  return (
-    <BrowserRouter >
-      <Routes>
-        <Route path='/' element={<Index />}/>
-        <Route path='/login' element={<Login />}/>
-        <Route path='/register' element={<Register />}/>
-        <Route path='/profile' element={<Profile />}/>
-        <Route path='/cart' element={<Cart />}/>
-        <Route path='/category-blog' element={<CategoryBlog />}/>
-        <Route path='/category-search' element={<CategorySearch />}/>
-        <Route path='/single-product' element={<SingleProduct />}/>
-        <Route path='/single-blog' element={<SingleBlog />}/>
-        <Route path='/successfull-payment' element={<SuccessfulPayment />}/>
-        <Route path='/final-payment' element={<FinalPayment />}/>
-        <Route path='/order-address' element={<OrderAddress />}/>
-        <Route path='/order-cancelled' element={<OrderCancelled />}/>
-        <Route path='/order-current' element={<OrderCurrent />}/>
-        <Route path='/order-message' element={<OrderMessage />}/>
-        <Route path='/orders-return' element={<OrdersReturn />}/>
-        <Route path='/shopping-payment' element={<ShoppingPayment />}/>
-        <Route path='/profile-favorites' element={<ProfileFavorites />}/>
-        <Route path='/password-update' element={<PasswordUpdate />}/>
-        <Route path='/about-us' element={<AboutUs />}/>
-      </Routes>
-      
-      <ToastContainer />
+  const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
-    </BrowserRouter >
-  )
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/category-blog" element={<CategoryBlog />} />
+        <Route path="/category-search" element={<CategorySearch />} />
+        <Route path="/single-product" element={<SingleProduct />} />
+        <Route path="/single-blog" element={<SingleBlog />} />
+
+        <Route
+          path="/register"
+          element={
+            !isAuthenticated ? <Register /> : <Navigate to="/" replace />
+          }
+        />
+
+        <Route
+          path="/login"
+          element={!isAuthenticated ? <Login /> : <Navigate to="/" replace />}
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <Cart />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/successfull-payment"
+          element={
+            <PrivateRoute>
+              <SuccessfulPayment />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/final-payment"
+          element={
+            <PrivateRoute>
+              <FinalPayment />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/order-address"
+          element={
+            <PrivateRoute>
+              <OrderAddress />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/order-cancelled"
+          element={
+            <PrivateRoute>
+              <OrderCancelled />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/order-current"
+          element={
+            <PrivateRoute>
+              <OrderCurrent />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/order-message"
+          element={
+            <PrivateRoute>
+              <OrderMessage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/orders-return"
+          element={
+            <PrivateRoute>
+              <OrdersReturn />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/shopping-payment"
+          element={
+            <PrivateRoute>
+              <ShoppingPayment />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/profile-favorites"
+          element={
+            <PrivateRoute>
+              <ProfileFavorites />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/password-update"
+          element={
+            <PrivateRoute>
+              <PasswordUpdate />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/about-us" element={<AboutUs />} />
+      </Routes>
+
+      <ToastContainer />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

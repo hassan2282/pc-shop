@@ -10,14 +10,14 @@
                     <div className="item">
                         <a href="category-search">
                             <svg xmlns="http://www.w3.org/2000/svg"  className="svg_Masai mb-[-100px] relative z-10 mt-0 mr-[30px] float-right" width="231" height="75" viewBox="0 0 231 75" fill="none" >
-                                <path clip-rule="evenodd" d="M0 0C31.5006 0.949537 50.52 17.872 56.1955 26.4544L55.986 25.8011L82.4924 58.631C99.3032 79.4521 131.038 79.4521 147.849 58.6309L174.356 25.8011L174.146 26.4544C179.822 17.872 198.844 0.949537 230.349 0H0Z" fill="#FCFCFC" fill-rule="" className="text-red-500" ></path>
+                                <path clipRule="evenodd" d="M0 0C31.5006 0.949537 50.52 17.872 56.1955 26.4544L55.986 25.8011L82.4924 58.631C99.3032 79.4521 131.038 79.4521 147.849 58.6309L174.356 25.8011L174.146 26.4544C179.822 17.872 198.844 0.949537 230.349 0H0Z" fill="#FCFCFC" fillRule="" className="text-red-500" ></path>
                             </svg>
                             <img src="src/assets/img/banner_img/01/16781944460617.jpg" className="img-fluid imgslider" alt=""/>
                         </a>
                     </div>
                     <div className="item">
                         <svg xmlns="http://www.w3.org/2000/svg" className="svg_Masai mb-[-100px] relative z-10 mt-0 mr-[30px] float-right" width="231" height="75" viewBox="0 0 231 75" fill="none">
-                            <path clip-rule="evenodd" d="M0 0C31.5006 0.949537 50.52 17.872 56.1955 26.4544L55.986 25.8011L82.4924 58.631C99.3032 79.4521 131.038 79.4521 147.849 58.6309L174.356 25.8011L174.146 26.4544C179.822 17.872 198.844 0.949537 230.349 0H0Z" fill="#FCFCFC" fill-rule="" className="text-red-500" ></path>
+                            <path clipRule="evenodd" d="M0 0C31.5006 0.949537 50.52 17.872 56.1955 26.4544L55.986 25.8011L82.4924 58.631C99.3032 79.4521 131.038 79.4521 147.849 58.6309L174.356 25.8011L174.146 26.4544C179.822 17.872 198.844 0.949537 230.349 0H0Z" fill="#FCFCFC" fillRule="" className="text-red-500" ></path>
                         </svg>
                         <a href="category-search">
                             <img src="src/assets/img/banner_img/01/16785213091818.jpg" className="img-fluid imgslider" alt=""/>
@@ -25,7 +25,7 @@
                     </div>
                     <div className="item">
                         <svg xmlns="http://www.w3.org/2000/svg"  className="svg_Masai mb-[-100px] relative z-10 mt-0 mr-[30px] float-right" width="231" height="75" viewBox="0 0 231 75" fill="none">
-                            <path clip-rule="evenodd" d="M0 0C31.5006 0.949537 50.52 17.872 56.1955 26.4544L55.986 25.8011L82.4924 58.631C99.3032 79.4521 131.038 79.4521 147.849 58.6309L174.356 25.8011L174.146 26.4544C179.822 17.872 198.844 0.949537 230.349 0H0Z" fill="#FCFCFC" fill-rule="" className="text-red-500" ></path>
+                            <path clipRule="evenodd" d="M0 0C31.5006 0.949537 50.52 17.872 56.1955 26.4544L55.986 25.8011L82.4924 58.631C99.3032 79.4521 131.038 79.4521 147.849 58.6309L174.356 25.8011L174.146 26.4544C179.822 17.872 198.844 0.949537 230.349 0H0Z" fill="#FCFCFC" fillRule="" className="text-red-500" ></path>
                         </svg>
                         <a href="category-search">
                             <img src="src/assets/img/banner_img/01/16789575390919.jpg" className="img-fluid imgslider" alt=""/>
@@ -184,7 +184,7 @@
 
                                                     </div>
                                                     <div className="col-7">
-                                                        <div className="countdown-timer" countdown data-date="11 12 2023 20:20:22">
+                                                        <div className="countdown-timer" data-date="11 12 2023 20:20:22">
                                                             <ul className="text_countdown">
                                                                 <li data-days className="number_countdown">0</li>
                                                                 <li>روز</li>
@@ -260,7 +260,7 @@
 
                                                     </div>
                                                     <div className="col-7">
-                                                        <div className="countdown-timer" countdown data-date="09 12 2023 20:20:22">
+                                                        <div className="countdown-timer" data-date="09 12 2023 20:20:22">
                                                             <ul className="text_countdown">
                                                                 <li data-days className="number_countdown">0</li>
                                                                 <li>روز</li>
@@ -335,7 +335,7 @@
 
                                                     </div>
                                                     <div className="col-7">
-                                                        <div className="countdown-timer" countdown data-date="08 12 2023 20:20:22">
+                                                        <div className="countdown-timer" data-date="08 12 2023 20:20:22">
                                                             <ul className="text_countdown">
                                                                 <li data-days className="number_countdown">0</li>
                                                                 <li>روز</li>
@@ -463,7 +463,7 @@
 
                                                     </div>
                                                     <div className="col-7">
-                                                        <div className="countdown-timer" countdown data-date="08 12 2023 20:20:22">
+                                                        <div className="countdown-timer" data-date="08 12 2023 20:20:22">
                                                             <ul className="text_countdown">
                                                                 <li data-days className="number_countdown">0</li>
                                                                 <li>روز</li>
@@ -539,7 +539,7 @@
 
                                                     </div>
                                                     <div className="col-7">
-                                                        <div className="countdown-timer" countdown data-date="09 15 2023 20:20:22">
+                                                        <div className="countdown-timer" data-date="09 15 2023 20:20:22">
                                                             <ul className="text_countdown">
                                                                 <li data-days className="number_countdown">0</li>
                                                                 <li>روز</li>
@@ -614,7 +614,7 @@
 
                                                     </div>
                                                     <div className="col-7">
-                                                        <div className="countdown-timer" countdown data-date="08 19 2023 20:20:22">
+                                                        <div className="countdown-timer" data-date="08 19 2023 20:20:22">
                                                             <ul className="text_countdown">
                                                                 <li data-days className="number_countdown">0</li>
                                                                 <li>روز</li>
@@ -737,7 +737,7 @@
 
                                                     </div>
                                                     <div className="col-7">
-                                                        <div className="countdown-timer" countdown data-date="08 22 2023 20:20:22">
+                                                        <div className="countdown-timer" data-date="08 22 2023 20:20:22">
                                                             <ul className="text_countdown">
                                                                 <li data-days className="number_countdown">0</li>
                                                                 <li>روز</li>
@@ -885,7 +885,7 @@
                                                 <img src="src/assets/img/shegeft_1.png" />
                                             </span>
                                         </h3>
-                                        <div className="countdown-timer" countdown data-date="10 12 2023 20:20:22">
+                                        <div className="countdown-timer" data-date="10 12 2023 20:20:22">
                                             <ul className="text_countdown">
                                                 <li data-days className="number_countdown">0</li>
                                                 <li>روز</li>
