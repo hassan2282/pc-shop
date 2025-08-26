@@ -1,7 +1,18 @@
-import { useSelector } from "react-redux"
+import { TbLogout2 } from "react-icons/tb";
+import { useDispatch, useSelector } from "react-redux"
 
 function Header() {
 const isAuthenticated = useSelector((state) => state.isAuthenticated);
+const dispatch = useDispatch();
+
+const handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    dispatch({
+        type: "logout",
+    })
+}
+
   return (
     <header className="Masai-header default relative top-[-15px]">
 
@@ -1044,14 +1055,20 @@ const isAuthenticated = useSelector((state) => state.isAuthenticated);
                                 </form>
                             </div>
                         </div>
-                        <div className="col-md-2 col-sm-12">
+                        <div className="col-md-2 col-sm-12 flex flex-row justify-start items-center" dir="ltr">
+                                <div className="user_head">
+                                    <a href={`${isAuthenticated ? "/logout" : ""} `} onClick={handleLogout} className="flex flex-row justify-center items-center h-full bg-indigo-300">
+                                    <TbLogout2 size={24} color="#57b6bb"/>
+                                    </a>
+                                </div>
+                                <span className="divider mx-1"></span>
                                 <div className="user_head">
                                     <a href={`${isAuthenticated ? "/profile" : "/login"} `} className="iconhead">
                                         <i className="fa fa-user-large font-20" aria-hidden="true"></i>
                                     </a>
                                 </div>
+                                <span className="divider mx-1"></span>
                             <div className="cart dropdown masai_dropdown">
-                                <span className="divider"></span>
 
                                 <a href="category-search" className="dropdown-toggle iconhead" data-toggle="dropdown" id="navbar_a">
                                     <i className="fa fa-cart-arrow-down font-20" aria-hidden="true"></i>
