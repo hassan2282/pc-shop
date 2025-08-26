@@ -1,6 +1,10 @@
-﻿import OrderSideBar from "../structure/OrderSideBar"
+﻿import { useSelector } from "react-redux"
+import OrderSideBar from "../structure/OrderSideBar"
 
 function Profile() {
+
+    const user = JSON.parse(useSelector(state => state.user)) 
+
   return (
 
     <>
@@ -18,7 +22,7 @@ function Profile() {
                                             <div className="col-sm-12 col-md-6">
                                                 <p>
                                                     <span className="title">نام  :</span>
-                                                    <span>حسین 
+                                                    <span>{user.username} 
                                                     </span>
                                                 </p>
                                             </div>
@@ -26,14 +30,14 @@ function Profile() {
                                                 <p>
                                                     <span className="title"> نام خانوادگی :</span>
                                                     <span>
-                                                        رضایی
+                                                        {user.username}
                                                     </span>
                                                 </p>
                                             </div>
                                             <div className="col-sm-12 col-md-6">
                                                 <p>
                                                     <span className="title">پست الکترونیک :</span>
-                                                    <span>info@Masai.ir</span>
+                                                    <span>{user.email}</span>
                                                 </p>
                                             </div>
                                             <div className="col-sm-12 col-md-6">

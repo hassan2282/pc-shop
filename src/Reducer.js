@@ -1,11 +1,10 @@
 const initialState = {
     token: localStorage.getItem("token") || '',
-    user: null,
+    user: localStorage.getItem("user") || null,
     isAuthenticated: !!localStorage.getItem("token"),
 };
 
 const Reducer = (state = initialState, action) => {
-    console.log(action);
     switch(action.type) {
         case "login":
             return {
