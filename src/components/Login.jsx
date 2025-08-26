@@ -3,6 +3,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { AiOutlineLoading } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -11,7 +12,7 @@ function Login() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,13 +33,17 @@ function Login() {
       );
       if (res.status >= 200 && res.status < 300) {
         toast.success("خوش آمدید");
-        // console.log(res.data.access_token)
+        const token = res.data.authorisation.original.access_token;
+          localStorage.setItem('token', token )
+        dispatch({
+          type: "loginSuccess",
+          payload: {token, user: res.data.user}
+        })
         navigate("/", { replace: true });
-      }else{
-
+      } else {
       }
     } catch (err) {
-        toast.error('نام کاربری یا رمز عبور نادرست است');
+      toast.error("نام کاربری یا رمز عبور نادرست است");
     } finally {
       setIsLoading(false);
     }
@@ -58,7 +63,6 @@ function Login() {
               <div className="login_box">
                 <form onSubmit={handleSubmit}>
                   <div className="row">
-
                     <div className="col-md-12 col-sm-12">
                       <div className="form-account-title">
                         <span>*</span> ایمیل

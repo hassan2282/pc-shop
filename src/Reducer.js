@@ -1,19 +1,16 @@
 const initialState = {
-//   toggle: false,
-//   taskbarOffset: 0,
-//   id: null,
-//   partners:[],
+    token: localStorage.getItem("token") || '',
+    user: null,
 };
 
 const Reducer = (state = initialState, action) => {
     switch(action.type) {
-        case "Toggle_Taskbar":
+        case "loginSuccess":
             return {
-        ...state,
-        toggle: !state.toggle,
-        taskbarOffset: action.taskbarOffset, // این مقدار از اکشن دریافت می‌شود
-        id: action.id // این مقدار از اکشن دریافت می‌شود
-    };
+                ...state,
+                token: action.token,
+                user: action.user,
+            };
             
             default:
                 return state;
