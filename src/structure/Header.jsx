@@ -1,4 +1,7 @@
+import { useSelector } from "react-redux"
+
 function Header() {
+const isAuthenticated = useSelector((state) => state.isAuthenticated);
   return (
     <header className="Masai-header default relative top-[-15px]">
 
@@ -1042,12 +1045,11 @@ function Header() {
                             </div>
                         </div>
                         <div className="col-md-2 col-sm-12">
-                            <div className="user_head">
-                                <a href="/login" className="iconhead">
-
-                                    <i className="fa fa-user-large font-20" aria-hidden="true"></i>
-                                </a>
-                            </div>
+                                <div className="user_head">
+                                    <a href={`${isAuthenticated ? "/profile" : "/login"} `} className="iconhead">
+                                        <i className="fa fa-user-large font-20" aria-hidden="true"></i>
+                                    </a>
+                                </div>
                             <div className="cart dropdown masai_dropdown">
                                 <span className="divider"></span>
 

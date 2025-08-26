@@ -36,8 +36,10 @@ function Login() {
         const token = res.data.authorisation.original.access_token;
           localStorage.setItem('token', token )
         dispatch({
-          type: "loginSuccess",
-          payload: {token, user: res.data.user}
+          type: "login",
+          payload: {
+            token: token,
+            user: res.data.user}
         })
         navigate("/", { replace: true });
       } else {
