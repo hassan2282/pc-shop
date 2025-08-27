@@ -1062,6 +1062,7 @@ const handleLogout = (e) => {
                                 {isAuthenticated &&
                                     <div className="user_head">
                                         <a href="/logout" onClick={handleLogout} className="flex flex-row justify-center items-center h-full bg-indigo-300">
+                                        خروج
                                         <TbLogout2 size={24} color="#57b6bb"/>
                                         </a>
                                     </div>

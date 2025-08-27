@@ -23,6 +23,7 @@ import PasswordUpdate from "./components/PasswordUpdate";
 import AboutUs from "./components/AboutUs";
 import { useSelector } from "react-redux";
 import PrivateRoute from "./structure/PrivateRoute";
+import EditProfile from "./components/EditProfile";
 
 function App() {
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
@@ -53,6 +54,22 @@ function App() {
           element={
             <PrivateRoute>
               <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/edit-profile"
+          element={
+            <PrivateRoute>
+              <EditProfile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/profile-favorites"
+          element={
+            <PrivateRoute>
+              <ProfileFavorites />
             </PrivateRoute>
           }
         />
@@ -125,14 +142,6 @@ function App() {
           element={
             <PrivateRoute>
               <ShoppingPayment />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/profile-favorites"
-          element={
-            <PrivateRoute>
-              <ProfileFavorites />
             </PrivateRoute>
           }
         />

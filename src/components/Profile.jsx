@@ -77,7 +77,7 @@ function Profile() {
                                                 </p>
                                             </div>
                                             <div className="col-12 text-center">
-                                                <a href="edit-profile.jpg" className="btn btn-main-masai big_btn">
+                                                <a href="edit-profile" className="btn btn-main-masai big_btn">
                                                     ویرایش
                                                 </a>
                                             </div>
