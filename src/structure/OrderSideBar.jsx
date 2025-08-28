@@ -169,7 +169,7 @@ const user = JSON.parse(useSelector(state => state.user))
                                 </div>
                             </div>
                         </div>
-                        <div className="profile-menu ">
+                        <div className="profile-menu max-md:hidden">
                             <ul className="profile-menu-items">
                                 <li>
                                     <a href="order-current" className="dropdown-item ">
