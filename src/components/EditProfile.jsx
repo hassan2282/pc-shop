@@ -1,5 +1,5 @@
-import React from 'react'
 import OrderSideBar from '../structure/OrderSideBar'
+import { TbImageInPicture } from 'react-icons/tb'
 
 function EditProfile() {
   return (
@@ -77,11 +77,15 @@ function EditProfile() {
                                         <div className="text-center form-account-title p-6 text-white rounded-t-lg w-full bg-[#5dbbc0]">
                                              ویرایش تصویر پروفایل 
                                         </div>
-                                            <div className="flex flex-col form-account-row w-full">
+                                            <div className=" relative flex flex-col justify-center border-dotted border-2 rounded-md items-center mb-4 w-full z-20 cover">
+                                                <TbImageInPicture size={24} className='absolute w-20 h-20'/>
+                                                <span className='absolute mt-28'>لطفا تصویر خود را انتخاب کنید</span>
                                                     <input 
                                                     accept='.jpg, .png, .jpeg, .webp, .svg'
                                                     required
-                                                    className="w-full file:text-white bg-red-500 md:max-2xl:min-h-92 text-center flex justify-center items-center" id='avatarFile' name="first-name" type="file"/>
+                                                    className="text-hide w-full file:text-hide cursor-pointer z-10
+                                                     md:max-2xl:min-h-91 text-center flex justify-center items-center"
+                                                      id='avatarFile' name="first-name" type="file"/>
                                             </div>
                                             <div className="col-12">
                                                 <div className="form-account-agree flex flex-col">
@@ -92,7 +96,7 @@ function EditProfile() {
                                                     <label for="agree">
                                                         تمامی <a href="#">شرایط و قوانین</a> استفاده از سرویس‌های سایت مَسای را به دقت مطالعه کرده و با آنها موافقت کامل دارم 
                                                     </label>
-                                                    <button className='w-[50%] bg-[#46a9ae] shadow rounded text-white' type='submit'>ارسال</button>
+                                                    <button className='w-[50%] bg-[#46a9ae] hover:shadow-md hover:shadow-gray-400 duration-200 rounded text-white cursor-pointer' type='submit'>آپلود تصویر</button>
                                                 </div>
                                         </div>
                                     </div>
