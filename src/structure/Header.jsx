@@ -1067,13 +1067,16 @@ const handleLogout = (e) => {
                                         </a>
                                     </div>
                                 }
-                                <span className="divider mx-1"></span>
+                                {
+                                    isAuthenticated &&
+                                    <span className="divider ml-2"></span>
+                                }
                                 <div className="user_head">
                                     <a href={`${isAuthenticated ? "/profile" : "/login"} `} className="iconhead">
                                         <i className="fa fa-user-large font-20" aria-hidden="true"></i>
                                     </a>
                                 </div>
-                                <span className="divider mx-1"></span>
+                                <span className="divider ml-2"></span>
                             <div className="cart dropdown masai_dropdown">
 
                                 <a href="category-search" className="dropdown-toggle iconhead" data-toggle="dropdown" id="navbar_a">

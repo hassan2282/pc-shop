@@ -92,7 +92,7 @@ function EditProfile() {
                                                     required
                                                     className="text-hide w-full file:text-hide cursor-pointer z-10
                                                     h-91 max-md:h-40 bg-white text-center flex justify-center items-center"
-                                                      id='avatarFile' name="first-name" type="file"/>
+                                                    id='avatarFile' name="first-name" type="file"/>
                                             </div>
                                             <div className="col-12 w-full">
                                                 <div className="flex flex-col w-full justify-center items-center">

@@ -1,7 +1,22 @@
-import { useSelector } from "react-redux"
+import { TbLogout2 } from "react-icons/tb";
+import { useDispatch, useSelector } from "react-redux"
+import { toast } from "react-toastify";
 
 function OrderSideBar() {
 const user = JSON.parse(useSelector(state => state.user))
+const isAuthenticated = useSelector((state) => state.isAuthenticated);
+
+const dispatch = useDispatch();
+
+const logoutHandler = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    dispatch({
+        type: "logout",
+    })
+    toast.success('شما با موفقیت از حساب کاربری خود خارج شدید');
+}
 
   return (
     <div className="profile-page-aside col-xl-3 col-lg-4 col-md-6 center-section order-1">
@@ -119,6 +134,15 @@ const user = JSON.parse(useSelector(state => state.user))
                                     حساب کاربری شما
                                 </button>
                                 <div className="dropdown-menu dropdown-menu-right text-right">
+                                    <a href="profile" className="dropdown-item">
+                                        <i className="fa fa-user-large colormain"></i>
+                                        پروفایل
+                                    </a>
+
+                                    <a href="edit-profile" className="dropdown-item  active-menu">
+                                        <i className="fa fa-pencil colormain" aria-hidden="true"></i>
+                                        ویرایش اطلاعات
+                                    </a>
                                     <a href="order-message" className="dropdown-item  ">
                                         <i className="fa fa-cart-arrow-down colormain" aria-hidden="true"></i>
                                         تحویل داده شده
@@ -130,7 +154,7 @@ const user = JSON.parse(useSelector(state => state.user))
                                         <i className="fa fa-times colormain" aria-hidden="true"></i>
                                         لغو شده
                                     </a>
-                                    <a href="orders-return" className="dropdown-item active-menu">
+                                    <a href="orders-return" className="dropdown-item">
                                         <i className="fa fa-thumbs-down colormain" aria-hidden="true"></i>
                                         مرجوع محصول
                                     </a>
@@ -150,22 +174,22 @@ const user = JSON.parse(useSelector(state => state.user))
                                         پیغام ها
                                     </a>
 
-                                    <a href="profile" className="dropdown-item">
-                                        <i className="fa fa-user-large colormain"></i>
-                                        پروفایل
-                                    </a>
-
-                                    <a href="profile" className="dropdown-item">
-                                        <i className="fa fa-pencil colormain" aria-hidden="true"></i>
-                                        ویرایش اطلاعات
-                                    </a>
-
                                     <a href="password-update" className="dropdown-item">
                                         <i className="fa fa-shield colormain" aria-hidden="true"></i>
                                         امنیت و تغییر رمز
                                     </a>
+                                    {
+                                        isAuthenticated &&
 
-                                    
+                                        <a href="logout" onClick={logoutHandler} className="dropdown-item text-danger">
+                                            <div className="flex flex-row space-x-4 items-center justify-start">
+                                            <TbLogout2 size={24} className=" colormain" aria-hidden="true" color="#57b6bb"/>
+                                            خروج     
+
+                                            </div>
+                                        </a>
+
+                                    }
                                 </div>
                             </div>
                         </div>
