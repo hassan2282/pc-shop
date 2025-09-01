@@ -64,7 +64,7 @@ function EditProfile() {
                                             <div className="col-12 mt-4 max-md:mt-0">
                                                 <div className="flex flex-col justify-center items-center">
                                                     <span className='w-[85%] max-md:hidden mb-4'>
-                                                        اگر قصد خرید دارید، پر کردن همه فیلد های ای فرم الزامیست، در غیر اینصورت می توانید این اطلاعات را قبل از پرداخت تکمیل نمایید
+                                                        برای داشتن خریدی سریع تر لطفا اطلاعات خود را در این بخش تکمیل نمایید
                                                     </span>
                                                     <button className='p-2 w-[70%] mb-4 bg-[#46a9ae] hover:shadow-md hover:shadow-gray-400
                                                      duration-200 rounded text-white cursor-pointer' type='submit'>ارسال</button>
