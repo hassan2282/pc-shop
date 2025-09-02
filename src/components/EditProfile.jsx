@@ -71,7 +71,6 @@ function EditProfile() {
                                                 </div>
                                         </div>
                                     </div>
-                                    
 
 
 
