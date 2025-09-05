@@ -77,7 +77,6 @@ function EditProfile() {
 
 
 
-
                                     <div className='flex flex-col relative justify-center items-center h-auto basis-full rounded-lg shadow shadow-gray-600'>
                                         <div className="flex justify-center items-center text-center h-21 text-lg rounded-t-lg w-full">
                                              ویرایش تصویر پروفایل 
