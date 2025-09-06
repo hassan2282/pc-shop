@@ -1142,8 +1142,8 @@ const handleLogout = (e) => {
                                         </div>
                                     </div>
                                     <div className="btn_cart">
-                                        <a href="cart.html" className="btn btn_sabad">مشاهده سبد</a>
-                                        <a href="Final-payment.html" className="btn btn_pardakht btn-main-masai">پرداخت</a>
+                                        <a href="cart" className="btn btn_sabad">مشاهده سبد</a>
+                                        <a href="Final-payment" className="btn btn_pardakht btn-main-masai">پرداخت</a>
                                     </div>
                                 </div>
                             </div>
