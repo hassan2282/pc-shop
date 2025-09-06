@@ -16,7 +16,6 @@ const [InfoData, setInfoData] = useState({
 const [isLoading, setIsLoading] = useState(false);
 const [errors, setErrors] = useState({});
 const user = JSON.parse(useSelector(state => state.user)) ;
-console.log(user)
 
 const handleInfoChange = (e) =>{
     const {name, value} = e.target;
@@ -28,8 +27,9 @@ const handleInfoSubmit = async (e) => {
     setIsLoading(true);
 
     try{
+
         const infoRes = await axios.post(
-            `http://127.0.0.1:8000/api/auth/update/${user?.id}`,
+            `http://127.0.0.1:8000/api/auth/update/2`,
         InfoData,
         {
             headers:{'Content-Type': 'application/json'}
@@ -42,7 +42,7 @@ const handleInfoSubmit = async (e) => {
     }catch(err){
         if(err.response.data) {
             err.response.status >= 400 && err.response.status < 500 &&
-             setErrors({formErrors: err.response.data});
+            setErrors({formErrors: err.response.data});
             toast.error(err.response.data)
         }
     }finally{
