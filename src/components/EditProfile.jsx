@@ -50,7 +50,6 @@ const handleInfoSubmit = async (e) => {
     }
 }
 
-
   return (
     <div>
 
