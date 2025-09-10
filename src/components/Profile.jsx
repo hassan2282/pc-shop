@@ -1,24 +1,22 @@
-﻿import { useSelector } from "react-redux"
-import OrderSideBar from "../structure/OrderSideBar"
-import axios from "axios"
-import { useEffect } from "react"
+﻿import OrderSideBar from "../structure/OrderSideBar"
+import { useEffect, useState } from "react"
 import apiClient from "../apiClient"
 
 function Profile() {
 
-    const user = JSON.parse(useSelector(state => state.user))
+    const [user, setUser] = useState({});
     
     useEffect(() => {
         const fetchUser = async () => {
             try {
             const res = await apiClient.post('me');
-            console.log(res.data);
+            setUser(res.data)
             } catch (error) {
             console.error(error);
             }
         };
 
-  fetchUser();
+    fetchUser();
     },[])
 
 

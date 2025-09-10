@@ -46,7 +46,7 @@ function Login() {
       } else {
       }
     } catch (err) {
-      toast.error("نام کاربری یا رمز عبور نادرست است");
+      toast.error("ایمیل یا رمز عبور نادرست است");
     } finally {
       setIsLoading(false);
     }

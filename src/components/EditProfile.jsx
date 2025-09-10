@@ -107,7 +107,6 @@ const handleInfoSubmit = async (e) => {
                                                     maxLength={255}
                                                     onChange={handleInfoChange}
                                                     value={InfoData.phone}
-                                                    required
                                                     dir='ltr'
                                                      className={errors.errors?.phone ? 'border-red-600 border-2 animate-pulse bg-red-300 rounded-full p-2' : 'input_second input_all '} name="phone" type='tel' placeholder=" شماره تلفن"/>
                                             </div>
@@ -118,7 +117,6 @@ const handleInfoSubmit = async (e) => {
                                                     maxLength={255}
                                                     onChange={handleInfoChange}
                                                     value={InfoData.email}
-                                                    required
                                                      className={errors.errors?.email ? 'border-red-600 border-2 animate-pulse bg-red-300 rounded-full p-2' : 'input_second input_all '} name="email" type="email" placeholder=" ایمیل"/>
                                             </div>
                                             <div className="col-12 mt-4 max-md:mt-0">
