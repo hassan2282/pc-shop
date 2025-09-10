@@ -1,9 +1,14 @@
 ﻿import { useSelector } from "react-redux"
 import OrderSideBar from "../structure/OrderSideBar"
+import axios from "axios"
 
 function Profile() {
 
     const user = JSON.parse(useSelector(state => state.user)) 
+    
+    const TargetUser = async () => {
+        const res = await axios.get('http://127.0.0.1:8000/api/auth/me')
+    }
 
   return (
 
@@ -22,7 +27,7 @@ function Profile() {
                                             <div className="col-sm-12 col-md-6">
                                                 <p>
                                                     <span className="title">نام  :</span>
-                                                    <span>{user.username} 
+                                                    <span>{user.first_name} 
                                                     </span>
                                                 </p>
                                             </div>
@@ -30,7 +35,7 @@ function Profile() {
                                                 <p>
                                                     <span className="title"> نام خانوادگی :</span>
                                                     <span>
-                                                        {user.username}
+                                                        {user.last_name}
                                                     </span>
                                                 </p>
                                             </div>

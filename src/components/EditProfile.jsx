@@ -29,7 +29,7 @@ const handleInfoSubmit = async (e) => {
     try{
 
         const infoRes = await axios.post(
-            `http://127.0.0.1:8000/api/auth/update/2`,
+            `http://127.0.0.1:8000/api/auth/update/${user.id}`,
         InfoData,
         {
             headers:{'Content-Type': 'application/json'}
@@ -40,7 +40,7 @@ const handleInfoSubmit = async (e) => {
         }
 
     }catch(err){
-        if(err.response.data) {
+        if(err.response?.data) {
             err.response.status >= 400 && err.response.status < 500 &&
             setErrors({formErrors: err.response.data});
             toast.error(err.response.data)
@@ -48,7 +48,7 @@ const handleInfoSubmit = async (e) => {
     }finally{
         setIsLoading(false);
     }
-    
+
 }
 
   return (
@@ -72,7 +72,7 @@ const handleInfoSubmit = async (e) => {
                                         {
 
                                             (Object.keys(errors).length > 0) && (
-                                                <ul className='flex flex-col items-center p-2 text-white w-full text-md space-y-2 bg-red-400 h-12 rounded-md'>
+                                                <ul className='flex flex-col items-center p-2 text-white w-full text-md space-y-2 bg-red-400 rounded-md'>
                                                                 {errors?.formErrors?.errors?.first_name && <li>{errors?.formErrors?.errors?.first_name[0]}</li>}
                                                                 {errors?.formErrors?.errors?.last_name && <li>{errors?.formErrors?.errors?.last_name[0]}</li>}
                                                                 {errors?.formErrors?.errors?.phone && <li>{errors?.formErrors?.errors?.phone[0]}</li>}
@@ -141,7 +141,7 @@ const handleInfoSubmit = async (e) => {
                                         </div>
                                             <div className=" relative flex flex-col justify-center border-dotted border-[#54b4b9]
                                              border-3 rounded-md items-center mb-4 w-full z-20 cover">
-                                                <TbImageInPicture size={24} className='absolute max-md:w-[4rem] max-md:h-[4rem] w-[6rem] h-[6rem] z-30'/>
+                                                <TbImageInPicture size={60} className='absolute max-md:w-[4rem] max-md:h-[4rem] z-30'/>
                                                 <span className='absolute mt-28 z-30'>لطفا تصویر خود را انتخاب کنید</span>
                                                     <input 
                                                     accept='.jpg, .png, .jpeg, .webp, .svg'
