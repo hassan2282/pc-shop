@@ -3,7 +3,6 @@ import { ToastContainer, toast } from "react-toastify";
 import { BrowserRouter, Link, Navigate, Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Index from "./components/Index";
-import Profile from "./components/profile";
 import Register from "./components/Register";
 import Cart from "./components/Cart";
 import CategoryBlog from "./components/CategoryBlog";
@@ -24,6 +23,7 @@ import AboutUs from "./components/AboutUs";
 import { useSelector } from "react-redux";
 import PrivateRoute from "./structure/PrivateRoute";
 import EditProfile from "./components/EditProfile";
+import Profile from "./components/Profile";
 
 function App() {
   const isAuthenticated = useSelector((state) => state.isAuthenticated);

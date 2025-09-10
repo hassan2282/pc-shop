@@ -1,14 +1,26 @@
 ﻿import { useSelector } from "react-redux"
 import OrderSideBar from "../structure/OrderSideBar"
 import axios from "axios"
+import { useEffect } from "react"
+import apiClient from "../apiClient"
 
 function Profile() {
 
-    const user = JSON.parse(useSelector(state => state.user)) 
+    const user = JSON.parse(useSelector(state => state.user))
     
-    const TargetUser = async () => {
-        const res = await axios.get('http://127.0.0.1:8000/api/auth/me')
-    }
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+            const res = await apiClient.post('me');
+            console.log(res.data);
+            } catch (error) {
+            console.error(error);
+            }
+        };
+
+  fetchUser();
+    },[])
+
 
   return (
 
