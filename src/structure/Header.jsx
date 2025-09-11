@@ -7,11 +7,19 @@ import apiClient from "../apiClient"
 function Header() {
 const isAuthenticated = useSelector((state) => state.isAuthenticated);
 const dispatch = useDispatch();
+const token = localStorage.getItem("token");
 
     useEffect(() => {
         const fetchUser = async () => {
             try {
-            const res = await apiClient.post('me');
+            const res = await apiClient.post('me',
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
             dispatch({ type: 'setUser', payload: { user: res.data } });
             } catch (err) {
             console.log(err);  
