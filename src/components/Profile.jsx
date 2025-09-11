@@ -1,24 +1,11 @@
 ﻿import OrderSideBar from "../structure/OrderSideBar"
 import { useEffect, useState } from "react"
-import apiClient from "../apiClient"
+
+import { useDispatch, useSelector } from "react-redux"
 
 function Profile() {
 
-    const [user, setUser] = useState({});
-    
-    useEffect(() => {
-        const fetchUser = async () => {
-            try {
-            const res = await apiClient.post('me');
-            setUser(res.data)
-            } catch (error) {
-            console.error(error);
-            }
-        };
-
-    fetchUser();
-    },[])
-
+    const user = useSelector(state => state.user);
 
   return (
 
@@ -37,7 +24,7 @@ function Profile() {
                                             <div className="col-sm-12 col-md-6">
                                                 <p>
                                                     <span className="title">نام  :</span>
-                                                    <span>{user.first_name} 
+                                                    <span>{user ? user.first_name : ' '} 
                                                     </span>
                                                 </p>
                                             </div>
@@ -45,20 +32,20 @@ function Profile() {
                                                 <p>
                                                     <span className="title"> نام خانوادگی :</span>
                                                     <span>
-                                                        {user.last_name}
+                                                        {user ? user.last_name : ' '}
                                                     </span>
                                                 </p>
                                             </div>
                                             <div className="col-sm-12 col-md-6">
                                                 <p>
                                                     <span className="title">پست الکترونیک :</span>
-                                                    <span>{user.email}</span>
+                                                    <span>{user ? user.email : ' '}</span>
                                                 </p>
                                             </div>
                                             <div className="col-sm-12 col-md-6">
                                                 <p>
                                                     <span className="title">شماره تلفن همراه:</span>
-                                                    <span>09111234567</span>
+                                                    <span>{user ? user.phone : ' '}</span>
                                                 </p>
                                             </div>
                                             <div className="col-sm-12 col-md-6">
@@ -128,4 +115,4 @@ function Profile() {
   )
 }
 
-export default Profile
+export default Profile;

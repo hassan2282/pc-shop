@@ -3,15 +3,14 @@ import { useDispatch, useSelector } from "react-redux"
 import { toast } from "react-toastify";
 
 function OrderSideBar() {
-const user = JSON.parse(useSelector(state => state.user))
 const isAuthenticated = useSelector((state) => state.isAuthenticated);
+const user = useSelector(state => state.user);
 
 const dispatch = useDispatch();
 
 const logoutHandler = (e) => {
     e.preventDefault();
     localStorage.removeItem("token");
-    localStorage.removeItem("user");
     dispatch({
         type: "logout",
     })
@@ -28,7 +27,7 @@ const logoutHandler = (e) => {
                             <a className="view-more" href="" data-toggle="modal" data-target="#myModal">
                                 <i className="fa fa-plus-circle"></i>
                             </a>
-                            <div className="modal-share modal-width-custom modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div className="modal-share modal-width-custom modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div className="modal-dialog">
                                     <div className="modal-content">
                                         <div className="modal-header">
@@ -57,7 +56,7 @@ const logoutHandler = (e) => {
                             {/* <!--text--> */}
 
 
-                            <div className="modal-share modal-width-custom modal fade" id="returnModal" tabindex="-1" role="dialog" aria-labelledby="returnModalLabel" aria-hidden="true">
+                            <div className="modal-share modal-width-custom modal fade" id="returnModal" tabIndex="-1" role="dialog" aria-labelledby="returnModalLabel" aria-hidden="true">
                                 <div className="modal-dialog">
                                     <div className="modal-content">
                                         <div className="modal-header">
@@ -74,7 +73,7 @@ const logoutHandler = (e) => {
                                                                     <input type="checkbox" id="agree"/>
                                                                     <span className="checkbox-check"></span>
                                                                 </label>
-                                                                <label for="agree">
+                                                                <label htmlFor="agree">
                                                                     گوشی اپل آیفون 14 پرو 
                                                                 </label>
                                                             </div>
@@ -86,7 +85,7 @@ const logoutHandler = (e) => {
                                                                 <input type="checkbox" id="agree"/>
                                                                 <span className="checkbox-check"></span>
                                                             </label>
-                                                            <label for="agree">
+                                                            <label htmlFor="agree">
                                                                کنسول بازی
                                                             </label>
                                                         </div>
@@ -105,7 +104,7 @@ const logoutHandler = (e) => {
                                 </div>
                             </div>
                             <div className="mid-section">
-                                <div className="name">{user.username}</div>
+                                <div className="name">{user ? user.username : ' '}</div>
                                 <div className="description">
                                     <a href="#" className="btn btn-main-masai">افزایش موجودی</a>
                                     <a href="#" className="btn btn-second-masai">مسای کلاب</a>

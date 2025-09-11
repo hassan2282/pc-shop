@@ -1,15 +1,29 @@
+import { useEffect } from "react";
 import { TbLogout2 } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux"
 import { toast } from "react-toastify";
+import apiClient from "../apiClient"    
 
 function Header() {
 const isAuthenticated = useSelector((state) => state.isAuthenticated);
 const dispatch = useDispatch();
 
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+            const res = await apiClient.post('me');
+            dispatch({ type: 'setUser', payload: { user: res.data } });
+            } catch (err) {
+            console.log(err);  
+            }
+        };
+
+  fetchUser();
+}, []);
+
 const handleLogout = (e) => {
     e.preventDefault();
     localStorage.removeItem("token");
-    localStorage.removeItem("user");
     dispatch({
         type: "logout",
     })

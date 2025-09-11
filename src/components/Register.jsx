@@ -3,6 +3,7 @@ import { useState } from "react"
 import { toast} from "react-toastify";
 import { AiOutlineLoading } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 function Register() {
 const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const [formData, setFormData] = useState({
     password: '',
     password_confirmation: '',
 })
+const dispatch = useDispatch();
 
 const [isLoading, setIsLoading] = useState(false);
 const [errors, setErrors] = useState({});
@@ -45,7 +47,12 @@ const handleSubmit = async (e) => {
             toast.success('کاربر با موفقیت افزوده شد');
             const token = res.data.authorisation.original.access_token;
             localStorage.setItem('token', token )
-            localStorage.setItem('user', JSON.stringify(res.data.user));
+            dispatch({
+                type: "setUser",
+                payload: {
+                    user: res.data.user,
+                }
+            })
             navigate("/",{replace:true})
         }
         

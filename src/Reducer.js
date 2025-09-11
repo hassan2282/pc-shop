@@ -1,6 +1,6 @@
 const initialState = {
     token: localStorage.getItem("token") || '',
-    user: localStorage.getItem("user") || null,
+    user: null,
     isAuthenticated: !!localStorage.getItem("token"),
 };
 
@@ -17,7 +17,14 @@ const Reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isAuthenticated: false,
+                user: null,
+                token: null
             };
+        case "setUser":
+            return {
+                ...state,
+                user: action.payload.user,
+            }
 
             default:
                 return state;
