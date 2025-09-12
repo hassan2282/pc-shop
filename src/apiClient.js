@@ -33,7 +33,6 @@ apiClient.interceptors.response.use(
   (error) => {
     // اگر کد وضعیت خطا ۴۰۱ باشد (توکن منقضی شده یا نامعتبر)
     if (error.response && error.response.status === 401) {
-      const dispatch = useDispatch();
       store.dispatch(logoutAction()); // dispatch کردن action
     }
     return Promise.reject(error); // بازگرداندن خطا به کامپوننت‌ها

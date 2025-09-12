@@ -1,3 +1,5 @@
+import { replace, useNavigate } from "react-router-dom";
+
 const initialState = {
     token: localStorage.getItem("token") || '',
     user: null,
@@ -20,6 +22,7 @@ const Reducer = (state = initialState, action) => {
                 user: null,
                 token: null
             };
+            
         case "setUser":
             return {
                 ...state,
