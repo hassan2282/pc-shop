@@ -880,28 +880,30 @@
                             <div className="col-12">
                                 <div className="widget widget-product card border_all bglight pad_time_prod" id="shegeft_1">
                                     <header className="card-header">
-                                        <h3 className="card-title">
-                                            <span>
-                                                <img src="src/assets/img/shegeft_1.png" />
-                                            </span>
-                                        </h3>
-                                        <div className="countdown-timer" data-date="10 12 2023 20:20:22">
-                                            <ul className="text_countdown">
-                                                <li data-days className="number_countdown">0</li>
-                                                <li>روز</li>
-                                            </ul>
-                                            <ul className="text_countdown">
-                                                <li data-hours className="number_countdown">0</li>
-                                                <li>ساعت</li>
-                                            </ul>
-                                            <ul className="text_countdown">
-                                                <li data-minutes className="number_countdown">0</li>
-                                                <li>دقیقه</li>
-                                            </ul>
-                                            <ul className="text_countdown">
-                                                <li data-seconds className="number_countdown">0</li>
-                                                <li>ثانیه</li>
-                                            </ul>
+                                        <div className="flex flex-row w-full justify-around items-center">
+                                                <h3 className="card-title flex basis-1/2 max-sm:hidden">
+                                                    <span>
+                                                        <img src="src/assets/img/shegeft_1.png" />
+                                                    </span>
+                                                </h3>
+                                            <div className="flex flex-row relative space-x-2 basis-1/2 justify-end items-center" data-date="10 12 2023 20:20:22">
+                                                <ul className="text_countdown">
+                                                    <li data-days className="border-2 p-3 border-gray-700 rounded-xl number_countdown">0</li>
+                                                    <li>روز</li>
+                                                </ul>
+                                                <ul className="text_countdown">
+                                                    <li data-hours className="border-2 p-3 border-gray-700 rounded-xl number_countdown">0</li>
+                                                    <li>ساعت</li>
+                                                </ul>
+                                                <ul className="text_countdown">
+                                                    <li data-minutes className="border-2 p-3 border-gray-700 rounded-xl number_countdown">0</li>
+                                                    <li>دقیقه</li>
+                                                </ul>
+                                                <ul className="text_countdown">
+                                                    <li data-seconds className="border-2 p-3 border-gray-700 rounded-xl number_countdown">0</li>
+                                                    <li>ثانیه</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </header>
                                     <div className="product-carousel owl-carousel owl-theme">

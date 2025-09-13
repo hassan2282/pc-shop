@@ -202,24 +202,24 @@ const [InfoData, setInfoData] = useState(initialUserData);
                   </div>
                   <div
                     className=" relative flex flex-col justify-center border-dotted border-[#54b4b9]
-                                             border-3 rounded-md items-center mb-4 w-full z-20 cover"
+                                             border-3 rounded-md items-center mb-4 w-full cover"
                   >
-                    <TbImageInPicture
-                      size={60}
-                      className="absolute max-md:w-[4rem] max-md:h-[4rem] z-30"
-                    />
-                    <span className="absolute mt-28 z-30">
-                      لطفا تصویر خود را انتخاب کنید
-                    </span>
-                    <input
-                      accept=".jpg, .png, .jpeg, .webp, .svg"
-                      required
-                      className="text-hide w-full file:text-hide cursor-pointer z-10
-                                                    h-91 max-md:h-40 bg-white text-center flex justify-center items-center"
-                      id="avatarFile"
-                      name="first-name"
-                      type="file"
-                    />
+                      <TbImageInPicture
+                        size={60}
+                        className="absolute max-md:w-[4rem] max-md:h-[4rem] z-10"
+                      />
+                      <span className="absolute mt-28 z-10">
+                        لطفا تصویر خود را انتخاب کنید
+                      </span>
+                      <input
+                        accept=".jpg, .png, .jpeg, .webp, .svg"
+                        required
+                        className="text-hide w-full file:text-hide cursor-pointer z-20 bg-red-500 
+                                  h-91 max-md:h-40 text-center flex justify-center items-center"
+                        id="avatarFile"
+                        name="first-name"
+                        type="file"
+                      />
                   </div>
                   <div className="col-12 w-full">
                     <div className="flex flex-col w-full justify-center items-center">
