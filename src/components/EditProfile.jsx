@@ -201,9 +201,8 @@ const [InfoData, setInfoData] = useState(initialUserData);
                     ویرایش تصویر پروفایل
                   </div>
                   <div
-                    className=" relative flex flex-col justify-center border-dotted border-[#54b4b9]
-                                             border-3 rounded-md items-center mb-4 w-full cover"
-                  >
+                    className=" relative flex flex-col justify-center border-dotted hover:bg-blue-300 duration-200 hover:opacity-95 text-gray-600 border-[#54b4b9]
+                                border-3 rounded-md items-center mb-4 w-full cover">
                       <TbImageInPicture
                         size={60}
                         className="absolute max-md:w-[4rem] max-md:h-[4rem] z-10"
