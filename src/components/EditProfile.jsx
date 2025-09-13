@@ -214,7 +214,7 @@ const [InfoData, setInfoData] = useState(initialUserData);
                       <input
                         accept=".jpg, .png, .jpeg, .webp, .svg"
                         required
-                        className="text-hide w-full file:text-hide cursor-pointer z-20 bg-red-500 
+                        className="text-hide w-full file:text-hide cursor-pointer z-20  
                                   h-91 max-md:h-40 text-center flex justify-center items-center"
                         id="avatarFile"
                         name="first-name"

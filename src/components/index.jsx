@@ -886,21 +886,21 @@
                                                         <img src="src/assets/img/shegeft_1.png" />
                                                     </span>
                                                 </h3>
-                                            <div className="flex flex-row relative space-x-2 basis-1/2 justify-end items-center" data-date="10 12 2023 20:20:22">
+                                            <div dir="ltr" className="flex flex-row relative max-sm:w-[1rem] max-sm:space-x-0 space-x-2 basis-1/2 max-sm:justify-center justify-start items-center" data-date="10 12 2023 20:20:22">
                                                 <ul className="text_countdown">
-                                                    <li data-days className="border-2 p-3 border-gray-700 rounded-xl number_countdown">0</li>
+                                                    <li data-days className="border-2 p-3 max-sm:border-0 max-sm: border-gray-700 rounded-xl number_countdown">5</li>
                                                     <li>روز</li>
                                                 </ul>
                                                 <ul className="text_countdown">
-                                                    <li data-hours className="border-2 p-3 border-gray-700 rounded-xl number_countdown">0</li>
+                                                    <li data-hours className="border-2 p-3 max-sm:border-0 max-sm: border-gray-700 rounded-xl number_countdown">10</li>
                                                     <li>ساعت</li>
                                                 </ul>
                                                 <ul className="text_countdown">
-                                                    <li data-minutes className="border-2 p-3 border-gray-700 rounded-xl number_countdown">0</li>
+                                                    <li data-minutes className="border-2 p-3 max-sm:border-0 max-sm: border-gray-700 rounded-xl number_countdown">25</li>
                                                     <li>دقیقه</li>
                                                 </ul>
                                                 <ul className="text_countdown">
-                                                    <li data-seconds className="border-2 p-3 border-gray-700 rounded-xl number_countdown">0</li>
+                                                    <li data-seconds className="border-2 p-3 max-sm:border-0 max-sm: border-gray-700 rounded-xl number_countdown">08</li>
                                                     <li>ثانیه</li>
                                                 </ul>
                                             </div>
@@ -1329,37 +1329,37 @@
                                       <a href="single-blog">
                                           <img src="src/assets/img/blog/post-1.jpg" className="img-fluid" alt=""/>
                                       </a>
-                                      <a href="single-blog">
-                                          <h2 className="Blog_title">
-                                              این‌ بار هوش مصنوعی، تصاویری از کارخانه تولید عروس دریایی را افشا می‌کند!
-                                          </h2>
-                                      </a>
-                                      <div className="Blog_list">
-                                          <span className="Blog_author">
-                                              <i className="fa fa-user"></i>
-                                              رضایی
-                                          </span>
-                                          <span className="Blog_Date">
-                                              <i className="fa fa-calendar "></i>
-                                              ۱9 مهر 1402
-                                          </span>
-                                      </div>
+                                        <a href="single-blog">
+                                            <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">
+                                                این‌ بار هوش مصنوعی، تصاویری از کارخانه تولید عروس دریایی را افشا می‌کند!
+                                            </h2>
+                                        </a>
+                                        <div className="Blog_list max-sm:h-13 h-[4rem]">
+                                            <span className="Blog_author max-sm:hidden">
+                                                <i className="fa fa-user"></i>
+                                                رضایی
+                                            </span>
+                                            <span className="Blog_Date flex flex-row text-[1rem] w-full">
+                                                <i className="fa fa-calendar"></i>
+                                                ۱9 مهر 1402
+                                            </span>
+                                        </div>
                                   </div>
                                   <div className="item">
                                       <a href="single-blog">
                                           <img src="src/assets/img/blog/post-2.jpg" className="img-fluid" alt=""/>
                                       </a>
                                       <a href="single-blog">
-                                          <h2 className="Blog_title">
+                                          <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">
                                               خط سفید روی نمایشگر گلکسی A71 سامسونگ؛ ماجرا چیست؟
                                           </h2>
                                       </a>
-                                      <div className="Blog_list">
-                                          <span className="Blog_author">
+                                      <div className="Blog_list max-sm:h-13 h-[4rem]">
+                                          <span className="Blog_author max-sm:hidden">
                                               <i className="fa fa-user"></i>
                                               صادقی
                                           </span>
-                                          <span className="Blog_Date">
+                                          <span className="Blog_Date flex flex-row text-[1rem] w-full">
                                               <i className="fa fa-calendar "></i>
                                               ۱4 اسفند 1402
                                           </span>
@@ -1370,17 +1370,17 @@
                                           <img src="src/assets/img/blog/post-3.jpg" className="img-fluid" alt=""/>
                                       </a>
                                       <a href="single-blog">
-                                          <h2 className="Blog_title">
+                                          <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">
                                               بهترین گوشی های مناسب عکاسی در بازار ایران
                                           </h2>
                                       </a>
-                                      <div className="Blog_list">
-                                          <span className="Blog_author">
+                                      <div className="Blog_list max-sm:h-13 h-[4rem]">
+                                          <span className="Blog_author max-sm:hidden">
                                               <i className="fa fa-user"></i>
                                               میرعظیمی
                                           </span>
-                                          <span className="Blog_Date">
-                                              <i className="fa fa-calendar "></i>
+                                          <span className="Blog_Date flex flex-row text-[1rem] w-full">
+                                              <i className="fa fa-calendar"></i>
                                               ۱4 شهریور 1402
                                           </span>
                                       </div>
@@ -1390,17 +1390,17 @@
                                           <img src="src/assets/img/blog/post-4.jpg" className="img-fluid" alt=""/>
                                       </a>
                                       <a href="single-blog">
-                                          <h2 className="Blog_title">
+                                          <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">
                                               هزینه ساخت بازی‌های انحصاری پلی استیشن با فیلم‌های بلاک‌باستر برابری می‌کند
                                           </h2>
                                       </a>
-                                      <div className="Blog_list">
-                                          <span className="Blog_author">
+                                      <div className="Blog_list max-sm:h-13 h-[4rem]">
+                                          <span className="Blog_author max-sm:hidden">
                                               <i className="fa fa-user"></i>
                                               میرعظیمی
                                           </span>
-                                          <span className="Blog_Date">
-                                              <i className="fa fa-calendar "></i>
+                                          <span className="Blog_Date flex flex-row text-[1rem] w-full">
+                                              <i className="fa fa-calendar"></i>
                                              25 شهریور 1402
                                           </span>
                                       </div>
@@ -1410,17 +1410,17 @@
                                           <img src="src/assets/img/blog/post-5.jpg" className="img-fluid" alt=""/>
                                       </a>
                                       <a href="single-blog">
-                                          <h2 className="Blog_title">
+                                          <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">
                                               یک دهه سکوت شکست؛ مایکروسافت آمار فروش ایکس باکس را فاش کرد!
 
                                           </h2>
                                       </a>
-                                      <div className="Blog_list">
-                                          <span className="Blog_author">
+                                      <div className="Blog_list max-sm:h-13 h-[4rem]">
+                                          <span className="Blog_author max-sm:hidden">
                                               <i className="fa fa-user"></i>
                                               میرعظیمی
                                           </span>
-                                          <span className="Blog_Date">
+                                          <span className="Blog_Date  flex flex-row text-[1rem] w-full">
                                               <i className="fa fa-calendar "></i>
                                               25 آذر 1402
                                           </span>
@@ -1431,16 +1431,16 @@
                                           <img src="src/assets/img/blog/post-6.jpg" className="img-fluid" alt=""/>
                                       </a>
                                       <a href="single-blog">
-                                          <h2 className="Blog_title">
+                                          <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">
                                               بررسی تلویزیون 4K اسنوا؛ ۵۵ اینچی اقتصادی برای فیلم‌بازها!
                                           </h2>
                                       </a>
-                                      <div className="Blog_list">
-                                          <span className="Blog_author">
+                                      <div className="Blog_list max-sm:h-13 h-[4rem]">
+                                          <span className="Blog_author max-sm:hidden">
                                               <i className="fa fa-user"></i>
                                               میرعظیمی
                                           </span>
-                                          <span className="Blog_Date">
+                                          <span className="Blog_Date  flex flex-row text-[1rem] w-full">
                                               <i className="fa fa-calendar "></i>
                                               10 دی 1402
                                           </span>
