@@ -1,21 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import OrderSideBar from "../structure/OrderSideBar";
 import { TbImageInPicture } from "react-icons/tb";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { AiOutlineLoading } from "react-icons/ai";
 import { useSelector } from "react-redux";
+import apiClient from "../apiClient";
 
 function EditProfile() {
   const user = useSelector((state) => state.user);
   const [initialUserData, setInitialUserData] = useState({
-  first_name: user?.first_name || "",
-  last_name: user?.last_name || "",
-  phone: user?.phone || "",
-  email: user?.email || ""
-});
+    first_name: user?.first_name || "",
+    last_name: user?.last_name || "",
+    phone: user?.phone || "",
+    email: user?.email || "",
+  });
 
-const [InfoData, setInfoData] = useState(initialUserData);
+  const [InfoData, setInfoData] = useState(initialUserData);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -35,6 +36,12 @@ const [InfoData, setInfoData] = useState(initialUserData);
       }
     });
 
+    // اگر داده‌های بروزرسانی شده خالی باشند، درخواست ارسال نمی‌شود
+    if (Object.keys(updatedData).length === 0) {
+      setIsLoading(false);
+      return; // خروج از تابع بدون ارسال درخواست
+    }
+
     try {
       const infoRes = await axios.post(
         `http://127.0.0.1:8000/api/auth/update/${user.id}`,
@@ -48,8 +55,7 @@ const [InfoData, setInfoData] = useState(initialUserData);
         toast.success("اطلاعات با موفقیت ویرایش شد");
       }
 
-         setInitialUserData(prev => ({ ...prev, ...updatedData }));
-
+      setInitialUserData((prev) => ({ ...prev, ...updatedData }));
     } catch (err) {
       if (err.response?.data) {
         err.response.status >= 400 &&
@@ -60,29 +66,60 @@ const [InfoData, setInfoData] = useState(initialUserData);
     } finally {
       setIsLoading(false);
     }
-
-
   };
 
+  // Avatar Submit Form Logic
+
   const [imgReview, setImageReview] = useState();
+  const AvatarRef = useRef(null);
 
-  const loadReview = (e) => {
-    if(e.target.files && e.target.files[0]){
-      const file = e.target.files[0];
+  const loadReview = () => {
+    if (AvatarRef.current.files && AvatarRef.current.files[0]) {
+      const file = AvatarRef.current.files[0];
 
-      imgReview && URL.revokeObjectURL(imgReview)
+      imgReview && URL.revokeObjectURL(imgReview);
 
       const imageUrl = URL.createObjectURL(file);
       setImageReview(imageUrl);
-      
     }
-  }
+  };
 
   useEffect(() => {
     return () => {
-      imgReview && URL.revokeObjectURL(imgReview)
+      imgReview && URL.revokeObjectURL(imgReview);
+    };
+  }, []);
+
+  const [AvatarLoading, setAvatarLoading] = useState(false);
+  const AvatarSubmit = async (e) => {
+    e.preventDefault();
+    setAvatarLoading(true);
+    const maxFileSize = 2 * 1024 * 1024;
+    try {
+      const media = AvatarRef.current.files[0];
+      if (media.size > maxFileSize) {
+        toast.error("حجم تصویر بیش از 2 مگابایت است");
+        return;
+      }
+
+      // Create FormData and append file
+    const formData = new FormData();
+    formData.append('media', media); // Match the name with your input's 'name' attribute
+
+      const res = await apiClient.post("profile-avatar", formData, {
+        headers: {
+        'Content-Type': 'multipart/form-data'
+        }
+      });
+      if (res.status >= 200 && res.status < 300) {
+        toast.success("تصویر با موفقیت افزوده شد");
+      }
+    } catch (err) {
+      toast.error(err.response.data);
+    } finally {
+      setAvatarLoading(false);
     }
-  }, [])
+  };
 
   return (
     <div>
@@ -218,44 +255,49 @@ const [InfoData, setInfoData] = useState(initialUserData);
                   </div>
                 </form>
 
-                <form className="flex flex-col relative justify-center items-center h-auto basis-full rounded-lg shadow shadow-gray-600">
+                <form
+                  onSubmit={AvatarSubmit}
+                  className="flex flex-col relative justify-center items-center h-auto basis-full rounded-lg shadow shadow-gray-600"
+                >
                   <div className="flex justify-center items-center text-center h-21 text-lg rounded-t-lg w-full ">
                     ویرایش تصویر پروفایل
                   </div>
                   <div
-                   style={imgReview ? { backgroundImage: `url(${imgReview})` } : {}}
+                    style={
+                      imgReview ? { backgroundImage: `url(${imgReview})` } : {}
+                    }
                     className={`relative flex flex-col justify-center border-dotted hover:bg-blue-300 duration-200 hover:opacity-85 text-gray-600 border-[#54b4b9]
-                                border-3 rounded-md items-center mb-4 w-full cover ${imgReview ? 'bg-cover bg-center' : ''} `}>
-
-
-                      {
-                        !imgReview && (
-                          <>
-                          <TbImageInPicture
-                        size={60}
-                        className="absolute max-md:w-[4rem] max-md:h-[4rem] z-10"
-                      />
-                      <span className="absolute  mt-28 z-10">
-                        لطفا تصویر خود را انتخاب کنید
-                      </span>
-                          </>
-                        )
-                      }            
-                      <input
-                        onChange={loadReview}
-                        accept=".jpg, .png, .jpeg, .webp, .svg"
-                        required
-                        className="text-hide w-full file:text-hide cursor-pointer z-20  
+                                border-3 rounded-md items-center mb-4 w-full min-h-64 cover ${
+                                  imgReview ? "bg-cover bg-center" : ""
+                                } `}
+                  >
+                    {!imgReview && (
+                      <>
+                        <TbImageInPicture
+                          size={60}
+                          className="absolute max-md:w-[4rem] max-md:h-[4rem] z-10"
+                        />
+                        <span className="absolute  mt-28 z-10">
+                          لطفا تصویر خود را انتخاب کنید
+                        </span>
+                      </>
+                    )}
+                    <input
+                      onChange={loadReview}
+                      accept=".jpg, .png, .jpeg, .webp, .svg"
+                      required
+                      className="text-hide w-full file:text-hide cursor-pointer z-20  
                                   h-91 max-md:h-40 text-center flex justify-center items-center"
-                        id="avatarFile"
-                        name="first-name"
-                        type="file"
-                      />
+                      id="avatarFile"
+                      type="file"
+                      name="media"
+                      ref={AvatarRef}
+                    />
                   </div>
                   <div className="col-12 w-full">
                     <div className="flex flex-col w-full justify-center items-center">
-                      <span className="w-[90%]">
-                        حداکثر حجم تصویر 5 مگابایت است و تصویر باید یکی از فرمت
+                      <span className="w-[90%] md:h-10">
+                        حداکثر حجم تصویر 2 مگابایت است و تصویر باید یکی از فرمت
                         های jpg, png, jpeg, webp, svg باشد
                       </span>
                       <button
