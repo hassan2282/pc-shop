@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OrderSideBar from "../structure/OrderSideBar";
 import { TbImageInPicture } from "react-icons/tb";
 import axios from "axios";
@@ -60,7 +60,29 @@ const [InfoData, setInfoData] = useState(initialUserData);
     } finally {
       setIsLoading(false);
     }
+
+
   };
+
+  const [imgReview, setImageReview] = useState();
+
+  const loadReview = (e) => {
+    if(e.target.files && e.target.files[0]){
+      const file = e.target.files[0];
+
+      imgReview && URL.revokeObjectURL(imgReview)
+
+      const imageUrl = URL.createObjectURL(file);
+      setImageReview(imageUrl);
+      
+    }
+  }
+
+  useEffect(() => {
+    return () => {
+      imgReview && URL.revokeObjectURL(imgReview)
+    }
+  }, [])
 
   return (
     <div>
@@ -197,20 +219,30 @@ const [InfoData, setInfoData] = useState(initialUserData);
                 </form>
 
                 <form className="flex flex-col relative justify-center items-center h-auto basis-full rounded-lg shadow shadow-gray-600">
-                  <div className="flex justify-center items-center text-center h-21 text-lg rounded-t-lg w-full">
+                  <div className="flex justify-center items-center text-center h-21 text-lg rounded-t-lg w-full ">
                     ویرایش تصویر پروفایل
                   </div>
                   <div
-                    className=" relative flex flex-col justify-center border-dotted hover:bg-blue-300 duration-200 hover:opacity-95 text-gray-600 border-[#54b4b9]
-                                border-3 rounded-md items-center mb-4 w-full cover">
-                      <TbImageInPicture
+                   style={imgReview ? { backgroundImage: `url(${imgReview})` } : {}}
+                    className={`relative flex flex-col justify-center border-dotted hover:bg-blue-300 duration-200 hover:opacity-85 text-gray-600 border-[#54b4b9]
+                                border-3 rounded-md items-center mb-4 w-full cover ${imgReview ? 'bg-cover bg-center' : ''} `}>
+
+
+                      {
+                        !imgReview && (
+                          <>
+                          <TbImageInPicture
                         size={60}
                         className="absolute max-md:w-[4rem] max-md:h-[4rem] z-10"
                       />
-                      <span className="absolute mt-28 z-10">
+                      <span className="absolute  mt-28 z-10">
                         لطفا تصویر خود را انتخاب کنید
                       </span>
+                          </>
+                        )
+                      }            
                       <input
+                        onChange={loadReview}
                         accept=".jpg, .png, .jpeg, .webp, .svg"
                         required
                         className="text-hide w-full file:text-hide cursor-pointer z-20  
