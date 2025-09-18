@@ -46,7 +46,8 @@ const handleSubmit = async (e) => {
         if(res.status >= 200 && res.status < 300){
             toast.success('کاربر با موفقیت افزوده شد');
             const token = res.data.authorisation.original.access_token;
-            localStorage.setItem('token', token )
+            localStorage.setItem('token', token );
+            localStorage.setItem('user', JSON.stringify(res.data.user));
             dispatch({
                 type: "setUser",
                 payload: {
@@ -59,7 +60,7 @@ const handleSubmit = async (e) => {
     }catch (err) {
         if (err.response && err.response.data) {
                 setErrors(err.response.data);
-                errors.email && toast.error(errors.email[0]);
+                // errors.email && toast.error(errors.email[0]);
             } else {
                 // General server error
                 setErrors({ server: 'خطایی در ارتباط با سرور رخ داد' });

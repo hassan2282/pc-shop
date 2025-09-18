@@ -2,7 +2,7 @@ import { replace, useNavigate } from "react-router-dom";
 
 const initialState = {
     token: localStorage.getItem("token") || '',
-    user: null,
+    user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null,
     isAuthenticated: !!localStorage.getItem("token"),
 };
 
@@ -28,6 +28,15 @@ const Reducer = (state = initialState, action) => {
                 ...state,
                 user: action.payload.user,
             }
+
+        case "updateUser":
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    ...action.payload.updates,
+                }
+            }    
 
             default:
                 return state;

@@ -11,6 +11,8 @@ const dispatch = useDispatch();
 const logoutHandler = (e) => {
     e.preventDefault();
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
     dispatch({
         type: "logout",
     })
@@ -22,7 +24,9 @@ const logoutHandler = (e) => {
                         <div className="profile-card-1">
                             {/* <!--image--> */}
                             <div className="img">
-                                <img src="src/assets/img/profile.jpg" />
+                                <img alt="profile" className="object-cover" src={user?.profile 
+                                 ? `http://127.0.0.1:8000/storage/media/${user?.profile}`
+                                 : "src/assets/img/profile.jpg"} />
                             </div>
                             <a className="view-more" href="" data-toggle="modal" data-target="#myModal">
                                 <i className="fa fa-plus-circle"></i>

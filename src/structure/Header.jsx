@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { TbLogout2 } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux"
 import { toast } from "react-toastify";
-import apiClient from "../apiClient"    
+import apiClient from "../apiClient";    
 
 function Header() {
 const isAuthenticated = useSelector((state) => state.isAuthenticated);
@@ -28,6 +28,7 @@ const storeUser = (res) => {
 const handleLogout = (e) => {
     e.preventDefault();
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     dispatch({
         type: "logout",
     })

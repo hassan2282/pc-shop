@@ -35,6 +35,8 @@ function Login() {
         toast.success("خوش آمدید");
         const token = res.data.authorisation.original.access_token;
           localStorage.setItem('token', token )
+          localStorage.setItem('user', JSON.stringify(res.data.user));
+
         dispatch({
           type: "login",
           payload: {

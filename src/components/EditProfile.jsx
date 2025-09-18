@@ -4,7 +4,7 @@ import { TbImageInPicture } from "react-icons/tb";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { AiOutlineLoading } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import apiClient from "../apiClient";
 
 function EditProfile() {
@@ -72,6 +72,7 @@ function EditProfile() {
 
   const [imgReview, setImageReview] = useState();
   const AvatarRef = useRef(null);
+  const dispatch = useDispatch()
 
   const loadReview = () => {
     if (AvatarRef.current.files && AvatarRef.current.files[0]) {
@@ -98,7 +99,7 @@ function EditProfile() {
     try {
       const media = AvatarRef.current.files[0];
       if (media.size > maxFileSize) {
-        toast.error("حجم تصویر بیش از 2 مگابایت است");
+        toast.error(" تصویر باید کمتر از 2 مگابایت است");
         return;
       }
 
@@ -112,6 +113,12 @@ function EditProfile() {
         }
       });
       if (res.status >= 200 && res.status < 300) {
+        dispatch({
+          type: "updateUser",
+          payload: {
+            updates: {profile: res.data.path}
+          }
+        })
         toast.success("تصویر با موفقیت افزوده شد");
       }
     } catch (err) {
@@ -305,7 +312,15 @@ function EditProfile() {
                                                      duration-200 rounded text-white cursor-pointer"
                         type="submit"
                       >
-                        آپلود تصویر
+                        {AvatarLoading ? (
+                          <AiOutlineLoading
+                            size={24}
+                            className="animate-spin"
+                          />
+                        ) : (
+                          "آپلود تصویر"
+                        )}
+                        
                       </button>
                     </div>
                   </div>
