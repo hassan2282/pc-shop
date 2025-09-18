@@ -1,4 +1,5 @@
 ﻿import React from 'react'
+import OrderSideBar from '../structure/OrderSideBar'
 
 function PasswordUpdate() {
   return (
@@ -6,7 +7,7 @@ function PasswordUpdate() {
 
         <main className="wrapper default ">
         <div className="container">
-            <div className="row">
+            <div className="row flex flex-row" dir='ltr'>
                 <div className="main-content login_content  col-12 col-md-7 col-lg-5 mx-auto">
                     <header className="card-header">
                         <h3 className="card-title"><span>بازنشانی کلمه عبور</span></h3>
@@ -52,6 +53,7 @@ function PasswordUpdate() {
 
                     </div>
                 </div>
+                <OrderSideBar />
             </div>
         </div>
 

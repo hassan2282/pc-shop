@@ -271,9 +271,10 @@ function EditProfile() {
                   </div>
                   <div
                     style={
-                      imgReview ? { backgroundImage: `url(${imgReview})` } : {}
+                      imgReview ? { backgroundImage: `url(${imgReview})` } : 
+                      user.profile ? { backgroundImage: `url(http://127.0.0.1:8000/storage/media/${user.profile})` } : {}
                     }
-                    className={`relative flex flex-col justify-center border-dotted hover:bg-blue-300 duration-200 hover:opacity-85 text-gray-600 border-[#54b4b9]
+                    className={`relative bg-cover flex flex-col justify-center border-dotted hover:bg-blue-300 duration-200 hover:opacity-85 text-gray-600 border-[#54b4b9]
                                 border-3 rounded-md items-center mb-4 w-full min-h-64 cover ${
                                   imgReview ? "bg-cover bg-center" : ""
                                 } `}

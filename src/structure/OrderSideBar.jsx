@@ -110,8 +110,8 @@ const logoutHandler = (e) => {
                             <div className="mid-section">
                                 <div className="name">{user ? user.username : ' '}</div>
                                 <div className="description">
-                                    <a href="#" className="btn btn-main-masai">افزایش موجودی</a>
-                                    <a href="#" className="btn btn-second-masai">مسای کلاب</a>
+                                    <a href="/edit-profile" className="btn btn-main-masai">ویرایش اطلاعات</a>
+                                    <a onClick={logoutHandler} className="btn btn-second-masai">خروج</a>
                                 </div>
                                 <div className="line"></div>
                                 <div className="stats">
