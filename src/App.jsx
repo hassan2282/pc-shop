@@ -24,140 +24,160 @@ import { useSelector } from "react-redux";
 import PrivateRoute from "./structure/PrivateRoute";
 import EditProfile from "./components/EditProfile";
 import Profile from "./components/Profile";
+import Address from "./components/Address";
+import Footer from './structure/footer.jsx';
+import Header from './structure/Header.jsx';
 
 function App() {
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/category-blog" element={<CategoryBlog />} />
-        <Route path="/category-search" element={<CategorySearch />} />
-        <Route path="/single-product" element={<SingleProduct />} />
-        <Route path="/single-blog" element={<SingleBlog />} />
+    <>
+      <BrowserRouter>
 
-        <Route
-          path="/register"
-          element={
-            !isAuthenticated ? <Register /> : <Navigate to="/" replace />
-          }
-        />
+      <Header />
 
-        <Route
-          path="/login"
-          element={!isAuthenticated ? <Login /> : <Navigate to="/" replace />}
-        />
 
-        <Route
-          path="/profile"
-          element={
-            <PrivateRoute>
-              <Profile />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/edit-profile"
-          element={
-            <PrivateRoute>
-              <EditProfile />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/profile-favorites"
-          element={
-            <PrivateRoute>
-              <ProfileFavorites />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/cart"
-          element={
-            <PrivateRoute>
-              <Cart />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/successfull-payment"
-          element={
-            <PrivateRoute>
-              <SuccessfulPayment />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/final-payment"
-          element={
-            <PrivateRoute>
-              <FinalPayment />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/order-address"
-          element={
-            <PrivateRoute>
-              <OrderAddress />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/order-cancelled"
-          element={
-            <PrivateRoute>
-              <OrderCancelled />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/order-current"
-          element={
-            <PrivateRoute>
-              <OrderCurrent />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/order-message"
-          element={
-            <PrivateRoute>
-              <OrderMessage />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/orders-return"
-          element={
-            <PrivateRoute>
-              <OrdersReturn />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/shopping-payment"
-          element={
-            <PrivateRoute>
-              <ShoppingPayment />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/password-update"
-          element={
-            <PrivateRoute>
-              <PasswordUpdate />
-            </PrivateRoute>
-          }
-        />
-        <Route path="/about-us" element={<AboutUs />} />
-      </Routes>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/category-blog" element={<CategoryBlog />} />
+            <Route path="/category-search" element={<CategorySearch />} />
+            <Route path="/single-product" element={<SingleProduct />} />
+            <Route path="/single-blog" element={<SingleBlog />} />
 
-      <ToastContainer />
-    </BrowserRouter>
+            <Route
+              path="/register"
+              element={
+                !isAuthenticated ? <Register /> : <Navigate to="/" replace />
+              }
+            />
+
+            <Route
+              path="/login"
+              element={!isAuthenticated ? <Login /> : <Navigate to="/" replace />}
+            />
+
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/edit-profile"
+              element={
+                <PrivateRoute>
+                  <EditProfile />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/profile-favorites"
+              element={
+                <PrivateRoute>
+                  <ProfileFavorites />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/cart"
+              element={
+                <PrivateRoute>
+                  <Cart />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/successfull-payment"
+              element={
+                <PrivateRoute>
+                  <SuccessfulPayment />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/final-payment"
+              element={
+                <PrivateRoute>
+                  <FinalPayment />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/order-address"
+              element={
+                <PrivateRoute>
+                  <OrderAddress />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/address"
+              element={
+                <PrivateRoute>
+                  <Address />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/order-cancelled"
+              element={
+                <PrivateRoute>
+                  <OrderCancelled />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/order-current"
+              element={
+                <PrivateRoute>
+                  <OrderCurrent />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/order-message"
+              element={
+                <PrivateRoute>
+                  <OrderMessage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/orders-return"
+              element={
+                <PrivateRoute>
+                  <OrdersReturn />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/shopping-payment"
+              element={
+                <PrivateRoute>
+                  <ShoppingPayment />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/password-update"
+              element={
+                <PrivateRoute>
+                  <PasswordUpdate />
+                </PrivateRoute>
+              }
+            />
+            <Route path="/about-us" element={<AboutUs />} />
+          </Routes>
+
+        <Footer /> 
+
+        <ToastContainer />
+      </BrowserRouter>        
+    </>
+    
   );
 }
 

@@ -1,6 +1,6 @@
 import { TbLogout2 } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink} from "react-router-dom";
+import { Link, NavLink} from "react-router-dom";
 import { toast } from "react-toastify";
 
 function OrderSideBar() {
@@ -157,9 +157,9 @@ function OrderSideBar() {
         <div className="mid-section">
           <div className="name">{user ? user.username : " "}</div>
           <div className="description">
-            <a href="/edit-profile" className="btn btn-main-masai">
+            <Link to="/edit-profile" className="btn btn-main-masai">
               ویرایش اطلاعات
-            </a>
+            </Link>
             <a onClick={logoutHandler} className="btn btn-second-masai">
               خروج
             </a>

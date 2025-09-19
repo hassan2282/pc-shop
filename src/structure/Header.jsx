@@ -3,6 +3,7 @@ import { TbLogout2 } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux"
 import { toast } from "react-toastify";
 import apiClient from "../apiClient";    
+import { Link } from "react-router-dom";
 
 function Header() {
 const isAuthenticated = useSelector((state) => state.isAuthenticated);
@@ -1065,9 +1066,9 @@ const handleLogout = (e) => {
                         <div className="row">
                             <div className="col-lg-2 col-md-3 col-sm-4 col-5">
                                 <div className="logo-area default">
-                                    <a href="/">
+                                    <Link to="/">
                                         <img src="src/assets/img/logo.png" alt=""/>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="col-lg-8 col-md-5 col-sm-8 col-7">
@@ -1081,7 +1082,7 @@ const handleLogout = (e) => {
                             <div className="col-md-2 col-sm-12 flex flex-row justify-start items-center" dir="ltr">
                                     {isAuthenticated &&
                                         <div className="user_head">
-                                            <a href="/logout" onClick={handleLogout} className="flex flex-row justify-center items-center h-full bg-indigo-300">
+                                            <a onClick={handleLogout} className="flex flex-row justify-center items-center h-full bg-indigo-300">
                                             خروج
                                             <TbLogout2 size={24} color="#57b6bb"/>
                                             </a>
@@ -1092,9 +1093,9 @@ const handleLogout = (e) => {
                                         <span className="divider ml-2"></span>
                                     }
                                     <div className="user_head">
-                                        <a href={`${isAuthenticated ? "/profile" : "/login"} `} className="iconhead">
+                                        <Link to={isAuthenticated ? "/profile" : "/login"} className="iconhead">
                                             <i className="fa fa-user-large font-20" aria-hidden="true"></i>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <span className="divider ml-2"></span>
                                 <div className="cart dropdown masai_dropdown">
@@ -1107,7 +1108,7 @@ const handleLogout = (e) => {
                                         
                                         <ul className="m_cart-list">
                                             <li className="m_cart_li1">
-                                                <a href="/single-product" className="m_cart-item">
+                                                <Link to="/single-product" className="m_cart-item">
                                                     <i className="fa fa-times" aria-hidden="true"></i>
 
                                                 
@@ -1127,10 +1128,10 @@ const handleLogout = (e) => {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li className="m_cart_li2">
-                                                <a href="/single-product" className="m_cart-item">
+                                                <Link to="/single-product" className="m_cart-item">
                                                     <i className="fa fa-times" aria-hidden="true"></i>
 
 
@@ -1151,7 +1152,7 @@ const handleLogout = (e) => {
                                                             <img src="src/assets/img/product_img/p_9.jpg" />
                                                         </div>
                                                     </div>
-                                                </a>
+                                                </Link>
                                             </li>
                                         </ul>
                                         <div className="m_cart-header">
@@ -1162,8 +1163,8 @@ const handleLogout = (e) => {
                                             </div>
                                         </div>
                                         <div className="btn_cart">
-                                            <a href="cart" className="btn btn_sabad">مشاهده سبد</a>
-                                            <a href="Final-payment" className="btn btn_pardakht btn-main-masai">پرداخت</a>
+                                            <Link to="/cart" className="btn btn_sabad">مشاهده سبد</Link>
+                                            <Link to="/final-payment" className="btn btn_pardakht btn-main-masai">پرداخت</Link>
                                         </div>
                                     </div>
                                 </div>

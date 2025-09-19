@@ -1,4 +1,5 @@
-﻿import OrderSideBar from "../structure/OrderSideBar"
+﻿import { Link } from "react-router-dom"
+import OrderSideBar from "../structure/OrderSideBar"
 
 function OrderAddress() {
   return (
@@ -12,7 +13,7 @@ function OrderAddress() {
                                     <header className="card-header">
                                         <h3 className="card-title"><span>آدرس‌ها</span></h3>
                                         <div className="text-left">
-                                            <a className="btn btn-main-masai" data-toggle="modal" data-target="#addressModal">آدرس جدید</a>
+                                            <Link to={'/address'}  className="btn btn-main-masai" data-toggle="modal" data-target="#addressModal">آدرس جدید</Link>
                                         </div>
                                     </header>
                                     <div className="content-section default">

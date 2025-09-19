@@ -1,7 +1,6 @@
-﻿import OrderSideBar from "../structure/OrderSideBar"
-import { useEffect, useState } from "react"
-
-import { useDispatch, useSelector } from "react-redux"
+﻿import { Link } from "react-router-dom";
+import OrderSideBar from "../structure/OrderSideBar"
+import {useSelector } from "react-redux"
 
 function Profile() {
 
@@ -79,26 +78,26 @@ function Profile() {
                                                 </p>
                                             </div>
                                             <div className="col-12 text-center">
-                                                <a href="edit-profile" className="btn btn-main-masai big_btn">
+                                                <Link to="/edit-profile" className="btn btn-main-masai big_btn">
                                                     ویرایش
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-lg-12">
                                     <header className="card-header">
-                                        <h3 className="card-title"><span>اطلاعات حقوقی</span></h3>
+                                        <h3 className="card-title"><span>آدرس</span></h3>
                                     </header>
                                     <div className="content-section default">
                                         <div className="row">
-                                        <div className="col-lg-12">
-                                            <p>این گزینه برای کسانی است که نیاز به خرید سازمانی (با فاکتور رسمی و گواهی ارزش‌افزوده) دارند.</p>
-                                        </div>
+                                            <div className="col-lg-12">
+                                                <p>لطفا آدرس محل سکونت یا محل کار خود را با دقت وارد نمایید</p>
+                                            </div>
                                             <div className="col-12 text-center">
-                                                <a href="edit-profile.jpg" className="btn btn-main-masai big_btn">
-                                                    ویرایش اطلاعات حقوقی
-                                                </a>
+                                                <Link to='/order-address' className="btn btn-main-masai big_btn">
+                                                    ثبت آدرس جدید
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
