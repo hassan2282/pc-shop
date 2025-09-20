@@ -16,7 +16,7 @@ const storeUser = (res) => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-            const res = await apiClient.post('me');
+            const res = await apiClient.post('auth/me');
             if (res.status >= 200 && res.status < 300) {storeUser(res)}
             } catch (err) {
             err.status === 401 && dispatch({type: 'logout'})
