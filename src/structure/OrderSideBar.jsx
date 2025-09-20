@@ -157,7 +157,7 @@ function OrderSideBar() {
         <div className="mid-section">
           <div className="name">{user ? user.username : " "}</div>
           <div className="description">
-            <Link to="/edit-profile" className="btn btn-main-masai">
+            <Link href="/edit-profile" className="btn btn-main-masai">
               ویرایش اطلاعات
             </Link>
             <a onClick={logoutHandler} className="btn btn-second-masai">
@@ -193,65 +193,64 @@ function OrderSideBar() {
             حساب کاربری شما
           </button>
           <div className="dropdown-menu dropdown-menu-right text-right">
-            <a href="profile" className="dropdown-item">
+            <Link to="/profile" className="dropdown-item">
               <i className="fa fa-user-large colormain"></i>
               پروفایل
-            </a>
+            </Link>
 
-            <a href="edit-profile" className="dropdown-item  active-menu">
+            <Link to="/edit-profile" className="dropdown-item  active-menu">
               <i className="fa fa-pencil colormain" aria-hidden="true"></i>
               ویرایش اطلاعات
-            </a>
-            <a href="order-message" className="dropdown-item  ">
+            </Link>
+            <Link to="/order-message" className="dropdown-item  ">
               <i
                 className="fa fa-cart-arrow-down colormain"
                 aria-hidden="true"
               ></i>
               تحویل داده شده
-            </a>
-            <a href="order-current" className="dropdown-item ">
+            </Link>
+            <Link to="/order-current" className="dropdown-item ">
               <i
                 className="fa fa-cart-arrow-down colormain"
                 aria-hidden="true"
               ></i>{" "}
               سفارش جاری
-            </a>
-            <a href="order-cancelled" className="dropdown-item">
+            </Link>
+            <Link to="/order-cancelled" className="dropdown-item">
               <i className="fa fa-times colormain" aria-hidden="true"></i>
               لغو شده
-            </a>
-            <a href="orders-return" className="dropdown-item">
+            </Link>
+            <Link to="/orders-return" className="dropdown-item">
               <i className="fa fa-thumbs-down colormain" aria-hidden="true"></i>
               مرجوع محصول
-            </a>
+            </Link>
 
-            <a href="profile-favorites" className="dropdown-item">
+            <Link to="/profile-favorites" className="dropdown-item">
               <i className="fa fa-bookmark colormain" aria-hidden="true"></i>
               لیست های من
-            </a>
+            </Link>
 
-            <a href="order-address" className="dropdown-item">
+            <Link to="/order-address" className="dropdown-item">
               <i
                 className="fa fa-map icon-icon colormain"
                 aria-hidden="true"
               ></i>
               آدرس ها
-            </a>
+            </Link>
 
-            <a href="order-message" className="dropdown-item">
+            <Link to="/order-message" className="dropdown-item">
               <i className="fa fa-bell colormain" aria-hidden="true"></i>
               پیغام ها
-            </a>
+            </Link>
 
-            <a href="password-update" className="dropdown-item">
+            <Link to="/password-update" className="dropdown-item">
               <i className="fa fa-shield colormain" aria-hidden="true"></i>
               امنیت و تغییر رمز
-            </a>
+            </Link>
             {isAuthenticated && (
               <a
-                href="logout"
                 onClick={logoutHandler}
-                className="dropdown-item text-danger"
+                className="dropdown-item text-danger hover:cursor-pointer"
               >
                 <div className="flex flex-row space-x-4 items-center justify-start">
                   <TbLogout2
@@ -273,7 +272,7 @@ function OrderSideBar() {
             <NavLink
               to="/order-current"
               className="dropdown-item"
-              activeClassName="active" // کلاس فعال شدن
+              activeclassname="active" // کلاس فعال شدن
             >
               <i
                 className="fa fa-cart-arrow-down colormain"
@@ -287,7 +286,7 @@ function OrderSideBar() {
             <NavLink
               to="/order-current"
               className="dropdown-item"
-              activeClassName="active"
+              activeclassname="active"
             >
               <i
                 className="fa fa-cart-arrow-down colormain"
@@ -301,7 +300,7 @@ function OrderSideBar() {
             <NavLink
               to="/order-cancelled"
               className="dropdown-item"
-              activeClassName="active"
+              activeclassname="active"
             >
               <i className="fa fa-times colormain" aria-hidden="true"></i>
               لغو شده
@@ -312,7 +311,7 @@ function OrderSideBar() {
             <NavLink
               to="/orders-return"
               className="dropdown-item"
-              activeClassName="active"
+              activeclassname="active"
             >
               <i className="fa fa-thumbs-down colormain" aria-hidden="true"></i>
               مرجوع محصول
@@ -323,7 +322,7 @@ function OrderSideBar() {
             <NavLink
               to="/profile-favorites"
               className="dropdown-item"
-              activeClassName="active"
+              activeclassname="active"
             >
               <i className="fa fa-bookmark colormain" aria-hidden="true"></i>
               لیست های من
@@ -334,7 +333,7 @@ function OrderSideBar() {
             <NavLink
               to="/order-address"
               className="dropdown-item"
-              activeClassName="active"
+              activeclassname="active"
             >
               <i
                 className="fa fa-map icon-icon colormain"
@@ -348,7 +347,7 @@ function OrderSideBar() {
             <NavLink
               to="/order-message"
               className="dropdown-item"
-              activeClassName="active"
+              activeclassname="active"
             >
               <i className="fa fa-bell colormain" aria-hidden="true"></i>
               پیغام ها
@@ -359,7 +358,7 @@ function OrderSideBar() {
             <NavLink
               to="/profile"
               className="dropdown-item"
-              activeClassName="active"
+              activeclassname="active"
             >
               <i className="fa fa-user-large colormain"></i>
               پروفایل
@@ -370,7 +369,7 @@ function OrderSideBar() {
             <NavLink
               to="/edit-profile"
               className="dropdown-item"
-              activeClassName="active"
+              activeclassname="active"
             >
               <i className="fa fa-pencil colormain" aria-hidden="true"></i>
               ویرایش اطلاعات
@@ -381,7 +380,7 @@ function OrderSideBar() {
             <NavLink
               to="/password-update"
               className="dropdown-item"
-              activeClassName="active"
+              activeclassname="active"
             >
               <i className="fa fa-shield colormain" aria-hidden="true"></i>
               امنیت و تغییر رمز
