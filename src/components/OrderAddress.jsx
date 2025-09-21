@@ -1,7 +1,26 @@
-﻿import { Link } from "react-router-dom"
+﻿import { Link, useNavigate } from "react-router-dom"
 import OrderSideBar from "../structure/OrderSideBar"
+import { useSelector } from "react-redux"
+import { useEffect, useState } from "react";
+import apiClient from "../apiClient";
 
 function OrderAddress() {
+
+    const user = useSelector((state) => state.user);
+    const [address, setAddress] = useState();
+
+    useEffect(() => {
+        const fetchAddress = async () => {
+            try{
+                const res = await apiClient.get(`user-address/${user.id}`);
+                setAddress(res.data);
+            }catch(err){
+                console.log('اطلاعات آدرس کاربر هنوز ثبت نشده است و یا مشکلی از سمت سرور رخ داده است')
+            }
+        }
+        fetchAddress();
+    },[]);
+
   return (
     <div>
         <main className="order-delivered  default space-top-30">
@@ -26,25 +45,31 @@ function OrderAddress() {
 
                                                         <div className="col-10 col-lg-10 col-md-10">
 
-                                                            <h4 className="profile-recent-fav-name">
-                                                                <i className="fa fa-map-pin" aria-hidden="true"></i> خیابان امام، بعد میدان حشمت، نرسید به چهارراه میکائیل
-                                                            </h4>
                                                             <ul className="order-addres">
                                                                 <li>
-                                                                    <i className="fa fa-map  colormain" aria-hidden="true"></i> ایران، رشت
+                                                                    <i className="fa fa-user-large colormain" aria-hidden="true"></i>{user.first_name}
                                                                 </li>
                                                                 <li>
-                                                                    <i className="fa fa-envelope colormain" aria-hidden="true"></i> 4321234569
+                                                                    <i className="fa fa-user-large colormain" aria-hidden="true"></i> {user.last_name}
                                                                 </li>
                                                                 <li>
-                                                                    <i className="fa fa-phone colormain" aria-hidden="true"></i> 01234567891
+                                                                    <i className="fa fa-phone colormain" aria-hidden="true"></i> {user.phone}
                                                                 </li>
                                                                 <li>
-                                                                    <i className="fa fa-user-large colormain" aria-hidden="true"></i> حسین رضایی
-
+                                                                    <i className="fa fa-map  colormain" aria-hidden="true"></i> {address?.province.name ? address?.province.name : ' ثبت نشده '}
+                                                                </li>
+                                                                <li>
+                                                                    <i className="fa fa-map  colormain" aria-hidden="true"></i> {address?.city.name ? address?.city.name : ' ثبت نشده'}
+                                                                </li>
+                                                                <li>
+                                                                    <i className="fa fa-envelope colormain" aria-hidden="true"></i> {address?.postal_code ? address?.postal_code : ' ثبت نشده'}
                                                                 </li>
 
                                                             </ul>
+
+                                                            <h4 className="profile-recent-fav-name">
+                                                                <i className="fa fa-map-pin" aria-hidden="true"></i> {address?.address ? address?.address : 'ثبت نشده'}
+                                                            </h4>
 
                                                         </div>
                                                         <div className="col-4 col-lg-2 col-md-2">
@@ -53,74 +78,8 @@ function OrderAddress() {
                                                     </div>
                                                  
                                             </div>
-                                            <div className="col-md-12 col-sm-12 order_delivered_sec">
-
-                                                <div className="row">
-
-
-                                                    <div className="col-10 col-lg-10 col-md-10">
-
-                                                        <h4 className="profile-recent-fav-name">
-                                                            <i className="fa fa-map-pin" aria-hidden="true"></i> خیابان امام، بعد میدان حشمت، نرسید به چهارراه میکائیل
-                                                        </h4>
-                                                        <ul className="order-addres">
-                                                            <li>
-                                                                <i className="fa fa-map  colormain" aria-hidden="true"></i> ایران، رشت
-                                                            </li>
-                                                            <li>
-                                                                <i className="fa fa-envelope colormain" aria-hidden="true"></i> 4321234569
-                                                            </li>
-                                                            <li>
-                                                                <i className="fa fa-phone colormain" aria-hidden="true"></i> 01234567891
-                                                            </li>
-                                                            <li>
-                                                                <i className="fa fa-user-large colormain" aria-hidden="true"></i> حسین رضایی
-
-                                                            </li>
-
-                                                        </ul>
-
-                                                    </div>
-                                                    <div className="col-4 col-lg-2 col-md-2">
-                                                        <img src="src/assets/img/map_2.png" />
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div className="col-md-12 col-sm-12 order_delivered_sec">
-
-                                                <div className="row">
-
-
-                                                    <div className="col-10 col-lg-10 col-md-10">
-
-                                                        <h4 className="profile-recent-fav-name">
-                                                            <i className="fa fa-map-pin" aria-hidden="true"></i> خیابان امام، بعد میدان حشمت، نرسید به چهارراه میکائیل
-                                                        </h4>
-                                                        <ul className="order-addres">
-                                                            <li>
-                                                                <i className="fa fa-map  colormain" aria-hidden="true"></i> ایران، رشت
-                                                            </li>
-                                                            <li>
-                                                                <i className="fa fa-envelope colormain" aria-hidden="true"></i> 4321234569
-                                                            </li>
-                                                            <li>
-                                                                <i className="fa fa-phone colormain" aria-hidden="true"></i> 01234567891
-                                                            </li>
-                                                            <li>
-                                                                <i className="fa fa-user-large colormain" aria-hidden="true"></i> حسین رضایی
-
-                                                            </li>
-
-                                                        </ul>
-
-                                                    </div>
-                                                    <div className="col-4 col-lg-2 col-md-2">
-                                                        <img src="src/assets/img/map_2.png" />
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                                            
+                                            
                                         </div>
                                     </div>
                                 </div>
