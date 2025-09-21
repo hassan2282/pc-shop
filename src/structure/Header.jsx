@@ -1082,7 +1082,7 @@ const handleLogout = (e) => {
                             <div className="col-md-2 col-sm-12 flex flex-row justify-start items-center" dir="ltr">
                                     {isAuthenticated &&
                                         <div className="user_head">
-                                            <a onClick={handleLogout} className="flex flex-row justify-center items-center h-full bg-indigo-300">
+                                            <a onClick={handleLogout} className="flex flex-row hover:cursor-pointer justify-center items-center h-full bg-indigo-300">
                                             خروج
                                             <TbLogout2 size={24} color="#57b6bb"/>
                                             </a>
@@ -1093,9 +1093,9 @@ const handleLogout = (e) => {
                                         <span className="divider ml-2"></span>
                                     }
                                     <div className="user_head">
-                                        <Link to={isAuthenticated ? "/profile" : "/login"} className="iconhead">
+                                        <a href={isAuthenticated ? "/profile" : "/login"} className="iconhead">
                                             <i className="fa fa-user-large font-20" aria-hidden="true"></i>
-                                        </Link>
+                                        </a>
                                     </div>
                                     <span className="divider ml-2"></span>
                                 <div className="cart dropdown masai_dropdown">
