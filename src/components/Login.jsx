@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { AiOutlineLoading } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 function Login() {
@@ -135,9 +135,9 @@ function Login() {
                     <div className="col-12 footer_login_reg text--center">
                       <p>
                         <span>کاربر جدید هستید؟</span>
-                        <a href="register" className="text-lg">
+                        <Link to="/register" className="text-lg">
                           عضویت
-                        </a>
+                        </Link>
                       </p>
                     </div>
                     <div className="col-12 "></div>
