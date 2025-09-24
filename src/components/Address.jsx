@@ -66,7 +66,7 @@ function Address() {
     } catch (err) {
       setErrors(err.response.data);
       toast.error(err.response.data.message)
-      toast.error("متاسفانه در فرایند ذخیره آدرس شما مشکلی بوجود آمده است");
+      toast.error("شما فقط یک آدرس می توانید ثبت کنید");
     } finally {
       setIsLoading(false);
     }
