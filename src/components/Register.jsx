@@ -2,7 +2,7 @@
 import { useState } from "react"
 import { toast} from "react-toastify";
 import { AiOutlineLoading } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 function Register() {
@@ -168,7 +168,7 @@ const handleSubmit = async (e) => {
 
                                                 <p>
                                                     <span>قبلا ثبت نام کرده اید؟</span>
-                                                    <a href="login" className="text-lg">ورود</a>
+                                                    <Link to="/login" className="text-lg">ورود</Link>
                                                 </p>
 
                                             </div>
