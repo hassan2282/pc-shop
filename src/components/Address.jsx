@@ -81,9 +81,11 @@ function Address() {
               <div className="row">
                 <div className="col-12">
                   <header className="card-header">
-                    <h3 className="card-title space-x-4">
+                    <h3 className="card-title space-x-4 flex flex-row">
                       <span>ثبت آدرس</span>
-                      <Link to='/order-address' className="p-2 rounded-md text-sm text-white bg-info cursor-pointer]">مشاهده آدرس</Link>
+                      <div className="p-2 rounded-md text-sm bg-[#5bbabf] cursor-pointer hover:scale-95 duration-150">
+                        <Link to='/order-address' className="text-white">مشاهده آدرس</Link>
+                      </div>
                     </h3>
                   </header>
                   <div className="content-section default">
