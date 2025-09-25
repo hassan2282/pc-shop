@@ -74,7 +74,7 @@ function PasswordUpdate() {
                       <div className="form-account-title">
                         <span>*</span> کلمه عبور
                       </div>
-                      <div className={`form-account-row  ${errors?.errors?.password && 'border-red-500 border-2 rounded-full animate-pulse'} `}>
+                      <div className={`form-account-row  ${errors?.passConfirmationError && 'border-red-500 border-2 rounded-full animate-pulse'} `}>
                         <input
                           className="input_second input_all"
                           type="password"
@@ -89,7 +89,7 @@ function PasswordUpdate() {
                       <div className="form-account-title">
                         <span>*</span> تکرار کلمه عبور
                       </div>
-                      <div className={`form-account-row  ${errors?.errors?.password_confirmation && 'border-red-500 border-2 rounded-full animate-pulse'} `}>
+                      <div className={`form-account-row  ${errors?.passConfirmationError && 'border-red-500 border-2 rounded-full animate-pulse'} `}>
                         <input
                           className="input_second input_all"
                           type="password"
