@@ -2403,7 +2403,7 @@ const handleLogout = (e) => {
                             <ul className="nav_header-2">
                                 <li className="list_style">
                                     <i className="fa fa-map icon-icon" aria-hidden="true"></i>
-                                    <a href="/order-address" className="list__link">انتخاب موقعیت</a>
+                                    <Link to="/address" className="list__link">انتخاب موقعیت</Link>
                                 </li>
                             </ul>
                         </ul>

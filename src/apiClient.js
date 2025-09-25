@@ -34,7 +34,6 @@ apiClient.interceptors.response.use(
         originalRequest.headers.Authorization = `Bearer ${newToken}`;
         return apiClient(originalRequest);
       } catch (err) {
-        console.log(err);
         store.dispatch(logoutAction());
       }
     }

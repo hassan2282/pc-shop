@@ -60,9 +60,7 @@ const handleSubmit = async (e) => {
     }catch (err) {
         if (err.response && err.response.data) {
                 setErrors(err.response.data);
-                // errors.email && toast.error(errors.email[0]);
             } else {
-                // General server error
                 setErrors({ server: 'خطایی در ارتباط با سرور رخ داد' });
                 toast.error('خطا در ارتباط با سرور')
             }

@@ -28,7 +28,6 @@ function Address() {
         const res = await apiClient.get("provinces");
         setProvinces(res.data);
       } catch (err) {
-        console.log(err);
         toast.error("متاسفانه دریافت استان ها از سرور با مشکل مواجه شده است");
       }
     };
@@ -91,7 +90,7 @@ function Address() {
                   <div className="content-section default">
                     <form onSubmit={SubmitHandler}>
                       <p>
-                        لطفا آدرس محل سکونت یا محل کار خود را با دقت وارد نمایید
+                        لطفا آدرس محل (سکونت / کار) خود را با دقت وارد نمایید (توجه : شما فقط مجاز به ثبت یک آدرس هستید)
                       </p>
 
                       <div className="row">
