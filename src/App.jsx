@@ -27,6 +27,7 @@ import Profile from "./components/Profile";
 import Address from "./components/Address";
 import Footer from './structure/footer.jsx';
 import Header from './structure/Header.jsx';
+import ScrollToTop from "./structure/ScrollToTop.jsx";
 
 function App() {
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
@@ -36,7 +37,7 @@ function App() {
       <BrowserRouter>
 
       <Header />
-
+            <ScrollToTop />
 
           <Routes>
             <Route path="/" element={<Index />} />
