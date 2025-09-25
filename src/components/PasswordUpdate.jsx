@@ -55,7 +55,7 @@ function PasswordUpdate() {
               <div className="login_box">
                 <form className="">
                   <div className="row">
-                    <div className="col-md-12 col-sm-12">
+                    <div className="flex flex-col w-full">
                       <div className="form-account-title">
                         <span>*</span> ایمیل
                       </div>
@@ -70,7 +70,7 @@ function PasswordUpdate() {
                         />
                       </div>
                     </div>
-                    <div className="col-md-12 col-sm-12">
+                    <div className="flex flex-col w-full">
                       <div className="form-account-title">
                         <span>*</span> کلمه عبور
                       </div>
@@ -85,11 +85,11 @@ function PasswordUpdate() {
                         />
                       </div>
                     </div>
-                    <div className="col-md-12 col-sm-12">
+                    <div className="flex flex-col w-full">
                       <div className="form-account-title">
                         <span>*</span> تکرار کلمه عبور
                       </div>
-                      <div className={`form-account-row  ${errors?.passConfirmationError && 'border-red-500 border-2 rounded-full animate-pulse'} `}>
+                      <div className={`form-account-row ${errors?.passConfirmationError && 'border-red-500 border-2 rounded-full animate-pulse'} `}>
                         <input
                           className="input_second input_all"
                           type="password"
@@ -101,9 +101,9 @@ function PasswordUpdate() {
                       </div>
                     </div>
 
-                    <div className="col-12 text--center">
-                      <button onClick={handleSubmit} className="btn big_btn btn-main-masai">
-                        {isLoading ? <AiOutlineLoading className="animate-spin" size={20}/> : 'بازنشانی کلمه عبور'}
+                    <div className="flex flex-row justify-center items-center w-full">
+                      <button onClick={handleSubmit} className="flex btn big_btn btn-main-masai w-full">
+                        {isLoading ? <AiOutlineLoading className="animate-spin" size={20}/> : 'بازنشانی '}
                       </button>
                     </div>
                     <div className="col-12 footer_login_reg text--center">
