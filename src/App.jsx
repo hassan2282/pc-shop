@@ -1,33 +1,33 @@
 import "./index.css";
 import { ToastContainer, toast } from "react-toastify";
 import { BrowserRouter, Link, Navigate, Route, Routes } from "react-router-dom";
-import Login from "./components/Login";
-import Index from "./components/Index";
-import Register from "./components/Register";
-import Cart from "./components/Cart";
-import CategoryBlog from "./components/CategoryBlog";
-import CategorySearch from "./components/CategorySearch";
-import SingleProduct from "./components/SingleProduct";
-import SingleBlog from "./components/SingleBlog";
-import SuccessfulPayment from "./components/SuccessfulPayment";
-import FinalPayment from "./components/FinalPayment";
-import OrderAddress from "./components/OrderAddress";
-import OrderCancelled from "./components/OrderCancelled";
-import OrderCurrent from "./components/OrderCurrent";
-import OrderMessage from "./components/OrderMessage";
-import OrdersReturn from "./components/OrdersReturn";
-import ShoppingPayment from "./components/ShoppingPayment";
-import ProfileFavorites from "./components/ProfileFavorites";
-import PasswordUpdate from "./components/PasswordUpdate";
-import AboutUs from "./components/AboutUs";
+import Login from "./StorePanel/components/Login";
+import Index from "./StorePanel/components/Index";
+import Register from "./StorePanel/components/Register";
+import Cart from "./StorePanel/components/Cart";
+import CategoryBlog from "./StorePanel/components/CategoryBlog";
+import CategorySearch from "./StorePanel/components/CategorySearch";
+import SingleProduct from "./StorePanel/components/SingleProduct";
+import SingleBlog from "./StorePanel/components/SingleBlog";
+import SuccessfulPayment from "./StorePanel/components/SuccessfulPayment";
+import FinalPayment from "./StorePanel/components/FinalPayment";
+import OrderAddress from "./StorePanel/components/OrderAddress";
+import OrderCancelled from "./StorePanel/components/OrderCancelled";
+import OrderCurrent from "./StorePanel/components/OrderCurrent";
+import OrderMessage from "./StorePanel/components/OrderMessage";
+import OrdersReturn from "./StorePanel/components/OrdersReturn";
+import ShoppingPayment from "./StorePanel/components/ShoppingPayment";
+import ProfileFavorites from "./StorePanel/components/ProfileFavorites";
+import PasswordUpdate from "./StorePanel/components/PasswordUpdate";
+import AboutUs from "./StorePanel/components/AboutUs";
 import { useSelector } from "react-redux";
-import PrivateRoute from "./structure/PrivateRoute";
-import EditProfile from "./components/EditProfile";
-import Profile from "./components/Profile";
-import Address from "./components/Address";
-import Footer from './structure/footer.jsx';
-import Header from './structure/Header.jsx';
-import ScrollToTop from "./structure/ScrollToTop.jsx";
+import PrivateRoute from "./StorePanel/structure/PrivateRoute";
+import EditProfile from "./StorePanel/components/EditProfile";
+import Profile from "./StorePanel/components/Profile";
+import Address from "./StorePanel/components/Address";
+import Footer from './StorePanel/structure/footer.jsx';
+import Header from './StorePanel/structure/Header.jsx';
+import ScrollToTop from "./StorePanel/structure/ScrollToTop.jsx";
 
 function App() {
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
@@ -36,9 +36,10 @@ function App() {
     <>
       <BrowserRouter>
 
-      <Header />
-            <ScrollToTop />
+      {/* StorePanel Routes */}
 
+      <Header />
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/category-blog" element={<CategoryBlog />} />
@@ -172,8 +173,11 @@ function App() {
             />
             <Route path="/about-us" element={<AboutUs />} />
           </Routes>
+            
+      <Footer /> 
 
-        <Footer /> 
+      {/* Admin panel Routes */}
+
 
         <ToastContainer />
       </BrowserRouter>        
