@@ -25,6 +25,7 @@ import PrivateRoute from "./StorePanel/structure/PrivateRoute";
 import EditProfile from "./StorePanel/components/EditProfile";
 import Profile from "./StorePanel/components/Profile";
 import Address from "./StorePanel/components/Address";
+import StoreContainer from "./StorePanel/structure/StoreContainer.jsx";
 import AdminContiner from "./AdminPanel/structure/AdminContiner.jsx";
 
 function App() {
@@ -175,7 +176,7 @@ function App() {
         Admin panel Routes
         <Routes>
           <Route path="/admin/*" element={<AdminContiner />}>
-            <Route path="dashboard" element={<Dashboard />} />
+            {/* <Route path="dashboard" element={<Dashboard />} /> */}
             {/* <Route path="users" element={<Users />} /> */}
             {/* <Route path="orders" element={<Orders />} /> */}
           </Route>
