@@ -25,9 +25,7 @@ import PrivateRoute from "./StorePanel/structure/PrivateRoute";
 import EditProfile from "./StorePanel/components/EditProfile";
 import Profile from "./StorePanel/components/Profile";
 import Address from "./StorePanel/components/Address";
-import Footer from './StorePanel/structure/footer.jsx';
-import Header from './StorePanel/structure/Header.jsx';
-import ScrollToTop from "./StorePanel/structure/ScrollToTop.jsx";
+import AdminContiner from "./AdminPanel/structure/AdminContiner.jsx";
 
 function App() {
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
@@ -36,11 +34,10 @@ function App() {
     <>
       <BrowserRouter>
 
-      {/* StorePanel Routes */}
+        {/* StorePanel Routes */}
 
-      <Header />
-          <ScrollToTop />
-          <Routes>
+        <Routes>
+          <Route path="" element={<StoreContainer />}>
             <Route path="/" element={<Index />} />
             <Route path="/category-blog" element={<CategoryBlog />} />
             <Route path="/category-search" element={<CategorySearch />} />
@@ -172,17 +169,22 @@ function App() {
               }
             />
             <Route path="/about-us" element={<AboutUs />} />
-          </Routes>
-            
-      <Footer /> 
+          </Route>
+        </Routes>
 
-      {/* Admin panel Routes */}
-
+        Admin panel Routes
+        <Routes>
+          <Route path="/admin/*" element={<AdminContiner />}>
+            <Route path="dashboard" element={<Dashboard />} />
+            {/* <Route path="users" element={<Users />} /> */}
+            {/* <Route path="orders" element={<Orders />} /> */}
+          </Route>
+        </Routes>
 
         <ToastContainer />
-      </BrowserRouter>        
+      </BrowserRouter>
     </>
-    
+
   );
 }
 
