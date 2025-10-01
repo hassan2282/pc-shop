@@ -27,6 +27,7 @@ import Profile from "./StorePanel/components/Profile";
 import Address from "./StorePanel/components/Address";
 import StoreContainer from "./StorePanel/structure/StoreContainer.jsx";
 import AdminContiner from "./AdminPanel/structure/AdminContiner.jsx";
+import Dashboard from "./AdminPanel/components/Dashboard.jsx";
 
 function App() {
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
@@ -36,9 +37,8 @@ function App() {
       <BrowserRouter>
 
         {/* StorePanel Routes */}
-
         <Routes>
-          <Route path="/*" element={<StoreContainer />}>
+          <Route path="/store/*" element={<StoreContainer />}>
             <Route path="" element={<Index />} />
             <Route path="home" element={<Index />} />
             <Route path="category-blog" element={<CategoryBlog />} />
@@ -172,14 +172,11 @@ function App() {
             />
             <Route path="about-us" element={<AboutUs />} />
           </Route>
-        </Routes>
 
-        Admin panel Routes
-        <Routes>
+
+        {/* Admin panel Routes */}
           <Route path="/admin/*" element={<AdminContiner />}>
-            {/* <Route path="dashboard" element={<Dashboard />} /> */}
-            {/* <Route path="users" element={<Users />} /> */}
-            {/* <Route path="orders" element={<Orders />} /> */}
+            <Route path="dashboard" element={<Dashboard/>} />
           </Route>
         </Routes>
 
