@@ -54,7 +54,7 @@ const handleSubmit = async (e) => {
                     user: res.data.user,
                 }
             })
-            navigate("/",{replace:true})
+            navigate("/home",{replace:true})
         }
         
     }catch (err) {

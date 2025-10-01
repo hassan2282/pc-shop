@@ -43,7 +43,7 @@ function Login() {
             token: token,
             user: res.data.user}
         })
-        navigate("/", { replace: true });
+        navigate("/home", { replace: true });
       } else {
       }
     } catch (err) {

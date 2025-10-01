@@ -1066,7 +1066,7 @@ const handleLogout = (e) => {
                         <div className="row">
                             <div className="col-lg-2 col-md-3 col-sm-4 col-5">
                                 <div className="logo-area default">
-                                    <Link to="/">
+                                    <Link to="/home">
                                         <img src="src/StorePanel/assets/img/logo.png" alt=""/>
                                     </Link>
                                 </div>

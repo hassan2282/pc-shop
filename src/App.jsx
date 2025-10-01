@@ -38,27 +38,28 @@ function App() {
         {/* StorePanel Routes */}
 
         <Routes>
-          <Route path="" element={<StoreContainer />}>
-            <Route path="/" element={<Index />} />
-            <Route path="/category-blog" element={<CategoryBlog />} />
-            <Route path="/category-search" element={<CategorySearch />} />
-            <Route path="/single-product" element={<SingleProduct />} />
-            <Route path="/single-blog" element={<SingleBlog />} />
+          <Route path="/*" element={<StoreContainer />}>
+            <Route path="" element={<Index />} />
+            <Route path="home" element={<Index />} />
+            <Route path="category-blog" element={<CategoryBlog />} />
+            <Route path="category-search" element={<CategorySearch />} />
+            <Route path="single-product" element={<SingleProduct />} />
+            <Route path="single-blog" element={<SingleBlog />} />
 
             <Route
-              path="/register"
+              path="register"
               element={
                 !isAuthenticated ? <Register /> : <Navigate to="/" replace />
               }
             />
 
             <Route
-              path="/login"
+              path="login"
               element={!isAuthenticated ? <Login /> : <Navigate to="/" replace />}
             />
 
             <Route
-              path="/profile"
+              path="profile"
               element={
                 <PrivateRoute>
                   <Profile />
@@ -66,7 +67,7 @@ function App() {
               }
             />
             <Route
-              path="/edit-profile"
+              path="edit-profile"
               element={
                 <PrivateRoute>
                   <EditProfile />
@@ -74,7 +75,7 @@ function App() {
               }
             />
             <Route
-              path="/profile-favorites"
+              path="profile-favorites"
               element={
                 <PrivateRoute>
                   <ProfileFavorites />
@@ -82,7 +83,7 @@ function App() {
               }
             />
             <Route
-              path="/cart"
+              path="cart"
               element={
                 <PrivateRoute>
                   <Cart />
@@ -90,7 +91,7 @@ function App() {
               }
             />
             <Route
-              path="/successfull-payment"
+              path="successfull-payment"
               element={
                 <PrivateRoute>
                   <SuccessfulPayment />
@@ -98,7 +99,7 @@ function App() {
               }
             />
             <Route
-              path="/final-payment"
+              path="final-payment"
               element={
                 <PrivateRoute>
                   <FinalPayment />
@@ -106,7 +107,7 @@ function App() {
               }
             />
             <Route
-              path="/order-address"
+              path="order-address"
               element={
                 <PrivateRoute>
                   <OrderAddress />
@@ -114,7 +115,7 @@ function App() {
               }
             />
             <Route
-              path="/address"
+              path="address"
               element={
                 <PrivateRoute>
                   <Address />
@@ -122,7 +123,7 @@ function App() {
               }
             />
             <Route
-              path="/order-cancelled"
+              path="order-cancelled"
               element={
                 <PrivateRoute>
                   <OrderCancelled />
@@ -130,7 +131,7 @@ function App() {
               }
             />
             <Route
-              path="/order-current"
+              path="order-current"
               element={
                 <PrivateRoute>
                   <OrderCurrent />
@@ -138,7 +139,7 @@ function App() {
               }
             />
             <Route
-              path="/order-message"
+              path="order-message"
               element={
                 <PrivateRoute>
                   <OrderMessage />
@@ -146,7 +147,7 @@ function App() {
               }
             />
             <Route
-              path="/orders-return"
+              path="orders-return"
               element={
                 <PrivateRoute>
                   <OrdersReturn />
@@ -154,7 +155,7 @@ function App() {
               }
             />
             <Route
-              path="/shopping-payment"
+              path="shopping-payment"
               element={
                 <PrivateRoute>
                   <ShoppingPayment />
@@ -162,14 +163,14 @@ function App() {
               }
             />
             <Route
-              path="/password-update"
+              path="password-update"
               element={
                 <PrivateRoute>
                   <PasswordUpdate />
                 </PrivateRoute>
               }
             />
-            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="about-us" element={<AboutUs />} />
           </Route>
         </Routes>
 
