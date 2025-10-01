@@ -38,7 +38,7 @@ $(document).ready(function() {
     });
 
     // Activate the image for the navbar-collapse
-    nowuiKit.initNavbarImage();
+    window.nowuikit.initNavbarImage();
 
     $navbar = $('.navbar[color-on-scroll]');
     scroll_distance = $navbar.attr('color-on-scroll') || 500;
@@ -46,8 +46,8 @@ $(document).ready(function() {
     // Check if we have the class "navbar-color-on-scroll" then add the function to remove the class "navbar-transparent" so it will transform to a plain color.
 
     if ($('.navbar[color-on-scroll]').length != 0) {
-        nowuiKit.checkScrollForTransparentNavbar();
-        $(window).on('scroll', nowuiKit.checkScrollForTransparentNavbar)
+        window.nowuikit.checkScrollForTransparentNavbar();
+        $(window).on('scroll', window.nowuikit.checkScrollForTransparentNavbar)
     }
 
     $('.form-control').on("focus", function() {
@@ -71,7 +71,7 @@ $(document).ready(function() {
     if ($(window).width() >= 992) {
         big_image = $('.page-header-image[data-parallax="true"]');
 
-        $(window).on('scroll', nowuiKitDemo.checkScrollForParallax);
+        $(window).on('scroll', window.nowuikitDemo.checkScrollForParallax);
     }
 
     // Activate Carousel
@@ -354,15 +354,15 @@ $(document).ready(function() {
 });
 
 $(window).on('resize', function() {
-    nowuiKit.initNavbarImage();
+    window.nowuikit.initNavbarImage();
 });
 
 $(document).on('click', '.navbar-toggler', function() {
     $toggle = $(this);
 
-    if (nowuiKit.misc.navbar_menu_visible == 1) {
+    if (window.nowuikit.misc.navbar_menu_visible == 1) {
         $('html').removeClass('nav-open');
-        nowuiKit.misc.navbar_menu_visible = 0;
+        window.nowuikit.misc.navbar_menu_visible = 0;
         $('#bodyClick').remove();
         setTimeout(function() {
             $toggle.removeClass('toggled');
@@ -374,7 +374,7 @@ $(document).on('click', '.navbar-toggler', function() {
         div = '<div id="bodyClick"></div>';
         $(div).appendTo('body').click(function() {
             $('html').removeClass('nav-open');
-            nowuiKit.misc.navbar_menu_visible = 0;
+            window.nowuikit.misc.navbar_menu_visible = 0;
             setTimeout(function() {
                 $toggle.removeClass('toggled');
                 $('#bodyClick').remove();
@@ -382,11 +382,11 @@ $(document).on('click', '.navbar-toggler', function() {
         });
 
         $('html').addClass('nav-open');
-        nowuiKit.misc.navbar_menu_visible = 1;
+        window.nowuikit.misc.navbar_menu_visible = 1;
     }
 });
 
-nowuiKit = {
+window.nowuikit = {
     misc: {
         navbar_menu_visible: 0
     },
@@ -454,7 +454,7 @@ nowuiKit = {
 var big_image;
 
 // Javascript just for Demo purpose, remove it from your project
-nowuiKitDemo = {
+window.nowuikitDemo = {
     checkScrollForParallax: debounce(function() {
         var current_scroll = $(this).scrollTop();
 

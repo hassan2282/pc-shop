@@ -35,9 +35,9 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <Routes>
 
         {/* StorePanel Routes */}
-        <Routes>
           <Route path="/store/*" element={<StoreContainer />}>
             <Route path="" element={<Index />} />
             <Route path="home" element={<Index />} />
@@ -174,12 +174,17 @@ function App() {
           </Route>
 
 
+
+
         {/* Admin panel Routes */}
           <Route path="/admin/*" element={<AdminContiner />}>
             <Route path="dashboard" element={<Dashboard/>} />
           </Route>
-        </Routes>
 
+
+
+
+        </Routes>
         <ToastContainer />
       </BrowserRouter>
     </>
