@@ -43,7 +43,7 @@ function Login() {
             token: token,
             user: res.data.user}
         })
-        navigate("/home", { replace: true });
+        navigate("/store/home", { replace: true });
       } else {
       }
     } catch (err) {
@@ -135,7 +135,7 @@ function Login() {
                     <div className="col-12 footer_login_reg text--center">
                       <p>
                         <span>کاربر جدید هستید؟</span>
-                        <Link to="/register" className="text-lg">
+                        <Link to="/store/register" className="text-lg">
                           عضویت
                         </Link>
                       </p>

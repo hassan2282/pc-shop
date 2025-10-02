@@ -26,9 +26,6 @@ import EditProfile from "./StorePanel/components/EditProfile";
 import Profile from "./StorePanel/components/Profile";
 import Address from "./StorePanel/components/Address";
 import StoreContainer from "./StorePanel/structure/StoreContainer.jsx";
-import AdminContiner from "./AdminPanel/structure/AdminContiner.jsx";
-import Dashboard from "./AdminPanel/components/Dashboard.jsx";
-
 function App() {
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
@@ -36,8 +33,6 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-
-        {/* StorePanel Routes */}
           <Route path="/store/*" element={<StoreContainer />}>
             <Route path="" element={<Index />} />
             <Route path="home" element={<Index />} />
@@ -172,18 +167,6 @@ function App() {
             />
             <Route path="about-us" element={<AboutUs />} />
           </Route>
-
-
-
-
-        {/* Admin panel Routes */}
-          <Route path="/admin/*" element={<AdminContiner />}>
-            <Route path="dashboard" element={<Dashboard/>} />
-          </Route>
-
-
-
-
         </Routes>
         <ToastContainer />
       </BrowserRouter>

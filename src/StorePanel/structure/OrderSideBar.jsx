@@ -71,25 +71,25 @@ function OrderSideBar() {
                   <li>
                     <img
                       className="profile-avatars-item"
-                      src="src/StorePanel/assets/img/profile/1.png"
+                      src="/src/StorePanel/assets/img/profile/1.png"
                     />
                   </li>
                   <li>
                     <img
                       className="profile-avatars-item"
-                      src="src/StorePanel/assets/img/profile/2.png"
+                      src="/src/StorePanel/assets/img/profile/2.png"
                     />
                   </li>
                   <li>
                     <img
                       className="profile-avatars-item"
-                      src="src/StorePanel/assets/img/profile/3.png"
+                      src="/src/StorePanel/assets/img/profile/3.png"
                     />
                   </li>
                   <li>
                     <img
                       className="profile-avatars-item"
-                      src="src/StorePanel/assets/img/profile/4.png"
+                      src="/src/StorePanel/assets/img/profile/4.png"
                     />
                   </li>
                 </ul>
@@ -125,7 +125,7 @@ function OrderSideBar() {
               <div className="modal-body">
                 <div className="row">
                   <div className="col-12 col-lg-4 col-md-4">
-                    <img src="src/StorePanel/assets/img/product_img/p_7.jpg" />
+                    <img src="/src/StorePanel/assets/img/product_img/p_7.jpg" />
                     <div className="form-account-agree">
                       <label className="checkbox-form checkbox-primary">
                         <input type="checkbox" id="agree" />
@@ -135,7 +135,7 @@ function OrderSideBar() {
                     </div>
                   </div>
                   <div className="col-12 col-lg-4 col-md-4">
-                    <img src="src/StorePanel/assets/img/product_img/p_11.jpg" />
+                    <img src="/src/StorePanel/assets/img/product_img/p_11.jpg" />
                     <div className="form-account-agree">
                       <label className="checkbox-form checkbox-primary">
                         <input type="checkbox" id="agree" />
@@ -157,7 +157,7 @@ function OrderSideBar() {
         <div className="mid-section">
           <div className="name">{user ? user.username : " "}</div>
           <div className="description">
-            <Link to="/edit-profile" className="btn btn-main-masai">
+            <Link to="/store/edit-profile" className="btn btn-main-masai">
               ویرایش اطلاعات
             </Link>
             <a onClick={logoutHandler} className="btn btn-second-masai">
@@ -193,44 +193,44 @@ function OrderSideBar() {
             حساب کاربری شما
           </button>
           <div className="dropdown-menu dropdown-menu-right text-right">
-            <Link to="/profile" className="dropdown-item">
+            <Link to="/store/profile" className="dropdown-item">
               <i className="fa fa-user-large colormain"></i>
               پروفایل
             </Link>
 
-            <Link to="/edit-profile" className="dropdown-item  active-menu">
+            <Link to="/store/edit-profile" className="dropdown-item  active-menu">
               <i className="fa fa-pencil colormain" aria-hidden="true"></i>
               ویرایش اطلاعات
             </Link>
-            <Link to="/order-message" className="dropdown-item  ">
+            <Link to="/store/order-message" className="dropdown-item  ">
               <i
                 className="fa fa-cart-arrow-down colormain"
                 aria-hidden="true"
               ></i>
               تحویل داده شده
             </Link>
-            <Link to="/order-current" className="dropdown-item ">
+            <Link to="/store/order-current" className="dropdown-item ">
               <i
                 className="fa fa-cart-arrow-down colormain"
                 aria-hidden="true"
               ></i>{" "}
               سفارش جاری
             </Link>
-            <Link to="/order-cancelled" className="dropdown-item">
+            <Link to="/store/order-cancelled" className="dropdown-item">
               <i className="fa fa-times colormain" aria-hidden="true"></i>
               لغو شده
             </Link>
-            <Link to="/orders-return" className="dropdown-item">
+            <Link to="/store/orders-return" className="dropdown-item">
               <i className="fa fa-thumbs-down colormain" aria-hidden="true"></i>
               مرجوع محصول
             </Link>
 
-            <Link to="/profile-favorites" className="dropdown-item">
+            <Link to="/store/profile-favorites" className="dropdown-item">
               <i className="fa fa-bookmark colormain" aria-hidden="true"></i>
               لیست های من
             </Link>
 
-            <Link to="/order-address" className="dropdown-item">
+            <Link to="/store/order-address" className="dropdown-item">
               <i
                 className="fa fa-map icon-icon colormain"
                 aria-hidden="true"
@@ -238,12 +238,12 @@ function OrderSideBar() {
               آدرس ها
             </Link>
 
-            <Link to="/order-message" className="dropdown-item">
+            <Link to="/store/order-message" className="dropdown-item">
               <i className="fa fa-bell colormain" aria-hidden="true"></i>
               پیغام ها
             </Link>
 
-            <Link to="/password-update" className="dropdown-item">
+            <Link to="/store/password-update" className="dropdown-item">
               <i className="fa fa-shield colormain" aria-hidden="true"></i>
               امنیت و تغییر رمز
             </Link>
@@ -270,7 +270,7 @@ function OrderSideBar() {
         <ul className="profile-menu-items">
           <li>
             <NavLink
-              to="/order-current"
+              to="/store/order-current"
               className="dropdown-item"
               activeclassname="active" // کلاس فعال شدن
             >
@@ -284,7 +284,7 @@ function OrderSideBar() {
 
           <li>
             <NavLink
-              to="/order-current"
+              to="/store/order-current"
               className="dropdown-item"
               activeclassname="active"
             >
@@ -298,7 +298,7 @@ function OrderSideBar() {
 
           <li>
             <NavLink
-              to="/order-cancelled"
+              to="/store/order-cancelled"
               className="dropdown-item"
               activeclassname="active"
             >
@@ -309,7 +309,7 @@ function OrderSideBar() {
 
           <li>
             <NavLink
-              to="/orders-return"
+              to="/store/orders-return"
               className="dropdown-item"
               activeclassname="active"
             >
@@ -320,7 +320,7 @@ function OrderSideBar() {
 
           <li>
             <NavLink
-              to="/profile-favorites"
+              to="/store/profile-favorites"
               className="dropdown-item"
               activeclassname="active"
             >
@@ -331,7 +331,7 @@ function OrderSideBar() {
 
           <li>
             <NavLink
-              to="/order-address"
+              to="/store/order-address"
               className="dropdown-item"
               activeclassname="active"
             >
@@ -345,7 +345,7 @@ function OrderSideBar() {
 
           <li>
             <NavLink
-              to="/order-message"
+              to="/store/order-message"
               className="dropdown-item"
               activeclassname="active"
             >
@@ -356,7 +356,7 @@ function OrderSideBar() {
 
           <li>
             <NavLink
-              to="/profile"
+              to="/store/profile"
               className="dropdown-item"
               activeclassname="active"
             >
@@ -367,7 +367,7 @@ function OrderSideBar() {
 
           <li>
             <NavLink
-              to="/edit-profile"
+              to="/store/edit-profile"
               className="dropdown-item"
               activeclassname="active"
             >
@@ -378,7 +378,7 @@ function OrderSideBar() {
 
           <li>
             <NavLink
-              to="/password-update"
+              to="/store/password-update"
               className="dropdown-item"
               activeclassname="active"
             >

@@ -12,7 +12,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg"  className="svg_Masai mb-[-100px] relative z-10 mt-0 mr-[30px] float-right" width="231" height="75" viewBox="0 0 231 75" fill="none" >
                                 <path clipRule="evenodd" d="M0 0C31.5006 0.949537 50.52 17.872 56.1955 26.4544L55.986 25.8011L82.4924 58.631C99.3032 79.4521 131.038 79.4521 147.849 58.6309L174.356 25.8011L174.146 26.4544C179.822 17.872 198.844 0.949537 230.349 0H0Z" fill="#FCFCFC" fillRule="" className="text-red-500" ></path>
                             </svg>
-                            <img src="src/StorePanel/assets/img/banner_img/01/16781944460617.jpg" className="img-fluid imgslider" alt=""/>
+                            <img src="/src/StorePanel/assets/img/banner_img/01/16781944460617.jpg" className="img-fluid imgslider" alt=""/>
                         </a>
                     </div>
                     <div className="item">
@@ -20,7 +20,7 @@
                             <path clipRule="evenodd" d="M0 0C31.5006 0.949537 50.52 17.872 56.1955 26.4544L55.986 25.8011L82.4924 58.631C99.3032 79.4521 131.038 79.4521 147.849 58.6309L174.356 25.8011L174.146 26.4544C179.822 17.872 198.844 0.949537 230.349 0H0Z" fill="#FCFCFC" fillRule="" className="text-red-500" ></path>
                         </svg>
                         <a href="category-search">
-                            <img src="src/StorePanel/assets/img/banner_img/01/16785213091818.jpg" className="img-fluid imgslider" alt=""/>
+                            <img src="/src/StorePanel/assets/img/banner_img/01/16785213091818.jpg" className="img-fluid imgslider" alt=""/>
                         </a>
                     </div>
                     <div className="item">
@@ -28,7 +28,7 @@
                             <path clipRule="evenodd" d="M0 0C31.5006 0.949537 50.52 17.872 56.1955 26.4544L55.986 25.8011L82.4924 58.631C99.3032 79.4521 131.038 79.4521 147.849 58.6309L174.356 25.8011L174.146 26.4544C179.822 17.872 198.844 0.949537 230.349 0H0Z" fill="#FCFCFC" fillRule="" className="text-red-500" ></path>
                         </svg>
                         <a href="category-search">
-                            <img src="src/StorePanel/assets/img/banner_img/01/16789575390919.jpg" className="img-fluid imgslider" alt=""/>
+                            <img src="/src/StorePanel/assets/img/banner_img/01/16789575390919.jpg" className="img-fluid imgslider" alt=""/>
                         </a>
                     </div>
                 </div>
@@ -42,26 +42,26 @@
                         <div className="row">
                             <div className=" col-3  contact-miniicon  text-center">
                                 <div className="space-5">
-                                    <img src="src/StorePanel/assets/img/Masai/minilogo/1.png" className="minilogo_w"/>
+                                    <img src="/src/StorePanel/assets/img/Masai/minilogo/1.png" className="minilogo_w"/>
                                     <b className="title-3 light-black">مَسای مارکت</b>
                                 </div>
                             </div>
                             <div className="col-3  contact-miniicon  text-center">
                                 <div className="space-5">
-                                    <img src="src/StorePanel/assets/img/Masai/minilogo/2.png" className="minilogo_w"/>
+                                    <img src="/src/StorePanel/assets/img/Masai/minilogo/2.png" className="minilogo_w"/>
                                     <b className="title-3 light-black">حراج مَسای</b>
                                 </div>
                             </div>
                             <div className="col-3  contact-miniicon  text-center">
                                 <div className="space-5">
-                                    <img src="src/StorePanel/assets/img/Masai/minilogo/3.png" className="minilogo_w"/>
+                                    <img src="/src/StorePanel/assets/img/Masai/minilogo/3.png" className="minilogo_w"/>
                                     <b className="title-3 light-black">خرید اقساطی</b>
                                 </div>
                             </div>
 
                             <div className=" col-3  contact-miniicon  text-center">
                                 <div className="space-5">
-                                    <img src="src/StorePanel/assets/img/Masai/minilogo/4.png" className="minilogo_w"/>
+                                    <img src="/src/StorePanel/assets/img/Masai/minilogo/4.png" className="minilogo_w"/>
                                     <b className="title-3 light-black">مَسای سرویس</b>
                                 </div>
                             </div>
@@ -72,25 +72,25 @@
 
                             <div className="col-3   contact-miniicon  text-center">
                                 <div className="space-5">
-                                    <img src="src/StorePanel/assets/img/Masai/minilogo/5.png" className="minilogo_w"/>
+                                    <img src="/src/StorePanel/assets/img/Masai/minilogo/5.png" className="minilogo_w"/>
                                     <b className="title-3 light-black">ماه رمضان</b>
                                 </div>
                             </div>
                             <div className="col-3  contact-miniicon  text-center">
                                 <div className="space-5">
-                                    <img src="src/StorePanel/assets/img/Masai/minilogo/6.png" className="minilogo_w"/>
+                                    <img src="/src/StorePanel/assets/img/Masai/minilogo/6.png" className="minilogo_w"/>
                                     <b className="title-3 light-black">مَسای پلاس</b>
                                 </div>
                             </div>
                             <div className="col-3  contact-miniicon  text-center">
                                 <div className="space-5">
-                                    <img src="src/StorePanel/assets/img/Masai/minilogo/7.png" className="minilogo_w"/>
+                                    <img src="/src/StorePanel/assets/img/Masai/minilogo/7.png" className="minilogo_w"/>
                                     <b className="title-3 light-black">هدیه خرید</b>
                                 </div>
                             </div>
                             <div className="col-3  contact-miniicon  text-center">
                                 <div className="space-5">
-                                    <img src="src/StorePanel/assets/img/Masai/minilogo/8.png" className="minilogo_w"/>
+                                    <img src="/src/StorePanel/assets/img/Masai/minilogo/8.png" className="minilogo_w"/>
                                     <b className="title-3 light-black">بیشتر</b>
                                 </div>
                             </div>
@@ -142,7 +142,7 @@
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
                                                 <a className="w-100 text-center" href="single-product">
-                                                    <img src="src/StorePanel/assets/img/product_img/p_1.jpg" className="img-fluid" alt=""/>
+                                                    <img src="/src/StorePanel/assets/img/product_img/p_1.jpg" className="img-fluid" alt=""/>
                                                     <span className="discount-percent">7 % تخفیف</span>
 
                                                 </a>
@@ -217,7 +217,7 @@
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
                                                 <a className="w-100 text-center" href="single-product">
-                                                    <img src="src/StorePanel/assets/img/product_img/p_3.jpg" className="img-fluid" alt=""/>
+                                                    <img src="/src/StorePanel/assets/img/product_img/p_3.jpg" className="img-fluid" alt=""/>
                                                     <span className="discount-percent">4 % تخفیف</span>
 
                                                 </a>
@@ -293,7 +293,7 @@
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
                                                 <a className="w-100 text-center" href="single-product">
-                                                    <img src="src/StorePanel/assets/img/product_img/p_5.jpg" className="img-fluid" alt=""/>
+                                                    <img src="/src/StorePanel/assets/img/product_img/p_5.jpg" className="img-fluid" alt=""/>
                                                     <span className="discount-percent">11 % تخفیف</span>
 
                                                 </a>
@@ -368,8 +368,8 @@
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
                                                 <a className="w-100 text-center" href="single-product">
-                                                    <img src="src/StorePanel/assets/img/product_img/p_7.jpg" className="img-fluid" alt=""/>
-                                                    <img src="src/StorePanel/assets/img/sell.png" className="imgfinish"/>
+                                                    <img src="/src/StorePanel/assets/img/product_img/p_7.jpg" className="img-fluid" alt=""/>
+                                                    <img src="/src/StorePanel/assets/img/sell.png" className="imgfinish"/>
 
                                                     <span className="discount-percent">5 % تخفیف</span>
 
@@ -419,7 +419,7 @@
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
                                                 <a className="w-100 text-center" href="single-product">
-                                                    <img src="src/StorePanel/assets/img/product_img/p_9.jpg" className="img-fluid" alt=""/>
+                                                    <img src="/src/StorePanel/assets/img/product_img/p_9.jpg" className="img-fluid" alt=""/>
                                                     <span className="discount-percent">7 % تخفیف</span>
 
                                                 </a>
@@ -496,7 +496,7 @@
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
                                                 <a className="w-100 text-center" href="single-product">
-                                                    <img src="src/StorePanel/assets/img/product_img/p_11.jpg" className="img-fluid" alt=""/>
+                                                    <img src="/src/StorePanel/assets/img/product_img/p_11.jpg" className="img-fluid" alt=""/>
                                                     <span className="discount-percent">9 % تخفیف</span>
 
                                                 </a>
@@ -572,7 +572,7 @@
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
                                                 <a className="w-100 text-center" href="single-product">
-                                                    <img src="src/StorePanel/assets/img/product_img/p_3.jpg" className="img-fluid" alt=""/>
+                                                    <img src="/src/StorePanel/assets/img/product_img/p_3.jpg" className="img-fluid" alt=""/>
                                                     <span className="discount-percent">4 % تخفیف</span>
 
                                                 </a>
@@ -647,8 +647,8 @@
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
                                                 <a className="w-100 text-center finished" href="single-product">
-                                                    <img src="src/StorePanel/assets/img/product_img/p_15.jpg" className="img-fluid " alt=""/>
-                                                    <img src="src/StorePanel/assets/img/sell.png" className="imgfinish"/>
+                                                    <img src="/src/StorePanel/assets/img/product_img/p_15.jpg" className="img-fluid " alt=""/>
+                                                    <img src="/src/StorePanel/assets/img/sell.png" className="imgfinish"/>
                                                     <span className="discount-percent">3 % تخفیف</span>
 
                                                 </a>
@@ -694,7 +694,7 @@
                                         <div className="row m-0">
                                             <div className="right-col col-5 d-flex imgboxofer">
                                                 <a className="w-100 text-center" href="single-product">
-                                                    <img src="src/StorePanel/assets/img/product_img/p_17.jpg" className="img-fluid" alt=""/>
+                                                    <img src="/src/StorePanel/assets/img/product_img/p_17.jpg" className="img-fluid" alt=""/>
                                                     <span className="discount-percent">3 % تخفیف</span>
 
                                                 </a>
@@ -777,7 +777,7 @@
                             <div id="bid-s" className="owl-carousel owl-theme">
                                 <div className="item">
                                     <a href="single-product">
-                                        <img src="src/StorePanel/assets/img/product_img/p_3.jpg" className="w-100" alt=""/>
+                                        <img src="/src/StorePanel/assets/img/product_img/p_3.jpg" className="w-100" alt=""/>
                                     </a>
                                     <h3 className="product-title">
                                         <a href="single-product"> هدفون مخصوص بازی تی دگر </a>
@@ -788,8 +788,8 @@
                                 </div>
                                 <div className="item">
                                     <a href="single-product">
-                                        <img src="src/StorePanel/assets/img/product_img/p_15.jpg" className="w-100" alt=""/>
-                                        <img src="src/StorePanel/assets/img/img_icon.png" className="type_icon"/>
+                                        <img src="/src/StorePanel/assets/img/product_img/p_15.jpg" className="w-100" alt=""/>
+                                        <img src="/src/StorePanel/assets/img/img_icon.png" className="type_icon"/>
 
                                     </a>
                                     <h3 className="product-title">
@@ -806,7 +806,7 @@
                                 </div>
                                 <div className="item">
                                     <a href="single-product">
-                                        <img src="src/StorePanel/assets/img/product_img/p_11.jpg" className="w-100" alt=""/>
+                                        <img src="/src/StorePanel/assets/img/product_img/p_11.jpg" className="w-100" alt=""/>
                                     </a>
                                     <h3 className="product-title">
                                         <a href="single-product">
@@ -820,7 +820,7 @@
                                 </div>
                                 <div className="item">
                                     <a href="single-product">
-                                        <img src="src/StorePanel/assets/img/product_img/p_5.jpg" className="w-100" alt=""/>
+                                        <img src="/src/StorePanel/assets/img/product_img/p_5.jpg" className="w-100" alt=""/>
                                     </a>
                                     <h3 className="product-title">
                                         <a href="single-product">ساعت هوشمند امیزفیت </a>
@@ -845,28 +845,28 @@
                                     <div className="col-6 col-lg-3">
                                         <div className="widget-banner card border_all">
                                             <a href="category-search" target="_blank">
-                                                <img className="img-fluid" src="src/StorePanel/assets/img/banner_img/img-3.jpg" alt=""/>
+                                                <img className="img-fluid" src="/src/StorePanel/assets/img/banner_img/img-3.jpg" alt=""/>
                                             </a>
                                         </div>
                                     </div>
                                     <div className="col-6 col-lg-3">
                                         <div className="widget-banner card">
                                             <a href="category-search" target="_top">
-                                                <img className="img-fluid" src="src/StorePanel/assets/img/banner_img/img-4.jpg" alt=""/>
+                                                <img className="img-fluid" src="/src/StorePanel/assets/img/banner_img/img-4.jpg" alt=""/>
                                             </a>
                                         </div>
                                     </div>
                                     <div className="col-6 col-lg-3">
                                         <div className="widget-banner card border_all">
                                             <a href="category-search" target="_blank">
-                                                <img className="img-fluid" src="src/StorePanel/assets/img/banner_img/img-5.jpg" alt=""/>
+                                                <img className="img-fluid" src="/src/StorePanel/assets/img/banner_img/img-5.jpg" alt=""/>
                                             </a>
                                         </div>
                                     </div>
                                     <div className="col-6 col-lg-3">
                                         <div className="widget-banner card">
                                             <a href="category-search" target="_top">
-                                                <img className="img-fluid" src="src/StorePanel/assets/img/banner_img/img-6.jpg" alt=""/>
+                                                <img className="img-fluid" src="/src/StorePanel/assets/img/banner_img/img-6.jpg" alt=""/>
                                             </a>
                                         </div>
                                     </div>
@@ -883,7 +883,7 @@
                                         <div className="flex flex-row w-full justify-around items-center">
                                                 <h3 className="card-title flex basis-1/2 max-sm:hidden">
                                                     <span>
-                                                        <img src="src/StorePanel/assets/img/shegeft_1.png" />
+                                                        <img src="/src/StorePanel/assets/img/shegeft_1.png" />
                                                     </span>
                                                 </h3>
                                             <div dir="ltr" className="flex flex-row relative max-sm:w-[1rem] max-sm:space-x-0 space-x-2 basis-1/2 max-sm:justify-center justify-start items-center" data-date="10 12 2023 20:20:22">
@@ -909,7 +909,7 @@
                                     <div className="product-carousel owl-carousel owl-theme">
                                         <div className="item">
                                             <a href="single-product">
-                                                <img src="src/StorePanel/assets/img/product_img/p_14.jpg"  className="img-fluid" alt=""/>
+                                                <img src="/src/StorePanel/assets/img/product_img/p_14.jpg"  className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
                                                 <a href="single-product"> کیبورد مخصوص بازی برند تی دگر  </a>
@@ -922,7 +922,7 @@
                                         </div>
                                         <div className="item">
                                             <a href="single-product">
-                                                <img src="src/StorePanel/assets/img/product_img/p_2.jpg" className="img-fluid" alt=""/>
+                                                <img src="/src/StorePanel/assets/img/product_img/p_2.jpg" className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
                                                 <a href="single-product">  هندزفری بلوتوث مدل انکر با فرکانس بالا   </a>
@@ -936,7 +936,7 @@
                                         </div>
                                         <div className="item">
                                             <a href="single-product">
-                                                <img src="src/StorePanel/assets/img/product_img/p_12.jpg"  className="img-fluid" alt=""/>
+                                                <img src="/src/StorePanel/assets/img/product_img/p_12.jpg"  className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
                                                 <a href="single-product">  کنسول بازی  Playstation 5 با هارد 870 مگابایت  </a>
@@ -950,7 +950,7 @@
                                         </div>
                                         <div className="item">
                                             <a href="single-product">
-                                                <img src="src/StorePanel/assets/img/product_img/p_6.jpg"  className="img-fluid" alt=""/>
+                                                <img src="/src/StorePanel/assets/img/product_img/p_6.jpg"  className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
                                                 <a href="single-product">  ساعت هوشمند مقاوم در برابر آب امیزفیت </a>
@@ -961,7 +961,7 @@
                                         </div>
                                         <div className="item">
                                             <a href="single-product">
-                                                <img src="src/StorePanel/assets/img/product_img/p_10.jpg" className="img-fluid" alt=""/>
+                                                <img src="/src/StorePanel/assets/img/product_img/p_10.jpg" className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
                                                 <a href="single-product"> گوشی موبایل شیائومی مدل Poco X4 Pro  </a>
@@ -975,7 +975,7 @@
                                         </div>
                                         <div className="item">
                                             <a href="single-product">
-                                                <img src="src/StorePanel/assets/img/product_img/p_7.jpg"  className="img-fluid" alt=""/>
+                                                <img src="/src/StorePanel/assets/img/product_img/p_7.jpg"  className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
                                                 <a href="single-product">  گوشی موبایل اپل مدل Iphone 13 Pro Max  </a>
@@ -986,7 +986,7 @@
                                         </div>
                                         <div className="item">
                                             <a href="single-product">
-                                                <img src="src/StorePanel/assets/img/product_img/p_17.jpg" className="img-fluid" alt=""/>
+                                                <img src="/src/StorePanel/assets/img/product_img/p_17.jpg" className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
                                                 <a href="single-product">  گوشی موبایل سامسونگ مدل گلکسی A23  </a>
@@ -997,7 +997,7 @@
                                         </div>
                                         <div className="item">
                                             <a href="single-product">
-                                                <img src="src/StorePanel/assets/img/product_img/p_9.jpg" className="img-fluid" alt=""/>
+                                                <img src="/src/StorePanel/assets/img/product_img/p_9.jpg" className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
                                                 <a href="single-product">   گوشی موبایل شیائومی مدل Poco X4 Pro 5G  </a>
@@ -1018,14 +1018,14 @@
                                     <div className="col-12 col-lg-6">
                                         <div className="widget-banner card border_all">
                                             <a href="category-search" target="_blank">
-                                                <img className="img-fluid" src="src/StorePanel/assets/img/banner_img/img-7.jpg" alt=""/>
+                                                <img className="img-fluid" src="/src/StorePanel/assets/img/banner_img/img-7.jpg" alt=""/>
                                             </a>
                                         </div>
                                     </div>
                                     <div className="col-12 col-lg-6">
                                         <div className="widget-banner card">
                                             <a href="category-search" target="_top">
-                                                <img className="img-fluid" src="src/StorePanel/assets/img/banner_img/img-8.jpg" alt=""/>
+                                                <img className="img-fluid" src="/src/StorePanel/assets/img/banner_img/img-8.jpg" alt=""/>
                                             </a>
                                         </div>
                                     </div>
@@ -1037,13 +1037,13 @@
                                 <div className="widget widget-product card border_all bglight">
                                     <header className="card-header">
                                         <h3 className="card-title">
-                                            <span><img src="src/StorePanel/assets/img/seller_1.png" /></span>
+                                            <span><img src="/src/StorePanel/assets/img/seller_1.png" /></span>
                                         </h3>
                                     </header>
                                     <div className="product-carousel owl-carousel owl-theme">
                                         <div className="item">
                                             <a href="single-product">
-                                                <img src="src/StorePanel/assets/img/product_img/p_9.jpg"  className="img-fluid" alt=""/>
+                                                <img src="/src/StorePanel/assets/img/product_img/p_9.jpg"  className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
                                                 <a href="single-product"> گوشی شیائومی مدل Poco X4 Pro 5G </a>
@@ -1057,7 +1057,7 @@
                                         </div>
                                         <div className="item">
                                             <a href="single-product">
-                                                <img src="src/StorePanel/assets/img/product_img/p_7.jpg" className="img-fluid" alt=""/>
+                                                <img src="/src/StorePanel/assets/img/product_img/p_7.jpg" className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
                                                 <a href="single-product">  گوشی اپل مدل Iphone 13 Pro Max  </a>
@@ -1071,7 +1071,7 @@
                                         </div>
                                         <div className="item">
                                             <a href="single-product">
-                                                <img src="src/StorePanel/assets/img/product_img/p_15.jpg"  className="img-fluid" alt=""/>
+                                                <img src="/src/StorePanel/assets/img/product_img/p_15.jpg"  className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
                                                 <a href="single-product"> گوشی موبایل سامسونگ گلکسی A32 </a>
@@ -1085,7 +1085,7 @@
                                         </div>
                                         <div className="item">
                                             <a href="single-product">
-                                                <img src="src/StorePanel/assets/img/product_img/p_17.jpg" className="img-fluid" alt=""/>
+                                                <img src="/src/StorePanel/assets/img/product_img/p_17.jpg" className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
                                                 <a href="single-product"> گوشی موبایل سامسونگ گلکسی A23</a>
@@ -1096,7 +1096,7 @@
                                         </div>
                                         <div className="item">
                                             <a href="single-product">
-                                                <img src="src/StorePanel/assets/img/product_img/p_19.jpg"  className="img-fluid" alt=""/>
+                                                <img src="/src/StorePanel/assets/img/product_img/p_19.jpg"  className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
                                                 <a href="single-product"> گوشی موبایل ردمی نوت 11SE شیائومی </a>
@@ -1110,7 +1110,7 @@
                                         </div>
                                         <div className="item">
                                             <a href="single-product">
-                                                <img src="src/StorePanel/assets/img/product_img/p_21.jpg"  className="img-fluid" alt=""/>
+                                                <img src="/src/StorePanel/assets/img/product_img/p_21.jpg"  className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
                                                 <a href="single-product">  اپل مدل Iphone 14 Pro Max </a>
@@ -1121,7 +1121,7 @@
                                         </div>
                                         <div className="item">
                                             <a href="single-product">
-                                                <img src="src/StorePanel/assets/img/product_img/p_20.jpg" className="img-fluid" alt=""/>
+                                                <img src="/src/StorePanel/assets/img/product_img/p_20.jpg" className="img-fluid" alt=""/>
                                             </a>
                                             <h2 className="product_title">
                                                 <a href="single-product">  گوشی موبایل ردمی نوت 15  شیائومی  </a>
@@ -1148,7 +1148,7 @@
                             <div className="col-12">
                                 <div className="widget widget-banner card border_all">
                                     <a href="category-search" target="_blank">
-                                        <img className="img-fluid" src="src/StorePanel/assets/img/banner_img/img-9.jpg" alt=""/>
+                                        <img className="img-fluid" src="/src/StorePanel/assets/img/banner_img/img-9.jpg" alt=""/>
                                     </a>
                                 </div>
                             </div>
@@ -1168,7 +1168,7 @@
                                          <div className="col-6 col-md-2 contact-bigicon">
 
                                              <a href="category-search" target="_blank">
-                                                 <img className="img-responsive imgpad" src="src/StorePanel/assets/img/Masai/bigicon/img-1.png" alt="" />
+                                                 <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-1.png" alt="" />
                                                  <b className="title-3 light-black">کالای دیجیتال</b>
                                              </a>
 
@@ -1176,7 +1176,7 @@
                                          <div className="col-6 col-md-2 contact-bigicon">
 
                                              <a href="category-search" target="_top">
-                                                 <img className="img-responsive imgpad" src="src/StorePanel/assets/img/Masai/bigicon/img-2.png" alt="" />
+                                                 <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-2.png" alt="" />
                                                  <b className="title-3 light-black">مودم</b>
                                              </a>
 
@@ -1184,7 +1184,7 @@
                                          <div className="col-6 col-md-2 contact-bigicon">
 
                                              <a href="category-search" target="_blank">
-                                                 <img className="img-responsive imgpad" src="src/StorePanel/assets/img/Masai/bigicon/img-3.png" alt="" />
+                                                 <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-3.png" alt="" />
                                                  <b className="title-3 light-black">تبلت</b>
                                              </a>
 
@@ -1192,7 +1192,7 @@
                                          <div className="col-6 col-md-2 contact-bigicon">
 
                                              <a href="category-search" target="_top">
-                                                 <img className="img-responsive imgpad" src="src/StorePanel/assets/img/Masai/bigicon/img-4.png" alt="" />
+                                                 <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-4.png" alt="" />
                                                  <b className="title-3 light-black">ماوس</b>
                                              </a>
 
@@ -1200,7 +1200,7 @@
                                          <div className="col-6 col-md-2 contact-bigicon">
 
                                              <a href="category-search" target="_top">
-                                                 <img className="img-responsive imgpad" src="src/StorePanel/assets/img/Masai/bigicon/img-5.png" alt="" />
+                                                 <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-5.png" alt="" />
                                                  <b className="title-3 light-black">هندزفری</b>
                                              </a>
 
@@ -1208,7 +1208,7 @@
                                          <div className="col-6 col-md-2 contact-bigicon">
 
                                              <a href="category-search" target="_top">
-                                                 <img className="img-responsive imgpad" src="src/StorePanel/assets/img/Masai/bigicon/img-6.png" alt="" />
+                                                 <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-6.png" alt="" />
                                                  <b className="title-3 light-black">ساعت هوشمند</b>
                                              </a>
 
@@ -1220,7 +1220,7 @@
                                          <div className="col-6 col-md-2 contact-bigicon">
 
                                              <a href="category-search" target="_blank">
-                                                 <img className="img-responsive imgpad" src="src/StorePanel/assets/img/Masai/bigicon/img-7.png" alt="" />
+                                                 <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-7.png" alt="" />
                                                  <b className="title-3 light-black">کنسول خانگی</b>
                                              </a>
 
@@ -1228,7 +1228,7 @@
                                          <div className="col-6 col-md-2 contact-bigicon">
 
                                              <a href="category-search" target="_top">
-                                                 <img className="img-responsive imgpad" src="src/StorePanel/assets/img/Masai/bigicon/img-8.png" alt="" />
+                                                 <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-8.png" alt="" />
                                                  <b className="title-3 light-black">کیبورد (صفحه کلید)</b>
                                              </a>
 
@@ -1236,7 +1236,7 @@
                                          <div className="col-6 col-md-2 contact-bigicon">
 
                                              <a href="category-search" target="_blank">
-                                                 <img className="img-responsive imgpad" src="src/StorePanel/assets/img/Masai/bigicon/img-9.png" alt="" />
+                                                 <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-9.png" alt="" />
                                                  <b className="title-3 light-black">اسپیکر (بلندگو)</b>
                                              </a>
 
@@ -1244,7 +1244,7 @@
                                          <div className="col-6 col-md-2 contact-bigicon">
 
                                              <a href="category-search" target="_top">
-                                                 <img className="img-responsive imgpad" src="src/StorePanel/assets/img/Masai/bigicon/img-10.png" alt="" />
+                                                 <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-10.png" alt="" />
                                                  <b className="title-3 light-black">لپ تاپ و الترابوک</b>
                                              </a>
 
@@ -1252,7 +1252,7 @@
                                          <div className="col-6 col-md-2 contact-bigicon">
 
                                              <a href="category-search" target="_top">
-                                                 <img className="img-responsive imgpad" src="src/StorePanel/assets/img/Masai/bigicon/img-11.png" alt="" />
+                                                 <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-11.png" alt="" />
                                                  <b className="title-3 light-black">موبایل</b>
                                              </a>
 
@@ -1260,7 +1260,7 @@
                                          <div className="col-6 col-md-2 contact-bigicon">
 
                                              <a href="category-search" target="_top">
-                                                 <img className="img-responsive imgpad" src="src/StorePanel/assets/img/Masai/bigicon/img-12.png" alt="" />
+                                                 <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-12.png" alt="" />
                                                  <b className="title-3 light-black">هدفون، هدست </b>
                                              </a>
 
@@ -1281,34 +1281,34 @@
                             </header>
                             <div className="owl-carousel">
                                 <div className="item borderitem">
-                                    <a href="category-search"> <img src="src/StorePanel/assets/img/brands/brand-1.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-1.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="category-search"> <img src="src/StorePanel/assets/img/brands/brand-2.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-2.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="category-search"> <img src="src/StorePanel/assets/img/brands/brand-3.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-3.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="category-search"> <img src="src/StorePanel/assets/img/brands/brand-4.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-4.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="category-search"> <img src="src/StorePanel/assets/img/brands/brand-5.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-5.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="category-search"> <img src="src/StorePanel/assets/img/brands/brand-6.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-6.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="category-search"> <img src="src/StorePanel/assets/img/brands/brand-7.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-7.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="category-search"> <img src="src/StorePanel/assets/img/brands/brand-8.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-8.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="category-search"> <img src="src/StorePanel/assets/img/brands/brand-9.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-9.jpg" alt=""/> </a>
                                 </div>
                                 <div className="item borderitem">
-                                    <a href="category-search"> <img src="src/StorePanel/assets/img/brands/brand-10.jpg" alt=""/> </a>
+                                    <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-10.jpg" alt=""/> </a>
                                 </div>
                             </div>
                         </div>
@@ -1327,7 +1327,7 @@
                               <div className="Blog-carousel owl-carousel owl-theme">
                                   <div className="item">
                                       <a href="single-blog">
-                                          <img src="src/StorePanel/assets/img/blog/post-1.jpg" className="img-fluid" alt=""/>
+                                          <img src="/src/StorePanel/assets/img/blog/post-1.jpg" className="img-fluid" alt=""/>
                                       </a>
                                         <a href="single-blog">
                                             <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">
@@ -1347,7 +1347,7 @@
                                   </div>
                                   <div className="item">
                                       <a href="single-blog">
-                                          <img src="src/StorePanel/assets/img/blog/post-2.jpg" className="img-fluid" alt=""/>
+                                          <img src="/src/StorePanel/assets/img/blog/post-2.jpg" className="img-fluid" alt=""/>
                                       </a>
                                       <a href="single-blog">
                                           <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">
@@ -1367,7 +1367,7 @@
                                   </div>
                                   <div className="item">
                                       <a href="single-blog">
-                                          <img src="src/StorePanel/assets/img/blog/post-3.jpg" className="img-fluid" alt=""/>
+                                          <img src="/src/StorePanel/assets/img/blog/post-3.jpg" className="img-fluid" alt=""/>
                                       </a>
                                       <a href="single-blog">
                                           <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">
@@ -1387,7 +1387,7 @@
                                   </div>
                                   <div className="item">
                                       <a href="single-blog">
-                                          <img src="src/StorePanel/assets/img/blog/post-4.jpg" className="img-fluid" alt=""/>
+                                          <img src="/src/StorePanel/assets/img/blog/post-4.jpg" className="img-fluid" alt=""/>
                                       </a>
                                       <a href="single-blog">
                                           <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">
@@ -1407,7 +1407,7 @@
                                   </div>
                                   <div className="item">
                                       <a href="single-blog">
-                                          <img src="src/StorePanel/assets/img/blog/post-5.jpg" className="img-fluid" alt=""/>
+                                          <img src="/src/StorePanel/assets/img/blog/post-5.jpg" className="img-fluid" alt=""/>
                                       </a>
                                       <a href="single-blog">
                                           <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">
@@ -1428,7 +1428,7 @@
                                   </div>
                                   <div className="item">
                                       <a href="single-blog">
-                                          <img src="src/StorePanel/assets/img/blog/post-6.jpg" className="img-fluid" alt=""/>
+                                          <img src="/src/StorePanel/assets/img/blog/post-6.jpg" className="img-fluid" alt=""/>
                                       </a>
                                       <a href="single-blog">
                                           <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">

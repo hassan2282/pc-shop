@@ -1,9 +1,4 @@
-﻿//if (window.location.hostname != 'garzak.ir') {
-//    alert('کپی رایت قالب را رعایت کرده و اقدام به خرید آن نمایید');
-//    window.location.replace('http://rtlr.ir/258064');
-//}
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
     //Init the carousel
     $("#bid-s").owlCarousel({
         rtl: true,

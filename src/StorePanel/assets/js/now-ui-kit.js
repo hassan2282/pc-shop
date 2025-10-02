@@ -1,19 +1,19 @@
 /*!
-
+ 
  =========================================================
  * Now-ui-kit - v1.1.0
  =========================================================
-
+ 
  * Product Page: https://www.creative-tim.com/product/now-ui-kit
  * Copyright 2017 Creative Tim (http://www.creative-tim.com)
  * Licensed under MIT (https://github.com/creativetimofficial/now-ui-kit/blob/master/LICENSE.md)
-
+ 
  * Designed by www.invisionapp.com Coded by www.creative-tim.com
-
+ 
  =========================================================
-
+ 
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
+ 
  */
 
 var transparent = true;
@@ -31,7 +31,7 @@ $(document).ready(function() {
 
     // Activate Popovers and set color for popovers
     $('[data-toggle="popover"]').each(function() {
-        color_class = $(this).data('color');
+        var color_class = $(this).data('color');
         $(this).popover({
             template: '<div class="popover popover-' + color_class + '" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>'
         });
@@ -40,8 +40,8 @@ $(document).ready(function() {
     // Activate the image for the navbar-collapse
     window.nowuikit.initNavbarImage();
 
-    $navbar = $('.navbar[color-on-scroll]');
-    scroll_distance = $navbar.attr('color-on-scroll') || 500;
+    var $navbar = $('.navbar[color-on-scroll]');
+    var scroll_distance = $navbar.attr('color-on-scroll') || 500;
 
     // Check if we have the class "navbar-color-on-scroll" then add the function to remove the class "navbar-transparent" so it will transform to a plain color.
 
@@ -58,9 +58,9 @@ $(document).ready(function() {
 
     // Activate bootstrapSwitch
     $('.bootstrap-switch').each(function() {
-        $this = $(this);
-        data_on_label = $this.data('on-label') || '';
-        data_off_label = $this.data('off-label') || '';
+        var $this = $(this);
+        var data_on_label = $this.data('on-label') || '';
+        var data_off_label = $this.data('off-label') || '';
 
         $this.bootstrapSwitch({
             onText: data_on_label,
@@ -69,7 +69,7 @@ $(document).ready(function() {
     });
 
     if ($(window).width() >= 992) {
-        big_image = $('.page-header-image[data-parallax="true"]');
+        var big_image = $('.page-header-image[data-parallax="true"]');
 
         $(window).on('scroll', window.nowuikitDemo.checkScrollForParallax);
     }
@@ -88,7 +88,7 @@ $(document).ready(function() {
         }).on('show', function() {
             $('.datepicker').addClass('open');
 
-            datepicker_color = $(this).data('datepicker-color');
+            var datepicker_color = $(this).data('datepicker-color');
             if (datepicker_color.length != 0) {
                 $('.datepicker').addClass('datepicker-' + datepicker_color + '');
             }
@@ -98,7 +98,7 @@ $(document).ready(function() {
     });
 
     $('.switch.switch-background input').on("switchChange.bootstrapSwitch", function() {
-        $input = $(this);
+        var $input = $(this);
 
         if (!$input.is(':checked')) {
             $('.section:not(.section-notifications):not(.section-tabs):not(.section-download):not(.section-examples)').each(function() {
@@ -109,8 +109,8 @@ $(document).ready(function() {
 
             });
 
-            switch_orange = $('.navbar .collapse .navbar-nav.navbar-switch .nav-item .nav-link p.hidden');
-            switch_white = $('.navbar .collapse .navbar-nav.navbar-switch .nav-item .nav-link p.visible');
+            var switch_orange = $('.navbar .collapse .navbar-nav.navbar-switch .nav-item .nav-link p.hidden');
+            var switch_white = $('.navbar .collapse .navbar-nav.navbar-switch .nav-item .nav-link p.visible');
             switch_white.removeClass('visible').addClass('hidden');
             switch_orange.removeClass('hidden').addClass('visible');
 
@@ -163,7 +163,7 @@ $(document).ready(function() {
             $('.blockquote').each(function() {
                 $(this).addClass('blockquote-white');
 
-                if ($('.blockuote.blockquote-white').length != 0) {
+                if ($('.blockquote.blockquote-white').length != 0) {
                     $(this).removeClass('blockquote-primary');
                 }
             });
@@ -228,7 +228,7 @@ $(document).ready(function() {
             $('.blockquote').each(function() {
                 $(this).removeClass('blockquote-white');
 
-                if ($('.blockuote.blockquote-white').length == 0) {
+                if ($('.blockquote.blockquote-white').length == 0) {
                     $(this).addClass('blockquote-primary');
                 }
             });
@@ -358,7 +358,7 @@ $(window).on('resize', function() {
 });
 
 $(document).on('click', '.navbar-toggler', function() {
-    $toggle = $(this);
+    var $toggle = $(this);
 
     if (window.nowuikit.misc.navbar_menu_visible == 1) {
         $('html').removeClass('nav-open');
@@ -371,7 +371,7 @@ $(document).on('click', '.navbar-toggler', function() {
         setTimeout(function() {
             $toggle.addClass('toggled');
         }, 580);
-        div = '<div id="bodyClick"></div>';
+        var div = '<div id="bodyClick"></div>';
         $(div).appendTo('body').click(function() {
             $('html').removeClass('nav-open');
             window.nowuikit.misc.navbar_menu_visible = 0;
@@ -451,14 +451,12 @@ window.nowuikit = {
 }
 
 
-var big_image;
-
 // Javascript just for Demo purpose, remove it from your project
 window.nowuikitDemo = {
     checkScrollForParallax: debounce(function() {
         var current_scroll = $(this).scrollTop();
 
-        oVal = ($(window).scrollTop() / 3);
+        var oVal = ($(window).scrollTop() / 3);
         big_image.css({
             'transform': 'translate3d(0,' + oVal + 'px,0)',
             '-webkit-transform': 'translate3d(0,' + oVal + 'px,0)',
@@ -479,7 +477,7 @@ function debounce(func, wait, immediate) {
     var timeout;
     return function() {
         var context = this,
-            args = arguments;
+        args = arguments;
         clearTimeout(timeout);
         timeout = setTimeout(function() {
             timeout = null;

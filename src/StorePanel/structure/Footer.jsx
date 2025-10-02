@@ -17,23 +17,23 @@ function Footer() {
                                 <span className="title-1 light-black">ضمانت اصل بودن</span>
                             </div>
                             <div className="service-item col-2 contact-box text-center">
-                                <img src="src/StorePanel/assets/img/ico/png-1.png" className="width-40" />
+                                <img src="/src/StorePanel/assets/img/ico/png-1.png" className="width-40" />
                                 <span className="title-1 light-black">پرداخت در محل</span>
                             </div>
                             <div className="service-item col-2 contact-box text-center">
-                                <img src="src/StorePanel/assets/img/ico/png-2.png" className="width-40" />
+                                <img src="/src/StorePanel/assets/img/ico/png-2.png" className="width-40" />
                                 <span className="title-1 light-black">ارسال سریع</span>
                             </div>
                             <div className="service-item col-2 contact-box text-center">
-                                <img src="src/StorePanel/assets/img/ico/png-5.png" className="width-40" />
+                                <img src="/src/StorePanel/assets/img/ico/png-5.png" className="width-40" />
                                 <span className="title-1 light-black">فرصت 7 روزه استرداد</span>
                             </div>
                             <div className="service-item col-2 contact-box text-center">
-                                <img src="src/StorePanel/assets/img/ico/png-3.png" className="width-40" />
+                                <img src="/src/StorePanel/assets/img/ico/png-3.png" className="width-40" />
                                 <span className="title-1 light-black">پشتیبانی تلفنی</span>
                             </div>
                             <div className="service-item col-2 contact-box text-center">
-                                <img src="src/StorePanel/assets/img/ico/png-7.png" className="width-40" />
+                                <img src="/src/StorePanel/assets/img/ico/png-7.png" className="width-40" />
                                 <span className="title-1 light-black">هدیه نقدی</span>
                             </div>
                            
@@ -104,8 +104,8 @@ function Footer() {
                                         <h3 className="card-title">مجوزات</h3>
                                     </div>
                                     <div className="License_img flex flex-row justify-between">
-                                        <a href="#" target="_blank"><img src="src/StorePanel/assets/img/License_2.png" alt=""/></a>
-                                        <a href="#" target="_blank"><img src="src/StorePanel/assets/img/License_1.png" alt=""/></a>
+                                        <a href="#" target="_blank"><img src="/src/StorePanel/assets/img/License_2.png" alt=""/></a>
+                                        <a href="#" target="_blank"><img src="/src/StorePanel/assets/img/License_1.png" alt=""/></a>
                                     </div>
                                 </div>
 
