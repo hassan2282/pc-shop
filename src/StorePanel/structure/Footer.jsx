@@ -13,7 +13,7 @@ function Footer() {
                     <div className="footer-services container  space-10">
                         <div className="row">
                             <div className="service-item col-2 contact-box text-center">
-                                <img src='src/StorePanel/assets/img/ico/png-4.png' className="width-40" />
+                                <img src='/src/StorePanel/assets/img/ico/png-4.png' className="width-40" />
                                 <span className="title-1 light-black">ضمانت اصل بودن</span>
                             </div>
                             <div className="service-item col-2 contact-box text-center">

@@ -59,7 +59,7 @@ function Address() {
     try {
       const res = await apiClient.post("address", userAddress );
       if (res.status >= 200 && res.status < 300) {
-        navigate('/order-address', {replace: true})
+        navigate('/store/order-address', {replace: true})
         toast.success("فرایند ثبت آدرس با موفقیت انجام شد");
       }
     } catch (err) {
@@ -83,7 +83,7 @@ function Address() {
                     <h3 className="card-title space-x-4 flex flex-row">
                       <span>ثبت آدرس</span>
                       <div className="p-2 rounded-md text-sm bg-[#5bbabf] cursor-pointer hover:scale-95 duration-150">
-                        <Link to='/order-address' className="text-white">مشاهده آدرس</Link>
+                        <Link to='/store/order-address' className="text-white">مشاهده آدرس</Link>
                       </div>
                     </h3>
                   </header>

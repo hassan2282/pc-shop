@@ -44,7 +44,7 @@ function OrderAddress() {
                                     <header className="card-header">
                                         <h3 className="card-title"><span>آدرس‌ها</span></h3>
                                         <div className="text-left">
-                                            <Link to={'/address'}  className="btn btn-main-masai" data-toggle="modal" data-target="#addressModal">ثبت آدرس</Link>
+                                            <Link to={'/store/address'}  className="btn btn-main-masai" data-toggle="modal" data-target="#addressModal">ثبت آدرس</Link>
                                         </div>
                                     </header>
                                     <div className="content-section default">
@@ -93,7 +93,7 @@ function OrderAddress() {
 
                                                         </div>
                                                         <div className="col-4 col-lg-2 col-md-2">
-                                                            <img src="src/StorePanel/assets/img/map_2.png" />
+                                                            <img src="/src/StorePanel/assets/img/map_2.png" />
                                                         </div>
                                                     </div>
                                                  

@@ -49,13 +49,13 @@ function OrderCurrent() {
                                                         <div className="row">
                                                            
                                                             <div className="col-4 col-lg-1 col-md-1">
-                                                                <img src="src/StorePanel/assets/img/product_img/p_6.jpg"/>
+                                                                <img src="/src/StorePanel/assets/img/product_img/p_6.jpg"/>
                                                             </div>
                                                             <div className="col-4 col-lg-1 col-md-1">
-                                                                <img src="src/StorePanel/assets/img/product_img/p_2.jpg"/>
+                                                                <img src="/src/StorePanel/assets/img/product_img/p_2.jpg"/>
                                                             </div>
                                                             <div className="col-4 col-lg-1 col-md-1">
-                                                                <img src="src/StorePanel/assets/img/product_img/p_7.jpg"/>
+                                                                <img src="/src/StorePanel/assets/img/product_img/p_7.jpg"/>
                                                             </div>
                                                            
                                                         </div>
@@ -101,13 +101,13 @@ function OrderCurrent() {
                                                     <div className="col-12">
                                                         <div className="row">
                                                             <div className="col-4 col-lg-1 col-md-1">
-                                                                <img src="src/StorePanel/assets/img/product_img/p_12.jpg"/>
+                                                                <img src="/src/StorePanel/assets/img/product_img/p_12.jpg"/>
                                                             </div>
                                                             <div className="col-4 col-lg-1 col-md-1">
-                                                                <img src="src/StorePanel/assets/img/product_img/p_23.jpg"/>
+                                                                <img src="/src/StorePanel/assets/img/product_img/p_23.jpg"/>
                                                             </div>
                                                             <div className="col-4 col-lg-1 col-md-1">
-                                                                <img src="src/StorePanel/assets/img/product_img/p_9.jpg"/>
+                                                                <img src="/src/StorePanel/assets/img/product_img/p_9.jpg"/>
                                                             </div>
                                                            
                                                            

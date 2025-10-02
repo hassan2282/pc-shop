@@ -42,7 +42,7 @@ function Cart() {
                                 <tbody>
                                     <tr className="cart_item">
                                         <td>
-                                            <img src="src/StorePanel/assets/img/product_img/p_9.jpg" alt=""/>
+                                            <img src="/src/StorePanel/assets/img/product_img/p_9.jpg" alt=""/>
                                             <i className="fa fa-times" aria-hidden="true"></i>
                                         </td>
                                         <td>
@@ -68,7 +68,7 @@ function Cart() {
                                     </tr>
                                     <tr className="cart_item">
                                         <td>
-                                            <img src="src/StorePanel/assets/img/product_img/p_6.jpg" />
+                                            <img src="/src/StorePanel/assets/img/product_img/p_6.jpg" />
                                             <i className="fa fa-times" aria-hidden="true"></i>
                                         </td>
                                         <td>

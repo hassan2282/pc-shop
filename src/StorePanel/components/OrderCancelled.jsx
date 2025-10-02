@@ -46,7 +46,7 @@ function OrderCancelled() {
                                                     <div className="col-12">
                                                         <div className="row">
                                                             <div className="col-4 col-lg-2 col-md-2">
-                                                                <img src="src/StorePanel/assets/img/product_img/p_1.jpg"/>
+                                                                <img src="/src/StorePanel/assets/img/product_img/p_1.jpg"/>
                                                             </div>
                                                          
                                                            
@@ -91,7 +91,7 @@ function OrderCancelled() {
                                                     <div className="col-12">
                                                         <div className="row">
                                                             <div className="col-4 col-lg-2 col-md-2">
-                                                                <img src="src/StorePanel/assets/img/product_img/p_7.jpg"/>
+                                                                <img src="/src/StorePanel/assets/img/product_img/p_7.jpg"/>
                                                             </div>
                                                           
 
@@ -136,7 +136,7 @@ function OrderCancelled() {
                                                     <div className="col-12">
                                                         <div className="row">
                                                             <div className="col-4 col-lg-2 col-md-2">
-                                                                <img src="src/StorePanel/assets/img/product_img/p_9.jpg"/>
+                                                                <img src="/src/StorePanel/assets/img/product_img/p_9.jpg"/>
                                                             </div>
 
 

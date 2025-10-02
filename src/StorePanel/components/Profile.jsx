@@ -78,7 +78,7 @@ function Profile() {
                                                 </p>
                                             </div>
                                             <div className="col-12 text-center">
-                                                <Link to="/edit-profile" className="btn btn-main-masai big_btn">
+                                                <Link to="/store/edit-profile" className="btn btn-main-masai big_btn">
                                                     ویرایش
                                                 </Link>
                                             </div>
@@ -95,7 +95,7 @@ function Profile() {
                                                 <p>لطفا آدرس محل سکونت یا محل کار خود را با دقت وارد نمایید</p>
                                             </div>
                                             <div className="col-12 text-center">
-                                                <Link to='/order-address' className="btn btn-main-masai big_btn">
+                                                <Link to='/store/order-address' className="btn btn-main-masai big_btn">
                                                     ثبت آدرس جدید
                                                 </Link>
                                             </div>

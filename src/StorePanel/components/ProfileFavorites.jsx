@@ -19,7 +19,7 @@ function ProfileFavorites() {
                                         <div className="col-md-6 col-sm-12 order_delivered_sec">
                                             <div className="profile-recent-fav-row">
                                                 <div className="col-12 text--center">
-                                                    <img src="src/StorePanel/assets/img/product_img/p_1.jpg" className="max_w200"/>
+                                                    <img src="/src/StorePanel/assets/img/product_img/p_1.jpg" className="max_w200"/>
                                                 </div>
                                                 <div className="col-12">
                                                     <h4 className="profile-recent-fav-name_sec">
@@ -41,7 +41,7 @@ function ProfileFavorites() {
                                         <div className="col-md-6 col-sm-12 order_delivered_sec">
                                             <div className="profile-recent-fav-row">
                                                 <div className="col-12 text--center">
-                                                    <img src="src/StorePanel/assets/img/product_img/p_6.jpg" className="max_w200"/>
+                                                    <img src="/src/StorePanel/assets/img/product_img/p_6.jpg" className="max_w200"/>
                                                 </div>
                                                 <div className="col-12">
                                                     <h4 className="profile-recent-fav-name">
@@ -63,7 +63,7 @@ function ProfileFavorites() {
                                         <div className="col-md-6 col-sm-12 order_delivered_sec">
                                             <div className="profile-recent-fav-row">
                                                 <div className="col-12 text--center">
-                                                    <img src="src/StorePanel/assets/img/product_img/p_8.jpg" className="max_w200"/>
+                                                    <img src="/src/StorePanel/assets/img/product_img/p_8.jpg" className="max_w200"/>
                                                 </div>
                                                 <div className="col-12">
                                                     <h4 className="profile-recent-fav-name">
