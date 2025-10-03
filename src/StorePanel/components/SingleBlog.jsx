@@ -16,7 +16,7 @@
 
                                         <div className="col-md-12 col-sm-12">
 
-                                            <img src="src/StorePanel/assets/img/blog/post-2.jpg" />
+                                            <img src="/src/StorePanel/assets/img/blog/post-2.jpg" />
                                             <div className="data_det">
                                                 <span className="publish_date">
                                                     <i className="fa fa-clock"></i>

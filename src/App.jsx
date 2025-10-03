@@ -33,8 +33,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Navigate to="/store/home" replace />} />
           <Route path="/store/*" element={<StoreContainer />}>
-            <Route path="" element={<Index />} />
             <Route path="home" element={<Index />} />
             <Route path="category-blog" element={<CategoryBlog />} />
             <Route path="category-search" element={<CategorySearch />} />

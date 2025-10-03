@@ -1,4 +1,6 @@
-﻿function SingleProduct() {
+﻿import { Link } from "react-router-dom"
+
+function SingleProduct() {
   return (
     <div>
         <main className="single-product default">
@@ -12,13 +14,13 @@
                                 </li>
                                 
                                 <li>
-                                    <a href="category-search.html"><span>موبایل</span></a>
+                                    <Link to="/store/category-search"><span>موبایل</span></Link>
                                 </li>
                                 <li>
-                                    <a href="category-search.html"><span>برند ترین ها</span></a>
+                                    <Link to="/store/category-search"><span>برند ترین ها</span></Link>
                                 </li>
                                 <li>
-                                    <a href="category-search.html"><span>اپل</span></a>
+                                    <Link to="/store/category-search"><span>اپل</span></Link>
                                 </li>
                                 <li>
                                     <span>  اپل مدل Iphone 13 Pro Max  </span>
@@ -33,14 +35,14 @@
                             <div className="row product_main_details">
                                 <div className="col-lg-5 col-md-6 col-sm-12">
                                     <div className="product-gallery default">
-                                        <img className="main_img_gallery" src="src/StorePanel/assets/img/product_img/single/main.jpg" />
+                                        <img className="main_img_gallery" src="/src/StorePanel/assets/img/product_img/single/main.jpg" />
                                         <section className="testimonial py-3" id="testimonial">
                                             <div className="container">
                                                 <div className="row gallery">
-                                                    <div className="col-4 col-md-3 pd"><a href="assets/img/product_img/single/1.jpg" rel="prettyPhoto[gallery1]"><img src="src/StorePanel/assets/img/product_img/single/1.jpg" className="img-thumb" alt="نمایشگر همیشه روشن" /></a></div>
-                                                    <div className="col-4 col-md-3 pd"><a href="assets/img/product_img/single/2.jpg" rel="prettyPhoto[gallery1]"><img src="src/StorePanel/assets/img/product_img/single/2.jpg" className="img-thumb" alt="سخت تر از همه" /></a></div>
-                                                    <div className="col-4 col-md-3 pd"><a href="assets/img/product_img/single/3.jpg" rel="prettyPhoto[gallery1]"><img src="src/StorePanel/assets/img/product_img/single/3.jpg" className="img-thumb" alt="یک دوربین در یک کلاس به تنهایی" /></a></div>
-                                                    <div className="col-4 col-md-3 pd"><a href="assets/img/product_img/single/4.jpg" rel="prettyPhoto[gallery1]"><img src="src/StorePanel/assets/img/product_img/single/4.jpg" className="img-thumb" alt="حریم خصوصی" /></a></div>
+                                                    <div className="col-4 col-md-3 pd"><a href="#" rel="prettyPhoto[gallery1]"><img src="/src/StorePanel/assets/img/product_img/single/1.jpg" className="img-thumb" alt="نمایشگر همیشه روشن" /></a></div>
+                                                    <div className="col-4 col-md-3 pd"><a href="#" rel="prettyPhoto[gallery1]"><img src="/src/StorePanel/assets/img/product_img/single/2.jpg" className="img-thumb" alt="سخت تر از همه" /></a></div>
+                                                    <div className="col-4 col-md-3 pd"><a href="#" rel="prettyPhoto[gallery1]"><img src="/src/StorePanel/assets/img/product_img/single/3.jpg" className="img-thumb" alt="یک دوربین در یک کلاس به تنهایی" /></a></div>
+                                                    <div className="col-4 col-md-3 pd"><a href="#" rel="prettyPhoto[gallery1]"><img src="/src/StorePanel/assets/img/product_img/single/4.jpg" className="img-thumb" alt="حریم خصوصی" /></a></div>
 
                                                 </div>
                                             </div>
