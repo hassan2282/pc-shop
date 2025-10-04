@@ -52,13 +52,14 @@ function OrderAddress() {
                                              
                                             <div className="relative col-md-12 col-sm-12 order_delivered_sec group
                                                              duration-300 hover:shadow-lg cursor-pointer hover:shadow-zinc-200">
-                                                    <div className="absolute flex max-[]:flex-row max-sm:flex-col justify-center items-center top-0
-                                                            scale-0 right-0 z-20 hover:backdrop-blur-sm shadow-md group-hover:scale-100 
-                                                            shadow-zinc-300 w-full h-full duration-300 space-x-5">
-                                                        {/* <Link to='/address' className="p-4 flex justify-center items-center duration-150 hover:scale-130">
-                                                        <AiFillEdit size={'2rem'} color="#5dbbc0" className="max-sm:text-sm"/>ویرایش</Link> */}
-                                                        <div onClick={deleteAddress} className="flex p-4 justify-center items-center duration-150 hover:scale-130">
-                                                        <AiFillDelete size={'2rem'} color="#5dbbc0"/>حذف</div>
+                                                    <div className="absolute flex w-full  top-0 max-[]:flex-row max-sm:flex-col justify-center items-center
+                                                            scale-0 -translate-y-[100px] group-hover:translate-y-0 z-20 group-hover:scale-100 duration-300">
+                                                        <div onClick={deleteAddress} className="flex flex-row top-0 rounded-b-2xl p-4 w-[30%] bg-[#5ebbc0] justify-center 
+                                                                                            items-center duration-150 hover:scale-130 hover:shadow-xl 
+                                                                                            hover:shadow-gray-300 group-hover:shadow-md
+                                                                                            group-hover:shadow-gray-500">
+                                                        <AiFillDelete size={'2rem'} color="black"/>
+                                                        </div>
                                                     </div>
                                                     <div className="row">
 
