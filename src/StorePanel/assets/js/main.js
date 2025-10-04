@@ -1,4 +1,9 @@
-﻿$(document).ready(function () {
+﻿//if (window.location.hostname != 'garzak.ir') {
+//    alert('کپی رایت قالب را رعایت کرده و اقدام به خرید آن نمایید');
+//    window.location.replace('http://rtlr.ir/258064');
+//}
+
+$(document).ready(function () {
     //Init the carousel
     $("#bid-s").owlCarousel({
         rtl: true,
@@ -278,33 +283,4 @@ jQuery(".recent-nav .next").on("click", function () {
 jQuery(".recent-nav .prev").on("click", function () {
     jQuery(".slider_main").trigger('prev.owl.carousel');
 });
-
-
-
-var slider = document.getElementById('slider');
-
-noUiSlider.create(slider, {
-    start: [12000, 42500],
-    tooltips: true, step: 500,
-    connect: true,
-
-    range: {
-        'min': 1000,
-        'max': 50000
-    },
-    format: {
-        to: function(value) {
-            return (parseInt(value)+" تومان");
-        },
-        from: (v) => v | 0
-    }
-});
-
- 
-/*slider speed*/
-$('.carousel').carousel({
-    interval: 50000
-})
-
-
 

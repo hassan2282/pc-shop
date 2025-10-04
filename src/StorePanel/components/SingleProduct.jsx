@@ -57,7 +57,7 @@ function SingleProduct() {
                                         </li>
                                     </ul>
                                     {/* <!-- Modal Core --> */}
-                                    <div className="modal-share modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div className="modal-share modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div className="modal-dialog">
                                             <div className="modal-content">
                                                 <div className="modal-header">
@@ -72,7 +72,7 @@ function SingleProduct() {
                                                                  <p>
                                                                      برای کپی آدرس در کادر زیر دابل کلیک کنید
                                                                  </p>
-                                                                <p className="right-side-header shareurlvalue" title="کپی بعد دوبار کلیک" id="text" onclick="copyElementText(this.id)">http://www.mysite.com/single-product.html</p>
+                                                                <p className="right-side-header shareurlvalue" title="کپی بعد دوبار کلیک" id="text" onClick={(event) => copyElementText(event.target.id)}>single-product.html</p>
 
                                                             </div>
                                                         </div>
