@@ -1,4 +1,110 @@
-﻿function Index() {
+﻿import React, { useEffect } from 'react';
+
+function Index() {
+  useEffect(() => {
+    if (window.$ && window.$.fn.owlCarousel) {
+      // Initialize banner slider
+      window.$('.slider_main').owlCarousel({
+        rtl: true,
+        dots: true,
+        loop: true,
+        autoplay: true,
+        autoplayHoverPause: true,
+        smartSpeed: 100,
+        mouseDrag: true,
+        nav: true,
+        navText: ["<div class='nav-btn prev-slide '><i class='fa fa-chevron-right'></i></div>", "<div class='nav-btn next-slide '><i class='fa fa-chevron-left'></i></div>"],
+        responsive: {
+          0: { items: 1, dots: false },
+          1200: { items: 1 },
+          767: { items: 1 },
+          600: { items: 1, dots: false },
+          480: { items: 1, dots: false }
+        }
+      });
+
+      // Initialize product carousels
+      window.$('.product-carousel').owlCarousel({
+        rtl: true,
+        margin: 10,
+        nav: true,
+        navText: ['<i class="now-ui-icons arrows-1_minimal-right"></i>', '<i class="now-ui-icons arrows-1_minimal-left"></i>'],
+        dots: false,
+        responsiveClass: true,
+        responsive: {
+          0: { items: 2, slideBy: 1 },
+          576: { items: 2, slideBy: 1 },
+          768: { items: 4, slideBy: 2 },
+          992: { items: 5, slideBy: 2 },
+          1400: { items: 6, slideBy: 3 }
+        }
+      });
+
+      // Initialize blog carousel
+      window.$('.Blog-carousel').owlCarousel({
+        rtl: true,
+        margin: 10,
+        nav: true,
+        navText: ['<i class="now-ui-icons arrows-1_minimal-right"></i>', '<i class="now-ui-icons arrows-1_minimal-left"></i>'],
+        dots: false,
+        responsiveClass: true,
+        responsive: {
+          0: { items: 2, slideBy: 1 },
+          576: { items: 2, slideBy: 1 },
+          768: { items: 3, slideBy: 2 },
+          992: { items: 4, slideBy: 2 },
+          1400: { items: 4, slideBy: 3 }
+        }
+      });
+
+      // Initialize brand slider
+      window.$('.brand-slider .owl-carousel').owlCarousel({
+        rtl: true,
+        dots: false,
+        loop: true,
+        autoplay: true,
+        autoplayHoverPause: true,
+        smartSpeed: 200,
+        responsive: {
+          0: { items: 1 },
+          1200: { items: 7 },
+          992: { items: 6 },
+          768: { items: 5 },
+          600: { items: 3 },
+          480: { items: 2 }
+        }
+      });
+
+      // Initialize bid-s carousel
+      window.$('#bid-s').owlCarousel({
+        rtl: true,
+        items: 1,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        loop: true,
+        dots: false,
+        onInitialized: function() {
+          window.$(".slide-progress").css({
+            width: "100%",
+            transition: "width 5000ms"
+          });
+        },
+        onTranslate: function() {
+          window.$(".slide-progress").css({
+            width: 0,
+            transition: "width 0s"
+          });
+        },
+        onTranslated: function() {
+          window.$(".slide-progress").css({
+            width: "100%",
+            transition: "width 5000ms"
+          });
+        }
+      });
+    }
+  }, []);
+
   return (
     <>
 
