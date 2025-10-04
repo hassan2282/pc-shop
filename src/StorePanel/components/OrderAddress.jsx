@@ -54,11 +54,11 @@ function OrderAddress() {
                                                              duration-300 hover:shadow-lg cursor-pointer hover:shadow-zinc-200">
                                                     <div className="absolute flex w-full  top-0 max-[]:flex-row max-sm:flex-col justify-center items-center
                                                             scale-0 -translate-y-[100px] group-hover:translate-y-0 z-20 group-hover:scale-100 duration-300">
-                                                        <div onClick={deleteAddress} className="flex flex-row top-0 rounded-b-2xl p-4 w-[30%] bg-[#5ebbc0] justify-center 
+                                                        <div onClick={deleteAddress} className="flex flex-row top-0 rounded-b-2xl h-16 w-[30%] bg-[#5ebbc0] justify-center 
                                                                                             items-center duration-150 hover:scale-130 hover:shadow-xl 
                                                                                             hover:shadow-gray-300 group-hover:shadow-md
                                                                                             group-hover:shadow-gray-500">
-                                                        <AiFillDelete size={'2rem'} color="black"/>
+                                                        <AiFillDelete color="black" className="text-[10px] max-sm:text-[20px] min-sm:text-[30px]"/>
                                                         </div>
                                                     </div>
                                                     <div className="row">
