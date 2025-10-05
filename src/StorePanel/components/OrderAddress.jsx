@@ -1,7 +1,7 @@
 ﻿import { Link, useNavigate } from "react-router-dom"
 import OrderSideBar from "../structure/OrderSideBar"
 import { useSelector } from "react-redux"
-import { useEffect, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import apiClient from "../../apiClient";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { toast } from "react-toastify";
@@ -11,31 +11,58 @@ function OrderAddress() {
     const user = useSelector((state) => state.user);
     const [address, setAddress] = useState();
 
-    const deleteAddress = async() => {
-        try{
+    const deleteAddress = async () => {
+        try {
             const res = await apiClient.delete(`delete-address/${address?.id}`)
-            if(res.status >= 200 && res.status < 300) toast.success('آدرس با موفقیت حذف گردید')
-                setAddress('');
-        }catch (err){
+            if (res.status >= 200 && res.status < 300) toast.success('آدرس با موفقیت حذف گردید')
+            setAddress('');
+        } catch (err) {
             toast.error('متاسفانه در فرایند حذف مشکلی بوجود آمده است');
         }
     }
 
     useEffect(() => {
         const fetchAddress = async () => {
-            try{
+            try {
                 const res = await apiClient.get(`user-address/${user.id}`);
                 setAddress(res.data);
-            }catch(err){
+            } catch (err) {
                 toast.error('لطفا اطلاعات آدرس خود را ثبت نمایید', { toastId: 'address-error' });
             }
         }
         fetchAddress();
-    },[]);
+    }, []);
 
-  return (
-    <div>
-        <main className="order-delivered  default space-top-30">
+
+    const [transformStyle, setTransformStyle] = useState('translateX(0px) translateY(0px)');
+
+    const divRef = useRef();
+
+    const magnet = (e) => {
+            if (!divRef.current) return;
+
+            const boxWidth = divRef.current.clientWidth;
+            const boxHeight = divRef.current.clientHeight;
+
+            const rect = divRef.current.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // اثر مغناطیسی قوی‌تر
+            const strength = 0.2;
+            let moveX = (x - boxWidth / 2) * strength;
+            let moveY = (y - boxHeight / 2) * strength;
+
+            setTransformStyle(`translateX(${moveX}px) translateY(${moveY}px)`);
+    }
+
+    const handleMouseLeave = () => {
+        setTransformStyle('translateX(0px) translateY(0px)');
+    }
+
+    return (
+        <div>
+            <main className="order-delivered  default space-top-30">
                 <div className="container">
                     <div className="row">
                         <div className="col-xl-9 col-lg-8 col-md-12 order-2">
@@ -44,63 +71,70 @@ function OrderAddress() {
                                     <header className="card-header">
                                         <h3 className="card-title"><span>آدرس‌ها</span></h3>
                                         <div className="text-left">
-                                            <Link to={'/store/address'}  className="btn btn-main-masai" data-toggle="modal" data-target="#addressModal">ثبت آدرس</Link>
+                                            <Link to={'/store/address'} className="btn btn-main-masai" data-toggle="modal" data-target="#addressModal">ثبت آدرس</Link>
                                         </div>
                                     </header>
                                     <div className="content-section default">
                                         <div className="row overflow-clip">
-                                             
+
                                             <div className="relative col-md-12 col-sm-12 order_delivered_sec group
                                                              duration-300 hover:shadow-lg cursor-pointer hover:shadow-zinc-200">
-                                                    <div className="absolute flex w-full top-0 max-[]:flex-row max-sm:flex-col justify-center items-center
+                                                <div className="absolute flex w-full top-0 max-[]:flex-row max-sm:flex-col justify-center items-center
                                                             scale-0 -translate-y-[100px] group-hover:translate-y-0 z-20 group-hover:scale-100 duration-300">
-                                                        <div onClick={deleteAddress} className="flex flex-row top-0 rounded-b-2xl h-16 w-[30%] max-sm:w-[50%] bg-[#5ebbc0] justify-center 
+                                                    <div
+                                                        onClick={deleteAddress}
+                                                        ref={divRef}
+                                                        style={{ transform: transformStyle }}
+                                                        onMouseMove={magnet}
+                                                        onMouseLeave={handleMouseLeave}
+
+                                                        className="flex flex-row top-0 rounded-b-2xl h-16 w-[30%] max-sm:w-[50%] bg-[#5ebbc0] justify-center 
                                                                                             items-center duration-150 hover:scale-130 hover:shadow-xl 
                                                                                             hover:shadow-gray-300 group-hover:shadow-md
                                                                                             group-hover:shadow-gray-500">
-                                                        <AiFillDelete color="black" className="text-[10px] max-sm:text-[20px] min-sm:text-[30px]"/>
-                                                        </div>
+                                                        <AiFillDelete color="white" className="text-[10px] max-sm:text-[20px] min-sm:text-[30px]" />
                                                     </div>
-                                                    <div className="row">
+                                                </div>
+                                                <div className="row">
 
 
-                                                        <div className="col-10 col-lg-10 col-md-10">
+                                                    <div className="col-10 col-lg-10 col-md-10">
 
-                                                            <ul className="order-addres">
-                                                                <li>
-                                                                    <i className="fa fa-user-large colormain" aria-hidden="true"></i>{user.first_name}
-                                                                </li>
-                                                                <li>
-                                                                    <i className="fa fa-user-large colormain" aria-hidden="true"></i> {user.last_name}
-                                                                </li>
-                                                                <li>
-                                                                    <i className="fa fa-phone colormain" aria-hidden="true"></i> {user.phone}
-                                                                </li>
-                                                                <li>
-                                                                    <i className="fa fa-map  colormain" aria-hidden="true"></i> {address?.province?.name ? address?.province?.name : ' ثبت نشده '}
-                                                                </li>
-                                                                <li>
-                                                                    <i className="fa fa-map  colormain" aria-hidden="true"></i> {address?.city?.name ? address?.city?.name : ' ثبت نشده'}
-                                                                </li>
-                                                                <li>
-                                                                    <i className="fa fa-envelope colormain" aria-hidden="true"></i> {address?.postal_code ? address?.postal_code : ' ثبت نشده'}
-                                                                </li>
+                                                        <ul className="order-addres">
+                                                            <li>
+                                                                <i className="fa fa-user-large colormain" aria-hidden="true"></i>{user.first_name}
+                                                            </li>
+                                                            <li>
+                                                                <i className="fa fa-user-large colormain" aria-hidden="true"></i> {user.last_name}
+                                                            </li>
+                                                            <li>
+                                                                <i className="fa fa-phone colormain" aria-hidden="true"></i> {user.phone}
+                                                            </li>
+                                                            <li>
+                                                                <i className="fa fa-map  colormain" aria-hidden="true"></i> {address?.province?.name ? address?.province?.name : ' ثبت نشده '}
+                                                            </li>
+                                                            <li>
+                                                                <i className="fa fa-map  colormain" aria-hidden="true"></i> {address?.city?.name ? address?.city?.name : ' ثبت نشده'}
+                                                            </li>
+                                                            <li>
+                                                                <i className="fa fa-envelope colormain" aria-hidden="true"></i> {address?.postal_code ? address?.postal_code : ' ثبت نشده'}
+                                                            </li>
 
-                                                            </ul>
+                                                        </ul>
 
-                                                            <h4 className="profile-recent-fav-name">
-                                                                <i className="fa fa-map-pin" aria-hidden="true"></i> {address?.address ? address?.address : 'ثبت نشده'}
-                                                            </h4>
+                                                        <h4 className="profile-recent-fav-name">
+                                                            <i className="fa fa-map-pin" aria-hidden="true"></i> {address?.address ? address?.address : 'ثبت نشده'}
+                                                        </h4>
 
-                                                        </div>
-                                                        <div className="col-4 col-lg-2 col-md-2">
-                                                            <img src="/src/StorePanel/assets/img/map_2.png" />
-                                                        </div>
                                                     </div>
-                                                 
+                                                    <div className="col-4 col-lg-2 col-md-2">
+                                                        <img src="/src/StorePanel/assets/img/map_2.png" />
+                                                    </div>
+                                                </div>
+
                                             </div>
-                                            
-                                            
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -110,8 +144,8 @@ function OrderAddress() {
                     </div>
                 </div>
             </main>
-    </div>
-  )
+        </div>
+    )
 }
 
 export default OrderAddress
