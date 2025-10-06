@@ -4,6 +4,11 @@
  * add current theme *
  **********************/
 var root = document.getElementsByTagName('html')[0];
+window.root = root;
+
+var currentTheme = localStorage.theme || 'light';
+window.currentTheme = currentTheme; // 👈 اضافه کن
+
 if (localStorage.theme) {
   var currentTheme = localStorage.theme;
   if (currentTheme == 'dark') {

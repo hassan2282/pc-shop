@@ -3,7 +3,6 @@ import Header from './Header'
 import Footer from './Footer'
 import ScrollToTop from './ScrollToTop'
 import { useEffect } from 'react'
-import $ from 'jquery' // jquery به‌صورت ماژول
 
 // Css نصب‌شده با npm
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -19,9 +18,7 @@ import '../assets/css/style.css'
 
 function StoreContainer() {
   useEffect(() => {
-    // 1) jQuery را global کن — این باید قبل از اجرای پلاگین‌ها انجام شود
-    window.$ = window.jQuery = $;
-    // console.log('window.jQuery set:', !!window.jQuery);
+    // jQuery is loaded globally from index.html
 
     // 2) پلاگین‌ها را به ترتیب دینامیک وارد کن (await برای ترتیب)
     const loadPlugins = async () => {

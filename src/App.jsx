@@ -26,6 +26,10 @@ import EditProfile from "./StorePanel/components/EditProfile";
 import Profile from "./StorePanel/components/Profile";
 import Address from "./StorePanel/components/Address";
 import StoreContainer from "./StorePanel/structure/StoreContainer.jsx";
+import AdminContainer from "./AdminPanel/Structure/AdminContainer.jsx";
+import Adm_index from "./AdminPanel/Components/Adm_index.jsx"
+
+
 function App() {
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
@@ -166,6 +170,11 @@ function App() {
               }
             />
             <Route path="about-us" element={<AboutUs />} />
+          </Route>
+
+
+          <Route path="/admin/*" element={<AdminContainer />}>
+              <Route path="index" element={<Adm_index />} />
           </Route>
         </Routes>
         <ToastContainer />

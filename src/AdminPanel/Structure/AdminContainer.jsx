@@ -1,21 +1,30 @@
-import React from 'react'
+import { Outlet } from 'react-router-dom';
 import AdminSideBar from './AdminSidebar';
 import AdminSetting from './AdminSetting';
 import AdminHeader from './AdminHeader';
 import AdminFooter from './AdminFooter';
 import AdminSearchModal from './AdminSearchModal';
 
+import $ from 'jquery';
+window.$ = window.jQuery = $;
+import Cleave from 'cleave.js';
+window.Cleave = Cleave;
+
 import '../assets/css/rt-plugins.css'
 import '../assets/css/app.css'
 
-import '../assets/js/settings.js';
-
-import 'jquery';
-import '../assets/js/rt-plugins.js'
-import '../assets/js/app.js'
-import { Outlet } from 'react-router-dom';
+import '../assets/js/settings.js'
+import { useEffect } from 'react';
 
 function AdminContainer() {
+
+useEffect(() => {
+  window.$ = window.jQuery = $;
+  import('../assets/js/rt-plugins.js').then(() => {
+    import('../assets/js/app.js');
+  });
+}, []);
+
   return (
     <div className='font-inter dashcode-app' id='body_class'>
         <main class="app-wrapper">
@@ -31,7 +40,7 @@ function AdminContainer() {
 
                 <Outlet />
 
-                
+
             </div>
 
             <AdminFooter />
