@@ -28,7 +28,7 @@ function Index() {
         rtl: true,
         margin: 10,
         nav: true,
-        navText: ['<i class="now-ui-icons arrows-1_minimal-right"></i>', '<i class="now-ui-icons arrows-1_minimal-left"></i>'],
+        navText: ['<i class="fas fa-chevron-right"></i>', '<i class="fas fa-chevron-left"></i>'],
         dots: false,
         responsiveClass: true,
         responsive: {
@@ -45,7 +45,7 @@ function Index() {
         rtl: true,
         margin: 10,
         nav: true,
-        navText: ['<i class="now-ui-icons arrows-1_minimal-right"></i>', '<i class="now-ui-icons arrows-1_minimal-left"></i>'],
+        navText: ['<i class="fas fa-chevron-right"></i>', '<i class="fas fa-chevron-left"></i>'],
         dots: false,
         responsiveClass: true,
         responsive: {
