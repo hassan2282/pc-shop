@@ -11,7 +11,7 @@ function AdminSetting() {
             </button>
 
 
-            <div className="offcanvas offcanvas-end fixed bottom-0 flex flex-col max-w-full bg-white dark:bg-slate-800 invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 ltr:right-0 rtl:left-0 border-none w-96" tabindex="-1" id="offcanvas" aria-labelledby="offcanvas">
+            <div className="offcanvas offcanvas-end fixed bottom-0 flex flex-col max-w-full bg-white dark:bg-slate-800 invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 ltr:right-0 rtl:left-0 border-none w-96" tabIndex="-1" id="offcanvas" aria-labelledby="offcanvas">
                 <div className="offcanvas-header flex items-center justify-between p-4 pt-3 border-b border-b-slate-300">
                     <div>
                         <h3 className="block text-xl font-Inter text-slate-900 font-medium dark:text-[#eee]">سفارشی کننده تم</h3>
@@ -27,15 +27,15 @@ function AdminSetting() {
                             <form className="input-area flex items-center space-x-8 rtl:space-x-reverse" id="themeChanger">
                                 <div className="input-group flex items-center">
                                     <input type="radio" id="light" name="theme" value="light" className="themeCustomization-checkInput" />
-                                    <label for="light" className="themeCustomization-checkInput-label">لایت</label>
+                                    <label htmlFor="light" className="themeCustomization-checkInput-label">لایت</label>
                                 </div>
                                 <div className="input-group flex items-center">
                                     <input type="radio" id="dark" name="theme" value="dark" className="themeCustomization-checkInput" />
-                                    <label for="dark" className="themeCustomization-checkInput-label">تاریک</label>
+                                    <label htmlFor="dark" className="themeCustomization-checkInput-label">تاریک</label>
                                 </div>
                                 <div className="input-group flex items-center">
                                     <input type="radio" id="semiDark" name="theme" value="semiDark" className="themeCustomization-checkInput" />
-                                    <label for="semiDark" className="themeCustomization-checkInput-label">نیمه تاریک</label>
+                                    <label htmlFor="semiDark" className="themeCustomization-checkInput-label">نیمه تاریک</label>
                                 </div>
                             </form>
                         </div>
@@ -57,11 +57,11 @@ function AdminSetting() {
                                 <div className="input-group flex items-center">
                                     <input type="radio" id="fullWidth" name="content-width" value="fullWidth"
                                         className="themeCustomization-checkInput" />
-                                    <label for="fullWidth" className="themeCustomization-checkInput-label ">عرض کامل</label>
+                                    <label htmlFor="fullWidth" className="themeCustomization-checkInput-label ">عرض کامل</label>
                                 </div>
                                 <div className="input-group flex items-center">
                                     <input type="radio" id="boxed" name="content-width" value="boxed" className="themeCustomization-checkInput" />
-                                    <label for="boxed" className="themeCustomization-checkInput-label ">جعبه ای</label>
+                                    <label htmlFor="boxed" className="themeCustomization-checkInput-label ">جعبه ای</label>
                                 </div>
                             </div>
                             <h3 className="mt-4"> چیدمان منو</h3>
@@ -69,12 +69,12 @@ function AdminSetting() {
                                 <div className="input-group flex items-center">
                                     <input type="radio" id="vertical_menu" name="menu_layout" value="vertical"
                                         className="themeCustomization-checkInput" />
-                                    <label for="vertical_menu" className="themeCustomization-checkInput-label ">عمودی</label>
+                                    <label htmlFor="vertical_menu" className="themeCustomization-checkInput-label ">عمودی</label>
                                 </div>
                                 <div className="input-group flex items-center">
                                     <input type="radio" id="horizontal_menu" name="menu_layout" value="horizontal"
                                         className="themeCustomization-checkInput" />
-                                    <label for="horizontal_menu" className="themeCustomization-checkInput-label ">افقی</label>
+                                    <label htmlFor="horizontal_menu" className="themeCustomization-checkInput-label ">افقی</label>
                                 </div>
                             </div>
                             <div id="menuCollapse" className="flex items-center justify-between mt-5">
@@ -99,37 +99,37 @@ function AdminSetting() {
                                 <div className="input-group flex items-center">
                                     <input type="radio" id="nav_floating" name="navbarType" value="floating"
                                         className="themeCustomization-checkInput" />
-                                    <label for="nav_floating" className="themeCustomization-checkInput-label "> شناور</label>
+                                    <label htmlFor="nav_floating" className="themeCustomization-checkInput-label "> شناور</label>
                                 </div>
                                 <div className="input-group flex items-center">
                                     <input type="radio" id="nav_sticky" name="navbarType" value="sticky"
                                         className="themeCustomization-checkInput" />
-                                    <label for="nav_sticky" className="themeCustomization-checkInput-label ">چسبنده</label>
+                                    <label htmlFor="nav_sticky" className="themeCustomization-checkInput-label ">چسبنده</label>
                                 </div>
                                 <div className="input-group flex items-center">
                                     <input type="radio" id="nav_static" name="navbarType" value="static"
                                         className="themeCustomization-checkInput" />
-                                    <label for="nav_static" className="themeCustomization-checkInput-label ">ایستا</label>
+                                    <label htmlFor="nav_static" className="themeCustomization-checkInput-label ">ایستا</label>
                                 </div>
                                 <div className="input-group flex items-center">
                                     <input type="radio" id="nav_hidden" name="navbarType" value="hidden"
                                         className="themeCustomization-checkInput" />
-                                    <label for="nav_hidden" className="themeCustomization-checkInput-label ">پنهان</label>
+                                    <label htmlFor="nav_hidden" className="themeCustomization-checkInput-label ">پنهان</label>
                                 </div>
                             </div>
                             <h3 className="mt-4">نوع فوتر</h3>
                             <div className="input-area flex items-center space-x-4 rtl:space-x-reverse">
                                 <div className="input-group flex items-center">
                                     <input type="radio" id="footer_sticky" name="footerType" value="sticky" className="themeCustomization-checkInput" />
-                                    <label for="footer_sticky" className="themeCustomization-checkInput-label ">چسبنده</label>
+                                    <label htmlFor="footer_sticky" className="themeCustomization-checkInput-label ">چسبنده</label>
                                 </div>
                                 <div className="input-group flex items-center">
                                     <input type="radio" id="footer_static" name="footerType" value="static" className="themeCustomization-checkInput" />
-                                    <label for="footer_static" className="themeCustomization-checkInput-label ">ایستا</label>
+                                    <label htmlFor="footer_static" className="themeCustomization-checkInput-label ">ایستا</label>
                                 </div>
                                 <div className="input-group flex items-center">
                                     <input type="radio" id="footer_hidden" name="footerType" value="hidden" className="themeCustomization-checkInput" />
-                                    <label for="footer_hidden" className="themeCustomization-checkInput-label ">پنهان</label>
+                                    <label htmlFor="footer_hidden" className="themeCustomization-checkInput-label ">پنهان</label>
                                 </div>
                             </div>
                         </div>

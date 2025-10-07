@@ -27,14 +27,14 @@ useEffect(() => {
 
   return (
     <div className='font-inter dashcode-app' id='body_class'>
-        <main class="app-wrapper">
+        <main className="app-wrapper">
 
             <AdminSideBar />
 
             <AdminSetting />
 
 
-            <div class="flex flex-col justify-between min-h-screen">
+            <div className="flex flex-col justify-between min-h-screen">
                 <AdminHeader />
                 <AdminSearchModal />
 

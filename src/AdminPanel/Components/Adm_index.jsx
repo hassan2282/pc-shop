@@ -42,7 +42,7 @@ function Adm_index() {
                                 <div className="2xl:col-span-3 lg:col-span-4 col-span-12">
                                     <div
                                         className="bg-no-repeat bg-cover bg-center p-4 rounded-[6px] relative"
-                                        style="background-image: url(assets/images/all-img/widget-bg-1.png)"
+                                        style={{ backgroundImage: "url(assets/images/all-img/widget-bg-1.png)" }}
                                     >
                                         <div className="max-w-[180px]">
                                             <div className="text-xl font-medium text-slate-900 mb-2">

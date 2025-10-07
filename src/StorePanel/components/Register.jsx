@@ -54,7 +54,7 @@ const handleSubmit = async (e) => {
                     user: res.data.user,
                 }
             })
-            navigate("/home",{replace:true})
+            navigate("store/home",{replace:true})
         }
         
     }catch (err) {
@@ -98,7 +98,7 @@ const handleSubmit = async (e) => {
                                             </div>
                                             <div className="col-md-12 col-sm-12">
                                                 <div className="form-account-title"><span>*</span> ایمیل</div>
-                                                <div className={`form-account-row  ${errors.email && 'border-red-500 border-2 rounded-full animate-pulse'} `}>
+                                                <div className={`form-account-row  ${errors.email && 'border-red-500 border-danger border-2 rounded-full animate-pulse'} `}>
                                                     <input 
                                                     maxLength={255}
                                                     onChange={handleChange}
@@ -108,7 +108,7 @@ const handleSubmit = async (e) => {
                                             </div>
                                             <div className="col-md-12 col-sm-12">
                                                 <div className="form-account-title"><span>*</span> کلمه عبور</div>
-                                                <div className={`form-account-row  ${errors.frontError && 'border-red-500 border-2 rounded-full animate-pulse'} `}>
+                                                <div className={`form-account-row  ${errors.frontError && 'border-red-500 border-danger border-2 rounded-full animate-pulse'} `}>
                                                     <input
                                                     minLength={6}
                                                     maxLength={255}
@@ -119,7 +119,7 @@ const handleSubmit = async (e) => {
                                             </div>
                                             <div className="col-md-12 col-sm-12">
                                                 <div className="form-account-title"><span>*</span> تکرار کلمه عبور</div>
-                                                <div className={`form-account-row  ${errors.frontError && 'border-red-500 border-2 rounded-full animate-pulse'} `}>
+                                                <div className={`form-account-row  ${errors.frontError && 'border-red-500 border-danger border-2 rounded-full animate-pulse'} `}>
                                                     <input
                                                     minLength={6}
                                                     maxLength={255}
