@@ -37,25 +37,27 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+          <Route
+              path="store/register"
+              element={
+                !isAuthenticated ? <Register /> : <Navigate to="/store/home" replace />
+              }
+            />
+
+            <Route
+              path="store/login"
+              element={!isAuthenticated ? <Login /> : <Navigate to="/store/home" replace />}
+            />
+
           <Route path="/" element={<Navigate to="/store/home" replace />} />
+
+
           <Route path="/store/*" element={<StoreContainer />}>
             <Route path="home" element={<Index />} />
             <Route path="category-blog" element={<CategoryBlog />} />
             <Route path="category-search" element={<CategorySearch />} />
             <Route path="single-product" element={<SingleProduct />} />
             <Route path="single-blog" element={<SingleBlog />} />
-
-            <Route
-              path="register"
-              element={
-                !isAuthenticated ? <Register /> : <Navigate to="/" replace />
-              }
-            />
-
-            <Route
-              path="login"
-              element={!isAuthenticated ? <Login /> : <Navigate to="/" replace />}
-            />
 
             <Route
               path="profile"

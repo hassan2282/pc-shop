@@ -145,7 +145,7 @@ function EditProfile() {
               >
                 <form
                   onSubmit={handleInfoSubmit}
-                  className="flex flex-col justify-center items-center h-auto basis-full 
+                  className="flex flex-col justify-center items-center h-auto basis-full bg-[#e9fafc9a]
                                         rounded-xl shadow shadow-gray-600 max-md:w-full
                                         *:flex *:flex-col *:w-[80%] *:p-2"
                 >
@@ -264,7 +264,7 @@ function EditProfile() {
 
                 <form
                   onSubmit={AvatarSubmit}
-                  className="flex flex-col relative justify-center items-center h-auto basis-full rounded-xl shadow shadow-gray-600"
+                  className="flex flex-col relative justify-center items-center h-auto basis-full rounded-xl shadow bg-[#e9fafc9a] shadow-gray-600"
                 >
                   <div className="flex justify-center bg-[#a0d4d646] shadow-md shadow-[#5d8a8b] items-center text-center h-19 text-lg rounded-t-lg w-full ">
                     ویرایش تصویر پروفایل
@@ -274,7 +274,8 @@ function EditProfile() {
                       imgReview ? { backgroundImage: `url(${imgReview})` } : 
                       user.profile ? { backgroundImage: `url(http://127.0.0.1:8000/storage/media/${user.profile})` } : {}
                     }
-                    className={`relative bg-cover flex flex-col justify-center border-dotted hover:bg-blue-300 duration-200 hover:opacity-85 text-gray-600 border-[#54b4b9]
+                    className={`relative bg-cover flex flex-col justify-center border-dotted hover:bg-blue-300 
+                        duration-200 hover:opacity-85 text-gray-600 border-[#54b4b9]
                                 border-3 rounded-md items-center w-full max-sm:h-60 h-92.5 cover mt-3 ${
                                   imgReview ? "bg-cover bg-center" : ""
                                 } `}
@@ -302,8 +303,8 @@ function EditProfile() {
                       ref={AvatarRef}
                     />
                   </div>
-                  <div className="flex w-full h-32 justify-center items-center overflow-clip">
-                    <div className="flex flex-col w-full justify-center items-center p-3">
+                  <div className="flex w-full h-32 justify-center items-end overflow-clip">
+                    <div className="flex flex-col w-full justify-center items-center p-2">
                       <span className="text-center">
                         حداکثر حجم تصویر 2 مگابایت است و تصویر باید یکی از فرمت
                         های jpg, png, jpeg, webp, svg باشد

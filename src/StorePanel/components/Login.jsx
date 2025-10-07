@@ -55,15 +55,16 @@ function Login() {
 
   return (
     <>
-      <main className="wrapper default">
-        <div className="container">
-          <div className="row">
-            <div className="main-content login_content  col-12 col-md-7 col-lg-5 mx-auto">
-              <header className="card-header">
+      <main className="flex justify-center items-center h-screen w-screen">
+        <img src="/src/StorePanel/assets/img/abstract-bg2.jpg" className="fixed w-screen h-screen z-10 bg-cover"/>
+        <div className="w-screen flex flex-row z-20 h-screen">
+          <div className="h-full basis-1/2 z-20 flex justify-center items-center space-y-3">
+            <div className="w-[65%] backdrop-blur-sm p-4 bg-[#eaf6f748] rounded-xl border-t-[#D2F5F9] border-2  shadow-[#93D5DF] shadow-xl">
+              {/* <header className="card-header">
                 <h3 className="card-title">
                   <span>ورود به حساب کاربری</span>
                 </h3>
-              </header>
+              </header> */}
               <div className="login_box">
                 <form onSubmit={handleSubmit}>
                   <div className="row">
@@ -117,10 +118,10 @@ function Login() {
                         رمز عبور را فراموش کرده اید؟
                       </a>
                     </div>
-                    <div className="col-12 text--center">
+                    <div className="flex w-full m-3 justify-center items-center ">
                       <button
                         type="submit"
-                        className="btn big_btn btn-main-masai flex justify-center items-center"
+                        className="btn big_btn btn-main-masai col-12 flex justify-center items-center"
                       >
                         {isLoading ? (
                           <AiOutlineLoading
@@ -132,7 +133,7 @@ function Login() {
                         )}
                       </button>
                     </div>
-                    <div className="col-12 footer_login_reg text--center">
+                    <div className="col-12 footer_login_reg text--center rounded-xl">
                       <p>
                         <span>کاربر جدید هستید؟</span>
                         <Link to="/store/register" className="text-lg">
@@ -146,6 +147,7 @@ function Login() {
               </div>
             </div>
           </div>
+          <div className="basis-1/2"></div>
         </div>
       </main>
     </>
