@@ -87,8 +87,8 @@ function Profile() {
                                         </div>
                                     </div>
                                 <div className="w-full mt-4">
-                                    <div className="w-full bg-[#57B6BB]/20 rounded-md p-2">
-                                        <div className="w-full bg-[#57B6BB]/3 shadow-xs shadow-black rounded-md">
+                                    <div className="w-full border-[#5DBBC0] border-2 rounded-xl p-2">
+                                        <div className="w-full shadow-xs shadow-black rounded-md">
                                             <header className="card-header w-full">
                                                 <h3 className="card-title w-full"><span>آدرس</span></h3>
                                             </header>

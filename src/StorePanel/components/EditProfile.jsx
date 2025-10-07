@@ -146,10 +146,11 @@ function EditProfile() {
                 <form
                   onSubmit={handleInfoSubmit}
                   className="flex flex-col justify-center items-center h-auto basis-full 
-                                        rounded-lg shadow shadow-gray-600 max-md:w-full
-                                        *:flex *:flex-col *:w-[80%] *:m-2"
+                                        rounded-xl shadow shadow-gray-600 max-md:w-full
+                                        *:flex *:flex-col *:w-[80%] *:p-2"
                 >
-                  <div className=" p-6 text-lg text-center mb-4 border-b-3 border-dotted border-b-[#5dbbc0] rounded-t-lg w-full ">
+                  <div className=" p-6 text-lg text-center mb-4 border-b-3 border-dotted
+                                 bg-[#a0d4d646] text-gray-600 shadow-md shadow-[#5d8a8b] rounded-t-lg w-full ">
                     اطلاعات حساب کاربری
                   </div>
                   {Object.keys(errors).length > 0 && (
@@ -179,7 +180,7 @@ function EditProfile() {
                       className={
                         errors.errors?.first_name
                           ? "border-red-600 border-2 animate-pulse bg-red-300 rounded-full p-2"
-                          : "input_second input_all "
+                          : "input_second input_all inset-shadow-sm"
                       }
                       name="first_name"
                       type="text"
@@ -196,7 +197,7 @@ function EditProfile() {
                       className={
                         errors.errors?.last_name
                           ? "border-red-600 border-2 animate-pulse bg-red-300 rounded-full p-2"
-                          : "input_second input_all "
+                          : "input_second input_all inset-shadow-sm"
                       }
                       name="last_name"
                       type="text"
@@ -214,7 +215,7 @@ function EditProfile() {
                       className={
                         errors.errors?.phone
                           ? "border-red-600 border-2 animate-pulse bg-red-300 rounded-full p-2"
-                          : "input_second input_all "
+                          : "input_second input_all inset-shadow-sm"
                       }
                       name="phone"
                       type="tel"
@@ -231,22 +232,21 @@ function EditProfile() {
                       className={
                         errors.errors?.email
                           ? "border-red-600 border-2 animate-pulse bg-red-300 rounded-full p-2"
-                          : "input_second input_all "
+                          : "input_second input_all inset-shadow-sm"
                       }
                       name="email"
                       type="email"
                       placeholder={user ? user.email : "ایمیل"}
                     />
                   </div>
-                  <div className="col-12 mt-4 max-md:mt-0">
-                    <div className="flex flex-col justify-center items-center">
-                      <span className="w-[85%] max-md:hidden mb-4">
+                  <div className=" mt-4 max-md:mt-0 flex h-34 justify-center items-center">
+                    <div className="justify-center items-center">
+                      <span className="w-[85%] max-md:hidden mb-4 rounded-md">
                         برای داشتن خریدی سریع تر لطفا اطلاعات خود را در این بخش
                         تکمیل نمایید
                       </span>
                       <button
-                        className="p-2 w-[70%] mb-4 bg-[#46a9ae] hover:shadow-md hover:shadow-gray-400
-                                                     duration-200 rounded text-white cursor-pointer"
+                        className="btn btn-main-masai big_btn"
                         type="submit"
                       >
                         {isLoading ? (
@@ -264,9 +264,9 @@ function EditProfile() {
 
                 <form
                   onSubmit={AvatarSubmit}
-                  className="flex flex-col relative justify-center items-center h-auto basis-full rounded-lg shadow shadow-gray-600"
+                  className="flex flex-col relative justify-center items-center h-auto basis-full rounded-xl shadow shadow-gray-600"
                 >
-                  <div className="flex justify-center items-center text-center h-21 text-lg rounded-t-lg w-full ">
+                  <div className="flex justify-center bg-[#a0d4d646] shadow-md shadow-[#5d8a8b] items-center text-center h-19 text-lg rounded-t-lg w-full ">
                     ویرایش تصویر پروفایل
                   </div>
                   <div
@@ -275,7 +275,7 @@ function EditProfile() {
                       user.profile ? { backgroundImage: `url(http://127.0.0.1:8000/storage/media/${user.profile})` } : {}
                     }
                     className={`relative bg-cover flex flex-col justify-center border-dotted hover:bg-blue-300 duration-200 hover:opacity-85 text-gray-600 border-[#54b4b9]
-                                border-3 rounded-md items-center mb-4 w-full max-sm:h-60 h-92.5 cover ${
+                                border-3 rounded-md items-center w-full max-sm:h-60 h-92.5 cover mt-3 ${
                                   imgReview ? "bg-cover bg-center" : ""
                                 } `}
                   >
@@ -302,15 +302,14 @@ function EditProfile() {
                       ref={AvatarRef}
                     />
                   </div>
-                  <div className="col-12 w-full">
-                    <div className="flex flex-col w-full justify-center items-center">
-                      <span className="w-[90%] md:h-10">
+                  <div className="flex w-full h-32 justify-center items-center overflow-clip">
+                    <div className="flex flex-col w-full justify-center items-center p-3">
+                      <span className="text-center">
                         حداکثر حجم تصویر 2 مگابایت است و تصویر باید یکی از فرمت
                         های jpg, png, jpeg, webp, svg باشد
                       </span>
                       <button
-                        className="bg-[#46a9ae] p-2 w-full my-4 hover:shadow-md hover:shadow-gray-400
-                                                     duration-200 rounded text-white cursor-pointer"
+                        className="btn btn-main-masai big_btn"
                         type="submit"
                       >
                         {AvatarLoading ? (
