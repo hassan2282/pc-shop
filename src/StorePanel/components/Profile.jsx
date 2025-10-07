@@ -20,8 +20,9 @@ function Profile() {
                                     </header>
                                     <div className="w-full rounded-md bg-[#60BDC2]/5">
 
-                                        <div className="min-sm:grid min-sm:grid-cols-2 max-sm:flex max-sm:flex-col gap-2 w-full bg-[#57B6BB]/10 rounded-md p-3 shadow-sm shadow-black
-                                            *:bg-[#57B6BB]/20 *:p-3 *:rounded-md *:w-full *:m-0.5 *:overflow-clip">
+                                        <div className="min-sm:grid min-sm:grid-cols-2 max-sm:flex max-sm:flex-col
+                                         gap-2 w-full bg-[#57B6BB]/0 rounded-md max-sm:p-3 min-sm:p-5 shadow-sm shadow-black
+                                            *:bg-[#57B6BB]/10 *:p-3 *:hover:bg-[#57B6BB]/20 *:hover:cursor-pointer *:rounded-md *:w-full *:m-0.5 *:overflow-clip">
                                             <div className="shadow-sm shadow-black">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]">نام  :</span>
