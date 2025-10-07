@@ -23,14 +23,14 @@ function Profile() {
                                         <div className="min-sm:grid min-sm:grid-cols-2 max-sm:flex max-sm:flex-col
                                          gap-2 w-full bg-[#57B6BB]/0 rounded-md max-sm:p-3 min-sm:p-5 shadow-sm shadow-black
                                             *:bg-[#57B6BB]/10 *:p-3 *:hover:bg-[#57B6BB]/20 *:hover:cursor-pointer *:rounded-md *:w-full *:m-0.5 *:overflow-clip">
-                                            <div className="shadow-sm shadow-black">
+                                            <div className="">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]">نام  :</span>
                                                     <span className="text-[hsl(0,0%,30%)]">{user ? user.first_name : ' '}
                                                     </span>
                                                 </p>
                                             </div>
-                                            <div className="shadow-sm shadow-black">
+                                            <div className="">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]"> نام خانوادگی :</span>
                                                     <span className="text-[hsl(0,0%,30%)]">
@@ -38,43 +38,43 @@ function Profile() {
                                                     </span>
                                                 </p>
                                             </div>
-                                            <div className="shadow-sm shadow-black">
+                                            <div className="">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]">پست الکترونیک :</span>
                                                     <span className="text-[hsl(0,0%,30%)]">{user ? user.email : ' '}</span>
                                                 </p>
                                             </div>
-                                            <div className="shadow-sm shadow-black">
+                                            <div className="">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]">شماره تلفن همراه:</span>
                                                     <span className="text-[hsl(0,0%,30%)]">{user ? user.phone : ' '}</span>
                                                 </p>
                                             </div>
-                                            <div className="shadow-sm shadow-black">
+                                            <div className="">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]">کد پستی :</span>
                                                     <span className="text-[hsl(0,0%,30%)]">(نامشخص)</span>
                                                 </p>
                                             </div>
-                                            <div className="shadow-sm shadow-black">
+                                            <div className="">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]">روش بازگرداندن پول من :</span>
                                                     <span className="text-[hsl(0,0%,30%)]">ﺷﻤﺎره ﺷﺒﺎ</span>
                                                 </p>
                                             </div>
-                                            <div className="shadow-sm shadow-black">
+                                            <div className="">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]">شغل :</span>
                                                     <span className="text-[hsl(0,0%,30%)]">توسعه نرم افزار و برنامه نویسی</span>
                                                 </p>
                                             </div>
-                                            <div className="shadow-sm shadow-black">
+                                            <div className="">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]">تاریخ تولد :</span>
                                                     <span className="text-[hsl(0,0%,30%)]">۱۳۷۰/۶/۱۴</span>
                                                 </p>
                                             </div>
-                                            <div className="shadow-sm shadow-black col-span-2">
+                                            <div className=" col-span-2">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]">کد ملی :</span>
                                                     <span className="text-[hsl(0,0%,30%)]">297865432</span>
@@ -88,8 +88,8 @@ function Profile() {
                                         </div>
                                     </div>
                                 <div className="w-full mt-4">
-                                    <div className="w-full border-[#5DBBC0] border-2 rounded-xl p-2">
-                                        <div className="w-full shadow-xs shadow-black rounded-md">
+                                    <div className="w-full border-[#5DBBC0] border-2 rounded-xl p-2 bg-[#60BDC2]/5">
+                                        <div className="w-full shadow-xs shadow-black rounded-md ">
                                             <header className="card-header w-full">
                                                 <h3 className="card-title w-full"><span>آدرس</span></h3>
                                             </header>

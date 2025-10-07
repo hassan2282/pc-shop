@@ -73,30 +73,30 @@ function Address() {
 
   return (
     <div>
-      <main className="profile-user-page default  space-top-30">
+      <main className="profile-user-page default space-top-30">
         <div className="container">
           <div className="row">
             <div className="profile-page col-xl-9 col-lg-8 col-md-12 order-2">
               <div className="row">
                 <div className="col-12">
                   <header className="card-header">
-                    <h3 className="card-title space-x-4 flex flex-row">
+                    <h3 className="card-title space-x-4 flex flex-row w-full">
                       <span>ثبت آدرس</span>
                       <div className="p-2 rounded-md text-sm bg-[#5bbabf] cursor-pointer hover:scale-95 duration-150">
                         <Link to='/store/order-address' className="text-white">مشاهده آدرس</Link>
                       </div>
                     </h3>
                   </header>
-                  <div className="content-section default">
+                  <div className="flex content-section default w-full justify-start min-sm:pr-6 items-center">
                     <form onSubmit={SubmitHandler}>
-                      <p>
+                      <p className="flex w-full">
                         لطفا آدرس محل (سکونت / کار) خود را با دقت وارد نمایید (توجه : شما فقط مجاز به ثبت یک آدرس هستید)
                       </p>
 
-                      <div className="row">
-                        <div className="col-md-3 col-12"></div>
-                        <div className="col-md-6 col-12 text--center">
-                          <div>
+                      <div className="row flex justify-center items-center">
+                        <div className="max-sm:flex max-sm:flex-col min-sm:grid min-sm:grid-rows-3 min-sm:grid-cols-3
+                        justify-center items-center gap-3 max-sm:w-full my-3">
+                          <div className="flex w-full">
                             <label className="flex w-full">
                               <select
                                 className={`${errors?.errors?.province_id ? 'border-red-500 bg-red-300 border animate-pulse' : 'border-[#c0e5e7] bg-[#eaf6f7] border'}  p-2 w-full rounded-full`}
@@ -120,7 +120,7 @@ function Address() {
                               </select>
                             </label>
                           </div>
-                          <div>
+                          <div className="flex w-full">
                             <label className="flex w-full">
                               <select
                                 className={`${errors?.errors?.city_id ? 'border-red-500 bg-red-300 border animate-pulse' : 'border-[#c0e5e7] bg-[#eaf6f7] border'}  p-2 w-full rounded-full`}
@@ -142,7 +142,7 @@ function Address() {
                             </label>
                           </div>
 
-                          <div>
+                          <div className="flex w-full">
                             <label className="flex w-full">
                               <input
                                 className={`${errors?.errors?.postal_code ? 'border-red-500 bg-red-300 border animate-pulse' : 'border-[#c0e5e7] bg-[#eaf6f7] border'}  p-2 w-full rounded-full`}
@@ -154,21 +154,21 @@ function Address() {
                               />
                             </label>
                           </div>
-                          <div>
-                            <label className='flex w-full'>
+                          <div className="max-sm:w-full max-sm:flex min-sm:row-span-2 h-full min-sm:col-span-3">
+                            <label className='flex w-full h-full'>
                               <textarea
                                 onChange={changeHandler}
-                                className={`${errors?.errors?.address ? 'border-red-500 bg-red-300 border animate-pulse' : 'border-[#c0e5e7] bg-[#eaf6f7] border'}  p-2 w-full rounded-full`}
+                                className={`${errors?.errors?.address ? 'border-red-500 bg-red-300 border animate-pulse' 
+                                  : 'border-[#c0e5e7] bg-[#eaf6f7] border'}  p-2 w-full rounded-3xl h-full`}
                                 name="address"
                                 placeholder="آدرس دقیق : "
                               />
                             </label>
                           </div>
-
                           <div className="flex justify-center items-center w-full">
                             <button
                               type="submit"
-                              className="btn big_btn btn-main-masai"
+                              className="btn big_btn btn-main-masai col-12"
                             >
                               {isLoading ? (
                                 <AiOutlineLoading
@@ -180,8 +180,8 @@ function Address() {
                               )}
                             </button>
                           </div>
+
                         </div>
-                        <div className="col-md-3 col-12"></div>
                       </div>
                     </form>
                   </div>
