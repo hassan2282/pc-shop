@@ -59,14 +59,15 @@ function Login() {
         <img src="/src/StorePanel/assets/img/abstract-bg2.jpg" className="fixed w-screen h-screen z-10 bg-cover"/>
         <div className="w-screen flex flex-row z-20 h-screen">
           <div className="h-full basis-1/2 z-20 flex justify-center items-center space-y-3">
-            <div className="w-[65%] backdrop-blur-sm p-4 bg-[#eaf6f748] rounded-xl border-t-[#D2F5F9] border-2  shadow-[#93D5DF] shadow-xl">
+            <div className="flex flex-col justify-center items-center overflow-clip w-[65%] h-[75%] backdrop-blur-sm p-4
+             bg-[#eaf6f748] rounded-xl border-t-[#D2F5F9] border-2  shadow-[#93D5DF] shadow-xl">
               {/* <header className="card-header">
                 <h3 className="card-title">
                   <span>ورود به حساب کاربری</span>
                 </h3>
               </header> */}
               <div className="login_box">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="flex w-[60vh] h-[70vh]">
                   <div className="row">
                     <div className="col-md-12 col-sm-12">
                       <div className="form-account-title">
@@ -114,7 +115,7 @@ function Login() {
                       </div>
                     </div>
                     <div className="col-6">
-                      <a className="faramooshi" href="#">
+                      <a className="faramooshi" href="/store/password-update">
                         رمز عبور را فراموش کرده اید؟
                       </a>
                     </div>

@@ -165,11 +165,7 @@ function App() {
             />
             <Route
               path="password-update"
-              element={
-                <PrivateRoute>
-                  <PasswordUpdate />
-                </PrivateRoute>
-              }
+              element={<PasswordUpdate />}
             />
             <Route path="about-us" element={<AboutUs />} />
           </Route>
