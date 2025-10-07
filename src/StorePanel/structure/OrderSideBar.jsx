@@ -285,7 +285,7 @@ function OrderSideBar() {
           <li>
             <NavLink
               to="/store/order-current"
-              className="dropdown-item"
+              // className="dropdown-item"
               activeclassname="active"
             >
               <i
@@ -299,7 +299,7 @@ function OrderSideBar() {
           <li>
             <NavLink
               to="/store/order-cancelled"
-              className="dropdown-item"
+              // className="dropdown-item"
               activeclassname="active"
             >
               <i className="fa fa-times colormain" aria-hidden="true"></i>
@@ -310,7 +310,7 @@ function OrderSideBar() {
           <li>
             <NavLink
               to="/store/orders-return"
-              className="dropdown-item"
+              // className="dropdown-item"
               activeclassname="active"
             >
               <i className="fa fa-thumbs-down colormain" aria-hidden="true"></i>
@@ -321,7 +321,7 @@ function OrderSideBar() {
           <li>
             <NavLink
               to="/store/profile-favorites"
-              className="dropdown-item"
+              // className="dropdown-item"
               activeclassname="active"
             >
               <i className="fa fa-bookmark colormain" aria-hidden="true"></i>
@@ -332,7 +332,7 @@ function OrderSideBar() {
           <li>
             <NavLink
               to="/store/order-address"
-              className="dropdown-item"
+              // className="dropdown-item"
               activeclassname="active"
             >
               <i
@@ -346,7 +346,7 @@ function OrderSideBar() {
           <li>
             <NavLink
               to="/store/order-message"
-              className="dropdown-item"
+              // className="dropdown-item"
               activeclassname="active"
             >
               <i className="fa fa-bell colormain" aria-hidden="true"></i>
@@ -357,7 +357,7 @@ function OrderSideBar() {
           <li>
             <NavLink
               to="/store/profile"
-              className="dropdown-item"
+              // className="dropdown-item"
               activeclassname="active"
             >
               <i className="fa fa-user-large colormain"></i>
@@ -368,7 +368,7 @@ function OrderSideBar() {
           <li>
             <NavLink
               to="/store/edit-profile"
-              className="dropdown-item"
+              // className="dropdown-item"
               activeclassname="active"
             >
               <i className="fa fa-pencil colormain" aria-hidden="true"></i>
@@ -379,7 +379,7 @@ function OrderSideBar() {
           <li>
             <NavLink
               to="/store/password-update"
-              className="dropdown-item"
+              // className="dropdown-item"
               activeclassname="active"
             >
               <i className="fa fa-shield colormain" aria-hidden="true"></i>

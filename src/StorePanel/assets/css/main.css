@@ -4825,6 +4825,9 @@ ul.profile-avatars li {
 .profile-menu-items li a:hover {
     color: #3A9599;
 }
+.profile-menu-items li a.active {
+    font-weight: bold;
+}
 
 .order-delivered h1.title-tab-content {
     color: #858585;
