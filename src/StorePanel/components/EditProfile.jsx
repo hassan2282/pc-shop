@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { AiOutlineLoading } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import apiClient from "../../apiClient";
+import {motion} from 'motion/react';
 
 function EditProfile() {
   const user = useSelector((state) => state.user);
@@ -170,7 +171,20 @@ function EditProfile() {
                     </ul>
                   )}
 
-                  <div className="">
+                  <motion.div
+                    initial={{
+                      opacity:0,
+                      y: 20,
+                    }}
+                    animate={{
+                      opacity:1,
+                      y: 0,
+                      transition: {
+                        delay: 0.1,
+                        duration: 0.7
+                      }
+                    }}
+                  className="">
                     <span>* نام </span>
                     <input
                       // minLength={3}
@@ -186,8 +200,21 @@ function EditProfile() {
                       type="text"
                       placeholder={user ? user.first_name : "نام"}
                     />
-                  </div>
-                  <div className="">
+                  </motion.div>
+                  <motion.div
+                    initial={{
+                      opacity:0,
+                      y: 20,
+                    }}
+                    animate={{
+                      opacity:1,
+                      y: 0,
+                      transition: {
+                        delay: 0.2,
+                        duration: 0.7
+                      }
+                    }}
+                  className="">
                     <span>* نام خانوادگی </span>
                     <input
                       minLength={3}
@@ -203,8 +230,21 @@ function EditProfile() {
                       type="text"
                       placeholder={user ? user.last_name : "نام خانوادگی "}
                     />
-                  </div>
-                  <div dir="rtl">
+                  </motion.div>
+                  <motion.div
+                    initial={{
+                      opacity:0,
+                      y: 20,
+                    }}
+                    animate={{
+                      opacity:1,
+                      y: 0,
+                      transition: {
+                        delay: 0.3,
+                        duration: 0.7
+                      }
+                    }}
+                  dir="rtl">
                     <span>* شماره تلفن </span>
                     <input
                       minLength={6}
@@ -221,8 +261,21 @@ function EditProfile() {
                       type="tel"
                       placeholder={user ? user.phone : 'شماره تلفن"'}
                     />
-                  </div>
-                  <div className="">
+                  </motion.div>
+                  <motion.div
+                    initial={{
+                      opacity:0,
+                      y: 20,
+                    }}
+                    animate={{
+                      opacity:1,
+                      y: 0,
+                      transition: {
+                        delay: 0.4,
+                        duration: 0.7
+                      }
+                    }}
+                  className="">
                     <span>* ایمیل </span>
                     <input
                       minLength={6}
@@ -238,7 +291,7 @@ function EditProfile() {
                       type="email"
                       placeholder={user ? user.email : "ایمیل"}
                     />
-                  </div>
+                  </motion.div>
                   <div className=" mt-4 max-md:mt-0 flex h-34 justify-center items-center">
                     <div className="justify-center items-center">
                       <span className="w-[85%] max-md:hidden mb-4 rounded-md">
