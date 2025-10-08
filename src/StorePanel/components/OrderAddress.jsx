@@ -5,6 +5,7 @@ import { use, useEffect, useRef, useState } from "react";
 import apiClient from "../../apiClient";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { toast } from "react-toastify";
+import {motion} from 'motion/react';
 
 function OrderAddress() {
 
@@ -55,34 +56,126 @@ function OrderAddress() {
                                                 <div className="row">
 
 
-                                                    <div className="grid min-sm:grid-cols-4 max-sm:grid-cols-1 w-full gap-3">
+                                                    <div className="grid min-sm:grid-cols-4 max-sm:grid-cols-1 w-full gap-3 p-5">
 
-                                                        <ul className=" w-full grid grid-cols-subgrid min-sm:col-span-3 gap-3
+                                                        <ul
+                                                        className=" w-full grid grid-cols-subgrid min-sm:col-span-3 gap-3
                                                         *:flex *:flex-row *:min-h-20 *:max-h-96 *:justify-around *:items-center *:rounded-xl *:p-2 
-                                                        *:bg-[#F1F9FA]">
-                                                            <li className="hover:shadow-lg hover:shadow-black duration-200">
+                                                        *:bg-[#F1F9FA] *:inset-shadow-sm">
+                                                            <motion.li
+                                                                initial={{
+                                                                    opacity: 0,
+                                                                    scale: 0.4,
+                                                                }}
+                                                                animate={{
+                                                                    opacity: 1,
+                                                                    scale: 1,
+                                                                    transition: {
+                                                                        delay: 0.1,
+                                                                        duration: 0.5
+                                                                    }
+                                                                }}
+                                                            className="hover:shadow-lg hover:shadow-black duration-200">
                                                                 <i className="fa fa-user-large colormain text-2xl" aria-hidden="true"></i>{user.first_name}
-                                                            </li>
-                                                            <li className="hover:shadow-lg hover:shadow-black duration-200">
+                                                            </motion.li>
+                                                            <motion.li
+                                                                initial={{
+                                                                    opacity: 0,
+                                                                    scale: 0.4,
+                                                                }}
+                                                                animate={{
+                                                                    opacity: 1,
+                                                                    scale: 1,
+                                                                    transition: {
+                                                                        delay: 0.15,
+                                                                        duration: 0.5
+                                                                    }
+                                                                }}
+                                                            className="hover:shadow-lg hover:shadow-black duration-200">
                                                                 <i className="fa fa-user-large colormain text-2xl" aria-hidden="true"></i> {user.last_name}
-                                                            </li>
-                                                            <li className="hover:shadow-lg hover:shadow-black duration-200">
+                                                            </motion.li>
+                                                            <motion.li
+                                                                initial={{
+                                                                    opacity: 0,
+                                                                    scale: 0.4,
+                                                                }}
+                                                                animate={{
+                                                                    opacity: 1,
+                                                                    scale: 1,
+                                                                    transition: {
+                                                                        delay: 0.2,
+                                                                        duration: 0.5
+                                                                    }
+                                                                }}
+                                                            className="hover:shadow-lg hover:shadow-black duration-200">
                                                                 <i className="fa fa-phone colormain text-2xl" aria-hidden="true"></i> {user.phone}
-                                                            </li>
-                                                            <li className="hover:shadow-lg hover:shadow-black duration-200">
+                                                            </motion.li>
+                                                            <motion.li
+                                                                initial={{
+                                                                    opacity: 0,
+                                                                    scale: 0.4,
+                                                                }}
+                                                                animate={{
+                                                                    opacity: 1,
+                                                                    scale: 1,
+                                                                    transition: {
+                                                                        delay: 0.25,
+                                                                        duration: 0.5
+                                                                    }
+                                                                }}
+                                                            className="hover:shadow-lg hover:shadow-black duration-200">
                                                                 <i className="fa fa-map  colormain text-2xl" aria-hidden="true"></i> {address?.province?.name ? address?.province?.name : ' ثبت نشده '}
-                                                            </li>
-                                                            <li className="hover:shadow-lg hover:shadow-black duration-200">
+                                                            </motion.li>
+                                                            <motion.li
+                                                                initial={{
+                                                                    opacity: 0,
+                                                                    scale: 0.4,
+                                                                }}
+                                                                animate={{
+                                                                    opacity: 1,
+                                                                    scale: 1,
+                                                                    transition: {
+                                                                        delay: 0.3,
+                                                                        duration: 0.5
+                                                                    }
+                                                                }}
+                                                            className="hover:shadow-lg hover:shadow-black duration-200">
                                                                 <i className="fa fa-map  colormain text-2xl" aria-hidden="true"></i> {address?.city?.name ? address?.city?.name : ' ثبت نشده'}
-                                                            </li>
-                                                            <li className="hover:shadow-lg hover:shadow-black duration-200">
+                                                            </motion.li>
+                                                            <motion.li
+                                                                initial={{
+                                                                    opacity: 0,
+                                                                    scale: 0.4,
+                                                                }}
+                                                                animate={{
+                                                                    opacity: 1,
+                                                                    scale: 1,
+                                                                    transition: {
+                                                                        delay: 0.35,
+                                                                        duration: 0.5
+                                                                    }
+                                                                }}
+                                                            className="hover:shadow-lg hover:shadow-black duration-200">
                                                                 <i className="fa fa-envelope colormain text-2xl" aria-hidden="true"></i> {address?.postal_code ? address?.postal_code : ' ثبت نشده'}
-                                                            </li>
+                                                            </motion.li>
 
-                                                            <h4 className="profile-recent-fav-name min-sm:col-span-3 flex overflow-y-scroll
+                                                            <motion.h4 
+                                                                initial={{
+                                                                    opacity: 0,
+                                                                    scale: 0.4,
+                                                                }}
+                                                                animate={{
+                                                                    opacity: 1,
+                                                                    scale: 1,
+                                                                    transition: {
+                                                                        delay: 0.4,
+                                                                        duration: 0.5
+                                                                    }
+                                                                }}
+                                                            className="profile-recent-fav-name min-sm:col-span-3 flex overflow-y-scroll
                                                              items-start p-3 hover:shadow-lg hover:shadow-black duration-200">
                                                                 {address?.address ? address?.address : 'ثبت نشده'}
-                                                            </h4>
+                                                            </motion.h4>
                                                         </ul>
                                                         <div className="flex flex-col relative w-full group
                                                           rounded-xl">
