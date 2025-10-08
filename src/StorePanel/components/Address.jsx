@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { AiOutlineLoading } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
+import {motion} from "motion/react";
 
 function Address() {
   const [provinces, setProvinces] = useState();
@@ -95,8 +96,22 @@ function Address() {
 
                       <div className="row flex justify-center items-center">
                         <div className="max-sm:flex max-sm:flex-col min-sm:grid min-sm:grid-rows-3 min-sm:grid-cols-3
-                        justify-center items-center gap-3 max-sm:w-full my-3">
-                          <div className="flex w-full">
+                                        justify-center items-center gap-3 max-sm:w-full my-3 overflow-clip">
+                          <motion.div 
+                            initial={{
+                                y: -30,
+                                filter: "blur(10px)",
+                            }}
+                            animate={{
+                              y: 0,
+                              filter: "blur(0)",
+                              transition: {
+                                delay: 0.3,
+                                duration: 1,
+                              }
+                            }}
+
+                            className="flex w-full">
                             <label className="flex w-full">
                               <select
                                 className={`${errors?.errors?.province_id ? 'border-red-500 bg-red-300 border animate-pulse' : 'border-[#c0e5e7] bg-[#eaf6f7] border'}  p-2 w-full rounded-full`}
@@ -119,8 +134,21 @@ function Address() {
                                   })}
                               </select>
                             </label>
-                          </div>
-                          <div className="flex w-full">
+                          </motion.div>
+                          <motion.div 
+                            initial={{
+                                y: -30,
+                                filter: "blur(10px)",
+                            }}
+                            animate={{
+                              y: 0,
+                              filter: "blur(0)",
+                              transition: {
+                                delay: 0.4,
+                                duration: 1,
+                              }
+                            }}
+                           className="flex w-full">
                             <label className="flex w-full">
                               <select
                                 className={`${errors?.errors?.city_id ? 'border-red-500 bg-red-300 border animate-pulse' : 'border-[#c0e5e7] bg-[#eaf6f7] border'}  p-2 w-full rounded-full`}
@@ -140,9 +168,21 @@ function Address() {
                                   })}
                               </select>
                             </label>
-                          </div>
+                          </motion.div>
 
-                          <div className="flex w-full">
+                          <motion.div 
+                            initial={{
+                                y: -30,
+                                filter: "blur(10px)",
+                            }}
+                            animate={{
+                              y: 0,
+                              filter: "blur(0)",
+                              transition: {
+                                delay: 0.4,
+                                duration: 1,
+                              }
+                            }} className="flex w-full">
                             <label className="flex w-full">
                               <input
                                 className={`${errors?.errors?.postal_code ? 'border-red-500 bg-red-300 border animate-pulse' : 'border-[#c0e5e7] bg-[#eaf6f7] border'}  p-2 w-full rounded-full`}
@@ -153,8 +193,20 @@ function Address() {
                                 placeholder="کد پستی"
                               />
                             </label>
-                          </div>
-                          <div className="max-sm:w-full max-sm:flex min-sm:row-span-2 h-full min-sm:col-span-3">
+                          </motion.div>
+                          <motion.div 
+                            initial={{
+                                y: -30,
+                                filter: "blur(10px)",
+                            }}
+                            animate={{
+                              y: 0,
+                              filter: "blur(0)",
+                              transition: {
+                                delay: 0.5,
+                                duration: 1,
+                              }
+                            }} className="max-sm:w-full max-sm:flex min-sm:row-span-2 h-full min-sm:col-span-3">
                             <label className='flex w-full h-full'>
                               <textarea
                                 onChange={changeHandler}
@@ -164,8 +216,20 @@ function Address() {
                                 placeholder="آدرس دقیق : "
                               />
                             </label>
-                          </div>
-                          <div className="flex justify-center items-center w-full">
+                          </motion.div>
+                          <motion.div 
+                            initial={{
+                                y: -30,
+                                filter: "blur(10px)",
+                            }}
+                            animate={{
+                              y: 0,
+                              filter: "blur(0)",
+                              transition: {
+                                delay: 0.6,
+                                duration: 1,
+                              }
+                            }} className="flex justify-center items-center w-full">
                             <button
                               type="submit"
                               className="btn big_btn btn-main-masai col-12"
@@ -179,7 +243,7 @@ function Address() {
                                 "ثبت"
                               )}
                             </button>
-                          </div>
+                          </motion.div>
 
                         </div>
                       </div>
