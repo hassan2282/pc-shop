@@ -52,7 +52,7 @@ function Register() {
                         user: res.data.user,
                     }
                 })
-                navigate("store/home", { replace: true })
+                navigate("/store/home", { replace: true })
             }
 
         } catch (err) {
@@ -74,7 +74,7 @@ function Register() {
                 <div className="row flex justify-center items-center min-h-screen p-4">
                     <div className="w-full max-w-4xl flex justify-center items-center">
                         <form onSubmit={handleSubmit} className="flex flex-col min-sm:w-[70%] max-sm:w-full bg-[#234c4e]/30
-                         backdrop-blur-sm border shadow-lg shadow-black rounded-xl p-4 md:p-8">
+                         backdrop-blur-sm border shadow-lg shadow-black p-4 md:p-8 rounded-3xl">
                             <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                                 <div className="w-full">
                                     <div className="form-account-title text-dark mb-2"><span>*</span> نام کاربری</div>
@@ -139,7 +139,7 @@ function Register() {
                                     </div>
                                 </div>
 
-                                <div className="flex w-full md:col-span-2 mt-4">
+                                <div className="flex w-full mt-4">
                                     <div className="form-account-agree flex items-start">
                                         <label className="checkbox-form checkbox-primary flex items-start">
                                             <input type="checkbox" id="agree" className="mt-1" />
@@ -150,31 +150,34 @@ function Register() {
                                         </label>
                                     </div>
                                 </div>
+                                <div className="flex flex-col w-full justify-center items-center">
+                                    <div className="flex flex-col w-full justify-center items-center">
+                                        <button type="submit" className="btn big_btn btn-main-masai w-full px-6 
+                                        bg-[#52b1b6] hover:bg-[#3d9ca1] text-dark rounded-lg font-bold transition-colors 
+                                        duration-300 flex justify-center items-center">
+                                            {isLoading ? <AiOutlineLoading className="animate-spin" size={20} /> : 'عضویت'}
+                                        </button>
+                                        <p className="text-white">
+                                            <span>قبلا ثبت نام کرده اید؟</span>
+                                            <Link to="/store/login" className="text-lg underline m-2 text-[#52b1b6] hover:text-[#3d9ca1] transition-colors">ورود</Link>
+                                        </p>
+                                    </div>
+                                    
+                                    <div className="flex w-full md:col-span-2 justify-center items-center text-dark">
+                                        {(Object.keys(errors).length > 0 || errors.server) && (
+                                            <div className="w-full mt-3">
+                                                <ul className="list-disc text-right space-y-2">
+                                                    {errors.frontError && <li className="w-full border-b border-gray-300 rounded-lg text-white p-2 bg-red-900/80 backdrop-blur">{errors.frontError}</li>}
+                                                    {errors.server && <li className="w-full border-b border-gray-300 rounded-lg text-white p-2 bg-red-900/80 backdrop-blur">{errors.server}</li>}
+                                                    {errors.username && <li className="w-full border-b border-gray-300 rounded-lg text-white p-2 bg-red-900/80 backdrop-blur">{errors.username}</li>}
+                                                    {errors.email && <li className="w-full border-b border-gray-300 rounded-lg text-white p-2 bg-red-900/80 backdrop-blur">{errors.email}</li>}
+                                                    {errors.password && <li className="w-full border-b border-gray-300 rounded-lg text-white p-2 bg-red-900/80 backdrop-blur">{errors.password}</li>}
+                                                    {errors.password_confirmation && <li className="w-full border-b border-gray-300 rounded-lg text-white p-2 bg-red-900/80 backdrop-blur">{errors.password_confirmation}</li>}
+                                                </ul>
+                                            </div>
+                                        )}
 
-                                <div className="flex w-full md:col-span-2 justify-center items-center mt-4">
-                                    <button type="submit" className="btn big_btn btn-main-masai w-full py-3 px-6 bg-[#52b1b6] hover:bg-[#3d9ca1] text-dark rounded-lg font-bold transition-colors duration-300 flex justify-center items-center">
-                                        {isLoading ? <AiOutlineLoading className="animate-spin" size={20} /> : 'عضویت'}
-                                    </button>
-                                </div>
-                                
-                                <div className="flex w-full md:col-span-2 justify-center items-center text-dark">
-                                    {(Object.keys(errors).length > 0 || errors.server) && (
-                                        <div className="w-full mt-3">
-                                            <ul className="list-disc text-right space-y-2">
-                                                {errors.frontError && <li className="w-full border-b border-gray-300 rounded-lg text-dark p-2 bg-red-900/80 backdrop-blur">{errors.frontError}</li>}
-                                                {errors.server && <li className="w-full border-b border-gray-300 rounded-lg text-dark p-2 bg-red-900/80 backdrop-blur">{errors.server}</li>}
-                                                {errors.username && <li className="w-full border-b border-gray-300 rounded-lg text-dark p-2 bg-red-900/80 backdrop-blur">{errors.username}</li>}
-                                                {errors.email && <li className="w-full border-b border-gray-300 rounded-lg text-dark p-2 bg-red-900/80 backdrop-blur">{errors.email}</li>}
-                                                {errors.password && <li className="w-full border-b border-gray-300 rounded-lg text-dark p-2 bg-red-900/80 backdrop-blur">{errors.password}</li>}
-                                                {errors.password_confirmation && <li className="w-full border-b border-gray-300 rounded-lg text-dark p-2 bg-red-900/80 backdrop-blur">{errors.password_confirmation}</li>}
-                                            </ul>
-                                        </div>
-                                    )}
-
-                                    <p className="mt-4 text-white">
-                                        <span>قبلا ثبت نام کرده اید؟</span>
-                                        <Link to="/store/login" className="text-lg underline m-2 text-[#52b1b6] hover:text-[#3d9ca1] transition-colors">ورود</Link>
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                         </form>
