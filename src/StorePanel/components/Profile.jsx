@@ -1,6 +1,8 @@
 ﻿import { Link } from "react-router-dom";
 import { useSelector } from "react-redux"
 import OrderSideBar from "../structure/OrderSideBar";
+import { motion } from "motion/react"
+
 
 function Profile() {
 
@@ -23,68 +25,198 @@ function Profile() {
                                         <div className="min-sm:grid min-sm:grid-cols-2 max-sm:flex max-sm:flex-col
                                          gap-2 w-full bg-[#57B6BB]/0 rounded-md max-sm:p-3 min-sm:p-5 shadow-sm shadow-black
                                             *:bg-[#57B6BB]/10 *:p-3 *:hover:bg-[#57B6BB]/20 *:hover:cursor-pointer *:rounded-md *:w-full *:m-0.5 *:overflow-clip">
-                                            <div className="">
+                                            <motion.div
+                                                initial={{
+                                                    opacity: 0,
+                                                    y: -35,
+                                                }}
+                                                animate={{
+                                                    opacity: 1,
+                                                    y: 0,
+                                                    transition: {
+                                                        delay: 0.1,
+                                                        duration: 0.5,
+                                                    }
+                                                }}
+                                            className="">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]">نام  :</span>
                                                     <span className="text-[hsl(0,0%,30%)]">{user ? user.first_name : ' '}
                                                     </span>
                                                 </p>
-                                            </div>
-                                            <div className="">
+                                            </motion.div>
+                                            <motion.div
+                                                initial={{
+                                                    opacity: 0,
+                                                    y: -35,
+                                                }}
+                                                animate={{
+                                                    opacity: 1,
+                                                    y: 0,
+                                                    transition: {
+                                                        delay: 0.2,
+                                                        duration: 0.5,
+                                                    }
+                                                }}
+                                            className="">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]"> نام خانوادگی :</span>
                                                     <span className="text-[hsl(0,0%,30%)]">
                                                         {user ? user.last_name : ' '}
                                                     </span>
                                                 </p>
-                                            </div>
-                                            <div className="">
+                                            </motion.div>
+                                            <motion.div
+                                                initial={{
+                                                    opacity: 0,
+                                                    y: -35,
+                                                }}
+                                                animate={{
+                                                    opacity: 1,
+                                                    y: 0,
+                                                    transition: {
+                                                        delay: 0.3,
+                                                        duration: 0.5,
+                                                    }
+                                                }}
+                                            className="">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]">پست الکترونیک :</span>
                                                     <span className="text-[hsl(0,0%,30%)]">{user ? user.email : ' '}</span>
                                                 </p>
-                                            </div>
-                                            <div className="">
+                                            </motion.div>
+                                            <motion.div
+                                                initial={{
+                                                    opacity: 0,
+                                                    y: -35,
+                                                }}
+                                                animate={{
+                                                    opacity: 1,
+                                                    y: 0,
+                                                    transition: {
+                                                        delay: 0.4,
+                                                        duration: 0.5,
+                                                    }
+                                                }}
+                                            className="">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]">شماره تلفن همراه:</span>
                                                     <span className="text-[hsl(0,0%,30%)]">{user ? user.phone : ' '}</span>
                                                 </p>
-                                            </div>
-                                            <div className="">
+                                            </motion.div>
+                                            <motion.div
+                                                initial={{
+                                                    opacity: 0,
+                                                    y: -35,
+                                                }}
+                                                animate={{
+                                                    opacity: 1,
+                                                    y: 0,
+                                                    transition: {
+                                                        delay: 0.5,
+                                                        duration: 0.5,
+                                                    }
+                                                }}
+                                            className="">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]">کد پستی :</span>
                                                     <span className="text-[hsl(0,0%,30%)]">(نامشخص)</span>
                                                 </p>
-                                            </div>
-                                            <div className="">
+                                            </motion.div>
+                                            <motion.div
+                                                initial={{
+                                                    opacity: 0,
+                                                    y: -35,
+                                                }}
+                                                animate={{
+                                                    opacity: 1,
+                                                    y: 0,
+                                                    transition: {
+                                                        delay: 0.6,
+                                                        duration: 0.5,
+                                                    }
+                                                }}
+                                            className="">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]">روش بازگرداندن پول من :</span>
                                                     <span className="text-[hsl(0,0%,30%)]">ﺷﻤﺎره ﺷﺒﺎ</span>
                                                 </p>
-                                            </div>
-                                            <div className="">
+                                            </motion.div>
+                                            <motion.div
+                                                initial={{
+                                                    opacity: 0,
+                                                    y: -35,
+                                                }}
+                                                animate={{
+                                                    opacity: 1,
+                                                    y: 0,
+                                                    transition: {
+                                                        delay: 0.7,
+                                                        duration: 0.5,
+                                                    }
+                                                }}
+                                            className="">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]">شغل :</span>
                                                     <span className="text-[hsl(0,0%,30%)]">توسعه نرم افزار و برنامه نویسی</span>
                                                 </p>
-                                            </div>
-                                            <div className="">
+                                            </motion.div>
+                                            <motion.div
+                                                initial={{
+                                                    opacity: 0,
+                                                    y: -35,
+                                                }}
+                                                animate={{
+                                                    opacity: 1,
+                                                    y: 0,
+                                                    transition: {
+                                                        delay: 0.8,
+                                                        duration: 0.5,
+                                                    }
+                                                }}
+                                            className="">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]">تاریخ تولد :</span>
                                                     <span className="text-[hsl(0,0%,30%)]">۱۳۷۰/۶/۱۴</span>
                                                 </p>
-                                            </div>
-                                            <div className=" col-span-2">
+                                            </motion.div>
+                                            <motion.div
+                                                initial={{
+                                                    opacity: 0,
+                                                    y: -35,
+                                                }}
+                                                animate={{
+                                                    opacity: 1,
+                                                    y: 0,
+                                                    transition: {
+                                                        delay: 0.9,
+                                                        duration: 0.5,
+                                                    }
+                                                }}
+                                            className=" col-span-2">
                                                 <p>
                                                     <span className="text-[hsl(0,0%,5%)] text-[1rem]">کد ملی :</span>
                                                     <span className="text-[hsl(0,0%,30%)]">297865432</span>
                                                 </p>
-                                            </div>
-                                            <div className="col-span-2 bg-transparent">
+                                            </motion.div>
+                                            <motion.div
+                                                initial={{
+                                                    opacity: 0,
+                                                    y: -35,
+                                                }}
+                                                animate={{
+                                                    opacity: 1,
+                                                    y: 0,
+                                                    transition: {
+                                                        delay: 1,
+                                                        duration: 0.5,
+                                                    }
+                                                }}
+                                            className="col-span-2 bg-transparent">
                                                 <Link to="/store/edit-profile" className="w-full btn btn-main-masai">
                                                     ویرایش
                                                 </Link>
-                                            </div>
+                                            </motion.div>
                                         </div>
                                     </div>
                                 <div className="w-full mt-4">
