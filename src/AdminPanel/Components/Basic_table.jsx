@@ -1,4 +1,5 @@
 import React from 'react'
+import { Icon } from '@iconify/react'
 
 function Basic_table() {
   return (
@@ -6,8 +7,6 @@ function Basic_table() {
           <div className="page-content">
             <div className="transition-all duration-150 container-fluid" id="page_layout">
               <div id="content_layout">
-
-
 
 
                 <div className="mb-5">

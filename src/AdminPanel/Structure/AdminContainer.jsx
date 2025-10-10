@@ -17,27 +17,11 @@ import { useEffect } from 'react';
 function AdminContainer() {
   useEffect(() => {
     window.$ = window.jQuery = $;
-
-    const loadScript = (src) => {
-      return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = src;
-        script.async = false;
-        script.onload = resolve;
-        script.onerror = reject;
-        document.body.appendChild(script);
-      });
-    };
-
-    (async () => {
-      try {
-        await loadScript('/assets/js/settings.js')
-        .then(()=>loadScript('/assets/js/app.js'));
-      } catch (err) {
-        console.error('Script load error:', err);
-      }
-    })();
-  }, []);
+    import("../assets/js/rt-plugins.js").then(() => {
+    import("../assets/js/settings.js");  
+    import("../assets/js/app.js");
+  });
+}, []);
 
   return (
     <div className="font-inter dashcode-app" >

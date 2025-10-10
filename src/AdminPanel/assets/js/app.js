@@ -314,7 +314,10 @@
   $.sidebarMenu($(".sidebar-menu"));
 
   // Simple Bar
-  new SimpleBar($("#sidebar_menus, #scrollModal")[0]);
+  const $el = $("#sidebar_menus, #scrollModal");
+if ($el.length > 0) {
+  new SimpleBar($el[0]);
+}
 
   // Basic Carousel
   $(".basic-carousel").owlCarousel({

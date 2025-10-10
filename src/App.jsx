@@ -28,6 +28,7 @@ import Address from "./StorePanel/components/Address";
 import StoreContainer from "./StorePanel/structure/StoreContainer.jsx";
 import AdminContainer from "./AdminPanel/Structure/AdminContainer.jsx";
 import Adm_index from "./AdminPanel/Components/Adm_index.jsx"
+import Basic_table from "./AdminPanel/Components/Basic_table.jsx";
 
 
 function App() {
@@ -50,7 +51,6 @@ function App() {
             />
 
           <Route path="/" element={<Navigate to="/store/home" replace />} />
-
 
           <Route path="/store/*" element={<StoreContainer />}>
             <Route path="home" element={<Index />} />
@@ -173,6 +173,7 @@ function App() {
 
           <Route path="/admin/*" element={<AdminContainer />}>
               <Route path="index" element={<Adm_index />} />
+              <Route path="basic-table" element={<Basic_table />} />
           </Route>
         </Routes>
         <ToastContainer />
