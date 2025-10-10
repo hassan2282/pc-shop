@@ -34,7 +34,6 @@ function StoreContainer() {
         await import('../assets/js/plugins/bootstrap-switch.js');
         await import('../assets/js/plugins/bootstrap-datepicker.js');
         await import('../assets/js/plugins/jquery.sharrre.js');
-        // await import('../assets/js/now-ui-kit.js');
         await import('../assets/js/plugins/countdown.min.js');
         await import('../assets/js/plugins/jquery.ez-plus.js');
         await import('../assets/js/plugins/jquery.easing.1.3.min.js');

@@ -70,10 +70,10 @@ function Register() {
     }
 
     return (
-        <main className="wrapper default min-h-screen relative">
-            <img src="/src/StorePanel/assets/img/abstract-bg2.jpg" className="fixed inset-0 w-full h-full object-cover z-10" />
-            <div className="container relative z-20">
-                <div className="row flex justify-center items-center min-h-screen p-4">
+        <div className="w-screen h-screen
+         bg-[url(/src/StorePanel/assets/img/abstract-bg2.jpg)] bg-cover fixed z-10">
+            <div className="w-full h-full z-20 flex justify-center items-center">
+                <div className="flex w-full h-full justify-center items-center min-h-screen p-4">
                     <div className="w-full max-w-4xl flex justify-center items-center overflow-clip">
                         <motion.form
                             initial={{
@@ -92,7 +92,7 @@ function Register() {
                                 <div
 
                                     className="w-full">
-                                    <div className="form-account-title text-dark"><span>*</span> نام کاربری</div>
+                                    <div className="form-account-title text-white"><span>*</span> نام کاربری</div>
                                     <div className="form-account-row">
                                         <motion.input
                                             initial={{
@@ -121,7 +121,7 @@ function Register() {
                                     </div>
                                 </div>
                                 <div className="w-full">
-                                    <div className="form-account-title text-dark"><span>*</span> ایمیل</div>
+                                    <div className="form-account-title text-white"><span>*</span> ایمیل</div>
                                     <div className={`form-account-row ${errors.email && 'border-red-500 border-2 rounded-lg animate-pulse'} `}>
                                         <motion.input
                                             initial={{
@@ -148,7 +148,7 @@ function Register() {
                                     </div>
                                 </div>
                                 <div className="w-full">
-                                    <div className="form-account-title text-dark"><span>*</span> کلمه عبور</div>
+                                    <div className="form-account-title text-white"><span>*</span> کلمه عبور</div>
                                     <div className={`form-account-row ${errors.frontError && 'border-red-500 border-2 rounded-lg animate-pulse'} `}>
                                         <motion.input
                                             initial={{
@@ -175,7 +175,7 @@ function Register() {
                                     </div>
                                 </div>
                                 <div className="w-full">
-                                    <div className="form-account-title text-dark"><span>*</span> تکرار کلمه عبور</div>
+                                    <div className="form-account-title text-white"><span>*</span> تکرار کلمه عبور</div>
                                     <div className={`form-account-row ${errors.frontError && 'border-red-500 border-2 rounded-lg animate-pulse'} `}>
                                         <motion.input
                                             initial={{
@@ -268,7 +268,7 @@ function Register() {
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
     )
 }
 

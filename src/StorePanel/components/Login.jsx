@@ -56,13 +56,11 @@ function Login() {
   };
 
   return (
-    <>
-      <main className="flex justify-center items-center h-screen w-screen">
-        <img src="/src/StorePanel/assets/img/abstract-bg2.jpg" className="fixed w-screen h-screen z-10 bg-cover" />
-        <div className="w-screen flex flex-row z-20 h-screen">
-          <div className="h-full basis-1/2 z-20 flex justify-center items-center space-y-3">
+      <div className="h-screen w-screen bg-[url(/src/StorePanel/assets/img/abstract-bg2.jpg)] fixed bg-cover z-10">
+        <div className="w-full h-full flex flex-row z-20">
+          <div className="h-full min-md:basis-1/2 z-20 flex justify-center items-center">
             <motion.div
-              initial={{
+              initial={{  
                 opacity: 0,
                 scale: 0.8,
               }}
@@ -71,7 +69,7 @@ function Login() {
                 scale: 1,
                 transition: { duration: 0.5 },
               }}
-              className="flex flex-col justify-center items-center overflow-clip w-[65%] h-[75%] backdrop-blur-sm p-4
+              className="flex flex-col justify-center items-center overflow-clip min-lg:w-[65%] w-[90%] min-h-[70%] backdrop-blur-sm p-5
              bg-[#eaf6f748] rounded-xl border-t-[#D2F5F9] border-2  shadow-[#93D5DF] shadow-xl">
               {/* <header className="card-header">
                 <h3 className="card-title">
@@ -79,8 +77,8 @@ function Login() {
                 </h3>
               </header> */}
               <div className="login_box">
-                <form onSubmit={handleSubmit} className="flex w-[60vh] h-[70vh]">
-                  <div className="row">
+                <form onSubmit={handleSubmit} className="flex justify-center w-[95%]">
+                  <div className="row space-y-5">
                     <motion.div
                       initial={{
                         opacity: 0,
@@ -150,7 +148,7 @@ function Login() {
                         transition: { duration: 1 },
                         transition: {delay: 0.6}
                       }}
-                    className="col-6">
+                    className="min-sm:col-6 flex w-full justify-center items-center">
                       <div className="form-account-agree">
                         <label className="checkbox-form checkbox-primary">
                           <input type="checkbox" id="agree" />
@@ -170,7 +168,7 @@ function Login() {
                         transition: { duration: 1 },
                         transition: {delay: 0.6}
                       }}
-                    className="col-6">
+                    className="min-sm:col-6 flex w-full justify-center items-center">
                       <a className="faramooshi" href="/store/password-update">
                         رمز عبور را فراموش کرده اید؟
                       </a>
@@ -227,10 +225,9 @@ function Login() {
               </div>
             </motion.div>
           </div>
-          <div className="basis-1/2"></div>
+          <div className="max-sm:basis-0 min-sm:basis-1/2"></div>
         </div>
-      </main>
-    </>
+      </div>
   );
 }
 
