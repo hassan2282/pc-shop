@@ -174,13 +174,13 @@ function EditProfile() {
                   <motion.div
                     initial={{
                       opacity:0,
-                      y: 20,
+                      y: -20,
                     }}
                     animate={{
                       opacity:1,
                       y: 0,
                       transition: {
-                        delay: 0.1,
+                        delay: 0.4,
                         duration: 0.7
                       }
                     }}
@@ -204,13 +204,13 @@ function EditProfile() {
                   <motion.div
                     initial={{
                       opacity:0,
-                      y: 20,
+                      y: -20,
                     }}
                     animate={{
                       opacity:1,
                       y: 0,
                       transition: {
-                        delay: 0.2,
+                        delay: 0.5,
                         duration: 0.7
                       }
                     }}
@@ -234,13 +234,13 @@ function EditProfile() {
                   <motion.div
                     initial={{
                       opacity:0,
-                      y: 20,
+                      y: -20,
                     }}
                     animate={{
                       opacity:1,
                       y: 0,
                       transition: {
-                        delay: 0.3,
+                        delay: 0.6,
                         duration: 0.7
                       }
                     }}
@@ -265,13 +265,13 @@ function EditProfile() {
                   <motion.div
                     initial={{
                       opacity:0,
-                      y: 20,
+                      y: -20,
                     }}
                     animate={{
                       opacity:1,
                       y: 0,
                       transition: {
-                        delay: 0.4,
+                        delay: 0.7,
                         duration: 0.7
                       }
                     }}

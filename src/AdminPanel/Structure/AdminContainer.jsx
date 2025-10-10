@@ -10,44 +10,51 @@ window.$ = window.jQuery = $;
 import Cleave from 'cleave.js';
 window.Cleave = Cleave;
 
-import '../assets/css/rt-plugins.css'
-import '../assets/css/app.css'
-
-import '../assets/js/settings.js'
+import '../assets/css/rt-plugins.css';
+import '../assets/css/app.css';
 import { useEffect } from 'react';
 
 function AdminContainer() {
+  useEffect(() => {
+    window.$ = window.jQuery = $;
 
-useEffect(() => {
-  window.$ = window.jQuery = $;
-  import('../assets/js/rt-plugins.js').then(() => {
-    import('../assets/js/app.js');
-  });
-}, []);
+    const loadScript = (src) => {
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = false;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.body.appendChild(script);
+      });
+    };
+
+    (async () => {
+      try {
+        await loadScript('/assets/js/settings.js')
+        .then(()=>loadScript('/assets/js/app.js'));
+      } catch (err) {
+        console.error('Script load error:', err);
+      }
+    })();
+  }, []);
 
   return (
-    <div className='font-inter dashcode-app' id='body_class'>
-        <main className="app-wrapper">
-
-            <AdminSideBar />
-
-            <AdminSetting />
-
-
-            <div className="flex flex-col justify-between min-h-screen">
-                <AdminHeader />
-                <AdminSearchModal />
-
-                <Outlet />
-
-
-            </div>
-
-            <AdminFooter />
-
-        </main>
+    <div className="font-inter dashcode-app" >
+      <main className="app-wrapper">
+        <AdminSideBar />
+        <AdminSetting />
+        <div className="flex flex-col justify-between min-h-screen">
+          <div>
+            <AdminHeader />
+            <AdminSearchModal />
+            <Outlet />
+          </div>
+        </div>
+        <AdminFooter />
+      </main>
     </div>
-  )
+  );
 }
 
-export default AdminContainer
+export default AdminContainer;
