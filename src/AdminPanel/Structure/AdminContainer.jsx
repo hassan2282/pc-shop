@@ -5,8 +5,8 @@ import AdminHeader from './AdminHeader';
 import AdminFooter from './AdminFooter';
 import AdminSearchModal from './AdminSearchModal';
 
-import $ from 'jquery';
-window.$ = window.jQuery = $;
+// import $ from 'jquery';
+// window.$ = window.jQuery = $;
 import Cleave from 'cleave.js';
 window.Cleave = Cleave;
 
@@ -17,9 +17,10 @@ import { useEffect } from 'react';
 function AdminContainer() {
   useEffect(() => {
     window.$ = window.jQuery = $;
-    import("../assets/js/rt-plugins.js").then(() => {
-    import("../assets/js/settings.js");  
-    import("../assets/js/app.js");
+      import("../assets/js/jquery-3.6.0.min.js").then(() => {
+      import("../assets/js/rt-plugins.js");  
+      import("../assets/js/settings.js");  
+      import("../assets/js/app.js");
   });
 }, []);
 
