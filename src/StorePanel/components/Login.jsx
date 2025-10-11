@@ -69,16 +69,17 @@ function Login() {
                 scale: 1,
                 transition: { duration: 0.5 },
               }}
-              className="flex flex-col justify-center items-center overflow-clip min-lg:w-[65%] w-[90%] min-h-[70%] backdrop-blur-sm p-5
-             bg-[#eaf6f748] rounded-xl border-t-[#D2F5F9] border-2  shadow-[#93D5DF] shadow-xl">
+              className="flex flex-col justify-center items-center overflow-clip min-lg:w-[65%] w-[90%]
+               min-h-[70%] max-h-[90%] backdrop-blur-sm 
+              p-3 bg-[#eaf6f748] rounded-xl border-t-[#D2F5F9] border-2  shadow-[#93D5DF] shadow-xl">
               {/* <header className="card-header">
                 <h3 className="card-title">
                   <span>ورود به حساب کاربری</span>
                 </h3>
               </header> */}
               <div className="login_box">
-                <form onSubmit={handleSubmit} className="flex justify-center w-[95%]">
-                  <div className="row space-y-5">
+                <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center w-[95%]">
+                  <div className="row min-xl:space-y-5 w-full">
                     <motion.div
                       initial={{
                         opacity: 0,
@@ -184,10 +185,10 @@ function Login() {
                         transition: { duration: 1 },
                         transition: {delay: 0.7}
                       }}
-                    className="flex w-full m-3 justify-center items-center ">
+                    className="flex w-full justify-center items-center ">
                       <button
                         type="submit"
-                        className="btn big_btn btn-main-masai col-12 flex justify-center items-center"
+                        className="btn big_btn btn-main-masai flex justify-center items-center"
                       >
                         {isLoading ? (
                           <AiOutlineLoading
