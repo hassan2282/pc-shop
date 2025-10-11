@@ -10,17 +10,17 @@ import AdminSearchModal from './AdminSearchModal';
 import Cleave from 'cleave.js';
 window.Cleave = Cleave;
 
-import '../assets/css/rt-plugins.css';
-import '../assets/css/app.css';
+import '../../../public/assets/css/rt-plugins.css';
+import '../../../public/assets/css/app.css';
 import { useEffect } from 'react';
 
 function AdminContainer() {
   useEffect(() => {
     window.$ = window.jQuery = $;
-      import("../assets/js/jquery-3.6.0.min.js").then(() => {
-      import("../assets/js/rt-plugins.js");  
-      import("../assets/js/settings.js");  
-      import("../assets/js/app.js");
+      import("../../../public/assets/js/jquery-3.6.0.min.js").then(() => {
+      import("../../../public/assets/js/rt-plugins.js");  
+      import("../../../public/assets/js/settings.js");  
+      import("../../../public/assets/js/app.js");
   });
 }, []);
 

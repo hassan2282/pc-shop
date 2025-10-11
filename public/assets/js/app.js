@@ -1,13 +1,5 @@
 "use strict";
 
-(function($) {
-  $.fn.sidebarMenu = function(options) {
-    // ... کدهای تابع ...
-  };
-  console.log("تابع sidebarMenu با موفقیت تعریف شد."); // این خط را اضافه کنید
-})(jQuery);
-
-
  $(document).ready(function() {
 /*
  * =====================================

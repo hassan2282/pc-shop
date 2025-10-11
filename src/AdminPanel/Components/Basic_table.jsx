@@ -8,7 +8,6 @@ function Basic_table() {
             <div className="transition-all duration-150 container-fluid" id="page_layout">
               <div id="content_layout">
 
-
                 <div className="mb-5">
                   <ul className="m-0 p-0 list-none">
                     <li className="inline-block relative top-[3px] text-base text-primary-500 font-Inter ">

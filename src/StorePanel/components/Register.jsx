@@ -70,11 +70,11 @@ function Register() {
     }
 
     return (
-        <div className="w-screen h-screen
-         bg-[url(/src/StorePanel/assets/img/abstract-bg2.jpg)] bg-cover fixed z-10">
-            <div className="w-full h-full z-20 flex justify-center items-center">
-                <div className="flex w-full h-full justify-center items-center min-h-screen p-4">
-                    <div className="w-full max-w-4xl flex justify-center items-center overflow-clip">
+        <div className="flex w-screen h-screen justify-center items-center">
+            <img src="/src/StorePanel/assets/img/abstract-bg2.jpg" className="absolute object-cover w-full h-full z-10 top-0" />
+            <div className="flex flex-row w-full h-full z-20 justify-center items-center">
+                <div className="flex flex-col justify-center items-center h-50">
+                    <div className="flex w-full justify-center items-center h-75">
                         <motion.form
                             initial={{
                                 opacity: 0,
@@ -86,9 +86,11 @@ function Register() {
                                 transition: { delay: 0.5 },
                                 transition: { duration: 1 },
                             }}
-                            onSubmit={handleSubmit} className="flex flex-col min-sm:w-[70%] max-sm:w-full bg-[#234c4e]/30
+                            onSubmit={handleSubmit} className="flex flex-col justify-center items-center min-sm:w-[50%]
+                                                max-sm:w-full bg-[#234c4e]/30 
                                                 backdrop-blur-sm border-t shadow-lg shadow-black p-4 md:p-8 rounded-3xl ">
-                            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 ">
+                            <div className="max-sm:flex w-full h-full justify-center items-center grid
+                             md:grid-cols-2 min-md:gap-4">
                                 <div
 
                                     className="w-full">
