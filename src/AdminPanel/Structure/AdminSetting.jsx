@@ -6,1075 +6,1075 @@ function AdminSetting() {
     return (
       // <!-- Theme Settings -->
     <div
-      class="offcanvas offcanvas-end border-0"
+      className="offcanvas offcanvas-end border-0"
       tabindex="-1"
       id="theme-settings-offcanvas"
     >
       <div
-        class="d-flex align-items-center bg-primary bg-gradient p-3 offcanvas-header"
+        className="d-flex align-items-center bg-primary bg-gradient p-3 offcanvas-header"
       >
-        <h5 class="m-0 me-2 text-white">سفارشی ساز تم</h5>
+        <h5 className="m-0 me-2 text-white">سفارشی ساز تم</h5>
 
         <button
           type="button"
-          class="btn-close btn-close-white ms-auto"
+          className="btn-close btn-close-white ms-auto"
           id="customizerclose-btn"
           data-bs-dismiss="offcanvas"
           aria-label="Close"
         ></button>
       </div>
-      <div class="offcanvas-body p-0">
-        <div data-simplebar class="h-100">
-          <div class="p-4">
-            <h6 class="mb-0 fw-semibold text-uppercase">طرح بندی</h6>
-            <p class="text-muted">چیدمان خود را انتخاب کنید</p>
+      <div className="offcanvas-body p-0">
+        <div data-simplebar className="h-100">
+          <div className="p-4">
+            <h6 className="mb-0 fw-semibold text-uppercase">طرح بندی</h6>
+            <p className="text-muted">چیدمان خود را انتخاب کنید</p>
 
-            <div class="row gy-3">
-              <div class="col-4">
-                <div class="form-check card-radio">
+            <div className="row gy-3">
+              <div className="col-4">
+                <div className="form-check card-radio">
                   <input
                     id="customizer-layout01"
                     name="data-layout"
                     type="radio"
                     value="vertical"
-                    class="form-check-input"
+                    className="form-check-input"
                   />
                   <label
-                    class="form-check-label p-0 avatar-md w-100"
+                    className="form-check-label p-0 avatar-md w-100"
                     for="customizer-layout01"
                   >
-                    <span class="d-flex gap-1 h-100">
-                      <span class="flex-shrink-0">
+                    <span className="d-flex gap-1 h-100">
+                      <span className="flex-shrink-0">
                         <span
-                          class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                          className="bg-light d-flex h-100 flex-column gap-1 p-1"
                         >
                           <span
-                            class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                            className="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
                           ></span>
                           <span
-                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                           ></span>
                           <span
-                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                           ></span>
                           <span
-                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                           ></span>
                         </span>
                       </span>
-                      <span class="flex-grow-1">
-                        <span class="d-flex h-100 flex-column">
-                          <span class="bg-light d-block p-1"></span>
-                          <span class="bg-light d-block p-1 mt-auto"></span>
+                      <span className="flex-grow-1">
+                        <span className="d-flex h-100 flex-column">
+                          <span className="bg-light d-block p-1"></span>
+                          <span className="bg-light d-block p-1 mt-auto"></span>
                         </span>
                       </span>
                     </span>
                   </label>
                 </div>
-                <h5 class="fs-13 text-center mt-2">عمودی</h5>
+                <h5 className="fs-13 text-center mt-2">عمودی</h5>
               </div>
-              <div class="col-4">
-                <div class="form-check card-radio">
+              <div className="col-4">
+                <div className="form-check card-radio">
                   <input
                     id="customizer-layout02"
                     name="data-layout"
                     type="radio"
                     value="horizontal"
-                    class="form-check-input"
+                    className="form-check-input"
                   />
                   <label
-                    class="form-check-label p-0 avatar-md w-100"
+                    className="form-check-label p-0 avatar-md w-100"
                     for="customizer-layout02"
                   >
-                    <span class="d-flex h-100 flex-column gap-1">
+                    <span className="d-flex h-100 flex-column gap-1">
                       <span
-                        class="bg-light d-flex p-1 gap-1 align-items-center"
+                        className="bg-light d-flex p-1 gap-1 align-items-center"
                       >
                         <span
-                          class="d-block p-1 bg-primary-subtle rounded me-1"
+                          className="d-block p-1 bg-primary-subtle rounded me-1"
                         ></span>
                         <span
-                          class="d-block p-1 pb-0 px-2 bg-primary-subtle ms-auto"
+                          className="d-block p-1 pb-0 px-2 bg-primary-subtle ms-auto"
                         ></span>
                         <span
-                          class="d-block p-1 pb-0 px-2 bg-primary-subtle"
+                          className="d-block p-1 pb-0 px-2 bg-primary-subtle"
                         ></span>
                       </span>
-                      <span class="bg-light d-block p-1"></span>
-                      <span class="bg-light d-block p-1 mt-auto"></span>
+                      <span className="bg-light d-block p-1"></span>
+                      <span className="bg-light d-block p-1 mt-auto"></span>
                     </span>
                   </label>
                 </div>
-                <h5 class="fs-13 text-center mt-2">افقی</h5>
+                <h5 className="fs-13 text-center mt-2">افقی</h5>
               </div>
-              <div class="col-4">
-                <div class="form-check card-radio">
+              <div className="col-4">
+                <div className="form-check card-radio">
                   <input
                     id="customizer-layout03"
                     name="data-layout"
                     type="radio"
                     value="twocolumn"
-                    class="form-check-input"
+                    className="form-check-input"
                   />
                   <label
-                    class="form-check-label p-0 avatar-md w-100"
+                    className="form-check-label p-0 avatar-md w-100"
                     for="customizer-layout03"
                   >
-                    <span class="d-flex gap-1 h-100">
-                      <span class="flex-shrink-0">
-                        <span class="bg-light d-flex h-100 flex-column gap-1">
+                    <span className="d-flex gap-1 h-100">
+                      <span className="flex-shrink-0">
+                        <span className="bg-light d-flex h-100 flex-column gap-1">
                           <span
-                            class="d-block p-1 bg-primary-subtle mb-2"
+                            className="d-block p-1 bg-primary-subtle mb-2"
                           ></span>
                           <span
-                            class="d-block p-1 pb-0 bg-primary-subtle"
+                            className="d-block p-1 pb-0 bg-primary-subtle"
                           ></span>
                           <span
-                            class="d-block p-1 pb-0 bg-primary-subtle"
+                            className="d-block p-1 pb-0 bg-primary-subtle"
                           ></span>
                           <span
-                            class="d-block p-1 pb-0 bg-primary-subtle"
+                            className="d-block p-1 pb-0 bg-primary-subtle"
                           ></span>
                         </span>
                       </span>
-                      <span class="flex-shrink-0">
+                      <span className="flex-shrink-0">
                         <span
-                          class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                          className="bg-light d-flex h-100 flex-column gap-1 p-1"
                         >
                           <span
-                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                           ></span>
                           <span
-                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                           ></span>
                           <span
-                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                           ></span>
                           <span
-                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                           ></span>
                         </span>
                       </span>
-                      <span class="flex-grow-1">
-                        <span class="d-flex h-100 flex-column">
-                          <span class="bg-light d-block p-1"></span>
-                          <span class="bg-light d-block p-1 mt-auto"></span>
+                      <span className="flex-grow-1">
+                        <span className="d-flex h-100 flex-column">
+                          <span className="bg-light d-block p-1"></span>
+                          <span className="bg-light d-block p-1 mt-auto"></span>
                         </span>
                       </span>
                     </span>
                   </label>
                 </div>
-                <h5 class="fs-13 text-center mt-2">دو ستونی</h5>
+                <h5 className="fs-13 text-center mt-2">دو ستونی</h5>
               </div>
               {/* <!-- end col --> */}
 
-              <div class="col-4">
-                <div class="form-check card-radio">
+              <div className="col-4">
+                <div className="form-check card-radio">
                   <input
                     id="customizer-layout04"
                     name="data-layout"
                     type="radio"
                     value="semibox"
-                    class="form-check-input"
+                    className="form-check-input"
                   />
                   <label
-                    class="form-check-label p-0 avatar-md w-100"
+                    className="form-check-label p-0 avatar-md w-100"
                     for="customizer-layout04"
                   >
-                    <span class="d-flex gap-1 h-100">
-                      <span class="flex-shrink-0 p-1">
+                    <span className="d-flex gap-1 h-100">
+                      <span className="flex-shrink-0 p-1">
                         <span
-                          class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                          className="bg-light d-flex h-100 flex-column gap-1 p-1"
                         >
                           <span
-                            class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                            className="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
                           ></span>
                           <span
-                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                           ></span>
                           <span
-                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                           ></span>
                           <span
-                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                           ></span>
                         </span>
                       </span>
-                      <span class="flex-grow-1">
-                        <span class="d-flex h-100 flex-column pt-1 pe-2">
-                          <span class="bg-light d-block p-1"></span>
-                          <span class="bg-light d-block p-1 mt-auto"></span>
+                      <span className="flex-grow-1">
+                        <span className="d-flex h-100 flex-column pt-1 pe-2">
+                          <span className="bg-light d-block p-1"></span>
+                          <span className="bg-light d-block p-1 mt-auto"></span>
                         </span>
                       </span>
                     </span>
                   </label>
                 </div>
-                <h5 class="fs-13 text-center mt-2">نیم جعبه</h5>
+                <h5 className="fs-13 text-center mt-2">نیم جعبه</h5>
               </div>
               {/* <!-- end col --> */}
             </div>
 
-            <h6 class="mt-4 mb-0 fw-semibold text-uppercase">طرح رنگ</h6>
-            <p class="text-muted">طرح روشن یا تاریک را انتخاب کنید.</p>
+            <h6 className="mt-4 mb-0 fw-semibold text-uppercase">طرح رنگ</h6>
+            <p className="text-muted">طرح روشن یا تاریک را انتخاب کنید.</p>
 
-            <div class="colorscheme-cardradio">
-              <div class="row">
-                <div class="col-4">
-                  <div class="form-check card-radio">
+            <div className="colorscheme-cardradio">
+              <div className="row">
+                <div className="col-4">
+                  <div className="form-check card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-bs-theme"
                       id="layout-mode-light"
                       value="light"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100"
+                      className="form-check-label p-0 avatar-md w-100"
                       for="layout-mode-light"
                     >
-                      <span class="d-flex gap-1 h-100">
-                        <span class="flex-shrink-0">
+                      <span className="d-flex gap-1 h-100">
+                        <span className="flex-shrink-0">
                           <span
-                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                            className="bg-light d-flex h-100 flex-column gap-1 p-1"
                           >
                             <span
-                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                              className="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                           </span>
                         </span>
-                        <span class="flex-grow-1">
-                          <span class="d-flex h-100 flex-column">
-                            <span class="bg-light d-block p-1"></span>
-                            <span class="bg-light d-block p-1 mt-auto"></span>
+                        <span className="flex-grow-1">
+                          <span className="d-flex h-100 flex-column">
+                            <span className="bg-light d-block p-1"></span>
+                            <span className="bg-light d-block p-1 mt-auto"></span>
                           </span>
                         </span>
                       </span>
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">نور</h5>
+                  <h5 className="fs-13 text-center mt-2">نور</h5>
                 </div>
 
-                <div class="col-4">
-                  <div class="form-check card-radio dark">
+                <div className="col-4">
+                  <div className="form-check card-radio dark">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-bs-theme"
                       id="layout-mode-dark"
                       value="dark"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100 bg-dark"
+                      className="form-check-label p-0 avatar-md w-100 bg-dark"
                       for="layout-mode-dark"
                     >
-                      <span class="d-flex gap-1 h-100">
-                        <span class="flex-shrink-0">
+                      <span className="d-flex gap-1 h-100">
+                        <span className="flex-shrink-0">
                           <span
-                            class="bg-white bg-opacity-10 d-flex h-100 flex-column gap-1 p-1"
+                            className="bg-white bg-opacity-10 d-flex h-100 flex-column gap-1 p-1"
                           >
                             <span
-                              class="d-block p-1 px-2 bg-white bg-opacity-10 rounded mb-2"
+                              className="d-block p-1 px-2 bg-white bg-opacity-10 rounded mb-2"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                              className="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                              className="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                              className="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
                             ></span>
                           </span>
                         </span>
-                        <span class="flex-grow-1">
-                          <span class="d-flex h-100 flex-column">
+                        <span className="flex-grow-1">
+                          <span className="d-flex h-100 flex-column">
                             <span
-                              class="bg-white bg-opacity-10 d-block p-1"
+                              className="bg-white bg-opacity-10 d-block p-1"
                             ></span>
                             <span
-                              class="bg-white bg-opacity-10 d-block p-1 mt-auto"
+                              className="bg-white bg-opacity-10 d-block p-1 mt-auto"
                             ></span>
                           </span>
                         </span>
                       </span>
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">تاریک</h5>
+                  <h5 className="fs-13 text-center mt-2">تاریک</h5>
                 </div>
               </div>
             </div>
 
             <div id="sidebar-visibility">
-              <h6 class="mt-4 mb-0 fw-semibold text-uppercase">
+              <h6 className="mt-4 mb-0 fw-semibold text-uppercase">
                 نمای نوار کناری
               </h6>
-              <p class="text-muted">
+              <p className="text-muted">
                 نمایش یا نوار کناری پنهان را انتخاب کنید.
               </p>
 
-              <div class="row">
-                <div class="col-4">
-                  <div class="form-check card-radio">
+              <div className="row">
+                <div className="col-4">
+                  <div className="form-check card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-sidebar-visibility"
                       id="sidebar-visibility-show"
                       value="show"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100"
+                      className="form-check-label p-0 avatar-md w-100"
                       for="sidebar-visibility-show"
                     >
-                      <span class="d-flex gap-1 h-100">
-                        <span class="flex-shrink-0 p-1">
+                      <span className="d-flex gap-1 h-100">
+                        <span className="flex-shrink-0 p-1">
                           <span
-                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                            className="bg-light d-flex h-100 flex-column gap-1 p-1"
                           >
                             <span
-                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                              className="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                           </span>
                         </span>
-                        <span class="flex-grow-1">
-                          <span class="d-flex h-100 flex-column pt-1 pe-2">
-                            <span class="bg-light d-block p-1"></span>
-                            <span class="bg-light d-block p-1 mt-auto"></span>
+                        <span className="flex-grow-1">
+                          <span className="d-flex h-100 flex-column pt-1 pe-2">
+                            <span className="bg-light d-block p-1"></span>
+                            <span className="bg-light d-block p-1 mt-auto"></span>
                           </span>
                         </span>
                       </span>
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">نمایش دهید</h5>
+                  <h5 className="fs-13 text-center mt-2">نمایش دهید</h5>
                 </div>
-                <div class="col-4">
-                  <div class="form-check card-radio">
+                <div className="col-4">
+                  <div className="form-check card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-sidebar-visibility"
                       id="sidebar-visibility-hidden"
                       value="hidden"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100 px-2"
+                      className="form-check-label p-0 avatar-md w-100 px-2"
                       for="sidebar-visibility-hidden"
                     >
-                      <span class="d-flex gap-1 h-100">
-                        <span class="flex-grow-1">
-                          <span class="d-flex h-100 flex-column pt-1 px-2">
-                            <span class="bg-light d-block p-1"></span>
-                            <span class="bg-light d-block p-1 mt-auto"></span>
+                      <span className="d-flex gap-1 h-100">
+                        <span className="flex-grow-1">
+                          <span className="d-flex h-100 flex-column pt-1 px-2">
+                            <span className="bg-light d-block p-1"></span>
+                            <span className="bg-light d-block p-1 mt-auto"></span>
                           </span>
                         </span>
                       </span>
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">پنهان شده است</h5>
+                  <h5 className="fs-13 text-center mt-2">پنهان شده است</h5>
                 </div>
               </div>
             </div>
 
             <div id="layout-width">
-              <h6 class="mt-4 mb-0 fw-semibold text-uppercase">عرض طرح</h6>
-              <p class="text-muted">طرح بندی سیال یا جعبه ای را انتخاب کنید.</p>
+              <h6 className="mt-4 mb-0 fw-semibold text-uppercase">عرض طرح</h6>
+              <p className="text-muted">طرح بندی سیال یا جعبه ای را انتخاب کنید.</p>
 
-              <div class="row">
-                <div class="col-4">
-                  <div class="form-check card-radio">
+              <div className="row">
+                <div className="col-4">
+                  <div className="form-check card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-layout-width"
                       id="layout-width-fluid"
                       value="fluid"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100"
+                      className="form-check-label p-0 avatar-md w-100"
                       for="layout-width-fluid"
                     >
-                      <span class="d-flex gap-1 h-100">
-                        <span class="flex-shrink-0">
+                      <span className="d-flex gap-1 h-100">
+                        <span className="flex-shrink-0">
                           <span
-                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                            className="bg-light d-flex h-100 flex-column gap-1 p-1"
                           >
                             <span
-                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                              className="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                           </span>
                         </span>
-                        <span class="flex-grow-1">
-                          <span class="d-flex h-100 flex-column">
-                            <span class="bg-light d-block p-1"></span>
-                            <span class="bg-light d-block p-1 mt-auto"></span>
+                        <span className="flex-grow-1">
+                          <span className="d-flex h-100 flex-column">
+                            <span className="bg-light d-block p-1"></span>
+                            <span className="bg-light d-block p-1 mt-auto"></span>
                           </span>
                         </span>
                       </span>
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">مایع</h5>
+                  <h5 className="fs-13 text-center mt-2">مایع</h5>
                 </div>
-                <div class="col-4">
-                  <div class="form-check card-radio">
+                <div className="col-4">
+                  <div className="form-check card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-layout-width"
                       id="layout-width-boxed"
                       value="boxed"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100 px-2"
+                      className="form-check-label p-0 avatar-md w-100 px-2"
                       for="layout-width-boxed"
                     >
-                      <span class="d-flex gap-1 h-100 border-start border-end">
-                        <span class="flex-shrink-0">
+                      <span className="d-flex gap-1 h-100 border-start border-end">
+                        <span className="flex-shrink-0">
                           <span
-                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                            className="bg-light d-flex h-100 flex-column gap-1 p-1"
                           >
                             <span
-                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                              className="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                           </span>
                         </span>
-                        <span class="flex-grow-1">
-                          <span class="d-flex h-100 flex-column">
-                            <span class="bg-light d-block p-1"></span>
-                            <span class="bg-light d-block p-1 mt-auto"></span>
+                        <span className="flex-grow-1">
+                          <span className="d-flex h-100 flex-column">
+                            <span className="bg-light d-block p-1"></span>
+                            <span className="bg-light d-block p-1 mt-auto"></span>
                           </span>
                         </span>
                       </span>
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">جعبه دار</h5>
+                  <h5 className="fs-13 text-center mt-2">جعبه دار</h5>
                 </div>
               </div>
             </div>
 
             <div id="layout-position">
-              <h6 class="mt-4 mb-0 fw-semibold text-uppercase">
+              <h6 className="mt-4 mb-0 fw-semibold text-uppercase">
                 موقعیت چیدمان
               </h6>
-              <p class="text-muted">
+              <p className="text-muted">
                 موقعیت طرح بندی ثابت یا قابل پیمایش را انتخاب کنید.
               </p>
 
-              <div class="btn-group radio" role="group">
+              <div className="btn-group radio" role="group">
                 <input
                   type="radio"
-                  class="btn-check"
+                  className="btn-check"
                   name="data-layout-position"
                   id="layout-position-fixed"
                   value="fixed"
                 />
-                <label class="btn btn-light w-sm" for="layout-position-fixed"
+                <label className="btn btn-light w-sm" for="layout-position-fixed"
                   >ثابت شد</label
                 >
 
                 <input
                   type="radio"
-                  class="btn-check"
+                  className="btn-check"
                   name="data-layout-position"
                   id="layout-position-scrollable"
                   value="scrollable"
                 />
                 <label
-                  class="btn btn-light w-sm ms-0"
+                  className="btn btn-light w-sm ms-0"
                   for="layout-position-scrollable"
                   >قابل پیمایش</label
                 >
               </div>
             </div>
-            <h6 class="mt-4 mb-0 fw-semibold text-uppercase">
+            <h6 className="mt-4 mb-0 fw-semibold text-uppercase">
               رنگ نوار بالای صفحه
             </h6>
-            <p class="text-muted">
+            <p className="text-muted">
               رنگ نوار بالای صفحه روشن یا تیره را انتخاب کنید.
             </p>
 
-            <div class="row">
-              <div class="col-4">
-                <div class="form-check card-radio">
+            <div className="row">
+              <div className="col-4">
+                <div className="form-check card-radio">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
                     name="data-topbar"
                     id="topbar-color-light"
                     value="light"
                   />
                   <label
-                    class="form-check-label p-0 avatar-md w-100"
+                    className="form-check-label p-0 avatar-md w-100"
                     for="topbar-color-light"
                   >
-                    <span class="d-flex gap-1 h-100">
-                      <span class="flex-shrink-0">
+                    <span className="d-flex gap-1 h-100">
+                      <span className="flex-shrink-0">
                         <span
-                          class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                          className="bg-light d-flex h-100 flex-column gap-1 p-1"
                         >
                           <span
-                            class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                            className="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
                           ></span>
                           <span
-                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                           ></span>
                           <span
-                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                           ></span>
                           <span
-                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                           ></span>
                         </span>
                       </span>
-                      <span class="flex-grow-1">
-                        <span class="d-flex h-100 flex-column">
-                          <span class="bg-light d-block p-1"></span>
-                          <span class="bg-light d-block p-1 mt-auto"></span>
+                      <span className="flex-grow-1">
+                        <span className="d-flex h-100 flex-column">
+                          <span className="bg-light d-block p-1"></span>
+                          <span className="bg-light d-block p-1 mt-auto"></span>
                         </span>
                       </span>
                     </span>
                   </label>
                 </div>
-                <h5 class="fs-13 text-center mt-2">نور</h5>
+                <h5 className="fs-13 text-center mt-2">نور</h5>
               </div>
-              <div class="col-4">
-                <div class="form-check card-radio">
+              <div className="col-4">
+                <div className="form-check card-radio">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
                     name="data-topbar"
                     id="topbar-color-dark"
                     value="dark"
                   />
                   <label
-                    class="form-check-label p-0 avatar-md w-100"
+                    className="form-check-label p-0 avatar-md w-100"
                     for="topbar-color-dark"
                   >
-                    <span class="d-flex gap-1 h-100">
-                      <span class="flex-shrink-0">
+                    <span className="d-flex gap-1 h-100">
+                      <span className="flex-shrink-0">
                         <span
-                          class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                          className="bg-light d-flex h-100 flex-column gap-1 p-1"
                         >
                           <span
-                            class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                            className="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
                           ></span>
                           <span
-                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                           ></span>
                           <span
-                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                           ></span>
                           <span
-                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                           ></span>
                         </span>
                       </span>
-                      <span class="flex-grow-1">
-                        <span class="d-flex h-100 flex-column">
-                          <span class="bg-primary d-block p-1"></span>
-                          <span class="bg-light d-block p-1 mt-auto"></span>
+                      <span className="flex-grow-1">
+                        <span className="d-flex h-100 flex-column">
+                          <span className="bg-primary d-block p-1"></span>
+                          <span className="bg-light d-block p-1 mt-auto"></span>
                         </span>
                       </span>
                     </span>
                   </label>
                 </div>
-                <h5 class="fs-13 text-center mt-2">تاریک</h5>
+                <h5 className="fs-13 text-center mt-2">تاریک</h5>
               </div>
             </div>
 
             <div id="sidebar-size">
-              <h6 class="mt-4 mb-0 fw-semibold text-uppercase">
+              <h6 className="mt-4 mb-0 fw-semibold text-uppercase">
                 اندازه نوار کناری
               </h6>
-              <p class="text-muted">اندازه نوار کناری را انتخاب کنید.</p>
+              <p className="text-muted">اندازه نوار کناری را انتخاب کنید.</p>
 
-              <div class="row">
-                <div class="col-4">
-                  <div class="form-check sidebar-setting card-radio">
+              <div className="row">
+                <div className="col-4">
+                  <div className="form-check sidebar-setting card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-sidebar-size"
                       id="sidebar-size-default"
                       value="lg"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100"
+                      className="form-check-label p-0 avatar-md w-100"
                       for="sidebar-size-default"
                     >
-                      <span class="d-flex gap-1 h-100">
-                        <span class="flex-shrink-0">
+                      <span className="d-flex gap-1 h-100">
+                        <span className="flex-shrink-0">
                           <span
-                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                            className="bg-light d-flex h-100 flex-column gap-1 p-1"
                           >
                             <span
-                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                              className="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                           </span>
                         </span>
-                        <span class="flex-grow-1">
-                          <span class="d-flex h-100 flex-column">
-                            <span class="bg-light d-block p-1"></span>
-                            <span class="bg-light d-block p-1 mt-auto"></span>
+                        <span className="flex-grow-1">
+                          <span className="d-flex h-100 flex-column">
+                            <span className="bg-light d-block p-1"></span>
+                            <span className="bg-light d-block p-1 mt-auto"></span>
                           </span>
                         </span>
                       </span>
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">پیش فرض</h5>
+                  <h5 className="fs-13 text-center mt-2">پیش فرض</h5>
                 </div>
 
-                <div class="col-4">
-                  <div class="form-check sidebar-setting card-radio">
+                <div className="col-4">
+                  <div className="form-check sidebar-setting card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-sidebar-size"
                       id="sidebar-size-compact"
                       value="md"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100"
+                      className="form-check-label p-0 avatar-md w-100"
                       for="sidebar-size-compact"
                     >
-                      <span class="d-flex gap-1 h-100">
-                        <span class="flex-shrink-0">
+                      <span className="d-flex gap-1 h-100">
+                        <span className="flex-shrink-0">
                           <span
-                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                            className="bg-light d-flex h-100 flex-column gap-1 p-1"
                           >
                             <span
-                              class="d-block p-1 bg-primary-subtle rounded mb-2"
+                              className="d-block p-1 bg-primary-subtle rounded mb-2"
                             ></span>
                             <span
-                              class="d-block p-1 pb-0 bg-primary-subtle"
+                              className="d-block p-1 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 pb-0 bg-primary-subtle"
+                              className="d-block p-1 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 pb-0 bg-primary-subtle"
+                              className="d-block p-1 pb-0 bg-primary-subtle"
                             ></span>
                           </span>
                         </span>
-                        <span class="flex-grow-1">
-                          <span class="d-flex h-100 flex-column">
-                            <span class="bg-light d-block p-1"></span>
-                            <span class="bg-light d-block p-1 mt-auto"></span>
+                        <span className="flex-grow-1">
+                          <span className="d-flex h-100 flex-column">
+                            <span className="bg-light d-block p-1"></span>
+                            <span className="bg-light d-block p-1 mt-auto"></span>
                           </span>
                         </span>
                       </span>
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">فشرده</h5>
+                  <h5 className="fs-13 text-center mt-2">فشرده</h5>
                 </div>
 
-                <div class="col-4">
-                  <div class="form-check sidebar-setting card-radio">
+                <div className="col-4">
+                  <div className="form-check sidebar-setting card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-sidebar-size"
                       id="sidebar-size-small"
                       value="sm"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100"
+                      className="form-check-label p-0 avatar-md w-100"
                       for="sidebar-size-small"
                     >
-                      <span class="d-flex gap-1 h-100">
-                        <span class="flex-shrink-0">
-                          <span class="bg-light d-flex h-100 flex-column gap-1">
+                      <span className="d-flex gap-1 h-100">
+                        <span className="flex-shrink-0">
+                          <span className="bg-light d-flex h-100 flex-column gap-1">
                             <span
-                              class="d-block p-1 bg-primary-subtle mb-2"
+                              className="d-block p-1 bg-primary-subtle mb-2"
                             ></span>
                             <span
-                              class="d-block p-1 pb-0 bg-primary-subtle"
+                              className="d-block p-1 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 pb-0 bg-primary-subtle"
+                              className="d-block p-1 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 pb-0 bg-primary-subtle"
+                              className="d-block p-1 pb-0 bg-primary-subtle"
                             ></span>
                           </span>
                         </span>
-                        <span class="flex-grow-1">
-                          <span class="d-flex h-100 flex-column">
-                            <span class="bg-light d-block p-1"></span>
-                            <span class="bg-light d-block p-1 mt-auto"></span>
+                        <span className="flex-grow-1">
+                          <span className="d-flex h-100 flex-column">
+                            <span className="bg-light d-block p-1"></span>
+                            <span className="bg-light d-block p-1 mt-auto"></span>
                           </span>
                         </span>
                       </span>
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">کوچک (نمایش نماد)</h5>
+                  <h5 className="fs-13 text-center mt-2">کوچک (نمایش نماد)</h5>
                 </div>
 
-                <div class="col-4">
-                  <div class="form-check sidebar-setting card-radio">
+                <div className="col-4">
+                  <div className="form-check sidebar-setting card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-sidebar-size"
                       id="sidebar-size-small-hover"
                       value="sm-hover"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100"
+                      className="form-check-label p-0 avatar-md w-100"
                       for="sidebar-size-small-hover"
                     >
-                      <span class="d-flex gap-1 h-100">
-                        <span class="flex-shrink-0">
-                          <span class="bg-light d-flex h-100 flex-column gap-1">
+                      <span className="d-flex gap-1 h-100">
+                        <span className="flex-shrink-0">
+                          <span className="bg-light d-flex h-100 flex-column gap-1">
                             <span
-                              class="d-block p-1 bg-primary-subtle mb-2"
+                              className="d-block p-1 bg-primary-subtle mb-2"
                             ></span>
                             <span
-                              class="d-block p-1 pb-0 bg-primary-subtle"
+                              className="d-block p-1 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 pb-0 bg-primary-subtle"
+                              className="d-block p-1 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 pb-0 bg-primary-subtle"
+                              className="d-block p-1 pb-0 bg-primary-subtle"
                             ></span>
                           </span>
                         </span>
-                        <span class="flex-grow-1">
-                          <span class="d-flex h-100 flex-column">
-                            <span class="bg-light d-block p-1"></span>
-                            <span class="bg-light d-block p-1 mt-auto"></span>
+                        <span className="flex-grow-1">
+                          <span className="d-flex h-100 flex-column">
+                            <span className="bg-light d-block p-1"></span>
+                            <span className="bg-light d-block p-1 mt-auto"></span>
                           </span>
                         </span>
                       </span>
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">نمای شناور کوچک</h5>
+                  <h5 className="fs-13 text-center mt-2">نمای شناور کوچک</h5>
                 </div>
               </div>
             </div>
 
             <div id="sidebar-view">
-              <h6 class="mt-4 mb-0 fw-semibold text-uppercase">
+              <h6 className="mt-4 mb-0 fw-semibold text-uppercase">
                 نمای نوار کناری
               </h6>
-              <p class="text-muted">
+              <p className="text-muted">
                 نمای پیش فرض یا نوار کناری جدا شده را انتخاب کنید.
               </p>
 
-              <div class="row">
-                <div class="col-4">
-                  <div class="form-check sidebar-setting card-radio">
+              <div className="row">
+                <div className="col-4">
+                  <div className="form-check sidebar-setting card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-layout-style"
                       id="sidebar-view-default"
                       value="default"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100"
+                      className="form-check-label p-0 avatar-md w-100"
                       for="sidebar-view-default"
                     >
-                      <span class="d-flex gap-1 h-100">
-                        <span class="flex-shrink-0">
+                      <span className="d-flex gap-1 h-100">
+                        <span className="flex-shrink-0">
                           <span
-                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                            className="bg-light d-flex h-100 flex-column gap-1 p-1"
                           >
                             <span
-                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                              className="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                           </span>
                         </span>
-                        <span class="flex-grow-1">
-                          <span class="d-flex h-100 flex-column">
-                            <span class="bg-light d-block p-1"></span>
-                            <span class="bg-light d-block p-1 mt-auto"></span>
+                        <span className="flex-grow-1">
+                          <span className="d-flex h-100 flex-column">
+                            <span className="bg-light d-block p-1"></span>
+                            <span className="bg-light d-block p-1 mt-auto"></span>
                           </span>
                         </span>
                       </span>
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">پیش فرض</h5>
+                  <h5 className="fs-13 text-center mt-2">پیش فرض</h5>
                 </div>
-                <div class="col-4">
-                  <div class="form-check sidebar-setting card-radio">
+                <div className="col-4">
+                  <div className="form-check sidebar-setting card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-layout-style"
                       id="sidebar-view-detached"
                       value="detached"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100"
+                      className="form-check-label p-0 avatar-md w-100"
                       for="sidebar-view-detached"
                     >
-                      <span class="d-flex h-100 flex-column">
+                      <span className="d-flex h-100 flex-column">
                         <span
-                          class="bg-light d-flex p-1 gap-1 align-items-center px-2"
+                          className="bg-light d-flex p-1 gap-1 align-items-center px-2"
                         >
                           <span
-                            class="d-block p-1 bg-primary-subtle rounded me-1"
+                            className="d-block p-1 bg-primary-subtle rounded me-1"
                           ></span>
                           <span
-                            class="d-block p-1 pb-0 px-2 bg-primary-subtle ms-auto"
+                            className="d-block p-1 pb-0 px-2 bg-primary-subtle ms-auto"
                           ></span>
                           <span
-                            class="d-block p-1 pb-0 px-2 bg-primary-subtle"
+                            className="d-block p-1 pb-0 px-2 bg-primary-subtle"
                           ></span>
                         </span>
-                        <span class="d-flex gap-1 h-100 p-1 px-2">
-                          <span class="flex-shrink-0">
+                        <span className="d-flex gap-1 h-100 p-1 px-2">
+                          <span className="flex-shrink-0">
                             <span
-                              class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                              className="bg-light d-flex h-100 flex-column gap-1 p-1"
                             >
                               <span
-                                class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                                className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                               ></span>
                               <span
-                                class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                                className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                               ></span>
                               <span
-                                class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                                className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                               ></span>
                             </span>
                           </span>
                         </span>
-                        <span class="bg-light d-block p-1 mt-auto px-2"></span>
+                        <span className="bg-light d-block p-1 mt-auto px-2"></span>
                       </span>
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">جدا شده</h5>
+                  <h5 className="fs-13 text-center mt-2">جدا شده</h5>
                 </div>
               </div>
             </div>
             <div id="sidebar-color">
-              <h6 class="mt-4 mb-0 fw-semibold text-uppercase">
+              <h6 className="mt-4 mb-0 fw-semibold text-uppercase">
                 رنگ نوار کناری
               </h6>
-              <p class="text-muted">رنگ نوار کناری را انتخاب کنید.</p>
+              <p className="text-muted">رنگ نوار کناری را انتخاب کنید.</p>
 
-              <div class="row">
-                <div class="col-4">
+              <div className="row">
+                <div className="col-4">
                   <div
-                    class="form-check sidebar-setting card-radio"
+                    className="form-check sidebar-setting card-radio"
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseBgGradient.show"
                   >
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-sidebar"
                       id="sidebar-color-light"
                       value="light"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100"
+                      className="form-check-label p-0 avatar-md w-100"
                       for="sidebar-color-light"
                     >
-                      <span class="d-flex gap-1 h-100">
-                        <span class="flex-shrink-0">
+                      <span className="d-flex gap-1 h-100">
+                        <span className="flex-shrink-0">
                           <span
-                            class="bg-white border-end d-flex h-100 flex-column gap-1 p-1"
+                            className="bg-white border-end d-flex h-100 flex-column gap-1 p-1"
                           >
                             <span
-                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                              className="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                           </span>
                         </span>
-                        <span class="flex-grow-1">
-                          <span class="d-flex h-100 flex-column">
-                            <span class="bg-light d-block p-1"></span>
-                            <span class="bg-light d-block p-1 mt-auto"></span>
+                        <span className="flex-grow-1">
+                          <span className="d-flex h-100 flex-column">
+                            <span className="bg-light d-block p-1"></span>
+                            <span className="bg-light d-block p-1 mt-auto"></span>
                           </span>
                         </span>
                       </span>
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">نور</h5>
+                  <h5 className="fs-13 text-center mt-2">نور</h5>
                 </div>
-                <div class="col-4">
+                <div className="col-4">
                   <div
-                    class="form-check sidebar-setting card-radio"
+                    className="form-check sidebar-setting card-radio"
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseBgGradient.show"
                   >
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-sidebar"
                       id="sidebar-color-dark"
                       value="dark"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100"
+                      className="form-check-label p-0 avatar-md w-100"
                       for="sidebar-color-dark"
                     >
-                      <span class="d-flex gap-1 h-100">
-                        <span class="flex-shrink-0">
+                      <span className="d-flex gap-1 h-100">
+                        <span className="flex-shrink-0">
                           <span
-                            class="bg-primary d-flex h-100 flex-column gap-1 p-1"
+                            className="bg-primary d-flex h-100 flex-column gap-1 p-1"
                           >
                             <span
-                              class="d-block p-1 px-2 bg-white bg-opacity-10 rounded mb-2"
+                              className="d-block p-1 px-2 bg-white bg-opacity-10 rounded mb-2"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                              className="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                              className="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                              className="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
                             ></span>
                           </span>
                         </span>
-                        <span class="flex-grow-1">
-                          <span class="d-flex h-100 flex-column">
-                            <span class="bg-light d-block p-1"></span>
-                            <span class="bg-light d-block p-1 mt-auto"></span>
+                        <span className="flex-grow-1">
+                          <span className="d-flex h-100 flex-column">
+                            <span className="bg-light d-block p-1"></span>
+                            <span className="bg-light d-block p-1 mt-auto"></span>
                           </span>
                         </span>
                       </span>
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">تاریک</h5>
+                  <h5 className="fs-13 text-center mt-2">تاریک</h5>
                 </div>
               </div>
               {/* <!-- end row --> */}
 
-              <div class="collapse" id="collapseBgGradient">
+              <div className="collapse" id="collapseBgGradient">
                 <div
-                  class="d-flex gap-2 flex-wrap img-switch p-2 px-3 bg-light rounded"
+                  className="d-flex gap-2 flex-wrap img-switch p-2 px-3 bg-light rounded"
                 >
-                  <div class="form-check sidebar-setting card-radio">
+                  <div className="form-check sidebar-setting card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-sidebar"
                       id="sidebar-color-gradient"
                       value="gradient"
                     />
                     <label
-                      class="form-check-label p-0 avatar-xs rounded-circle"
+                      className="form-check-label p-0 avatar-xs rounded-circle"
                       for="sidebar-color-gradient"
                     >
                       <span
-                        class="avatar-title rounded-circle bg-vertical-gradient"
+                        className="avatar-title rounded-circle bg-vertical-gradient"
                       ></span>
                     </label>
                   </div>
-                  <div class="form-check sidebar-setting card-radio">
+                  <div className="form-check sidebar-setting card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-sidebar"
                       id="sidebar-color-gradient-2"
                       value="gradient-2"
                     />
                     <label
-                      class="form-check-label p-0 avatar-xs rounded-circle"
+                      className="form-check-label p-0 avatar-xs rounded-circle"
                       for="sidebar-color-gradient-2"
                     >
                       <span
-                        class="avatar-title rounded-circle bg-vertical-gradient-2"
+                        className="avatar-title rounded-circle bg-vertical-gradient-2"
                       ></span>
                     </label>
                   </div>
-                  <div class="form-check sidebar-setting card-radio">
+                  <div className="form-check sidebar-setting card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-sidebar"
                       id="sidebar-color-gradient-3"
                       value="gradient-3"
                     />
                     <label
-                      class="form-check-label p-0 avatar-xs rounded-circle"
+                      className="form-check-label p-0 avatar-xs rounded-circle"
                       for="sidebar-color-gradient-3"
                     >
                       <span
-                        class="avatar-title rounded-circle bg-vertical-gradient-3"
+                        className="avatar-title rounded-circle bg-vertical-gradient-3"
                       ></span>
                     </label>
                   </div>
-                  <div class="form-check sidebar-setting card-radio">
+                  <div className="form-check sidebar-setting card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-sidebar"
                       id="sidebar-color-gradient-4"
                       value="gradient-4"
                     />
                     <label
-                      class="form-check-label p-0 avatar-xs rounded-circle"
+                      className="form-check-label p-0 avatar-xs rounded-circle"
                       for="sidebar-color-gradient-4"
                     >
                       <span
-                        class="avatar-title rounded-circle bg-vertical-gradient-4"
+                        className="avatar-title rounded-circle bg-vertical-gradient-4"
                       ></span>
                     </label>
                   </div>
@@ -1083,59 +1083,59 @@ function AdminSetting() {
             </div>
 
             <div id="preloader-menu">
-              <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Preloader</h6>
-              <p class="text-muted">یک پیش بارگذاری را انتخاب کنید.</p>
+              <h6 className="mt-4 mb-0 fw-semibold text-uppercase">Preloader</h6>
+              <p className="text-muted">یک پیش بارگذاری را انتخاب کنید.</p>
 
-              <div class="row">
-                <div class="col-4">
-                  <div class="form-check sidebar-setting card-radio">
+              <div className="row">
+                <div className="col-4">
+                  <div className="form-check sidebar-setting card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-preloader"
                       id="preloader-view-custom"
                       value="enable"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100"
+                      className="form-check-label p-0 avatar-md w-100"
                       for="preloader-view-custom"
                     >
-                      <span class="d-flex gap-1 h-100">
-                        <span class="flex-shrink-0">
+                      <span className="d-flex gap-1 h-100">
+                        <span className="flex-shrink-0">
                           <span
-                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                            className="bg-light d-flex h-100 flex-column gap-1 p-1"
                           >
                             <span
-                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                              className="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                           </span>
                         </span>
-                        <span class="flex-grow-1">
-                          <span class="d-flex h-100 flex-column">
-                            <span class="bg-light d-block p-1"></span>
-                            <span class="bg-light d-block p-1 mt-auto"></span>
+                        <span className="flex-grow-1">
+                          <span className="d-flex h-100 flex-column">
+                            <span className="bg-light d-block p-1"></span>
+                            <span className="bg-light d-block p-1 mt-auto"></span>
                           </span>
                         </span>
                       </span>
                       {/* <!-- <div id="preloader"> --> */}
                       <div
                         id="status"
-                        class="d-flex align-items-center justify-content-center"
+                        className="d-flex align-items-center justify-content-center"
                       >
                         <div
-                          class="spinner-border text-primary avatar-xxs m-auto"
+                          className="spinner-border text-primary avatar-xxs m-auto"
                           role="status"
                         >
-                          <span class="visually-hidden"
+                          <span className="visually-hidden"
                             >در حال بارگذاری...</span
                           >
                         </div>
@@ -1143,164 +1143,164 @@ function AdminSetting() {
                       {/* <!-- </div> --> */}
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">فعال کردن</h5>
+                  <h5 className="fs-13 text-center mt-2">فعال کردن</h5>
                 </div>
-                <div class="col-4">
-                  <div class="form-check sidebar-setting card-radio">
+                <div className="col-4">
+                  <div className="form-check sidebar-setting card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-preloader"
                       id="preloader-view-none"
                       value="disable"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100"
+                      className="form-check-label p-0 avatar-md w-100"
                       for="preloader-view-none"
                     >
-                      <span class="d-flex gap-1 h-100">
-                        <span class="flex-shrink-0">
+                      <span className="d-flex gap-1 h-100">
+                        <span className="flex-shrink-0">
                           <span
-                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                            className="bg-light d-flex h-100 flex-column gap-1 p-1"
                           >
                             <span
-                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                              className="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                           </span>
                         </span>
-                        <span class="flex-grow-1">
-                          <span class="d-flex h-100 flex-column">
-                            <span class="bg-light d-block p-1"></span>
-                            <span class="bg-light d-block p-1 mt-auto"></span>
+                        <span className="flex-grow-1">
+                          <span className="d-flex h-100 flex-column">
+                            <span className="bg-light d-block p-1"></span>
+                            <span className="bg-light d-block p-1 mt-auto"></span>
                           </span>
                         </span>
                       </span>
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">غیر فعال کردن</h5>
+                  <h5 className="fs-13 text-center mt-2">غیر فعال کردن</h5>
                 </div>
               </div>
             </div>
             {/* <!-- end preloader-menu --> */}
 
             <div id="body-img">
-              <h6 class="mt-4 mb-0 fw-semibold text-uppercase">
+              <h6 className="mt-4 mb-0 fw-semibold text-uppercase">
                 تصویر پس زمینه
               </h6>
-              <p class="text-muted">تصویر پس زمینه بدن را انتخاب کنید.</p>
+              <p className="text-muted">تصویر پس زمینه بدن را انتخاب کنید.</p>
 
-              <div class="row">
-                <div class="col-4">
-                  <div class="form-check sidebar-setting card-radio">
+              <div className="row">
+                <div className="col-4">
+                  <div className="form-check sidebar-setting card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-body-image"
                       id="body-img-none"
                       value="none"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100"
+                      className="form-check-label p-0 avatar-md w-100"
                       data-body-image="none"
                       for="body-img-none"
                     >
-                      <span class="d-flex gap-1 h-100">
-                        <span class="flex-shrink-0">
+                      <span className="d-flex gap-1 h-100">
+                        <span className="flex-shrink-0">
                           <span
-                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                            className="bg-light d-flex h-100 flex-column gap-1 p-1"
                           >
                             <span
-                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                              className="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                             <span
-                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              className="d-block p-1 px-2 pb-0 bg-primary-subtle"
                             ></span>
                           </span>
                         </span>
-                        <span class="flex-grow-1">
-                          <span class="d-flex h-100 flex-column">
-                            <span class="bg-light d-block p-1"></span>
-                            <span class="bg-light d-block p-1 mt-auto"></span>
+                        <span className="flex-grow-1">
+                          <span className="d-flex h-100 flex-column">
+                            <span className="bg-light d-block p-1"></span>
+                            <span className="bg-light d-block p-1 mt-auto"></span>
                           </span>
                         </span>
                       </span>
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">هیچ کدام</h5>
+                  <h5 className="fs-13 text-center mt-2">هیچ کدام</h5>
                 </div>
                 {/* <!-- end col --> */}
-                <div class="col-4">
-                  <div class="form-check sidebar-setting card-radio">
+                <div className="col-4">
+                  <div className="form-check sidebar-setting card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-body-image"
                       id="body-img-one"
                       value="img-1"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100"
+                      className="form-check-label p-0 avatar-md w-100"
                       data-body-image="img-1"
                       for="body-img-one"
                     >
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">یکی</h5>
+                  <h5 className="fs-13 text-center mt-2">یکی</h5>
                 </div>
                 {/* <!-- end col --> */}
 
-                <div class="col-4">
-                  <div class="form-check sidebar-setting card-radio">
+                <div className="col-4">
+                  <div className="form-check sidebar-setting card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-body-image"
                       id="body-img-two"
                       value="img-2"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100"
+                      className="form-check-label p-0 avatar-md w-100"
                       data-body-image="img-2"
                       for="body-img-two"
                     >
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">دو</h5>
+                  <h5 className="fs-13 text-center mt-2">دو</h5>
                 </div>
                 {/* <!-- end col --> */}
 
-                <div class="col-4">
-                  <div class="form-check sidebar-setting card-radio">
+                <div className="col-4">
+                  <div className="form-check sidebar-setting card-radio">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="data-body-image"
                       id="body-img-three"
                       value="img-3"
                     />
                     <label
-                      class="form-check-label p-0 avatar-md w-100"
+                      className="form-check-label p-0 avatar-md w-100"
                       data-body-image="img-3"
                       for="body-img-three"
                     >
                     </label>
                   </div>
-                  <h5 class="fs-13 text-center mt-2">سه</h5>
+                  <h5 className="fs-13 text-center mt-2">سه</h5>
                 </div>
                 {/* <!-- end col --> */}
               </div>
@@ -1309,18 +1309,18 @@ function AdminSetting() {
           </div>
         </div>
       </div>
-      <div class="offcanvas-footer border-top p-3 text-center">
-        <div class="row">
-          <div class="col-6">
-            <button type="button" class="btn btn-light w-100" id="reset-layout">
+      <div className="offcanvas-footer border-top p-3 text-center">
+        <div className="row">
+          <div className="col-6">
+            <button type="button" className="btn btn-light w-100" id="reset-layout">
               بازنشانی کنید
             </button>
           </div>
-          <div class="col-6">
+          <div className="col-6">
             <a
               href="https://www.rtl-theme.com/velzon-html-template/"
               target="_blank"
-              class="btn btn-primary w-100"
+              className="btn btn-primary w-100"
               >اکنون بخرید</a
             >
           </div>

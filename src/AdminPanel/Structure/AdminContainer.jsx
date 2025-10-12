@@ -3,6 +3,7 @@ import AdminHeader from './AdminHeader';
 import AdminNavbar from './AdminNavbar';
 import AdminSidebar from './AdminSidebar';
 import AdminFooter from './AdminFooter';
+import AdminBackToTop from './AdminBackToTop';
 import AdminPreLoader from './AdminPreLoader';
 import AdminSetting from './AdminSetting';
 
@@ -16,16 +17,16 @@ function AdminContainer() {
 
           <AdminHeader />
 
-          <div class="app-menu navbar-menu">
+          <div className="app-menu navbar-menu">
             <AdminNavbar />
             <AdminSidebar />
-            <div class="sidebar-background"></div>
+            <div className="sidebar-background"></div>
           </div>
 
-          <div class="vertical-overlay"></div>
+          <div className="vertical-overlay"></div>
 
-          <div class="main-content">
-            <div class="page-content">
+          <div className="main-content">
+            <div className="page-content">
               
                 <Outlet />
 
