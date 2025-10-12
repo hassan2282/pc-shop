@@ -377,7 +377,7 @@
   if ($el.length > 0) {
     new SimpleBar($el[0]);
   }
-  
+
 
   // Basic Carousel
   $(".basic-carousel").owlCarousel({

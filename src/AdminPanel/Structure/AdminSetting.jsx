@@ -4,136 +4,1329 @@ import { Icon } from "@iconify/react";
 
 function AdminSetting() {
     return (
-        <>
+      <!-- Theme Settings -->
+    <div
+      class="offcanvas offcanvas-end border-0"
+      tabindex="-1"
+      id="theme-settings-offcanvas"
+    >
+      <div
+        class="d-flex align-items-center bg-primary bg-gradient p-3 offcanvas-header"
+      >
+        <h5 class="m-0 me-2 text-white">سفارشی ساز تم</h5>
 
+        <button
+          type="button"
+          class="btn-close btn-close-white ms-auto"
+          id="customizerclose-btn"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body p-0">
+        <div data-simplebar class="h-100">
+          <div class="p-4">
+            <h6 class="mb-0 fw-semibold text-uppercase">طرح بندی</h6>
+            <p class="text-muted">چیدمان خود را انتخاب کنید</p>
 
-            <button className="fixed ltr:md:right-[-29px] ltr:right-0 rtl:left-0 rtl:md:left-[-29px] top-1/2 z-[888] translate-y-1/2 bg-slate-800 text-slate-50 dark:bg-slate-700 dark:text-slate-300 cursor-pointer transform rotate-90 flex items-center text-sm font-medium px-2 py-2 shadow-deep ltr:rounded-b rtl:rounded-t" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas">
-                <Icon className="text-slate-50 text-lg animate-spin" icon="material-symbols:settings-outline-rounded"/>
-                <span className="hidden md:inline-block ltr:ml-2 rtl:mr-2">تنظیمات</span>
-            </button>
-
-            <div className="offcanvas offcanvas-end fixed bottom-0 flex flex-col max-w-full bg-white dark:bg-slate-800 invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 ltr:right-0 rtl:left-0 border-none w-96" tabIndex="-1" id="offcanvas" aria-labelledby="offcanvas">
-                <div className="offcanvas-header flex items-center justify-between p-4 pt-3 border-b border-b-slate-300">
-                    <div>
-                        <h3 className="block text-xl font-Inter text-slate-900 font-medium dark:text-[#eee]">سفارشی کننده تم</h3>
-                        <p className="block text-sm font-Inter font-light text-[#68768A] dark:text-[#eee]">سفارشی کردن و پیش نمایش در زمان واقعی</p>
-                    </div>
-                    <button type="button" className="box-content text-2xl w-4 h-4 p-2 pt-0 -my-5 -mr-2 text-black dark:text-white border-none rounded-none opacity-100 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="offcanvas"><Icon icon="line-md:close"/></button>
+            <div class="row gy-3">
+              <div class="col-4">
+                <div class="form-check card-radio">
+                  <input
+                    id="customizer-layout01"
+                    name="data-layout"
+                    type="radio"
+                    value="vertical"
+                    class="form-check-input"
+                  />
+                  <label
+                    class="form-check-label p-0 avatar-md w-100"
+                    for="customizer-layout01"
+                  >
+                    <span class="d-flex gap-1 h-100">
+                      <span class="flex-shrink-0">
+                        <span
+                          class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                        >
+                          <span
+                            class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                          ></span>
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                        </span>
+                      </span>
+                      <span class="flex-grow-1">
+                        <span class="d-flex h-100 flex-column">
+                          <span class="bg-light d-block p-1"></span>
+                          <span class="bg-light d-block p-1 mt-auto"></span>
+                        </span>
+                      </span>
+                    </span>
+                  </label>
                 </div>
-                <div className="offcanvas-body flex-grow overflow-y-auto">
-                    <div className="settings-modal">
-                        <div className="p-6">
-
-                            <h3 className="mt-4"> تم</h3>
-                            <form className="input-area flex items-center space-x-8 rtl:space-x-reverse" id="themeChanger">
-                                <div className="input-group flex items-center">
-                                    <input type="radio" id="light" name="theme" value="light" className="themeCustomization-checkInput"/>
-                                        <label htmlFor="light" className="themeCustomization-checkInput-label">لایت</label>
-                                </div>
-                                <div className="input-group flex items-center">
-                                    <input type="radio" id="dark" name="theme" value="dark" className="themeCustomization-checkInput"/>
-                                        <label htmlFor="dark" className="themeCustomization-checkInput-label">تاریک</label>
-                                </div>
-                                <div className="input-group flex items-center">
-                                    <input type="radio" id="semiDark" name="theme" value="semiDark" className="themeCustomization-checkInput"/>
-                                        <label htmlFor="semiDark" className="themeCustomization-checkInput-label">نیمه تاریک</label>
-                                </div>
-                            </form>
-                        </div>
-                        <div className="divider"></div>
-                        <div className="p-6">
-
-                            <div className="flex items-center justify-between mt-5">
-                                <h3 className="!mb-0">راست چین شود</h3>
-                                <label id="rtl_ltr" className="relative inline-flex h-6 w-[46px] items-center rounded-full transition-all duration-150 cursor-pointer">
-                                    <input type="checkbox" value="" className="sr-only peer"/>
-                                        <span className="w-11 h-6 bg-gray-200 peer-focus:outline-none ring-0 rounded-full peer dark:bg-gray-900 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-black-600"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div className="divider"></div>
-                        <div className="p-6">
-                            <h3>عرض محتوا</h3>
-                            <div className="input-area flex items-center space-x-8 rtl:space-x-reverse">
-                                <div className="input-group flex items-center">
-                                    <input type="radio" id="fullWidth" name="content-width" value="fullWidth" className="themeCustomization-checkInput"/>
-                                        <label htmlFor="fullWidth" className="themeCustomization-checkInput-label ">عرض کامل</label>
-                                </div>
-                                <div className="input-group flex items-center">
-                                    <input type="radio" id="boxed" name="content-width" value="boxed" className="themeCustomization-checkInput"/>
-                                        <label htmlFor="boxed" className="themeCustomization-checkInput-label ">جعبه ای</label>
-                                </div>
-                            </div>
-                            <h3 className="mt-4"> چیدمان منو</h3>
-                            <div className="input-area flex items-center space-x-8 rtl:space-x-reverse">
-                                <div className="input-group flex items-center">
-                                    <input type="radio" id="vertical_menu" name="menu_layout" value="vertical" className="themeCustomization-checkInput"/>
-                                        <label htmlFor="vertical_menu" className="themeCustomization-checkInput-label ">عمودی</label>
-                                </div>
-                                <div className="input-group flex items-center">
-                                    <input type="radio" id="horizontal_menu" name="menu_layout" value="horizontal" className="themeCustomization-checkInput"/>
-                                        <label htmlFor="horizontal_menu" className="themeCustomization-checkInput-label ">افقی</label>
-                                </div>
-                            </div>
-                            <div id="menuCollapse" className="flex items-center justify-between mt-5">
-                                <h3 className="!mb-0">منو جمع شد</h3>
-                                <label className="relative inline-flex h-6 w-[46px] items-center rounded-full transition-all duration-150 cursor-pointer">
-                                    <input type="checkbox" value="" className="sr-only peer"/>
-                                        <span className="w-11 h-6 bg-gray-200 peer-focus:outline-none ring-0 rounded-full peer dark:bg-gray-900 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-black-500"></span>
-                                </label>
-                            </div>
-                            <div id="menuHidden" className="!flex items-center justify-between mt-5">
-                                <h3 className="!mb-0">منو پنهان</h3>
-                                <label id="menuHide" className="relative inline-flex h-6 w-[46px] items-center rounded-full transition-all duration-150 cursor-pointer">
-                                    <input type="checkbox" value="" className="sr-only peer"/>
-                                        <span className="w-11 h-6 bg-gray-200 peer-focus:outline-none ring-0 rounded-full peer dark:bg-gray-900 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-black-500"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div className="divider"></div>
-                        <div className="p-6">
-                            <h3>نوع نوار</h3>
-                            <div className="input-area flex flex-wrap items-center space-x-4 rtl:space-x-reverse">
-                                <div className="input-group flex items-center">
-                                    <input type="radio" id="nav_floating" name="navbarType" value="floating" className="themeCustomization-checkInput"/>
-                                        <label htmlFor="nav_floating" className="themeCustomization-checkInput-label "> شناور</label>
-                                </div>
-                                <div className="input-group flex items-center">
-                                    <input type="radio" id="nav_sticky" name="navbarType" value="sticky" className="themeCustomization-checkInput"/>
-                                        <label htmlFor="nav_sticky" className="themeCustomization-checkInput-label ">چسبنده</label>
-                                </div>
-                                <div className="input-group flex items-center">
-                                    <input type="radio" id="nav_static" name="navbarType" value="static" className="themeCustomization-checkInput"/>
-                                        <label htmlFor="nav_static" className="themeCustomization-checkInput-label ">ایستا</label>
-                                </div>
-                                <div className="input-group flex items-center">
-                                    <input type="radio" id="nav_hidden" name="navbarType" value="hidden" className="themeCustomization-checkInput"/>
-                                        <label htmlFor="nav_hidden" className="themeCustomization-checkInput-label ">پنهان</label>
-                                </div>
-                            </div>
-                            <h3 className="mt-4">نوع فوتر</h3>
-                            <div className="input-area flex items-center space-x-4 rtl:space-x-reverse">
-                                <div className="input-group flex items-center">
-                                    <input type="radio" id="footer_sticky" name="footerType" value="sticky" className="themeCustomization-checkInput"/>
-                                        <label htmlFor="footer_sticky" className="themeCustomization-checkInput-label ">چسبنده</label>
-                                </div>
-                                <div className="input-group flex items-center">
-                                    <input type="radio" id="footer_static" name="footerType" value="static" className="themeCustomization-checkInput"/>
-                                        <label htmlFor="footer_static" className="themeCustomization-checkInput-label ">ایستا</label>
-                                </div>
-                                <div className="input-group flex items-center">
-                                    <input type="radio" id="footer_hidden" name="footerType" value="hidden" className="themeCustomization-checkInput"/>
-                                        <label htmlFor="footer_hidden" className="themeCustomization-checkInput-label ">پنهان</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <h5 class="fs-13 text-center mt-2">عمودی</h5>
+              </div>
+              <div class="col-4">
+                <div class="form-check card-radio">
+                  <input
+                    id="customizer-layout02"
+                    name="data-layout"
+                    type="radio"
+                    value="horizontal"
+                    class="form-check-input"
+                  />
+                  <label
+                    class="form-check-label p-0 avatar-md w-100"
+                    for="customizer-layout02"
+                  >
+                    <span class="d-flex h-100 flex-column gap-1">
+                      <span
+                        class="bg-light d-flex p-1 gap-1 align-items-center"
+                      >
+                        <span
+                          class="d-block p-1 bg-primary-subtle rounded me-1"
+                        ></span>
+                        <span
+                          class="d-block p-1 pb-0 px-2 bg-primary-subtle ms-auto"
+                        ></span>
+                        <span
+                          class="d-block p-1 pb-0 px-2 bg-primary-subtle"
+                        ></span>
+                      </span>
+                      <span class="bg-light d-block p-1"></span>
+                      <span class="bg-light d-block p-1 mt-auto"></span>
+                    </span>
+                  </label>
                 </div>
+                <h5 class="fs-13 text-center mt-2">افقی</h5>
+              </div>
+              <div class="col-4">
+                <div class="form-check card-radio">
+                  <input
+                    id="customizer-layout03"
+                    name="data-layout"
+                    type="radio"
+                    value="twocolumn"
+                    class="form-check-input"
+                  />
+                  <label
+                    class="form-check-label p-0 avatar-md w-100"
+                    for="customizer-layout03"
+                  >
+                    <span class="d-flex gap-1 h-100">
+                      <span class="flex-shrink-0">
+                        <span class="bg-light d-flex h-100 flex-column gap-1">
+                          <span
+                            class="d-block p-1 bg-primary-subtle mb-2"
+                          ></span>
+                          <span
+                            class="d-block p-1 pb-0 bg-primary-subtle"
+                          ></span>
+                          <span
+                            class="d-block p-1 pb-0 bg-primary-subtle"
+                          ></span>
+                          <span
+                            class="d-block p-1 pb-0 bg-primary-subtle"
+                          ></span>
+                        </span>
+                      </span>
+                      <span class="flex-shrink-0">
+                        <span
+                          class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                        >
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                        </span>
+                      </span>
+                      <span class="flex-grow-1">
+                        <span class="d-flex h-100 flex-column">
+                          <span class="bg-light d-block p-1"></span>
+                          <span class="bg-light d-block p-1 mt-auto"></span>
+                        </span>
+                      </span>
+                    </span>
+                  </label>
+                </div>
+                <h5 class="fs-13 text-center mt-2">دو ستونی</h5>
+              </div>
+              <!-- end col -->
+
+              <div class="col-4">
+                <div class="form-check card-radio">
+                  <input
+                    id="customizer-layout04"
+                    name="data-layout"
+                    type="radio"
+                    value="semibox"
+                    class="form-check-input"
+                  />
+                  <label
+                    class="form-check-label p-0 avatar-md w-100"
+                    for="customizer-layout04"
+                  >
+                    <span class="d-flex gap-1 h-100">
+                      <span class="flex-shrink-0 p-1">
+                        <span
+                          class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                        >
+                          <span
+                            class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                          ></span>
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                        </span>
+                      </span>
+                      <span class="flex-grow-1">
+                        <span class="d-flex h-100 flex-column pt-1 pe-2">
+                          <span class="bg-light d-block p-1"></span>
+                          <span class="bg-light d-block p-1 mt-auto"></span>
+                        </span>
+                      </span>
+                    </span>
+                  </label>
+                </div>
+                <h5 class="fs-13 text-center mt-2">نیم جعبه</h5>
+              </div>
+              <!-- end col -->
             </div>
 
+            <h6 class="mt-4 mb-0 fw-semibold text-uppercase">طرح رنگ</h6>
+            <p class="text-muted">طرح روشن یا تاریک را انتخاب کنید.</p>
 
+            <div class="colorscheme-cardradio">
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-check card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-bs-theme"
+                      id="layout-mode-light"
+                      value="light"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="layout-mode-light"
+                    >
+                      <span class="d-flex gap-1 h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                          >
+                            <span
+                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                            <span class="bg-light d-block p-1 mt-auto"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">نور</h5>
+                </div>
 
-        </>
+                <div class="col-4">
+                  <div class="form-check card-radio dark">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-bs-theme"
+                      id="layout-mode-dark"
+                      value="dark"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100 bg-dark"
+                      for="layout-mode-dark"
+                    >
+                      <span class="d-flex gap-1 h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-white bg-opacity-10 d-flex h-100 flex-column gap-1 p-1"
+                          >
+                            <span
+                              class="d-block p-1 px-2 bg-white bg-opacity-10 rounded mb-2"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span
+                              class="bg-white bg-opacity-10 d-block p-1"
+                            ></span>
+                            <span
+                              class="bg-white bg-opacity-10 d-block p-1 mt-auto"
+                            ></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">تاریک</h5>
+                </div>
+              </div>
+            </div>
+
+            <div id="sidebar-visibility">
+              <h6 class="mt-4 mb-0 fw-semibold text-uppercase">
+                نمای نوار کناری
+              </h6>
+              <p class="text-muted">
+                نمایش یا نوار کناری پنهان را انتخاب کنید.
+              </p>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-check card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidebar-visibility"
+                      id="sidebar-visibility-show"
+                      value="show"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="sidebar-visibility-show"
+                    >
+                      <span class="d-flex gap-1 h-100">
+                        <span class="flex-shrink-0 p-1">
+                          <span
+                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                          >
+                            <span
+                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column pt-1 pe-2">
+                            <span class="bg-light d-block p-1"></span>
+                            <span class="bg-light d-block p-1 mt-auto"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">نمایش دهید</h5>
+                </div>
+                <div class="col-4">
+                  <div class="form-check card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidebar-visibility"
+                      id="sidebar-visibility-hidden"
+                      value="hidden"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100 px-2"
+                      for="sidebar-visibility-hidden"
+                    >
+                      <span class="d-flex gap-1 h-100">
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column pt-1 px-2">
+                            <span class="bg-light d-block p-1"></span>
+                            <span class="bg-light d-block p-1 mt-auto"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">پنهان شده است</h5>
+                </div>
+              </div>
+            </div>
+
+            <div id="layout-width">
+              <h6 class="mt-4 mb-0 fw-semibold text-uppercase">عرض طرح</h6>
+              <p class="text-muted">طرح بندی سیال یا جعبه ای را انتخاب کنید.</p>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-check card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-layout-width"
+                      id="layout-width-fluid"
+                      value="fluid"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="layout-width-fluid"
+                    >
+                      <span class="d-flex gap-1 h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                          >
+                            <span
+                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                            <span class="bg-light d-block p-1 mt-auto"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">مایع</h5>
+                </div>
+                <div class="col-4">
+                  <div class="form-check card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-layout-width"
+                      id="layout-width-boxed"
+                      value="boxed"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100 px-2"
+                      for="layout-width-boxed"
+                    >
+                      <span class="d-flex gap-1 h-100 border-start border-end">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                          >
+                            <span
+                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                            <span class="bg-light d-block p-1 mt-auto"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">جعبه دار</h5>
+                </div>
+              </div>
+            </div>
+
+            <div id="layout-position">
+              <h6 class="mt-4 mb-0 fw-semibold text-uppercase">
+                موقعیت چیدمان
+              </h6>
+              <p class="text-muted">
+                موقعیت طرح بندی ثابت یا قابل پیمایش را انتخاب کنید.
+              </p>
+
+              <div class="btn-group radio" role="group">
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="data-layout-position"
+                  id="layout-position-fixed"
+                  value="fixed"
+                />
+                <label class="btn btn-light w-sm" for="layout-position-fixed"
+                  >ثابت شد</label
+                >
+
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="data-layout-position"
+                  id="layout-position-scrollable"
+                  value="scrollable"
+                />
+                <label
+                  class="btn btn-light w-sm ms-0"
+                  for="layout-position-scrollable"
+                  >قابل پیمایش</label
+                >
+              </div>
+            </div>
+            <h6 class="mt-4 mb-0 fw-semibold text-uppercase">
+              رنگ نوار بالای صفحه
+            </h6>
+            <p class="text-muted">
+              رنگ نوار بالای صفحه روشن یا تیره را انتخاب کنید.
+            </p>
+
+            <div class="row">
+              <div class="col-4">
+                <div class="form-check card-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="data-topbar"
+                    id="topbar-color-light"
+                    value="light"
+                  />
+                  <label
+                    class="form-check-label p-0 avatar-md w-100"
+                    for="topbar-color-light"
+                  >
+                    <span class="d-flex gap-1 h-100">
+                      <span class="flex-shrink-0">
+                        <span
+                          class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                        >
+                          <span
+                            class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                          ></span>
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                        </span>
+                      </span>
+                      <span class="flex-grow-1">
+                        <span class="d-flex h-100 flex-column">
+                          <span class="bg-light d-block p-1"></span>
+                          <span class="bg-light d-block p-1 mt-auto"></span>
+                        </span>
+                      </span>
+                    </span>
+                  </label>
+                </div>
+                <h5 class="fs-13 text-center mt-2">نور</h5>
+              </div>
+              <div class="col-4">
+                <div class="form-check card-radio">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="data-topbar"
+                    id="topbar-color-dark"
+                    value="dark"
+                  />
+                  <label
+                    class="form-check-label p-0 avatar-md w-100"
+                    for="topbar-color-dark"
+                  >
+                    <span class="d-flex gap-1 h-100">
+                      <span class="flex-shrink-0">
+                        <span
+                          class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                        >
+                          <span
+                            class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                          ></span>
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                          <span
+                            class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                          ></span>
+                        </span>
+                      </span>
+                      <span class="flex-grow-1">
+                        <span class="d-flex h-100 flex-column">
+                          <span class="bg-primary d-block p-1"></span>
+                          <span class="bg-light d-block p-1 mt-auto"></span>
+                        </span>
+                      </span>
+                    </span>
+                  </label>
+                </div>
+                <h5 class="fs-13 text-center mt-2">تاریک</h5>
+              </div>
+            </div>
+
+            <div id="sidebar-size">
+              <h6 class="mt-4 mb-0 fw-semibold text-uppercase">
+                اندازه نوار کناری
+              </h6>
+              <p class="text-muted">اندازه نوار کناری را انتخاب کنید.</p>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidebar-size"
+                      id="sidebar-size-default"
+                      value="lg"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="sidebar-size-default"
+                    >
+                      <span class="d-flex gap-1 h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                          >
+                            <span
+                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                            <span class="bg-light d-block p-1 mt-auto"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">پیش فرض</h5>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidebar-size"
+                      id="sidebar-size-compact"
+                      value="md"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="sidebar-size-compact"
+                    >
+                      <span class="d-flex gap-1 h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                          >
+                            <span
+                              class="d-block p-1 bg-primary-subtle rounded mb-2"
+                            ></span>
+                            <span
+                              class="d-block p-1 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 pb-0 bg-primary-subtle"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                            <span class="bg-light d-block p-1 mt-auto"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">فشرده</h5>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidebar-size"
+                      id="sidebar-size-small"
+                      value="sm"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="sidebar-size-small"
+                    >
+                      <span class="d-flex gap-1 h-100">
+                        <span class="flex-shrink-0">
+                          <span class="bg-light d-flex h-100 flex-column gap-1">
+                            <span
+                              class="d-block p-1 bg-primary-subtle mb-2"
+                            ></span>
+                            <span
+                              class="d-block p-1 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 pb-0 bg-primary-subtle"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                            <span class="bg-light d-block p-1 mt-auto"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">کوچک (نمایش نماد)</h5>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidebar-size"
+                      id="sidebar-size-small-hover"
+                      value="sm-hover"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="sidebar-size-small-hover"
+                    >
+                      <span class="d-flex gap-1 h-100">
+                        <span class="flex-shrink-0">
+                          <span class="bg-light d-flex h-100 flex-column gap-1">
+                            <span
+                              class="d-block p-1 bg-primary-subtle mb-2"
+                            ></span>
+                            <span
+                              class="d-block p-1 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 pb-0 bg-primary-subtle"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                            <span class="bg-light d-block p-1 mt-auto"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">نمای شناور کوچک</h5>
+                </div>
+              </div>
+            </div>
+
+            <div id="sidebar-view">
+              <h6 class="mt-4 mb-0 fw-semibold text-uppercase">
+                نمای نوار کناری
+              </h6>
+              <p class="text-muted">
+                نمای پیش فرض یا نوار کناری جدا شده را انتخاب کنید.
+              </p>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-layout-style"
+                      id="sidebar-view-default"
+                      value="default"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="sidebar-view-default"
+                    >
+                      <span class="d-flex gap-1 h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                          >
+                            <span
+                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                            <span class="bg-light d-block p-1 mt-auto"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">پیش فرض</h5>
+                </div>
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-layout-style"
+                      id="sidebar-view-detached"
+                      value="detached"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="sidebar-view-detached"
+                    >
+                      <span class="d-flex h-100 flex-column">
+                        <span
+                          class="bg-light d-flex p-1 gap-1 align-items-center px-2"
+                        >
+                          <span
+                            class="d-block p-1 bg-primary-subtle rounded me-1"
+                          ></span>
+                          <span
+                            class="d-block p-1 pb-0 px-2 bg-primary-subtle ms-auto"
+                          ></span>
+                          <span
+                            class="d-block p-1 pb-0 px-2 bg-primary-subtle"
+                          ></span>
+                        </span>
+                        <span class="d-flex gap-1 h-100 p-1 px-2">
+                          <span class="flex-shrink-0">
+                            <span
+                              class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                            >
+                              <span
+                                class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              ></span>
+                              <span
+                                class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              ></span>
+                              <span
+                                class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                              ></span>
+                            </span>
+                          </span>
+                        </span>
+                        <span class="bg-light d-block p-1 mt-auto px-2"></span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">جدا شده</h5>
+                </div>
+              </div>
+            </div>
+            <div id="sidebar-color">
+              <h6 class="mt-4 mb-0 fw-semibold text-uppercase">
+                رنگ نوار کناری
+              </h6>
+              <p class="text-muted">رنگ نوار کناری را انتخاب کنید.</p>
+
+              <div class="row">
+                <div class="col-4">
+                  <div
+                    class="form-check sidebar-setting card-radio"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseBgGradient.show"
+                  >
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidebar"
+                      id="sidebar-color-light"
+                      value="light"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="sidebar-color-light"
+                    >
+                      <span class="d-flex gap-1 h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-white border-end d-flex h-100 flex-column gap-1 p-1"
+                          >
+                            <span
+                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                            <span class="bg-light d-block p-1 mt-auto"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">نور</h5>
+                </div>
+                <div class="col-4">
+                  <div
+                    class="form-check sidebar-setting card-radio"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseBgGradient.show"
+                  >
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidebar"
+                      id="sidebar-color-dark"
+                      value="dark"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="sidebar-color-dark"
+                    >
+                      <span class="d-flex gap-1 h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-primary d-flex h-100 flex-column gap-1 p-1"
+                          >
+                            <span
+                              class="d-block p-1 px-2 bg-white bg-opacity-10 rounded mb-2"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                            <span class="bg-light d-block p-1 mt-auto"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">تاریک</h5>
+                </div>
+              </div>
+              <!-- end row -->
+
+              <div class="collapse" id="collapseBgGradient">
+                <div
+                  class="d-flex gap-2 flex-wrap img-switch p-2 px-3 bg-light rounded"
+                >
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidebar"
+                      id="sidebar-color-gradient"
+                      value="gradient"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-xs rounded-circle"
+                      for="sidebar-color-gradient"
+                    >
+                      <span
+                        class="avatar-title rounded-circle bg-vertical-gradient"
+                      ></span>
+                    </label>
+                  </div>
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidebar"
+                      id="sidebar-color-gradient-2"
+                      value="gradient-2"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-xs rounded-circle"
+                      for="sidebar-color-gradient-2"
+                    >
+                      <span
+                        class="avatar-title rounded-circle bg-vertical-gradient-2"
+                      ></span>
+                    </label>
+                  </div>
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidebar"
+                      id="sidebar-color-gradient-3"
+                      value="gradient-3"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-xs rounded-circle"
+                      for="sidebar-color-gradient-3"
+                    >
+                      <span
+                        class="avatar-title rounded-circle bg-vertical-gradient-3"
+                      ></span>
+                    </label>
+                  </div>
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-sidebar"
+                      id="sidebar-color-gradient-4"
+                      value="gradient-4"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-xs rounded-circle"
+                      for="sidebar-color-gradient-4"
+                    >
+                      <span
+                        class="avatar-title rounded-circle bg-vertical-gradient-4"
+                      ></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="preloader-menu">
+              <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Preloader</h6>
+              <p class="text-muted">یک پیش بارگذاری را انتخاب کنید.</p>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-preloader"
+                      id="preloader-view-custom"
+                      value="enable"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="preloader-view-custom"
+                    >
+                      <span class="d-flex gap-1 h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                          >
+                            <span
+                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                            <span class="bg-light d-block p-1 mt-auto"></span>
+                          </span>
+                        </span>
+                      </span>
+                      <!-- <div id="preloader"> -->
+                      <div
+                        id="status"
+                        class="d-flex align-items-center justify-content-center"
+                      >
+                        <div
+                          class="spinner-border text-primary avatar-xxs m-auto"
+                          role="status"
+                        >
+                          <span class="visually-hidden"
+                            >در حال بارگذاری...</span
+                          >
+                        </div>
+                      </div>
+                      <!-- </div> -->
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">فعال کردن</h5>
+                </div>
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-preloader"
+                      id="preloader-view-none"
+                      value="disable"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      for="preloader-view-none"
+                    >
+                      <span class="d-flex gap-1 h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                          >
+                            <span
+                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                            <span class="bg-light d-block p-1 mt-auto"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">غیر فعال کردن</h5>
+                </div>
+              </div>
+            </div>
+            <!-- end preloader-menu -->
+
+            <div id="body-img">
+              <h6 class="mt-4 mb-0 fw-semibold text-uppercase">
+                تصویر پس زمینه
+              </h6>
+              <p class="text-muted">تصویر پس زمینه بدن را انتخاب کنید.</p>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-body-image"
+                      id="body-img-none"
+                      value="none"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      data-body-image="none"
+                      for="body-img-none"
+                    >
+                      <span class="d-flex gap-1 h-100">
+                        <span class="flex-shrink-0">
+                          <span
+                            class="bg-light d-flex h-100 flex-column gap-1 p-1"
+                          >
+                            <span
+                              class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                            <span
+                              class="d-block p-1 px-2 pb-0 bg-primary-subtle"
+                            ></span>
+                          </span>
+                        </span>
+                        <span class="flex-grow-1">
+                          <span class="d-flex h-100 flex-column">
+                            <span class="bg-light d-block p-1"></span>
+                            <span class="bg-light d-block p-1 mt-auto"></span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">هیچ کدام</h5>
+                </div>
+                <!-- end col -->
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-body-image"
+                      id="body-img-one"
+                      value="img-1"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      data-body-image="img-1"
+                      for="body-img-one"
+                    >
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">یکی</h5>
+                </div>
+                <!-- end col -->
+
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-body-image"
+                      id="body-img-two"
+                      value="img-2"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      data-body-image="img-2"
+                      for="body-img-two"
+                    >
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">دو</h5>
+                </div>
+                <!-- end col -->
+
+                <div class="col-4">
+                  <div class="form-check sidebar-setting card-radio">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="data-body-image"
+                      id="body-img-three"
+                      value="img-3"
+                    />
+                    <label
+                      class="form-check-label p-0 avatar-md w-100"
+                      data-body-image="img-3"
+                      for="body-img-three"
+                    >
+                    </label>
+                  </div>
+                  <h5 class="fs-13 text-center mt-2">سه</h5>
+                </div>
+                <!-- end col -->
+              </div>
+              <!-- end row -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="offcanvas-footer border-top p-3 text-center">
+        <div class="row">
+          <div class="col-6">
+            <button type="button" class="btn btn-light w-100" id="reset-layout">
+              بازنشانی کنید
+            </button>
+          </div>
+          <div class="col-6">
+            <a
+              href="https://www.rtl-theme.com/velzon-html-template/"
+              target="_blank"
+              class="btn btn-primary w-100"
+              >اکنون بخرید</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
     )
 }
 
