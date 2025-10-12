@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 
 function AdminSetting() {
     return (
-      <!-- Theme Settings -->
+      // <!-- Theme Settings -->
     <div
       class="offcanvas offcanvas-end border-0"
       tabindex="-1"
@@ -166,7 +166,7 @@ function AdminSetting() {
                 </div>
                 <h5 class="fs-13 text-center mt-2">دو ستونی</h5>
               </div>
-              <!-- end col -->
+              {/* <!-- end col --> */}
 
               <div class="col-4">
                 <div class="form-check card-radio">
@@ -211,7 +211,7 @@ function AdminSetting() {
                 </div>
                 <h5 class="fs-13 text-center mt-2">نیم جعبه</h5>
               </div>
-              <!-- end col -->
+              {/* <!-- end col --> */}
             </div>
 
             <h6 class="mt-4 mb-0 fw-semibold text-uppercase">طرح رنگ</h6>
@@ -1004,7 +1004,7 @@ function AdminSetting() {
                   <h5 class="fs-13 text-center mt-2">تاریک</h5>
                 </div>
               </div>
-              <!-- end row -->
+              {/* <!-- end row --> */}
 
               <div class="collapse" id="collapseBgGradient">
                 <div
@@ -1126,7 +1126,7 @@ function AdminSetting() {
                           </span>
                         </span>
                       </span>
-                      <!-- <div id="preloader"> -->
+                      {/* <!-- <div id="preloader"> --> */}
                       <div
                         id="status"
                         class="d-flex align-items-center justify-content-center"
@@ -1140,7 +1140,7 @@ function AdminSetting() {
                           >
                         </div>
                       </div>
-                      <!-- </div> -->
+                      {/* <!-- </div> --> */}
                     </label>
                   </div>
                   <h5 class="fs-13 text-center mt-2">فعال کردن</h5>
@@ -1190,7 +1190,7 @@ function AdminSetting() {
                 </div>
               </div>
             </div>
-            <!-- end preloader-menu -->
+            {/* <!-- end preloader-menu --> */}
 
             <div id="body-img">
               <h6 class="mt-4 mb-0 fw-semibold text-uppercase">
@@ -1243,7 +1243,7 @@ function AdminSetting() {
                   </div>
                   <h5 class="fs-13 text-center mt-2">هیچ کدام</h5>
                 </div>
-                <!-- end col -->
+                {/* <!-- end col --> */}
                 <div class="col-4">
                   <div class="form-check sidebar-setting card-radio">
                     <input
@@ -1262,7 +1262,7 @@ function AdminSetting() {
                   </div>
                   <h5 class="fs-13 text-center mt-2">یکی</h5>
                 </div>
-                <!-- end col -->
+                {/* <!-- end col --> */}
 
                 <div class="col-4">
                   <div class="form-check sidebar-setting card-radio">
@@ -1282,7 +1282,7 @@ function AdminSetting() {
                   </div>
                   <h5 class="fs-13 text-center mt-2">دو</h5>
                 </div>
-                <!-- end col -->
+                {/* <!-- end col --> */}
 
                 <div class="col-4">
                   <div class="form-check sidebar-setting card-radio">
@@ -1302,9 +1302,9 @@ function AdminSetting() {
                   </div>
                   <h5 class="fs-13 text-center mt-2">سه</h5>
                 </div>
-                <!-- end col -->
+                {/* <!-- end col --> */}
               </div>
-              <!-- end row -->
+              {/* <!-- end row --> */}
             </div>
           </div>
         </div>

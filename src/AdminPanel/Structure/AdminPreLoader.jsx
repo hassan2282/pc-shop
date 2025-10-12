@@ -111,7 +111,6 @@ function AdminPreLoader() {
                 </div>
               </div>
             </div>
-            {/* <!-- end preloader-menu --> */}
   );
 }
 

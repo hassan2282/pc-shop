@@ -1,6 +1,7 @@
 
 function AdminSidebar() {
     return (
+
         <div id="scrollbar">
           <div class="container-fluid">
             <div id="two-column-menu"></div>
@@ -2345,7 +2346,7 @@ function AdminSidebar() {
             </ul>
           </div>
         </div>
-        <div class="sidebar-background"></div>
+        
     )
 };
 export default AdminSidebar

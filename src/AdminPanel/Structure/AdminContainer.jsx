@@ -19,19 +19,16 @@ function AdminContainer() {
           <div class="app-menu navbar-menu">
             <AdminNavbar />
             <AdminSidebar />
+            <div class="sidebar-background"></div>
           </div>
 
           <div class="vertical-overlay"></div>
 
           <div class="main-content">
             <div class="page-content">
-              <div class="container-fluid">
-
-
+              
                 <Outlet />
 
-
-              </div>
             </div>
 
                 <AdminFooter />
