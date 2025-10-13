@@ -135,23 +135,23 @@ function EditProfile() {
         <div className="container">
           <div className="row">
             <div className="relative col-xl-9 col-lg-8 col-md-12 order-2">
-              <header className="card-header">
+              <header className="card-header ">
                 <h3 className="card-title">
                   <span>ویرایش اطلاعات حساب کاربری</span>
                 </h3>
               </header>
               <div
                 className="relative flex md:max-2xl:flex-row max-md:flex-col 
-                                                 justify-center items-start gap-4 w-[98%] h-auto"
+                           justify-center items-start gap-4 w-[98%] h-auto"
               >
                 <form
                   onSubmit={handleInfoSubmit}
                   className="flex flex-col justify-center items-center h-auto basis-full bg-[#e9fafc9a]
                                         rounded-xl shadow shadow-gray-600 max-md:w-full
-                                        *:flex *:flex-col *:w-[80%] *:p-2"
+                                        *:flex *:flex-col *:p-2"
                 >
-                  <div className=" p-6 text-lg text-center mb-4 border-b-3 border-dotted
-                                 bg-[#a0d4d646] text-gray-600 shadow-md shadow-[#5d8a8b] rounded-t-lg w-full ">
+                  <div className=" flex flex-row justify-center items-center text-lg text-center
+                                 bg-[#a0d4d646] text-gray-600 rounded-t-lg w-full min-h-20 shadow-sm shadow-gray-900 mb-4">
                     اطلاعات حساب کاربری
                   </div>
                   {Object.keys(errors).length > 0 && (
@@ -184,7 +184,7 @@ function EditProfile() {
                         duration: 0.7
                       }
                     }}
-                  className="">
+                  className="w-[80%]">
                     <span>* نام </span>
                     <input
                       // minLength={3}
@@ -214,7 +214,7 @@ function EditProfile() {
                         duration: 0.7
                       }
                     }}
-                  className="">
+                  className="w-[80%]">
                     <span>* نام خانوادگی </span>
                     <input
                       minLength={3}
@@ -244,7 +244,8 @@ function EditProfile() {
                         duration: 0.7
                       }
                     }}
-                  dir="rtl">
+                  dir="rtl"
+                  className="w-[80%]">
                     <span>* شماره تلفن </span>
                     <input
                       minLength={6}
@@ -275,7 +276,7 @@ function EditProfile() {
                         duration: 0.7
                       }
                     }}
-                  className="">
+                  className="w-[80%]">
                     <span>* ایمیل </span>
                     <input
                       minLength={6}
@@ -292,8 +293,8 @@ function EditProfile() {
                       placeholder={user ? user.email : "ایمیل"}
                     />
                   </motion.div>
-                  <div className=" mt-4 max-md:mt-0 flex h-34 justify-center items-center">
-                    <div className="justify-center items-center">
+                  <div className="flex w-[80%] mt-4 max-md:mt-0 h-34 justify-center items-center">
+                    <div className="justify-center items-center flex w-full">
                       <span className="w-[85%] max-md:hidden mb-4 rounded-md">
                         برای داشتن خریدی سریع تر لطفا اطلاعات خود را در این بخش
                         تکمیل نمایید
@@ -317,9 +318,9 @@ function EditProfile() {
 
                 <form
                   onSubmit={AvatarSubmit}
-                  className="flex flex-col relative justify-center items-center h-auto basis-full rounded-xl shadow bg-[#e9fafc9a] shadow-gray-600"
+                  className="flex flex-col relative justify-center items-center h-auto w-full rounded-xl shadow bg-[#e9fafc9a] shadow-gray-600"
                 >
-                  <div className="flex justify-center bg-[#a0d4d646] shadow-md shadow-[#5d8a8b] items-center text-center h-19 text-lg rounded-t-lg w-full ">
+                  <div className="flex justify-center bg-[#a0d4d646] shadow-sm shadow-[#5d8a8b] items-center text-center h-19 text-lg rounded-t-lg w-full ">
                     ویرایش تصویر پروفایل
                   </div>
                   <div
