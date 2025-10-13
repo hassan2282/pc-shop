@@ -36,7 +36,7 @@
                             <div className="cart-page-content col-xl-8 col-lg-7 col-md-7 ">
                     
                                     <div className="plans">
-                                        <label className="plan basic-plan" for="pay1">
+                                        <label className="plan basic-plan" htmlFor="pay1">
                                             <input checked type="radio" name="plan" id="pay1" />
                                             <div className="plan-content">
                                                 <img loading="lazy" src="src/StorePanel/assets/img/ico/png-10.png" alt="" />
@@ -47,7 +47,7 @@
                                             </div>
                                         </label>
 
-                                        <label className="plan complete-plan" for="pay2">
+                                        <label className="plan complete-plan" htmlFor="pay2">
                                             <input type="radio" id="pay2" name="plan" />
                                             <div className="plan-content">
                                                 <img loading="lazy" src="src/StorePanel/assets/img/ico/png-11.png" alt="" />
@@ -58,7 +58,7 @@
                                             </div>
                                         </label>
 
-                                        <label className="plan complete-plan" for="pay3">
+                                        <label className="plan complete-plan" htmlFor="pay3">
                                             <input type="radio" id="pay3" name="plan" />
                                             <div className="plan-content">
                                                 <img loading="lazy" src="src/StorePanel/assets/img/ico/png-9.png" alt="" />
@@ -68,7 +68,7 @@
                                                 </div>
                                             </div>
                                         </label>
-                                        <label className="plan complete-plan" for="pay4">
+                                        <label className="plan complete-plan" htmlFor="pay4">
                                             <input type="radio" id="pay4" name="plan" />
                                             <div className="plan-content">
                                                 <img loading="lazy" src="src/StorePanel/assets/img/ico/png-8.png" alt="" />

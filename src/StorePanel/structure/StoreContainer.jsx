@@ -4,59 +4,18 @@ import Footer from './Footer'
 import ScrollToTop from './ScrollToTop'
 import { useEffect } from 'react'
 
-// Css نصب‌شده با npm
-import 'bootstrap/dist/css/bootstrap.min.css'
-import '@fortawesome/fontawesome-free/css/all.min.css'
-import 'owl.carousel/dist/assets/owl.carousel.css'
-import 'owl.carousel/dist/assets/owl.theme.default.css'
-
-// Css اختصاصی
-import '../assets/css/main_ui.css'
-import '../assets/css/icon.css'
-import '../assets/css/main.css?1'
-import '../assets/css/style.css'
-
 function StoreContainer() {
   useEffect(() => {
-    // jQuery is loaded globally from index.html
-
-    // 2) پلاگین‌ها را به ترتیب دینامیک وارد کن (await برای ترتیب)
-    const loadPlugins = async () => {
-      try {
-        // اول Bootstrap JS (bundle شامل Popper هست)
-        await import('bootstrap/dist/js/bootstrap.bundle.min.js');
-
-        // سپس owl.carousel (و سایر پلاگین‌هایی که به jQuery نیاز دارند)
-        await import('owl.carousel');
-
-
-        // حالا فایل‌های محلی که به jQuery وابسته‌اند — ترتیب مهم است
-        await import('../assets/js/plugins/bootstrap-switch.js');
-        await import('../assets/js/plugins/bootstrap-datepicker.js');
-        await import('../assets/js/plugins/jquery.sharrre.js');
-        await import('../assets/js/plugins/countdown.min.js');
-        await import('../assets/js/plugins/jquery.ez-plus.js');
-        await import('../assets/js/plugins/jquery.easing.1.3.min.js');
-        await import('../assets/js/main.js');
-
-        // 3) حالا init پلاگین‌ها (tooltip, owl ...)
-        if (typeof $.fn.tooltip === 'function') {
-          $('[data-toggle="tooltip"]').tooltip();
-        } else {
-          console.warn('bootstrap tooltip not available (yet).');
-        }
-
-      } catch (err) {
-        console.error('Error loading plugins:', err);
-      }
-    };
-
-    loadPlugins();
-
-    // cleanup (در صورت نیاز)
-    return () => {
-      // اگر می‌خواهی carouselها رو destroy کنی میتونی اینجا انجام بدی
-    };
+    // Initialize plugins after DOM is ready
+    // CSS and JS are now loaded from index.html
+    
+    // Initialize Bootstrap tooltips
+    if (typeof $ !== 'undefined' && $.fn && $.fn.tooltip) {
+      $('[data-toggle="tooltip"]').tooltip();
+    }
+    
+    // Initialize other plugins if needed
+    // Plugin initialization code can be added here if required
   }, []);
 
   return (

@@ -78,7 +78,7 @@
                                             <input type="checkbox" id="agree"/>
                                             <span className="checkbox-check"></span>
                                         </label>
-                                        <label for="agree"> مشکی</label>
+                                        <label htmlFor="agree"> مشکی</label>
                                         <span className="color_pro_sel bg-[#000]"></span>
                                     </div>
                                     <div className="form-account-agree">
@@ -86,7 +86,7 @@
                                             <input type="checkbox" id="agree"/>
                                             <span className="checkbox-check"></span>
                                         </label>
-                                        <label for="agree"> قرمز</label>
+                                        <label htmlFor="agree"> قرمز</label>
                                         <span className="color_pro_sel bg-[#ff0000]"></span>
 
                                     </div>
@@ -95,7 +95,7 @@
                                             <input type="checkbox" id="agree"/>
                                             <span className="checkbox-check"></span>
                                         </label>
-                                        <label for="agree"> زرد</label>
+                                        <label htmlFor="agree"> زرد</label>
                                         <span className="color_pro_sel bg-[#ffd800]"></span>
 
                                     </div>
@@ -104,7 +104,7 @@
                                             <input type="checkbox" id="agree"/>
                                             <span className="checkbox-check"></span>
                                         </label>
-                                        <label for="agree"> آبی</label>
+                                        <label htmlFor="agree"> آبی</label>
                                         <span className="color_pro_sel bg-[#0000ff]"></span>
 
                                     </div>
@@ -135,7 +135,7 @@
                                                 <input type="checkbox" id="agree"/>
                                                 <span className="checkbox-check"></span>
                                             </label>
-                                            <label for="agree">سامسونگ</label>
+                                            <label htmlFor="agree">سامسونگ</label>
                                         </div>
                                  
                                     
@@ -144,7 +144,7 @@
                                                 <input type="checkbox" id="agree"/>
                                                 <span className="checkbox-check"></span>
                                             </label>
-                                            <label for="agree"> اپل</label>
+                                            <label htmlFor="agree"> اپل</label>
                                         </div>
                                     
                                         <div className="form-account-agree">
@@ -152,35 +152,35 @@
                                                 <input type="checkbox" id="agree"/>
                                                 <span className="checkbox-check"></span>
                                             </label>
-                                            <label for="agree"> هواوی</label>
+                                            <label htmlFor="agree"> هواوی</label>
                                         </div>
                                         <div className="form-account-agree">
                                             <label className="checkbox-form checkbox-primary">
                                                 <input type="checkbox" id="agree"/>
                                                 <span className="checkbox-check"></span>
                                             </label>
-                                            <label for="agree"> شیائومی</label>
+                                            <label htmlFor="agree"> شیائومی</label>
                                         </div>
                                         <div className="form-account-agree">
                                             <label className="checkbox-form checkbox-primary">
                                                 <input type="checkbox" id="agree"/>
                                                 <span className="checkbox-check"></span>
                                             </label>
-                                            <label for="agree"> سونی</label>
+                                            <label htmlFor="agree"> سونی</label>
                                         </div>
                                         <div className="form-account-agree">
                                             <label className="checkbox-form checkbox-primary">
                                                 <input type="checkbox" id="agree"/>
                                                 <span className="checkbox-check"></span>
                                             </label>
-                                            <label for="agree"> ایسوس</label>
+                                            <label htmlFor="agree"> ایسوس</label>
                                         </div>
                                         <div className="form-account-agree">
                                             <label className="checkbox-form checkbox-primary">
                                                 <input type="checkbox" id="agree"/>
                                                 <span className="checkbox-check"></span>
                                             </label>
-                                            <label for="agree"> نوکیا</label>
+                                            <label htmlFor="agree"> نوکیا</label>
                                         </div>
                                 </div>
                             </div>
@@ -197,28 +197,28 @@
                                             <input type="checkbox" id="agree"/>
                                             <span className="checkbox-check"></span>
                                         </label>
-                                        <label for="agree"> اندروید</label>
+                                        <label htmlFor="agree"> اندروید</label>
                                     </div>
                                     <div className="form-account-agree">
                                         <label className="checkbox-form checkbox-primary">
                                             <input type="checkbox" id="agree"/>
                                             <span className="checkbox-check"></span>
                                         </label>
-                                        <label for="agree"> iOS</label>
+                                        <label htmlFor="agree"> iOS</label>
                                     </div>
                                     <div className="form-account-agree">
                                         <label className="checkbox-form checkbox-primary">
                                             <input type="checkbox" id="agree"/>
                                             <span className="checkbox-check"></span>
                                         </label>
-                                        <label for="agree"> ویندوز فون</label>
+                                        <label htmlFor="agree"> ویندوز فون</label>
                                     </div>
                                     <div className="form-account-agree">
                                         <label className="checkbox-form checkbox-primary">
                                             <input type="checkbox" id="agree"/>
                                             <span className="checkbox-check"></span>
                                         </label>
-                                        <label for="agree"> سایر</label>
+                                        <label htmlFor="agree"> سایر</label>
                                     </div>
                                 </div>
                             </div>
@@ -227,13 +227,13 @@
                         <div className="box">
                             <div className="box-content">
                                 <input type="checkbox" name="checkbox" className="bootstrap-switch" checked />
-                                <label for="">موجود در انبار مسای</label>
+                                <label htmlFor="">موجود در انبار مسای</label>
                             </div>
                         </div>
                         <div className="box">
                             <div className="box-content">
                                 <input type="checkbox" name="checkbox" className="bootstrap-switch" checked />
-                                <label for="">ارسال فوری</label>
+                                <label htmlFor="">ارسال فوری</label>
                             </div>
                         </div>
                     </aside>

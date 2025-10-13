@@ -71,7 +71,7 @@ function Login() {
               }}
               className="flex flex-col justify-center items-center overflow-clip min-lg:w-[65%] w-[90%]
                min-h-[70%] max-h-[90%] backdrop-blur-sm 
-              p-3 bg-[#eaf6f748] rounded-xl border-t-[#D2F5F9] border-2  shadow-[#93D5DF] shadow-xl">
+              p-3 bg-[#eaf6f748] rounded-xl border-t-[#D2F5F9]">
               {/* <header className="card-header">
                 <h3 className="card-title">
                   <span>ورود به حساب کاربری</span>

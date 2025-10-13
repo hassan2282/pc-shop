@@ -64,7 +64,7 @@
                                                             <input type="checkbox" id="agree"/>
                                                             <span className="checkbox-check"></span>
                                                         </label>
-                                                        <label for="agree"> گیرنده خودم هستم</label>
+                                                        <label htmlFor="agree"> گیرنده خودم هستم</label>
                                                     </div>
                                                 </div>
 

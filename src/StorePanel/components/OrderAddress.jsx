@@ -75,7 +75,7 @@ function OrderAddress() {
                                                                         duration: 0.5
                                                                     }
                                                                 }}
-                                                            className="hover:shadow-lg hover:shadow-black duration-200">
+                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200">
                                                                 <i className="fa fa-user-large colormain text-2xl" aria-hidden="true"></i>{user.first_name}
                                                             </motion.li>
                                                             <motion.li
@@ -91,7 +91,7 @@ function OrderAddress() {
                                                                         duration: 0.5
                                                                     }
                                                                 }}
-                                                            className="hover:shadow-lg hover:shadow-black duration-200">
+                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200">
                                                                 <i className="fa fa-user-large colormain text-2xl" aria-hidden="true"></i> {user.last_name}
                                                             </motion.li>
                                                             <motion.li
@@ -107,7 +107,7 @@ function OrderAddress() {
                                                                         duration: 0.5
                                                                     }
                                                                 }}
-                                                            className="hover:shadow-lg hover:shadow-black duration-200">
+                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200">
                                                                 <i className="fa fa-phone colormain text-2xl" aria-hidden="true"></i> {user.phone}
                                                             </motion.li>
                                                             <motion.li
@@ -123,7 +123,7 @@ function OrderAddress() {
                                                                         duration: 0.5
                                                                     }
                                                                 }}
-                                                            className="hover:shadow-lg hover:shadow-black duration-200">
+                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200">
                                                                 <i className="fa fa-map  colormain text-2xl" aria-hidden="true"></i> {address?.province?.name ? address?.province?.name : ' ثبت نشده '}
                                                             </motion.li>
                                                             <motion.li
@@ -139,7 +139,7 @@ function OrderAddress() {
                                                                         duration: 0.5
                                                                     }
                                                                 }}
-                                                            className="hover:shadow-lg hover:shadow-black duration-200">
+                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200">
                                                                 <i className="fa fa-map  colormain text-2xl" aria-hidden="true"></i> {address?.city?.name ? address?.city?.name : ' ثبت نشده'}
                                                             </motion.li>
                                                             <motion.li
@@ -155,7 +155,7 @@ function OrderAddress() {
                                                                         duration: 0.5
                                                                     }
                                                                 }}
-                                                            className="hover:shadow-lg hover:shadow-black duration-200">
+                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200">
                                                                 <i className="fa fa-envelope colormain text-2xl" aria-hidden="true"></i> {address?.postal_code ? address?.postal_code : ' ثبت نشده'}
                                                             </motion.li>
 
@@ -173,7 +173,7 @@ function OrderAddress() {
                                                                     }
                                                                 }}
                                                             className="profile-recent-fav-name min-sm:col-span-3 flex overflow-y-scroll
-                                                             items-start p-3 hover:shadow-lg hover:shadow-black duration-200">
+                                                             items-start p-3 hover:shadow-lg hover:shadow-gray-300 duration-200">
                                                                 {address?.address ? address?.address : 'ثبت نشده'}
                                                             </motion.h4>
                                                         </ul>

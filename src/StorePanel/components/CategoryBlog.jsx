@@ -1,4 +1,4 @@
-﻿import Footer from "../structure/footer"
+﻿import Footer from "../structure/Footer"
 import Header from "../structure/Header"
 
 function CategoryBlog() {

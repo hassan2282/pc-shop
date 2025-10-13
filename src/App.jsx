@@ -26,8 +26,6 @@ import EditProfile from "./StorePanel/components/EditProfile";
 import Profile from "./StorePanel/components/Profile";
 import Address from "./StorePanel/components/Address";
 import StoreContainer from "./StorePanel/structure/StoreContainer.jsx";
-import AdminContainer from "./AdminPanel/Structure/AdminContainer.jsx";
-import Adm_index from "./AdminPanel/Components/Adm_index.jsx"
 
 
 function App() {
@@ -170,9 +168,9 @@ function App() {
           </Route>
 
 
-          <Route path="/admin/*" element={<AdminContainer />}>
+          {/* <Route path="/admin/*" element={<AdminContainer />}>
               <Route path="index" element={<Adm_index />} />
-          </Route>
+          </Route> */}
         </Routes>
         <ToastContainer />
       </BrowserRouter>
