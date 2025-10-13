@@ -212,8 +212,8 @@ function Profile() {
                                                         duration: 0.5,
                                                     }
                                                 }}
-                                            className="col-span-2 bg-transparent">
-                                                <Link to="/store/edit-profile" className="w-full btn btn-main-masai">
+                                            className="col-span-2 bg-transparent text-lg">
+                                                <Link to="/store/edit-profile" className="w-full h-full btn btn-main-masai">
                                                     ویرایش
                                                 </Link>
                                             </motion.div>
@@ -221,7 +221,7 @@ function Profile() {
                                     </div>
                                 <div className="w-full mt-4">
                                     <div className="w-full border-[#5DBBC0] border-2 rounded-xl p-2 bg-[#60BDC2]/5">
-                                        <div className="w-full shadow-xs shadow-black rounded-md ">
+                                        <div className="w-full rounded-md ">
                                             <header className="card-header w-full">
                                                 <h3 className="card-title w-full"><span>آدرس</span></h3>
                                             </header>
