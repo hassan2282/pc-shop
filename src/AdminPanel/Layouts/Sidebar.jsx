@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { LiaDollyFlatbedSolid } from 'react-icons/lia'
-import { TbArticle, TbCategoryFilled, TbChartBarPopular, TbEye, TbHome, TbMail, TbMenu2, TbSearch, TbUserCog, TbX } from 'react-icons/tb'
-
+import { TbArticle, TbBasket, TbBell, TbCategoryFilled, TbChartBarPopular, TbEye, TbHome, TbMail, TbMenu2, TbUserCog, TbX } from 'react-icons/tb'
 
 function Sidebar() {
 
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
 
   const toggleMenu = () => {
     setToggle(!toggle);
@@ -13,17 +12,16 @@ function Sidebar() {
 
   return (
     <div className='fixed left-0 top-1 w-[3.5rem] z-20 overflow-hidden
-     justify-center items-center p-1 space-y-1 ' dir='ltr'>
+                    justify-center items-center p-1 space-y-1 ' dir='ltr'>
 
         <div onClick={toggleMenu} className='flex flex-row gap-3 bg-dark opacity-70 text-white duration-200
                          cursor-pointer rounded-xl hover:scale-90 p-2 justify-center items-center shadow-sm'>
-         <span className='flex w-full duration-300 justify-center items-center p-1'>
+         <span className='flex w-full duration-300 justify-center items-center p-1 focus:scale-50'>
           {
             toggle ? 
             <TbMenu2 size={23} />
             :
             <TbX size={23}/>
-
           }
           </span>
        </div>
@@ -57,11 +55,6 @@ function Sidebar() {
          </div>
         <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-stone-200/30 duration-500
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
-         <span className=''>تیکت‌ </span>
-         <span className='flex w-full justify-end items-center p-1'><TbMail  size={22} className=''/></span>
-         </div>
-        <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-stone-200/30 duration-500
-                        cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
          <span className=''>دسته‌بندی</span>
          <span className='flex w-full justify-end items-center p-1'><TbCategoryFilled   size={22} className=''/></span>
          </div>
@@ -70,10 +63,12 @@ function Sidebar() {
          <span className=''>گزارشات </span>
          <span className='flex w-full justify-end items-center p-1'><TbChartBarPopular  size={22} className=''/></span>
          </div>
-      </div>
-
-
-        
+        <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-stone-200/30 duration-500
+                        cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
+         <span className=''>سفارشات </span>
+         <span className='flex w-full justify-end items-center p-1'><TbBasket  size={22} className=''/></span>
+         </div>
+      </div>        
 
 
     </div>
