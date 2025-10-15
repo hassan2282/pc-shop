@@ -27,6 +27,11 @@ import Profile from "./StorePanel/components/Profile";
 import Address from "./StorePanel/components/Address";
 import StoreContainer from "./StorePanel/structure/StoreContainer.jsx";
 import Master from "./AdminPanel/Layouts/Master.jsx";
+import Adm_index from "./AdminPanel/Components/Adm_index.jsx";
+import Adm_all_users from "./AdminPanel/Components/Users/Adm_all_users.jsx";
+import Adm_add_user from "./AdminPanel/Components/Users/Adm_add_user.jsx";
+import Adm_edit_user from "./AdminPanel/Components/Users/Adm_edit_user.jsx";
+import Adm_show_user from "./AdminPanel/Components/Users/Adm_show_user.jsx";
 
 
 function App() {
@@ -170,7 +175,11 @@ function App() {
 
 
           <Route path="/admin/*" element={<Master />}>
-              {/* <Route path="index" element={<Adm_index />} /> */}
+              <Route path="index" element={<Adm_index />} />
+              <Route path="users/all" element={<Adm_all_users />} />
+              <Route path="users/add" element={<Adm_add_user />} />
+              <Route path="users/edit" element={<Adm_edit_user />} />
+              <Route path="users/show/:id" element={<Adm_show_user />} />
           </Route>
         </Routes>
         <ToastContainer />
