@@ -34,7 +34,7 @@ function Navbar() {
     <div className="grid grid-cols-2 justify-center items-center w-full p-2 z-20">
       <div className="grid col-span-2 justify-start">
         <div className='flex flex-row h-full w-full justify-center space-x-2 items-center text-zinc-700 group cursor-pointer'>
-          <span ref={profileRef} onClick={profile} className='flex flex-row items-center
+          <span ref={profileRef} onClick={profile} className='flex flex-row items-center backdrop-blur-xl
              bg-zinc-200/50 shadow-sm rounded-xl p-2 justify-center hover:*:rotate-90 duration-200 text-zinc-700/70'>
             <TbArrowBadgeRight size={25} className="duration-300" />
             سید حسن تقوی
