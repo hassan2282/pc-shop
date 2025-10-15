@@ -68,13 +68,13 @@ function Navbar() {
               }
             }}
             style={{ left: `${Left}px` }}
-            className={`absolute z-20 w-[8rem] overflow-clip duration-300 top-13 p-1 backdrop-blur-sm bg-zinc-200/50 rounded-xl shadow-md `}>
+            className={`absolute z-20 w-[9rem] overflow-clip duration-300 top-13 p-1 backdrop-blur-sm bg-zinc-200/50 rounded-xl shadow-md `}>
             <ul className="flex flex-col w-full *:flex *:flex-row cursor-pointer text-zinc-600 *:justify-between *:shadow-xs *:p-2 
                           *:rounded-xl *:hover:bg-blue-400/30 *:duration-200">
-              <li><TbUser size={20} />پروفایل</li>
-              <li><TbMail size={20} />تیکت‌ها</li>
-              <li><TbBell size={20} />اعلان‌ها</li>
-              <li><TbLogout size={20} />خروج</li>
+              <li>پروفایل<TbUser size={20} /></li>
+              <li>تیکت‌ها<TbMail size={20} /></li>
+              <li>اعلان‌ها<TbBell size={20} /></li>
+              <li>خروج<TbLogout size={20} /></li>
             </ul>
           </motion.div>
         }
@@ -93,39 +93,42 @@ function Navbar() {
               }
             }}
             style={{ left: `${Left}px` }}
-            className={`absolute w-[16rem] z-20 overflow-clip duration-300 top-13 p-1 backdrop-blur-2xl bg-zinc-200/30 rounded-xl shadow-md `}>
-            <ul className="grid grid-cols-3 w-full *:hover:bg-blue-400/30 *:flex *:flex-row cursor-pointer *:justify-between *:gap-3
+            className={`absolute w-[14rem] z-20 overflow-clip duration-300 top-13 p-1 backdrop-blur-2xl bg-zinc-200/30 rounded-xl shadow-md `}>
+            <ul className="grid grid-cols-2 w-full *:hover:bg-blue-400/30 *:flex *:flex-row cursor-pointer *:justify-between *:gap-3
               *:p-2 *:rounded-xl *:duration-200">
-              <div className="grid col-span-3 grid-cols-2 justify-between border-b border-b-stone-300 items-center h-10 text-xs text-zinc-700">
+              <div className="grid col-span-2 grid-cols-2 justify-between border-b border-b-stone-300 items-center h-10 text-xs text-zinc-700">
                 <span>اعلان ها</span>
                 <a href="#" className="hover:text-blue-800">مشاهده همه</a>
               </div>
-              <li className="col-span-3"><img src="../../src/StorePanel/assets/img/profile/4.png" className="w-10 h-10 rounded-circle"/>
+              <li className="col-span-2">
               <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs text-zinc-700" dir="rtl">
 
-                <span className="">امید نوروزی</span>
-                <p className="text-[10px]">داداش ...</p>
+                <span className="">سید حسن تقوی</span>
+                <p className="text-[10px]">مرگ بر آمریکای لاشی ...</p>
                 <span className="text-[9px]">3 دقیقه قبل ...</span>
 
               </div>
+                <img src="../../src/StorePanel/assets/img/profile/4.png" className="w-10 h-10 rounded-circle"/>
               </li>
-              <li className="col-span-3"><img src="../../src/StorePanel/assets/img/profile/3.png" className="w-10 h-10 rounded-circle"/>
+              <li className="col-span-2">
               <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs text-zinc-700" dir="rtl">
 
-                <span className="">محمد دیدار</span>
-                <p className="text-[10px]">سلام ...</p>
+                <span className="">سیامک بشکار</span>
+                <p className="text-[10px]">داداش میشه به شماره...</p>
                 <span className="text-[9px]">4 دقیقه قبل ...</span>
 
               </div>
+                <img src="../../src/StorePanel/assets/img/profile/3.png" className="w-10 h-10 rounded-circle"/>
               </li>
-              <li className="col-span-3"><img src="../../src/StorePanel/assets/img/profile/1.png" className="w-10 h-10 rounded-circle"/>
+              <li className="col-span-2">
               <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs text-zinc-700" dir="rtl">
 
-                <span className="">شایان محمدی</span>
-                <p className="text-[10px]">سلام ببخشید ...</p>
+                <span className="">فرید اشنود</span>
+                <p className="text-[10px]">سلام ببخشید چطور ...</p>
                 <span className="text-[9px]">6 دقیقه قبل ...</span>
 
               </div>
+                <img src="../../src/StorePanel/assets/img/profile/1.png" className="w-10 h-10 rounded-circle"/>
               </li>
               
             </ul>
@@ -153,32 +156,35 @@ function Navbar() {
                 <span>تیکت ها</span>
                 <a href="#" className="hover:text-blue-800">مشاهده همه</a>
               </div>
-              <li className="col-span-2 text-zinc-700"><img src="../../src/StorePanel/assets/img/profile/1.png" className="w-10 h-10 rounded-circle"/>
+              <li className="col-span-2 text-zinc-700">
               <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs">
 
                 <span className="">امید نوروزی</span>
-                <p className="text-[10px]">داداش ...</p>
+                <p className="text-[10px]">داداش چطور باید در ...</p>
                 <span className="text-[9px]">3 دقیقه قبل ...</span>
 
               </div>
+                <img src="../../src/StorePanel/assets/img/profile/1.png" className="w-10 h-10 rounded-circle"/>
               </li>
-              <li className="col-span-2 text-zinc-700"><img src="../../src/StorePanel/assets/img/profile/2.png" className="w-10 h-10 rounded-circle"/>
+              <li className="col-span-2 text-zinc-700">
               <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs">
 
                 <span className="">رضا صالحی</span>
-                <p className="text-[10px]">سلام ...</p>
+                <p className="text-[10px]">سلام من در خرید محصور...</p>
                 <span className="text-[9px]">4 دقیقه قبل ...</span>
 
               </div>
+                <img src="../../src/StorePanel/assets/img/profile/2.png" className="w-10 h-10 rounded-circle"/>
               </li>
-              <li className="col-span-2 text-zinc-700"><img src="../../src/StorePanel/assets/img/profile/3.png" className="w-10 h-10 rounded-circle"/>
+              <li className="col-span-2 text-zinc-700">
               <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs">
 
                 <span className="">حمید احمدی</span>
-                <p className="text-[10px]">سلام ببخشید ...</p>
+                <p className="text-[10px]">سلام ببخشید من در ثبت  ...</p>
                 <span className="text-[9px]">6 دقیقه قبل ...</span>
 
               </div>
+                <img src="../../src/StorePanel/assets/img/profile/3.png" className="w-10 h-10 rounded-circle"/>
               </li>
               
             </ul>
