@@ -1,3 +1,4 @@
+import '../assets/fonts/vazir.ttf'
 import Sidebar from './Sidebar'
 import Navbar from './Navbar'
 import { Outlet } from 'react-router-dom'

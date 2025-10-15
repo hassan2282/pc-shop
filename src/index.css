@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'vazir';
+  src: local('vazir'), url(./AdminPanel/assets/fonts/vazir.ttf) format('truetype');
+}
+
+.body {
+  font-family: vazir
+}
