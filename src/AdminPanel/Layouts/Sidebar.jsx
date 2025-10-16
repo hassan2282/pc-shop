@@ -29,44 +29,44 @@ function Sidebar() {
       </div>
 
       <div className={`fixed space-y-2 group w-[3rem] justify-center items-center text-stone-600 *:hover:bg-zinc-100 duration-300 ${toggle ? ' -translate-x-20 ' : 'translate-x-0'}`}>
-        <Link to="/admin/index" className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-stone-200/30 duration-500
+        <Link to="/admin/index" className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>داشبورد </span>
           <span className='flex w-full justify-end items-center p-1'><TbHome size={22} /></span>
         </Link>
 
-        <Link to="/admin/users/all" className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-stone-200/30 duration-500
+        <Link to="/admin/users/all" className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
                           cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>کاربران </span>
           <span className='flex w-full justify-end items-center p-1'><TbUserCog size={22} className='' /></span>
         </Link>
 
-        <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-stone-200/30 duration-500
+        <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>محصولات </span>
           <span className='flex w-full justify-end items-center p-1'><LiaDollyFlatbedSolid size={24} className='' /></span>
         </div>
-        <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-stone-200/30 duration-500
+        <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>مقالات </span>
           <span className='flex w-full justify-end items-center p-1'><TbArticle size={22} className='' /></span>
         </div>
-        <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-stone-200/30 duration-500
+        <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>دسترسی </span>
           <span className='flex w-full justify-end items-center p-1'><TbEye size={24} className='' /></span>
         </div>
-        <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-stone-200/30 duration-500
+        <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>دسته‌بندی</span>
           <span className='flex w-full justify-end items-center p-1'><TbCategoryFilled size={22} className='' /></span>
         </div>
-        <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-stone-200/30 duration-500
+        <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>گزارشات </span>
           <span className='flex w-full justify-end items-center p-1'><TbChartBarPopular size={22} className='' /></span>
         </div>
-        <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-stone-200/30 duration-500
+        <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>سفارشات </span>
           <span className='flex w-full justify-end items-center p-1'><TbBasket size={22} className='' /></span>

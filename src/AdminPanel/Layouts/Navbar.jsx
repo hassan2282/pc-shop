@@ -34,20 +34,22 @@ function Navbar() {
     <div className="grid grid-cols-2 justify-center items-center w-full p-2 z-20">
       <div className="grid col-span-2 justify-start">
         <div className='flex flex-row h-full w-full justify-center space-x-2 items-center text-zinc-700 group cursor-pointer'>
-          <span ref={profileRef} onClick={profile} className='flex flex-row items-center backdrop-blur-xl
-             bg-zinc-200/50 shadow-sm rounded-xl p-2 justify-center hover:*:rotate-90 duration-200 text-zinc-700/70'>
+          <span ref={profileRef} onClick={profile} className='flex flex-row items-center backdrop-blur-sm
+             bg-[#EFF4F9]/60 shadow-sm rounded-xl p-2 justify-center z-20 hover:*:rotate-90 duration-200 text-zinc-700/70'>
             <TbArrowBadgeRight size={25} className="duration-300" />
             سید حسن تقوی
           </span>
-          <img src='../../src/StorePanel/assets/img/profile.jpg' alt='user profile' className='flex w-10 h-10 z-20 rounded-full shadow-md shadow-zinc-500' />
+          <img src='../../src/StorePanel/assets/img/profile.jpg' alt='user profile' className='flex max-md:hidden w-10 h-10 z-10 rounded-full shadow-md shadow-zinc-500' />
           <span
             ref={emailRef} onClick={email}
-            className="rounded-full w-[2.6rem] h-[2.6rem] shadow-md hover:*:scale-120 flex opacity-60 justify-center items-center bg-zinc-200">
+            className="max-md:hidden rounded-full w-[2.6rem] z-20 h-[2.6rem] shadow-md hover:*:scale-120
+             flex justify-center items-center backdrop-blur-sm bg-[#EFF4F9]/40">
             <TbMail size={20} className=" duration-200" /></span>
 
           <span
             ref={notifyRef} onClick={notify}
-            className="rounded-full w-[2.6rem] h-[2.6rem] shadow-md flex hover:*:scale-120 opacity-60 justify-center items-center bg-zinc-200">
+            className="max-md:hidden rounded-full w-[2.6rem] z-20 h-[2.6rem] shadow-md flex
+             hover:*:scale-120 justify-center items-center bg-[#EFF4F9]/40 backdrop-blur-sm">
             <TbBell size={20} className="duration-200" /></span>
         </div>
 
@@ -68,7 +70,7 @@ function Navbar() {
               }
             }}
             style={{ left: `${Left}px` }}
-            className={`absolute z-20 w-[9rem] overflow-clip duration-300 top-13 p-1 backdrop-blur-sm bg-zinc-200/50 rounded-xl shadow-md `}>
+            className={`absolute z-20 w-[9rem] overflow-clip duration-300 top-13 p-1 backdrop-blur-sm bg-[#EFF4F9]/60 rounded-xl shadow-md `}>
             <ul className="flex flex-col w-full *:flex *:flex-row cursor-pointer text-zinc-600 *:justify-between *:shadow-xs *:p-2 
                           *:rounded-xl *:hover:bg-blue-400/30 *:duration-200">
               <li>پروفایل<TbUser size={20} /></li>
@@ -93,7 +95,7 @@ function Navbar() {
               }
             }}
             style={{ left: `${Left}px` }}
-            className={`absolute w-[14rem] z-20 overflow-clip duration-300 top-13 p-1 backdrop-blur-2xl bg-zinc-200/30 rounded-xl shadow-md `}>
+            className={`absolute w-[14rem] z-20 overflow-clip duration-300 top-13 p-1 backdrop-blur-2xl bg-[#FEFFFF]/40 rounded-xl shadow-md `}>
             <ul className="grid grid-cols-2 w-full *:hover:bg-blue-400/30 *:flex *:flex-row cursor-pointer *:justify-between *:gap-3
               *:p-2 *:rounded-xl *:duration-200">
               <div className="grid col-span-2 grid-cols-2 justify-between border-b border-b-stone-300 items-center h-10 text-xs text-zinc-700">
@@ -149,7 +151,7 @@ function Navbar() {
               }
             }}
             style={{ left: `${Left}px` }}
-            className={`absolute w-[14rem] z-20 overflow-clip duration-300 top-13 p-1 backdrop-blur-2xl bg-zinc-200/30 rounded-xl shadow-md `}>
+            className={`absolute w-[14rem] z-20 overflow-clip duration-300 top-13 p-1 backdrop-blur-2xl bg-[#FEFFFF]/40 rounded-xl shadow-md `}>
             <ul className="grid grid-cols-2 w-full cursor-pointer *:flex *:flex-row *:justify-between 
             *:gap-3 *:p-2 *:hover:bg-blue-400/30 *:duration-200 *:rounded-xl">
               <div className="grid col-span-2 grid-cols-2 justify-between items-center h-10 text-xs text-zinc-700 border-b border-b-stone-300">
