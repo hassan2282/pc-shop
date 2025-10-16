@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'motion/react'
-import { TbUser, TbMail, TbLock, TbPhone, TbBuilding, TbMapPin, TbCalendar, TbCheck } from 'react-icons/tb'
-import { MdPersonAdd } from 'react-icons/md'
+import { TbUser, TbMail, TbLock, TbPhone, TbBuilding, TbCalendar, TbCheck } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 
 function Adm_add_user() {
@@ -95,7 +94,7 @@ function Adm_add_user() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 p-8"
+          className="bg-white/30 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 p-8"
         >
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* اطلاعات پایه */}

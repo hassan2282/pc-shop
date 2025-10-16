@@ -178,8 +178,8 @@ function App() {
               <Route path="index" element={<Adm_index />} />
               <Route path="users/all" element={<Adm_all_users />} />
               <Route path="users/add" element={<Adm_add_user />} />
-              <Route path="users/edit" element={<Adm_edit_user />} />
-              <Route path="users/show/:id" element={<Adm_show_user />} />
+              <Route path="user/edit" element={<Adm_edit_user />} />
+              <Route path="user/show" element={<Adm_show_user />} />
           </Route>
         </Routes>
         <ToastContainer />

@@ -20,10 +20,10 @@ function Adm_all_users() {
         duration: 1
       }
     }}
-    className='flex flex-col items-center bg-white/80 backdrop-blur-xl rounded-2xl shadow-2xl border
+    className='flex flex-col items-center bg-white/30 backdrop-blur-xl rounded-2xl shadow-2xl border
      border-white/20 mr-10 mt-4 min-h-96 w-[92%] overflow-x-auto'>
-      <div className='flex flex-row w-full justify-between items-center p-6 bg-white/80 
-      backdrop-blur-xl h-24 rounded-t-2xl border-b border-white/20'>
+      <div className='flex flex-row w-full justify-between items-center p-6 bg-white/30 
+      backdrop-blur-md h-24 rounded-t-2xl border-b border-white/20'>
         <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>
           <IoMdCloseCircle size={27} className='text-red-500'/>
         </Link>
@@ -86,10 +86,10 @@ function Adm_all_users() {
                 </div>
               </td>
               <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
+                <Link to="/admin/user/show" className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
                   <TbEyeFilled size={20} />
                 </Link>
-                <Link className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                <Link to="/admin/user/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={20} />
                 </Link>
                 <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
@@ -120,10 +120,10 @@ function Adm_all_users() {
                 </div>
               </td>
               <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
+                <Link to="/admin/user/show" className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
                   <TbEyeFilled size={20} />
                 </Link>
-                <Link className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                <Link to="/admin/user/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={20} />
                 </Link>
                 <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
@@ -154,10 +154,10 @@ function Adm_all_users() {
                 </div>
               </td>
               <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
+                <Link to="/admin/user/show" className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
                   <TbEyeFilled size={20} />
                 </Link>
-                <Link className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                <Link to="/admin/user/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={20} />
                 </Link>
                 <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
