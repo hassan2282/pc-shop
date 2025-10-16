@@ -23,7 +23,7 @@ function Adm_show_user() {
     }}
     className='min-md:grid min-md:grid-cols-3 justify-center items-center min-md:w-[90%] w-full z-20 rounded-xl gap-4 max-md:space-y-3' dir="ltr">
         <div className='flex flex-col w-full space-y-4 justify-center min-md:p-8 p-4 items-center col-span-1 rounded-2xl
-           shadow-[0.05px_0.7px_4px_#0228C7] backdrop-blur-lg bg-white/60'>
+           backdrop-blur-lg bg-white/40'>
           <img src='../../../src/StorePanel/assets/img/profile.jpg' className='border-2 border-white/40 rounded-3xl shadow-sm shadow-zinc-500 w-[35%] h-[35%]' />
           <h2 className='text-xl text-zinc-700'>سید حسن تقوی</h2>
           <span className='flex flex-row justify-center items-center gap-2 text-zinc-700 w-20 h-9
@@ -40,7 +40,7 @@ function Adm_show_user() {
         <div className='grid min-md:col-span-2 gap-3 w-full min-md:w-[80%] h-full grid-rows-4 rounded-2xl z-10'>
         <div className='row-span-1 grid grid-cols-3 gap-2 w-full 
         *:backdrop-blur-lg *:grid *:grid-cols-2 *:justify-center *:items-center h-full
-         rounded-xl *:bg-white/60 *:hover:shadow-none *:duration-300 *:cursor-pointer'>
+         rounded-xl *:bg-white/50 *:hover:shadow-none *:duration-300 *:cursor-pointer'>
 
           
           <div className='rounded-xl shadow-[0px_0.9px_2px_#0228C7] hover:border-2 hover:border-white'>
@@ -85,8 +85,8 @@ function Adm_show_user() {
           </div>
           
         </div>
-        <div className='grid row-span-3 rounded-xl bg-blue/60 *:backdrop-blur-lg w-full h-full z-20'>
-          <div className='w-full min-h-60 bg-white/60 rounded-xl'>
+        <div className='grid row-span-3 rounded-xl *:backdrop-blur-lg w-full h-full z-20'>
+          <div className='w-full min-h-60 bg-white/50 rounded-xl'>
             <table className='grid grid-cols-1 w-full text-stone-500 p-4 *:hover:bg-blue-400/20 cursor-pointer' dir='rtl'>
               <tr className='grid grid-cols-6 text-sm h-15 justify-center  items-center bg-white/70 rounded-xl '>
                 <th>آیدی</th>
