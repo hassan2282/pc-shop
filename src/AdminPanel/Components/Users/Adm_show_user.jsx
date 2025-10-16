@@ -2,6 +2,7 @@ import {motion} from 'motion/react'
 import { FaUserSecret } from 'react-icons/fa'
 import { LuDollarSign } from 'react-icons/lu'
 import RenderBarChart from '../RenderBarChart'
+import { TbEye } from 'react-icons/tb'
 // import RenderBarChart from '../RenderBarChart'
 
 function Adm_show_user() {
@@ -42,7 +43,7 @@ function Adm_show_user() {
          rounded-xl *:bg-white/60 *:hover:shadow-none *:duration-300 *:cursor-pointer'>
 
           
-          <div className='rounded-xl shadow-[0.05px_0.7px_4px_#0228C7]'>
+          <div className='rounded-xl shadow-[0px_0.9px_2px_#0228C7] hover:border-2 hover:border-white'>
             <div className='grid grid-row-2 p-1 ml-2'>
               <span className='text-5xl text-blue-500/90 text-start pl-3'>4</span>
               <div className='grid grid-rows-2 text-zinc-600/70'>
@@ -56,7 +57,7 @@ function Adm_show_user() {
           </div>
 
 
-          <div className='rounded-xl shadow-[0.05px_0.7px_4px_#0228C7]'>
+          <div className='rounded-xl shadow-[0px_0.9px_2px_#0228C7] hover:border-2 hover:border-white'>
             <div className='grid grid-row-2 p-1 ml-2'>
               <span className='text-5xl text-purple-500/90 text-start pl-3'>18</span>
               <div className='grid grid-rows-2 text-zinc-600/70'>
@@ -70,7 +71,7 @@ function Adm_show_user() {
           </div>
 
 
-          <div className='rounded-xl shadow-[0.05px_0.7px_4px_#0228C7]'>
+          <div className='rounded-xl shadow-[0px_0.9px_2px_#0228C7] hover:border-2 hover:border-white'>
             <div className='grid grid-row-2 p-1 ml-2'>
               <span className='text-5xl text-orange-500/90 text-start pl-3'>2</span>
               <div className='grid grid-rows-2 text-zinc-600/70'>
@@ -86,7 +87,89 @@ function Adm_show_user() {
         </div>
         <div className='grid row-span-3 rounded-xl bg-blue/60 *:backdrop-blur-lg w-full h-full z-20'>
           <div className='w-full min-h-60 bg-white/60 rounded-xl'>
+            <table className='grid grid-cols-1 w-full text-stone-500 p-4 *:hover:bg-blue-400/20 cursor-pointer' dir='rtl'>
+              <tr className='grid grid-cols-6 text-sm h-15 justify-center  items-center bg-white/70 rounded-xl '>
+                <th>آیدی</th>
+                <th>شماره فاکتور</th>
+                <th>مجموع قیمت</th>
+                <th>وضعیت</th>
+                <th>تاریخ</th>
+                <th>عملیات</th>
+              </tr>
 
+
+              <tr className='grid grid-cols-6 text-sm text-center bg-white/30 rounded-xl h-13 justify-center items-center'>
+                <td>52</td>
+                <td>#21374</td>
+                <td>12.000.000</td>
+                <td className='flex rounded-xl h-6 items-center justify-center bg-emerald-500/70 text-white text-xs'>پرداخت شده</td>
+                <td>1404/07/22</td>
+                <td className='flex justify-center items-center'>
+                  <TbEye size={25} className='hover:scale-120 rounded-full text-blue-500 duration-200 cursor-pointer'/>
+                </td>
+              </tr>
+
+
+              <tr className='grid grid-cols-6 text-sm text-center bg-white/30 rounded-xl h-13 justify-center items-center'>
+                <td>36</td>
+                <td>#278574</td>
+                <td>100.000</td>
+                <td className='flex rounded-xl h-6 items-center justify-center bg-emerald-500/70 text-white text-xs'>پرداخت شده</td>
+                <td>1404/01/05</td>
+                <td className='flex justify-center items-center'>
+                  <TbEye size={25} className='hover:scale-120 rounded-full text-blue-500 duration-200 cursor-pointer'/>
+                </td>
+              </tr>
+
+
+
+              <tr className='grid grid-cols-6 text-sm text-center bg-white/30 rounded-xl h-13 justify-center items-center'>
+                <td>7</td>
+                <td>#25</td>
+                <td>41.000.000</td>
+                <td className='flex rounded-xl h-6 items-center justify-center bg-rose-500/70 text-white text-xs'>انصراف</td>
+                <td>1403/05/30</td>
+                <td className='flex justify-center items-center'>
+                  <TbEye size={25} className='hover:scale-120 rounded-full text-blue-500 duration-200 cursor-pointer'/>
+                </td>
+              </tr>
+
+              <tr className='grid grid-cols-6 text-sm text-center bg-white/30 rounded-xl h-13 justify-center items-center'>
+                <td>52</td>
+                <td>#21374</td>
+                <td>12.000.000</td>
+                <td className='flex rounded-xl h-6 items-center justify-center bg-emerald-500/70 text-white text-xs'>پرداخت شده</td>
+                <td>1404/07/22</td>
+                <td className='flex justify-center items-center'>
+                  <TbEye size={25} className='hover:scale-120 rounded-full text-blue-500 duration-200 cursor-pointer'/>
+                </td>
+              </tr>
+
+
+              <tr className='grid grid-cols-6 text-sm text-center bg-white/30 rounded-xl h-13 justify-center items-center'>
+                <td>36</td>
+                <td>#278574</td>
+                <td>100.000</td>
+                <td className='flex rounded-xl h-6 items-center justify-center bg-emerald-500/70 text-white text-xs'>پرداخت شده</td>
+                <td>1404/01/05</td>
+                <td className='flex justify-center items-center'>
+                  <TbEye size={25} className='hover:scale-120 rounded-full text-blue-500 duration-200 cursor-pointer'/>
+                </td>
+              </tr>
+
+
+
+              <tr className='grid grid-cols-6 text-sm text-center bg-white/30 rounded-xl h-13 justify-center items-center'>
+                <td>7</td>
+                <td>#25</td>
+                <td>41.000.000</td>
+                <td className='flex rounded-xl h-6 items-center justify-center bg-rose-500/70 text-white text-xs'>انصراف</td>
+                <td>1403/05/30</td>
+                <td className='flex justify-center items-center'>
+                  <TbEye size={25} className='hover:scale-120 rounded-full text-blue-500 duration-200 cursor-pointer'/>
+                </td>
+              </tr>
+            </table>
           </div>
         </div>
         </div>
