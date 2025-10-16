@@ -10,14 +10,16 @@ function Adm_all_users() {
   return (
     <motion.div
     initial={{
-      opacity: 0,
-      x: 500,
+      y:20,
+      scale:0.9,
+      opacity:0
     }}
     animate={{
-      opacity: 1,
-      x: 0,
-      transition :{
-        duration: 1
+      y:0,
+      scale:1,
+      opacity:1,
+      transition: {
+        duration: 0.8,
       }
     }}
     className='flex flex-col items-center bg-white/30 backdrop-blur-xl rounded-2xl shadow-2xl border
