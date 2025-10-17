@@ -20,15 +20,19 @@ function Adm_show_user() {
         duration: 0.8,
       }
     }}
-    className='min-md:grid min-md:grid-cols-3 justify-center items-center min-md:w-[90%] w-full z-20 rounded-xl gap-4 max-md:space-y-3' dir="ltr">
-        <div className='flex flex-col w-full space-y-4 justify-center min-md:p-8 p-4 shadow-[0_2px_1px_#3333] items-center col-span-1 rounded-2xl
-           backdrop-blur-lg bg-white/40'>
-          <img src='../../../src/StorePanel/assets/img/profile.jpg' className='border-2 border-white/40 rounded-3xl shadow-sm shadow-zinc-500 w-[35%] h-[35%]' />
+    className='min-md:grid min-md:grid-cols-3 justify-center items-center min-lg:w-[90%] w-full z-20 
+                rounded-xl gap-4 max-md:space-y-3' dir="ltr">
+        <div className='flex flex-col w-full max-md:py-4 h-[97%] space-y-4 justify-center min-md:p-4
+                         shadow-[0_2px_1px_#3333] items-center col-span-1 rounded-2xl
+                          backdrop-blur-lg bg-white/40'>
+          <img src='../../../src/StorePanel/assets/img/profile.jpg' className='border-2 border-white/40
+           rounded-3xl w-[35%] h-[25%]' />
           <h2 className='text-xl text-zinc-700'>سید حسن تقوی</h2>
           <span className='flex flex-row justify-center items-center gap-2 text-zinc-700 w-20 h-9
            bg-blue-400/30 rounded-xl shadow-sm inset-shadow-2xs'>ادمین< FaUserSecret size={15} /></span>
-          <button className='p-3 bg-blue-700 rounded-xl cursor-pointer shadow-blue-700/50 shadow-sm hover:shadow-lg hover:scale-110 duration-300 text-white/90 min-w-55' >بن کردن کاربر</button>
-          <div className='grid grid-rows-3 w-[90%] *:h-15 *:p-2 gap-2 *:focus:outline-none
+          <button className='flex p-3 bg-blue-700 rounded-xl cursor-pointer shadow-blue-700/50 shadow-sm
+           hover:shadow-lg hover:scale-110 duration-300 text-white/90 min-w-[70%] justify-center items-center' >بن کردن کاربر</button>
+          <div className='flex flex-col *:h-15 *:p-2 gap-2 *:focus:outline-none min-w-[90%]
           *:focus:border-transparent *:focus:ring-2 *:focus:ring-blue-500 *:inset-shadow-sm *:hover:shadow-md *:cursor-pointer' dir='rtl'>
             <input  type="text" disabled placeholder='سید حسن تقوی' className='rounded-xl bg-white/60 border-1 border-zinc-400/40'/>
             <input  type="text" disabled placeholder='taghavey.hassan@gmail.com' className='rounded-xl bg-white/60 border-1 border-zinc-400/40'/>
@@ -36,9 +40,9 @@ function Adm_show_user() {
           </div>
         </div>
 
-        <div className='grid min-md:col-span-2 gap-3 w-full min-md:w-[80%] h-full grid-rows-4 rounded-2xl z-10'>
-        <div className='row-span-1 grid grid-cols-3 gap-2 w-full 
-        *:backdrop-blur-lg *:grid *:grid-cols-2 *:justify-center *:items-center h-full
+        <div className='min-sm:grid min-sm:col-span-2 gap-3 w-full max-sm:*:gap-10 min-md:w-[80%] h-[97%] min-sm:grid-rows-4 rounded-2xl z-10'>
+        <div className='row-span-1 min-sm:grid min-sm:grid-cols-3 gap-2 max-sm:space-y-3 max-sm:mb-3 w-full
+        *:backdrop-blur-lg *:grid *:grid-cols-2 *:justify-center *:items-center h-full *:min-w-[8rem]
          rounded-xl *:bg-white/50 *:hover:shadow-none *:duration-300 *:cursor-pointer'>
 
           
@@ -84,11 +88,11 @@ function Adm_show_user() {
           </div>
           
         </div>
-        <div className='grid row-span-3 rounded-xl *:backdrop-blur-lg w-full h-full z-20 shadow-[0_2px_1px_#3333]'>
-          <div className='w-full min-h-60 bg-white/50 rounded-xl'>
-            <table className='grid grid-cols-1 w-full text-stone-500 p-4 cursor-pointer' dir='rtl'>
+        <div className='grid row-span-3 rounded-xl *:backdrop-blur-lg w-full min-w-[35rem] h-full z-20 shadow-[0_2px_1px_#3333]'>
+          <div className='w-full min-h-60 bg-white/50 rounded-xl min-w-[35rem]'>
+            <table className='grid grid-cols-1 w-full text-stone-500 p-4 min-w-[35rem] cursor-pointer' dir='rtl'>
             <thead>
-              <tr className='grid grid-cols-6 text-sm h-15 justify-center  items-center bg-white/70 rounded-xl '>
+              <tr className='grid grid-cols-6 text-sm h-15 justify-center mb-2 items-center bg-white/70 rounded-xl '>
                 <th>آیدی</th>
                 <th>شماره فاکتور</th>
                 <th>مبلغ</th>

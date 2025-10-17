@@ -22,7 +22,7 @@ function Adm_all_users() {
       }
     }}
     className='flex flex-col items-center bg-white/30 backdrop-blur-xl rounded-2xl shadow-2xl border
-     border-white/20 mr-10 mt-4 min-h-96 w-[92%] overflow-x-auto'>
+     border-white/20 mr-10 mt-4 min-h-96 w-[92%] min-w-[60rem] overflow-x-auto'>
       <div className='flex flex-row w-full justify-between items-center p-6 bg-white/30 
       backdrop-blur-md h-24 rounded-t-2xl border-b border-white/20'>
         <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>

@@ -46,8 +46,8 @@ function Adm_all_categories() {
         </div>
       </div>
 
-      <div className='flex flex-col w-full min-md:p-6 min-h-100 overflow-x-scroll'>
-        <table className='w-full min-w-[50rem] overflow-x-scroll'>
+      <div className='flex flex-col w-full min-md:p-6 min-h-100 '>
+        <table className='w-full min-w-[50rem] '>
           <thead>
             <tr className='w-full grid grid-cols-6 items-center bg-white/90 backdrop-blur-sm text-gray-700/90 rounded-xl
            h-16 text-md justify-center text-center border border-gray-200 shadow-sm'>
@@ -59,7 +59,7 @@ function Adm_all_categories() {
               <th className='font-semibold'>عملیات</th>
             </tr>
           </thead>
-          <tbody className='overflow-x-scroll'>
+          <tbody className=''>
             <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
                             h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>

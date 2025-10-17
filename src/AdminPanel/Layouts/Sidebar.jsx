@@ -35,7 +35,7 @@ function Sidebar() {
                     justify-center items-center p-1 space-y-1' dir='ltr'>
 
       <div onClick={toggleMenu} className={`flex flex-row gap-3 bg-dark opacity-70 text-white duration-200
-                         cursor-pointer ${toggle ? 'rounded-full animate-spin' : 'rounded-xl'} hover:scale-90 p-2
+                         cursor-pointer ${toggle ? 'rounded-full animate-spin hover:animate-none' : 'rounded-xl'} hover:scale-90 p-2
                           bg-zinc-700/100 justify-center items-center shadow-sm`}>
         <span className='flex w-full duration-300 justify-center items-center p-1 focus:scale-50'>
           {
