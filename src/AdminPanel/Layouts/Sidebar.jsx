@@ -40,7 +40,11 @@ function Sidebar() {
           <span className=''>کاربران </span>
           <span className='flex w-full justify-end items-center p-1'><TbUserCog size={22} className='' /></span>
         </Link>
-
+          <Link className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
+                        cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
+          <span className=''>دسته‌بندی</span>
+          <span className='flex w-full justify-end items-center p-1'><TbCategoryFilled size={22} className='' /></span>
+        </Link>
         <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>محصولات </span>
@@ -55,11 +59,6 @@ function Sidebar() {
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>دسترسی </span>
           <span className='flex w-full justify-end items-center p-1'><TbEye size={24} className='' /></span>
-        </div>
-        <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
-                        cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
-          <span className=''>دسته‌بندی</span>
-          <span className='flex w-full justify-end items-center p-1'><TbCategoryFilled size={22} className='' /></span>
         </div>
         <div className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
