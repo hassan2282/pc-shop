@@ -32,6 +32,9 @@ import Adm_all_users from "./AdminPanel/Components/Users/Adm_all_users.jsx";
 import Adm_add_user from "./AdminPanel/Components/Users/Adm_add_user.jsx";
 import Adm_edit_user from "./AdminPanel/Components/Users/Adm_edit_user.jsx";
 import Adm_show_user from "./AdminPanel/Components/Users/Adm_show_user.jsx";
+import Adm_all_categories from "./AdminPanel/Components/Categories/Adm_all_categories.jsx";
+import Adm_add_category from "./AdminPanel/Components/Categories/Adm_add_category.jsx";
+import Adm_edit_category from "./AdminPanel/Components/Categories/Adm_edit_category.jsx";
 
 
 function App() {
@@ -180,6 +183,10 @@ function App() {
               <Route path="users/add" element={<Adm_add_user />} />
               <Route path="user/edit" element={<Adm_edit_user />} />
               <Route path="user/show" element={<Adm_show_user />} />
+              <Route path="categories/all" element={<Adm_all_categories />} />
+              <Route path="category/add" element={<Adm_add_category />} />
+              <Route path="category/edit" element={<Adm_edit_category />} />
+              {/* <Route path="category/show" element={<Adm_show_user />} /> */}
           </Route>
         </Routes>
         <ToastContainer />

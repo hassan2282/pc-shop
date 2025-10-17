@@ -30,9 +30,9 @@ function Adm_show_user() {
           <button className='p-3 bg-blue-700 rounded-xl cursor-pointer shadow-blue-700/50 shadow-sm hover:shadow-lg hover:scale-110 duration-300 text-white/90 min-w-55' >بن کردن کاربر</button>
           <div className='grid grid-rows-3 w-[90%] *:h-15 *:p-2 gap-2 *:focus:outline-none
           *:focus:border-transparent *:focus:ring-2 *:focus:ring-blue-500 *:inset-shadow-sm *:hover:shadow-md *:cursor-pointer' dir='rtl'>
-            <input  type="text" value={"سید حسن تقوی"} placeholder='نام و نام خانوادگی' className='rounded-xl bg-white/60 border-1 border-zinc-400/40'/>
-            <input  type="text" value={"taghavey.hassan@gmail.com"} placeholder='ایمیل' className='rounded-xl bg-white/60 border-1 border-zinc-400/40'/>
-            <input  type="text" value={"09170249855"} placeholder='تلفن' className='rounded-xl bg-white/60 border-1 border-zinc-400/40'/>
+            <input  type="text" disabled placeholder='سید حسن تقوی' className='rounded-xl bg-white/60 border-1 border-zinc-400/40'/>
+            <input  type="text" disabled placeholder='taghavey.hassan@gmail.com' className='rounded-xl bg-white/60 border-1 border-zinc-400/40'/>
+            <input  type="text" disabled placeholder='09170249855' className='rounded-xl bg-white/60 border-1 border-zinc-400/40'/>
           </div>
         </div>
 
@@ -86,7 +86,8 @@ function Adm_show_user() {
         </div>
         <div className='grid row-span-3 rounded-xl *:backdrop-blur-lg w-full h-full z-20 shadow-[0_2px_1px_#3333]'>
           <div className='w-full min-h-60 bg-white/50 rounded-xl'>
-            <table className='grid grid-cols-1 w-full text-stone-500 p-4 *:hover:bg-blue-400/20 cursor-pointer' dir='rtl'>
+            <table className='grid grid-cols-1 w-full text-stone-500 p-4 cursor-pointer' dir='rtl'>
+            <thead>
               <tr className='grid grid-cols-6 text-sm h-15 justify-center  items-center bg-white/70 rounded-xl '>
                 <th>آیدی</th>
                 <th>شماره فاکتور</th>
@@ -95,13 +96,14 @@ function Adm_show_user() {
                 <th>تاریخ</th>
                 <th>عملیات</th>
               </tr>
+            </thead>
 
-
+            <tbody className='*:hover:bg-blue-400/20'>
               <tr className='grid grid-cols-6 text-sm text-center bg-white/50 rounded-xl h-13 justify-center items-center'>
                 <td>52</td>
                 <td>#21374</td>
                 <td>12.000.000</td>
-                <td className='flex rounded-xl h-6 items-center justify-center bg-emerald-500/70 text-white text-xs'>پرداخت شده</td>
+                <td className='flex rounded-xl h-6 items-center justify-center bg-emerald-500/100 text-white text-xs'>پرداخت شده</td>
                 <td>1404/07/22</td>
                 <td className='flex justify-center items-center'>
                   <TbEye size={25} className='hover:scale-120 rounded-full text-blue-500 duration-200 cursor-pointer'/>
@@ -113,7 +115,7 @@ function Adm_show_user() {
                 <td>36</td>
                 <td>#278574</td>
                 <td>100.000</td>
-                <td className='flex rounded-xl h-6 items-center justify-center bg-emerald-500/70 text-white text-xs'>پرداخت شده</td>
+                <td className='flex rounded-xl h-6 items-center justify-center bg-emerald-500/100 text-white text-xs'>پرداخت شده</td>
                 <td>1404/01/05</td>
                 <td className='flex justify-center items-center'>
                   <TbEye size={25} className='hover:scale-120 rounded-full text-blue-500 duration-200 cursor-pointer'/>
@@ -126,7 +128,7 @@ function Adm_show_user() {
                 <td>7</td>
                 <td>#25</td>
                 <td>41.000.000</td>
-                <td className='flex rounded-xl h-6 items-center justify-center bg-rose-500/70 text-white text-xs'>انصراف</td>
+                <td className='flex rounded-xl h-6 items-center justify-center bg-rose-500/100 text-white text-xs'>انصراف</td>
                 <td>1403/05/30</td>
                 <td className='flex justify-center items-center'>
                   <TbEye size={25} className='hover:scale-120 rounded-full text-blue-500 duration-200 cursor-pointer'/>
@@ -137,7 +139,7 @@ function Adm_show_user() {
                 <td>52</td>
                 <td>#21374</td>
                 <td>12.000.000</td>
-                <td className='flex rounded-xl h-6 items-center justify-center bg-emerald-500/70 text-white text-xs'>پرداخت شده</td>
+                <td className='flex rounded-xl h-6 items-center justify-center bg-emerald-500/100 text-white text-xs'>پرداخت شده</td>
                 <td>1404/07/22</td>
                 <td className='flex justify-center items-center'>
                   <TbEye size={25} className='hover:scale-120 rounded-full text-blue-500 duration-200 cursor-pointer'/>
@@ -149,7 +151,7 @@ function Adm_show_user() {
                 <td>36</td>
                 <td>#278574</td>
                 <td>100.000</td>
-                <td className='flex rounded-xl h-6 items-center justify-center bg-emerald-500/70 text-white text-xs'>پرداخت شده</td>
+                <td className='flex rounded-xl h-6 items-center justify-center bg-emerald-500/100 text-white text-xs'>پرداخت شده</td>
                 <td>1404/01/05</td>
                 <td className='flex justify-center items-center'>
                   <TbEye size={25} className='hover:scale-120 rounded-full text-blue-500 duration-200 cursor-pointer'/>
@@ -162,12 +164,14 @@ function Adm_show_user() {
                 <td>7</td>
                 <td>#25</td>
                 <td>41.000.000</td>
-                <td className='flex rounded-xl h-6 items-center justify-center bg-rose-500/70 text-white text-xs'>انصراف</td>
+                <td className='flex rounded-xl h-6 items-center justify-center bg-rose-500/100 text-white text-xs'>انصراف</td>
                 <td>1403/05/30</td>
                 <td className='flex justify-center items-center'>
                   <TbEye size={25} className='hover:scale-120 rounded-full text-blue-500 duration-200 cursor-pointer'/>
                 </td>
               </tr>
+            </tbody>
+              
             </table>
           </div>
         </div>

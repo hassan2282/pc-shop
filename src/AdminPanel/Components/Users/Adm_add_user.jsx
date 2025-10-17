@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { motion } from 'motion/react'
 import { TbUser, TbMail, TbLock, TbPhone, TbBuilding, TbCalendar, TbCheck } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
+import { IoMdCloseCircle } from 'react-icons/io'
 
 function Adm_add_user() {
   const [formData, setFormData] = useState({
@@ -99,9 +100,14 @@ function Adm_add_user() {
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* اطلاعات پایه */}
             <div className="space-y-6">
-              <h2 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
-                <TbUser className="text-blue-600" />
-                افزودن کاربر
+              <h2 className="text-xl font-semibold text-gray-800 flex w-full justify-between items-center gap-2">
+                  <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>
+                    <IoMdCloseCircle size={27} className='text-red-500'/>
+                  </Link>
+                  <div className='flex flex-row gap-2'>
+                    افزودن کاربر
+                    <TbUser size={25} className="text-blue-600" />
+                  </div>
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { LiaDollyFlatbedSolid } from 'react-icons/lia'
 import { TbArticle, TbBasket, TbBell, TbCategoryFilled, TbChartBarPopular, TbEye, TbHome, TbMail, TbMenu2, TbUserCog, TbX } from 'react-icons/tb'
 import { Link } from 'react-router-dom';
@@ -6,17 +6,36 @@ import { Link } from 'react-router-dom';
 function Sidebar() {
 
   const [toggle, setToggle] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const toggleMenu = () => {
     setToggle(!toggle);
   }
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newIsMobile = window.innerWidth <= 768;
+      setIsMobile(newIsMobile);
+      
+      if (newIsMobile) {
+        setToggle(true);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <div className='fixed left-0 top-1 w-[3.5rem] z-20 overflow-hidden
                     justify-center items-center p-1 space-y-1' dir='ltr'>
 
       <div onClick={toggleMenu} className={`flex flex-row gap-3 bg-dark opacity-70 text-white duration-200
-                         cursor-pointer ${toggle ? 'rounded-full' : 'rounded-xl'} hover:scale-90 p-2
+                         cursor-pointer ${toggle ? 'rounded-full animate-spin' : 'rounded-xl'} hover:scale-90 p-2
                           bg-zinc-700/100 justify-center items-center shadow-sm`}>
         <span className='flex w-full duration-300 justify-center items-center p-1 focus:scale-50'>
           {
@@ -28,7 +47,7 @@ function Sidebar() {
         </span>
       </div>
 
-      <div className={`fixed space-y-2 group w-[3rem] justify-center items-center text-stone-600 *:hover:bg-zinc-100 duration-300 ${toggle ? ' -translate-x-20 ' : 'translate-x-0'}`}>
+      <div className={`fixed space-y-2 group w-[3rem] justify-center items-center *:backdrop-blur-lg text-stone-600 *:hover:bg-zinc-100 duration-300 ${toggle ? ' -translate-x-20 ' : 'translate-x-0'}`}>
         <Link to="/admin/index" className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>داشبورد </span>
@@ -40,7 +59,7 @@ function Sidebar() {
           <span className=''>کاربران </span>
           <span className='flex w-full justify-end items-center p-1'><TbUserCog size={22} className='' /></span>
         </Link>
-          <Link className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
+          <Link to="/admin/categories/all" className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>دسته‌بندی</span>
           <span className='flex w-full justify-end items-center p-1'><TbCategoryFilled size={22} className='' /></span>
