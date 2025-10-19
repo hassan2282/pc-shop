@@ -43,6 +43,12 @@ function Adm_all_categories() {
             <TbCategoryPlus size={20}/>
             <span>افزودن دسته بندی</span>
            </Link>
+          <Link to="/admin/categories/tree-view" className='flex h-12 bg-blue-600 hover:bg-blue-700
+          text-white items-center justify-center
+           rounded-xl text-sm font-medium space-x-2 p-3 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl' >
+            <TbCategoryPlus size={20}/>
+            <span>نمای درختی</span>
+           </Link>
         </div>
       </div>
 

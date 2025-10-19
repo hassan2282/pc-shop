@@ -35,6 +35,7 @@ import Adm_show_user from "./AdminPanel/Components/Users/Adm_show_user.jsx";
 import Adm_all_categories from "./AdminPanel/Components/Categories/Adm_all_categories.jsx";
 import Adm_add_category from "./AdminPanel/Components/Categories/Adm_add_category.jsx";
 import Adm_edit_category from "./AdminPanel/Components/Categories/Adm_edit_category.jsx";
+import Adm_categories_tree_view from "./AdminPanel/Components/Categories/Adm_categories_tree_view.jsx";
 
 
 function App() {
@@ -186,7 +187,7 @@ function App() {
               <Route path="categories/all" element={<Adm_all_categories />} />
               <Route path="category/add" element={<Adm_add_category />} />
               <Route path="category/edit" element={<Adm_edit_category />} />
-              {/* <Route path="category/show" element={<Adm_show_user />} /> */}
+              <Route path="categories/tree-view" element={<Adm_categories_tree_view />} />
           </Route>
         </Routes>
         <ToastContainer />
