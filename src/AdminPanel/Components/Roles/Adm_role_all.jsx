@@ -50,18 +50,17 @@ function Adm_role_all() {
       <div className='flex flex-col w-full min-md:p-6 min-h-100 '>
         <table className='w-full min-w-[50rem] '>
           <thead>
-            <tr className='w-full grid grid-cols-6 items-center bg-white/90 backdrop-blur-sm text-gray-700/90 rounded-xl
+            <tr className='w-full grid grid-cols-5 items-center bg-white/90 backdrop-blur-sm text-gray-700/90 rounded-xl
            h-16 text-md justify-center text-center border border-gray-200 shadow-sm'>
               <th className='font-semibold'>ردیف</th>
               <th className='font-semibold'>آیدی</th>
               <th className='font-semibold'>عنوان</th>
               <th className='font-semibold'>وضعیت</th>
-              <th className='font-semibold'>والد</th>
               <th className='font-semibold'>عملیات</th>
             </tr>
           </thead>
           <tbody className=''>
-            <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
                             h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>1</td>
@@ -73,12 +72,6 @@ function Adm_role_all() {
                   <span className='text-green-700 text-sm font-medium'>فعال</span>
                 </div>
               </td>
-              <td className='col-span-1 justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-blue-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <FaUserSecret size={16} className='text-blue-600' />
-                  <span className='text-blue-700 text-sm font-medium'>لوازم جانبی</span>
-                </div>
-              </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
@@ -88,7 +81,7 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
                             h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>2</td>
@@ -100,12 +93,6 @@ function Adm_role_all() {
                   <span className='text-red-700 text-sm font-medium'>غیرفعال</span>
                 </div>
               </td>
-              <td className='col-span-1 justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-blue-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <FaUserSecret size={16} className='text-blue-600' />
-                  <span className='text-blue-700 text-sm font-medium'>لوازم جانبی</span>
-                </div>
-              </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
@@ -115,7 +102,7 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
                             h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>1</td>
@@ -127,12 +114,6 @@ function Adm_role_all() {
                   <span className='text-green-700 text-sm font-medium'>فعال</span>
                 </div>
               </td>
-              <td className='col-span-1 justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-blue-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <FaUserSecret size={16} className='text-blue-600' />
-                  <span className='text-blue-700 text-sm font-medium'>لوازم جانبی</span>
-                </div>
-              </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
@@ -142,7 +123,7 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
                             h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>2</td>
@@ -154,12 +135,6 @@ function Adm_role_all() {
                   <span className='text-red-700 text-sm font-medium'>غیرفعال</span>
                 </div>
               </td>
-              <td className='col-span-1 justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-blue-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <FaUserSecret size={16} className='text-blue-600' />
-                  <span className='text-blue-700 text-sm font-medium'>لوازم جانبی</span>
-                </div>
-              </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
@@ -169,7 +144,7 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
                             h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>1</td>
@@ -181,12 +156,6 @@ function Adm_role_all() {
                   <span className='text-green-700 text-sm font-medium'>فعال</span>
                 </div>
               </td>
-              <td className='col-span-1 justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-blue-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <FaUserSecret size={16} className='text-blue-600' />
-                  <span className='text-blue-700 text-sm font-medium'>لوازم جانبی</span>
-                </div>
-              </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
@@ -196,7 +165,7 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
                             h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>2</td>
@@ -208,12 +177,6 @@ function Adm_role_all() {
                   <span className='text-red-700 text-sm font-medium'>غیرفعال</span>
                 </div>
               </td>
-              <td className='col-span-1 justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-blue-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <FaUserSecret size={16} className='text-blue-600' />
-                  <span className='text-blue-700 text-sm font-medium'>لوازم جانبی</span>
-                </div>
-              </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
@@ -223,7 +186,7 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
                             h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>1</td>
@@ -235,12 +198,6 @@ function Adm_role_all() {
                   <span className='text-green-700 text-sm font-medium'>فعال</span>
                 </div>
               </td>
-              <td className='col-span-1 justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-blue-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <FaUserSecret size={16} className='text-blue-600' />
-                  <span className='text-blue-700 text-sm font-medium'>لوازم جانبی</span>
-                </div>
-              </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
@@ -250,7 +207,7 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
                             h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>2</td>
@@ -262,12 +219,6 @@ function Adm_role_all() {
                   <span className='text-red-700 text-sm font-medium'>غیرفعال</span>
                 </div>
               </td>
-              <td className='col-span-1 justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-blue-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <FaUserSecret size={16} className='text-blue-600' />
-                  <span className='text-blue-700 text-sm font-medium'>لوازم جانبی</span>
-                </div>
-              </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
@@ -277,7 +228,7 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
                             h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>1</td>
@@ -289,12 +240,6 @@ function Adm_role_all() {
                   <span className='text-green-700 text-sm font-medium'>فعال</span>
                 </div>
               </td>
-              <td className='col-span-1 justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-blue-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <FaUserSecret size={16} className='text-blue-600' />
-                  <span className='text-blue-700 text-sm font-medium'>لوازم جانبی</span>
-                </div>
-              </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
@@ -304,7 +249,7 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
                             h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>2</td>
@@ -314,12 +259,6 @@ function Adm_role_all() {
                 <div className='flex items-center gap-1 bg-red-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
                   <TbX size={16} className='text-red-600' />
                   <span className='text-red-700 text-sm font-medium'>غیرفعال</span>
-                </div>
-              </td>
-              <td className='col-span-1 justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-blue-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <FaUserSecret size={16} className='text-blue-600' />
-                  <span className='text-blue-700 text-sm font-medium'>لوازم جانبی</span>
                 </div>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
