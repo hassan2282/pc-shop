@@ -75,7 +75,7 @@ function Sidebar() {
           <span className=''>مقالات </span>
           <span className='flex w-full justify-end items-center p-1'><TbArticle size={22} className='' /></span>
         </Link>
-        <Link className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
+        <Link to={'/admin/role/all'} className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>نقش </span>
           <span className='flex w-full justify-end items-center p-1'><FaUnlockAlt size={20} className='' /></span>

@@ -1,10 +1,11 @@
+
 import { FaUserSecret } from 'react-icons/fa'
-import { TbCategoryPlus, TbCheck, TbEditCircle, TbSearch, TbTrashFilled, TbX } from 'react-icons/tb'
+import { TbCategoryPlus, TbCheck, TbEditCircle, TbEyeFilled, TbSearch, TbTrashFilled, TbX } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 import {motion} from 'motion/react'
 import { IoMdCloseCircle } from 'react-icons/io'
 
-function Adm_all_categories() {
+function Adm_role_all() {
   return (
     <motion.div
     initial={{
@@ -27,7 +28,7 @@ function Adm_all_categories() {
         <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>
           <IoMdCloseCircle size={27} className='text-red-500'/>
         </Link>
-          <h3 className='min-md:text-2xl text-lg font-bold text-gray-800'>مدیریت دسته بندی ها</h3>
+          <h3 className='min-md:text-2xl text-lg font-bold text-gray-800'>مدیریت نقش ها</h3>
         <div className='flex flex-row relative justify-center items-center space-x-4'>
           <div className='relative flex justify-center items-center'>
             <TbSearch size={20} className='absolute left-3 text-gray-400'/>
@@ -37,17 +38,11 @@ function Adm_all_categories() {
               placeholder='جستجو...'
             />
           </div>
-          <Link to="/admin/category/add" className='flex h-12 bg-blue-600 hover:bg-blue-700
+          <Link to="/admin/role/add" className='flex h-12 bg-blue-600 hover:bg-blue-700
           text-white items-center justify-center
            rounded-xl text-sm font-medium space-x-2 p-3 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl' >
             <TbCategoryPlus size={20}/>
-            <span>افزودن دسته بندی</span>
-           </Link>
-          <Link to="" className='flex h-12 bg-blue-600 hover:bg-blue-700
-          text-white items-center justify-center
-           rounded-xl text-sm font-medium space-x-2 p-3 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl' >
-            <TbCategoryPlus size={20}/>
-            <span>نمای درختی</span>
+            <span>افزودن نقش</span>
            </Link>
         </div>
       </div>
@@ -85,7 +80,7 @@ function Adm_all_categories() {
                 </div>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link to="/admin/category/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
                 </Link>
                 <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
@@ -112,7 +107,7 @@ function Adm_all_categories() {
                 </div>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link to="/admin/category/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
                 </Link>
                 <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
@@ -139,7 +134,7 @@ function Adm_all_categories() {
                 </div>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link to="/admin/category/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
                 </Link>
                 <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
@@ -166,7 +161,7 @@ function Adm_all_categories() {
                 </div>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link to="/admin/category/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
                 </Link>
                 <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
@@ -193,7 +188,7 @@ function Adm_all_categories() {
                 </div>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link to="/admin/category/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
                 </Link>
                 <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
@@ -220,7 +215,7 @@ function Adm_all_categories() {
                 </div>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link to="/admin/category/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
                 </Link>
                 <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
@@ -247,7 +242,7 @@ function Adm_all_categories() {
                 </div>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link to="/admin/category/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
                 </Link>
                 <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
@@ -274,7 +269,7 @@ function Adm_all_categories() {
                 </div>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link to="/admin/category/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
                 </Link>
                 <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
@@ -301,7 +296,7 @@ function Adm_all_categories() {
                 </div>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link to="/admin/category/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
                 </Link>
                 <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
@@ -328,7 +323,7 @@ function Adm_all_categories() {
                 </div>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link to="/admin/category/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={22} />
                 </Link>
                 <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
@@ -343,4 +338,4 @@ function Adm_all_categories() {
   )
 }
 
-export default Adm_all_categories
+export default Adm_role_all

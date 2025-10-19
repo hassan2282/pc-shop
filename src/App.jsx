@@ -35,7 +35,9 @@ import Adm_show_user from "./AdminPanel/Components/Users/Adm_show_user.jsx";
 import Adm_all_categories from "./AdminPanel/Components/Categories/Adm_all_categories.jsx";
 import Adm_add_category from "./AdminPanel/Components/Categories/Adm_add_category.jsx";
 import Adm_edit_category from "./AdminPanel/Components/Categories/Adm_edit_category.jsx";
-import Adm_categories_tree_view from "./AdminPanel/Components/Categories/Adm_categories_tree_view.jsx";
+import Adm_role_all from "./AdminPanel/Components/Roles/Adm_role_all.jsx";
+import Adm_role_add from "./AdminPanel/Components/Roles/Adm_role_add.jsx";
+import Adm_role_edit from "./AdminPanel/Components/Roles/Adm_role_edit.jsx";
 
 
 function App() {
@@ -187,7 +189,9 @@ function App() {
               <Route path="categories/all" element={<Adm_all_categories />} />
               <Route path="category/add" element={<Adm_add_category />} />
               <Route path="category/edit" element={<Adm_edit_category />} />
-              <Route path="categories/tree-view" element={<Adm_categories_tree_view />} />
+              <Route path="role/all" element={<Adm_role_all />} />
+              <Route path="role/add" element={<Adm_role_add />} />
+              <Route path="role/edit" element={<Adm_role_edit />} />
           </Route>
         </Routes>
         <ToastContainer />
