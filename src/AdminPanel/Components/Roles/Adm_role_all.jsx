@@ -50,27 +50,35 @@ function Adm_role_all() {
       <div className='flex flex-col w-full min-md:p-6 min-h-100 '>
         <table className='w-full min-w-[50rem] '>
           <thead>
-            <tr className='w-full grid grid-cols-5 items-center bg-white/90 backdrop-blur-sm text-gray-700/90 rounded-xl
+            <tr className='w-full grid grid-cols-8 items-center bg-white/90 backdrop-blur-sm text-gray-700/90 rounded-xl
            h-16 text-md justify-center text-center border border-gray-200 shadow-sm'>
               <th className='font-semibold'>ردیف</th>
               <th className='font-semibold'>آیدی</th>
               <th className='font-semibold'>عنوان</th>
-              <th className='font-semibold'>وضعیت</th>
+              <th className='font-semibold col-span-4'>دسترسی‌ها</th>
               <th className='font-semibold'>عملیات</th>
             </tr>
           </thead>
           <tbody className=''>
-            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
-                            h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
+            <tr className='w-full grid grid-cols-8 items-center text-gray-600/90
+                            p-2 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>1</td>
               <td className=''>#10</td>
               <td className=''>مدیرکل</td>
-              <td className=' justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-green-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <TbCheck size={16} className='text-green-600' />
-                  <span className='text-green-700 text-sm font-medium'>فعال</span>
-                </div>
+              <td className=' justify-center items-center w-full flex col-span-4'>
+                <ul className='grid grid-cols-5 gap-2 w-full *:py-2 px-10 *:rounded-xl text-sm *:border *:bg-blue-100/80 text-blue-600'>
+                  <li>کاربران</li>
+                  <li>تیکت ها</li>
+                  <li>محصولات</li>
+                  <li>مقالات</li>
+                  <li>ادمین ها</li>
+                  <li>امنیت</li>
+                  <li>کنترل خرید</li>
+                  <li>اپراتور پست</li>
+                  <li>تغییر ظاهر</li>
+                  <li>کنترل فروش</li>
+                </ul>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
@@ -81,17 +89,22 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
-                            h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
+            <tr className='w-full grid grid-cols-8 items-center text-gray-600/90
+                            p-2 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>2</td>
               <td className=''>#9</td>
               <td className=''>سوپر ادمین</td>
-              <td className='col-span-1 justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-red-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <TbX size={16} className='text-red-600' />
-                  <span className='text-red-700 text-sm font-medium'>غیرفعال</span>
-                </div>
+              <td className=' justify-center items-center w-full flex col-span-4'>
+                <ul className='grid grid-cols-5 gap-2 w-full *:py-2 px-10 *:rounded-xl text-sm *:border *:bg-red-100/80 text-red-600'>
+                  <li>کاربران</li>
+                  <li>تیکت ها</li>
+                  <li>محصولات</li>
+                  <li>مقالات</li>
+                  <li>ادمین ها</li>
+                  <li>امنیت</li>
+                  <li>تغییر ظاهر</li>
+                </ul>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
@@ -102,17 +115,18 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
-                            h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
+            <tr className='w-full grid grid-cols-8 items-center text-gray-600/90
+                            p-2 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>3</td>
               <td className=''>#7</td>
               <td className=''>مقاله نویس</td>
-              <td className=' justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-green-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <TbCheck size={16} className='text-green-600' />
-                  <span className='text-green-700 text-sm font-medium'>فعال</span>
-                </div>
+              <td className=' justify-center items-center w-full flex col-span-4'>
+                <ul className='grid grid-cols-5 gap-2 w-full *:py-2 px-10 *:rounded-xl text-sm *:border *:bg-blue-100/80 text-blue-600'>
+                  <li>مقالات</li>
+                  <li>پنل ادمین</li>
+                  <li>پاسخ به کامنت</li>
+                </ul>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
@@ -123,17 +137,19 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
-                            h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
+            <tr className='w-full grid grid-cols-8 items-center text-gray-600/90
+                            p-2 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>7</td>
               <td className=''>#6</td>
               <td className=''>ادمین محصولات</td>
-              <td className='col-span-1 justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-red-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <TbX size={16} className='text-red-600' />
-                  <span className='text-red-700 text-sm font-medium'>غیرفعال</span>
-                </div>
+              <td className=' justify-center items-center w-full flex col-span-4'>
+                <ul className='grid grid-cols-5 gap-2 w-full *:py-2 px-10 *:rounded-xl text-sm *:border *:bg-red-100/80 text-red-600'>
+                  <li>محصولات</li>
+                  <li>پنل ادمین</li>
+                  <li>پاسخ به کامنت</li>
+                  <li>مقالات</li>
+                </ul>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
@@ -144,17 +160,18 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
-                            h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
+            <tr className='w-full grid grid-cols-8 items-center text-gray-600/90
+                            p-2 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>5</td>
               <td className=''>#5</td>
-              <td className=''>اپراتور تلفن</td>
-              <td className=' justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-green-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <TbCheck size={16} className='text-green-600' />
-                  <span className='text-green-700 text-sm font-medium'>فعال</span>
-                </div>
+              <td className=''>اپراتور ارتباطات</td>
+              <td className=' justify-center items-center w-full flex col-span-4'>
+                <ul className='grid grid-cols-5 gap-2 w-full *:py-2 px-10 *:rounded-xl text-sm *:border *:bg-blue-100/80 text-blue-600'>
+                  <li>کاربران</li>
+                  <li>تیکت ها</li>
+                  <li>سبد خرید</li>
+                </ul>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
@@ -165,17 +182,17 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
-                            h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
+            <tr className='w-full grid grid-cols-8 items-center text-gray-600/90
+                            p-2 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>6</td>
               <td className=''>#4</td>
               <td className=''>اپراتور بسته بندی</td>
-              <td className='col-span-1 justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-red-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <TbX size={16} className='text-red-600' />
-                  <span className='text-red-700 text-sm font-medium'>غیرفعال</span>
-                </div>
+              <td className=' justify-center items-center w-full flex col-span-4'>
+                <ul className='grid grid-cols-5 gap-2 w-full *:py-2 px-10 *:rounded-xl text-sm *:border *:bg-red-100/80 text-red-600'>
+                  <li>سفارشات</li>
+                  <li>فاکتورها</li>
+                </ul>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
@@ -186,17 +203,19 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
-                            h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
+            <tr className='w-full grid grid-cols-8 items-center text-gray-600/90
+                            p-2 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>7</td>
               <td className=''>#3</td>
               <td className=''>اپراتور پست</td>
-              <td className=' justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-green-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <TbCheck size={16} className='text-green-600' />
-                  <span className='text-green-700 text-sm font-medium'>فعال</span>
-                </div>
+              <td className=' justify-center items-center w-full flex col-span-4'>
+                <ul className='grid grid-cols-5 gap-2 w-full *:py-2 px-10 *:rounded-xl text-sm *:border *:bg-blue-100/80 text-blue-600'>
+                  <li>کاربران</li>
+                  <li>تیکت ها</li>
+                  <li>سفارشات</li>
+                  <li>فاکتورها</li>
+                </ul>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
@@ -207,17 +226,20 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
-                            h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
+            <tr className='w-full grid grid-cols-8 items-center text-gray-600/90
+                            p-2 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>8</td>
               <td className=''>#2</td>
               <td className=''>اپراتور خرید</td>
-              <td className='col-span-1 justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-red-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <TbX size={16} className='text-red-600' />
-                  <span className='text-red-700 text-sm font-medium'>غیرفعال</span>
-                </div>
+              <td className=' justify-center items-center w-full flex col-span-4'>
+                <ul className='grid grid-cols-5 gap-2 w-full *:py-2 px-10 *:rounded-xl text-sm *:border *:bg-red-100/80 text-red-600'>
+                  <li>کاربران</li>
+                  <li>تیکت ها</li>
+                  <li>محصولات</li>
+                  <li>کنترل خرید</li>
+                  <li>کنترل فروش</li>
+                </ul>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
@@ -228,17 +250,18 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
-                            h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
+            <tr className='w-full grid grid-cols-8 items-center text-gray-600/90
+                            p-2 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>9</td>
               <td className=''>#1</td>
               <td className=''>ادمین ویراستار</td>
-              <td className=' justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-green-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <TbCheck size={16} className='text-green-600' />
-                  <span className='text-green-700 text-sm font-medium'>فعال</span>
-                </div>
+              <td className=' justify-center items-center w-full flex col-span-4'>
+                <ul className='grid grid-cols-5 gap-2 w-full *:py-2 px-10 *:rounded-xl text-sm *:border *:bg-blue-100/80 text-blue-600'>
+                  <li>کاربران</li>
+                  <li>کامنت ها</li>
+                  <li>مقالات</li>
+                </ul>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
@@ -249,17 +272,25 @@ function Adm_role_all() {
                 </Link>
               </td>
             </tr>
-            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
-                            h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
+            <tr className='w-full grid grid-cols-8 items-center text-gray-600/90
+                            p-2 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className=''>10</td>
               <td className=''>#1</td>
               <td className=''>ادمین کل</td>
-              <td className='col-span-1 justify-center items-center w-full flex'>
-                <div className='flex items-center gap-1 bg-red-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                  <TbX size={16} className='text-red-600' />
-                  <span className='text-red-700 text-sm font-medium'>غیرفعال</span>
-                </div>
+              <td className=' justify-center items-center w-full flex col-span-4'>
+                <ul className='grid grid-cols-5 gap-2 w-full *:py-2 px-10 *:rounded-xl text-sm *:border *:bg-red-100/80 text-red-600'>
+                  <li>کاربران</li>
+                  <li>تیکت ها</li>
+                  <li>محصولات</li>
+                  <li>مقالات</li>
+                  <li>ادمین ها</li>
+                  <li>امنیت</li>
+                  <li>کنترل خرید</li>
+                  <li>اپراتور پست</li>
+                  <li>تغییر ظاهر</li>
+                  <li>کنترل فروش</li>
+                </ul>
               </td>
               <td className='flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                 <Link to="/admin/role/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
