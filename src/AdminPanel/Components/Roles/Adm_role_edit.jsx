@@ -56,7 +56,7 @@ function Adm_role_edit() {
   }
 
   return (
-    <div className="min-lg:h-[80%] min-md:w-[80%] w-full min-lg:mr-30 flex items-center justify-center min-sm:p-4">
+    <div className="min-lg:h-[80%] min-md:w-[80%] w-full mt-10 md:mr-20 min-lg:mr-30 flex items-center justify-center min-sm:p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -69,7 +69,7 @@ function Adm_role_edit() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-col justify-center items-center bg-white/30 backdrop-blur-xl min-sm:w-[50%] rounded-2xl 
+          className="flex flex-col justify-center items-center bg-white/30 backdrop-blur-xl min-sm:w-[80%] rounded-2xl 
           shadow-2xl border border-white/20 p-8"
         >
           <form onSubmit={handleSubmit} className="min-sm:space-y-8 w-full">
@@ -107,7 +107,74 @@ function Adm_role_edit() {
                   )}
                 </div>
               </div>
-            </div>
+
+
+
+              <div className="relative">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    دسترسی ها
+                  </label>
+                  <div className="grid max-sm:grid-cols-1 sm:grid-cols-3 min-md:grid-cols-5 gap-2 text-zinc-600 
+                  justify-center items-center w-full h-full
+                  
+                    *:flex *:w-full *:h-full *:bg-white/40 *:has-[:checked]:shadow-blue-800 *:has-[:checked]:shadow-md
+                     *:has-[:checked]:text-white *:has-[:checked]:border *:has-[:checked]:border-blue-700
+                    *:duration-300 *:border *:border-white/80 *:has-[:checked]:bg-blue-500/70
+                    *:relative *:items-center *:justify-center *:text-center *:cursor-pointer *:rounded-xl *:p-2">
+                      <label className=''>
+                        <input className='absolute appearance-none
+                         cursor-pointer rounded-xl w-full h-full' type='checkbox' value="user"/>
+                        <span className='z-20'>کاربران</span>
+                      </label>
+                      <label className=''>
+                        <input checked className='absolute appearance-none
+                         cursor-pointer rounded-xl w-full h-full' type='checkbox' value="user"/>
+                        <span className='z-20'>تیکت ها</span>
+                      </label>
+                      <label className=''>
+                        <input checked className='absolute appearance-none
+                         cursor-pointer rounded-xl w-full h-full' type='checkbox' value="user"/>
+                        <span className='z-20'>محصولات</span>
+                      </label>
+                      <label className=''>
+                        <input className='absolute appearance-none
+                         cursor-pointer rounded-xl w-full h-full' type='checkbox' value="user"/>
+                        <span className='z-20'>مقالات</span>
+                      </label>
+                      <label className=''>
+                        <input className='absolute appearance-none
+                         cursor-pointer rounded-xl w-full h-full' type='checkbox' value="user"/>
+                        <span className='z-20'>ادمین ها</span>
+                      </label>
+                      <label className=''>
+                        <input  className='absolute appearance-none
+                         cursor-pointer rounded-xl w-full h-full' type='checkbox' value="user"/>
+                        <span className='z-20'>کنترل فروش</span>
+                      </label>
+                      <label className=''>
+                        <input className='absolute appearance-none
+                         cursor-pointer rounded-xl w-full h-full' type='checkbox' value="user"/>
+                        <span className='z-20'>تغییر ظاهر</span>
+                      </label>
+                      <label className=''>
+                        <input className='absolute appearance-none
+                         cursor-pointer rounded-xl w-full h-full' type='checkbox' value="user"/>
+                        <span className='z-20'>اپراتور پست</span>
+                      </label>
+                      <label className=''>
+                        <input  className='absolute appearance-none
+                         cursor-pointer rounded-xl w-full h-full' type='checkbox' value="user"/>
+                        <span className='z-20'>امنیت</span>
+                      </label>
+                      <label className=''>
+                        <input checked className='absolute appearance-none
+                         cursor-pointer rounded-xl w-full h-full' type='checkbox' value="user"/>
+                        <span className='z-20'>کنترل خرید</span>
+                      </label>
+
+                  </div>
+                </div>
+              </div>
 
             {/* دکمه‌های فرم */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
