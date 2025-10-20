@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { motion } from 'motion/react'
-import { TbUser, TbBuilding, TbCheck, TbCategoryPlus } from 'react-icons/tb'
+import { TbUser, TbCheck, TbEye } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io'
 import { FaUnlockAlt } from 'react-icons/fa'
 
-function Adm_role_edit() {
+function Adm_permission_add() {
   const [formData, setFormData] = useState({
     name: '',
     parent: 0,
@@ -80,15 +80,15 @@ function Adm_role_edit() {
                     <IoMdCloseCircle size={27} className='text-red-500'/>
                   </Link>
                   <div className='flex flex-row gap-2'>
-                    ویرایش نقش
-                    <FaUnlockAlt size={25} className="text-blue-600 max-sm:hidden" />
+                    افزودن دسترسی
+                    <TbEye size={25} className="text-blue-600 max-sm:hidden" />
                   </div>
               </h2>
 
               <div className="grid gap-6 w-full">
                 <div className="relative">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    عنوان نقش
+                    عنوان دسترسی
                   </label>
                   <div className="relative">
                     <TbUser className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
@@ -99,7 +99,7 @@ function Adm_role_edit() {
                       onChange={handleChange}
                       className={`w-full pl-10 pr-4 py-3 rounded-xl border ${errors.name ? 'border-red-500' : 'border-gray-200'
                         } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90 backdrop-blur-sm`}
-                      placeholder="عنوان نقش ..."
+                      placeholder="عنوان دسترسی ..."
                     />
                   </div>
                   {errors.name && (
@@ -126,17 +126,17 @@ function Adm_role_edit() {
                 ) : (
                   <>
                     <TbCheck className="text-lg" />
-                    ویرایش نقش
+                    ایجاد دسترسی
                   </>
                 )}
               </button>
 
-              <Link to="/admin/role/all" className='flex h-12 bg-blue-600 hover:bg-blue-700
+              <Link to="/admin/permission/all" className='flex h-12 bg-blue-600 hover:bg-blue-700
                       text-white items-center justify-center
                       rounded-xl text-sm font-medium space-x-2 p-3 transition-all duration-200 
                       transform hover:scale-105 shadow-lg hover:shadow-xl' >
-                <span> همه نقش ها</span>
-                <FaUnlockAlt size={20} />
+                <span> همه دسترسی ها</span>
+                <TbEye size={25} />
               </Link>
             </div>
           </form>
@@ -146,4 +146,4 @@ function Adm_role_edit() {
   )
 }
 
-export default Adm_role_edit
+export default Adm_permission_add

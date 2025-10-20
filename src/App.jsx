@@ -38,6 +38,9 @@ import Adm_edit_category from "./AdminPanel/Components/Categories/Adm_edit_categ
 import Adm_role_all from "./AdminPanel/Components/Roles/Adm_role_all.jsx";
 import Adm_role_add from "./AdminPanel/Components/Roles/Adm_role_add.jsx";
 import Adm_role_edit from "./AdminPanel/Components/Roles/Adm_role_edit.jsx";
+import Adm_permission_all from "./AdminPanel/Components/Permissions/Adm_permission_all.jsx";
+import Adm_permission_add from "./AdminPanel/Components/Permissions/Adm_permission_add.jsx";
+import Adm_permission_edit from "./AdminPanel/Components/Permissions/Adm_permission_edit.jsx";
 
 
 function App() {
@@ -192,6 +195,9 @@ function App() {
               <Route path="role/all" element={<Adm_role_all />} />
               <Route path="role/add" element={<Adm_role_add />} />
               <Route path="role/edit" element={<Adm_role_edit />} />
+              <Route path="permission/all" element={<Adm_permission_all />} />
+              <Route path="permission/add" element={<Adm_permission_add />} />
+              <Route path="permission/edit" element={<Adm_permission_edit />} />
           </Route>
         </Routes>
         <ToastContainer />
