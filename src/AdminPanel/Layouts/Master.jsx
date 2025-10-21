@@ -5,8 +5,8 @@ import { Outlet } from 'react-router-dom'
 
 function Master() {
   return (
-    <div className="w-screen h-screen overflow-x-scroll" dir='rtl'>
-      <img src='../../src/AdminPanel/assets/img/wallpapers/win12.jpeg' className='h-screen w-full fixed object-cover' />
+    <div className="w-screen h-screen overflow-y-scroll" dir='rtl'>
+      <img src='../../src/AdminPanel/assets/img/wallpapers/win12.jpeg' className=' w-screen fixed object-cover' />
         <Navbar />
           <Outlet />
         <Sidebar />
