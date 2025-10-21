@@ -41,6 +41,10 @@ import Adm_role_edit from "./AdminPanel/Components/Roles/Adm_role_edit.jsx";
 import Adm_permission_all from "./AdminPanel/Components/Permissions/Adm_permission_all.jsx";
 import Adm_permission_add from "./AdminPanel/Components/Permissions/Adm_permission_add.jsx";
 import Adm_permission_edit from "./AdminPanel/Components/Permissions/Adm_permission_edit.jsx";
+import Adm_product_all from "./AdminPanel/Components/products/Adm_product_all.jsx";
+import Adm_product_add from "./AdminPanel/Components/products/Adm_product_add.jsx";
+import Adm_product_edit from "./AdminPanel/Components/products/Adm_product_edit.jsx";
+import Adm_product_show from "./AdminPanel/Components/products/Adm_product_show.jsx";
 
 
 function App() {
@@ -198,6 +202,10 @@ function App() {
               <Route path="permission/all" element={<Adm_permission_all />} />
               <Route path="permission/add" element={<Adm_permission_add />} />
               <Route path="permission/edit" element={<Adm_permission_edit />} />
+              <Route path="product/all" element={<Adm_product_all />} />
+              <Route path="product/add" element={<Adm_product_add />} />
+              <Route path="product/edit" element={<Adm_product_edit />} />
+              <Route path="product/show" element={<Adm_product_show />} />
           </Route>
         </Routes>
         <ToastContainer />
