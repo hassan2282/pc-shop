@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'motion/react'
-import { TbUser, TbCheck, TbScreenshot } from 'react-icons/tb'
+import { TbCheck, TbPlus, TbScreenshot } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io'
 import { LiaDollyFlatbedSolid } from 'react-icons/lia'
@@ -74,8 +74,24 @@ function Adm_product_add() {
     }
   }
 
+
+  const [rows, setRows] = useState([
+    { attribute: "", value: "" },
+    { attribute: "", value: "" },
+  ]);
+
+  const addRow = () => {
+    setRows([...rows, { attribute: "", value: "" }])
+  }
+
+  const attrChangeHandler = (index, field, value) => {
+    const newRows = [...rows];
+    newRows[index][field] = value;
+    setRows(newRows)
+  }
+
   return (
-    <div className="min-lg:h-[90%] min-md:w-[80%] md:mr-20 min-lg:mt-20 min-lg:mr-30 flex items-center justify-center min-sm:p-4">
+    <div className="min-lg:h-[90%] min-md:w-[80%] md:mr-20 min-lg:mt-[18%] min-lg:mr-30 flex items-center justify-center min-sm:p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -115,8 +131,8 @@ function Adm_product_add() {
                       name="title"
                       value={formData.title}
                       onChange={handleChange}
-                      className={`w-full pl-10 pr-4 py-3 rounded-xl border ${errors.title ? 'border-red-500' : 'border-gray-200'
-                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/60 backdrop-blur-sm`}
+                      className={`w-full pl-10 pr-4 py-3 shadow-sm hover:shadow-md duration-200 rounded-xl border ${errors.title ? 'border-red-500' : 'border-gray-200'
+                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/40 `}
                       placeholder="عنوان محصول را وارد کنید"
                     />
                   </div>
@@ -135,8 +151,8 @@ function Adm_product_add() {
                       name="price"
                       value={formData.price}
                       onChange={handleChange}
-                      className={`w-full pl-10 pr-4 py-3 rounded-xl border ${errors.price ? 'border-red-500' : 'border-gray-200'
-                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/40 backdrop-blur-sm`}
+                      className={`w-full pl-10 pr-4 py-3 shadow-sm hover:shadow-md duration-200 rounded-xl border ${errors.price ? 'border-red-500' : 'border-gray-200'
+                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/40 `}
                       placeholder="قیمت "
                     />
                   </div>
@@ -146,7 +162,7 @@ function Adm_product_add() {
                 </div>
                 <div className="relative">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    تعداد موجودی کالا
+                    تعداد
                   </label>
                   <div className="relative">
                     <input
@@ -154,8 +170,8 @@ function Adm_product_add() {
                       name="amount"
                       value={formData.amount}
                       onChange={handleChange}
-                      className={`w-full pl-10 pr-4 py-3 rounded-xl border ${errors.amount ? 'border-red-500' : 'border-gray-200'
-                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/40 backdrop-blur-sm`}
+                      className={`w-full pl-10 pr-4 py-3 shadow-sm hover:shadow-md duration-200 rounded-xl border ${errors.amount ? 'border-red-500' : 'border-gray-200'
+                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/40 `}
                       placeholder="موجودی کالا "
                     />
                   </div>
@@ -175,8 +191,8 @@ function Adm_product_add() {
                       name="description"
                       value={formData.description}
                       onChange={handleChange}
-                      className={`w-full pl-10 pr-4 py-4 rounded-xl border ${errors.description ? 'border-red-500' : 'border-gray-200'
-                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/40 backdrop-blur-sm`}
+                      className={`w-full pl-10 pr-4 py-4 shadow-sm hover:shadow-md duration-200 rounded-xl border ${errors.description ? 'border-red-500' : 'border-gray-200'
+                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/40 `}
                       placeholder="توضیح اختصاری ..."
                     />
                   </div>
@@ -186,100 +202,100 @@ function Adm_product_add() {
                 </div>
 
 
-                <div class="relative">
-                  <div class="md:flex">
-                    <div class="w-full p-3">
+                <div className="relative">
+                  <div className="md:flex">
+                    <div className="w-full p-3">
                       <div
-                        class="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/40 flex hover:border-blue-500/50
+                        className="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/40 flex hover:border-blue-500/50
                           justify-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
                       >
-                        <div class="absolute flex flex-col items-center">
+                        <div className="absolute flex flex-col items-center">
                           <FcOldTimeCamera size={80} />
-                          <span class="block text-rose-600/70 font-semibold">
-                              * اجباری *
+                          <span className="block text-rose-600/70 font-semibold">
+                            * اجباری *
                           </span>
                           تصویر اصلی
-                          <span class="block text-zinc-600 font-normal mt-1">
+                          <span className="block text-zinc-600 font-normal mt-1">
                             آپلود تصویر محصول
                           </span>
                         </div>
 
                         <input
                           name=""
-                          class="h-full w-full opacity-0 cursor-pointer"
+                          className="h-full w-full opacity-0 cursor-pointer"
                           type="file"
                         />
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="relative">
-                  <div class="md:flex">
-                    <div class="w-full p-3">
+                <div className="relative">
+                  <div className="md:flex">
+                    <div className="w-full p-3">
                       <div
-                        class="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/50 flex hover:border-blue-500/50
+                        className="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/50 flex hover:border-blue-500/50
                           justify-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
                       >
-                        <div class="absolute flex flex-col items-center">
+                        <div className="absolute flex flex-col items-center">
                           <TbScreenshot size={80} className='text-blue-600' />
-                          
+
                           تصویر فرعی
-                          <span class="block text-zinc-600 font-normal mt-1">
+                          <span className="block text-zinc-600 font-normal mt-1">
                             آپلود تصویر محصول
                           </span>
                         </div>
 
                         <input
                           name=""
-                          class="h-full w-full opacity-0 cursor-pointer"
+                          className="h-full w-full opacity-0 cursor-pointer"
                           type="file"
                         />
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="relative">
-                  <div class="md:flex">
-                    <div class="w-full p-3">
+                <div className="relative">
+                  <div className="md:flex">
+                    <div className="w-full p-3">
                       <div
-                        class="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/50 flex hover:border-blue-500/50
+                        className="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/50 flex hover:border-blue-500/50
                           justify-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
                       >
-                        <div class="absolute flex flex-col items-center">
+                        <div className="absolute flex flex-col items-center">
                           <TbScreenshot size={80} className='text-blue-600' />
                           تصویر فرعی
-                          <span class="block text-zinc-600 font-normal mt-1">
+                          <span className="block text-zinc-600 font-normal mt-1">
                             آپلود تصویر محصول
                           </span>
                         </div>
 
                         <input
                           name=""
-                          class="h-full w-full opacity-0 cursor-pointer"
+                          className="h-full w-full opacity-0 cursor-pointer"
                           type="file"
                         />
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="relative">
-                  <div class="md:flex">
-                    <div class="w-full p-3">
+                <div className="relative">
+                  <div className="md:flex">
+                    <div className="w-full p-3">
                       <div
-                        class="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/50 flex hover:border-blue-500/50
+                        className="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/50 flex hover:border-blue-500/50
                           justify-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
                       >
-                        <div class="absolute flex flex-col items-center">
+                        <div className="absolute flex flex-col items-center">
                           <TbScreenshot size={80} className='text-blue-600' />
                           تصویر فرعی
-                          <span class="block text-zinc-600 font-normal mt-1">
+                          <span className="block text-zinc-600 font-normal mt-1">
                             آپلود تصویر محصول
                           </span>
                         </div>
 
                         <input
                           name=""
-                          class="h-full w-full opacity-0 cursor-pointer"
+                          className="h-full w-full opacity-0 cursor-pointer"
                           type="file"
                         />
                       </div>
@@ -287,6 +303,38 @@ function Adm_product_add() {
                   </div>
                 </div>
 
+                <table className='grid col-span-4 grid-cols-2 gap-2 w-full p-2 rounded-xl'>
+                  <thead className='grid col-span-2'>
+                    <tr className='grid col-span-2 shadow-sm grid-cols-3 text-zinc-600 text-lg bg-white/60 rounded-xl h-20 justify-center items-center'>
+                      <th className='col-span-1 flex h-full justify-center items-center'>ویژگی</th>
+                      <th className='col-span-2'>مقدار</th>
+                    </tr>
+                  </thead>
+                  <tbody className='grid col-span-2 gap-2'>
+                    {
+                      rows.map((row, index) => (
+                        <tr className='grid col-span-2 gap-1 grid-cols-3 text-lg space-x-1 *:rounded-xl h-15 justify-center items-center'>
+                          <rd className='flex col-span-1 h-full'>
+                            <input placeholder='ویژگی ...' type='text' value={row.attribute} onChange={(e) => attrChangeHandler(index, "attribute" ,e.target.value)}
+                            className='w-full h-full px-3 hover:shadow-md hover:scale-101 duration-300
+                             bg-white/50 shadow-sm rounded-xl focus:ring-2 focus:ring-blue-500/90 outline-none text-zinc-600' />
+                          </rd>
+                          <rd className='col-span-2 flex h-full'>
+                            <input placeholder='مقدار ...' type='text' value={row.value} onChange={(e) => attrChangeHandler(index, "value" ,e.target.value)}
+                            className='w-full h-full px-3 hover:shadow-md hover:scale-101 duration-300
+                             bg-white/50 shadow-sm rounded-xl focus:ring-2 focus:ring-blue-500/90 outline-none text-zinc-600' />
+                          </rd>
+                        </tr>
+                      ))
+                    }
+
+                  </tbody>
+                  <button onClick={addRow} className='flex justify-center hover:scale-95 duration-200 cursor-pointer 
+                  text-zinc-700 hover:text-scale-120 items-center bg-white/40
+                  gap-2 col-span-2 border-3 border-blue-600/80 border-dotted rounded-xl'>
+                    <TbPlus size={50} className='duration-300 cursor-pointer text-blue-600/80' />
+                  </button>
+                </table>
 
               </div>
             </div>
