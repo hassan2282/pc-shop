@@ -190,7 +190,7 @@ function Adm_product_add() {
                   <div class="md:flex">
                     <div class="w-full p-3">
                       <div
-                        class="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/40 flex 
+                        class="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/40 flex hover:border-blue-500/50
                           justify-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
                       >
                         <div class="absolute flex flex-col items-center">
@@ -217,13 +217,13 @@ function Adm_product_add() {
                   <div class="md:flex">
                     <div class="w-full p-3">
                       <div
-                        class="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/50 flex 
+                        class="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/50 flex hover:border-blue-500/50
                           justify-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
                       >
                         <div class="absolute flex flex-col items-center">
                           <TbScreenshot size={80} className='text-blue-600' />
                           
-                          تصویر اصلی
+                          تصویر فرعی
                           <span class="block text-zinc-600 font-normal mt-1">
                             آپلود تصویر محصول
                           </span>
@@ -242,12 +242,12 @@ function Adm_product_add() {
                   <div class="md:flex">
                     <div class="w-full p-3">
                       <div
-                        class="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/50 flex 
+                        class="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/50 flex hover:border-blue-500/50
                           justify-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
                       >
                         <div class="absolute flex flex-col items-center">
                           <TbScreenshot size={80} className='text-blue-600' />
-                          تصویر اصلی
+                          تصویر فرعی
                           <span class="block text-zinc-600 font-normal mt-1">
                             آپلود تصویر محصول
                           </span>
@@ -266,12 +266,12 @@ function Adm_product_add() {
                   <div class="md:flex">
                     <div class="w-full p-3">
                       <div
-                        class="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/50 flex 
+                        class="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/50 flex hover:border-blue-500/50
                           justify-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
                       >
                         <div class="absolute flex flex-col items-center">
                           <TbScreenshot size={80} className='text-blue-600' />
-                          تصویر اصلی
+                          تصویر فرعی
                           <span class="block text-zinc-600 font-normal mt-1">
                             آپلود تصویر محصول
                           </span>
