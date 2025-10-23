@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io'
 import { LiaDollyFlatbedSolid } from 'react-icons/lia'
 import { FcOldTimeCamera } from 'react-icons/fc'
+import Tiptap from '../TipTap'
 
 function Adm_product_add() {
   const [formData, setFormData] = useState({
@@ -91,7 +92,7 @@ function Adm_product_add() {
   }
 
   return (
-    <div className="min-lg:h-[90%] min-md:w-[80%] md:mr-20 min-lg:mt-[18%] min-lg:mr-30 flex items-center justify-center min-sm:p-4">
+    <div className="min-lg:h-[90%] min-md:w-[80%] md:mr-20 min-lg:mt-[27%] min-lg:mr-30 flex items-center justify-center min-sm:p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -303,7 +304,7 @@ function Adm_product_add() {
                   </div>
                 </div>
 
-                <table className='grid col-span-4 grid-cols-2 gap-2 w-full p-2 rounded-xl'>
+                <table className='grid col-span-4 grid-cols-2 gap-2 w-full rounded-xl'>
                   <thead className='grid col-span-2'>
                     <tr className='grid col-span-2 shadow-sm grid-cols-3 text-zinc-600 text-lg bg-white/60 rounded-xl h-20 justify-center items-center'>
                       <th className='col-span-1 flex h-full justify-center items-center'>ویژگی</th>
@@ -313,30 +314,37 @@ function Adm_product_add() {
                   <tbody className='grid col-span-2 gap-2'>
                     {
                       rows.map((row, index) => (
-                        <tr className='grid col-span-2 gap-1 grid-cols-3 text-lg space-x-1 *:rounded-xl h-15 justify-center items-center'>
-                          <rd className='flex col-span-1 h-full'>
+                        
+                        <tr key={index} className='grid col-span-2 gap-1 grid-cols-3 text-lg space-x-1 *:rounded-xl h-15 justify-center items-center'>
+                          <td className='flex col-span-1 h-full'>
                             <input placeholder='ویژگی ...' type='text' value={row.attribute} onChange={(e) => attrChangeHandler(index, "attribute" ,e.target.value)}
                             className='w-full h-full px-3 hover:shadow-md hover:scale-101 duration-300
                              bg-white/50 shadow-sm rounded-xl focus:ring-2 focus:ring-blue-500/90 outline-none text-zinc-600' />
-                          </rd>
-                          <rd className='col-span-2 flex h-full'>
+                          </td>
+                          <td className='col-span-2 flex h-full'>
                             <input placeholder='مقدار ...' type='text' value={row.value} onChange={(e) => attrChangeHandler(index, "value" ,e.target.value)}
                             className='w-full h-full px-3 hover:shadow-md hover:scale-101 duration-300
                              bg-white/50 shadow-sm rounded-xl focus:ring-2 focus:ring-blue-500/90 outline-none text-zinc-600' />
-                          </rd>
+                          </td>
                         </tr>
                       ))
                     }
 
                   </tbody>
-                  <button onClick={addRow} className='flex justify-center hover:scale-95 duration-200 cursor-pointer 
-                  text-zinc-700 hover:text-scale-120 items-center bg-white/40
-                  gap-2 col-span-2 border-3 border-blue-600/80 border-dotted rounded-xl'>
-                    <TbPlus size={50} className='duration-300 cursor-pointer text-blue-600/80' />
-                  </button>
                 </table>
 
+                  <button onClick={addRow} className='grid col-span-4 justify-center hover:scale-95 duration-200 cursor-pointer 
+                  text-zinc-700 hover:text-scale-120 items-center bg-white/40
+                  gap-2 border-3 border-blue-600/80 border-dotted rounded-xl'>
+                    <TbPlus size={50} className='duration-300 cursor-pointer text-blue-600/80' />
+                  </button>
+
               </div>
+
+                    
+              <Tiptap />
+                  
+
             </div>
 
             {/* دکمه‌های فرم */}
