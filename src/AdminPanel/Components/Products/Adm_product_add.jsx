@@ -5,14 +5,12 @@ import { Link } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io'
 import { LiaDollyFlatbedSolid } from 'react-icons/lia'
 import { FcOldTimeCamera } from 'react-icons/fc'
-import Tiptap from '../TipTap'
 
 function Adm_product_add() {
   const [formData, setFormData] = useState({
     title: '',
     price: '',
     amount: '',
-    joinDate: new Date().toISOString().split('T')[0]
   })
 
   const [errors, setErrors] = useState({})
@@ -27,8 +25,6 @@ function Adm_product_add() {
 
     if (!formData.price.trim()) {
       newErrors.price = 'قیمت الزامی است'
-    } else if (!/\S+@\S+\.\S+/.test(formData.price)) {
-      newErrors.price = 'قیمت معتبر نیست'
     }
 
     if (!formData.description) {
@@ -92,7 +88,7 @@ function Adm_product_add() {
   }
 
   return (
-    <div className="min-lg:h-[90%] min-md:w-[80%] md:mr-20 min-lg:mt-[27%] min-lg:mr-30 flex items-center justify-center min-sm:p-4">
+    <div className="relative items-center justify-center w-[90%] min-md:mr-[3%] min-sm:p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -106,7 +102,8 @@ function Adm_product_add() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-white/30 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 p-8"
+          className="flex w-full h-full justify-center items-center bg-white/30 backdrop-blur-xl
+           rounded-2xl shadow-2xl border border-white/20 p-8"
         >
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* اطلاعات پایه */}
@@ -333,22 +330,19 @@ function Adm_product_add() {
                   </tbody>
                 </table>
 
-                  <button onClick={addRow} className='grid col-span-4 justify-center hover:scale-95 duration-200 cursor-pointer 
-                  text-zinc-700 hover:text-scale-120 items-center bg-white/40
-                  gap-2 border-3 border-blue-600/80 border-dotted rounded-xl'>
-                    <TbPlus size={50} className='duration-300 cursor-pointer text-blue-600/80' />
-                  </button>
+                  <span onClick={addRow} className='grid col-span-4 justify-center duration-200 cursor-pointer 
+                  text-zinc-700 items-center rounded-xl'>
+                    <TbPlus size={40} className='duration-300 hover:rotate-180 cursor-pointer 
+                    text-blue-600/80 rounded-full border-3 border-dotted' />
+                  </span>
 
               </div>
 
-                    
-              <Tiptap />
-                  
 
             </div>
 
             {/* دکمه‌های فرم */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-20">
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -367,7 +361,7 @@ function Adm_product_add() {
                 )}
               </button>
 
-              <Link to="/admin/users/all" className='flex h-12 bg-blue-600 hover:bg-blue-700
+              <Link to="/admin/product/all" className='flex h-12 bg-blue-600 hover:bg-blue-700
                       text-white items-center justify-center
                       rounded-xl text-sm font-medium space-x-2 p-3 transition-all duration-200 
                       transform hover:scale-105 shadow-lg hover:shadow-xl' >
