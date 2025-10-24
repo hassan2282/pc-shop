@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io'
 import { LiaDollyFlatbedSolid } from 'react-icons/lia'
 import { FcOldTimeCamera } from 'react-icons/fc'
+import Text_Editor from '../Text_Editor'
 
 function Adm_product_add() {
   const [formData, setFormData] = useState({
@@ -88,7 +89,7 @@ function Adm_product_add() {
   }
 
   return (
-    <div className="relative items-center justify-center w-[90%] min-md:mr-[3%] min-sm:p-4">
+    <div className="relative items-center justify-center w-[75%] min-md:mr-[12%] min-sm:p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -102,7 +103,7 @@ function Adm_product_add() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex w-full h-full justify-center items-center bg-white/30 backdrop-blur-xl
+          className="flex w-full h-full justify-center items-center bg-white/20 backdrop-blur-lg
            rounded-2xl shadow-2xl border border-white/20 p-8"
         >
           <form onSubmit={handleSubmit} className="space-y-8">
@@ -303,7 +304,7 @@ function Adm_product_add() {
 
                 <table className='grid col-span-4 grid-cols-2 gap-2 w-full rounded-xl'>
                   <thead className='grid col-span-2'>
-                    <tr className='grid col-span-2 shadow-sm grid-cols-3 text-zinc-600 text-lg bg-white/60 rounded-xl h-20 justify-center items-center'>
+                    <tr className='grid col-span-2 shadow-sm grid-cols-3 text-zinc-600 text-lg bg-white/50 rounded-xl h-20 justify-center items-center'>
                       <th className='col-span-1 flex h-full justify-center items-center'>ویژگی</th>
                       <th className='col-span-2'>مقدار</th>
                     </tr>
@@ -311,17 +312,20 @@ function Adm_product_add() {
                   <tbody className='grid col-span-2 gap-2'>
                     {
                       rows.map((row, index) => (
-                        
-                        <tr key={index} className='grid col-span-2 gap-1 grid-cols-3 text-lg space-x-1 *:rounded-xl h-15 justify-center items-center'>
+
+                        <tr key={index} className='grid col-span-2 gap-1 grid-cols-3 text-lg space-x-1 
+                        *:rounded-xl h-15 justify-center items-center'>
                           <td className='flex col-span-1 h-full'>
-                            <input placeholder='ویژگی ...' type='text' value={row.attribute} onChange={(e) => attrChangeHandler(index, "attribute" ,e.target.value)}
-                            className='w-full h-full px-3 hover:shadow-md hover:scale-101 duration-300
-                             bg-white/50 shadow-sm rounded-xl focus:ring-2 focus:ring-blue-500/90 outline-none text-zinc-600' />
+                            <input placeholder='ویژگی ...' type='text' value={row.attribute}
+                              onChange={(e) => attrChangeHandler(index, "attribute", e.target.value)}
+                              className='w-full h-full px-3 hover:shadow-md hover:scale-101 duration-300
+                             bg-white/40 shadow-sm rounded-xl focus:ring-2 focus:ring-blue-500/90 outline-none text-zinc-600' />
                           </td>
                           <td className='col-span-2 flex h-full'>
-                            <input placeholder='مقدار ...' type='text' value={row.value} onChange={(e) => attrChangeHandler(index, "value" ,e.target.value)}
-                            className='w-full h-full px-3 hover:shadow-md hover:scale-101 duration-300
-                             bg-white/50 shadow-sm rounded-xl focus:ring-2 focus:ring-blue-500/90 outline-none text-zinc-600' />
+                            <input placeholder='مقدار ...' type='text' value={row.value}
+                              onChange={(e) => attrChangeHandler(index, "value", e.target.value)}
+                              className='w-full h-full px-3 hover:shadow-md hover:scale-101 duration-300
+                             bg-white/40 shadow-sm rounded-xl focus:ring-2 focus:ring-blue-500/90 outline-none text-zinc-600' />
                           </td>
                         </tr>
                       ))
@@ -330,13 +334,15 @@ function Adm_product_add() {
                   </tbody>
                 </table>
 
-                  <span onClick={addRow} className='grid col-span-4 justify-center duration-200 cursor-pointer 
+                <span onClick={addRow} className='grid col-span-4 justify-center duration-200 cursor-pointer 
                   text-zinc-700 items-center rounded-xl'>
-                    <TbPlus size={40} className='duration-300 hover:rotate-180 cursor-pointer 
-                    text-blue-600/80 rounded-full border-3 border-dotted' />
-                  </span>
+                  <TbPlus size={35} className='duration-1000 hover:-rotate-180 cursor-pointer 
+                    text-blue-600/80 rounded-full border-3 border-dotted animate-spin hover:animate-none' />
+                </span>
 
               </div>
+
+              <Text_Editor />
 
 
             </div>
@@ -346,7 +352,8 @@ function Adm_product_add() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 flex items-center justify-center gap-2 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-2 rounded-xl transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 flex items-center justify-center gap-2 cursor-pointer bg-blue-600 
+                hover:bg-blue-700 text-white font-medium py-3 px-2 rounded-xl transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
