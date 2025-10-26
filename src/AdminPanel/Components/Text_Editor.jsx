@@ -54,9 +54,9 @@ function Text_Editor() {
 
 
   return (
-    <div className='flex flex-col w-full bg-white/40 rounded-xl justify-center items-center mt-20'>
+    <div className='flex flex-col w-full rounded-xl justify-center items-center mt-10'>
       {/* Header Section */}
-      <div className='flex flex-row justify-center items-center w-full p-3 border-b border-b-zinc-400/60'>
+      <div className='flex flex-row justify-center items-center w-full p-3 bg-white/60 rounded-t-xl border-b border-b-zinc-400/60'>
         <ul className='flex flex-wrap gap-2 justify-center items-center 
             *:p-1 *:rounded-xl *:backdrop-blur-sm *:min-w-10 *:h-10 *:flex *:justify-center *:items-center 
             *:shadow-sm *:shadow-zinc-500/60 *:cursor-pointer *:hover:scale-120 *:duration-200 *:text-zinc-600
@@ -140,7 +140,7 @@ function Text_Editor() {
             <MdFormatSize size={22} className='z-0'/>
             <select
               onChange={(e) => handleCommand('fontSize', e.target.value)}
-              className='w-full border z-20 border-zinc-300 text-zinc-700 rounded-lg text-sm p-1 cursor-pointer'
+              className='w-full border z-20 border-zinc-300 outline-none text-zinc-700 rounded-lg text-sm p-1 cursor-pointer'
               defaultValue=""
             >
               <option value="" disabled>اندازه</option>
@@ -160,7 +160,7 @@ function Text_Editor() {
         ref={editorRef}
         contentEditable
         suppressContentEditableWarning={true}
-        className='w-full min-h-[30rem] bg-white/60 p-10 outline-none rounded-b-xl' name="" id="">
+        className='w-full min-h-[30rem] bg-white/40 p-10 outline-none rounded-b-xl' name="" id="">
         اینجا بنویس ...
       </div>
     </div>
