@@ -27,14 +27,13 @@ function TagComponent() {
                  focus:ring-blue-500 outline-none px-2 ring-blue-500 h-[3rem] rounded-xl bg-white/60
                   text-zinc-700 shadow-sm hover:shadow-md duration-300' />
             </div>
-            <div ref={tagHolderRef} className='flex-wrap space-x-3 w-full rounded-b-xl min-h-[10rem] p-5 
-            *:p-2 *:px-3 *:rounded-xl *:bg-blue-500/60 *:text-white/90 '>
+            <div ref={tagHolderRef} className='flex flex-wrap w-full rounded-b-xl min-h-[10rem] p-5 *:cursor-pointer
+                        *:p-2 *:px-3 *:rounded-xl *:h-[2.6rem] gap-3 *:bg-blue-500 *:shadow-sm *:shadow-zinc-500 *:text-white/90 '>
                 {
                     tags &&
                     tags.map((item, index) => {
                         return (
-                            <span key={index} className=''>
-                                <TbX color={"red"} className='absolute top-0 right-0 rounded-full bg-red-200'/>
+                            <span key={index}>
                                 {item}
                             </span>
                         )
