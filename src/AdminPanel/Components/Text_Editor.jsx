@@ -160,8 +160,8 @@ function Text_Editor() {
         ref={editorRef}
         contentEditable
         suppressContentEditableWarning={true}
-        className='w-full min-h-[30rem] bg-white/40 p-10 outline-none rounded-b-xl' name="" id="">
-        اینجا بنویس ...
+        className='w-full min-h-[30rem] bg-white/80 p-10 outline-none rounded-b-xl' name="" id="">
+        توضیحات محصول ...
       </div>
     </div>
   )
