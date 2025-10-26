@@ -6,6 +6,7 @@ import { IoMdCloseCircle } from 'react-icons/io'
 import { LiaDollyFlatbedSolid } from 'react-icons/lia'
 import { FcOldTimeCamera } from 'react-icons/fc'
 import Text_Editor from '../Text_Editor'
+import TagComponent from '../TagComponent'
 
 function Adm_product_add() {
   const [formData, setFormData] = useState({
@@ -76,6 +77,7 @@ function Adm_product_add() {
   const [rows, setRows] = useState([
     { attribute: "", value: "" },
     { attribute: "", value: "" },
+    { attribute: "", value: "" },
   ]);
 
   const addRow = () => {
@@ -103,7 +105,7 @@ function Adm_product_add() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex w-full h-full justify-center items-center bg-white/20 backdrop-blur-lg
+          className="flex w-full h-full justify-center items-center bg-white/10 backdrop-blur-xl
            rounded-2xl shadow-2xl border border-white/20 p-8"
         >
           <form onSubmit={handleSubmit} className="space-y-8">
@@ -131,7 +133,7 @@ function Adm_product_add() {
                       value={formData.title}
                       onChange={handleChange}
                       className={`w-full pl-10 pr-4 py-3 shadow-sm hover:shadow-md duration-200 rounded-xl border ${errors.title ? 'border-red-500' : 'border-gray-200'
-                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/40 `}
+                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 `}
                       placeholder="عنوان محصول را وارد کنید"
                     />
                   </div>
@@ -151,7 +153,7 @@ function Adm_product_add() {
                       value={formData.price}
                       onChange={handleChange}
                       className={`w-full pl-10 pr-4 py-3 shadow-sm hover:shadow-md duration-200 rounded-xl border ${errors.price ? 'border-red-500' : 'border-gray-200'
-                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/40 `}
+                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 `}
                       placeholder="قیمت "
                     />
                   </div>
@@ -170,7 +172,7 @@ function Adm_product_add() {
                       value={formData.amount}
                       onChange={handleChange}
                       className={`w-full pl-10 pr-4 py-3 shadow-sm hover:shadow-md duration-200 rounded-xl border ${errors.amount ? 'border-red-500' : 'border-gray-200'
-                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/40 `}
+                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 `}
                       placeholder="موجودی کالا "
                     />
                   </div>
@@ -191,7 +193,7 @@ function Adm_product_add() {
                       value={formData.description}
                       onChange={handleChange}
                       className={`w-full pl-10 pr-4 py-4 shadow-sm hover:shadow-md duration-200 rounded-xl border ${errors.description ? 'border-red-500' : 'border-gray-200'
-                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/40 `}
+                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 `}
                       placeholder="توضیح اختصاری ..."
                     />
                   </div>
@@ -205,7 +207,7 @@ function Adm_product_add() {
                   <div className="md:flex">
                     <div className="w-full p-3">
                       <div
-                        className="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/40 flex hover:border-blue-500/50
+                        className="relative h-48 rounded-lg border-2 border-blue-500/20 bg-white/80 flex hover:border-blue-500/50
                           justify-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
                       >
                         <div className="absolute flex flex-col items-center">
@@ -304,7 +306,8 @@ function Adm_product_add() {
 
                 <table className='grid col-span-4 grid-cols-2 gap-2 w-full rounded-xl'>
                   <thead className='grid col-span-2'>
-                    <tr className='grid col-span-2 shadow-sm grid-cols-3 text-zinc-600 text-lg bg-white/50 rounded-xl h-20 justify-center items-center'>
+                    <tr className='grid col-span-2 shadow-sm grid-cols-3 text-zinc-500 text-lg
+                     bg-white/80 rounded-xl h-15 justify-center items-center'>
                       <th className='col-span-1 flex h-full justify-center items-center'>ویژگی</th>
                       <th className='col-span-2'>مقدار</th>
                     </tr>
@@ -314,18 +317,18 @@ function Adm_product_add() {
                       rows.map((row, index) => (
 
                         <tr key={index} className='grid col-span-2 gap-1 grid-cols-3 text-lg space-x-1 
-                        *:rounded-xl h-15 justify-center items-center'>
+                        *:rounded-xl h-12 justify-center items-center'>
                           <td className='flex col-span-1 h-full'>
                             <input placeholder='ویژگی ...' type='text' value={row.attribute}
                               onChange={(e) => attrChangeHandler(index, "attribute", e.target.value)}
                               className='w-full h-full px-3 hover:shadow-md hover:scale-101 duration-300
-                             bg-white/40 shadow-sm rounded-xl focus:ring-2 focus:ring-blue-500/90 outline-none text-zinc-600' />
+                             bg-white/50 shadow-sm rounded-xl focus:ring-2 focus:ring-blue-500/90 outline-none text-zinc-900' />
                           </td>
                           <td className='col-span-2 flex h-full'>
                             <input placeholder='مقدار ...' type='text' value={row.value}
                               onChange={(e) => attrChangeHandler(index, "value", e.target.value)}
                               className='w-full h-full px-3 hover:shadow-md hover:scale-101 duration-300
-                             bg-white/40 shadow-sm rounded-xl focus:ring-2 focus:ring-blue-500/90 outline-none text-zinc-600' />
+                             bg-white/50 shadow-sm rounded-xl focus:ring-2 focus:ring-blue-500/90 outline-none text-zinc-900' />
                           </td>
                         </tr>
                       ))
@@ -343,12 +346,14 @@ function Adm_product_add() {
               </div>
 
               <Text_Editor />
+              
 
+              <TagComponent />
 
             </div>
 
             {/* دکمه‌های فرم */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-20">
+            <div className="flex flex-col sm:flex-row gap-4 pt-10">
               <button
                 type="submit"
                 disabled={isSubmitting}
