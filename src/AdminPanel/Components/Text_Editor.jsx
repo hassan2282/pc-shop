@@ -56,8 +56,8 @@ function Text_Editor() {
   return (
     <div className='flex flex-col w-full bg-white/40 rounded-xl justify-center items-center mt-20'>
       {/* Header Section */}
-      <div className='flex flex-row justify-start items-center w-full p-5 border-b border-b-zinc-400/60'>
-        <ul className='flex flex-wrap gap-3 space-x-2 justify-center items-center 
+      <div className='flex flex-row justify-center items-center w-full p-3 border-b border-b-zinc-400/60'>
+        <ul className='flex flex-wrap gap-2 justify-center items-center 
             *:p-1 *:rounded-xl *:backdrop-blur-sm *:min-w-10 *:h-10 *:flex *:justify-center *:items-center 
             *:shadow-sm *:shadow-zinc-500/60 *:cursor-pointer *:hover:scale-120 *:duration-200 *:text-zinc-600
             *:hover:shadow-lg *:hover:bg-blue-600/70 *:hover:text-white/80'>
@@ -121,7 +121,6 @@ function Text_Editor() {
             onClick={handleUnlink}>
             <FaUnlink />
           </li>
-          <li><MdFormatSize size={21} /></li>
           {/* افزودن تصویر */}
           <li
             className='w-5 flex justify-center items-center cursor-pointer'
@@ -137,12 +136,11 @@ function Text_Editor() {
             <FaImage size={23} className='absolute cursor-pointer' />
           </li>
           {/* اندازه متن */}
-          <li onMouseDown={(e) => e.preventDefault()} className='flex flex-row items-center space-x-1'>
-            <MdFormatSize size={22} className='z-10'/>
+          <li className='relative flex-row items-center z-0 space-x-1'>
+            <MdFormatSize size={22} className='z-0'/>
             <select
-              onMouseDown={(e) => e.preventDefault()}
               onChange={(e) => handleCommand('fontSize', e.target.value)}
-              className='bg-transparent border z-20 border-zinc-300 rounded-lg text-sm p-1 cursor-pointer'
+              className='w-full border z-20 border-zinc-300 text-zinc-700 rounded-lg text-sm p-1 cursor-pointer'
               defaultValue=""
             >
               <option value="" disabled>اندازه</option>
@@ -151,16 +149,6 @@ function Text_Editor() {
               <option value="5">بزرگ</option>
               <option value="7">خیلی بزرگ</option>
             </select>
-          </li>
-
-          {/* لیست بدون شماره */}
-          <li onMouseDown={(e) => e.preventDefault()} onClick={() => handleCommand('insertUnorderedList')}>
-            <FaListUl />
-          </li>
-
-          {/* لیست شماره‌دار */}
-          <li onMouseDown={(e) => e.preventDefault()} onClick={() => handleCommand('insertOrderedList')}>
-            <FaListOl />
           </li>
         </ul>
       </div>

@@ -336,8 +336,8 @@ function Adm_product_add() {
 
                 <span onClick={addRow} className='grid col-span-4 justify-center duration-200 cursor-pointer 
                   text-zinc-700 items-center rounded-xl'>
-                  <TbPlus size={35} className='duration-1000 hover:-rotate-180 cursor-pointer 
-                    text-blue-600/80 rounded-full border-3 border-dotted animate-spin hover:animate-none' />
+                  <TbPlus size={35} className='duration-1000 cursor-pointer 
+                    text-blue-600/80 rounded-full border-3 border-dotted animate-bounce hover:animate-none' />
                 </span>
 
               </div>
