@@ -19,7 +19,9 @@ function TagComponent() {
     }
 
     const removeTag = (index) => {
-
+        const newTags = [...tags];
+        newTags.splice(index, 1);
+        setTags(newTags);
     }
 
     return (
@@ -37,8 +39,8 @@ function TagComponent() {
                     tags &&
                     tags.map((item, index) => {
                         return (
-                            <span key={index} onClick={removeTag(index)} className='relative peer after:content-["X"]  after:flex after:justify-center after:items-center after:absolute
-                             after:inset-0 after:z-10 after:bg-blue-900 after:rounded-xl after:duration-200 after:scale-x-0 hover:after:scale-x-100'>
+                            <span key={index} onClick={() => removeTag(index)} className='relative peer after:content-["X"]  after:flex after:justify-center after:items-center after:absolute
+                             after:inset-0 after:z-10 after:bg-blue-900 after:rounded-xl active:scale-95 after:duration-200 after:scale-x-0 hover:after:scale-x-100'>
                                 {item}
                             </span>
                         )
