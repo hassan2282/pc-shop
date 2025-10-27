@@ -54,13 +54,13 @@ function Text_Editor() {
 
 
   return (
-    <div className='flex flex-col w-full rounded-xl justify-center items-center mt-10'>
+    <div className='flex flex-col w-full rounded-xl justify-center items-center mt-10 shadow-md shadow-zinc-400'>
       {/* Header Section */}
       <div className='flex flex-row justify-center items-center w-full p-3 bg-white/60 rounded-t-xl border-b border-b-zinc-400/60'>
         <ul className='flex flex-wrap gap-2 justify-center items-center 
             *:p-1 *:rounded-xl *:backdrop-blur-sm *:min-w-10 *:h-10 *:flex *:justify-center *:items-center 
-            *:shadow-sm *:shadow-zinc-500/60 *:cursor-pointer *:hover:scale-120 *:duration-200 *:text-zinc-600
-            *:hover:shadow-lg *:hover:bg-blue-600/70 *:hover:text-white/80'>
+            *:shadow-xs *:shadow-zinc-500 *:cursor-pointer *:hover:scale-120 *:duration-200 *:text-zinc-600
+            *:hover:shadow-md *:hover:bg-blue-600/70 *:hover:text-white/80'>
           <li className='text-xl'
             onMouseDown={(e) => e.preventDefault()}
             onClick={() => handleCommand('bold')}

@@ -23,10 +23,10 @@ function TagComponent() {
     }
 
     return (
-        <div className='w-full rounded-xl'>
+        <div className='w-full rounded-xl shadow-sm shadow-zinc-500'>
             <div className='flex min-sm:flex-row flex-col justify-start items-center max-sm:space-y-4 space-x-2 p-4 border-b border-zinc-300 bg-white/50 rounded-t-xl'>
                 <button onClick={TagHandler} className='flex text-center justify-center items-center min-sm:w-[15%] w-full h-[3rem] p-2 rounded-xl bg-blue-500 shadow-sm shadow-zinc-600 
-                hover:shadow-md cursor-pointer duration-200 hover:scale-95 text-white/90 focus:ring-blue-800 focus:ring-2'>افزودن</button>
+                hover:shadow-md cursor-pointer duration-200 hover:scale-95 active:scale-75 text-white/90 '>افزودن</button>
                 <input ref={tagInputRef} type='text' placeholder='عنوان تگ ...' className='flex w-full min-sm:w-[20rem] hover:w-[25rem] focus:ring-2
                  focus:ring-zinc-200 outline-none px-2 ring-blue-500 h-[3.2rem] rounded-xl bg-white/60
                   text-zinc-700 shadow-xs hover:shadow-md duration-300 shadow-zinc-400' />
