@@ -165,7 +165,7 @@ function Adm_product_all() {
             </tr>
             <tr className='w-full grid grid-cols-10 items-center text-gray-600/90
            h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
-              <td className='col-span-1'>1</td>
+              <td className='col-span-1'>4</td>
               <td className='col-span-1'>50905</td>
               <td className='col-span-1 flex justify-center items-center'>
                 <img src='../../../src/StorePanel/assets/img/product_img/p_8.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
@@ -198,7 +198,7 @@ function Adm_product_all() {
             </tr>
             <tr className='w-full grid grid-cols-10 items-center text-gray-600/90
            h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
-              <td className='col-span-1'>2</td>
+              <td className='col-span-1'>5</td>
               <td className='col-span-1'>50906</td>
               <td className='col-span-1 flex justify-center items-center'>
                 <img src='../../../src/StorePanel/assets/img/product_img/p_6.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
@@ -231,7 +231,205 @@ function Adm_product_all() {
             </tr>
             <tr className='w-full grid grid-cols-10 items-center text-gray-600/90
            h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+              <td className='col-span-1'>6</td>
+              <td className='col-span-1'>50907</td>
+              <td className='col-span-1 flex justify-center items-center'>
+                <img src='../../../src/StorePanel/assets/img/product_img/p_7.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+              </td>
+              <td className='col-span-1'>ساعت مچی</td>
+              <td className='col-span-1'>5.000.000</td>
+              <td className='col-span-1'>12</td>
+              <td className='col-span-1 justify-center items-center w-full flex'>
+                <div className='flex items-center gap-1 bg-red-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
+                  <TbX size={16} className='text-red-600' />
+                  <span className='text-red-700 text-sm font-medium'>غیرفعال</span>
+                </div>
+              </td>
+              <td className='col-span-1 justify-center items-center w-full flex'>
+                <div className='flex items-center gap-1 bg-gray-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
+                  <span className='text-blue-700 text-sm font-medium'>ساعت</span>
+                </div>
+              </td>
+              <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
+                <Link to="/admin/product/show" className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
+                  <TbEyeFilled size={20} />
+                </Link>
+                <Link to="/admin/product/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                  <TbEditCircle size={20} />
+                </Link>
+                <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
+                  <TbTrashFilled size={20} />
+                </Link>
+              </td>
+            </tr>
+            <tr className='w-full grid grid-cols-10 items-center text-gray-600/90
+           h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+              <td className='col-span-1'>1</td>
+              <td className='col-span-1'>50905</td>
+              <td className='col-span-1 flex justify-center items-center'>
+                <img src='../../../src/StorePanel/assets/img/product_img/p_1.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+              </td>
+              <td className='col-span-1'>ایرپاد</td>
+              <td className='col-span-1'>1200000</td>
+              <td className='col-span-1'>50</td>
+              <td className='col-span-1 justify-center items-center w-full flex'>
+                <div className='flex items-center gap-1 bg-green-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
+                  <TbCheck size={16} className='text-green-600' />
+                  <span className='text-green-700 text-sm font-medium'>فعال</span>
+                </div>
+              </td>
+              <td className='col-span-1 justify-center items-center w-full flex'>
+                <div className='flex items-center gap-1 bg-gray-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
+                  <span className='text-blue-700 text-sm font-medium'>هندزفری</span>
+                </div>
+              </td>
+              <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
+                <Link to="/admin/product/show" className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
+                  <TbEyeFilled size={20} />
+                </Link>
+                <Link to="/admin/product/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                  <TbEditCircle size={20} />
+                </Link>
+                <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
+                  <TbTrashFilled size={20} />
+                </Link>
+              </td>
+            </tr>
+            <tr className='w-full grid grid-cols-10 items-center text-gray-600/90
+           h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+              <td className='col-span-1'>2</td>
+              <td className='col-span-1'>50906</td>
+              <td className='col-span-1 flex justify-center items-center'>
+                <img src='../../../src/StorePanel/assets/img/product_img/p_9.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+              </td>
+              <td className='col-span-1'>ایرپاد پرو2</td>
+              <td className='col-span-1'>4200000</td>
+              <td className='col-span-1'>8</td>
+              <td className='col-span-1 justify-center items-center w-full flex'>
+                <div className='flex items-center gap-1 bg-green-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
+                  <TbCheck size={16} className='text-green-600' />
+                  <span className='text-green-700 text-sm font-medium'>فعال</span>
+                </div>
+              </td>
+              <td className='col-span-1 justify-center items-center w-full flex'>
+                <div className='flex items-center gap-1 bg-gray-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
+                  <span className='text-blue-700 text-sm font-medium'>هندزفری</span>
+                </div>
+              </td>
+              <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
+                <Link to="/admin/product/show" className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
+                  <TbEyeFilled size={20} />
+                </Link>
+                <Link to="/admin/product/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                  <TbEditCircle size={20} />
+                </Link>
+                <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
+                  <TbTrashFilled size={20} />
+                </Link>
+              </td>
+            </tr>
+            <tr className='w-full grid grid-cols-10 items-center text-gray-600/90
+           h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
               <td className='col-span-1'>3</td>
+              <td className='col-span-1'>50907</td>
+              <td className='col-span-1 flex justify-center items-center'>
+                <img src='../../../src/StorePanel/assets/img/product_img/p_5.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+              </td>
+              <td className='col-span-1'>ساعت مچی</td>
+              <td className='col-span-1'>5.000.000</td>
+              <td className='col-span-1'>12</td>
+              <td className='col-span-1 justify-center items-center w-full flex'>
+                <div className='flex items-center gap-1 bg-red-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
+                  <TbX size={16} className='text-red-600' />
+                  <span className='text-red-700 text-sm font-medium'>غیرفعال</span>
+                </div>
+              </td>
+              <td className='col-span-1 justify-center items-center w-full flex'>
+                <div className='flex items-center gap-1 bg-gray-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
+                  <span className='text-blue-700 text-sm font-medium'>ساعت</span>
+                </div>
+              </td>
+              <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
+                <Link to="/admin/product/show" className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
+                  <TbEyeFilled size={20} />
+                </Link>
+                <Link to="/admin/product/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                  <TbEditCircle size={20} />
+                </Link>
+                <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
+                  <TbTrashFilled size={20} />
+                </Link>
+              </td>
+            </tr>
+            <tr className='w-full grid grid-cols-10 items-center text-gray-600/90
+           h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+              <td className='col-span-1'>4</td>
+              <td className='col-span-1'>50905</td>
+              <td className='col-span-1 flex justify-center items-center'>
+                <img src='../../../src/StorePanel/assets/img/product_img/p_8.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+              </td>
+              <td className='col-span-1'>ایرپاد</td>
+              <td className='col-span-1'>1200000</td>
+              <td className='col-span-1'>50</td>
+              <td className='col-span-1 justify-center items-center w-full flex'>
+                <div className='flex items-center gap-1 bg-green-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
+                  <TbCheck size={16} className='text-green-600' />
+                  <span className='text-green-700 text-sm font-medium'>فعال</span>
+                </div>
+              </td>
+              <td className='col-span-1 justify-center items-center w-full flex'>
+                <div className='flex items-center gap-1 bg-gray-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
+                  <span className='text-blue-700 text-sm font-medium'>هندزفری</span>
+                </div>
+              </td>
+              <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
+                <Link to="/admin/product/show" className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
+                  <TbEyeFilled size={20} />
+                </Link>
+                <Link to="/admin/product/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                  <TbEditCircle size={20} />
+                </Link>
+                <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
+                  <TbTrashFilled size={20} />
+                </Link>
+              </td>
+            </tr>
+            <tr className='w-full grid grid-cols-10 items-center text-gray-600/90
+           h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+              <td className='col-span-1'>5</td>
+              <td className='col-span-1'>50906</td>
+              <td className='col-span-1 flex justify-center items-center'>
+                <img src='../../../src/StorePanel/assets/img/product_img/p_6.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+              </td>
+              <td className='col-span-1'>ایرپاد پرو2</td>
+              <td className='col-span-1'>4200000</td>
+              <td className='col-span-1'>8</td>
+              <td className='col-span-1 justify-center items-center w-full flex'>
+                <div className='flex items-center gap-1 bg-green-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
+                  <TbCheck size={16} className='text-green-600' />
+                  <span className='text-green-700 text-sm font-medium'>فعال</span>
+                </div>
+              </td>
+              <td className='col-span-1 justify-center items-center w-full flex'>
+                <div className='flex items-center gap-1 bg-gray-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
+                  <span className='text-blue-700 text-sm font-medium'>هندزفری</span>
+                </div>
+              </td>
+              <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
+                <Link to="/admin/product/show" className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
+                  <TbEyeFilled size={20} />
+                </Link>
+                <Link to="/admin/product/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                  <TbEditCircle size={20} />
+                </Link>
+                <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
+                  <TbTrashFilled size={20} />
+                </Link>
+              </td>
+            </tr>
+            <tr className='w-full grid grid-cols-10 items-center text-gray-600/90
+           h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+              <td className='col-span-1'>6</td>
               <td className='col-span-1'>50907</td>
               <td className='col-span-1 flex justify-center items-center'>
                 <img src='../../../src/StorePanel/assets/img/product_img/p_7.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
