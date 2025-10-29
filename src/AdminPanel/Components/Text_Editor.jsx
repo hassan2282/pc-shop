@@ -2,7 +2,7 @@
 import { useRef } from 'react'
 import {
   FaAlignCenter, FaAlignJustify, FaAlignLeft, FaAlignRight, FaImage, FaItalic,
-  FaLink, FaListOl, FaListUl, FaStrikethrough, FaTable, FaUnderline, FaUnlink
+  FaLink, FaStrikethrough, FaUnderline, FaUnlink
 } from 'react-icons/fa'
 import { MdFormatColorText, MdFormatSize, MdOutlineFormatColorFill } from 'react-icons/md'
 
@@ -141,8 +141,7 @@ function Text_Editor() {
             <select
               onChange={(e) => handleCommand('fontSize', e.target.value)}
               className='w-full border z-20 border-zinc-300 outline-none text-zinc-700 rounded-lg text-sm p-1 cursor-pointer'
-              defaultValue=""
-            >
+              defaultValue="" >
               <option value="" disabled>اندازه</option>
               <option value="1">کوچک</option>
               <option value="3">متوسط</option>
@@ -152,8 +151,6 @@ function Text_Editor() {
           </li>
         </ul>
       </div>
-
-
 
       {/* Content Section */}
       <div
