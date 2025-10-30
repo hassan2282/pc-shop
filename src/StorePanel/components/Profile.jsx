@@ -24,7 +24,8 @@ function Profile() {
 
                                         <div className="min-sm:grid min-sm:grid-cols-2 max-sm:flex max-sm:flex-col
                                          gap-2 w-full bg-[#57B6BB]/0 rounded-md max-sm:p-3 min-sm:p-5 shadow-sm shadow-black
-                                            *:bg-[#57B6BB]/10 *:p-3 *:hover:bg-[#57B6BB]/20 *:hover:cursor-pointer *:rounded-md *:w-full *:m-0.5 *:overflow-clip">
+                                            *:bg-[#57B6BB]/10 *:p-3 *:hover:bg-[#57B6BB]/20 *:hover:cursor-pointer
+                                             *:rounded-md *:w-full *:m-0.5 *:overflow-clip *:shadow-sm">
                                             <motion.div
                                                 initial={{
                                                     opacity: 0,
@@ -212,7 +213,7 @@ function Profile() {
                                                         duration: 0.5,
                                                     }
                                                 }}
-                                            className="col-span-2 bg-transparent text-lg">
+                                            className="col-span-2 bg-transparent shadow-none text-lg">
                                                 <Link to="/store/edit-profile" className="w-full h-full btn btn-main-masai">
                                                     ویرایش
                                                 </Link>
