@@ -31,9 +31,9 @@ function Adm_show_user() {
           <span className='flex flex-row justify-center items-center gap-2 text-zinc-700 w-20 h-9
            bg-blue-400/30 rounded-xl shadow-sm inset-shadow-2xs'>ادمین< FaUserSecret size={15} /></span>
           <button className='flex p-3 bg-blue-700 rounded-xl cursor-pointer shadow-blue-700/50 shadow-sm
-           hover:shadow-lg hover:scale-110 duration-300 text-white/90 min-w-[70%] justify-center items-center' >بن کردن کاربر</button>
-          <div className='flex flex-col *:h-15 *:p-2 gap-2 *:focus:outline-none min-w-[90%]
-          *:focus:border-transparent *:focus:ring-2 *:focus:ring-blue-500 *:inset-shadow-sm *:hover:shadow-md *:cursor-pointer' dir='rtl'>
+           hover:shadow-lg hover:scale-110 duration-300 active:scale-95 text-white/90 min-w-[70%] justify-center items-center' >بن کردن کاربر</button>
+          <div className='flex flex-col *:h-15 *:p-2 gap-2 *:focus:outline-none min-w-[90%] *:shadow-sm 
+          *:focus:border-transparent *:focus:ring-2 *:focus:ring-blue-500 *:inset-shadow-sm *:hover:shadow-lg *:duration-200 *:cursor-pointer' dir='rtl'>
             <input  type="text" disabled placeholder='سید حسن تقوی' className='rounded-xl bg-white/60 border-1 border-zinc-400/40'/>
             <input  type="text" disabled placeholder='taghavey.hassan@gmail.com' className='rounded-xl bg-white/60 border-1 border-zinc-400/40'/>
             <input  type="text" disabled placeholder='09170249855' className='rounded-xl bg-white/60 border-1 border-zinc-400/40'/>
