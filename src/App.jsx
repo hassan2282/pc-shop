@@ -45,6 +45,10 @@ import Adm_product_all from "./AdminPanel/Components/products/Adm_product_all.js
 import Adm_product_add from "./AdminPanel/Components/products/Adm_product_add.jsx";
 import Adm_product_edit from "./AdminPanel/Components/products/Adm_product_edit.jsx";
 import Adm_product_show from "./AdminPanel/Components/products/Adm_product_show.jsx";
+import Adm_article_all from "./AdminPanel/Components/Articles/Adm_article_all.jsx";
+import Adm_article_add from "./AdminPanel/Components/Articles/Adm_article_add.jsx";
+import Adm_article_edit from "./AdminPanel/Components/Articles/Adm_article_edit.jsx";
+import Adm_article_show from "./AdminPanel/Components/Articles/Adm_article_show.jsx";
 
 
 function App() {
@@ -206,6 +210,10 @@ function App() {
               <Route path="product/add" element={<Adm_product_add />} />
               <Route path="product/edit" element={<Adm_product_edit />} />
               <Route path="product/show" element={<Adm_product_show />} />
+              <Route path="article/all" element={<Adm_article_all />} />
+              <Route path="article/add" element={<Adm_article_add />} />
+              <Route path="article/edit" element={<Adm_article_edit />} />
+              <Route path="article/show" element={<Adm_article_show />} />
           </Route>
         </Routes>
         <ToastContainer />
