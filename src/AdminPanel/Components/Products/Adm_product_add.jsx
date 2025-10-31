@@ -12,6 +12,8 @@ function Adm_product_add() {
   const [formData, setFormData] = useState({
     title: '',
     price: '',
+    description: '',
+    category: '',
     amount: '',
   })
 
