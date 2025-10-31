@@ -84,9 +84,6 @@ function Adm_article_all() {
                 </div>
               </td>
               <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link to="/admin/article/show" className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
-                  <TbEyeFilled size={20} />
-                </Link>
                 <Link to="/admin/article/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={20} />
                 </Link>
@@ -117,9 +114,6 @@ function Adm_article_all() {
                 </div>
               </td>
               <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link to="/admin/article/show" className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
-                  <TbEyeFilled size={20} />
-                </Link>
                 <Link to="/admin/article/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={20} />
                 </Link>
@@ -150,9 +144,6 @@ function Adm_article_all() {
                 </div>
               </td>
               <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link to="/admin/article/show" className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
-                  <TbEyeFilled size={20} />
-                </Link>
                 <Link to="/admin/article/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={20} />
                 </Link>
@@ -183,9 +174,6 @@ function Adm_article_all() {
                 </div>
               </td>
               <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link to="/admin/article/show" className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
-                  <TbEyeFilled size={20} />
-                </Link>
                 <Link to="/admin/article/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={20} />
                 </Link>
@@ -216,9 +204,6 @@ function Adm_article_all() {
                 </div>
               </td>
               <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                <Link to="/admin/product/show" className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
-                  <TbEyeFilled size={20} />
-                </Link>
                 <Link to="/admin/product/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                   <TbEditCircle size={20} />
                 </Link>
