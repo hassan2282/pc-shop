@@ -90,7 +90,7 @@ function Sidebar() {
           <span className=''>گزارشات </span>
           <span className='flex w-full justify-end items-center p-1'><TbChartBarPopular size={22} className='' /></span>
         </Link>
-        <Link className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
+        <Link to="/admin/order/all" className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>سفارشات </span>
           <span className='flex w-full justify-end items-center p-1'><TbBasket size={22} className='' /></span>
