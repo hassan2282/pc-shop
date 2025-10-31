@@ -158,7 +158,7 @@ function Text_Editor() {
         contentEditable
         suppressContentEditableWarning={true}
         className='w-full min-h-[30rem] bg-white/80 p-10 outline-none rounded-b-xl' name="" id="">
-        توضیحات محصول ...
+        متن رو اینجا بنویس ...
       </div>
     </div>
   )
