@@ -70,13 +70,6 @@ function Adm_order_show() {
 
 
       <div className='scrollbar-hidden snap-y snap-mandatory relative grid grid-cols-2 col-span-3 mr-5 max-h-[33rem] overflow-y-scroll gap-3'>
-        <div className='fixed w-full h-full flex justify-center items-center blur-xl'>
-          <span className='rounded-full w-40 h-40 bg-blue-500'></span>
-          <span className='rounded-full w-20 h-20 bg-emerald-500'></span>
-          <span className='rounded-full w-60 h-60 bg-purple-500'></span>
-        </div>
-
-
         <div class="flex flex-col snap-start snap-always relative backdrop-blur-sm bg-white/10 group rounded-3xl overflow-clip 
         h-[16rem] shadow-sm shadow-zinc-500 cursor-pointer">
           <span className='absolute bg-red-500/80 w-7 h-7 text-center text-white rounded-full p-1 top-1 right-1 z-30'>10</span>
