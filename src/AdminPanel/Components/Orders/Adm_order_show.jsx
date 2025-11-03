@@ -55,7 +55,7 @@ function Adm_order_show() {
         <div className='absolute mt-4 bottom-0 justify-items-center text-zinc-200 w-full *:flex
          *:flex-row *:items-center *:justify-center *:rounded-2xl hover:scale-97 duration-200 *:translate-y-4
           *:active:scale-95 *:w-full *:px-3 *:py-1 cursor-pointer group *:shadow-sm '>
-          <Link to="/admin/user/edit" className='w-full bg-blue-500 duration-200 h-12'>اطلاعات کاربر</Link>
+          <Link to="/admin/user/show" className='w-full bg-blue-500 duration-200 h-12'>اطلاعات کاربر</Link>
         </div>
       </div>
 
