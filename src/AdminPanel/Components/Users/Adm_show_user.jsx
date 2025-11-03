@@ -27,10 +27,10 @@ function Adm_show_user() {
       <div className='flex flex-col w-full max-md:py-4 h-[97%] justify-start
                          shadow-[0_2px_1px_#3333] items-center col-span-1 rounded-3xl
                           backdrop-blur-lg bg-white/40'>
-        <div className='relative flex justify-center items-center'>
+        <div className='relative flex justify-center items-center w-full'>
           <img src='../../../src/StorePanel/assets/img/profile_2.jpg' className='rounded-3xl w-full' />
           <h2 className='absolute top-[65%] text-xl text-white p-2 backdrop-blur-lg rounded-full'>سید حسن تقوی</h2>
-          <span className='absolute top-3 left-2 flex flex-row justify-center items-center gap-2 text-zinc-700 p-3
+          <span className='absolute top-3 left-2 flex flex-row justify-center items-center gap-2 text-rose-700 p-3
             bg-zinc-300 rounded-full shadow-sm inset-shadow-2xs'>< FaUserSecret size={15} /></span>
         </div>
         <div className='grid grid-cols-3 -translate-y-8 gap-2'>
