@@ -116,8 +116,8 @@ function Adm_show_user() {
                 </tr>
               </thead>
 
-              <tbody className='*:hover:bg-blue-400/20'>
-                <tr className='grid grid-cols-6 text-sm text-center bg-white/50 rounded-xl h-13 justify-center items-center'>
+              <tbody className='*:hover:bg-blue-400/20 max-h-[18rem] snap-y overflow-y-scroll scrollbar-hidden'>
+                <tr className='grid grid-cols-6 text-sm text-center snap-start snap-always bg-white/50 rounded-xl h-13 justify-center items-center'>
                   <td>52</td>
                   <td>#21374</td>
                   <td>12.000.000</td>
@@ -129,7 +129,7 @@ function Adm_show_user() {
                 </tr>
 
 
-                <tr className='grid grid-cols-6 text-sm text-center bg-white/50 rounded-xl h-13 justify-center items-center'>
+                <tr className='grid grid-cols-6 text-sm text-center snap-start snap-always bg-white/50 rounded-xl h-13 justify-center items-center'>
                   <td>36</td>
                   <td>#278574</td>
                   <td>100.000</td>
@@ -142,7 +142,7 @@ function Adm_show_user() {
 
 
 
-                <tr className='grid grid-cols-6 text-sm text-center bg-white/50 rounded-xl h-13 justify-center items-center'>
+                <tr className='grid grid-cols-6 text-sm text-center snap-start snap-always bg-white/50 rounded-xl h-13 justify-center items-center'>
                   <td>7</td>
                   <td>#25</td>
                   <td>41.000.000</td>
@@ -153,7 +153,7 @@ function Adm_show_user() {
                   </td>
                 </tr>
 
-                <tr className='grid grid-cols-6 text-sm text-center bg-white/50 rounded-xl h-13 justify-center items-center'>
+                <tr className='grid grid-cols-6 text-sm text-center snap-start snap-always bg-white/50 rounded-xl h-13 justify-center items-center'>
                   <td>52</td>
                   <td>#21374</td>
                   <td>12.000.000</td>
@@ -165,7 +165,7 @@ function Adm_show_user() {
                 </tr>
 
 
-                <tr className='grid grid-cols-6 text-sm text-center bg-white/50 rounded-xl h-13 justify-center items-center'>
+                <tr className='grid grid-cols-6 text-sm text-center snap-start snap-always bg-white/50 rounded-xl h-13 justify-center items-center'>
                   <td>36</td>
                   <td>#278574</td>
                   <td>100.000</td>
@@ -178,7 +178,66 @@ function Adm_show_user() {
 
 
 
-                <tr className='grid grid-cols-6 text-sm text-center bg-white/50 rounded-xl h-13 justify-center items-center'>
+                <tr className='grid grid-cols-6 text-sm text-center snap-start snap-always bg-white/50 rounded-xl h-13 justify-center items-center'>
+                  <td>7</td>
+                  <td>#25</td>
+                  <td>41.000.000</td>
+                  <td className='flex rounded-xl h-6 items-center justify-center bg-rose-500/100 text-white text-xs'>انصراف</td>
+                  <td>1403/05/30</td>
+                  <td className='flex justify-center items-center'>
+                    <TbEye size={25} className='hover:scale-120 rounded-full text-blue-500 duration-200 cursor-pointer' />
+                  </td>
+                </tr>
+
+
+                <tr className='grid grid-cols-6 text-sm text-center snap-start snap-always bg-white/50 rounded-xl h-13 justify-center items-center'>
+                  <td>7</td>
+                  <td>#25</td>
+                  <td>41.000.000</td>
+                  <td className='flex rounded-xl h-6 items-center justify-center bg-rose-500/100 text-white text-xs'>انصراف</td>
+                  <td>1403/05/30</td>
+                  <td className='flex justify-center items-center'>
+                    <TbEye size={25} className='hover:scale-120 rounded-full text-blue-500 duration-200 cursor-pointer' />
+                  </td>
+                </tr>
+
+
+                <tr className='grid grid-cols-6 text-sm text-center snap-start snap-always bg-white/50 rounded-xl h-13 justify-center items-center'>
+                  <td>7</td>
+                  <td>#25</td>
+                  <td>41.000.000</td>
+                  <td className='flex rounded-xl h-6 items-center justify-center bg-rose-500/100 text-white text-xs'>انصراف</td>
+                  <td>1403/05/30</td>
+                  <td className='flex justify-center items-center'>
+                    <TbEye size={25} className='hover:scale-120 rounded-full text-blue-500 duration-200 cursor-pointer' />
+                  </td>
+                </tr>
+
+
+                <tr className='grid grid-cols-6 text-sm text-center snap-start snap-always bg-white/50 rounded-xl h-13 justify-center items-center'>
+                  <td>7</td>
+                  <td>#25</td>
+                  <td>41.000.000</td>
+                  <td className='flex rounded-xl h-6 items-center justify-center bg-rose-500/100 text-white text-xs'>انصراف</td>
+                  <td>1403/05/30</td>
+                  <td className='flex justify-center items-center'>
+                    <TbEye size={25} className='hover:scale-120 rounded-full text-blue-500 duration-200 cursor-pointer' />
+                  </td>
+                </tr>
+
+                <tr className='grid grid-cols-6 text-sm text-center snap-start snap-always bg-white/50 rounded-xl h-13 justify-center items-center'>
+                  <td>7</td>
+                  <td>#25</td>
+                  <td>41.000.000</td>
+                  <td className='flex rounded-xl h-6 items-center justify-center bg-rose-500/100 text-white text-xs'>انصراف</td>
+                  <td>1403/05/30</td>
+                  <td className='flex justify-center items-center'>
+                    <TbEye size={25} className='hover:scale-120 rounded-full text-blue-500 duration-200 cursor-pointer' />
+                  </td>
+                </tr>
+
+
+                <tr className='grid grid-cols-6 text-sm text-center snap-start snap-always bg-white/50 rounded-xl h-13 justify-center items-center'>
                   <td>7</td>
                   <td>#25</td>
                   <td>41.000.000</td>
