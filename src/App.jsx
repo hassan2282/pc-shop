@@ -51,7 +51,6 @@ import Adm_article_edit from "./AdminPanel/Components/Articles/Adm_article_edit.
 import Adm_article_show from "./AdminPanel/Components/Articles/Adm_article_show.jsx";
 import Adm_order_all from "./AdminPanel/Components/Orders/Adm_order_all.jsx";
 import Adm_order_show from "./AdminPanel/Components/Orders/Adm_order_show.jsx";
-import Adm_order_edit from "./AdminPanel/Components/Orders/Adm_order_edit.jsx";
 
 
 function App() {
@@ -219,7 +218,6 @@ function App() {
               <Route path="article/show" element={<Adm_article_show />} />
               <Route path="order/all" element={<Adm_order_all />} />
               <Route path="order/show" element={<Adm_order_show />} />
-              <Route path="order/edit" element={<Adm_order_edit />} />
           </Route>
         </Routes>
         <ToastContainer />
