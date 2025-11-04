@@ -1,8 +1,14 @@
 import { TbArrowDown, TbArrowUp } from 'react-icons/tb'
+import { motion } from 'motion/react'
+
 
 function Adm_report_all() {
     return (
-        <div className='flex flex-col justify-center items-center p-2 w-full'>
+        <motion.div
+         initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        className='flex flex-col justify-center items-center p-2 w-full'>
 
             <div className='grid min-lg:grid-cols-4 max-lg:flex max-lg:flex-wrap max-lg:justify-center max-lg:w-full p-5 gap-4 *:cursor-pointer rounded-xl bg-white/20 backdrop-blur-md'>
 
@@ -131,7 +137,7 @@ function Adm_report_all() {
             </div>
 
 
-        </div>
+        </motion.div>
     )
 }
 
