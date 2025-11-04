@@ -3,7 +3,6 @@ import { motion } from 'motion/react'
 import { TbUser, TbCheck, TbEye } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io'
-import { FaUnlockAlt } from 'react-icons/fa'
 
 function Adm_permission_add() {
   const [formData, setFormData] = useState({

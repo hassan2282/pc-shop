@@ -32,7 +32,7 @@ function Sidebar() {
   }, []);
 
   return (
-    <div className='fixed left-0 top-1 w-[3.5rem] z-20 overflow-hidden
+    <div className='fixed left-0 top-1 w-[3.5rem] z-60 overflow-hidden
                     justify-center items-center p-1 space-y-1' dir='ltr'>
 
       <div onClick={toggleMenu} className={`flex flex-row gap-3 bg-dark opacity-70 text-white duration-200
@@ -85,15 +85,15 @@ function Sidebar() {
           <span className=''>نقش </span>
           <span className='flex w-full justify-end items-center p-1'><FaUnlockAlt size={20} className='' /></span>
         </Link>
-        <Link to="/admin/report/all" className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
-                        cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
-          <span className=''>گزارشات </span>
-          <span className='flex w-full justify-end items-center p-1'><TbChartBarPopular size={22} className='' /></span>
-        </Link>
         <Link to="/admin/order/all" className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>سفارشات </span>
           <span className='flex w-full justify-end items-center p-1'><TbBasket size={22} className='' /></span>
+        </Link>
+        <Link to="/admin/report/all" className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
+                        cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
+          <span className=''>گزارشات </span>
+          <span className='flex w-full justify-end items-center p-1'><TbChartBarPopular size={22} className='' /></span>
         </Link>
       </div>
 
