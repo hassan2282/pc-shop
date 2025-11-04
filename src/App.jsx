@@ -51,6 +51,7 @@ import Adm_article_edit from "./AdminPanel/Components/Articles/Adm_article_edit.
 import Adm_article_show from "./AdminPanel/Components/Articles/Adm_article_show.jsx";
 import Adm_order_all from "./AdminPanel/Components/Orders/Adm_order_all.jsx";
 import Adm_order_show from "./AdminPanel/Components/Orders/Adm_order_show.jsx";
+import Adm_report_all from "./AdminPanel/Components/Reports/Adm_report_all.jsx";
 
 
 function App() {
@@ -61,16 +62,16 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-              path="store/register"
-              element={
-                !isAuthenticated ? <Register /> : <Navigate to="/store/home" replace />
-              }
-            />
+            path="store/register"
+            element={
+              !isAuthenticated ? <Register /> : <Navigate to="/store/home" replace />
+            }
+          />
 
-            <Route
-              path="store/login"
-              element={!isAuthenticated ? <Login /> : <Navigate to="/store/home" replace />}
-            />
+          <Route
+            path="store/login"
+            element={!isAuthenticated ? <Login /> : <Navigate to="/store/home" replace />}
+          />
 
           <Route path="/" element={<Navigate to="/store/home" replace />} />
 
@@ -194,30 +195,31 @@ function App() {
 
 
           <Route path="/admin/*" element={<Master />}>
-              <Route path="index" element={<Adm_index />} />
-              <Route path="users/all" element={<Adm_all_users />} />
-              <Route path="users/add" element={<Adm_add_user />} />
-              <Route path="user/edit" element={<Adm_edit_user />} />
-              <Route path="user/show" element={<Adm_show_user />} />
-              <Route path="categories/all" element={<Adm_all_categories />} />
-              <Route path="category/add" element={<Adm_add_category />} />
-              <Route path="category/edit" element={<Adm_edit_category />} />
-              <Route path="role/all" element={<Adm_role_all />} />
-              <Route path="role/add" element={<Adm_role_add />} />
-              <Route path="role/edit" element={<Adm_role_edit />} />
-              <Route path="permission/all" element={<Adm_permission_all />} />
-              <Route path="permission/add" element={<Adm_permission_add />} />
-              <Route path="permission/edit" element={<Adm_permission_edit />} />
-              <Route path="product/all" element={<Adm_product_all />} />
-              <Route path="product/add" element={<Adm_product_add />} />
-              <Route path="product/edit" element={<Adm_product_edit />} />
-              <Route path="product/show" element={<Adm_product_show />} />
-              <Route path="article/all" element={<Adm_article_all />} />
-              <Route path="article/add" element={<Adm_article_add />} />
-              <Route path="article/edit" element={<Adm_article_edit />} />
-              <Route path="article/show" element={<Adm_article_show />} />
-              <Route path="order/all" element={<Adm_order_all />} />
-              <Route path="order/show" element={<Adm_order_show />} />
+            <Route path="index" element={<Adm_index />} />
+            <Route path="users/all" element={<Adm_all_users />} />
+            <Route path="users/add" element={<Adm_add_user />} />
+            <Route path="user/edit" element={<Adm_edit_user />} />
+            <Route path="user/show" element={<Adm_show_user />} />
+            <Route path="categories/all" element={<Adm_all_categories />} />
+            <Route path="category/add" element={<Adm_add_category />} />
+            <Route path="category/edit" element={<Adm_edit_category />} />
+            <Route path="role/all" element={<Adm_role_all />} />
+            <Route path="role/add" element={<Adm_role_add />} />
+            <Route path="role/edit" element={<Adm_role_edit />} />
+            <Route path="permission/all" element={<Adm_permission_all />} />
+            <Route path="permission/add" element={<Adm_permission_add />} />
+            <Route path="permission/edit" element={<Adm_permission_edit />} />
+            <Route path="product/all" element={<Adm_product_all />} />
+            <Route path="product/add" element={<Adm_product_add />} />
+            <Route path="product/edit" element={<Adm_product_edit />} />
+            <Route path="product/show" element={<Adm_product_show />} />
+            <Route path="article/all" element={<Adm_article_all />} />
+            <Route path="article/add" element={<Adm_article_add />} />
+            <Route path="article/edit" element={<Adm_article_edit />} />
+            <Route path="article/show" element={<Adm_article_show />} />
+            <Route path="order/all" element={<Adm_order_all />} />
+            <Route path="order/show" element={<Adm_order_show />} />
+            <Route path="report/all" element={<Adm_report_all />} />
           </Route>
         </Routes>
         <ToastContainer />
