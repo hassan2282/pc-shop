@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { FaCalendar, FaCalendarDay, FaPhoneSquare, FaUser } from 'react-icons/fa'
+import { FaCalendarDay, FaPhoneSquare, FaUser } from 'react-icons/fa'
 import { MdMarkEmailRead } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 
@@ -19,18 +19,18 @@ function Adm_order_show() {
           duration: 0.8,
         }
       }}
-      className='flex relative mt-2 min-md:grid min-md:grid-cols-4 mr-10 justify-center items-start min-lg:w-[90%] w-full z-20 
+      className='relative mt-2 grid grid-cols-1 md:grid-cols-2 min-lg:grid-cols-4 min-lg:mr-10 justify-center items-start min-lg:w-[90%] w-full z-20 
                 rounded-xl gap-4 max-md:space-y-3' dir="ltr">
 
 
       {/* start profile section */}
-      <div className='flex flex-col w-full justify-center pb-3 sticky top-17 rounded-4xl
+      <div className='flex flex-col w-full max-w-[20rem] justify-self-center justify-center pb-3 min-md:sticky md:top-1 min-lg:top-17 rounded-4xl
                           shadow-[0_2px_1px_#3333] items-center col-span-1
                             backdrop-blur-lg bg-white/40'>
 
-        <div className='relative flex flex-col w-full justify-center items-center'>
+        <div className='relative flex flex-col w-full h-full justify-center items-center max-w-[20rem]'>
           <h2 className='absolute text-2xl text-white p-1 rounded-xl backdrop-blur-lg translate-y-15'>نرگس محمدی</h2>
-          <img src='../../../src/StorePanel/assets/img/profile_2.jpg' className='rounded-3xl w-full max-h-[17rem]' />
+          <img src='../../../src/StorePanel/assets/img/profile_2.jpg' className='rounded-3xl w-full min-w-[15rem] min-h-[16rem] max-h-[18rem]' />
           <div className='absolute grid grid-cols-2 bottom-0 bg-blue-100 translate-y-7 backdrop-blur-xl
                           w-[80%] p-2 rounded-full justify-center items-center shadow-2xs shadow-blue-300'>
             <div className='flex flex-col border-r border-blue-700 text-sm justify-center items-center text-zinc-600'>
@@ -69,34 +69,38 @@ function Adm_order_show() {
 
 
 
-      <div className='scrollbar-hidden snap-y snap-mandatory relative grid grid-cols-2 col-span-3 mr-5 max-h-[33rem] overflow-y-scroll gap-3'>
-        <div class="flex flex-col snap-start snap-always relative backdrop-blur-sm bg-white/10 group rounded-3xl overflow-clip 
+      <div className='grid grid-cols-1 scrollbar-hidden snap-y snap-mandatory relative 
+      min-lg:grid-cols-2 max-lg:w-full
+        min-lg:col-span-3 mr-5 min-lg:max-h-[33rem] overflow-y-scroll gap-3'>
+
+
+        <div className="flex flex-col snap-start snap-always relative backdrop-blur-sm bg-white/10 group rounded-3xl overflow-clip 
         h-[16rem] shadow-sm shadow-zinc-500 cursor-pointer">
-          <span className='absolute bg-red-500/80 w-7 h-7 text-center text-white rounded-full p-1 top-1 right-1 z-30'>10</span>
+          <span className='absolute bg-red-500/80 w-7 h-7 text-center text-white rounded-full p-1 top-1 right-1 z-30'>2</span>
           <img className='absolute top-3 right-3 shadow-xs z-20 shadow-zinc-500 w-[8rem] rounded-2xl'
             src='../../../src/StorePanel/assets/img/product_img/p_9.jpg' />
-          <span className='absolute w-2 h-2 rounded-xl z-10 group-hover:top-0
+          <span className='max-md:hidden absolute w-2 h-2 rounded-xl z-10 group-hover:top-0
            group-hover:left-0 group-hover:rounded-xl group-hover:w-full 
           group-hover:h-full  duration-300 bg-blue-800/20'></span>
-          <div class="px-6 py-8 sm:p-10 sm:pb-6 z-20">
-            <div class="grid items-center justify-center w-full grid-cols-1 text-left">
+          <div className="px-6 py-8 sm:p-10 sm:pb-6 z-20">
+            <div className="grid items-center justify-center w-full grid-cols-1 text-left">
               <div>
-                <h2 class="text-lg font-medium tracking-tighter text-white lg:text-xl">
+                <h2 className="text-lg font-medium tracking-tighter text-white lg:text-xl max-sm:max-w-[10rem]">
                   گوشی پوکو X3
                 </h2>
-                <p class="mt-2 text-sm text-gray-100">8 گیگ رم و 120 هرتز</p>
+                <p className="mt-2 max-sm:text-[0.8rem] text-sm text-gray-100 ">8 گیگ رم و 120 هرتز</p>
               </div>
-              <div class="mt-6">
+              <div className="mt-6">
                 <p>
-                  <span class="text-3xl font-light tracking-tight text-white">
+                  <span className="text-3xl max-sm:text-[1.5rem] font-light tracking-tight text-white">
                     12,700,000
                   </span>
                 </p>
               </div>
             </div>
           </div>
-          <div class="flex px-6 pb-8 sm:px-8 z-20 mt-4">
-            <a aria-describedby="tier-starter" class="items-center justify-center w-full px-6 py-2.5 text-center text-zinc-600
+          <div className="flex px-6 pb-8 sm:px-8 z-20 mt-4">
+            <a aria-describedby="tier-starter" className="items-center justify-center w-full px-6 py-2.5 text-center text-zinc-600
              duration-200 bg-white/90 hover:scale-102 rounded-full nline-flex active:scale-98
                focus:outline-none shadow-sm shadow-zinc-500 active:shadow-none hover:bg-blue-800 hover:text-white
                focus-visible:outline-white text-sm focus-visible:ring-white" href="#">
@@ -105,7 +109,7 @@ function Adm_order_show() {
           </div>
         </div>
 
-        <div class="flex flex-col snap-start snap-always relative backdrop-blur-sm bg-white/10 group rounded-3xl overflow-clip 
+        <div className="flex flex-col snap-start snap-always relative backdrop-blur-sm bg-white/10 group rounded-3xl overflow-clip 
         h-[16rem] shadow-sm shadow-zinc-500 cursor-pointer">
           <span className='absolute bg-red-500/80 w-7 h-7 text-center text-white rounded-full p-1 top-1 right-1 z-30'>2</span>
           <img className='absolute top-3 right-3 shadow-xs z-20 shadow-zinc-500 w-[8rem] rounded-2xl'
@@ -113,25 +117,25 @@ function Adm_order_show() {
           <span className='absolute w-2 h-2 rounded-xl z-10 group-hover:top-0
            group-hover:left-0 group-hover:rounded-xl group-hover:w-full 
           group-hover:h-full  duration-300 bg-blue-800/20'></span>
-          <div class="px-6 py-8 sm:p-10 sm:pb-6 z-20">
-            <div class="grid items-center justify-center w-full grid-cols-1 text-left">
+          <div className="px-6 py-8 sm:p-10 sm:pb-6 z-20">
+            <div className="grid items-center justify-center w-full grid-cols-1 text-left">
               <div>
-                <h2 class="text-lg font-medium tracking-tighter text-white lg:text-xl">
+                <h2 className="text-lg font-medium tracking-tighter text-white lg:text-xl max-sm:max-w-[10rem]">
                   Iphone 17 pro
                 </h2>
-                <p class="mt-2 text-sm text-gray-100">8 گیگ رم و 120 هرتز</p>
+                <p className="mt-2 max-sm:text-[0.8rem] text-sm text-gray-100">8 گیگ رم و 120 هرتز</p>
               </div>
-              <div class="mt-6">
+              <div className="mt-6">
                 <p>
-                  <span class="text-3xl font-light tracking-tight text-white">
+                  <span className="text-3xl max-sm:text-[1.5rem] font-light tracking-tight text-white">
                     85,100,000
                   </span>
                 </p>
               </div>
             </div>
           </div>
-          <div class="flex px-6 pb-8 sm:px-8 z-20 mt-4">
-            <a aria-describedby="tier-starter" class="items-center justify-center w-full px-6 py-2.5 text-center text-zinc-600
+          <div className="flex px-6 pb-8 sm:px-8 z-20 mt-4">
+            <a aria-describedby="tier-starter" className="items-center justify-center w-full px-6 py-2.5 text-center text-zinc-600
              duration-200 bg-white/90 hover:scale-102 rounded-full nline-flex active:scale-98
                focus:outline-none shadow-sm shadow-zinc-500 active:shadow-none hover:bg-blue-800 hover:text-white
                focus-visible:outline-white text-sm focus-visible:ring-white" href="#">
@@ -141,33 +145,33 @@ function Adm_order_show() {
         </div>
 
 
-        <div class="flex flex-col snap-start snap-always relative backdrop-blur-sm bg-white/10 group rounded-3xl overflow-clip 
-        h-[16rem] shadow-sm shadow-zinc-500 cursor-pointer">
+        <div className="flex flex-col snap-start snap-always relative backdrop-blur-sm bg-white/10 group rounded-3xl overflow-clip 
+        min-sm:h-[16rem] shadow-sm shadow-zinc-500 cursor-pointer">
           <span className='absolute bg-red-500/80 w-7 h-7 text-center text-white rounded-full p-1 top-1 right-1 z-30'>5</span>
           <img className='absolute top-3 right-3 shadow-xs z-20 shadow-zinc-500 w-[8rem] rounded-2xl'
             src='../../../src/StorePanel/assets/img/product_img/p_5.jpg' />
           <span className='absolute w-2 h-2 rounded-xl z-10 group-hover:top-0
            group-hover:left-0 group-hover:rounded-xl group-hover:w-full 
           group-hover:h-full  duration-300 bg-blue-800/20'></span>
-          <div class="px-6 py-8 sm:p-10 sm:pb-6 z-20">
-            <div class="grid items-center justify-center w-full grid-cols-1 text-left">
+          <div className="px-6 py-8 sm:p-10 sm:pb-6 z-20">
+            <div className="grid items-center justify-center w-full grid-cols-1 text-left">
               <div>
-                <h2 class="text-lg font-medium tracking-tighter text-white lg:text-xl">
+                <h2 className="text-lg font-medium tracking-tighter text-white lg:text-xl max-sm:max-w-[10rem]">
                   ساعت هوشمند شیائومی
                 </h2>
-                <p class="mt-2 text-sm text-gray-100">8 گیگ رم و 120 هرتز</p>
+                <p className="mt-2 max-sm:text-[0.8rem] text-sm text-gray-100">8 گیگ رم و 120 هرتز</p>
               </div>
-              <div class="mt-6">
+              <div className="mt-6">
                 <p>
-                  <span class="text-3xl font-light tracking-tight text-white">
+                  <span className="text-3xl max-sm:text-[1.5rem] font-light tracking-tight text-white">
                     2,400,000
                   </span>
                 </p>
               </div>
             </div>
           </div>
-          <div class="flex px-6 pb-8 sm:px-8 z-20 mt-4">
-            <a aria-describedby="tier-starter" class="items-center justify-center w-full px-6 py-2.5 text-center text-zinc-600
+          <div className="flex px-6 pb-8 sm:px-8 z-20 mt-4">
+            <a aria-describedby="tier-starter" className="items-center justify-center w-full px-6 py-2.5 text-center text-zinc-600
              duration-200 bg-white/90 hover:scale-102 rounded-full nline-flex active:scale-98
                focus:outline-none shadow-sm shadow-zinc-500 active:shadow-none hover:bg-blue-800 hover:text-white
                focus-visible:outline-white text-sm focus-visible:ring-white" href="#">
@@ -177,7 +181,7 @@ function Adm_order_show() {
         </div>
 
 
-        <div class="flex flex-col snap-start snap-always relative backdrop-blur-sm bg-white/10 group rounded-3xl overflow-clip 
+        <div className="flex flex-col snap-start snap-always relative backdrop-blur-sm bg-white/10 group rounded-3xl overflow-clip 
         h-[16rem] shadow-sm shadow-zinc-500 cursor-pointer">
           <span className='absolute bg-red-500/80 w-7 h-7 text-center text-white rounded-full p-1 top-1 right-1 z-30'>7</span>
           <img className='absolute top-3 right-3 shadow-xs z-20 shadow-zinc-500 w-[8rem] rounded-2xl'
@@ -185,25 +189,25 @@ function Adm_order_show() {
           <span className='absolute w-2 h-2 rounded-xl z-10 group-hover:top-0
            group-hover:left-0 group-hover:rounded-xl group-hover:w-full 
           group-hover:h-full  duration-300 bg-blue-800/20'></span>
-          <div class="px-6 py-8 sm:p-10 sm:pb-6 z-20">
-            <div class="grid items-center justify-center w-full grid-cols-1 text-left">
+          <div className="px-6 py-8 sm:p-10 sm:pb-6 z-20">
+            <div className="grid items-center justify-center w-full grid-cols-1 text-left">
               <div>
-                <h2 class="text-lg font-medium tracking-tighter text-white lg:text-xl">
+                <h2 className="text-lg font-medium tracking-tighter text-white lg:text-xl max-sm:max-w-[10rem]">
                   گوشی پوکو X3
                 </h2>
-                <p class="mt-2 text-sm text-gray-100">8 گیگ رم و 120 هرتز</p>
+                <p className="mt-2 max-sm:text-[0.8rem] text-sm text-gray-100">8 گیگ رم و 120 هرتز</p>
               </div>
-              <div class="mt-6">
+              <div className="mt-6">
                 <p>
-                  <span class="text-3xl font-light tracking-tight text-white">
+                  <span className="text-3xl max-sm:text-[1.5rem] font-light tracking-tight text-white">
                     12,700,000
                   </span>
                 </p>
               </div>
             </div>
           </div>
-          <div class="flex px-6 pb-8 sm:px-8 z-20 mt-4">
-            <a aria-describedby="tier-starter" class="items-center justify-center w-full px-6 py-2.5 text-center text-zinc-600
+          <div className="flex px-6 pb-8 sm:px-8 z-20 mt-4">
+            <a aria-describedby="tier-starter" className="items-center justify-center w-full px-6 py-2.5 text-center text-zinc-600
              duration-200 bg-white/90 hover:scale-102 rounded-full nline-flex active:scale-98
                focus:outline-none shadow-sm shadow-zinc-500 active:shadow-none hover:bg-blue-800 hover:text-white
                focus-visible:outline-white text-sm focus-visible:ring-white" href="#">
@@ -214,7 +218,7 @@ function Adm_order_show() {
 
 
 
-        <div class="flex flex-col snap-start snap-always relative backdrop-blur-sm bg-white/10 group rounded-3xl overflow-clip 
+        <div className="flex flex-col snap-start snap-always relative backdrop-blur-sm bg-white/10 group rounded-3xl overflow-clip 
         h-[16rem] shadow-sm shadow-zinc-500 cursor-pointer">
           <span className='absolute bg-red-500/80 w-7 h-7 text-center text-white rounded-full p-1 top-1 right-1 z-30'>20</span>
           <img className='absolute top-3 right-3 shadow-xs z-20 shadow-zinc-500 w-[8rem] rounded-2xl'
@@ -222,25 +226,25 @@ function Adm_order_show() {
           <span className='absolute w-2 h-2 rounded-xl z-10 group-hover:top-0
            group-hover:left-0 group-hover:rounded-xl group-hover:w-full 
           group-hover:h-full  duration-300 bg-blue-800/20'></span>
-          <div class="px-6 py-8 sm:p-10 sm:pb-6 z-20">
-            <div class="grid items-center justify-center w-full grid-cols-1 text-left">
+          <div className="px-6 py-8 sm:p-10 sm:pb-6 z-20">
+            <div className="grid items-center justify-center w-full grid-cols-1 text-left">
               <div>
-                <h2 class="text-lg font-medium tracking-tighter text-white lg:text-xl">
+                <h2 className="text-lg font-medium tracking-tighter text-white lg:text-xl max-sm:max-w-[10rem]">
                   گوشی پوکو X3
                 </h2>
-                <p class="mt-2 text-sm text-gray-100">8 گیگ رم و 120 هرتز</p>
+                <p className="mt-2 max-sm:text-[0.8rem] text-sm text-gray-100">8 گیگ رم و 120 هرتز</p>
               </div>
-              <div class="mt-6">
+              <div className="mt-6">
                 <p>
-                  <span class="text-3xl font-light tracking-tight text-white">
+                  <span className="text-3xl max-sm:text-[1.5rem] font-light tracking-tight text-white">
                     12,700,000
                   </span>
                 </p>
               </div>
             </div>
           </div>
-          <div class="flex px-6 pb-8 sm:px-8 z-20 mt-4">
-            <a aria-describedby="tier-starter" class="items-center justify-center w-full px-6 py-2.5 text-center text-zinc-600
+          <div className="flex px-6 pb-8 sm:px-8 z-20 mt-4">
+            <a aria-describedby="tier-starter" className="items-center justify-center w-full px-6 py-2.5 text-center text-zinc-600
              duration-200 bg-white/90 hover:scale-102 rounded-full nline-flex active:scale-98
                focus:outline-none shadow-sm shadow-zinc-500 active:shadow-none hover:bg-blue-800 hover:text-white
                focus-visible:outline-white text-sm focus-visible:ring-white" href="#">
@@ -250,7 +254,7 @@ function Adm_order_show() {
         </div>
 
 
-        <div class="flex flex-col snap-start snap-always relative backdrop-blur-sm bg-white/10 group rounded-3xl overflow-clip 
+        <div className="flex flex-col snap-start snap-always relative backdrop-blur-sm bg-white/10 group rounded-3xl overflow-clip 
         h-[16rem] shadow-sm shadow-zinc-500 cursor-pointer">
           <span className='absolute bg-red-500/80 w-7 h-7 text-center text-white rounded-full p-1 top-1 right-1 z-30'>1</span>
           <img className='absolute top-3 right-3 shadow-xs z-20 shadow-zinc-500 w-[8rem] rounded-2xl'
@@ -258,25 +262,25 @@ function Adm_order_show() {
           <span className='absolute w-2 h-2 rounded-xl z-10 group-hover:top-0
            group-hover:left-0 group-hover:rounded-xl group-hover:w-full 
           group-hover:h-full  duration-300 bg-blue-800/20'></span>
-          <div class="px-6 py-8 sm:p-10 sm:pb-6 z-20">
-            <div class="grid items-center justify-center w-full grid-cols-1 text-left">
+          <div className="px-6 py-8 sm:p-10 sm:pb-6 z-20">
+            <div className="grid items-center justify-center w-full grid-cols-1 text-left">
               <div>
-                <h2 class="text-lg font-medium tracking-tighter text-white lg:text-xl">
+                <h2 className="text-lg font-medium tracking-tighter text-white lg:text-xl max-sm:max-w-[10rem]">
                   گوشی پوکو X3
                 </h2>
-                <p class="mt-2 text-sm text-gray-100">8 گیگ رم و 120 هرتز</p>
+                <p className="mt-2 max-sm:text-[0.8rem] text-sm text-gray-100">8 گیگ رم و 120 هرتز</p>
               </div>
-              <div class="mt-6">
+              <div className="mt-6">
                 <p>
-                  <span class="text-3xl font-light tracking-tight text-white">
+                  <span className="text-3xl max-sm:text-[1.5rem] font-light tracking-tight text-white">
                     12,700,000
                   </span>
                 </p>
               </div>
             </div>
           </div>
-          <div class="flex px-6 pb-8 sm:px-8 z-20 mt-4">
-            <a aria-describedby="tier-starter" class="items-center justify-center w-full px-6 py-2.5 text-center text-zinc-600
+          <div className="flex px-6 pb-8 sm:px-8 z-20 mt-4">
+            <a aria-describedby="tier-starter" className="items-center justify-center w-full px-6 py-2.5 text-center text-zinc-600
              duration-200 bg-white/90 hover:scale-102 rounded-full nline-flex active:scale-98
                focus:outline-none shadow-sm shadow-zinc-500 active:shadow-none hover:bg-blue-800 hover:text-white
                focus-visible:outline-white text-sm focus-visible:ring-white" href="#">
@@ -287,7 +291,7 @@ function Adm_order_show() {
 
 
 
-        <div class="flex flex-col snap-start snap-always relative backdrop-blur-sm bg-white/10 group rounded-3xl overflow-clip 
+        <div className="flex flex-col snap-start snap-always relative backdrop-blur-sm bg-white/10 group rounded-3xl overflow-clip 
         h-[16rem] shadow-sm shadow-zinc-500 cursor-pointer">
           <span className='absolute bg-red-500/80 w-7 h-7 text-center text-white rounded-full p-1 top-1 right-1 z-30'>3</span>
           <img className='absolute top-3 right-3 shadow-xs z-20 shadow-zinc-500 w-[8rem] rounded-2xl'
@@ -295,25 +299,25 @@ function Adm_order_show() {
           <span className='absolute w-2 h-2 rounded-xl z-10 group-hover:top-0
            group-hover:left-0 group-hover:rounded-xl group-hover:w-full 
           group-hover:h-full  duration-300 bg-blue-800/20'></span>
-          <div class="px-6 py-8 sm:p-10 sm:pb-6 z-20">
-            <div class="grid items-center justify-center w-full grid-cols-1 text-left">
+          <div className="px-6 py-8 sm:p-10 sm:pb-6 z-20">
+            <div className="grid items-center justify-center w-full grid-cols-1 text-left">
               <div>
-                <h2 class="text-lg font-medium tracking-tighter text-white lg:text-xl">
+                <h2 className="text-lg font-medium tracking-tighter text-white lg:text-xl max-sm:max-w-[10rem]">
                   گوشی پوکو X3
                 </h2>
-                <p class="mt-2 text-sm text-gray-100">8 گیگ رم و 120 هرتز</p>
+                <p className="mt-2 max-sm:text-[0.8rem] text-sm text-gray-100">8 گیگ رم و 120 هرتز</p>
               </div>
-              <div class="mt-6">
+              <div className="mt-6">
                 <p>
-                  <span class="text-3xl font-light tracking-tight text-white">
+                  <span className="text-3xl max-sm:text-[1.5rem] font-light tracking-tight text-white">
                     12,700,000
                   </span>
                 </p>
               </div>
             </div>
           </div>
-          <div class="flex px-6 pb-8 sm:px-8 z-20 mt-4">
-            <a aria-describedby="tier-starter" class="items-center justify-center w-full px-6 py-2.5 text-center text-zinc-600
+          <div className="flex px-6 pb-8 sm:px-8 z-20 mt-4">
+            <a aria-describedby="tier-starter" className="items-center justify-center w-full px-6 py-2.5 text-center text-zinc-600
              duration-200 bg-white/90 hover:scale-102 rounded-full nline-flex active:scale-98
                focus:outline-none shadow-sm shadow-zinc-500 active:shadow-none hover:bg-blue-800 hover:text-white
                focus-visible:outline-white text-sm focus-visible:ring-white" href="#">
