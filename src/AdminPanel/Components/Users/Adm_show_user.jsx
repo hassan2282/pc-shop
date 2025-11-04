@@ -24,7 +24,7 @@ function Adm_show_user() {
       }}
       className='min-md:grid min-md:grid-cols-4 justify-center items-center min-lg:w-[90%] w-full z-20 
                 rounded-xl gap-4' dir="ltr">
-      <div className='flex flex-col w-full max-md:py-4 h-[97%] justify-start
+      <div className='flex flex-col w-full max-md:py-4 h-full justify-start
                          shadow-[0_2px_1px_#3333] items-center col-span-1 rounded-3xl
                           backdrop-blur-lg bg-white/40'>
         <div className='relative flex justify-center items-center w-full'>
@@ -116,7 +116,7 @@ function Adm_show_user() {
                 </tr>
               </thead>
 
-              <tbody className='*:hover:bg-blue-400/20 max-h-[18rem] snap-y overflow-y-scroll scrollbar-hidden'>
+              <tbody className='*:hover:bg-blue-400/20 max-h-[18.5rem] snap-y overflow-y-scroll scrollbar-hidden'>
                 <tr className='grid grid-cols-6 text-sm text-center snap-start snap-always bg-white/50 rounded-xl h-13 justify-center items-center'>
                   <td>52</td>
                   <td>#21374</td>
