@@ -1,22 +1,25 @@
-import { TbArrowDown, TbArrowUp } from 'react-icons/tb'
+import { TbArrowDown, TbArrowUp, TbEditCircle, TbEyeFilled, TbTrashFilled, TbX } from 'react-icons/tb'
 import { motion } from 'motion/react'
-
+import SameDataComposedChart from '../SameDataComposedChart'
+import PieChartWithCustomizedLabel from '../PieChartWithCustomizedLabel'
+import SimpleRadarChart from '../SimpleRadarChart'
 
 function Adm_report_all() {
+
     return (
         <motion.div
-         initial={{ opacity: 0, scale: 0.95, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        className='flex flex-col justify-center items-center p-2 w-full'>
-
-            <div className='grid min-lg:grid-cols-4 max-lg:flex max-lg:flex-wrap max-lg:justify-center max-lg:w-full p-5 gap-4 *:cursor-pointer rounded-xl bg-white/20 backdrop-blur-md'>
-
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className='flex flex-col justify-center items-center p-2 w-full'>
+            <div className='grid min-lg:grid-cols-4 max-lg:flex max-lg:flex-wrap max-lg:justify-center
+                        max-lg:w-full p-5 gap-4 *:cursor-pointer rounded-xl bg-white/20 backdrop-blur-md'>
                 <div
-                    className="w-64 bg-white/40 group hover:-translate-y-3 duration-500 shadow-[0px_0px_15px_rgba(0,0,0,0.09)] rounded-xl rounded-tl-none 
-                    p-9 space-y-3 relative overflow-hidden">
+                    className="w-64 bg-white/40 group hover:-translate-y-3 duration-500 hover:shadow-[0px_10px_15px_rgba(0,0,0,0.3)]
+                                shadow-[0px_3px_3px_rgba(0,0,0,0.3)] rounded-xl rounded-tl-none 
+                                p-9 space-y-3 relative overflow-hidden">
                     <div className="w-24 h-24 bg-cyan-500 z-0 group-hover:scale-1000 duration-1000 rounded-full absolute -left-5 -top-7">
-                        <p className="absolute bottom-6 left-7 text-white text-2xl group-hover:invisible"></p>
+                        {/* <p className="absolute bottom-6 left-7 text-white text-2xl group-hover:invisible"></p> */}
                     </div>
                     <div className="flex fill-cyan-500 group-hover:fill-white w-12 z-30">
                         <svg
@@ -44,9 +47,9 @@ function Adm_report_all() {
                     </div>
                 </div>
                 <div
-                    className="w-64 bg-white/40 group hover:-translate-y-3 duration-500 shadow-[0px_0px_15px_rgba(0,0,0,0.09)] rounded-xl rounded-tl-none p-9 space-y-3 relative overflow-hidden">
+                    className="w-64 bg-white/40 group hover:-translate-y-3 duration-500 hover:shadow-[0px_10px_15px_rgba(0,0,0,0.3)] shadow-[0px_3px_3px_rgba(0,0,0,0.3)] rounded-xl rounded-tl-none p-9 space-y-3 relative overflow-hidden">
                     <div className="w-24 h-24 bg-purple-500 z-0 group-hover:scale-1000 duration-1000 rounded-full absolute -left-5 -top-7">
-                        <p className="absolute bottom-6 left-7 text-white text-2xl group-hover:invisible"></p>
+                        {/* <p className="absolute bottom-6 left-7 text-white text-2xl group-hover:invisible"></p> */}
                     </div>
                     <div className="flex fill-purple-500 group-hover:fill-white w-12 z-30">
                         <svg
@@ -74,9 +77,9 @@ function Adm_report_all() {
                     </div>
                 </div>
                 <div
-                    className="w-64 bg-white/40 group hover:-translate-y-3 duration-500 shadow-[0px_0px_15px_rgba(0,0,0,0.09)] rounded-xl rounded-tl-none p-9 space-y-3 relative overflow-hidden">
+                    className="w-64 bg-white/40 group hover:-translate-y-3 duration-500 hover:shadow-[0px_10px_15px_rgba(0,0,0,0.3)] shadow-[0px_3px_3px_rgba(0,0,0,0.3)] rounded-xl rounded-tl-none p-9 space-y-3 relative overflow-hidden">
                     <div className="w-24 h-24 bg-pink-500 z-0 group-hover:scale-1000 duration-1000 rounded-full absolute -left-5 -top-7">
-                        <p className="absolute bottom-6 left-7 text-white text-2xl group-hover:invisible"></p>
+                        {/* <p className="absolute bottom-6 left-7 text-white text-2xl group-hover:invisible"></p> */}
                     </div>
                     <div className="flex fill-pink-500 group-hover:fill-white w-12 z-30">
                         <svg
@@ -104,9 +107,11 @@ function Adm_report_all() {
                     </div>
                 </div>
                 <div
-                    className="w-64 bg-white/40 group hover:-translate-y-3 duration-500 shadow-[0px_0px_15px_rgba(0,0,0,0.09)] rounded-xl rounded-tl-none p-9 space-y-3 relative overflow-hidden">
+                    className="w-64 bg-white/40 group hover:-translate-y-3 duration-500 
+                    hover:shadow-[0px_10px_15px_rgba(0,0,0,0.3)] shadow-[0px_3px_3px_rgba(0,0,0,0.3)]
+                                 rounded-xl rounded-tl-none p-9 space-y-3 relative overflow-hidden">
                     <div className="w-24 h-24 bg-lime-500 z-0 group-hover:scale-1000 duration-1000 rounded-full absolute -left-5 -top-7">
-                        <p className="absolute bottom-6 left-7 text-white text-2xl group-hover:invisible"></p>
+                        {/* <p className="absolute bottom-6 left-7 text-white text-2xl group-hover:invisible"></p> */}
                     </div>
                     <div className="flex fill-lime-500 group-hover:fill-white w-12 z-30">
                         <svg
@@ -136,7 +141,184 @@ function Adm_report_all() {
 
             </div>
 
+            <div className='flex flex-row min-md:w-[84%] max-sm:h-[17rem] w-full mt-3 bg-white/30 backdrop-blur-sm 
+                            z-30 justify-center items-center p-5 rounded-xl'>
 
+                <SameDataComposedChart />
+
+            </div>
+
+
+            <div className='grid grid-cols-2 gap-2 min-md:w-[84%] w-full mt-20 backdrop-blur-sm 
+                            z-30 justify-center items-center p-3 rounded-xl'>
+
+                <div className='flex flex-col w-full p-6 min-h-100 overflow-x-auto'>
+                    <h3 className='w-ful flex justify-center text-xl text-zinc-700 p-2 mb-2'>آخرین محصولات</h3>
+                    <table className='w-full'>
+                        <thead>
+                            <tr className='w-full grid grid-cols-5 items-center bg-white/90 backdrop-blur-sm
+                                             text-gray-700/90 rounded-xl
+                                               h-16 text-md justify-center text-center border border-gray-200 shadow-sm'>
+                                <th className='col-span-1 font-semibold'>آیدی</th>
+                                <th className='col-span-1 font-semibold'>تصویر</th>
+                                <th className='col-span-1 font-semibold'>عنوان</th>
+                                <th className='col-span-1 font-semibold'>قیمت</th>
+                                <th className='col-span-1 font-semibold'>موجودی</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
+                                                h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 
+                                                rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+                                <td className='col-span-1'>19</td>
+                                <td className='col-span-1 flex justify-center items-center'>
+                                    <img src='../../../src/StorePanel/assets/img/product_img/p_1.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+                                </td>
+                                <td className='col-span-1'>ایرپاد</td>
+                                <td className='col-span-1'>600000</td>
+                                <td className='col-span-1'>50</td>
+                            </tr>
+                            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
+                                                h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 
+                                                rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+                                <td className='col-span-1'>18</td>
+                                <td className='col-span-1 flex justify-center items-center'>
+                                    <img src='../../../src/StorePanel/assets/img/product_img/p_11.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+                                </td>
+                                <td className='col-span-1'>PS5</td>
+                                <td className='col-span-1'>1720000</td>
+                                <td className='col-span-1'>02</td>
+                            </tr>
+                            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
+                                                h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 
+                                                rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+                                <td className='col-span-1'>17</td>
+                                <td className='col-span-1 flex justify-center items-center'>
+                                    <img src='../../../src/StorePanel/assets/img/product_img/p_3.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+                                </td>
+                                <td className='col-span-1'>هدفون</td>
+                                <td className='col-span-1'>999000</td>
+                                <td className='col-span-1'>05</td>
+                            </tr>
+                            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
+                                                h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 
+                                                rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+                                <td className='col-span-1'>16</td>
+                                <td className='col-span-1 flex justify-center items-center'>
+                                    <img src='../../../src/StorePanel/assets/img/product_img/p_5.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+                                </td>
+                                <td className='col-span-1'>ساعت</td>
+                                <td className='col-span-1'>250000</td>
+                                <td className='col-span-1'>09</td>
+                            </tr>
+                            <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
+                                                h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 
+                                                rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+                                <td className='col-span-1'>15</td>
+                                <td className='col-span-1 flex justify-center items-center'>
+                                    <img src='../../../src/StorePanel/assets/img/product_img/p_6.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+                                </td>
+                                <td className='col-span-1'>شیائومی</td>
+                                <td className='col-span-1'>1750000</td>
+                                <td className='col-span-1'>7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div className="flex flex-col w-full p-6 overflow-x-auto">
+
+                    <PieChartWithCustomizedLabel />
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div className="grid grid-cols-2 mt-20 z-20 rounded-xl backdrop-blur-sm gap-2 w-[84%] 
+                p-6 min-h-[400px] overflow-x-auto">
+
+                <div className='grid'>
+                    <SimpleRadarChart />
+                </div>
+
+
+                <table className='grid w-full'>
+                    <h3 className='w-ful flex justify-center text-xl text-zinc-700 p-2 mb-2'>آخرین کاربران</h3>
+                    <thead>
+                        <tr className='w-full grid grid-cols-6 items-center bg-white/70 backdrop-blur-sm text-gray-700/90 rounded-xl
+                                    h-16 text-md justify-center text-center border border-gray-200 shadow-sm'>
+                            <th className='col-span-1 font-semibold'>آیدی</th>
+                            <th className='col-span-1 font-semibold'>پروفایل</th>
+                            <th className='col-span-1 font-semibold'>نام</th>
+                            <th className='col-span-1 font-semibold'>نام خانوادگی</th>
+                            <th className='col-span-2 font-semibold'>عضویت</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+                                                h-16 text-md justify-center text-center bg-white/40 hover:bg-blue-50/50
+                                                 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+                            <td className='col-span-1'>45</td>
+                            <td className='col-span-1 flex justify-center items-center'>
+                                <img src='../../../src/StorePanel/assets/img/profile.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+                            </td>
+                            <td className='col-span-1'>سید حسن</td>
+                            <td className='col-span-1'>تقوی</td>
+                            <td className='col-span-2 text-sm'>1404/10/17</td>
+                        </tr>
+                        <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+                                                h-16 text-md justify-center text-center bg-white/40 hover:bg-blue-50/50
+                                                 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+                            <td className='col-span-1'>46</td>
+                            <td className='col-span-1 flex justify-center items-center'>
+                                <img src='../../../src/StorePanel/assets/img/profile_2.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+                            </td>
+                            <td className='col-span-1'>دانیال</td>
+                            <td className='col-span-1'>شادی</td>
+                            <td className='col-span-2 text-sm'>1404/01/07</td>
+                        </tr>
+                        <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+                                                h-16 text-md justify-center text-center bg-white/40 hover:bg-blue-50/50
+                                                 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+                            <td className='col-span-1'>47</td>
+                            <td className='col-span-1 flex justify-center items-center'>
+                                <img src='../../../src/StorePanel/assets/img/profile.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+                            </td>
+                            <td className='col-span-1'>علی</td>
+                            <td className='col-span-1'>کشاورز</td>
+                            <td className='col-span-2 text-sm'>1403/09/09</td>
+                        </tr>
+                        <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+                                                h-16 text-md justify-center text-center bg-white/40 hover:bg-blue-50/50
+                                                 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+                            <td className='col-span-1'>48</td>
+                            <td className='col-span-1 flex justify-center items-center'>
+                                <img src='../../../src/StorePanel/assets/img/profile_2.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+                            </td>
+                            <td className='col-span-1'>احسان</td>
+                            <td className='col-span-1'>رسالت</td>
+                            <td className='col-span-2 text-sm'>1403/01/20</td>
+                        </tr>
+                        <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+                                                h-16 text-md justify-center text-center bg-white/40 hover:bg-blue-50/50
+                                                 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+                            <td className='col-span-1'>49</td>
+                            <td className='col-span-1 flex justify-center items-center'>
+                                <img src='../../../src/StorePanel/assets/img/profile.jpg'
+                                    className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+                            </td>
+                            <td className='col-span-1'>محمد</td>
+                            <td className='col-span-1'>تقوی</td>
+                            <td className='col-span-2 text-sm'>1403/10/17</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
         </motion.div>
     )
 }
