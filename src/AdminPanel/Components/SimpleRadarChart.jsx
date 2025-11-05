@@ -10,7 +10,7 @@ const data = [
   },
   {
     subject: 'محصولات',
-    A: 98,
+    A: 88,
     B: 130,
     fullMark: 150,
   },
@@ -28,13 +28,13 @@ const data = [
   },
   {
     subject: 'تیکت ها',
-    A: 85,
+    A: 100,
     B: 90,
     fullMark: 150,
   },
   {
     subject: 'کامنت ها',
-    A: 65,
+    A: 100,
     B: 85,
     fullMark: 150,
   },

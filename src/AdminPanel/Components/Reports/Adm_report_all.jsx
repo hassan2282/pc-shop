@@ -149,7 +149,7 @@ function Adm_report_all() {
             </div>
 
 
-            <div className='grid grid-cols-2 gap-2 min-md:w-[84%] w-full mt-20 backdrop-blur-sm 
+            <div className='grid grid-cols-2 gap-2 min-md:w-[84%] w-full mt-10 backdrop-blur-sm 
                             z-30 justify-center items-center p-3 rounded-xl'>
 
                 <div className='flex flex-col w-full p-6 min-h-100 overflow-x-auto'>
@@ -237,7 +237,7 @@ function Adm_report_all() {
             </div>
 
 
-            <div className="grid grid-cols-2 mt-20 z-20 rounded-xl backdrop-blur-sm gap-2 w-[84%] 
+            <div className="grid grid-cols-2 mt-10 z-20 rounded-xl backdrop-blur-sm gap-2 w-[84%] 
                 p-6 min-h-[400px] overflow-x-auto">
 
                 <div className='grid'>
