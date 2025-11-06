@@ -4,7 +4,7 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'r
 const data = [
   {
     subject: 'سفارشات',
-    A: 120,
+    A: 101,
     B: 110,
     fullMark: 150,
   },
@@ -43,7 +43,8 @@ const data = [
 // #endregion
 const SimpleRadarChart = () => {
   return (
-    <div style={{ width: '100%', height: '400px', maxWidth: '500px' }}>
+    <div
+    className='flex w-full h-full'>
       <RadarChart
         width={500}
         height={400}
