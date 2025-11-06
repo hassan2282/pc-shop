@@ -1,8 +1,9 @@
-import { TbArrowDown, TbArrowUp, TbEditCircle, TbEyeFilled, TbTrashFilled, TbX } from 'react-icons/tb'
+import { TbArrowDown, TbArrowUp } from 'react-icons/tb'
 import { motion } from 'motion/react'
 import SameDataComposedChart from '../SameDataComposedChart'
 import PieChartWithCustomizedLabel from '../PieChartWithCustomizedLabel'
 import SimpleRadarChart from '../SimpleRadarChart'
+import CustomShapeBarChart from '../CustomShapeBarChart'
 
 function Adm_report_all() {
 
@@ -141,21 +142,22 @@ function Adm_report_all() {
 
             </div>
 
-            <div className='flex flex-row min-md:w-[84%] max-sm:h-[17rem] w-full mt-3 bg-white/30 backdrop-blur-sm 
+            <div className='flex flex-col min-md:w-[84%] max-sm:h-[17rem] w-full mt-3 bg-white/30 backdrop-blur-sm 
                             z-30 justify-center items-center p-5 rounded-xl'>
-
+                <h2 className='flex flex-row justify-center items-center text-zinc-700 text-2xl max-sm:text-[1.3rem] max-sm:mt-5'>نسبت فروش به کاربران</h2>
                 <SameDataComposedChart />
 
             </div>
 
 
-            <div className='grid grid-cols-2 gap-2 min-md:w-[84%] w-full mt-10 backdrop-blur-sm 
-                            z-30 justify-center items-center p-3 rounded-xl'>
+            <div className='grid grid-cols-2 max-lg:flex max-lg:flex-col max-lg:w-full gap-5 
+                            min-lg:w-[84%] w-full max-md:mt-3 min-md:mt-10 min-w-[25rem] 
+                            z-30 justify-center items-center p-3 rounded-xl overflow-x-clip'>
 
-                <div className='flex flex-col w-full p-6 min-h-100 overflow-x-auto'>
-                    <h3 className='w-ful flex justify-center text-xl text-zinc-700 p-2 mb-2'>آخرین محصولات</h3>
-                    <table className='w-full'>
+                <div className='grid w-full'>
+                    <table className='grid w-full backdrop-blur-sm'>
                         <thead>
+                            <span className='w-ful flex justify-center text-xl text-zinc-700 p-2 mb-2'>برترین محصولات</span>
                             <tr className='w-full grid grid-cols-5 items-center bg-white/90 backdrop-blur-sm
                                              text-gray-700/90 rounded-xl
                                                h-16 text-md justify-center text-center border border-gray-200 shadow-sm'>
@@ -163,12 +165,12 @@ function Adm_report_all() {
                                 <th className='col-span-1 font-semibold'>تصویر</th>
                                 <th className='col-span-1 font-semibold'>عنوان</th>
                                 <th className='col-span-1 font-semibold'>قیمت</th>
-                                <th className='col-span-1 font-semibold'>موجودی</th>
+                                <th className='col-span-1 font-semibold'>فروش</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
-                                                h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 
+                                                h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-500/10 
                                                 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
                                 <td className='col-span-1'>19</td>
                                 <td className='col-span-1 flex justify-center items-center'>
@@ -179,7 +181,7 @@ function Adm_report_all() {
                                 <td className='col-span-1'>50</td>
                             </tr>
                             <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
-                                                h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 
+                                                h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-500/10 
                                                 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
                                 <td className='col-span-1'>18</td>
                                 <td className='col-span-1 flex justify-center items-center'>
@@ -187,10 +189,10 @@ function Adm_report_all() {
                                 </td>
                                 <td className='col-span-1'>PS5</td>
                                 <td className='col-span-1'>1720000</td>
-                                <td className='col-span-1'>02</td>
+                                <td className='col-span-1'>42</td>
                             </tr>
                             <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
-                                                h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 
+                                                h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-500/10 
                                                 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
                                 <td className='col-span-1'>17</td>
                                 <td className='col-span-1 flex justify-center items-center'>
@@ -198,10 +200,10 @@ function Adm_report_all() {
                                 </td>
                                 <td className='col-span-1'>هدفون</td>
                                 <td className='col-span-1'>999000</td>
-                                <td className='col-span-1'>05</td>
+                                <td className='col-span-1'>25</td>
                             </tr>
                             <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
-                                                h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 
+                                                h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-500/10 
                                                 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
                                 <td className='col-span-1'>16</td>
                                 <td className='col-span-1 flex justify-center items-center'>
@@ -209,10 +211,10 @@ function Adm_report_all() {
                                 </td>
                                 <td className='col-span-1'>ساعت</td>
                                 <td className='col-span-1'>250000</td>
-                                <td className='col-span-1'>09</td>
+                                <td className='col-span-1'>9</td>
                             </tr>
                             <tr className='w-full grid grid-cols-5 items-center text-gray-600/90
-                                                h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 
+                                                h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-500/10 
                                                 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
                                 <td className='col-span-1'>15</td>
                                 <td className='col-span-1 flex justify-center items-center'>
@@ -225,98 +227,106 @@ function Adm_report_all() {
                         </tbody>
                     </table>
                 </div>
-                <div className="flex flex-col w-full p-6 overflow-x-auto">
 
-                    <PieChartWithCustomizedLabel />
+                <div className='grid w-full'>
+                    <table className='grid w-full backdrop-blur-sm'>
+                        <span className='w-ful flex justify-center text-xl text-zinc-700 p-2 mb-2'>برترین کاربران</span>
+                        <thead>
+                            <tr className='w-full grid grid-cols-6 items-center bg-white/70 text-gray-700/90 rounded-xl
+                                        h-16 text-md justify-center text-center border border-gray-200 shadow-sm'>
+                                <th className='col-span-1 font-semibold'>آیدی</th>
+                                <th className='col-span-1 font-semibold'>پروفایل</th>
+                                <th className='col-span-1 font-semibold'>نام</th>
+                                <th className='col-span-1 font-semibold'>خرید</th>
+                                <th className='col-span-2 font-semibold'>عضویت</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+                                                    h-16 text-md justify-center text-center bg-white/40 hover:bg-blue-500/10
+                                                    rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+                                <td className='col-span-1'>45</td>
+                                <td className='col-span-1 flex justify-center items-center'>
+                                    <img src='../../../src/StorePanel/assets/img/profile.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+                                </td>
+                                <td className='col-span-1 text-sm'>حسن تقوی</td>
+                                <td className='col-span-1 text-sm'>56 میلیون</td>
+                                <td className='col-span-2 text-sm'>1404/10/17</td>
+                            </tr>
+                            <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+                                                    h-16 text-md justify-center text-center bg-white/40 hover:bg-blue-500/10
+                                                    rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+                                <td className='col-span-1'>46</td>
+                                <td className='col-span-1 flex justify-center items-center'>
+                                    <img src='../../../src/StorePanel/assets/img/profile_2.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+                                </td>
+                                <td className='col-span-1 text-sm'>دانیال شادی</td>
+                                <td className='col-span-1 text-sm'>12.7 میلیون</td>
+                                <td className='col-span-2 text-sm'>1404/01/07</td>
+                            </tr>
+                            <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+                                                    h-16 text-md justify-center text-center bg-white/40 hover:bg-blue-500/10
+                                                    rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+                                <td className='col-span-1'>47</td>
+                                <td className='col-span-1 flex justify-center items-center'>
+                                    <img src='../../../src/StorePanel/assets/img/profile.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+                                </td>
+                                <td className='col-span-1 text-sm'>علی کشاورز</td>
+                                <td className='col-span-1 text-sm'>5 میلیون</td>
+                                <td className='col-span-2 text-sm'>1403/09/09</td>
+                            </tr>
+                            <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+                                                    h-16 text-md justify-center text-center bg-white/40 hover:bg-blue-500/10
+                                                    rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+                                <td className='col-span-1'>48</td>
+                                <td className='col-span-1 flex justify-center items-center'>
+                                    <img src='../../../src/StorePanel/assets/img/profile_2.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+                                </td>
+                                <td className='col-span-1 text-sm'>احسان رسالت</td>
+                                <td className='col-span-1 text-sm'>3.53 میلیون</td>
+                                <td className='col-span-2 text-sm'>1403/01/20</td>
+                            </tr>
+                            <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
+                                                    h-16 text-md justify-center text-center bg-white/40 hover:bg-blue-500/10
+                                                    rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+                                <td className='col-span-1'>49</td>
+                                <td className='col-span-1 flex justify-center items-center'>
+                                    <img src='../../../src/StorePanel/assets/img/profile.jpg'
+                                        className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+                                </td>
+                                <td className='col-span-1 text-sm'>محمد تقوی</td>
+                                <td className='col-span-1 text-sm'>2.1 میلیون</td>
+                                <td className='col-span-2 text-sm'>1403/10/17</td>
+                            </tr>
 
+                        </tbody>
+                    </table>
                 </div>
-
-
-
 
             </div>
 
 
-            <div className="grid grid-cols-2 mt-10 z-20 rounded-xl backdrop-blur-sm gap-2 w-[84%] 
-                p-6 min-h-[400px] overflow-x-auto">
+            <div className='flex flex-row max-lg:flex max-lg:flex-col gap-5 
+                            w-full max-md:mt-3 min-md:mt-10 min-w-[25rem] max-sm:w-[75%] 
+                            z-30 justify-center items-center p-3 rounded-xl'>
 
-                <div className='grid'>
+                <div className='rounded-2xl'>
+                    <PieChartWithCustomizedLabel />
+
+                </div>
+
+                <div className='rounded-2xl'>
                     <SimpleRadarChart />
                 </div>
 
+            </div>
 
-                <table className='grid w-full'>
-                    <h3 className='w-ful flex justify-center text-xl text-zinc-700 p-2 mb-2'>آخرین کاربران</h3>
-                    <thead>
-                        <tr className='w-full grid grid-cols-6 items-center bg-white/70 backdrop-blur-sm text-gray-700/90 rounded-xl
-                                    h-16 text-md justify-center text-center border border-gray-200 shadow-sm'>
-                            <th className='col-span-1 font-semibold'>آیدی</th>
-                            <th className='col-span-1 font-semibold'>پروفایل</th>
-                            <th className='col-span-1 font-semibold'>نام</th>
-                            <th className='col-span-1 font-semibold'>نام خانوادگی</th>
-                            <th className='col-span-2 font-semibold'>عضویت</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
-                                                h-16 text-md justify-center text-center bg-white/40 hover:bg-blue-50/50
-                                                 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
-                            <td className='col-span-1'>45</td>
-                            <td className='col-span-1 flex justify-center items-center'>
-                                <img src='../../../src/StorePanel/assets/img/profile.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
-                            </td>
-                            <td className='col-span-1'>سید حسن</td>
-                            <td className='col-span-1'>تقوی</td>
-                            <td className='col-span-2 text-sm'>1404/10/17</td>
-                        </tr>
-                        <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
-                                                h-16 text-md justify-center text-center bg-white/40 hover:bg-blue-50/50
-                                                 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
-                            <td className='col-span-1'>46</td>
-                            <td className='col-span-1 flex justify-center items-center'>
-                                <img src='../../../src/StorePanel/assets/img/profile_2.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
-                            </td>
-                            <td className='col-span-1'>دانیال</td>
-                            <td className='col-span-1'>شادی</td>
-                            <td className='col-span-2 text-sm'>1404/01/07</td>
-                        </tr>
-                        <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
-                                                h-16 text-md justify-center text-center bg-white/40 hover:bg-blue-50/50
-                                                 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
-                            <td className='col-span-1'>47</td>
-                            <td className='col-span-1 flex justify-center items-center'>
-                                <img src='../../../src/StorePanel/assets/img/profile.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
-                            </td>
-                            <td className='col-span-1'>علی</td>
-                            <td className='col-span-1'>کشاورز</td>
-                            <td className='col-span-2 text-sm'>1403/09/09</td>
-                        </tr>
-                        <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
-                                                h-16 text-md justify-center text-center bg-white/40 hover:bg-blue-50/50
-                                                 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
-                            <td className='col-span-1'>48</td>
-                            <td className='col-span-1 flex justify-center items-center'>
-                                <img src='../../../src/StorePanel/assets/img/profile_2.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
-                            </td>
-                            <td className='col-span-1'>احسان</td>
-                            <td className='col-span-1'>رسالت</td>
-                            <td className='col-span-2 text-sm'>1403/01/20</td>
-                        </tr>
-                        <tr className='w-full grid grid-cols-6 items-center text-gray-600/90
-                                                h-16 text-md justify-center text-center bg-white/40 hover:bg-blue-50/50
-                                                 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
-                            <td className='col-span-1'>49</td>
-                            <td className='col-span-1 flex justify-center items-center'>
-                                <img src='../../../src/StorePanel/assets/img/profile.jpg'
-                                    className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
-                            </td>
-                            <td className='col-span-1'>محمد</td>
-                            <td className='col-span-1'>تقوی</td>
-                            <td className='col-span-2 text-sm'>1403/10/17</td>
-                        </tr>
 
-                    </tbody>
-                </table>
+            <div className='flex flex-col min-md:w-[84%] w-full min-lg:mt-20 bg-white/30 backdrop-blur-sm 
+                            z-30 justify-center items-center p-5 rounded-xl max-sm:h-[20rem]'>
+                <h2 className='flex flex-row justify-center items-center text-zinc-700
+                            text-2xl max-sm:text-[1.1rem] max-sm:mt-5'>پرفروش ترین محصولات</h2>
+                <CustomShapeBarChart />
 
             </div>
         </motion.div>
