@@ -78,11 +78,11 @@ function Register() {
                         <motion.form
                             initial={{
                                 opacity: 0,
-                                x: 100,
+                                y: 60,
                             }}
                             animate={{
                                 opacity: 1,
-                                x: 0,
+                                y: 0,
                                 transition: { delay: 0.5 },
                                 transition: { duration: 1 },
                             }}
@@ -98,14 +98,14 @@ function Register() {
                                     <div className="">
                                         <motion.input
                                             initial={{
-                                                scale: 1.2,
-                                                y: 30,
+                                                opacity: 0,
+                                                scale: 0.8,
                                             }}
                                             animate={{
+                                                opacity: 1,
                                                 scale: 1,
-                                                y: 0,
-                                                transition: { delay: 0.4 },
-                                                transition: { duration: 1.2 }
+                                                transition: { duration: 0.5 },
+                                                transition: { delay: 0.3 }
                                             }}
 
                                             minLength={6}
@@ -126,14 +126,14 @@ function Register() {
                                     <div className={` ${errors.email && 'border-red-500 border-2 rounded-lg animate-pulse'} `}>
                                         <motion.input
                                             initial={{
-                                                scale: 1.2,
-                                                y: 30,
+                                                opacity: 0,
+                                                scale: 0.8,
                                             }}
                                             animate={{
+                                                opacity: 1,
                                                 scale: 1,
-                                                y: 0,
-                                                transition: { delay: 0.6 },
-                                                transition: { duration: 1.4 }
+                                                transition: { duration: 0.5 },
+                                                transition: { delay: 0.5 }
                                             }}
                                             maxLength={255}
                                             onChange={handleChange}
@@ -151,14 +151,14 @@ function Register() {
                                     <div className={`form-account-row ${errors.frontError && 'border-red-500 border-2 rounded-lg animate-pulse'} `}>
                                         <motion.input
                                             initial={{
-                                                scale: 1.2,
-                                                x: -60,
+                                                opacity: 0,
+                                                scale: 0.8,
                                             }}
                                             animate={{
+                                                opacity: 1,
                                                 scale: 1,
-                                                x: 0,
-                                                transition: { delay: 0.8 },
-                                                transition: { duration: 1.6 }
+                                                transition: { duration: 0.5 },
+                                                transition: { delay: 0.7 }
                                             }}
                                             minLength={6}
                                             maxLength={255}
@@ -176,14 +176,14 @@ function Register() {
                                     <div className={` ${errors.frontError && 'border-red-500 border-2 rounded-lg animate-pulse'} `}>
                                         <motion.input
                                             initial={{
-                                                scale: 1.2,
-                                                x: -30,
+                                                opacity: 0,
+                                                scale: 0.8,
                                             }}
                                             animate={{
+                                                opacity: 1,
                                                 scale: 1,
-                                                x: 0,
-                                                transition: { delay: 1 },
-                                                transition: { duration: 1.8 }
+                                                transition: { duration: 0.5 },
+                                                transition: { delay: 0.9 }
                                             }}
                                             minLength={6}
                                             maxLength={255}
@@ -191,7 +191,8 @@ function Register() {
                                             value={formData.password_confirmation}
                                             required
                                             className="w-full rounded-full border p-3 border-gray-300 bg-white/40
-                                             text-dark placeholder-gray-700 outline-none shadow-xs shadow-black/40 hover:scale-102 hover:shadow-md duration-300" name="password_confirmation"
+                                             text-dark placeholder-gray-700 outline-none shadow-xs shadow-black/40 
+                                             hover:scale-102 hover:shadow-md duration-300" name="password_confirmation"
                                             type="password"
                                             placeholder=" تکرار کلمه عبور شما"
                                         />
@@ -201,13 +202,13 @@ function Register() {
                                 <motion.div
                                     initial={{
                                         opacity: 0,
-                                        y: -30
+                                        scale: 0.8,
                                     }}
                                     animate={{
                                         opacity: 1,
-                                        y: 0,
-                                        transition: { delay: 0.6 },
-                                        transition: { duration: 0.8 },
+                                        scale: 1,
+                                        transition: { duration: 0.5 },
+                                        transition: { delay: 1.1 }
                                     }}
                                     className="flex w-full justify-center items-center">
                                     <div className="flex items-center justify-center">
@@ -221,13 +222,13 @@ function Register() {
                                 <motion.div
                                     initial={{
                                         opacity: 0,
-                                        y: 30
+                                        scale: 0.8,
                                     }}
                                     animate={{
                                         opacity: 1,
-                                        y: 0,
-                                        transition: { delay: 1.6 },
-                                        transition: { duration: 1 },
+                                        scale: 1,
+                                        transition: { duration: 0.5 },
+                                        transition: { delay: 1.3 }
                                     }}
                                     className="flex flex-col space-y-2 w-full justify-center items-center">
                                     <button type="submit" className="w-full p-3 bg-blue-500/20 shadow-xs hover:shadow-md cursor-pointer
