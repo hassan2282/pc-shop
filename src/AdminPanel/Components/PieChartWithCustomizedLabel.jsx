@@ -10,7 +10,7 @@ const data = [
 
 // #endregion
 const RADIAN = Math.PI / 180;
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const COLORS = ['#0347F4', '#3BB2FF', '#1382FE', '#3BB2FF'];
 
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
   if (cx == null || cy == null || innerRadius == null || outerRadius == null) {
