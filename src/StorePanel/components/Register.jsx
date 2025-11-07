@@ -87,25 +87,23 @@ function Register() {
                                 transition: { duration: 1 },
                             }}
                             onSubmit={handleSubmit} className="flex flex-col justify-center items-center min-sm:w-[50%]
-                                                max-sm:w-full bg-[#234c4e]/30 
-                                                backdrop-blur-sm border-t shadow-lg shadow-black p-4 md:p-8 rounded-3xl ">
+                                                max-sm:w-full bg-white/30 
+                                                backdrop-blur-sm shadow-sm shadow-black/20 p-4 md:p-8 rounded-3xl ">
                             <div className="max-sm:flex w-full h-full justify-center items-center grid
-                             md:grid-cols-2 min-md:gap-4">
+                             md:grid-cols-2 min-md:gap-4" dir="rtl">
                                 <div
 
                                     className="w-full">
-                                    <div className="form-account-title text-white"><span>*</span> نام کاربری</div>
-                                    <div className="form-account-row">
+                                    <div className="text-white"><span>*</span> نام کاربری</div>
+                                    <div className="">
                                         <motion.input
                                             initial={{
                                                 scale: 1.2,
                                                 y: 30,
-                                                boxShadow: '5px 5px 100px black',
                                             }}
                                             animate={{
                                                 scale: 1,
                                                 y: 0,
-                                                boxShadow: '5px 5px 5px rgba(70 130 130)',
                                                 transition: { delay: 0.4 },
                                                 transition: { duration: 1.2 }
                                             }}
@@ -115,26 +113,25 @@ function Register() {
                                             onChange={handleChange}
                                             value={formData.username}
                                             required
-                                            className="input_second input_all w-full rounded-lg border border-gray-300 bg-white/20 backdrop-blur text-dark placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#52b1b6]"
+                                            className="w-full rounded-full border p-3 border-gray-300 bg-white/40
+                                             text-dark placeholder-gray-700 outline-none shadow-xs shadow-black/30 hover:scale-102 hover:shadow-md duration-300"
                                             name="username"
                                             type="text"
-                                            placeholder=" نام کاربری شما"
+                                            placeholder="نام کاربری"
                                         />
                                     </div>
                                 </div>
                                 <div className="w-full">
-                                    <div className="form-account-title text-white"><span>*</span> ایمیل</div>
-                                    <div className={`form-account-row ${errors.email && 'border-red-500 border-2 rounded-lg animate-pulse'} `}>
+                                    <div className=" text-white"><span>*</span> ایمیل</div>
+                                    <div className={` ${errors.email && 'border-red-500 border-2 rounded-lg animate-pulse'} `}>
                                         <motion.input
                                             initial={{
                                                 scale: 1.2,
                                                 y: 30,
-                                                boxShadow: '5px 5px 100px black',
                                             }}
                                             animate={{
                                                 scale: 1,
                                                 y: 0,
-                                                boxShadow: '5px 5px 5px rgba(70 130 130)',
                                                 transition: { delay: 0.6 },
                                                 transition: { duration: 1.4 }
                                             }}
@@ -142,8 +139,8 @@ function Register() {
                                             onChange={handleChange}
                                             value={formData.email}
                                             required
-                                            className="input_second input_all w-full rounded-lg border border-gray-300 bg-white/20 backdrop-blur text-dark placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#52b1b6]"
-                                            name="email"
+                                            className="w-full rounded-full border p-3 border-gray-300 bg-white/40
+                                             text-dark placeholder-gray-700 outline-none shadow-xs shadow-black/30 hover:scale-102 hover:shadow-md duration-300" name="email"
                                             type="email"
                                             placeholder=" ایمیل شما"
                                         />
@@ -156,12 +153,10 @@ function Register() {
                                             initial={{
                                                 scale: 1.2,
                                                 x: -60,
-                                                boxShadow: '5px 5px 100px black',
                                             }}
                                             animate={{
                                                 scale: 1,
                                                 x: 0,
-                                                boxShadow: '5px 5px 5px rgba(70 130 130)',
                                                 transition: { delay: 0.8 },
                                                 transition: { duration: 1.6 }
                                             }}
@@ -169,26 +164,24 @@ function Register() {
                                             maxLength={255}
                                             onChange={handleChange}
                                             value={formData.password}
-                                            className="input_second input_all w-full rounded-lg border border-gray-300 bg-white/20 backdrop-blur text-dark placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#52b1b6]"
-                                            name="password"
+                                            className="w-full rounded-full border p-3 border-gray-300 bg-white/40
+                                             text-dark placeholder-gray-700 outline-none shadow-xs shadow-black/30 hover:scale-102 hover:shadow-md duration-300"                                            name="password"
                                             type="password"
                                             placeholder=" کلمه عبور شما"
                                         />
                                     </div>
                                 </div>
                                 <div className="w-full">
-                                    <div className="form-account-title text-white"><span>*</span> تکرار کلمه عبور</div>
-                                    <div className={`form-account-row ${errors.frontError && 'border-red-500 border-2 rounded-lg animate-pulse'} `}>
+                                    <div className=" text-white"><span>*</span> تکرار کلمه عبور</div>
+                                    <div className={` ${errors.frontError && 'border-red-500 border-2 rounded-lg animate-pulse'} `}>
                                         <motion.input
                                             initial={{
                                                 scale: 1.2,
                                                 x: -30,
-                                                boxShadow: '5px 5px 100px black',
                                             }}
                                             animate={{
                                                 scale: 1,
                                                 x: 0,
-                                                boxShadow: '5px 5px 5px rgba(70 130 130)',
                                                 transition: { delay: 1 },
                                                 transition: { duration: 1.8 }
                                             }}
@@ -197,8 +190,8 @@ function Register() {
                                             onChange={handleChange}
                                             value={formData.password_confirmation}
                                             required
-                                            className="input_second input_all w-full rounded-lg border border-gray-300 bg-white/20 backdrop-blur text-dark placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#52b1b6]"
-                                            name="password_confirmation"
+                                            className="w-full rounded-full border p-3 border-gray-300 bg-white/40
+                                             text-dark placeholder-gray-700 outline-none shadow-xs shadow-black/40 hover:scale-102 hover:shadow-md duration-300" name="password_confirmation"
                                             type="password"
                                             placeholder=" تکرار کلمه عبور شما"
                                         />
@@ -219,11 +212,9 @@ function Register() {
                                     className="flex w-full justify-center items-center">
                                     <div className="flex items-center justify-center">
                                         <label className="checkbox-form checkbox-primary flex items-center justify-center">
-                                            {/* <input type="checkbox" id="agree" className="" /> */}
-                                            {/* <span className="checkbox-check ml-2"></span> */}
                                         </label>
                                         <label htmlFor="agree" className="text-sm text-white">
-                                            تمامی <a href="#" className="text-dark underline text-center">شرایط و قوانین</a>  استفاده از سرویس‌های سایت مَسای را به دقت مطالعه کرده و با آنها موافقت کامل دارم و
+                                            تمامی <a href="#" className="text-dark underline text-center">شرایط و قوانین</a>  استفاده از سرویس‌های سایت مَسای را به دقت مطالعه کرده و با آنها موافقت کامل دارم
                                         </label>
                                     </div>
                                 </motion.div>
@@ -238,15 +229,14 @@ function Register() {
                                         transition: { delay: 1.6 },
                                         transition: { duration: 1 },
                                     }}
-                                    className="flex flex-col w-full justify-center items-center">
-                                    <button type="submit" className="btn big_btn btn-main-masai w-full px-6 
-                                        bg-[#52b1b6] hover:bg-[#3d9ca1] text-dark rounded-lg font-bold transition-colors 
-                                        duration-300 flex justify-center items-center">
+                                    className="flex flex-col space-y-2 w-full justify-center items-center">
+                                    <button type="submit" className="w-full p-3 bg-blue-500/20 shadow-xs hover:shadow-md cursor-pointer
+                                     hover:scale-102 shadow-zinc-500 rounded-full duration-300 flex justify-center items-center">
                                         {isLoading ? <AiOutlineLoading className="animate-spin" size={20} /> : 'عضویت'}
                                     </button>
                                     <p className="text-white">
                                         <span>قبلا ثبت نام کرده اید؟</span>
-                                        <Link to="/store/login" className="text-lg underline  text-[#52b1b6] hover:text-[#3d9ca1] transition-colors">ورود</Link>
+                                        <Link to="/store/login" className="text-lg underline mx-2 text-zinc-700 hover:text-[#3d9ca1] transition-colors">ورود</Link>
                                     </p>
                                 </motion.div>
 
