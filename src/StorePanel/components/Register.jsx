@@ -87,10 +87,10 @@ function Register() {
                                 transition: { duration: 1 },
                             }}
                             onSubmit={handleSubmit} className="flex flex-col justify-center items-center min-sm:w-[50%]
-                                                max-sm:w-full bg-white/30 
+                                                w-full bg-white/30 
                                                 backdrop-blur-sm shadow-sm shadow-black/20 p-4 md:p-8 rounded-3xl ">
-                            <div className="max-sm:flex w-full h-full justify-center items-center grid
-                             md:grid-cols-2 min-md:gap-4" dir="rtl">
+                            <div className="w-full h-full justify-center items-center grid
+                             min-md:grid-cols-2 min-md:gap-4" dir="rtl">
                                 <div
 
                                     className="w-full">
@@ -231,7 +231,7 @@ function Register() {
                                         transition: { delay: 1.3 }
                                     }}
                                     className="flex flex-col space-y-2 w-full justify-center items-center">
-                                    <button type="submit" className="w-full p-3 bg-blue-500/20 shadow-xs hover:shadow-md cursor-pointer
+                                    <button type="submit" className="w-full p-3 bg-blue-300 hover:bg-sky-800 hover:text-white shadow-xs hover:shadow-md cursor-pointer
                                      hover:scale-102 shadow-zinc-500 rounded-full duration-300 flex justify-center items-center">
                                         {isLoading ? <AiOutlineLoading className="animate-spin" size={20} /> : 'عضویت'}
                                     </button>
