@@ -1,14 +1,14 @@
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
 
-const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink', '#333'];
+const colors = ['#086FFF', '#66C1FD', '#28A4FD', '#3FB7F3', '#1080FD', '#42B8FD', '#0158FD'];
 
 // #region Sample data
 const data = [
   {
     name: 'ایرپاد پرو 2',
-    uv: 3900,
-    pv: 2400,
-    amt: 2400,
+    uv: 3200,
+    pv: 2100,
+    amt: 2200,
   },
   {
     name: 'هندزفری',
@@ -42,8 +42,8 @@ const data = [
   },
   {
     name: 'روبیک',
-    uv: 3490,
-    pv: 4300,
+    uv: 1190,
+    pv: 2300,
     amt: 2100,
   },
 ];
