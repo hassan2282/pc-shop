@@ -322,7 +322,7 @@ function Adm_report_all() {
             </div>
 
 
-            <div className='flex flex-col min-md:w-[84%] w-full min-lg:mt-20 bg-white/30 backdrop-blur-sm 
+            <div className='flex flex-col min-md:w-[84%] w-full min-lg:mt-20 bg-white/20 backdrop-blur-sm 
                             z-30 justify-center items-center p-5 rounded-xl max-sm:h-[20rem]'>
                 <h2 className='flex flex-row justify-center items-center text-zinc-700
                             text-2xl max-sm:text-[1.1rem] max-sm:mt-5'>پرفروش ترین محصولات</h2>
