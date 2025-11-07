@@ -219,7 +219,7 @@ function Login() {
                     className="rounded-xl">
                       <p>
                         <span>کاربر جدید هستید؟</span>
-                        <Link to="/store/register" className="text-lg">
+                        <Link to="/store/register" className="text-lg mx-2 hover:text-blue-600">
                           عضویت
                         </Link>
                       </p>
