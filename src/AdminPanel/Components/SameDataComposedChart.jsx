@@ -96,7 +96,7 @@ const SameDataComposedChart = () => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="کاربران" fill="#F6339A" />
+        <Bar dataKey="کاربران" fill="#0347F4" />
         <Line type="monotone" dataKey="فروش" stroke="#57534D" />
       </ComposedChart>
     </div>
