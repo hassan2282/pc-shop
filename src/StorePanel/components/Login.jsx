@@ -200,8 +200,8 @@ function Login() {
                           "ورود"
                         )}
 
-                        <span className="absolute w-15 h-15 rotate-45 z-30 backdrop-blur-md bg-blue-500/70
-                        -left-12  scale-300 group-hover:translate-x-95 duration-700 max-md:hidden"></span>
+                        <span className="absolute w-15 h-15 rotate-45 z-30 backdrop-blur-md bg-white/60
+                        -left-12  scale-300 group-hover:translate-x-90 duration-700 max-md:hidden"></span>
                       </button>
                     </motion.div>
                     <motion.div 
