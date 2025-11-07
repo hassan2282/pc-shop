@@ -57,8 +57,8 @@ function Login() {
 
   return (
       <div className="h-screen w-screen bg-[url(/src/StorePanel/assets/img/abstract-bg2.jpg)] fixed bg-cover z-10">
-        <div className="w-full h-full flex flex-row z-20">
-          <div className="h-full min-md:basis-1/2 z-20 flex justify-center items-center">
+        <div className="w-full h-full flex flex-row z-20" dir="rtl">
+          <div className="h-full min-lg:basis-1/2 w-full z-20 flex justify-center items-center">
             <motion.div
               initial={{  
                 opacity: 0,
@@ -69,17 +69,17 @@ function Login() {
                 scale: 1,
                 transition: { duration: 0.5 },
               }}
-              className="flex flex-col justify-center items-center overflow-clip min-lg:w-[65%] w-[90%]
-               min-h-[70%] max-h-[90%] backdrop-blur-sm 
-              p-3 bg-[#eaf6f748] rounded-xl border-t-[#D2F5F9]">
+              className="flex flex-col xl:w-[60%] lg:w-[80%] md:w-[50%] sm:w-[70%] max-sm:w-[90%] h-auto justify-center 
+              items-center backdrop-blur-sm shadow-black/20
+              p-5 bg-[#eaf6f748] rounded-3xl shadow-xl border-t-[#D2F5F9]">
               {/* <header className="card-header">
                 <h3 className="card-title">
                   <span>ورود به حساب کاربری</span>
                 </h3>
               </header> */}
-              <div className="login_box">
-                <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center w-[95%]">
-                  <div className="row min-xl:space-y-5 w-full">
+              <div className="w-full h-full">
+                <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center w-[95%] h-full p-4">
+                  <div className="space-y-5 w-full h-full">
                     <motion.div
                       initial={{
                         opacity: 0,
@@ -91,18 +91,18 @@ function Login() {
                         transition: { duration: 1 },
                         transition: {delay: 0.4}
                       }}
-                      className="col-md-12 col-sm-12">
-                      <div className="form-account-title">
+                      className="w-full">
+                      <div className="text-zinc-800">
                         <span>*</span> ایمیل
                       </div>
-                      <div className="form-account-row">
+                      <div className="w-full">
                         <input
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
                           required
                           maxLength={255}
-                          className="input_second input_all"
+                          className="w-full p-2 h-14 rounded-full shadow-xs shadow-black/20 hover:shadow-lg bg-white/50"
                           type="email"
                           placeholder="ایمیل شما"
                         />
@@ -119,7 +119,7 @@ function Login() {
                         transition: { duration: 1 },
                         transition: {delay: 0.5}
                       }}
-                    className="col-md-12 col-sm-12">
+                    className="w-full">
                       <div className="form-account-title">
                         <span>*</span> کلمه عبور
                       </div>
@@ -131,7 +131,7 @@ function Login() {
                           required
                           minLength={6}
                           maxLength={255}
-                          className="input_second input_all"
+                          className="w-full p-2 h-14 rounded-full shadow-xs shadow-black/20 hover:shadow-lg duration-200 backdrop-blur-md bg-white/50"
                           type="password"
                           placeholder=" کلمه عبور شما"
                         />
@@ -149,9 +149,9 @@ function Login() {
                         transition: { duration: 1 },
                         transition: {delay: 0.6}
                       }}
-                    className="min-sm:col-6 flex w-full justify-center items-center">
-                      <div className="form-account-agree">
-                        <label className="checkbox-form checkbox-primary">
+                    className="flex w-full justify-center items-center">
+                      <div className="">
+                        <label className="">
                           <input type="checkbox" id="agree" />
                           <span className="checkbox-check"></span>
                         </label>
@@ -169,8 +169,8 @@ function Login() {
                         transition: { duration: 1 },
                         transition: {delay: 0.6}
                       }}
-                    className="min-sm:col-6 flex w-full justify-center items-center">
-                      <a className="faramooshi" href="/store/password-update">
+                    className="flex w-full justify-center items-center">
+                      <a className="" href="/store/password-update">
                         رمز عبور را فراموش کرده اید؟
                       </a>
                     </motion.div>
@@ -185,10 +185,11 @@ function Login() {
                         transition: { duration: 1 },
                         transition: {delay: 0.7}
                       }}
-                    className="flex w-full justify-center items-center ">
+                    className="flex w-[97%] justify-center items-center ">
                       <button
                         type="submit"
-                        className="btn big_btn btn-main-masai flex justify-center items-center"
+                        className="flex w-full relative justify-center items-center rounded-full overflow-clip shadow-sm shadow-black/60
+                         p-2 cursor-pointer hover:scale-102 active:scale-95 z-10 group border-dotted border-white border-1"
                       >
                         {isLoading ? (
                           <AiOutlineLoading
@@ -198,6 +199,9 @@ function Login() {
                         ) : (
                           "ورود"
                         )}
+
+                        <span className="absolute w-15 h-15 rotate-45 z-30 backdrop-blur-md bg-blue-500/70
+                        -left-12  scale-300 group-hover:translate-x-95 duration-700 max-md:hidden"></span>
                       </button>
                     </motion.div>
                     <motion.div 
@@ -212,7 +216,7 @@ function Login() {
                         transition: { duration: 1 },
                         transition: {delay: 0.8}
                       }}
-                    className="col-12 footer_login_reg text--center rounded-xl">
+                    className="rounded-xl">
                       <p>
                         <span>کاربر جدید هستید؟</span>
                         <Link to="/store/register" className="text-lg">
@@ -220,13 +224,11 @@ function Login() {
                         </Link>
                       </p>
                     </motion.div>
-                    <div className="col-12 "></div>
                   </div>
                 </form>
               </div>
             </motion.div>
           </div>
-          <div className="max-sm:basis-0 min-sm:basis-1/2"></div>
         </div>
       </div>
   );
