@@ -88,13 +88,13 @@ function Adm_all_users() {
 
             {
               users?.data &&
-              users?.data.map((user) => {
+              users?.data.map((user, index) => {
                 return (
 
                   <tr key={user.id} className='w-full grid grid-cols-10 items-center text-gray-600/90
                     h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50]
                      rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
-                    <td className='col-span-1'>3</td>
+                    <td className='col-span-1'>{index + 1}</td>
                     <td className='col-span-1'>{user.id}</td>
                     <td className='col-span-1 flex justify-center items-center'>
                       <img src='../../../src/StorePanel/assets/img/profile.jpg' className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
