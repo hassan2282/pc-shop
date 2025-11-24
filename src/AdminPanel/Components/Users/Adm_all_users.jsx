@@ -10,14 +10,14 @@ import apiClient from '../../../apiClient'
 
 function Adm_all_users() {
 
-  const [users, setUsers] = useState();
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const res = await apiClient.get('/admin/users');
         if (res.status >= 200 && res.status < 300) {
-          setUsers(res.data)
+          setUsers(Array.isArray(res.data.data) ? res.data.data : []);
         }
       } catch (err) {
         toast.error('اطلاعات کاربران یافت نشد!')
@@ -26,6 +26,19 @@ function Adm_all_users() {
 
     fetchUsers();
   }, []);
+
+
+  const deleteHandler = async (id) => {
+    try{
+      const res = await apiClient.delete(`/admin/users/${id}`);
+      if(res.status >= 200 && res.status < 300){
+        toast.success('کاربر با موفقیت حذف شد♥');
+         setUsers((prev) =>   prev.filter(user => user.id !== id));
+      }
+    }catch(err){
+      toast.error('متاسفانه در فرایند حذف کاربر مشکلی پیش اومده')
+    }
+  }
 
   return (
     <motion.div
@@ -87,8 +100,8 @@ function Adm_all_users() {
           <tbody className='*:hover:bg-blue-500/10'>
 
             {
-              users?.data &&
-              users?.data.map((user, index) => {
+              users &&
+              users.map((user, index) => {
                 return (
 
                   <tr key={user.id} className='w-full grid grid-cols-10 items-center text-gray-600/90
@@ -144,13 +157,14 @@ function Adm_all_users() {
                         }
                     </td>
                     <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                      <Link to="/admin/user/show" className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
+                      <Link to={`/admin/user/show/${user.id}`} className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
                         <TbEyeFilled size={20} />
                       </Link>
-                      <Link to="/admin/user/edit" className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                      <Link to={`/admin/user/edit/${user.id}`} 
+                       className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                         <TbEditCircle size={20} />
                       </Link>
-                      <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
+                      <Link onClick={() => deleteHandler(user.id)} className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
                         <TbTrashFilled size={20} />
                       </Link>
                     </td>
