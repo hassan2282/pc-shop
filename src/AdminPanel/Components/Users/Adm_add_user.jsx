@@ -1,20 +1,41 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
-import { TbUser, TbMail, TbLock, TbPhone, TbBuilding, TbCalendar, TbCheck } from 'react-icons/tb'
+import { TbUser, TbMail, TbLock, TbPhone, TbBuilding, TbCheck } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io'
+import apiClient from '../../../apiClient'
+import { toast } from 'react-toastify'
 
 function Adm_add_user() {
+  const [roles, setRoles] = useState([]);
+
   const [formData, setFormData] = useState({
-    name: '',
+    username: '',
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
-    confirmPassword: '',
+    password_confirmation: '',
     phone: '',
-    role: 'user',
-    status: 'active',
-    joinDate: new Date().toISOString().split('T')[0]
+    role_id: '',
   })
+
+
+  useEffect( () =>{
+    const fetchRoles = async () => {
+      try{
+        const response = await apiClient.get('/admin/roles');
+        if(response.status >= 200 && response.status < 300) {
+          setRoles(response.data);
+        }
+      }catch(err){
+        toast.error('مشکل در یافتن نقش های کاربران')
+      }
+    } 
+
+    fetchRoles();
+  },[])
+
 
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -22,15 +43,21 @@ function Adm_add_user() {
   const validateForm = () => {
     const newErrors = {}
 
-    if (!formData.name.trim()) {
-      newErrors.name = 'نام کاربری الزامی است'
+    if (!formData.username.trim()) {
+      newErrors.username = 'نام کاربری الزامی است'
+    }
+    if (!formData.first_name.trim()) {
+      newErrors.first_name = 'نام الزامی است'
+    }
+    if (!formData.last_name.trim()) {
+      newErrors.last_name = 'نام کاربری الزامی است'
     }
 
-    if (!formData.email.trim()) {
-      newErrors.email = 'ایمیل الزامی است'
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'ایمیل معتبر نیست'
-    }
+    // if (!formData.email.trim()) {
+    //   newErrors.email = 'ایمیل الزامی است'
+    // } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    //   newErrors.email = 'ایمیل معتبر نیست'
+    // }
 
     if (!formData.password) {
       newErrors.password = 'رمز عبور الزامی است'
@@ -38,8 +65,8 @@ function Adm_add_user() {
       newErrors.password = 'رمز عبور باید حداقل 6 کاراکتر باشد'
     }
 
-    if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'رمز عبور و تکرار آن باید یکسان باشند'
+    if (formData.password !== formData.password_confirmation) {
+      newErrors.password_confirmation = 'رمز عبور و تکرار آن باید یکسان باشند'
     }
 
     if (!formData.phone.trim()) {
@@ -50,17 +77,41 @@ function Adm_add_user() {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (validateForm()) {
       setIsSubmitting(true)
-      // در اینجا منطق ارسال داده به سرور قرار می‌گیرد
-      console.log('Form submitted:', formData)
-      setTimeout(() => {
+
+      try {
+        const res = await apiClient.post(
+          '/admin/users',
+          formData
+        );
+        if (res.status >= 200 && res.status < 300) {
+          toast.success('کاربر با موفقیت افزوده شد')
+          setFormData({
+            username: '',
+            first_name: '',
+            last_name: '',
+            email: '',
+            password: '',
+            password_confirmation: '',
+            phone: '',
+            role_id: '',
+          })
+        }
+      } catch (err) {
+        if (err.response && err.response.data) {
+          setErrors(err.response.data);
+          toast.error(err.response.data.message || 'خطا در افزودن کاربر');
+        } else {
+          setErrors({ server: 'خطایی در ارتباط با سرور رخ داد' });
+          toast.error('خطا در ارتباط با سرور');
+        }
+      } finally {
         setIsSubmitting(false)
-        // نمایش پیام موفقیت
-        alert('کاربر با موفقیت ایجاد شد')
-      }, 1500)
+      };
+
     }
   }
 
@@ -101,13 +152,13 @@ function Adm_add_user() {
             {/* اطلاعات پایه */}
             <div className="space-y-6">
               <h2 className="text-xl font-semibold text-gray-800 flex w-full justify-between items-center gap-2">
-                  <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>
-                    <IoMdCloseCircle size={27} className='text-red-500'/>
-                  </Link>
-                  <div className='flex flex-row gap-2'>
-                    افزودن کاربر
-                    <TbUser size={25} className="text-blue-600" />
-                  </div>
+                <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>
+                  <IoMdCloseCircle size={27} className='text-red-500' />
+                </Link>
+                <div className='flex flex-row gap-2'>
+                  افزودن کاربر
+                  <TbUser size={25} className="text-blue-600" />
+                </div>
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -119,16 +170,56 @@ function Adm_add_user() {
                     <TbUser className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                     <input
                       type="text"
-                      name="name"
-                      value={formData.name}
+                      name="username"
+                      value={formData.username}
                       onChange={handleChange}
-                      className={`w-full pl-10 pr-4 py-3 rounded-xl border ${errors.name ? 'border-red-500' : 'border-gray-200'
+                      className={`w-full pl-10 pr-4 py-3 rounded-xl border ${errors.username ? 'border-red-500' : 'border-gray-200'
                         } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90 backdrop-blur-sm`}
                       placeholder="نام کاربری را وارد کنید"
                     />
                   </div>
-                  {errors.name && (
-                    <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                  {errors.username && (
+                    <p className="text-red-500 text-sm mt-1">{errors.username}</p>
+                  )}
+                </div>
+                <div className="relative">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    نام
+                  </label>
+                  <div className="relative">
+                    <TbUser className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                    <input
+                      type="text"
+                      name="first_name"
+                      value={formData.first_name}
+                      onChange={handleChange}
+                      className={`w-full pl-10 pr-4 py-3 rounded-xl border ${errors.first_name ? 'border-red-500' : 'border-gray-200'
+                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90 backdrop-blur-sm`}
+                      placeholder="نام را وارد کنید"
+                    />
+                  </div>
+                  {errors.first_name && (
+                    <p className="text-red-500 text-sm mt-1">{errors.first_name}</p>
+                  )}
+                </div>
+                <div className="relative">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    نام خانوادگی
+                  </label>
+                  <div className="relative">
+                    <TbUser className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                    <input
+                      type="text"
+                      name="last_name"
+                      value={formData.last_name}
+                      onChange={handleChange}
+                      className={`w-full pl-10 pr-4 py-3 rounded-xl border ${errors.last_name ? 'border-red-500' : 'border-gray-200'
+                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90 backdrop-blur-sm`}
+                      placeholder="نام خانوادگی را وارد کنید"
+                    />
+                  </div>
+                  {errors.last_name && (
+                    <p className="text-red-500 text-sm mt-1">{errors.last_name}</p>
                   )}
                 </div>
 
@@ -182,16 +273,16 @@ function Adm_add_user() {
                     <TbLock className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                     <input
                       type="password"
-                      name="confirmPassword"
-                      value={formData.confirmPassword}
+                      name="password_confirmation"
+                      value={formData.password_confirmation}
                       onChange={handleChange}
-                      className={`w-full pl-10 pr-4 py-3 rounded-xl border ${errors.confirmPassword ? 'border-red-500' : 'border-gray-200'
+                      className={`w-full pl-10 pr-4 py-3 rounded-xl border ${errors.password_confirmation ? 'border-red-500' : 'border-gray-200'
                         } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90 backdrop-blur-sm`}
                       placeholder="رمز عبور را تکرار کنید"
                     />
                   </div>
-                  {errors.confirmPassword && (
-                    <p className="text-red-500 text-sm mt-1">{errors.confirmPassword}</p>
+                  {errors.password_confirmation && (
+                    <p className="text-red-500 text-sm mt-1">{errors.password_confirmation}</p>
                   )}
                 </div>
 
@@ -223,51 +314,24 @@ function Adm_add_user() {
                   <div className="relative">
                     <TbBuilding className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                     <select
-                      name="role"
-                      value={formData.role}
+                      name="role_id"
+                      value={formData.role_id}
                       onChange={handleChange}
                       className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90 backdrop-blur-sm"
                     >
-                      <option value="user">کاربر عادی</option>
-                      <option value="admin">ادمین</option>
-                      <option value="moderator">مدرن</option>
+                      {
+                        roles.data &&
+
+                        roles.data.map((item) => {
+                          return (
+                            <option key={item.id} value={item.id}>{item.name}</option>
+                          )
+                        })
+                      }
                     </select>
                   </div>
                 </div>
 
-                <div className="relative">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    وضعیت کاربر
-                  </label>
-                  <div className="relative">
-                    <select
-                      name="status"
-                      value={formData.status}
-                      onChange={handleChange}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90 backdrop-blur-sm"
-                    >
-                      <option value="active">فعال</option>
-                      <option value="inactive">غیرفعال</option>
-                      <option value="pending">در انتظار تایید</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="relative">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    تاریخ عضویت
-                  </label>
-                  <div className="relative">
-                    <TbCalendar className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="date"
-                      name="joinDate"
-                      value={formData.joinDate}
-                      onChange={handleChange}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90 backdrop-blur-sm"
-                    />
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -276,7 +340,10 @@ function Adm_add_user() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700
+                 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 transform
+                  hover:scale-102 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+                   disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 {isSubmitting ? (
                   <>
