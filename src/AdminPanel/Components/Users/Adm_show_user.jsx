@@ -5,13 +5,13 @@ import RenderBarChart from '../RenderBarChart'
 import { TbBan, TbEdit, TbEye, TbTrash } from 'react-icons/tb'
 import { MdMarkEmailRead } from 'react-icons/md'
 import { BsFillCalendarDateFill } from 'react-icons/bs'
-import { useParams} from 'react-router-dom';
+import { Link, useParams} from 'react-router-dom';
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import apiClient from '../../../apiClient'
 
 function Adm_show_user() {
-  const [targetUser, setTargetUser] = useState(null);
+  const [targetUser, setTargetUser] = useState();
   const {id} = useParams();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function Adm_show_user() {
       try{
         const res = await apiClient.get(`/admin/users/${id}`);
         if(res.status >= 200 && res.status < 300){
-          setTargetUser(res.data.data);
+          setTargetUser(res.data);
         }
       }catch(err){
         toast.error('خطا در دریافت اطلاعات کاربر !')
@@ -59,9 +59,9 @@ function Adm_show_user() {
           <button className='flex p-3  rounded-full cursor-pointer bg-blue-400 shadow-zinc-500 shadow-sm
             hover:shadow-md hover:scale-110 duration-300 active:scale-95 justify-center items-center text-white'>
             <TbBan size={30} /></button>
-          <button className='flex p-3 rounded-full cursor-pointer  bg-blue-400 shadow-zinc-500 shadow-sm
+          <Link to={`/admin/user/edit/${targetUser?.id}`} className='flex p-3 rounded-full cursor-pointer  bg-blue-400 shadow-zinc-500 shadow-sm
             hover:shadow-md hover:scale-110 duration-300 active:scale-95 justify-center items-center text-white'>
-            <TbEdit size={30} /></button>
+            <TbEdit size={30} /></Link>
           <button className='flex p-3 rounded-full cursor-pointer bg-blue-400 shadow-zinc-500 shadow-sm
             hover:shadow-md hover:scale-110 duration-300 active:scale-95 justify-center items-center text-white'>
             <TbTrash size={30} /></button>
