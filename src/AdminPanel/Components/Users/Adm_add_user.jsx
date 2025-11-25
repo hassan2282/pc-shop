@@ -53,11 +53,9 @@ function Adm_add_user() {
       newErrors.last_name = 'نام کاربری الزامی است'
     }
 
-    // if (!formData.email.trim()) {
-    //   newErrors.email = 'ایمیل الزامی است'
-    // } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-    //   newErrors.email = 'ایمیل معتبر نیست'
-    // }
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'ایمیل معتبر نیست'
+    }
 
     if (!formData.password) {
       newErrors.password = 'رمز عبور الزامی است'
