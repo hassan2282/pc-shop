@@ -150,7 +150,7 @@ function Adm_all_users() {
                             <>
                               <div className='flex items-center gap-1 bg-blue-200/80 backdrop-blur-sm px-3 py-1 rounded-full'>
                                 <FaUserSecret size={16} className='text-blue-600' />
-                                <span className='text-blue-700 text-sm font-medium'>ادمین</span>
+                                <span className='text-blue-700 text-sm font-medium'>{user.role.name}</span>
                               </div>
                             </>
                           )
