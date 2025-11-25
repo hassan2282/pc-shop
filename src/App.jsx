@@ -197,7 +197,7 @@ function App() {
             <Route path="index" element={<Adm_report_all />} />
             <Route path="users/all" element={<Adm_all_users />} />
             <Route path="users/add" element={<Adm_add_user />} />
-            <Route path="user/edit" element={<Adm_edit_user />} />
+            <Route path="user/edit/:id" element={<Adm_edit_user />} />
             <Route path="user/show/:id" element={<Adm_show_user />} />
             <Route path="categories/all" element={<Adm_all_categories />} />
             <Route path="category/add" element={<Adm_add_category />} />
