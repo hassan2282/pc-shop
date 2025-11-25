@@ -39,7 +39,7 @@ function Navbar() {
             <TbArrowBadgeRight size={25} className="duration-300 text-blue-800/60" />
             سید حسن تقوی
           </span>
-          <img src='../../src/StorePanel/assets/img/profile.jpg' alt='user profile' className='flex max-md:hidden w-10 h-10 z-10 rounded-full shadow-md shadow-zinc-500' />
+          <img src='../../../src/StorePanel/assets/img/profile.jpg' alt='user profile' className='flex max-md:hidden w-10 h-10 z-10 rounded-full shadow-md shadow-zinc-500' />
           <span
             ref={emailRef} onClick={email}
             className="max-md:hidden rounded-full w-[2.6rem] z-20 h-[2.6rem] shadow-md hover:*:scale-120
