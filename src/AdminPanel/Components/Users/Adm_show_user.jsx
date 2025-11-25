@@ -6,10 +6,28 @@ import { TbBan, TbEdit, TbEye, TbTrash } from 'react-icons/tb'
 import { MdMarkEmailRead } from 'react-icons/md'
 import { BsFillCalendarDateFill } from 'react-icons/bs'
 import { useParams} from 'react-router-dom';
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
+import apiClient from '../../../apiClient'
 
 function Adm_show_user() {
-
+  const [targetUser, setTargetUser] = useState(null);
   const {id} = useParams();
+
+  useEffect(() => {
+    const findUser = async () => {
+      try{
+        const res = await apiClient.get(`/admin/users/${id}`);
+        if(res.status >= 200 && res.status < 300){
+          setTargetUser(res.data.data);
+        }
+      }catch(err){
+        toast.error('خطا در دریافت اطلاعات کاربر !')
+      }
+    }
+
+    findUser();
+  },[]);
 
   return (
     <motion.div
@@ -26,14 +44,14 @@ function Adm_show_user() {
           duration: 0.8,
         }
       }}
-      className='min-md:grid min-md:grid-cols-4 justify-center items-start min-lg:w-[90%] w-full z-20 
+      className='min-md:grid min-md:grid-cols-4 scrollbar-hidden justify-center items-start min-lg:w-[90%] w-full z-20 
                 rounded-xl gap-4' dir="ltr">
       <div className='flex flex-col min-md:sticky min-md:top-10 w-full max-md:py-4 h-auto justify-start
                          shadow-[0_2px_1px_#3333] items-center col-span-1 rounded-3xl
                           backdrop-blur-lg bg-white/40'>
         <div className='relative flex justify-center items-center w-full'>
           <img src='../../../src/StorePanel/assets/img/profile_2.jpg' className='rounded-3xl w-full' />
-          <h2 className='absolute top-[65%] text-xl text-white p-2 backdrop-blur-lg rounded-full'>سید حسن تقوی</h2>
+          <h2 className='absolute top-[65%] text-xl text-white p-2 backdrop-blur-lg rounded-full'>{targetUser?.username}</h2>
           <span className='absolute top-3 left-2 flex flex-row justify-center items-center gap-2 text-rose-700 p-3
             bg-zinc-300 rounded-full shadow-sm inset-shadow-2xs'>< FaUserSecret size={15} /></span>
         </div>
@@ -51,10 +69,10 @@ function Adm_show_user() {
         <div className='relative w-full p-2' dir='rtl'>
           <ul className='flex flex-col *:flex *:flex-row *:justify-between *:items-center *:w-full
                                 *:rounded-xl *:p-3 text-zinc-700 text-[0.8rem] *:h-[2.4rem] *:bg-white/20 gap-1' dir='rtl'>
-            <li><MdMarkEmailRead size={20} className='text-blue-600' />taghavey.hassan@gmail.com</li>
-            <li><FaUser size={20} className='text-blue-600' /> photoshopbaz98</li>
-            <li><FaPhoneSquare size={20} className='text-blue-600' /> 09170249855</li>
-            <li><BsFillCalendarDateFill size={20} className='text-blue-600' /> 1403/07/23</li>
+            <li><MdMarkEmailRead size={20} className='text-blue-600' />{targetUser?.email}</li>
+            <li><FaUser size={20} className='text-blue-600' /> {targetUser?.first_name}</li>
+            <li><FaPhoneSquare size={20} className='text-blue-600' />{targetUser?.phone}</li>
+            <li><BsFillCalendarDateFill size={20} className='text-blue-600' />{new Date(targetUser?.created_at).toLocaleDateString('fa-IR')}</li>
           </ul>
         </div>
       </div>
@@ -107,7 +125,7 @@ function Adm_show_user() {
 
         </div>
         <div className='grid row-span-3 rounded-xl *:backdrop-blur-lg w-full min-w-[35rem] h-full z-20 shadow-[0_2px_1px_#3333]'>
-          <div className='w-full min-h-60 bg-white/50 rounded-xl'>
+          <div className='flex p-4 w-full min-h-60 bg-white/50 rounded-xl'>
             <table className='grid grid-cols-1 w-full text-stone-500 p-4 cursor-pointer ' dir='rtl'>
               <thead>
                 <tr className='grid grid-cols-6 text-sm h-15 justify-center mb-2 items-center bg-white/70 rounded-xl '>
@@ -120,7 +138,7 @@ function Adm_show_user() {
                 </tr>
               </thead>
 
-              <tbody className='*:hover:bg-blue-400/20 snap-y'>
+              <tbody className='*:hover:bg-blue-400/20 snap-y *:border *:border-white/60'>
                 <tr className='grid grid-cols-6 text-sm text-center snap-start snap-always bg-white/50 rounded-xl h-13 justify-center items-center'>
                   <td>52</td>
                   <td>#21374</td>
