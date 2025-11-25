@@ -17,7 +17,7 @@ function Adm_all_users() {
       try {
         const res = await apiClient.get('/admin/users');
         if (res.status >= 200 && res.status < 300) {
-          setUsers(Array.isArray(res.data.data) ? res.data.data : []);
+          setUsers(Array.isArray(res.data) ? res.data : []);
         }
       } catch (err) {
         toast.error('اطلاعات کاربران یافت نشد!')
