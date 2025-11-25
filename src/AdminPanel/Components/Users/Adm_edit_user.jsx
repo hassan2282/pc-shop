@@ -22,6 +22,17 @@ function Adm_add_user() {
     role_id: '',
   })
 
+  const [originalData, setOriginalData] = useState({
+    username: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+    phone: '',
+    role_id: '',
+  })
+
 
   useEffect(() => {
 
@@ -29,16 +40,18 @@ function Adm_add_user() {
       try {
         const res = await apiClient.get(`/admin/users/${id}`);
         if (res.status >= 200 && res.status < 300) {
-          setFormData({
-            username: res.data.data.username,
-            first_name: res.data.data.first_name,
-            last_name: res.data.data.last_name,
-            email: res.data.data.email,
+          const userData = {
+            username: res.data.username,
+            first_name: res.data.first_name,
+            last_name: res.data.last_name,
+            email: res.data.email,
             password: '',
             password_confirmation: '',
-            phone: res.data.data.phone,
-            role_id: res.data.data.role_id,
-          });
+            phone: res.data.phone,
+            role_id: res.data.role_id,
+          };
+          setFormData(userData);
+          setOriginalData(userData);
         }
       } catch (err) {
         toast.error('خطا در دریافت اطلاعات کاربر !')
@@ -71,13 +84,13 @@ function Adm_add_user() {
       newErrors.email = 'ایمیل معتبر نیست'
     }
 
-   if (formData.password.length < 6) {
-      newErrors.password = 'رمز عبور باید حداقل 6 کاراکتر باشد'
-    }
+  //  if (formData.password.length < 6) {
+  //     newErrors.password = 'رمز عبور باید حداقل 6 کاراکتر باشد'
+  //   }
 
-    if (formData.password !== formData.password_confirmation) {
-      newErrors.password_confirmation = 'رمز عبور و تکرار آن باید یکسان باشند'
-    }
+  //   if (formData.password !== formData.password_confirmation) {
+  //     newErrors.password_confirmation = 'رمز عبور و تکرار آن باید یکسان باشند'
+  //   }
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -88,10 +101,28 @@ function Adm_add_user() {
     if (validateForm()) {
       setIsSubmitting(true)
 
+      // فقط داده‌های تغییر کرده را برای ارسال به سرور آماده کن
+      const changedData = {};
+      let hasChanges = false;
+      
+      Object.keys(formData).forEach(key => {
+        if (formData[key] !== originalData[key]) {
+          changedData[key] = formData[key];
+          hasChanges = true;
+        }
+      });
+
+      // اگر تغییری ایجاد نشده، عملیات را خاتمه بده
+      if (!hasChanges) {
+        toast.info('هیچ تغییری ایجاد نشده است');
+        setIsSubmitting(false);
+        return;
+      }
+
       try {
         const res = await apiClient.patch(
           `/admin/users/${id}`,
-          formData
+          changedData
         );
         if (res.status >= 200 && res.status < 300) {
           toast.success('کاربر با موفقیت ویرایش شد')
@@ -248,7 +279,7 @@ function Adm_add_user() {
                   <div className="relative">
                     <TbLock className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                     <input
-                      type="password"
+                      type="text"
                       name="password"
                       value={formData.password}
                       onChange={handleChange}
@@ -269,7 +300,7 @@ function Adm_add_user() {
                   <div className="relative">
                     <TbLock className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                     <input
-                      type="password"
+                      type="text"
                       name="password_confirmation"
                       value={formData.password_confirmation}
                       onChange={handleChange}
@@ -317,9 +348,9 @@ function Adm_add_user() {
                       className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90 backdrop-blur-sm"
                     >
                       {
-                        roles.data &&
+                        roles &&
 
-                        roles.data.map((item) => {
+                        roles.map((item) => {
                           return (
                             <option key={item.id} value={item.id}>{item.name}</option>
                           )
