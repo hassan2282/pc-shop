@@ -231,7 +231,7 @@ function Register() {
                                         transition: { delay: 1.3 }
                                     }}
                                     className="flex flex-col space-y-2 w-full justify-center items-center">
-                                    <button type="submit" className="w-full p-3 bg-blue-300 hover:bg-sky-800 hover:text-white shadow-xs hover:shadow-md cursor-pointer
+                                    <button type="submit" className="w-full p-3 bg-[#3D8583] hover:bg-sky-800 hover:text-white shadow-xs hover:shadow-md cursor-pointer
                                      hover:scale-102 shadow-zinc-500 rounded-full duration-300 flex justify-center items-center">
                                         {isLoading ? <AiOutlineLoading className="animate-spin" size={20} /> : 'عضویت'}
                                     </button>
