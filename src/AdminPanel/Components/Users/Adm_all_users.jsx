@@ -11,6 +11,7 @@ import apiClient from '../../../apiClient'
 function Adm_all_users() {
 
   const [users, setUsers] = useState([]);
+  const [isChangingStatus, setIsChangingStatus] = useState(false);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -28,17 +29,34 @@ function Adm_all_users() {
   }, []);
 
 
-  const deleteHandler = async (id) => {
-    try{
-      const res = await apiClient.delete(`/admin/users/${id}`);
-      if(res.status >= 200 && res.status < 300){
-        toast.success('کاربر با موفقیت حذف شد♥');
-         setUsers((prev) =>   prev.filter(user => user.id !== id));
+   const changeStatus = async (id) => {
+    setIsChangingStatus(true);
+    try {
+      const res = await apiClient.post(`/admin/users/changeStatus/${id}`);
+      if (res.status >= 200 && res.status < 300) {
+        toast.success('وضعیت کاربر با موفقیت تغییر یافت');
+        setUsers(prevUsers => prevUsers.map((item) => item.id === id ? {...item, status: !item.status} : item))
       }
-    }catch(err){
+    } catch (err) {
+      toast.error('متاسفانه در فرایند تغییر وضعیت کاربر مشکلی پیش اومده')
+    }finally{
+      setIsChangingStatus(false);
+    }
+  }
+
+  const deleteHandler = async (id) => {
+    try {
+      const res = await apiClient.delete(`/admin/users/${id}`);
+      if (res.status >= 200 && res.status < 300) {
+        toast.success('کاربر با موفقیت حذف شد♥');
+        setUsers((prev) => prev.filter(user => user.id !== id));
+      }
+    } catch (err) {
       toast.error('متاسفانه در فرایند حذف کاربر مشکلی پیش اومده')
     }
   }
+
+ 
 
   return (
     <motion.div
@@ -115,53 +133,56 @@ function Adm_all_users() {
                     <td className='col-span-1'>{user.first_name}</td>
                     <td className='col-span-1'>{user.last_name}</td>
                     <td className='col-span-1'>{new Date(user.created_at).toLocaleDateString('fa-IR')}</td>
-                    <td className='col-span-1 justify-center items-center w-full flex'>
+                    <td onClick={() => changeStatus(user.id)} className={`col-span-1 justify-center items-center w-full flex 
+                    hover:*:scale-110 *:duration-300  ${isChangingStatus && 'cursor-wait'} `}>
 
-                        {
-                          user.status ? (
-                            <>
-                              <div className='flex items-center gap-1 bg-red-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                                <TbX size={16} className='text-red-600' />
-                                <span className='text-red-700 text-sm font-medium'>غیرفعال</span>
-                              </div>
-                            </>
-                          ) :(  
-                            <>
-                              <div className='flex items-center gap-1 bg-green-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                                <TbCheck size={16} className='text-green-600' />
-                                <span className='text-green-700 text-sm font-medium'>فعال</span>
-                              </div>
-                            </>
-                          )
-                        }
+                      {
+                        !user.status ? (
+                          <>
+                            <div className='flex items-center gap-1 bg-red-100/80 backdrop-blur-sm px-3 shadow-xs 
+                              hover:shadow-md shadow-zinc-400 py-1 rounded-full'>
+                              <TbX size={16} className='text-red-600' />
+                              <span className='text-red-700 text-sm font-medium'>غیرفعال</span>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <div className='flex items-center gap-1 bg-green-100/80 backdrop-blur-sm px-3 py-1 rounded-full 
+                              shadow-xs hover:shadow-md shadow-zinc-400'>
+                              <TbCheck size={16} className='text-green-600' />
+                              <span className='text-green-700 text-sm font-medium'>فعال</span>
+                            </div>
+                          </>
+                        )
+                      }
 
                     </td>
                     <td className='col-span-1 justify-center items-center w-full flex'>
 
-                        {
-                          user.role_id === 1 ? (
-                            <>
-                              <div className='flex items-center gap-1 bg-gray-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                                <FaUser size={16} className='text-gray-600' />
-                                <span className='text-gray-700 text-sm font-medium'>کاربر</span>
-                              </div>
-                            </>
-                          ) : (
-                            <>
-                              <div className='flex items-center gap-1 bg-blue-200/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                                <FaUserSecret size={16} className='text-blue-600' />
-                                <span className='text-blue-700 text-sm font-medium'>{user.role.name}</span>
-                              </div>
-                            </>
-                          )
-                        }
+                      {
+                        user.role_id === 1 ? (
+                          <>
+                            <div className='flex items-center gap-1 hover:scale-110 duration-300 shadow-xs hover:shadow-md shadow-zinc-400 bg-gray-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
+                              <FaUser size={16} className='text-gray-600' />
+                              <span className='text-gray-700 text-sm font-medium'>کاربر</span>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <div className='flex items-center gap-1 hover:scale-110 duration-300 shadow-xs hover:shadow-md shadow-zinc-400 bg-blue-200/80 backdrop-blur-sm px-3 py-1 rounded-full'>
+                              <FaUserSecret size={16} className='text-blue-600' />
+                              <span className='text-blue-700 text-sm font-medium'>{user.role.name}</span>
+                            </div>
+                          </>
+                        )
+                      }
                     </td>
                     <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
                       <Link to={`/admin/user/show/${user.id}`} className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
                         <TbEyeFilled size={20} />
                       </Link>
-                      <Link to={`/admin/user/edit/${user.id}`} 
-                       className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                      <Link to={`/admin/user/edit/${user.id}`}
+                        className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                         <TbEditCircle size={20} />
                       </Link>
                       <Link onClick={() => deleteHandler(user.id)} className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
@@ -169,15 +190,15 @@ function Adm_all_users() {
                       </Link>
                     </td>
                   </tr>
-          )
+                )
               })
             }
 
 
 
-        </tbody>
-      </table>
-    </div>
+          </tbody>
+        </table>
+      </div>
     </motion.div >
   )
 }
