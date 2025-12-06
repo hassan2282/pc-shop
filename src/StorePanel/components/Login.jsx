@@ -102,7 +102,8 @@ function Login() {
                           onChange={handleChange}
                           required
                           maxLength={255}
-                          className="w-full p-2 h-14 rounded-full shadow-xs shadow-black/20 hover:shadow-lg bg-white/50"
+                          className="w-full p-2 h-14 rounded-full shadow-xs duration-300
+                           focus:outline-none shadow-black/20 hover:shadow-lg bg-white/50"
                           type="email"
                           placeholder="ایمیل شما"
                         />
@@ -131,7 +132,8 @@ function Login() {
                           required
                           minLength={6}
                           maxLength={255}
-                          className="w-full p-2 h-14 rounded-full shadow-xs shadow-black/20 hover:shadow-lg duration-200 backdrop-blur-md bg-white/50"
+                          className="w-full p-2 h-14 rounded-full shadow-xs shadow-black/20 hover:shadow-lg
+                                     duration-200 focus:outline-none backdrop-blur-md bg-white/50"
                           type="password"
                           placeholder=" کلمه عبور شما"
                         />
