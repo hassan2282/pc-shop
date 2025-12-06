@@ -1,40 +1,76 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import { TbUser, TbBuilding, TbCheck, TbCategoryPlus } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io'
+import { toast } from 'react-toastify'
+import apiClient from '../../../apiClient'
+
 
 function Adm_add_category() {
+  const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
-    parent: 0,
+    parent_id: null,
   })
 
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
 
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const fetchResponse = await apiClient.get('/admin/categories');
+
+        if (fetchResponse.status >= 200 && fetchResponse.status < 300) {
+          setCategories(fetchResponse.data);
+        }
+      } catch (err) {
+        toast.error('فرایند واکشی دسته بندی ها با شکست مواجه شد !')
+      }
+
+    }
+
+    fetchCategories();
+  }, [formData]);
+
+
+
   const validateForm = () => {
     const newErrors = {}
 
     if (!formData.name.trim()) {
-      newErrors.name = 'نام کاربری الزامی است'
+      newErrors.name = 'نام دسته بندی الزامی است'
     }
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (validateForm()) {
       setIsSubmitting(true)
-      // در اینجا منطق ارسال داده به سرور قرار می‌گیرد
-      console.log('Form submitted:', formData)
-      setTimeout(() => {
-        setIsSubmitting(false)
-        // نمایش پیام موفقیت
-        alert('کاربر با موفقیت ایجاد شد')
-      }, 1500)
+      try {
+        const res = await apiClient.post(
+          '/admin/categories',
+          formData
+        );
+        if (res.status >= 200 && res.status < 300) {
+          toast.success('دسته بندی با موفقیت افزوده شد');
+          setFormData({
+            name: '',
+            parent_id: null,
+          }
+          );
+        }
+      } catch (err) {
+        toast.error('متاسفانه در فراید مشکلی بوجود آمده');
+        console.log(err.response.data)
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   }
 
@@ -75,13 +111,13 @@ function Adm_add_category() {
             {/* اطلاعات پایه */}
             <div className="space-y-6 w-full">
               <h2 className="min-sm:text-xl font-semibold text-gray-800 flex w-full justify-between items-center gap-2">
-                  <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>
-                    <IoMdCloseCircle size={27} className='text-red-500'/>
-                  </Link>
-                  <div className='flex flex-row gap-2'>
-                    افزودن دسته‌بندی
-                    <TbCategoryPlus size={25} className="text-blue-600 max-sm:hidden" />
-                  </div>
+                <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>
+                  <IoMdCloseCircle size={27} className='text-red-500' />
+                </Link>
+                <div className='flex flex-row gap-2'>
+                  افزودن دسته‌بندی
+                  <TbCategoryPlus size={25} className="text-blue-600 max-sm:hidden" />
+                </div>
               </h2>
 
               <div className="grid min-md:grid-cols-2 gap-6 w-full">
@@ -95,6 +131,7 @@ function Adm_add_category() {
                       type="text"
                       name="name"
                       value={formData.name}
+                      required
                       onChange={handleChange}
                       className={`w-full pl-10 pr-4 py-3 rounded-xl border ${errors.name ? 'border-red-500' : 'border-gray-200'
                         } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90 backdrop-blur-sm`}
@@ -106,7 +143,6 @@ function Adm_add_category() {
                   )}
                 </div>
 
-                
 
                 <div className="relative">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -115,26 +151,22 @@ function Adm_add_category() {
                   <div className="relative">
                     <TbBuilding className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                     <select
-                      name="parent"
-                      value={formData.parent}
+                      name="parent_id"
+                      value={formData.parent_id}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90 backdrop-blur-sm"
-                    >
-                      <option value="user">دسته بندی اصلی</option>
-                      <option value="admin">الکترونیک</option>
-                      <option value="moderator">خانه</option>
-                      <option value="admin">ورزشی</option>
-                      <option value="moderator">صوتی</option>
-                      <option value="admin">بازی</option>
-                      <option value="moderator">کامپیوتر</option>
-                      <option value="admin">گوشی</option>
-                      <option value="moderator">ساختمانی</option>
-                      <option value="admin">لوازم آشپزخانه</option>
-                      <option value="moderator">لوازم اداری</option>
-                      <option value="admin">بهداشتی</option>
-                      <option value="moderator">ایمنی</option>
-                      <option value="admin">مجازی</option>
-                      <option value="moderator">دست دوم</option>
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none
+                       focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90 backdrop-blur-sm">
+                      <option value="" >
+                        دسته بندی اصلی
+                      </option>
+                      {
+                        categories &&
+                        categories?.map((item) => {
+                          return (
+                            <option key={item.id} value={item.id}>{item.name}</option>
+                          )
+                        })
+                      }
                     </select>
                   </div>
                 </div>
@@ -148,7 +180,7 @@ function Adm_add_category() {
                 disabled={isSubmitting}
                 className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700
                  text-white font-medium py-3 px-4 rounded-xl transition-all duration-200 transform hover:scale-105
-                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  focus:outline-none focus:ring-2 cursor-pointer focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
@@ -174,7 +206,7 @@ function Adm_add_category() {
           </form>
         </motion.div>
       </motion.div>
-    </div>
+    </div >
   )
 }
 
