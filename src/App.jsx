@@ -51,178 +51,179 @@ import Adm_article_show from "./AdminPanel/Components/Articles/Adm_article_show.
 import Adm_order_all from "./AdminPanel/Components/Orders/Adm_order_all.jsx";
 import Adm_order_show from "./AdminPanel/Components/Orders/Adm_order_show.jsx";
 import Adm_report_all from "./AdminPanel/Components/Reports/Adm_report_all.jsx";
-
+import PreLoader from "./PreLoader.jsx";
 
 function App() {
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="store/register"
-            element={
-              !isAuthenticated ? <Register /> : <Navigate to="/store/home" replace />
-            }
-          />
-
-          <Route
-            path="store/login"
-            element={!isAuthenticated ? <Login /> : <Navigate to="/store/home" replace />}
-          />
-
-          <Route path="/" element={<Navigate to="/store/home" replace />} />
-
-          <Route path="/store/*" element={<StoreContainer />}>
-            <Route path="home" element={<Index />} />
-            <Route path="category-blog" element={<CategoryBlog />} />
-            <Route path="category-search" element={<CategorySearch />} />
-            <Route path="single-product" element={<SingleProduct />} />
-            <Route path="single-blog" element={<SingleBlog />} />
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="store/register"
+              element={
+                !isAuthenticated ? <Register /> : <Navigate to="/store/home" replace />
+              }
+            />
 
             <Route
-              path="profile"
-              element={
-                <PrivateRoute>
-                  <Profile />
-                </PrivateRoute>
-              }
+              path="store/login"
+              element={!isAuthenticated ? <Login /> : <Navigate to="/store/home" replace />}
             />
-            <Route
-              path="edit-profile"
-              element={
-                <PrivateRoute>
-                  <EditProfile />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="profile-favorites"
-              element={
-                <PrivateRoute>
-                  <ProfileFavorites />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="cart"
-              element={
-                <PrivateRoute>
-                  <Cart />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="successfull-payment"
-              element={
-                <PrivateRoute>
-                  <SuccessfulPayment />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="final-payment"
-              element={
-                <PrivateRoute>
-                  <FinalPayment />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="order-address"
-              element={
-                <PrivateRoute>
-                  <OrderAddress />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="address"
-              element={
-                <PrivateRoute>
-                  <Address />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="order-cancelled"
-              element={
-                <PrivateRoute>
-                  <OrderCancelled />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="order-current"
-              element={
-                <PrivateRoute>
-                  <OrderCurrent />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="order-message"
-              element={
-                <PrivateRoute>
-                  <OrderMessage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="orders-return"
-              element={
-                <PrivateRoute>
-                  <OrdersReturn />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="shopping-payment"
-              element={
-                <PrivateRoute>
-                  <ShoppingPayment />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="password-update"
-              element={<PasswordUpdate />}
-            />
-            <Route path="about-us" element={<AboutUs />} />
-          </Route>
+
+            <Route path="/" element={<Navigate to="/store/home" replace />} />
+            {/* <Route path="/loader" element={<PreLoader />} /> */}
+
+            <Route path="/store/*" element={<StoreContainer />}>
+              <Route path="home" element={<Index />} />
+              <Route path="category-blog" element={<CategoryBlog />} />
+              <Route path="category-search" element={<CategorySearch />} />
+              <Route path="single-product" element={<SingleProduct />} />
+              <Route path="single-blog" element={<SingleBlog />} />
+
+              <Route
+                path="profile"
+                element={
+                  <PrivateRoute>
+                    <Profile />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="edit-profile"
+                element={
+                  <PrivateRoute>
+                    <EditProfile />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="profile-favorites"
+                element={
+                  <PrivateRoute>
+                    <ProfileFavorites />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="cart"
+                element={
+                  <PrivateRoute>
+                    <Cart />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="successfull-payment"
+                element={
+                  <PrivateRoute>
+                    <SuccessfulPayment />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="final-payment"
+                element={
+                  <PrivateRoute>
+                    <FinalPayment />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="order-address"
+                element={
+                  <PrivateRoute>
+                    <OrderAddress />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="address"
+                element={
+                  <PrivateRoute>
+                    <Address />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="order-cancelled"
+                element={
+                  <PrivateRoute>
+                    <OrderCancelled />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="order-current"
+                element={
+                  <PrivateRoute>
+                    <OrderCurrent />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="order-message"
+                element={
+                  <PrivateRoute>
+                    <OrderMessage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="orders-return"
+                element={
+                  <PrivateRoute>
+                    <OrdersReturn />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="shopping-payment"
+                element={
+                  <PrivateRoute>
+                    <ShoppingPayment />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="password-update"
+                element={<PasswordUpdate />}
+              />
+              <Route path="about-us" element={<AboutUs />} />
+            </Route>
 
 
-          <Route path="/admin/*" element={<Master />}>
-            <Route path="index" element={<Adm_report_all />} />
-            <Route path="users/all" element={<Adm_all_users />} />
-            <Route path="users/add" element={<Adm_add_user />} />
-            <Route path="user/edit/:id" element={<Adm_edit_user />} />
-            <Route path="user/show/:id" element={<Adm_show_user />} />
-            <Route path="categories/all" element={<Adm_all_categories />} />
-            <Route path="category/add" element={<Adm_add_category />} />
-            <Route path="category/edit" element={<Adm_edit_category />} />
-            <Route path="role/all" element={<Adm_role_all />} />
-            <Route path="role/add" element={<Adm_role_add />} />
-            <Route path="role/edit" element={<Adm_role_edit />} />
-            <Route path="permission/all" element={<Adm_permission_all />} />
-            <Route path="permission/add" element={<Adm_permission_add />} />
-            <Route path="permission/edit" element={<Adm_permission_edit />} />
-            <Route path="product/all" element={<Adm_product_all />} />
-            <Route path="product/add" element={<Adm_product_add />} />
-            <Route path="product/edit" element={<Adm_product_edit />} />
-            <Route path="product/show" element={<Adm_product_show />} />
-            <Route path="article/all" element={<Adm_article_all />} />
-            <Route path="article/add" element={<Adm_article_add />} />
-            <Route path="article/edit" element={<Adm_article_edit />} />
-            <Route path="article/show" element={<Adm_article_show />} />
-            <Route path="order/all" element={<Adm_order_all />} />
-            <Route path="order/show" element={<Adm_order_show />} />
-            <Route path="report/all" element={<Adm_report_all />} />
-          </Route>
-        </Routes>
-        <ToastContainer />
-      </BrowserRouter>
+            <Route path="/admin/*" element={<Master />}>
+              <Route path="index" element={<Adm_report_all />} />
+              <Route path="users/all" element={<Adm_all_users />} />
+              <Route path="users/add" element={<Adm_add_user />} />
+              <Route path="user/edit/:id" element={<Adm_edit_user />} />
+              <Route path="user/show/:id" element={<Adm_show_user />} />
+              <Route path="categories/all" element={<Adm_all_categories />} />
+              <Route path="category/add" element={<Adm_add_category />} />
+              <Route path="category/edit" element={<Adm_edit_category />} />
+              <Route path="role/all" element={<Adm_role_all />} />
+              <Route path="role/add" element={<Adm_role_add />} />
+              <Route path="role/edit" element={<Adm_role_edit />} />
+              <Route path="permission/all" element={<Adm_permission_all />} />
+              <Route path="permission/add" element={<Adm_permission_add />} />
+              <Route path="permission/edit" element={<Adm_permission_edit />} />
+              <Route path="product/all" element={<Adm_product_all />} />
+              <Route path="product/add" element={<Adm_product_add />} />
+              <Route path="product/edit" element={<Adm_product_edit />} />
+              <Route path="product/show" element={<Adm_product_show />} />
+              <Route path="article/all" element={<Adm_article_all />} />
+              <Route path="article/add" element={<Adm_article_add />} />
+              <Route path="article/edit" element={<Adm_article_edit />} />
+              <Route path="article/show" element={<Adm_article_show />} />
+              <Route path="order/all" element={<Adm_order_all />} />
+              <Route path="order/show" element={<Adm_order_show />} />
+              <Route path="report/all" element={<Adm_report_all />} />
+            </Route>
+          </Routes>
+          <ToastContainer />
+        </BrowserRouter>
     </>
 
   );
