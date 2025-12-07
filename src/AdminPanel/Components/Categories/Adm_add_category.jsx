@@ -11,7 +11,7 @@ function Adm_add_category() {
   const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
-    parent_id: null,
+    parent_id: '',
   })
 
   const [errors, setErrors] = useState({})
@@ -61,7 +61,7 @@ function Adm_add_category() {
           toast.success('دسته بندی با موفقیت افزوده شد');
           setFormData({
             name: '',
-            parent_id: null,
+            parent_id: '',
           }
           );
         }
