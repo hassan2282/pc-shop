@@ -1,5 +1,5 @@
 import { FaUserSecret } from 'react-icons/fa'
-import { TbCategoryPlus, TbCheck, TbEditCircle, TbSearch, TbTrashFilled, TbX } from 'react-icons/tb'
+import { TbCategoryPlus, TbCheck, TbEditCircle, TbSearch, TbTrashFilled } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import { IoMdCloseCircle } from 'react-icons/io'
@@ -26,6 +26,21 @@ function Adm_all_categories() {
 
     allCategories();
   }, []);
+
+
+  const deleteHandler = async (id) => {
+    try {
+      const deleteRes = await apiClient.delete(`/admin/categories/${id}`);
+      if (deleteRes.status >= 200 && deleteRes.status < 300) {
+        toast.success('دسته بندی با موفقیت حذف شد');
+        setCategories((prev) => prev.filter(item => item.id !== id));
+      }
+
+    } catch (err) {
+      toast.error('مشکل در فرایند حذف دسته بندی');
+      console.log(err.response.data)
+    }
+  }
 
   return (
     <motion.div
@@ -124,7 +139,7 @@ function Adm_all_categories() {
                       <Link to={`/admin/category/edit/${item.id}`} className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
                         <TbEditCircle size={22} />
                       </Link>
-                      <Link className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
+                      <Link onClick={() => { deleteHandler(item.id) }} className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
                         <TbTrashFilled size={22} />
                       </Link>
                     </td>
