@@ -1,6 +1,6 @@
 
 import { FaUnlockAlt, FaUserSecret } from 'react-icons/fa'
-import { TbCategoryPlus, TbCheck, TbEditCircle, TbEyeFilled, TbSearch, TbTrashFilled, TbX } from 'react-icons/tb'
+import { TbEditCircle, TbSearch, TbTrashFilled } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 import {motion} from 'motion/react'
 import { IoMdCloseCircle } from 'react-icons/io'
