@@ -204,7 +204,7 @@ function App() {
             <Route path="category/edit/:id" element={<Adm_edit_category />} />
             <Route path="role/all" element={<Adm_role_all />} />
             <Route path="role/add" element={<Adm_role_add />} />
-            <Route path="role/edit" element={<Adm_role_edit />} />
+            <Route path="role/edit/:id" element={<Adm_role_edit />} />
             <Route path="permission/all" element={<Adm_permission_all />} />
             <Route path="permission/add" element={<Adm_permission_add />} />
             <Route path="permission/edit" element={<Adm_permission_edit />} />
