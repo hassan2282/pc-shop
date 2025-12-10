@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
-import { TbUser, TbCheck, TbCategoryPlus, TbEye } from 'react-icons/tb'
-import { Link } from 'react-router-dom'
+import { TbUser, TbCheck } from 'react-icons/tb'
+import { Link, useParams } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io'
-import { FaUnlockAlt } from 'react-icons/fa'
+import { FaLock } from 'react-icons/fa' // Changed icon to FaLock for permissions
+import { toast } from 'react-toastify'
+import apiClient from '../../../apiClient'
 
 function Adm_permission_edit() {
+  const { id } = useParams();
   const [formData, setFormData] = useState({
     name: '',
-    parent: 0,
   })
 
   const [errors, setErrors] = useState({})
@@ -18,45 +20,70 @@ function Adm_permission_edit() {
     const newErrors = {}
 
     if (!formData.name.trim()) {
-      newErrors.name = 'نام کاربری الزامی است'
+      newErrors.name = 'عنوان دسترسی الزامی است'
     }
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = (e) => {
+
+  useEffect(() => {
+    const fetchPermission = async () => {
+      try {
+        const getTargetPermission = await apiClient.get(`/admin/permissions/${id}`);
+        if (getTargetPermission.status >= 200 && getTargetPermission.status < 300) {
+          setFormData({
+            name: getTargetPermission.data.name,
+          });
+        }
+      } catch (err) {
+        toast.error('خطا در فرایند واکشی داده ها');
+      }
+    }
+    fetchPermission();
+  }, [id]);
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (validateForm()) {
       setIsSubmitting(true)
-      // در اینجا منطق ارسال داده به سرور قرار می‌گیرد
-      console.log('Form submitted:', formData)
-      setTimeout(() => {
+      try {
+        const res = await apiClient.patch(`/admin/permissions/${id}`, formData)
+        if (res.status >= 200 && res.status < 300) {
+          toast.success('دسترسی با موفقیت ویرایش شد');
+          setFormData({ name: '' });
+        }
+      } catch (err) {
+        console.log(err.response.data)
+        toast.error('خطا در فرایند ویرایش دسترسی ');
+
+      } finally {
         setIsSubmitting(false)
-        // نمایش پیام موفقیت
-        alert('کاربر با موفقیت ایجاد شد')
-      }, 1500)
+      }
     }
   }
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
+
     setFormData(prev => ({
       ...prev,
       [name]: value
-    }))
+    }));
 
     // پاک کردن خطا هنگام تایپ
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
         [name]: null
-      }))
+      }));
     }
-  }
+  };
 
   return (
-    <div className="min-lg:h-[80%] min-md:w-[80%] w-full min-lg:mr-30 flex items-center justify-center min-sm:p-4">
+    <div className="min-lg:h-[80%] min-md:w-[80%] w-full mt-10 md:mr-20 min-lg:mr-30 flex items-center justify-center min-sm:p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -69,20 +96,20 @@ function Adm_permission_edit() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-col justify-center items-center bg-white/30 backdrop-blur-xl min-sm:w-[50%] rounded-2xl 
+          className="flex flex-col justify-center items-center bg-white/30 backdrop-blur-xl min-sm:w-[80%] rounded-2xl 
           shadow-2xl border border-white/20 p-8"
         >
           <form onSubmit={handleSubmit} className="min-sm:space-y-8 w-full">
             {/* اطلاعات پایه */}
             <div className="space-y-6 w-full">
               <h2 className="min-sm:text-xl font-semibold text-gray-800 flex w-full justify-between items-center gap-2">
-                  <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>
-                    <IoMdCloseCircle size={27} className='text-red-500'/>
-                  </Link>
-                  <div className='flex flex-row gap-2'>
-                    ویرایش دسترسی
-                    <TbEye size={25} className="text-blue-600 max-sm:hidden" />
-                  </div>
+                <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>
+                  <IoMdCloseCircle size={27} className='text-red-500' />
+                </Link>
+                <div className='flex flex-row gap-2'>
+                  ویرایش دسترسی
+                  <FaLock size={25} className="text-blue-600 max-sm:hidden" />
+                </div>
               </h2>
 
               <div className="grid gap-6 w-full">
@@ -116,7 +143,7 @@ function Adm_permission_edit() {
                 disabled={isSubmitting}
                 className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700
                  text-white font-medium py-3 px-4 rounded-xl transition-all duration-200 transform hover:scale-105
-                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  focus:outline-none focus:ring-2 cursor-pointer focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
@@ -136,7 +163,7 @@ function Adm_permission_edit() {
                       rounded-xl text-sm font-medium space-x-2 p-3 transition-all duration-200 
                       transform hover:scale-105 shadow-lg hover:shadow-xl' >
                 <span> همه دسترسی ها</span>
-                <TbEye size={25} />
+                <FaLock size={20} />
               </Link>
             </div>
           </form>
