@@ -39,7 +39,6 @@ function Adm_edit_category() {
         }
       } catch (err) {
         toast.error('فرایند واکشی دسته بندی ها با شکست مواجه شد !');
-        console.log(err)
       }
     };
 
