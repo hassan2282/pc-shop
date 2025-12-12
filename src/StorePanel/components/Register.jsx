@@ -5,6 +5,7 @@ import { AiOutlineLoading } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { motion } from "motion/react"
+import apiClient from "../../apiClient";
 
 
 function Register() {
@@ -36,13 +37,10 @@ function Register() {
                 return;
             }
 
-            const res = await axios.post(
-                'http://127.0.0.1:8000/api/auth/register',
-                formData,
-                {
-                    headers: { 'Content-Type': 'application/json' }
-                }
-            )
+            const res = await apiClient.post(
+                '/auth/register',
+                formData
+            );
             if (res.status >= 200 && res.status < 300) {
                 toast.success('کاربر با موفقیت افزوده شد');
                 const token = res.data.authorisation.original.access_token;
