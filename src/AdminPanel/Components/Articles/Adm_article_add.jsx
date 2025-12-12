@@ -1,23 +1,45 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
-import { TbArticle, TbCheck, TbPlus, TbScreenshot } from 'react-icons/tb'
+import { TbArticle, TbCheck } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io'
-import { LiaDollyFlatbedSolid } from 'react-icons/lia'
 import { FcOldTimeCamera } from 'react-icons/fc'
 import Text_Editor from '../Text_Editor'
 import TagComponent from '../TagComponent'
+import { toast } from 'react-toastify'
+import apiClient from '../../../apiClient'
 
 function Adm_article_add() {
+  const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    category: '',
+    // text: '',
+    category_id: '',
+    author_id: '',
+    media: null,
   })
-
+  const [preview, setPreview] = useState();
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const fetchResponse = await apiClient.get('/admin/categories');
+        if (fetchResponse.status >= 200 && fetchResponse.status < 300) {
+          setCategories(fetchResponse.data);
+        }
+      } catch (err) {
+        toast.error('فرایند واکشی دسته بندی ها با شکست مواجه شد !');
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
 
   const validateForm = () => {
     const newErrors = {}
@@ -26,6 +48,12 @@ function Adm_article_add() {
       newErrors.title = 'عنوان مقاله الزامی است'
     }
 
+    // if (!formData.text.trim()) {
+    //   newErrors.text = 'متن مقاله الزامی است'
+    // }else if (formData.text.length < 50) {
+    //   newErrors.text = 'متن مقاله نمی تواند کمتر از 50 کاراکتر باشد';
+    // }
+
     if (!formData.description) {
       newErrors.description = 'توضیح اختصاری الزامی است'
     } else if (formData.description.length < 20) {
@@ -33,7 +61,10 @@ function Adm_article_add() {
     }
 
     if (!formData.category) {
-      newErrors.category = 'دسته بندی کالا الزامی است'
+      newErrors.category = 'دسته بندی مقاله الزامی است'
+    }
+    if (!formData.media) {
+      newErrors.media = 'تصویر مقاله الزامی است'
     }
 
     setErrors(newErrors)
@@ -44,22 +75,30 @@ function Adm_article_add() {
     e.preventDefault()
     if (validateForm()) {
       setIsSubmitting(true)
-      // در اینجا منطق ارسال داده به سرور قرار می‌گیرد
-      console.log('Form submitted:', formData)
-      setTimeout(() => {
-        setIsSubmitting(false)
-        // نمایش پیام موفقیت
-        alert('کاربر با موفقیت ایجاد شد')
-      }, 1500)
+
     }
   }
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
+    const { name, value, files } = e.target
+
+    if (name === 'media') {
+      const file = files?.[0];
+      if (file) {
+        setPreview(URL.createObjectURL(file));
+        setFormData((prev) => ({
+          ...prev,
+          media: file
+        }))
+      } else {
+        setFormData(prev => ({
+          ...prev,
+          [name]: value
+        }))
+      }
+    }
+
+
 
     // پاک کردن خطا هنگام تایپ
     if (errors[name]) {
@@ -125,35 +164,38 @@ function Adm_article_add() {
 
 
 
-                 <div className="relative col-span-2">
+                <div className="relative col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     دسته بندی
                   </label>
                   <div className="relative">
                     <select
                       type="text"
-                      name="description"
-                      value={formData.category}
+                      name="category_id"
+                      value={formData.category_id}
                       onChange={handleChange}
                       className={`w-full pl-10 pr-4 py-4 shadow-sm shadow-zinc-500 hover:shadow-md duration-200 rounded-xl
-                         border ${errors.category ? 'border-red-500' : 'border-gray-200'
+                         border ${errors.category_id ? 'border-red-500' : 'border-gray-200'
                         } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/40 `}
                       placeholder="دسته بندی">
+                      {
+                        categories &&
+                        categories.map((item, index) => {
+                          return (
 
-                    <option>دسته بندی</option>
-                    <option>کامپیوتر</option>
-                    <option>لپ تاب</option>
-                    <option>میز</option>
-                    <option>آهن</option>
-                    <option>ماوس</option>
-                    <option>جانبی موبایل</option>
+                            <option value={item.id} key={index}>{item.name}</option>
+
+                          )
+                        })
+
+                      }
 
                     </select>
                   </div>
                   {errors.category && (
                     <p className="text-red-500 text-sm mt-1">{errors.category}</p>
                   )}
-                </div>   
+                </div>
 
 
 
@@ -189,20 +231,18 @@ function Adm_article_add() {
                         className="relative h-48 rounded-xl border-2 border-blue-500/20 bg-white/40 flex hover:border-blue-500/50
                           justify-center items-center shadow-sm shadow-zinc-500 hover:shadow-md transition-shadow duration-300 ease-in-out"
                       >
-                        <div className="absolute flex flex-col items-center">
+                        <div className="absolute backdrop-blur-md cursor-pointer z-20 rounded-xl p-2 flex flex-col items-center">
                           <FcOldTimeCamera size={80} />
-                          <span className="block text-rose-600/70 font-semibold">
-                            * اجباری *
-                          </span>
-                          تصویر اصلی
-                          <span className="block text-zinc-600 font-normal mt-1">
-                            افزودن تصویر محصول
-                          </span>
                         </div>
 
+                        {preview &&
+                          <img src={preview} className='absolute z-10 w-full h-full rounded-xl'/>
+                        }
+
                         <input
-                          name=""
-                          className="h-full w-full opacity-0 cursor-pointer"
+                          name="media"
+                          onChange={handleChange}
+                          className="h-full w-full opacity-0 cursor-pointer z-30"
                           type="file"
                         />
                       </div>
@@ -212,7 +252,7 @@ function Adm_article_add() {
 
               </div>
 
-              <Text_Editor/>
+              <Text_Editor />
 
 
               <TagComponent />
