@@ -1,6 +1,7 @@
 import { useRef, useState } from "react"
 import { TbArrowBadgeRight, TbBell, TbLogout, TbMail, TbUser } from "react-icons/tb"
 import { motion } from 'motion/react'
+import { Link } from "react-router-dom"
 
 function Navbar() {
   const [Left, setLeft] = useState(0)
@@ -74,7 +75,7 @@ function Navbar() {
             <ul className="flex flex-col w-full *:flex *:flex-row cursor-pointer text-zinc-600 *:justify-between *:shadow-xs *:p-2 
                           *:rounded-xl *:hover:bg-blue-400/30 *:duration-200">
               <li>پروفایل<TbUser size={20} /></li>
-              <li>تیکت‌ها<TbMail size={20} /></li>
+              <li><Link className="flex flex-row justify-between w-full" to={'/admin/ticket/all'}>تیکت‌ها<TbMail size={20} /></Link></li>
               <li>اعلان‌ها<TbBell size={20} /></li>
               <li>خروج<TbLogout size={20} /></li>
             </ul>
@@ -110,7 +111,7 @@ function Navbar() {
                 <span className="text-[9px]">3 دقیقه قبل ...</span>
 
               </div>
-                <img src="../../src/StorePanel/assets/img/profile/4.png" className="w-10 h-10 rounded-circle"/>
+                <img src="../../../src/StorePanel/assets/img/profile/4.png" className="w-10 h-10 rounded-circle"/>
               </li>
               <li className="col-span-2">
               <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs text-zinc-700" dir="rtl">
@@ -120,7 +121,7 @@ function Navbar() {
                 <span className="text-[9px]">4 دقیقه قبل ...</span>
 
               </div>
-                <img src="../../src/StorePanel/assets/img/profile/3.png" className="w-10 h-10 rounded-circle"/>
+                <img src="../../../src/StorePanel/assets/img/profile/3.png" className="w-10 h-10 rounded-circle"/>
               </li>
               <li className="col-span-2">
               <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs text-zinc-700" dir="rtl">
@@ -130,7 +131,7 @@ function Navbar() {
                 <span className="text-[9px]">6 دقیقه قبل ...</span>
 
               </div>
-                <img src="../../src/StorePanel/assets/img/profile/1.png" className="w-10 h-10 rounded-circle"/>
+                <img src="../../../src/StorePanel/assets/img/profile/1.png" className="w-10 h-10 rounded-circle"/>
               </li>
               
             </ul>
@@ -156,7 +157,7 @@ function Navbar() {
             *:gap-3 *:p-2 *:hover:bg-blue-400/30 *:duration-200 *:rounded-xl">
               <div className="grid col-span-2 grid-cols-2 justify-between items-center h-10 text-xs text-zinc-700 border-b border-b-stone-300">
                 <span>تیکت ها</span>
-                <a href="#" className="hover:text-blue-800">مشاهده همه</a>
+                <Link to={'/admin/ticket/all'} className="hover:text-blue-800">مشاهده همه</Link>
               </div>
               <li className="col-span-2 text-zinc-700">
               <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs">
@@ -166,7 +167,7 @@ function Navbar() {
                 <span className="text-[9px]">3 دقیقه قبل ...</span>
 
               </div>
-                <img src="../../src/StorePanel/assets/img/profile/1.png" className="w-10 h-10 rounded-circle"/>
+                <img src="../../../src/StorePanel/assets/img/profile/1.png" className="w-10 h-10 rounded-circle"/>
               </li>
               <li className="col-span-2 text-zinc-700">
               <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs">
@@ -176,7 +177,7 @@ function Navbar() {
                 <span className="text-[9px]">4 دقیقه قبل ...</span>
 
               </div>
-                <img src="../../src/StorePanel/assets/img/profile/2.png" className="w-10 h-10 rounded-circle"/>
+                <img src="../../../src/StorePanel/assets/img/profile/2.png" className="w-10 h-10 rounded-circle"/>
               </li>
               <li className="col-span-2 text-zinc-700">
               <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs">
@@ -186,7 +187,7 @@ function Navbar() {
                 <span className="text-[9px]">6 دقیقه قبل ...</span>
 
               </div>
-                <img src="../../src/StorePanel/assets/img/profile/3.png" className="w-10 h-10 rounded-circle"/>
+                <img src="../../../src/StorePanel/assets/img/profile/3.png" className="w-10 h-10 rounded-circle"/>
               </li>
               
             </ul>
