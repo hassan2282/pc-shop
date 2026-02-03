@@ -88,8 +88,7 @@ function Login() {
                       animate={{
                         opacity: 1,
                         scale: 1,
-                        transition: { duration: 1 },
-                        transition: {delay: 0.4}
+                        transition: { duration: 1,delay: 0.4 },
                       }}
                       className="w-full">
                       <div className="text-zinc-800">
@@ -116,8 +115,7 @@ function Login() {
                       animate={{
                         opacity: 1,
                         scale: 1,
-                        transition: { duration: 1 },
-                        transition: {delay: 0.5}
+                        transition: { duration: 1,delay: 0.5 },
                       }}
                     className="w-full">
                       <div className="form-account-title">
@@ -146,8 +144,7 @@ function Login() {
                       animate={{
                         opacity: 1,
                         scale: 1,
-                        transition: { duration: 1 },
-                        transition: {delay: 0.6}
+                        transition: { duration: 1,delay: 0.6 },
                       }}
                     className="flex w-full justify-center items-center">
                       <div className="">
@@ -166,8 +163,7 @@ function Login() {
                       animate={{
                         opacity: 1,
                         scale: 1,
-                        transition: { duration: 1 },
-                        transition: {delay: 0.6}
+                        transition: { duration: 1,delay: 0.6 },
                       }}
                     className="flex w-full justify-center items-center">
                       <a className="" href="/store/password-update">
@@ -182,8 +178,7 @@ function Login() {
                       animate={{
                         opacity: 1,
                         scale: 1,
-                        transition: { duration: 1 },
-                        transition: {delay: 0.7}
+                        transition: { duration: 1,delay: 0.7 },
                       }}
                     className="flex w-[97%] justify-center items-center ">
                       <button
@@ -213,8 +208,7 @@ function Login() {
                       animate={{
                         opacity: 1,
                         scale: 1,
-                        transition: { duration: 1 },
-                        transition: {delay: 0.8}
+                        transition: { duration: 1,delay: 0.8 },
                       }}
                     className="rounded-xl">
                       <p>
