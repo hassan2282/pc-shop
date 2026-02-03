@@ -1,6 +1,6 @@
 import { TbLogout2 } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink} from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function OrderSideBar() {
@@ -230,6 +230,11 @@ function OrderSideBar() {
               لیست های من
             </Link>
 
+            <Link to="/store/ticket" className="dropdown-item">
+              <i className="fa fa-bookmark colormain" aria-hidden="true"></i>
+              لیست های من
+            </Link>
+
             <Link to="/store/order-address" className="dropdown-item">
               <i
                 className="fa fa-map icon-icon colormain"
@@ -238,10 +243,19 @@ function OrderSideBar() {
               آدرس ها
             </Link>
 
+
+            <Link to="/store/order-message" className="dropdown-item">
+              <i className="fa fa-bell colormain" aria-hidden="true"></i>
+              تیکت ها
+            </Link>
+
+
             <Link to="/store/order-message" className="dropdown-item">
               <i className="fa fa-bell colormain" aria-hidden="true"></i>
               پیغام ها
             </Link>
+
+
 
             <Link to="/store/password-update" className="dropdown-item">
               <i className="fa fa-shield colormain" aria-hidden="true"></i>
@@ -289,7 +303,7 @@ function OrderSideBar() {
               activeclassname="active"
             >
               <i
-                className="fa fa-cart-arrow-down colormain"
+                className="fa fa-box colormain"
                 aria-hidden="true"
               ></i>
               سفارش جاری
@@ -340,6 +354,17 @@ function OrderSideBar() {
                 aria-hidden="true"
               ></i>
               آدرس ها
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/store/ticket"
+              // className="dropdown-item"
+              activeclassname="active"
+            >
+              <i className="fa fa-box colormain" aria-hidden="true"></i>
+              تیکت ها
             </NavLink>
           </li>
 
