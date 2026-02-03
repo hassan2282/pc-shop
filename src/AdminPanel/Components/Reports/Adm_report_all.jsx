@@ -13,10 +13,9 @@ function Adm_report_all() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className='flex flex-col justify-center items-center p-2 w-full'>
-            <div className='grid min-lg:grid-cols-4 max-lg:flex max-lg:flex-wrap max-lg:justify-center
-                        max-lg:w-full p-5 gap-4 *:cursor-pointer rounded-xl bg-white/20 backdrop-blur-md'>
-                <div
-                    className="w-64 bg-white/40 group hover:-translate-y-3 duration-500 hover:shadow-[0px_10px_15px_rgba(0,0,0,0.3)]
+            <div className='grid min-lg:grid-cols-4 max-lg:flex w-[84%] max-lg:flex-wrap max-lg:justify-center
+                        max-lg:w-full p-5 gap-4 *:cursor-pointer rounded-xl bg-white/5 border border-white/30 backdrop-blur-md'>
+                <div className="w-64 bg-white/50 group hover:-translate-y-3 duration-500 hover:shadow-[0px_10px_15px_rgba(0,0,0,0.3)]
                                 shadow-[0px_3px_3px_rgba(0,0,0,0.3)] rounded-xl rounded-tl-none 
                                 p-9 space-y-3 relative overflow-hidden">
                     <div className="w-24 h-24 bg-cyan-500 z-0 group-hover:scale-1000 duration-1000 rounded-full absolute -left-5 -top-7">
@@ -48,7 +47,7 @@ function Adm_report_all() {
                     </div>
                 </div>
                 <div
-                    className="w-64 bg-white/40 group hover:-translate-y-3 duration-500 hover:shadow-[0px_10px_15px_rgba(0,0,0,0.3)] shadow-[0px_3px_3px_rgba(0,0,0,0.3)] rounded-xl rounded-tl-none p-9 space-y-3 relative overflow-hidden">
+                    className="w-64 bg-white/50 group hover:-translate-y-3 duration-500 hover:shadow-[0px_10px_15px_rgba(0,0,0,0.3)] shadow-[0px_3px_3px_rgba(0,0,0,0.3)] rounded-xl rounded-tl-none p-9 space-y-3 relative overflow-hidden">
                     <div className="w-24 h-24 bg-purple-500 z-0 group-hover:scale-1000 duration-1000 rounded-full absolute -left-5 -top-7">
                         {/* <p className="absolute bottom-6 left-7 text-white text-2xl group-hover:invisible"></p> */}
                     </div>
@@ -78,7 +77,7 @@ function Adm_report_all() {
                     </div>
                 </div>
                 <div
-                    className="w-64 bg-white/40 group hover:-translate-y-3 duration-500 hover:shadow-[0px_10px_15px_rgba(0,0,0,0.3)] shadow-[0px_3px_3px_rgba(0,0,0,0.3)] rounded-xl rounded-tl-none p-9 space-y-3 relative overflow-hidden">
+                    className="w-64 bg-white/50 group hover:-translate-y-3 duration-500 hover:shadow-[0px_10px_15px_rgba(0,0,0,0.3)] shadow-[0px_3px_3px_rgba(0,0,0,0.3)] rounded-xl rounded-tl-none p-9 space-y-3 relative overflow-hidden">
                     <div className="w-24 h-24 bg-pink-500 z-0 group-hover:scale-1000 duration-1000 rounded-full absolute -left-5 -top-7">
                         {/* <p className="absolute bottom-6 left-7 text-white text-2xl group-hover:invisible"></p> */}
                     </div>
@@ -108,7 +107,7 @@ function Adm_report_all() {
                     </div>
                 </div>
                 <div
-                    className="w-64 bg-white/40 group hover:-translate-y-3 duration-500 
+                    className="w-64 bg-white/50 group hover:-translate-y-3 duration-500 
                     hover:shadow-[0px_10px_15px_rgba(0,0,0,0.3)] shadow-[0px_3px_3px_rgba(0,0,0,0.3)]
                                  rounded-xl rounded-tl-none p-9 space-y-3 relative overflow-hidden">
                     <div className="w-24 h-24 bg-lime-500 z-0 group-hover:scale-1000 duration-1000 rounded-full absolute -left-5 -top-7">
@@ -142,7 +141,7 @@ function Adm_report_all() {
 
             </div>
 
-            <div className='flex flex-col min-md:w-[84%] max-sm:h-[17rem] w-full mt-3 bg-white/30 backdrop-blur-sm 
+            <div className='flex flex-col min-md:w-[84%] max-sm:h-[17rem] w-full mt-3 bg-white/10 border border-white/30 backdrop-blur-sm 
                             z-30 justify-center items-center p-5 rounded-xl'>
                 <h2 className='flex flex-row justify-center items-center text-zinc-700 text-2xl max-sm:text-[1.3rem] max-sm:mt-5'>نسبت فروش به کاربران</h2>
                 <SameDataComposedChart />
@@ -151,13 +150,13 @@ function Adm_report_all() {
 
 
             <div className='grid grid-cols-2 max-lg:flex max-lg:flex-col max-lg:w-full gap-5 
-                            min-lg:w-[84%] w-full max-md:mt-3 min-md:mt-10 min-w-[25rem] 
-                            z-30 justify-center items-center p-3 rounded-xl overflow-x-clip'>
+                            min-lg:w-[84%] w-full max-md:mt-3 min-md:mt-10 min-w-[25rem] border border-white/30
+                            z-30 justify-center items-center p-3 rounded-xl overflow-x-clip backdrop-blur-sm'>
 
                 <div className='grid w-full'>
+                        <span className='w-ful flex justify-center text-xl text-zinc-700 p-2 mb-2'>برترین محصولات</span>
                     <table className='grid w-full backdrop-blur-sm'>
                         <thead>
-                            <span className='w-ful flex justify-center text-xl text-zinc-700 p-2 mb-2'>برترین محصولات</span>
                             <tr className='w-full grid grid-cols-5 items-center bg-white/90 backdrop-blur-sm
                                              text-gray-700/90 rounded-xl
                                                h-16 text-md justify-center text-center border border-gray-200 shadow-sm'>
@@ -229,8 +228,8 @@ function Adm_report_all() {
                 </div>
 
                 <div className='grid w-full'>
-                    <table className='grid w-full backdrop-blur-sm'>
                         <span className='w-ful flex justify-center text-xl text-zinc-700 p-2 mb-2'>برترین کاربران</span>
+                    <table className='grid w-full backdrop-blur-sm'>
                         <thead>
                             <tr className='w-full grid grid-cols-6 items-center bg-white/70 text-gray-700/90 rounded-xl
                                         h-16 text-md justify-center text-center border border-gray-200 shadow-sm'>
@@ -310,21 +309,21 @@ function Adm_report_all() {
                             w-full max-md:mt-3 min-md:mt-10 min-w-[25rem] max-sm:w-[75%] 
                             z-30 justify-center items-center p-3 rounded-xl'>
 
-                <div className='rounded-2xl'>
+                <div className='rounded-2xl backdrop-blur-sm  border border-white/40'>
                     <PieChartWithCustomizedLabel />
 
                 </div>
 
-                <div className='rounded-2xl'>
+                <div className='rounded-2xl backdrop-blur-sm  border border-white/40'>
                     <SimpleRadarChart />
                 </div>
 
             </div>
 
 
-            <div className='flex flex-col min-md:w-[84%] w-full min-lg:mt-20 bg-white/20 backdrop-blur-sm 
+            <div className='flex flex-col min-md:w-[84%] w-full min-lg:mt-20 bg-white/10 backdrop-blur-sm 
                             z-30 justify-center items-center p-5 rounded-xl max-sm:h-[20rem]'>
-                <h2 className='flex flex-row justify-center items-center text-zinc-700
+                <h2 className='flex flex-row justify-center items-center text-zinc-900
                             text-2xl max-sm:text-[1.1rem] max-sm:mt-5'>پرفروش ترین محصولات</h2>
                 <CustomShapeBarChart />
 
