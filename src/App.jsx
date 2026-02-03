@@ -51,6 +51,8 @@ import Adm_article_show from "./AdminPanel/Components/Articles/Adm_article_show.
 import Adm_order_all from "./AdminPanel/Components/Orders/Adm_order_all.jsx";
 import Adm_order_show from "./AdminPanel/Components/Orders/Adm_order_show.jsx";
 import Adm_report_all from "./AdminPanel/Components/Reports/Adm_report_all.jsx";
+import Adm_tickets_all from "./AdminPanel/Components/Tickets/Adm_tickets_all.jsx";
+import Adm_tickets_show from "./AdminPanel/Components/Tickets/Adm_tickets_show.jsx";
 
 
 function App() {
@@ -219,6 +221,8 @@ function App() {
             <Route path="order/all" element={<Adm_order_all />} />
             <Route path="order/show" element={<Adm_order_show />} />
             <Route path="report/all" element={<Adm_report_all />} />
+            <Route path="ticket/all" element={<Adm_tickets_all />} />
+            <Route path="ticket/show/:id" element={<Adm_tickets_show />} />
           </Route>
         </Routes>
         <ToastContainer />
