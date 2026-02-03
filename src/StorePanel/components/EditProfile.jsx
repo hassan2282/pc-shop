@@ -96,7 +96,7 @@ function EditProfile() {
   const AvatarSubmit = async (e) => {
     e.preventDefault();
     setAvatarLoading(true);
-    const maxFileSize = 2 * 1024 * 1024;
+    const maxFileSize = 5 * 1024 * 1024;
     try {
       const media = AvatarRef.current.files[0];
       if (media.size > maxFileSize) {
