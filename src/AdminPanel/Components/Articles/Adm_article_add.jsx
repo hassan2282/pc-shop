@@ -15,17 +15,23 @@ function Adm_article_add() {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    // text: '',
+    text: '',
     category_id: '',
     author_id: '',
     media: null,
+    tags: [],
   })
   const [preview, setPreview] = useState();
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
-
+  const [content, setContent] = useState();
+  const [uploadedImages, setUploadedImages] = useState([]);
 
   useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      author_id: JSON.parse(localStorage.getItem("user")).id,
+    }));
     const fetchCategories = async () => {
       try {
         const fetchResponse = await apiClient.get('/admin/categories');
@@ -48,20 +54,14 @@ function Adm_article_add() {
       newErrors.title = 'عنوان مقاله الزامی است'
     }
 
-    // if (!formData.text.trim()) {
-    //   newErrors.text = 'متن مقاله الزامی است'
-    // }else if (formData.text.length < 50) {
-    //   newErrors.text = 'متن مقاله نمی تواند کمتر از 50 کاراکتر باشد';
-    // }
-
     if (!formData.description) {
       newErrors.description = 'توضیح اختصاری الزامی است'
     } else if (formData.description.length < 20) {
       newErrors.description = 'توضیح اختصاری باید حداقل 20 کاراکتر باشد'
     }
 
-    if (!formData.category) {
-      newErrors.category = 'دسته بندی مقاله الزامی است'
+    if (!formData.category_id) {
+      newErrors.category_id = 'دسته بندی مقاله الزامی است'
     }
     if (!formData.media) {
       newErrors.media = 'تصویر مقاله الزامی است'
@@ -71,11 +71,33 @@ function Adm_article_add() {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    setIsSubmitting(true)
     e.preventDefault()
     if (validateForm()) {
-      setIsSubmitting(true)
 
+      try {
+        console.log(formData)
+        const res = apiClient.post('/admin/articles', formData);
+        if (res.status >= 200 && res.status < 300) {
+          toast.success('دسته بندی با موفقیت افزوده شد');
+          setFormData({
+            title: '',
+            description: '',
+            text: '',
+            category_id: '',
+            author_id: '',
+            media: null,
+            tags: [],
+          }
+          );
+        }
+      } catch (err) {
+        toast.error('فرایند ساخت مقاله با شکست مواجه شد !');
+      }finally{
+        setIsSubmitting(false)
+      }
+      
     }
   }
 
@@ -91,23 +113,57 @@ function Adm_article_add() {
           media: file
         }))
       } else {
-        setFormData(prev => ({
+        setFormData((prev) => ({
           ...prev,
-          [name]: value
-        }))
+          media: file,
+        }));
       }
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
     }
-
-
 
     // پاک کردن خطا هنگام تایپ
     if (errors[name]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        [name]: null
-      }))
+        [name]: null,
+      }));
     }
-  }
+  };
+
+  const handleContentChange = (value) => {
+    setFormData((prev) => ({
+      ...prev,
+      text: value,
+    }));
+  };
+
+  const handleTagChange = (newTags) => {
+    setFormData((prev) => ({
+      ...prev,
+      tags: newTags,
+    }));
+  };
+
+  const handleImageUpload = (imageUrl, fileName) => {
+    // اضافه کردن تصویر آپلود شده به لیست
+    const newImage = {
+      url: imageUrl,
+      name: fileName,
+      timestamp: new Date().toISOString()
+    };
+
+    setUploadedImages(prev => [...prev, newImage]);
+
+    // همچنین میتوانی اطلاعات تصویر را در formData هم ذخیره کنی
+    setFormData(prev => ({
+      ...prev,
+      uploadedImages: [...(prev.uploadedImages || []), newImage]
+    }));
+  };
 
   return (
     <div className="relative items-center justify-center min-lg:w-[75%] min-lg:mr-[12%] min-sm:p-4">
@@ -127,9 +183,9 @@ function Adm_article_add() {
           className="flex w-full h-full justify-center items-center backdrop-blur-xl
            rounded-2xl shadow-2xl border border-white/20 min-md:p-8 p-1 bg-white/10"
         >
-          <form onSubmit={handleSubmit} className="min-md:space-y-8 w-full space-y-2  flex flex-col">
+          <form onSubmit={handleSubmit} className="min-md:space-y-2 w-full space-y-2  flex flex-col">
             {/* اطلاعات پایه */}
-            <div className="flex flex-col w-full min-md:space-y-8 space-y-2">
+            <div className="flex flex-col w-full min-md:space-y-2 space-y-2">
               <h2 className="flex text-xl font-semibold text-gray-800 w-full justify-between items-center gap-2">
                 <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>
                   <IoMdCloseCircle size={27} className='text-red-500' />
@@ -140,7 +196,7 @@ function Adm_article_add() {
                 </div>
               </h2>
 
-              <div className="min-md:grid max-md:flex max-md:flex-col md:grid-cols-4 lg:grid-cols-4 gap-6">
+              <div className="min-md:grid max-md:flex max-md:flex-col md:grid-cols-4 lg:grid-cols-4 gap-3">
                 <div className="relative col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     عنوان
@@ -152,16 +208,15 @@ function Adm_article_add() {
                       value={formData.title}
                       onChange={handleChange}
                       className={`w-full pl-10 pr-4 py-4 shadow-sm shadow-zinc-500 hover:shadow-md 
-                        duration-200 rounded-xl border ${errors.title ? 'border-red-500' : 'border-gray-200'
-                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/40 `}
-                      placeholder="عنوان محصول را وارد کنید"
+                        duration-200 rounded-xl border ${errors.title ? 'border-red-500' : 'border-gray-200'}
+                        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/40 `}
+                      placeholder="عنوان مقاله را وارد کنید"
                     />
                   </div>
                   {errors.title && (
                     <p className="text-red-500 text-sm mt-1">{errors.title}</p>
                   )}
                 </div>
-
 
 
                 <div className="relative col-span-2">
@@ -182,18 +237,15 @@ function Adm_article_add() {
                         categories &&
                         categories.map((item, index) => {
                           return (
-
                             <option value={item.id} key={index}>{item.name}</option>
-
                           )
                         })
-
                       }
 
                     </select>
                   </div>
-                  {errors.category && (
-                    <p className="text-red-500 text-sm mt-1">{errors.category}</p>
+                  {errors.category_id && (
+                    <p className="text-red-500 text-sm mt-1">{errors.category_id}</p>
                   )}
                 </div>
 
@@ -236,7 +288,7 @@ function Adm_article_add() {
                         </div>
 
                         {preview &&
-                          <img src={preview} className='absolute z-10 w-full h-full rounded-xl'/>
+                          <img src={preview} className='absolute z-10 w-full h-full rounded-xl' />
                         }
 
                         <input
@@ -252,10 +304,16 @@ function Adm_article_add() {
 
               </div>
 
-              <Text_Editor />
+              <Text_Editor
+                value={content}
+                onChange={handleContentChange}
+                onImageUpload={handleImageUpload}
+                title='article' />
 
 
-              <TagComponent />
+              <TagComponent
+                tags={formData.tags}
+                onChange={handleTagChange} />
 
             </div>
 
