@@ -64,7 +64,6 @@ function Adm_role_add() {
           setFormData({ name: '', permissions: [] });
         }
       } catch (err) {
-        console.log(err.response.data)
         toast.error('خطا در فرایند ویرایش نقش ');
 
       } finally {
