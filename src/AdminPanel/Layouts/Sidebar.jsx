@@ -90,7 +90,7 @@ function Sidebar() {
           <span className=''>سفارشات </span>
           <span className='flex w-full justify-end items-center p-1'><TbBasket size={22} className='' /></span>
         </Link>
-        <Link to="/admin/ticket/all" className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
+        {/* <Link to="/admin/ticket/all" className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>تیکت </span>
           <span className='flex w-full justify-end items-center p-1'><TbMail size={22} className='' /></span>
@@ -99,7 +99,7 @@ function Sidebar() {
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>اعلان </span>
           <span className='flex w-full justify-end items-center p-1'><TbBell size={22} className='' /></span>
-        </Link>
+        </Link> */}
       </div>
 
 
