@@ -156,9 +156,10 @@ function Text_Editor({ value, onChange, title, onImageUpload }) {
   return (
     <div className='flex flex-col w-full rounded-xl justify-center items-center shadow-md shadow-zinc-400'>
       {/* Header Section */}
-      <div className='flex flex-row justify-center items-center w-full p-3 bg-white/40 rounded-t-xl border-b border-b-zinc-400/60'>
+      <div className='sticky top-15 flex flex-row justify-center items-center w-full p-3 bg-white/40 
+      rounded-t-xl border-b border-b-zinc-400/60 backdrop-blur-sm'>
         <ul className='flex flex-wrap gap-2 justify-center items-center 
-            *:p-1 *:rounded-xl *:backdrop-blur-sm *:min-w-10 *:h-10 *:flex *:justify-center *:items-center 
+            *:p-1 *:rounded-xl *:backdrop-blur-sm *:min-w-10 *:bg-white/90 *:h-10 *:flex *:justify-center *:items-center 
             *:shadow-xs *:shadow-zinc-500 *:cursor-pointer *:hover:scale-120 *:duration-200 *:text-zinc-600
             *:hover:shadow-md *:hover:bg-blue-600/70 *:hover:text-white/80'>
           <li className='text-xl'
