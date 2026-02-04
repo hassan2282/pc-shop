@@ -16,8 +16,8 @@ function Adm_report_all() {
             <div className='grid min-lg:grid-cols-4 max-lg:flex w-[84%] max-lg:flex-wrap max-lg:justify-center
                         max-lg:w-full p-5 gap-4 *:cursor-pointer rounded-xl bg-white/5 border border-white/30 backdrop-blur-md'>
                 <div className="w-64 bg-white/50 group hover:-translate-y-3 duration-500 hover:shadow-[0px_10px_15px_rgba(0,0,0,0.3)]
-                                shadow-[0px_3px_3px_rgba(0,0,0,0.3)] rounded-xl rounded-tl-none 
-                                p-9 space-y-3 relative overflow-hidden">
+                                shadow-[0px_3px_3px_rgba(0,0,0,0.3)] rounded-xl rounded-tl-none overflow-clip
+                                p-9 space-y-3 relative">
                     <div className="w-24 h-24 bg-cyan-500 z-0 group-hover:scale-1000 duration-1000 rounded-full absolute -left-5 -top-7">
                         {/* <p className="absolute bottom-6 left-7 text-white text-2xl group-hover:invisible"></p> */}
                     </div>
@@ -141,7 +141,7 @@ function Adm_report_all() {
 
             </div>
 
-            <div className='flex flex-col min-md:w-[84%] max-sm:h-[17rem] w-full mt-3 bg-white/10 border border-white/30 backdrop-blur-sm 
+            <div className='flex flex-col min-md:w-[84%] max-sm:h-[17rem] w-full mt-3 border border-white/30 backdrop-blur-sm 
                             z-30 justify-center items-center p-5 rounded-xl'>
                 <h2 className='flex flex-row justify-center items-center text-zinc-700 text-2xl max-sm:text-[1.3rem] max-sm:mt-5'>نسبت فروش به کاربران</h2>
                 <SameDataComposedChart />
@@ -305,23 +305,23 @@ function Adm_report_all() {
             </div>
 
 
-            <div className='flex flex-row max-lg:flex max-lg:flex-col gap-5 
+            <div className='flex flex-col max-lg:flex max-lg:flex-col gap-5 
                             w-full max-md:mt-3 min-md:mt-10 min-w-[25rem] max-sm:w-[75%] 
                             z-30 justify-center items-center p-3 rounded-xl'>
 
-                <div className='rounded-2xl backdrop-blur-sm  border border-white/40'>
+                <div className='rounded-2xl'>
                     <PieChartWithCustomizedLabel />
 
                 </div>
 
-                <div className='rounded-2xl backdrop-blur-sm  border border-white/40'>
+                <div className='rounded-2xl'>
                     <SimpleRadarChart />
                 </div>
 
             </div>
 
 
-            <div className='flex flex-col min-md:w-[84%] w-full min-lg:mt-20 bg-white/10 backdrop-blur-sm 
+            <div className='flex flex-col min-md:w-[84%] w-full min-lg:mt-20
                             z-30 justify-center items-center p-5 rounded-xl max-sm:h-[20rem]'>
                 <h2 className='flex flex-row justify-center items-center text-zinc-900
                             text-2xl max-sm:text-[1.1rem] max-sm:mt-5'>پرفروش ترین محصولات</h2>
