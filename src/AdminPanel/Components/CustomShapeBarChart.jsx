@@ -1,6 +1,7 @@
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
 
-const colors = ['#086FFF', '#66C1FD', '#28A4FD', '#3FB7F3', '#1080FD', '#42B8FD', '#0158FD'];
+// const colors = ['#086FFF', '#66C1FD', '#28A4FD', '#3FB7F3', '#1080FD', '#42B8FD', '#0158FD'];
+const colors = ['#3f3f3f', '#3f3f3f', '#3f3f3f', '#3f3f3f', '#3f3f3f', '#3f3f3f', '#3f3f3f'];
 
 // #region Sample data
 const data = [
