@@ -51,7 +51,8 @@ function TagComponent({ tags, onChange }) {
     const TagSelector = (item) => {
         const newTag = item.name;
         onChange([...tags, newTag]);
-        setFilteredTags([])
+        tagInputRef.current.value = "";
+        setFilteredTags()
     }
 
     return (
