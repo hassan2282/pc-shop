@@ -47,12 +47,12 @@ import Adm_product_show from "./AdminPanel/Components/products/Adm_product_show.
 import Adm_article_all from "./AdminPanel/Components/Articles/Adm_article_all.jsx";
 import Adm_article_add from "./AdminPanel/Components/Articles/Adm_article_add.jsx";
 import Adm_article_edit from "./AdminPanel/Components/Articles/Adm_article_edit.jsx";
-import Adm_article_show from "./AdminPanel/Components/Articles/Adm_article_show.jsx";
 import Adm_order_all from "./AdminPanel/Components/Orders/Adm_order_all.jsx";
 import Adm_order_show from "./AdminPanel/Components/Orders/Adm_order_show.jsx";
 import Adm_report_all from "./AdminPanel/Components/Reports/Adm_report_all.jsx";
 import Adm_tickets_all from "./AdminPanel/Components/Tickets/Adm_tickets_all.jsx";
 import Adm_tickets_show from "./AdminPanel/Components/Tickets/Adm_tickets_show.jsx";
+import AdminPanelPass from "./AdminPanel/Components/AdminPanelPass.jsx";
 
 
 function App() {
@@ -196,6 +196,7 @@ function App() {
 
 
           <Route path="/admin/*" element={<Master />}>
+          <Route path="Admin-Panel-Pass" element={<AdminPanelPass />} />
             <Route path="index" element={<Adm_report_all />} />
             <Route path="users/all" element={<Adm_all_users />} />
             <Route path="users/add" element={<Adm_add_user />} />
@@ -216,8 +217,7 @@ function App() {
             <Route path="product/show" element={<Adm_product_show />} />
             <Route path="article/all" element={<Adm_article_all />} />
             <Route path="article/add" element={<Adm_article_add />} />
-            <Route path="article/edit" element={<Adm_article_edit />} />
-            <Route path="article/show" element={<Adm_article_show />} />
+            <Route path="article/edit/:id" element={<Adm_article_edit />} />
             <Route path="order/all" element={<Adm_order_all />} />
             <Route path="order/show" element={<Adm_order_show />} />
             <Route path="report/all" element={<Adm_report_all />} />
