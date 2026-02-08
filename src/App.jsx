@@ -52,11 +52,14 @@ import Adm_order_show from "./AdminPanel/Components/Orders/Adm_order_show.jsx";
 import Adm_report_all from "./AdminPanel/Components/Reports/Adm_report_all.jsx";
 import Adm_tickets_all from "./AdminPanel/Components/Tickets/Adm_tickets_all.jsx";
 import Adm_tickets_show from "./AdminPanel/Components/Tickets/Adm_tickets_show.jsx";
-import AdminPanelPass from "./AdminPanel/Components/AdminPanelPass.jsx";
+import Adm_gate from "./AdminPanel/Components/Gate/Adm_gate.jsx";
+import Adm_gate_all from "./AdminPanel/Components/Gate/Adm_gate_all.jsx";
+import Adm_gate_add from "./AdminPanel/Components/Gate/Adm_gate_add.jsx";
 
 
 function App() {
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
+  const isAdmin = useSelector((state) => state.user.role_id > 1);
 
   return (
     <>
@@ -195,8 +198,10 @@ function App() {
           </Route>
 
 
-          <Route path="/admin/*" element={<Master />}>
-          <Route path="Admin-Panel-Pass" element={<AdminPanelPass />} />
+          <Route path="/admin/*" element={ <Master />}>
+            <Route path="admGate" element={<Adm_gate />} />
+            <Route path="admGate/all" element={<Adm_gate_all />} />
+            <Route path="admGate/add" element={<Adm_gate_add />} />
             <Route path="index" element={<Adm_report_all />} />
             <Route path="users/all" element={<Adm_all_users />} />
             <Route path="users/add" element={<Adm_add_user />} />
