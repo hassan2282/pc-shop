@@ -32,7 +32,6 @@ function Adm_permission_all() {
         toast.success('دسترسی با موفقیت حذف شد')
       }
     }catch(err){
-      toast.error(err.response.data);
       toast.error('خطا در فرایند حذف دسترسی');
     }
   }
