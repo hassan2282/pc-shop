@@ -2,6 +2,7 @@ import { useRef, useState } from "react"
 import { TbArrowBadgeRight, TbBell, TbLogout, TbMail, TbUser } from "react-icons/tb"
 import { motion } from 'motion/react'
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 function Navbar() {
   const [Left, setLeft] = useState(0)
@@ -31,6 +32,9 @@ function Navbar() {
     setLeft(emailRef.current.offsetLeft)
   }
 
+  const user = useSelector(state => state.user);
+  const BASE_URL = import.meta.env.VITE__BASEURL;
+
   return (
     <div className="sticky top-1 grid-cols-2 justify-center items-center w-full p-2 z-50">
       <div className="grid col-span-2 justify-start">
@@ -38,9 +42,12 @@ function Navbar() {
           <span ref={profileRef} onClick={profile} className={`flex flex-row items-center backdrop-blur-sm
              bg-[#EFF4F9]/60 shadow-sm rounded-xl p-2 justify-center z-20 ${ProfileToggle && '*:rotate-90'} duration-200 text-zinc-700/70`}>
             <TbArrowBadgeRight size={25} className="duration-300 text-blue-800/60" />
-            سید حسن تقوی
+            {user.username}
           </span>
-          <img src='../../../src/StorePanel/assets/img/profile.jpg' alt='user profile' className='flex max-md:hidden w-10 h-10 z-10 rounded-full shadow-md shadow-zinc-500' />
+          <Link to={`/admin/user/show/${user.id}`}>
+            <img src={user?.profile ? BASE_URL+"/storage/media/"+user?.profile : '../../../src/StorePanel/assets/img/profile.jpg'} alt='user profile'
+              className='flex max-md:hidden w-10 h-10 z-10 rounded-full shadow-md shadow-zinc-500' />
+          </Link>
           <span
             ref={emailRef} onClick={email}
             className="max-md:hidden rounded-full w-[2.6rem] z-20 h-[2.6rem] shadow-md hover:*:scale-120
@@ -74,10 +81,10 @@ function Navbar() {
             className={`absolute z-20 w-[9rem] overflow-clip duration-300 top-13 p-1 backdrop-blur-sm bg-[#EFF4F9]/60 rounded-xl shadow-md `}>
             <ul className="flex flex-col w-full *:flex *:flex-row cursor-pointer text-zinc-600 *:justify-between *:shadow-xs *:p-2 
                           *:rounded-xl *:hover:bg-blue-400/30 *:duration-200">
-              <li>پروفایل<TbUser size={20} /></li>
+              <Link to={`/admin/user/show/${user.id}`}>پروفایل<TbUser size={20} /></Link>
               <li><Link className="flex flex-row justify-between w-full" to={'/admin/ticket/all'}>تیکت‌ها<TbMail size={20} /></Link></li>
               <li>اعلان‌ها<TbBell size={20} /></li>
-              <li>خروج<TbLogout size={20} /></li>
+              <Link to={'/'}>خروج<TbLogout size={20} /></Link>
             </ul>
           </motion.div>
         }
@@ -104,36 +111,36 @@ function Navbar() {
                 <a href="#" className="hover:text-blue-800">مشاهده همه</a>
               </div>
               <li className="col-span-2">
-              <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs text-zinc-700" dir="rtl">
+                <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs text-zinc-700" dir="rtl">
 
-                <span className="">سید حسن تقوی</span>
-                <p className="text-[10px]">مرگ بر آمریکای لاشی ...</p>
-                <span className="text-[9px]">3 دقیقه قبل ...</span>
+                  <span className="">سید حسن تقوی</span>
+                  <p className="text-[10px]">مرگ بر آمریکای لاشی ...</p>
+                  <span className="text-[9px]">3 دقیقه قبل ...</span>
 
-              </div>
-                <img src="../../../src/StorePanel/assets/img/profile/4.png" className="w-10 h-10 rounded-circle"/>
+                </div>
+                <img src="../../../src/StorePanel/assets/img/profile/4.png" className="w-10 h-10 rounded-circle" />
               </li>
               <li className="col-span-2">
-              <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs text-zinc-700" dir="rtl">
+                <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs text-zinc-700" dir="rtl">
 
-                <span className="">سیامک بشکار</span>
-                <p className="text-[10px]">داداش میشه به شماره...</p>
-                <span className="text-[9px]">4 دقیقه قبل ...</span>
+                  <span className="">سیامک بشکار</span>
+                  <p className="text-[10px]">داداش میشه به شماره...</p>
+                  <span className="text-[9px]">4 دقیقه قبل ...</span>
 
-              </div>
-                <img src="../../../src/StorePanel/assets/img/profile/3.png" className="w-10 h-10 rounded-circle"/>
+                </div>
+                <img src="../../../src/StorePanel/assets/img/profile/3.png" className="w-10 h-10 rounded-circle" />
               </li>
               <li className="col-span-2">
-              <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs text-zinc-700" dir="rtl">
+                <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs text-zinc-700" dir="rtl">
 
-                <span className="">فرید اشنود</span>
-                <p className="text-[10px]">سلام ببخشید چطور ...</p>
-                <span className="text-[9px]">6 دقیقه قبل ...</span>
+                  <span className="">فرید اشنود</span>
+                  <p className="text-[10px]">سلام ببخشید چطور ...</p>
+                  <span className="text-[9px]">6 دقیقه قبل ...</span>
 
-              </div>
-                <img src="../../../src/StorePanel/assets/img/profile/1.png" className="w-10 h-10 rounded-circle"/>
+                </div>
+                <img src="../../../src/StorePanel/assets/img/profile/1.png" className="w-10 h-10 rounded-circle" />
               </li>
-              
+
             </ul>
           </motion.div>
         }
@@ -160,36 +167,36 @@ function Navbar() {
                 <Link to={'/admin/ticket/all'} className="hover:text-blue-800">مشاهده همه</Link>
               </div>
               <li className="col-span-2 text-zinc-700">
-              <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs">
+                <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs">
 
-                <span className="">امید نوروزی</span>
-                <p className="text-[10px]">داداش چطور باید در ...</p>
-                <span className="text-[9px]">3 دقیقه قبل ...</span>
+                  <span className="">امید نوروزی</span>
+                  <p className="text-[10px]">داداش چطور باید در ...</p>
+                  <span className="text-[9px]">3 دقیقه قبل ...</span>
 
-              </div>
-                <img src="../../../src/StorePanel/assets/img/profile/1.png" className="w-10 h-10 rounded-circle"/>
+                </div>
+                <img src="../../../src/StorePanel/assets/img/profile/1.png" className="w-10 h-10 rounded-circle" />
               </li>
               <li className="col-span-2 text-zinc-700">
-              <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs">
+                <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs">
 
-                <span className="">رضا صالحی</span>
-                <p className="text-[10px]">سلام من در خرید محصور...</p>
-                <span className="text-[9px]">4 دقیقه قبل ...</span>
+                  <span className="">رضا صالحی</span>
+                  <p className="text-[10px]">سلام من در خرید محصور...</p>
+                  <span className="text-[9px]">4 دقیقه قبل ...</span>
 
-              </div>
-                <img src="../../../src/StorePanel/assets/img/profile/2.png" className="w-10 h-10 rounded-circle"/>
+                </div>
+                <img src="../../../src/StorePanel/assets/img/profile/2.png" className="w-10 h-10 rounded-circle" />
               </li>
               <li className="col-span-2 text-zinc-700">
-              <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs">
+                <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs">
 
-                <span className="">حمید احمدی</span>
-                <p className="text-[10px]">سلام ببخشید من در ثبت  ...</p>
-                <span className="text-[9px]">6 دقیقه قبل ...</span>
+                  <span className="">حمید احمدی</span>
+                  <p className="text-[10px]">سلام ببخشید من در ثبت  ...</p>
+                  <span className="text-[9px]">6 دقیقه قبل ...</span>
 
-              </div>
-                <img src="../../../src/StorePanel/assets/img/profile/3.png" className="w-10 h-10 rounded-circle"/>
+                </div>
+                <img src="../../../src/StorePanel/assets/img/profile/3.png" className="w-10 h-10 rounded-circle" />
               </li>
-              
+
             </ul>
           </motion.div>
         }
