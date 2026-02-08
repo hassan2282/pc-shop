@@ -54,9 +54,18 @@ function EditProfile() {
 
       if (infoRes.status >= 200 && infoRes.status < 300) {
         toast.success("اطلاعات با موفقیت ویرایش شد");
+        
+        // Update Redux store and localStorage
+        dispatch({
+          type: "updateUser",
+          payload: {
+            updates: updatedData
+          }
+        });
       }
 
-      setInitialUserData((prev) => ({ ...prev, ...updatedData }));
+      setInitialUserData((prev) => ({ ...prev, updatedData }));
+     
     } catch (err) {
       if (err.response?.data) {
         err.response.status >= 400 &&
@@ -114,6 +123,7 @@ function EditProfile() {
         }
       });
       if (res.status >= 200 && res.status < 300) {
+          console.log(res.data.path)
         dispatch({
           type: "updateUser",
           payload: {
