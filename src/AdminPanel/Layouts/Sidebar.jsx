@@ -17,7 +17,7 @@ function Sidebar() {
     const handleResize = () => {
       const newIsMobile = window.innerWidth <= 768;
       setIsMobile(newIsMobile);
-      
+
       if (newIsMobile) {
         setToggle(true);
       }
@@ -41,16 +41,18 @@ function Sidebar() {
         <span className='flex w-full duration-300 justify-center items-center p-1 focus:scale-50'>
           {
             toggle ?
-              <TbMenu2 size={23}/>
+              <TbMenu2 size={23} />
               :
               <TbX size={23} />
           }
         </span>
       </div>
 
-      <div className={`fixed space-y-2 group w-[3rem] justify-center items-center *:backdrop-blur-lg text-stone-600 *:hover:bg-zinc-100 duration-300 ${toggle ? ' -translate-x-20 ' : 'translate-x-0'}`}>
-        <Link to="/admin/index" className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
-                        cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
+      <div className={`fixed space-y-2 group w-[3rem] justify-center items-center *:backdrop-blur-lg text-stone-600
+         *:hover:bg-zinc-100 *:hover:text-blue-900 duration-300 ${toggle ? ' -translate-x-20 ' : 'translate-x-0'}`}>
+        <Link to="/admin/index" className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] 
+        bg-[#EFF4F9]/50 duration-500
+         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>داشبورد </span>
           <span className='flex w-full justify-end items-center p-1'><TbHome size={22} /></span>
         </Link>
@@ -60,7 +62,7 @@ function Sidebar() {
           <span className=''>کاربران </span>
           <span className='flex w-full justify-end items-center p-1'><TbUserCog size={22} className='' /></span>
         </Link>
-          <Link to="/admin/categories/all" className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
+        <Link to="/admin/categories/all" className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] bg-[#EFF4F9]/50 duration-500
                         cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>دسته‌بندی</span>
           <span className='flex w-full justify-end items-center p-1'><TbCategoryFilled size={22} className='' /></span>
