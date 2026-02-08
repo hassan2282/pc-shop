@@ -6,6 +6,7 @@ const initialState = {
     isAuthenticated: !!localStorage.getItem("token"),
 };
 
+
 const Reducer = (state = initialState, action) => {
     switch(action.type) {
         case "login":
@@ -30,12 +31,14 @@ const Reducer = (state = initialState, action) => {
             }
 
         case "updateUser":
+            const updatedUser = {
+                ...state.user,
+                ...action.payload.updates,
+            };
+            localStorage.setItem("user", JSON.stringify(updatedUser));
             return {
                 ...state,
-                user: {
-                    ...state.user,
-                    ...action.payload.updates,
-                }
+                user: updatedUser,
             }    
 
             default:
