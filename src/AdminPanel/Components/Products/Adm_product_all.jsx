@@ -2,7 +2,7 @@ import { FaUser, FaUserSecret } from 'react-icons/fa'
 import { TbCheck, TbEditCircle, TbEyeFilled, TbSearch, TbTrashFilled, TbX } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
-import { MdPersonAdd, MdShoppingBasket } from 'react-icons/md'
+import { MdShoppingBasket } from 'react-icons/md'
 import { IoMdCloseCircle } from 'react-icons/io'
 
 function Adm_product_all() {
