@@ -44,15 +44,20 @@ function TagComponent({ tags, onChange }) {
     const changeHandler = () => {
         const search = tagInputRef.current.value.toLowerCase().trim();
         setFilteredTags(
-            search === '' ? [] : fetchTags.filter((item) => item.name.toLowerCase().includes(search))
+            search === '' ? [] : fetchTags.filter((item) => 
+                item.name.toLowerCase().includes(search) && !tags.includes(item.name)
+            )
         );
     }
 
     const TagSelector = (item) => {
         const newTag = item.name;
         onChange([...tags, newTag]);
+        setFilteredTags((prev) => prev.filter((target) => {
+            target.name !== item.name;
+        }))
         tagInputRef.current.value = "";
-        setFilteredTags()
+        // setFilteredTags()
     }
 
     return (
