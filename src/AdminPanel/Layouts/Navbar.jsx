@@ -42,9 +42,9 @@ function Navbar() {
           <span ref={profileRef} onClick={profile} className={`flex flex-row items-center backdrop-blur-sm
              bg-[#EFF4F9]/60 shadow-sm rounded-xl p-2 justify-center z-20 ${ProfileToggle && '*:rotate-90'} duration-200 text-zinc-700/70`}>
             <TbArrowBadgeRight size={25} className="duration-300 text-blue-800/60" />
-            {user.username}
+            {user?.username.length > 12 ? "..." + user?.username?.slice(0,11) : user?.username}
           </span>
-          <Link to={`/admin/user/show/${user.id}`}>
+          <Link to={`/admin/user/show/${user?.id}`}>
             <img src={user?.profile ? BASE_URL+"/storage/media/"+user?.profile : '../../../src/StorePanel/assets/img/profile.jpg'} alt='user profile'
               className='flex max-md:hidden w-10 h-10 z-10 rounded-full shadow-md shadow-zinc-500' />
           </Link>
