@@ -36,8 +36,8 @@ function Sidebar() {
                     justify-center items-center p-1 space-y-1' dir='ltr'>
 
       <div onClick={toggleMenu} className={`flex flex-row gap-3 bg-dark opacity-70 text-white duration-200
-                         cursor-pointer ${toggle ? 'rounded-full animate-spin hover:animate-none' : 'rounded-xl'} hover:scale-90 p-2
-                          bg-zinc-700/100 justify-center items-center shadow-sm`}>
+                         cursor-pointer ${toggle ? 'rounded-full ' : 'rounded-xl'} hover:scale-90 p-2
+                          bg-stone-900 justify-center items-center shadow-sm`}>
         <span className='flex w-full duration-300 justify-center items-center p-1 focus:scale-50'>
           {
             toggle ?
@@ -49,9 +49,9 @@ function Sidebar() {
       </div>
 
       <div className={`fixed space-y-2 group w-[3rem] justify-center items-center *:backdrop-blur-lg text-stone-600
-         *:hover:bg-zinc-100 *:hover:text-blue-900 duration-300 ${toggle ? ' -translate-x-20 ' : 'translate-x-0'}`}>
+         *:hover:bg-zinc-100 *:hover:text-blue-900 duration-300 ${toggle ? ' -translate-x-20 ' : 'translate-x-0'} *:shadow-black/30 *:shadow-xs`}>
         <Link to="/admin/index" className='flex flex-row gap-3 w-full overflow-clip hover:w-[10rem] 
-        bg-[#EFF4F9]/50 duration-500
+        bg-[#EFF4F9]/50 duration-500 
          cursor-pointer rounded-xl p-2 justify-end items-center shadow-sm'>
           <span className=''>داشبورد </span>
           <span className='flex w-full justify-end items-center p-1'><TbHome size={22} /></span>
