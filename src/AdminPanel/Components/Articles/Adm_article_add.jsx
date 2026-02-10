@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import { TbArticle, TbCheck } from 'react-icons/tb'
-import { Link } from 'react-router-dom'
+import { Link, replace, useNavigate } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io'
 import { FcOldTimeCamera } from 'react-icons/fc'
 import Text_Editor from '../Text_Editor'
@@ -26,12 +26,13 @@ function Adm_article_add() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [content, setContent] = useState();
   const [uploadedImages, setUploadedImages] = useState([]);
+  const navigate = useNavigate();
 
 
   useEffect(() => {
     setFormData((prev) => ({
       ...prev,
-      author_id: JSON.parse(localStorage.getItem("user")).id,
+      author_id: JSON.parse(localStorage.getItem("user"))?.id,
     }));
     const fetchCategories = async () => {
       try {
@@ -147,7 +148,6 @@ function Adm_article_add() {
     e.preventDefault()
     if (validateForm()) {
       setIsSubmitting(true)
-
       try {
         const res = await apiClient.post('/admin/articles', formData, {
           headers: {
@@ -155,22 +155,12 @@ function Adm_article_add() {
           }
         });
         if (res.status >= 200 && res.status < 300) {
+          navigate("/admin/article/all" ,{replace:true})
           toast.success('مقاله با موفقیت افزوده شد');
-          setFormData({
-            title: '',
-            description: '',
-            text: '',
-            category_id: '',
-            author_id: '',
-            media: null,
-            tags: [],
-          },
-          );
-          setPreview('');
-          setContent('');
         }
       } catch (err) {
         toast.error('فرایند ساخت مقاله با شکست مواجه شد !');
+        console.log(err.response);
       } finally {
         setIsSubmitting(false)
       }
