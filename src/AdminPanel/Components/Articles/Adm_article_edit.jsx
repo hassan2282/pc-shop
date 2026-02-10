@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import { TbArticle, TbCheck } from 'react-icons/tb'
-import { Link, useParams } from 'react-router-dom'
+import { Link, replace, useNavigate, useParams } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io'
 import { FcOldTimeCamera } from 'react-icons/fc'
 import Text_Editor from '../Text_Editor'
@@ -27,6 +27,7 @@ function Adm_article_edit() {
   const [content, setContent] = useState();
   const [uploadedImages, setUploadedImages] = useState([]);
   const BASE_URL = import.meta.env.VITE__BASEURL;
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -199,23 +200,11 @@ function Adm_article_edit() {
 
         if (res.status >= 200 && res.status < 300) {
           toast.success('مقاله با موفقیت ویرایش شد');
-          setFormData({
-            title: '',
-            description: '',
-            text: '',
-            category_id: '',
-            author_id: '',
-            media: null,
-            tags: [],
-          },
-          );
-          setPreview('');
-          setContent('');
+          navigate('/admin/article/all', {replace:true})
         }
 
       } catch (err) {
         toast.error('فرایند ویرایش مقاله با شکست مواجه شد');
-        console.log(err.response?.data);
       } finally {
         setIsSubmitting(false);
       }
