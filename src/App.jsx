@@ -59,7 +59,7 @@ import Adm_gate_add from "./AdminPanel/Components/Gate/Adm_gate_add.jsx";
 
 function App() {
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
-  const isAdmin = useSelector((state) => state.user.role_id > 1);
+  const isAdmin = useSelector((state) => state.user?.role_id > 1);
 
   return (
     <>
