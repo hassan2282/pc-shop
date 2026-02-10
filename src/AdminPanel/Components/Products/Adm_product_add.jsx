@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import { TbCheck, TbPlus, TbScreenshot } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
@@ -7,18 +7,51 @@ import { LiaDollyFlatbedSolid } from 'react-icons/lia'
 import { FcOldTimeCamera } from 'react-icons/fc'
 import Text_Editor from '../Text_Editor'
 import TagComponent from '../TagComponent'
+import { toast } from 'react-toastify'
+import apiClient from '../../../apiClient'
 
 function Adm_product_add() {
+  const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({
     title: '',
     price: '',
-    description: '',
-    category: '',
     amount: '',
+    description: '',
+    category_id: '',
+    text: '',
+    tags: [],
+    media_1: '',
+    media_2: '',
+    media_3: '',
+    media_4: '',
   })
-
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [content, setContent] = useState();
+  const [preview_1, setPreview_1] = useState();
+  const [preview_2, setPreview_2] = useState();
+  const [preview_3, setPreview_3] = useState();
+  const [preview_4, setPreview_4] = useState();
+
+
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const fetchResponse = await apiClient.get('/admin/categories');
+        if (fetchResponse.status >= 200 && fetchResponse.status < 300) {
+          setCategories(fetchResponse.data);
+        }
+      } catch (err) {
+        toast.error('فرایند واکشی دسته بندی ها با شکست مواجه شد !');
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+
+
 
   const validateForm = () => {
     const newErrors = {}
@@ -45,6 +78,11 @@ function Adm_product_add() {
       newErrors.category = 'دسته بندی کالا الزامی است'
     }
 
+    if (!formData.media_1) {
+      toast.error('تصویر مقاله الزامی است')
+      newErrors.media_1 = 'تصویر مقاله الزامی است'
+    }
+
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
@@ -64,20 +102,61 @@ function Adm_product_add() {
   }
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
+    const { name, value, files } = e.target
+
+    if (name === 'media_1' || name === 'media_2' || name === 'media_3' || name === 'media_4') {
+      const file = files?.[0];
+      if (file) {
+        if(name === 'media_1'){
+          setPreview_1(URL.createObjectURL(file));
+          setFormData((prev) => ({
+            ...prev,
+            name: file
+          }))
+        }
+        if(name === 'media_2'){
+          setPreview_2(URL.createObjectURL(file));
+          setFormData((prev) => ({
+            ...prev,
+            name: file
+          }))
+        }
+        if(name === 'media_3'){
+          setPreview_3(URL.createObjectURL(file));
+          setFormData((prev) => ({
+            ...prev,
+            name: file
+          }))
+        }
+        if(name === 'media_4'){
+          setPreview_4(URL.createObjectURL(file));
+          setFormData((prev) => ({
+            ...prev,
+            name: file
+          }))
+        }
+        
+      } else {
+        setFormData((prev) => ({
+          ...prev,
+          media: file,
+        }));
+      }
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
 
     // پاک کردن خطا هنگام تایپ
     if (errors[name]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        [name]: null
-      }))
+        [name]: null,
+      }));
     }
-  }
+  };
 
 
   const [rows, setRows] = useState([
@@ -97,6 +176,43 @@ function Adm_product_add() {
     newRows[index][field] = value;
     setRows(newRows)
   }
+
+
+
+  const handleTagChange = (newTags) => {
+    setFormData((prev) => ({
+      ...prev,
+      tags: newTags,
+    }));
+  };
+
+
+  const handleContentChange = (value) => {
+    setFormData((prev) => ({
+      ...prev,
+      text: value,
+    }));
+  };
+
+
+
+  const handleImageUpload = (imageUrl, fileName) => {
+    // اضافه کردن تصویر آپلود شده به لیست
+    const newImage = {
+      url: imageUrl,
+      name: fileName,
+      timestamp: new Date().toISOString()
+    };
+
+    setUploadedImages(prev => [...prev, newImage]);
+
+    // همچنین میتوانی اطلاعات تصویر را در formData هم ذخیره کنی
+    setFormData(prev => ({
+      ...prev,
+      uploadedImages: [...(prev.uploadedImages || []), newImage]
+    }));
+  };
+
 
   return (
     <div className="relative items-center justify-center min-lg:w-[75%] min-lg:mr-[12%] min-sm:p-4">
@@ -218,25 +334,26 @@ function Adm_product_add() {
                   <div className="relative">
                     <select
                       type="text"
-                      name="description"
-                      value={formData.category}
+                      name="category_id"
+                      value={formData.category_id}
                       onChange={handleChange}
-                      className={`w-full pl-10 pr-4 py-4 shadow-sm shadow-zinc-500 hover:shadow-md duration-200 rounded-xl border ${errors.category ? 'border-red-500' : 'border-gray-200'
-                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 `}
+                      className={`w-full pl-10 pr-4 py-4 duration-200 rounded-xl
+                         border ${errors.category_id ? 'border-red-500' : 'border-gray-200'
+                        } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90 `}
                       placeholder="دسته بندی">
-
-                    <option>دسته بندی</option>
-                    <option>کامپیوتر</option>
-                    <option>لپ تاب</option>
-                    <option>میز</option>
-                    <option>آهن</option>
-                    <option>ماوس</option>
-                    <option>جانبی موبایل</option>
+                      {
+                        categories &&
+                        categories.map((item, index) => {
+                          return (
+                            <option className='text-zinc-500' value={item.id} key={index}>{item.name}</option>
+                          )
+                        })
+                      }
 
                     </select>
                   </div>
-                  {errors.category && (
-                    <p className="text-red-500 text-sm mt-1">{errors.category}</p>
+                  {errors.category_id && (
+                    <p className="text-red-500 text-sm mt-1">{errors.category_id}</p>
                   )}
                 </div>
 
@@ -246,10 +363,10 @@ function Adm_product_add() {
                     <div className="w-full p-3">
                       <div
                         className="relative h-48 rounded-xl border-2 border-blue-500/20 bg-white/80 flex hover:border-blue-500/50
-                          justify-center items-center shadow-sm shadow-zinc-500 hover:shadow-xl transition-shadow duration-300 ease-in-out"
+                          justify-center items-center shadow-sm shadow-zinc-600 hover:shadow-xl transition-shadow duration-300 ease-in-out"
                       >
                         <div className="absolute flex flex-col items-center">
-                          <FcOldTimeCamera size={80} />
+                          <FcOldTimeCamera size={80} className='z-20'/>
                           <span className="block text-rose-600/70 font-semibold">
                             * اجباری *
                           </span>
@@ -258,10 +375,13 @@ function Adm_product_add() {
                             افزودن تصویر محصول
                           </span>
                         </div>
-
+                        {preview_1 &&
+                          <img src={preview_1} className='absolute z-10 w-full h-full rounded-xl' />
+                        }
                         <input
-                          name=""
-                          className="h-full w-full opacity-0 cursor-pointer"
+                          name="media_1"
+                          onChange={handleChange}
+                          className="h-full w-full opacity-0 cursor-pointer z-30" 
                           type="file"
                         />
                       </div>
@@ -273,20 +393,23 @@ function Adm_product_add() {
                     <div className="w-full p-3">
                       <div
                         className="relative h-48 rounded-xl border-2 border-blue-500/20 bg-white/50 flex hover:border-blue-500/50
-                          justify-center items-center shadow-sm shadow-zinc-500 hover:shadow-xl transition-shadow duration-300 ease-in-out"
+                          justify-center items-center shadow-sm shadow-zinc-600 hover:shadow-xl transition-shadow duration-300 ease-in-out"
                       >
                         <div className="absolute flex flex-col items-center">
-                          <TbScreenshot size={80} className='text-blue-600' />
+                          <TbScreenshot size={80} className='text-blue-600 z-20 backdrop-blur-md rounded-xl shadow-sm shadow-black/30' />
 
                           تصویر فرعی
                           <span className="block text-zinc-600 font-normal mt-1">
                             افزودن تصویر محصول
                           </span>
                         </div>
-
+                        {preview_2 &&
+                          <img src={preview_2} className='absolute z-10 w-full h-full rounded-xl' />
+                        }
                         <input
-                          name=""
-                          className="h-full w-full opacity-0 cursor-pointer"
+                          name="media_2"
+                          onChange={handleChange}
+                          className="h-full w-full opacity-0 cursor-pointer z-30"
                           type="file"
                         />
                       </div>
@@ -298,19 +421,23 @@ function Adm_product_add() {
                     <div className="w-full p-3">
                       <div
                         className="relative h-48 rounded-xl border-2 border-blue-500/20 bg-white/50 flex hover:border-blue-500/50
-                          justify-center items-center shadow-sm shadow-zinc-500 hover:shadow-xl transition-shadow duration-300 ease-in-out"
+                          justify-center items-center shadow-sm shadow-zinc-600 hover:shadow-xl transition-shadow duration-300 ease-in-out"
                       >
                         <div className="absolute flex flex-col items-center">
-                          <TbScreenshot size={80} className='text-blue-600' />
+                          <TbScreenshot size={80} className='text-blue-600 z-20 backdrop-blur-md rounded-xl shadow-sm shadow-black/30' />
                           تصویر فرعی
                           <span className="block text-zinc-600 font-normal mt-1">
                             افزودن تصویر محصول
                           </span>
                         </div>
 
+                        {preview_3 &&
+                          <img src={preview_3} className='absolute z-10 w-full h-full rounded-xl' />
+                        }
                         <input
-                          name=""
-                          className="h-full w-full opacity-0 cursor-pointer"
+                          name="media_3"
+                          onChange={handleChange}
+                          className="h-full w-full opacity-0 cursor-pointer z-30"
                           type="file"
                         />
                       </div>
@@ -322,19 +449,22 @@ function Adm_product_add() {
                     <div className="w-full p-3">
                       <div
                         className="relative h-48 rounded-xl border-2 border-blue-500/20 bg-white/50 flex hover:border-blue-500/50
-                          justify-center items-center shadow-sm shadow-zinc-500 hover:shadow-xl transition-shadow duration-300 ease-in-out"
+                          justify-center items-center shadow-sm shadow-zinc-600 hover:shadow-xl transition-shadow duration-300 ease-in-out"
                       >
                         <div className="absolute flex flex-col items-center">
-                          <TbScreenshot size={80} className='text-blue-600' />
+                          <TbScreenshot size={80} className='text-blue-600 z-20 backdrop-blur-md rounded-xl shadow-sm shadow-black/30' />
                           تصویر فرعی
                           <span className="block text-zinc-600 font-normal mt-1">
                             افزودن تصویر محصول
                           </span>
                         </div>
-
+                        {preview_4 &&
+                          <img src={preview_4} className='absolute z-10 w-full h-full rounded-xl' />
+                        }
                         <input
-                          name=""
-                          className="h-full w-full opacity-0 cursor-pointer"
+                          name="media_4"
+                          onChange={handleChange}
+                          className="h-full w-full opacity-0 cursor-pointer z-30"
                           type="file"
                         />
                       </div>
@@ -384,10 +514,16 @@ function Adm_product_add() {
 
               </div>
 
-              <Text_Editor/>
+              <Text_Editor
+                value={content}
+                onChange={handleContentChange}
+                onImageUpload={handleImageUpload}
+                title='product' />
 
 
-              <TagComponent />
+              <TagComponent
+                tags={formData.tags}
+                onChange={handleTagChange} />
 
             </div>
 
