@@ -56,13 +56,13 @@ function Adm_show_user() {
             bg-zinc-300 rounded-full shadow-sm inset-shadow-2xs'>< FaUserSecret size={15} /></span>
         </div>
         <div className='grid grid-cols-3 -translate-y-8 gap-2'>
-          <button className='flex p-3  rounded-full cursor-pointer bg-blue-400 shadow-zinc-500 shadow-sm
+          <button className='flex p-3  rounded-full cursor-pointer bg-blue-600 shadow-zinc-500 shadow-sm
             hover:shadow-md hover:scale-110 duration-300 active:scale-95 justify-center items-center text-white'>
             <TbBan size={30} /></button>
-          <Link to={`/admin/user/edit/${targetUser?.id}`} className='flex p-3 rounded-full cursor-pointer  bg-blue-400 shadow-zinc-500 shadow-sm
+          <Link to={`/admin/user/edit/${targetUser?.id}`} className='flex p-3 rounded-full cursor-pointer  bg-blue-600 shadow-zinc-500 shadow-sm
             hover:shadow-md hover:scale-110 duration-300 active:scale-95 justify-center items-center text-white'>
             <TbEdit size={30} /></Link>
-          <button className='flex p-3 rounded-full cursor-pointer bg-blue-400 shadow-zinc-500 shadow-sm
+          <button className='flex p-3 rounded-full cursor-pointer bg-blue-600 shadow-zinc-500 shadow-sm
             hover:shadow-md hover:scale-110 duration-300 active:scale-95 justify-center items-center text-white'>
             <TbTrash size={30} /></button>
         </div>
