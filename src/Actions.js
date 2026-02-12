@@ -1,6 +1,8 @@
+import { tokenManager } from './apiClient';
+
 export const logoutAction = () => {
-  localStorage.removeItem('token');
-  localStorage.removeItem('user');
+  // Use tokenManager to clear all tokens consistently
+  tokenManager.clearTokens();
   
   return {
     type: 'LOGOUT',
