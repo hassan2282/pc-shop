@@ -218,8 +218,8 @@ function App() {
             <Route path="permission/edit/:id" element={<Adm_permission_edit />} />
             <Route path="product/all" element={<Adm_product_all />} />
             <Route path="product/add" element={<Adm_product_add />} />
-            <Route path="product/edit" element={<Adm_product_edit />} />
-            <Route path="product/show" element={<Adm_product_show />} />
+            <Route path="product/edit/:id" element={<Adm_product_edit />} />
+            <Route path="product/show/:id" element={<Adm_product_show />} />
             <Route path="article/all" element={<Adm_article_all />} />
             <Route path="article/add" element={<Adm_article_add />} />
             <Route path="article/edit/:id" element={<Adm_article_edit />} />
