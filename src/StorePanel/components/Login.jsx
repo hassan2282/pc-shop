@@ -5,6 +5,7 @@ import { AiOutlineLoading } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { motion } from "motion/react"
+import { tokenManager } from "../../apiClient";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -35,7 +36,11 @@ function Login() {
       if (res.status >= 200 && res.status < 300) {
         toast.success("خوش آمدید");
         const token = res.data.authorisation.original.access_token;
-        localStorage.setItem('token', token)
+        const refreshToken = res.data.authorisation.original.refresh_token || null;
+        const expiresIn = res.data.authorisation.expires_in || 604800; // Default to 1 week if not provided
+
+        // Use tokenManager to store tokens with expiry time
+        tokenManager.storeTokens(token, refreshToken, expiresIn);
         localStorage.setItem('user', JSON.stringify(res.data.user));
 
         dispatch({
