@@ -1,7 +1,11 @@
 import { TbTruckDelivery } from 'react-icons/tb'
 import { motion } from 'motion/react'
+import { useParams } from 'react-router-dom'
 
 function Adm_product_show() {
+
+  const {id} = useParams();
+  alert(id)
 
   return (
     <motion.div
