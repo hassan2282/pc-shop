@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import { TbCheck, TbPlus, TbScreenshot } from 'react-icons/tb'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io'
 import { LiaDollyFlatbedSolid } from 'react-icons/lia'
 import { FcOldTimeCamera } from 'react-icons/fc'
@@ -12,6 +12,13 @@ import apiClient from '../../../apiClient'
 
 function Adm_product_add() {
   const [categories, setCategories] = useState([]);
+  const [rows, setRows] = useState([
+    { attribute: "", value: "" },
+    { attribute: "", value: "" },
+    { attribute: "", value: "" },
+    { attribute: "", value: "" },
+    { attribute: "", value: "" },
+  ]);
   const [formData, setFormData] = useState({
     title: '',
     price: '',
@@ -19,11 +26,12 @@ function Adm_product_add() {
     description: '',
     category_id: '',
     text: '',
-    tags: [],
     media_1: '',
     media_2: '',
     media_3: '',
     media_4: '',
+    tags: [],
+    allAttributes: rows,
   })
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -33,6 +41,7 @@ function Adm_product_add() {
   const [preview_3, setPreview_3] = useState();
   const [preview_4, setPreview_4] = useState();
 
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -43,6 +52,7 @@ function Adm_product_add() {
           setCategories(fetchResponse.data);
         }
       } catch (err) {
+        toast.error(err.response?.data?.message)
         toast.error('فرایند واکشی دسته بندی ها با شکست مواجه شد !');
       }
     };
@@ -74,8 +84,8 @@ function Adm_product_add() {
       newErrors.amount = 'موجودی کالا الزامی است'
     }
 
-    if (!formData.category) {
-      newErrors.category = 'دسته بندی کالا الزامی است'
+    if (!formData.category_id) {
+      newErrors.category_id = 'دسته بندی کالا الزامی است'
     }
 
     if (!formData.media_1) {
@@ -87,19 +97,6 @@ function Adm_product_add() {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (validateForm()) {
-      setIsSubmitting(true)
-      // در اینجا منطق ارسال داده به سرور قرار می‌گیرد
-      console.log('Form submitted:', formData)
-      setTimeout(() => {
-        setIsSubmitting(false)
-        // نمایش پیام موفقیت
-        alert('کاربر با موفقیت ایجاد شد')
-      }, 1500)
-    }
-  }
 
   const handleChange = (e) => {
     const { name, value, files } = e.target
@@ -107,35 +104,35 @@ function Adm_product_add() {
     if (name === 'media_1' || name === 'media_2' || name === 'media_3' || name === 'media_4') {
       const file = files?.[0];
       if (file) {
-        if(name === 'media_1'){
+        if (name === 'media_1') {
           setPreview_1(URL.createObjectURL(file));
           setFormData((prev) => ({
             ...prev,
-            name: file
+            media_1: file
           }))
         }
-        if(name === 'media_2'){
+        if (name === 'media_2') {
           setPreview_2(URL.createObjectURL(file));
           setFormData((prev) => ({
             ...prev,
-            name: file
+            media_2: file
           }))
         }
-        if(name === 'media_3'){
+        if (name === 'media_3') {
           setPreview_3(URL.createObjectURL(file));
           setFormData((prev) => ({
             ...prev,
-            name: file
+            media_3: file
           }))
         }
-        if(name === 'media_4'){
+        if (name === 'media_4') {
           setPreview_4(URL.createObjectURL(file));
           setFormData((prev) => ({
             ...prev,
-            name: file
+            media_4: file
           }))
         }
-        
+
       } else {
         setFormData((prev) => ({
           ...prev,
@@ -159,21 +156,13 @@ function Adm_product_add() {
   };
 
 
-  const [rows, setRows] = useState([
-    { attribute: "", value: "" },
-    { attribute: "", value: "" },
-    { attribute: "", value: "" },
-    { attribute: "", value: "" },
-    { attribute: "", value: "" },
-  ]);
-
   const addRow = () => {
     setRows([...rows, { attribute: "", value: "" }])
   }
 
   const attrChangeHandler = (index, field, value) => {
     const newRows = [...rows];
-    newRows[index][field] = value;
+      newRows[index][field.trim()] = value;
     setRows(newRows)
   }
 
@@ -212,6 +201,31 @@ function Adm_product_add() {
       uploadedImages: [...(prev.uploadedImages || []), newImage]
     }));
   };
+
+
+
+  const handleSubmit = async (e) => {
+    setIsSubmitting(true);
+    e.preventDefault();
+    if (validateForm()) {
+      try {
+        const res = await apiClient.post('/admin/products', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+        if (res.status >= 200 && res.status < 300) {
+          toast.success('محصول با موفقیت افزوده شد');
+          navigate('/admin/product/all', { replace: true });
+        }
+      } catch (err) {
+        toast.error('خطا در فرایند ثبت محصول');
+      } finally {
+        setIsSubmitting(false)
+      }
+
+    }
+  }
 
 
   return (
@@ -366,7 +380,7 @@ function Adm_product_add() {
                           justify-center items-center shadow-sm shadow-zinc-600 hover:shadow-xl transition-shadow duration-300 ease-in-out"
                       >
                         <div className="absolute flex flex-col items-center">
-                          <FcOldTimeCamera size={80} className='z-20'/>
+                          <FcOldTimeCamera size={80} className='z-20' />
                           <span className="block text-rose-600/70 font-semibold">
                             * اجباری *
                           </span>
@@ -381,7 +395,7 @@ function Adm_product_add() {
                         <input
                           name="media_1"
                           onChange={handleChange}
-                          className="h-full w-full opacity-0 cursor-pointer z-30" 
+                          className="h-full w-full opacity-0 cursor-pointer z-30"
                           type="file"
                         />
                       </div>
@@ -538,7 +552,7 @@ function Adm_product_add() {
                 {isSubmitting ? (
                   <>
                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                    در حال ذخیره...
+                    در حال ارسال...
                   </>
                 ) : (
                   <>
