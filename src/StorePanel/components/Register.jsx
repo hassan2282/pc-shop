@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { motion } from "motion/react"
 import apiClient from "../../apiClient";
+import { tokenManager } from "../../apiClient";
 
 
 function Register() {
@@ -44,7 +45,11 @@ function Register() {
             if (res.status >= 200 && res.status < 300) {
                 toast.success('کاربر با موفقیت افزوده شد');
                 const token = res.data.authorisation.original.access_token;
-                localStorage.setItem('token', token);
+                const refreshToken = res.data.authorisation.original.refresh_token || null;
+                const expiresIn = res.data.authorisation.expires_in || 604800; // Default to 1 week if not provided
+
+                // Use tokenManager to store tokens with expiry time
+                tokenManager.storeTokens(token, refreshToken, expiresIn);
                 localStorage.setItem('user', JSON.stringify(res.data.user));
                 dispatch({
                     type: "setUser",
@@ -56,12 +61,8 @@ function Register() {
             }
 
         } catch (err) {
-            if (err.response && err.response.data) {
-                setErrors(err.response.data);
-            } else {
-                setErrors({ server: 'خطایی در ارتباط با سرور رخ داد' });
-                toast.error('خطا در ارتباط با سرور')
-            }
+            setErrors(err.response?.data);
+            toast.error(err.response?.data?.message);
         } finally {
             setIsLoading(false);
         }
@@ -81,11 +82,11 @@ function Register() {
                             animate={{
                                 opacity: 1,
                                 y: 0,
-                                transition: { delay: 0.5,duration: 1 },
+                                transition: { delay: 0.5, duration: 1 },
                             }}
                             onSubmit={handleSubmit} className="flex flex-col justify-center items-center min-sm:w-[50%]
-                                                w-full bg-white/30 
-                                                backdrop-blur-sm shadow-sm shadow-black/20 p-4 md:p-8 rounded-3xl ">
+                                                w-full bg-white/30 border border-white/40
+                                                backdrop-blur-xl shadow-sm shadow-black/20 p-4 md:p-8 rounded-3xl ">
                             <div className="w-full h-full justify-center items-center grid
                              min-md:grid-cols-2 min-md:gap-4" dir="rtl">
                                 <div
@@ -101,7 +102,7 @@ function Register() {
                                             animate={{
                                                 opacity: 1,
                                                 scale: 1,
-                                                transition: { duration: 0.5,delay: 0.3 },
+                                                transition: { duration: 0.5, delay: 0.3 },
                                             }}
 
                                             minLength={6}
@@ -109,7 +110,7 @@ function Register() {
                                             onChange={handleChange}
                                             value={formData.username}
                                             required
-                                            className="w-full rounded-full border p-3 border-gray-300 bg-white/40
+                                            className="w-full rounded-full border p-3 border-gray-300 bg-white/90
                                             text-dark placeholder-gray-700 outline-none shadow-xs shadow-black/30 
                                             hover:scale-102 hover:shadow-md duration-300"
                                             name="username"
@@ -120,7 +121,7 @@ function Register() {
                                 </div>
                                 <div className="w-full">
                                     <div className=" text-white"><span>*</span> ایمیل</div>
-                                    <div className={` ${errors.email && 'border-red-500 border-2 rounded-lg animate-pulse'} `}>
+                                    <div className={` ${errors?.email && 'border-red-500 border-2 rounded-lg animate-pulse'} `}>
                                         <motion.input
                                             initial={{
                                                 opacity: 0,
@@ -129,14 +130,15 @@ function Register() {
                                             animate={{
                                                 opacity: 1,
                                                 scale: 1,
-                                                transition: { duration: 0.5,delay: 0.5 },
+                                                transition: { duration: 0.5, delay: 0.5 },
                                             }}
                                             maxLength={255}
                                             onChange={handleChange}
                                             value={formData.email}
                                             required
-                                            className="w-full rounded-full border p-3 border-gray-300 bg-white/40
-                                             text-dark placeholder-gray-700 outline-none shadow-xs shadow-black/30 hover:scale-102 hover:shadow-md duration-300" name="email"
+                                            className="w-full rounded-full border p-3 border-gray-300 bg-white/90
+                                             text-dark placeholder-gray-700 outline-none shadow-xs shadow-black/30 hover:scale-102 hover:shadow-md duration-300"
+                                            name="email"
                                             type="email"
                                             placeholder=" ایمیل شما"
                                         />
@@ -144,7 +146,7 @@ function Register() {
                                 </div>
                                 <div className="w-full">
                                     <div className="form-account-title text-white"><span>*</span> کلمه عبور</div>
-                                    <div className={`form-account-row ${errors.frontError && 'border-red-500 border-2 rounded-lg animate-pulse'} `}>
+                                    <div className={`form-account-row ${errors?.frontError && 'border-red-500 border-2 rounded-lg animate-pulse'} `}>
                                         <motion.input
                                             initial={{
                                                 opacity: 0,
@@ -153,13 +155,13 @@ function Register() {
                                             animate={{
                                                 opacity: 1,
                                                 scale: 1,
-                                                transition: { duration: 0.5,delay: 0.7 },
+                                                transition: { duration: 0.5, delay: 0.7 },
                                             }}
                                             minLength={6}
                                             maxLength={255}
                                             onChange={handleChange}
                                             value={formData.password}
-                                            className="w-full rounded-full border p-3 border-gray-300 bg-white/40
+                                            className="w-full rounded-full border p-3 border-gray-300 bg-white/90
                                              text-dark placeholder-gray-700 outline-none shadow-xs shadow-black/30 hover:scale-102 hover:shadow-md duration-300"                                            name="password"
                                             type="password"
                                             placeholder=" کلمه عبور شما"
@@ -168,7 +170,7 @@ function Register() {
                                 </div>
                                 <div className="w-full">
                                     <div className=" text-white"><span>*</span> تکرار کلمه عبور</div>
-                                    <div className={` ${errors.frontError && 'border-red-500 border-2 rounded-lg animate-pulse'} `}>
+                                    <div className={` ${errors?.frontError && 'border-red-500 border-2 rounded-lg animate-pulse'} `}>
                                         <motion.input
                                             initial={{
                                                 opacity: 0,
@@ -177,14 +179,14 @@ function Register() {
                                             animate={{
                                                 opacity: 1,
                                                 scale: 1,
-                                                transition: { duration: 0.5,delay: 0.9 },
+                                                transition: { duration: 0.5, delay: 0.9 },
                                             }}
                                             minLength={6}
                                             maxLength={255}
                                             onChange={handleChange}
                                             value={formData.password_confirmation}
                                             required
-                                            className="w-full rounded-full border p-3 border-gray-300 bg-white/40
+                                            className="w-full rounded-full border p-3 border-gray-300 bg-white/90
                                              text-dark placeholder-gray-700 outline-none shadow-xs shadow-black/40 
                                              hover:scale-102 hover:shadow-md duration-300" name="password_confirmation"
                                             type="password"
@@ -201,7 +203,7 @@ function Register() {
                                     animate={{
                                         opacity: 1,
                                         scale: 1,
-                                        transition: { duration: 0.5,delay: 1.1 },
+                                        transition: { duration: 0.5, delay: 1.1 },
                                     }}
                                     className="flex w-full justify-center items-center">
                                     <div className="flex items-center justify-center">
@@ -220,10 +222,10 @@ function Register() {
                                     animate={{
                                         opacity: 1,
                                         scale: 1,
-                                        transition: { duration: 0.5,delay: 1.3 },
+                                        transition: { duration: 0.5, delay: 1.3 },
                                     }}
-                                    className="flex flex-col space-y-2 w-full justify-center items-center">
-                                    <button type="submit" className="w-full p-3 bg-[#3D8583] hover:bg-sky-800 hover:text-white shadow-xs hover:shadow-md cursor-pointer
+                                    className="flex flex-col space-y-2 mt-3 w-full justify-center items-center">
+                                    <button type="submit" className="w-full p-3 bg-blue-600/50 hover:bg-sky-800 hover:text-white shadow-xs hover:shadow-md cursor-pointer
                                      hover:scale-102 shadow-zinc-500 rounded-full duration-300 flex justify-center items-center">
                                         {isLoading ? <AiOutlineLoading className="animate-spin" size={20} /> : 'عضویت'}
                                     </button>
