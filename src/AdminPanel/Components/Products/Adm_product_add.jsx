@@ -36,6 +36,7 @@ function Adm_product_add() {
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [content, setContent] = useState();
+  const [_uploadedImages, setUploadedImages] = useState([]);
   const [preview_1, setPreview_1] = useState();
   const [preview_2, setPreview_2] = useState();
   const [preview_3, setPreview_3] = useState();
@@ -67,24 +68,27 @@ function Adm_product_add() {
     const newErrors = {}
 
     if (!formData.title.trim()) {
+      toast.error('عنوان محصول الزامی است')
       newErrors.title = 'عنوان محصول الزامی است'
     }
 
     if (!formData.price.trim()) {
+      toast.error('قیمت الزامی است')
       newErrors.price = 'قیمت الزامی است'
     }
 
-    if (!formData.description) {
-      newErrors.description = 'توضیح اختصاری الزامی است'
-    } else if (formData.description.length < 20) {
-      newErrors.description = 'توضیح اختصاری باید حداقل 20 کاراکتر باشد'
+    if (!formData.description || formData.description.length < 21) {
+      toast.error('خطا در توضیحات خلاصه')
+      newErrors.description = 'خطا در توضیحات خلاصه'
     }
 
     if (!formData.amount) {
+      toast.error('موجودی کالا الزامی است')
       newErrors.amount = 'موجودی کالا الزامی است'
     }
 
     if (!formData.category_id) {
+      toast.error('دسته بندی کالا الزامی است')
       newErrors.category_id = 'دسته بندی کالا الزامی است'
     }
 
@@ -162,7 +166,7 @@ function Adm_product_add() {
 
   const attrChangeHandler = (index, field, value) => {
     const newRows = [...rows];
-      newRows[index][field.trim()] = value;
+    newRows[index][field.trim()] = value;
     setRows(newRows)
   }
 
@@ -203,12 +207,12 @@ function Adm_product_add() {
   };
 
 
-
   const handleSubmit = async (e) => {
     setIsSubmitting(true);
     e.preventDefault();
-    if (validateForm()) {
-      try {
+
+    try {
+      if (validateForm() === true) {
         const res = await apiClient.post('/admin/products', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -218,13 +222,14 @@ function Adm_product_add() {
           toast.success('محصول با موفقیت افزوده شد');
           navigate('/admin/product/all', { replace: true });
         }
-      } catch (err) {
-        toast.error('خطا در فرایند ثبت محصول');
-      } finally {
-        setIsSubmitting(false)
       }
-
+    } catch (err) {
+      console.log(err)
+      toast.error('خطا در فرایند ثبت محصول');
+    } finally {
+      setIsSubmitting(false)
     }
+
   }
 
 
@@ -270,13 +275,14 @@ function Adm_product_add() {
                       name="title"
                       value={formData.title}
                       onChange={handleChange}
-                      className={`w-full pl-10 pr-4 py-3 shadow-sm shadow-zinc-500 hover:shadow-md duration-200 rounded-xl border ${errors.title ? 'border-red-500' : 'border-gray-200'
+                      className={`w-full pl-10 pr-4 py-3 shadow-sm shadow-zinc-500 hover:shadow-md duration-200 rounded-xl
+                         border ${errors?.title ? 'border-red-500' : 'border-gray-200'
                         } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 `}
                       placeholder="عنوان محصول را وارد کنید"
                     />
                   </div>
                   {errors.title && (
-                    <p className="text-red-500 text-sm mt-1">{errors.title}</p>
+                    <p className="text-red-500 text-sm mt-1">{errors?.title}</p>
                   )}
                 </div>
 
@@ -290,13 +296,13 @@ function Adm_product_add() {
                       name="price"
                       value={formData.price}
                       onChange={handleChange}
-                      className={`w-full pl-10 pr-4 py-3 shadow-sm shadow-zinc-500 hover:shadow-md duration-200 rounded-xl border ${errors.price ? 'border-red-500' : 'border-gray-200'
+                      className={`w-full pl-10 pr-4 py-3 shadow-sm shadow-zinc-500 hover:shadow-md duration-200 rounded-xl border ${errors?.price ? 'border-red-500' : 'border-gray-200'
                         } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 `}
                       placeholder="قیمت "
                     />
                   </div>
-                  {errors.price && (
-                    <p className="text-red-500 text-sm mt-1">{errors.price}</p>
+                  {errors?.price && (
+                    <p className="text-red-500 text-sm mt-1">{errors?.price}</p>
                   )}
                 </div>
                 <div className="relative">
@@ -309,13 +315,13 @@ function Adm_product_add() {
                       name="amount"
                       value={formData.amount}
                       onChange={handleChange}
-                      className={`w-full pl-10 pr-4 py-3 shadow-sm shadow-zinc-500 hover:shadow-md duration-200 rounded-xl border ${errors.amount ? 'border-red-500' : 'border-gray-200'
+                      className={`w-full pl-10 pr-4 py-3 shadow-sm shadow-zinc-500 hover:shadow-md duration-200 rounded-xl border ${errors?.amount ? 'border-red-500' : 'border-gray-200'
                         } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 `}
                       placeholder="موجودی کالا "
                     />
                   </div>
-                  {errors.amount && (
-                    <p className="text-red-500 text-sm mt-1">{errors.amount}</p>
+                  {errors?.amount && (
+                    <p className="text-red-500 text-sm mt-1">{errors?.amount}</p>
                   )}
                 </div>
 
@@ -330,13 +336,14 @@ function Adm_product_add() {
                       name="description"
                       value={formData.description}
                       onChange={handleChange}
-                      className={`w-full pl-10 pr-4 py-4 min-h-[3.7rem] h-[3.8rem] shadow-sm shadow-zinc-500 hover:shadow-md duration-200 rounded-xl border ${errors.description ? 'border-red-500' : 'border-gray-200'
+                      className={`w-full pl-10 pr-4 py-4 min-h-[3.7rem] h-[3.8rem] shadow-sm shadow-zinc-500
+                         hover:shadow-md duration-200 rounded-xl border ${errors?.description ? 'border-red-500' : 'border-gray-200'
                         } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 `}
                       placeholder="توضیح اختصاری ..."
                     />
                   </div>
-                  {errors.description && (
-                    <p className="text-red-500 text-sm mt-1">{errors.description}</p>
+                  {errors?.description && (
+                    <p className="text-red-500 text-sm mt-1">{errors?.description}</p>
                   )}
                 </div>
 
@@ -352,7 +359,7 @@ function Adm_product_add() {
                       value={formData.category_id}
                       onChange={handleChange}
                       className={`w-full pl-10 pr-4 py-4 duration-200 rounded-xl
-                         border ${errors.category_id ? 'border-red-500' : 'border-gray-200'
+                         border ${errors?.category_id ? 'border-red-500' : 'border-gray-200'
                         } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90 `}
                       placeholder="دسته بندی">
                       {
@@ -366,8 +373,8 @@ function Adm_product_add() {
 
                     </select>
                   </div>
-                  {errors.category_id && (
-                    <p className="text-red-500 text-sm mt-1">{errors.category_id}</p>
+                  {errors?.category_id && (
+                    <p className="text-red-500 text-sm mt-1">{errors?.category_id}</p>
                   )}
                 </div>
 
@@ -376,8 +383,10 @@ function Adm_product_add() {
                   <div className="md:flex">
                     <div className="w-full p-3">
                       <div
-                        className="relative h-48 rounded-xl border-2 border-blue-500/20 bg-white/80 flex hover:border-blue-500/50
-                          justify-center items-center shadow-sm shadow-zinc-600 hover:shadow-xl transition-shadow duration-300 ease-in-out"
+                        className={`relative h-48 rounded-xl border-2 ${errors?.media_1 ? 'border-rose-500' : 'border-blue-500/20'}  
+                        bg-white/80 flex hover:border-blue-500/50
+                          justify-center items-center shadow-sm shadow-zinc-600 hover:shadow-xl
+                          transition-shadow duration-300 ease-in-out`}
                       >
                         <div className="absolute flex flex-col items-center">
                           <FcOldTimeCamera size={80} className='z-20' />
@@ -547,7 +556,10 @@ function Adm_product_add() {
                 type="submit"
                 disabled={isSubmitting}
                 className="flex-1 flex items-center justify-center gap-2 cursor-pointer bg-blue-600 
-                hover:bg-blue-700 text-white font-medium py-3 px-2 rounded-xl transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                hover:bg-blue-700 text-white font-medium py-3 px-2 rounded-xl transition-all 
+                duration-200 transform hover:scale-102 focus:outline-none focus:ring-2 
+                focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed
+                active:scale-95"
               >
                 {isSubmitting ? (
                   <>
