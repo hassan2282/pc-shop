@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 function OrderSideBar() {
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
   const user = useSelector((state) => state.user);
-
+  const BASE_URL = import.meta.env.VITE__BASEURL;
   const dispatch = useDispatch();
 
   const logoutHandler = (e) => {
@@ -30,73 +30,12 @@ function OrderSideBar() {
             className="object-cover"
             src={
               user?.profile
-                ? `http://127.0.0.1:8000/storage/media/${user?.profile}`
+                ? `${BASE_URL}/storage/media/${user?.profile}`
                 : "src/StorePanel/assets/img/profile.jpg"
             }
           />
         </div>
-        <a
-          className="view-more"
-          href=""
-          data-toggle="modal"
-          data-target="#myModal"
-        >
-          <i className="fa fa-plus-circle"></i>
-        </a>
-        <div
-          className="modal-share modal-width-custom modal fade"
-          id="myModal"
-          tabIndex="-1"
-          role="dialog"
-          aria-labelledby="myModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-hidden="true"
-                >
-                  &times;
-                </button>
-                <h4 className="modal-title" id="myModalLabel">
-                  تغییر پروفایل
-                </h4>
-              </div>
-              <div className="modal-body">
-                <ul className="profile-avatars default text-center">
-                  <li>
-                    <img
-                      className="profile-avatars-item"
-                      src="/src/StorePanel/assets/img/profile/1.png"
-                    />
-                  </li>
-                  <li>
-                    <img
-                      className="profile-avatars-item"
-                      src="/src/StorePanel/assets/img/profile/2.png"
-                    />
-                  </li>
-                  <li>
-                    <img
-                      className="profile-avatars-item"
-                      src="/src/StorePanel/assets/img/profile/3.png"
-                    />
-                  </li>
-                  <li>
-                    <img
-                      className="profile-avatars-item"
-                      src="/src/StorePanel/assets/img/profile/4.png"
-                    />
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+        
         {/* <!--text--> */}
 
         <div
