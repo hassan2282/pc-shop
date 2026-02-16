@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import apiClient from '../../apiClient';
+import { toast } from 'react-toastify';
 
 function TagComponent({ tags, onChange }) {
 
@@ -53,11 +54,9 @@ function TagComponent({ tags, onChange }) {
     const TagSelector = (item) => {
         const newTag = item.name;
         onChange([...tags, newTag]);
-        setFilteredTags((prev) => prev.filter((target) => {
-            target.name !== item.name;
-        }))
+        setFilteredTags((prev) => prev.filter((target) => target.name !== item.name))
         tagInputRef.current.value = "";
-        // setFilteredTags()
+        setFilteredTags()
     }
 
     return (
@@ -97,9 +96,9 @@ function TagComponent({ tags, onChange }) {
                     tags &&
                     tags.map((item, index) => {
                         return (
-                            <option key={index} onClick={() => removeTag(index)} className='relative peer after:content-["-"] 
+                            <option key={index} onClick={() => removeTag(index)} className='relative peer after:content-["حذف"] 
                                 after:flex after:justify-center after:items-center after:absolute
-                                after:inset-0 after:z-10 after:bg-black/90 after:rounded-xl active:scale-95 after:duration-200
+                                after:inset-0 after:z-10 after:bg-red-600 after:rounded-xl active:scale-95 after:duration-200
                                 after:scale-x-0 hover:after:scale-x-100'>
                                 {item}
                             </option>
