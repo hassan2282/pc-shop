@@ -293,7 +293,7 @@ function Adm_article_add() {
                         </div>
 
                         {preview &&
-                          <img src={preview} className='absolute z-10 w-full h-full rounded-xl' />
+                          <img src={preview} className='absolute z-10 w-full h-full rounded-xl object-cover' />
                         }
 
                         <input
