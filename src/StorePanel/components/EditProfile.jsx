@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { AiOutlineLoading } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import apiClient from "../../apiClient";
-import {motion} from 'motion/react';
+import { motion } from 'motion/react';
 
 function EditProfile() {
   const user = useSelector((state) => state.user);
@@ -20,6 +20,11 @@ function EditProfile() {
   const [InfoData, setInfoData] = useState(initialUserData);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  const BASE_URL = import.meta.env.VITE__BASEURL;
+  const [imgReview, setImageReview] = useState();
+  const AvatarRef = useRef(null);
+  const dispatch = useDispatch()
+
 
   const handleInfoChange = (e) => {
     const { name, value } = e.target;
@@ -54,7 +59,7 @@ function EditProfile() {
 
       if (infoRes.status >= 200 && infoRes.status < 300) {
         toast.success("اطلاعات با موفقیت ویرایش شد");
-        
+
         // Update Redux store and localStorage
         dispatch({
           type: "updateUser",
@@ -65,7 +70,7 @@ function EditProfile() {
       }
 
       setInitialUserData((prev) => ({ ...prev, updatedData }));
-     
+
     } catch (err) {
       if (err.response?.data) {
         err.response.status >= 400 &&
@@ -77,12 +82,8 @@ function EditProfile() {
       setIsLoading(false);
     }
   };
-
   // Avatar Submit Form Logic
 
-  const [imgReview, setImageReview] = useState();
-  const AvatarRef = useRef(null);
-  const dispatch = useDispatch()
 
   const loadReview = () => {
     if (AvatarRef.current.files && AvatarRef.current.files[0]) {
@@ -114,26 +115,26 @@ function EditProfile() {
       }
 
       // Create FormData and append file
-    const formData = new FormData();
-    formData.append('media', media); // Match the name with your input's 'name' attribute
+      const formData = new FormData();
+      formData.append('media', media); // Match the name with your input's 'name' attribute
 
       const res = await apiClient.post("profile-avatar", formData, {
         headers: {
-        'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data'
         }
       });
       if (res.status >= 200 && res.status < 300) {
-          console.log(res.data.path)
         dispatch({
           type: "updateUser",
           payload: {
-            updates: {profile: res.data.path}
+            updates: { profile: res.data.path }
           }
         })
         toast.success("تصویر با موفقیت افزوده شد");
       }
     } catch (err) {
-      toast.error(err.response.data);
+      toast.error(err.response?.data?.message);
+      toast.error('خطا در فرایند ثبت پروفایل');
     } finally {
       setAvatarLoading(false);
     }
@@ -152,14 +153,12 @@ function EditProfile() {
               </header>
               <div
                 className="relative flex md:max-2xl:flex-row max-md:flex-col 
-                           justify-center items-start gap-4 w-[98%] h-auto"
-              >
+                           justify-center items-start gap-4 w-[98%] h-auto">
                 <form
                   onSubmit={handleInfoSubmit}
                   className="flex flex-col justify-center items-center h-auto basis-full bg-[#e9fafc9a]
                                         rounded-xl shadow shadow-gray-600 max-md:w-full
-                                        *:flex *:flex-col *:p-2"
-                >
+                                        *:flex *:flex-col *:p-2">
                   <div className=" flex flex-row justify-center items-center text-lg text-center
                                  bg-[#a0d4d646] text-gray-600 rounded-t-lg w-full min-h-20 shadow-sm shadow-gray-900 mb-4">
                     اطلاعات حساب کاربری
@@ -183,18 +182,18 @@ function EditProfile() {
 
                   <motion.div
                     initial={{
-                      opacity:0,
+                      opacity: 0,
                       y: -20,
                     }}
                     animate={{
-                      opacity:1,
+                      opacity: 1,
                       y: 0,
                       transition: {
                         delay: 0.4,
                         duration: 0.7
                       }
                     }}
-                  className="w-[80%]">
+                    className="w-[80%]">
                     <span>* نام </span>
                     <input
                       // minLength={3}
@@ -213,18 +212,18 @@ function EditProfile() {
                   </motion.div>
                   <motion.div
                     initial={{
-                      opacity:0,
+                      opacity: 0,
                       y: -20,
                     }}
                     animate={{
-                      opacity:1,
+                      opacity: 1,
                       y: 0,
                       transition: {
                         delay: 0.5,
                         duration: 0.7
                       }
                     }}
-                  className="w-[80%]">
+                    className="w-[80%]">
                     <span>* نام خانوادگی </span>
                     <input
                       minLength={3}
@@ -243,19 +242,19 @@ function EditProfile() {
                   </motion.div>
                   <motion.div
                     initial={{
-                      opacity:0,
+                      opacity: 0,
                       y: -20,
                     }}
                     animate={{
-                      opacity:1,
+                      opacity: 1,
                       y: 0,
                       transition: {
                         delay: 0.6,
                         duration: 0.7
                       }
                     }}
-                  dir="rtl"
-                  className="w-[80%]">
+                    dir="rtl"
+                    className="w-[80%]">
                     <span>* شماره تلفن </span>
                     <input
                       minLength={6}
@@ -275,18 +274,18 @@ function EditProfile() {
                   </motion.div>
                   <motion.div
                     initial={{
-                      opacity:0,
+                      opacity: 0,
                       y: -20,
                     }}
                     animate={{
-                      opacity:1,
+                      opacity: 1,
                       y: 0,
                       transition: {
                         delay: 0.7,
                         duration: 0.7
                       }
                     }}
-                  className="w-[80%]">
+                    className="w-[80%]">
                     <span>* ایمیل </span>
                     <input
                       minLength={6}
@@ -335,16 +334,15 @@ function EditProfile() {
                   </div>
                   <div
                     style={
-                      imgReview ? { backgroundImage: `url(${imgReview})` } : 
-                      user.profile ? { backgroundImage: `url(http://127.0.0.1:8000/storage/media/${user.profile})` } : {}
+                      imgReview ? { backgroundImage: `url(${imgReview})` } :
+                        user.profile ? { backgroundImage: `url(${BASE_URL}/storage/media/${user?.profile})` } : {}
                     }
                     className={`relative bg-cover flex flex-col justify-center border-dotted hover:bg-blue-300 
                         duration-200 hover:opacity-85 text-gray-600 border-[#54b4b9]
-                                border-3 rounded-md items-center w-full max-sm:h-60 h-92.5 cover mt-3 ${
-                                  imgReview ? "bg-cover bg-center" : ""
-                                } `}
+                                border-3 rounded-md items-center w-full max-sm:h-60 h-92.5 cover mt-3 ${imgReview ? "bg-cover bg-center" : ""
+                      } `}
                   >
-                    {!imgReview & !user?.profile &&(
+                    {!imgReview & !user?.profile && (
                       <>
                         <TbImageInPicture
                           size={60}
@@ -369,7 +367,7 @@ function EditProfile() {
                   </div>
                   <div className="flex w-full h-32 justify-center items-end overflow-clip">
                     <div className="flex flex-col w-full justify-center items-center p-2">
-                      <span className="text-center">
+                      <span className="text-center p-2">
                         حداکثر حجم تصویر 2 مگابایت است و تصویر باید یکی از فرمت
                         های jpg, png, jpeg, webp, svg باشد
                       </span>
@@ -385,7 +383,7 @@ function EditProfile() {
                         ) : (
                           "آپلود تصویر"
                         )}
-                        
+
                       </button>
                     </div>
                   </div>
