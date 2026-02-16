@@ -10,7 +10,6 @@ import apiClient from '../../../apiClient'
 
 function Adm_product_all() {
 
-
   const [products, setProducts] = useState();
   const BASE_URL = import.meta.env.VITE__BASEURL;
 
@@ -79,13 +78,15 @@ function Adm_product_all() {
             <TbSearch size={20} className='absolute left-3 text-gray-400' />
             <input
               type='search'
-              className='w-[14rem] inset-shadow-sm shadow-xs hover:w-[20rem] h-12 rounded-xl p-3 bg-white/90 backdrop-blur-sm border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200'
+              className='w-[14rem] inset-shadow-sm shadow-xs hover:w-[20rem] h-12 rounded-xl p-3 
+              bg-white/90 backdrop-blur-sm border border-gray-200 focus:outline-none focus:ring-2
+               focus:ring-blue-500 focus:border-transparent transition-all duration-200'
               placeholder='جستجو...'
             />
           </div>
           <Link to="/admin/product/add" className='flex h-12 bg-blue-600 hover:bg-blue-700
-          text-white items-center justify-center
-           rounded-xl text-sm font-medium space-x-2 p-3 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl' >
+          text-white items-center justify-center rounded-xl text-sm font-medium space-x-2 p-3 
+          transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl' >
             <MdShoppingBasket size={20} />
             <span>افزودن محصول</span>
           </Link>
@@ -114,11 +115,13 @@ function Adm_product_all() {
               products.map((item, index) => {
                 return (
                   <tr key={index} className='w-full grid grid-cols-10 items-center text-gray-600/90
-            h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl cursor-pointer transition-all duration-200 border border-gray-100/50'>
+            h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
+            cursor-pointer transition-all duration-200 border border-gray-100/50'>
                     <td className='col-span-1'>{index + 1}</td>
                     <td className='col-span-1'>#{item.id}</td>
                     <td className='col-span-1 flex justify-center items-center'>
-                      <img src={`${BASE_URL}/storage/media/${item.media[0].name}`} className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+                      <img src={`${BASE_URL}/storage/media/${item?.media[0]?.name}`} className='w-12 h-12 rounded-xl 
+                      border-2 border-white/50 shadow-md object-cover' />
                     </td>
                     <td className='col-span-1'>{item.title}</td>
                     <td className='col-span-1'>{item.price}</td>
@@ -143,13 +146,16 @@ function Adm_product_all() {
                       </div>
                     </td>
                     <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                      <Link to={`/admin/product/show/${item.id}`} className='text-blue-600 hover:text-blue-700 transition-colors duration-200' title='مشاهده'>
+                      <Link to={`/admin/product/show/${item.id}`} className='text-blue-600 hover:text-blue-700 
+                      transition-colors duration-200' title='مشاهده'>
                         <TbEyeFilled size={20} />
                       </Link>
-                      <Link to={`/admin/product/edit/${item.id}`} className='text-yellow-600 hover:text-yellow-700 transition-colors duration-200' title='ویرایش'>
+                      <Link to={`/admin/product/edit/${item.id}`} className='text-yellow-600 hover:text-yellow-700 
+                      transition-colors duration-200' title='ویرایش'>
                         <TbEditCircle size={20} />
                       </Link>
-                      <Link onClick={() => deleteHandler(item.id)} className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
+                      <Link onClick={() => deleteHandler(item.id)} className='text-red-600 hover:text-red-700
+                       transition-colors duration-200' title='حذف'>
                         <TbTrashFilled size={20} />
                       </Link>
                     </td>
