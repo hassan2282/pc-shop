@@ -27,7 +27,7 @@ function OrderSideBar() {
         <div className="img">
           <img
             alt="profile"
-            className="object-cover"
+            className="object-contain"
             src={
               user?.profile
                 ? `${BASE_URL}/storage/media/${user?.profile}`
