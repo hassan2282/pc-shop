@@ -55,14 +55,14 @@ function Adm_gate_all() {
           duration: 0.8,
         }
       }}
-      className='flex flex-col items-center bg-black/80 backdrop-blur-xl rounded-2xl shadow-2xl border
+      className='flex flex-col items-center bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl border
      border-white/20 min-md:mr-10 mt-4 min-h-96 max-md:w-full min-md:w-[92%] min-w-[50rem]'>
-      <div className='flex flex-row w-full justify-between items-center min-md:p-6 bg-zinc-900/80 
+      <div className='flex flex-row w-full justify-between items-center min-md:p-6 bg-white/40 
       backdrop-blur-md h-24 rounded-t-2xl border-b border-white/20'>
         <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>
           <IoMdCloseCircle size={27} className='text-red-500' />
         </Link>
-        <h3 className='min-md:text-2xl text-lg font-bold text-gray-200'>مدیریت کد دسترسی</h3>
+        <h3 className='min-md:text-2xl text-lg font-bold text-stone-800'>مدیریت کد دسترسی</h3>
         <div className='flex flex-row relative justify-center items-center space-x-4'>
 
           {
@@ -86,7 +86,7 @@ function Adm_gate_all() {
             ></div>
 
             <div
-              className="relative rounded-lg border border-white/10 bg-gradient-to-b from-gray-900 via-gray-950 to-black px-8 py-4 shadow-xl"
+              className="relative rounded-lg border border-white bg-white/90 px-8 py-4 shadow-xl"
             >
               <div
                 className="absolute inset-x-0 top-px h-px bg-gradient-to-r from-transparent via-rose-500 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -107,7 +107,7 @@ function Adm_gate_all() {
 
                   <div className="flex flex-col gap-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-base font-bold text-white">{gate.gkey}</span>
+                      <span className="text-base font-bold text-stone-700">{gate.gkey}</span>
                       <div
                         className="h-1.5 w-1.5 rounded-full bg-orange-500 shadow-lg shadow-orange-500/50"
                       ></div>
@@ -126,9 +126,9 @@ function Adm_gate_all() {
                   <div
                     onClick={() => deleteHandler(gate.id)}
                     className="relative flex h-8 w-8 items-center cursor-pointer hover:scale-130 duration-300
-                     justify-center rounded-lg bg-rose-500/10 hover:bg-rose-950 border-t border-rose-300"
+                     justify-center rounded-lg bg-rose-500/50 hover:bg-rose-950 border-t border-rose-500"
                   >
-                    <button className='text-red-600 cursor-pointer hover:text-red-700 transition-colors duration-200' title='حذف'>
+                    <button className='text-red-800 cursor-pointer hover:text-red-700 transition-colors duration-200' title='حذف'>
                       <TbTrashFilled size={17} />
                     </button>
                     <div
@@ -136,7 +136,7 @@ function Adm_gate_all() {
                     ></div>
                   </div>
 
-                  <span className="text-sm font-semibold text-white">حذف</span>
+                  <span className="text-sm font-semibold text-stone-700">حذف</span>
 
                   <div className="flex gap-1">
                     <div
