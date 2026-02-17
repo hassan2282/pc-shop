@@ -339,7 +339,7 @@ function EditProfile() {
                     }
                     className={`relative bg-cover flex flex-col justify-center border-dotted hover:bg-blue-300 
                         duration-200 hover:opacity-85 text-gray-600 border-[#54b4b9]
-                                border-3 rounded-md items-center w-full max-sm:h-60 h-92.5 cover mt-3 ${imgReview ? "bg-cover bg-center" : ""
+                                border-3 rounded-md items-center w-full max-sm:h-60 h-92.5 mt-3 ${imgReview ? "bg-center" : ""
                       } `}
                   >
                     {!imgReview & !user?.profile && (
