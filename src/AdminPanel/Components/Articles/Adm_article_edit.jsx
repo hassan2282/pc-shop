@@ -18,7 +18,7 @@ function Adm_article_edit() {
     description: '',
     text: '',
     category_id: '',
-    media: null,
+    media: '',
     tags: [],
   })
   const [preview, setPreview] = useState();
@@ -40,12 +40,12 @@ function Adm_article_edit() {
             description: res.data.description,
             text: res.data.text,
             category_id: res.data.category_id,
-            media: res.data.media,
+            media: res.data.media || '',
           })
-          handleTagChange(res.data.tags)
-          setContent(res.data.text)
-          setPreview(BASE_URL + '/storage/media/' + res.data.media.name)
-          const tagNames = res.data.tags.map(item => item.name);
+          handleTagChange(res.data?.tags)
+          setContent(res.data?.text)
+          setPreview(BASE_URL + '/storage/media/' + res.data?.media?.name)
+          const tagNames = res.data?.tags?.map(item => item.name);
           handleTagChange(tagNames)
         }
       } catch (err) {
@@ -56,8 +56,6 @@ function Adm_article_edit() {
 
     fetchArticle();
   }, []);
-
-
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -128,6 +126,7 @@ function Adm_article_edit() {
       }));
     }
 
+
     // پاک کردن خطا هنگام تایپ
     if (errors[name]) {
       setErrors((prev) => ({
@@ -136,6 +135,7 @@ function Adm_article_edit() {
       }));
     }
   };
+
 
   const handleContentChange = (value) => {
     setFormData((prev) => ({
@@ -174,7 +174,6 @@ function Adm_article_edit() {
     e.preventDefault()
     if (validateForm()) {
       setIsSubmitting(true)
-
       try {
         const data = new FormData();
 
@@ -195,12 +194,17 @@ function Adm_article_edit() {
 
         const res = await apiClient.post(
           `/admin/articles/${id}?_method=PATCH`,
-          data
+          data,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }
         );
 
         if (res.status >= 200 && res.status < 300) {
           toast.success('مقاله با موفقیت ویرایش شد');
-          navigate('/admin/article/all', {replace:true})
+          navigate('/admin/article/all', { replace: true })
         }
 
       } catch (err) {
@@ -229,8 +233,7 @@ function Adm_article_edit() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="flex w-full h-full justify-center items-center backdrop-blur-xl
-           rounded-2xl shadow-2xl border border-white/20 min-md:p-8 p-1 bg-white/30"
-        >
+           rounded-2xl shadow-2xl border border-white/20 min-md:p-8 p-1 bg-white/30">
           <form onSubmit={handleSubmit} className="min-md:space-y-2 w-full space-y-2  flex flex-col">
             {/* اطلاعات پایه */}
             <div className="flex flex-col w-full min-md:space-y-2 space-y-2">
@@ -370,7 +373,9 @@ function Adm_article_edit() {
                 type="submit"
                 disabled={isSubmitting}
                 className="flex-1 flex items-center justify-center gap-2 cursor-pointer bg-blue-600 
-                hover:bg-blue-700 text-white font-medium py-3 px-2 rounded-xl transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                hover:bg-blue-700 text-white font-medium py-3 px-2 rounded-xl transition-all duration-200
+                 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+                 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
