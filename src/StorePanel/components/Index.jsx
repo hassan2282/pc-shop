@@ -4,6 +4,7 @@ import apiClient from '../../apiClient'
 import ProductsAdvanceShow from './ProductsAdvanceShow';
 import ProductsSimpleShow from './ProductsSimpleShow';
 import DraggableProducts from './DraggableProducts';
+import BlogShow from './BlogShow';
 
 function Index() {
 
@@ -77,22 +78,6 @@ function Index() {
             }
         });
 
-        initOwl('.Blog-carousel', {
-            rtl: true,
-            margin: 10,
-            nav: true,
-            navText: ['<i class="fas fa-chevron-right"></i>', '<i class="fas fa-chevron-left"></i>'],
-            dots: false,
-            responsiveClass: true,
-            responsive: {
-                0: { items: 2, slideBy: 1 },
-                576: { items: 2, slideBy: 1 },
-                768: { items: 3, slideBy: 2 },
-                992: { items: 4, slideBy: 2 },
-                1400: { items: 4, slideBy: 3 }
-            }
-        });
-
         initOwl('.brand-slider .owl-carousel', {
             rtl: true,
             dots: false,
@@ -115,7 +100,6 @@ function Index() {
             const $ = window.$;
             destroyOwl($('.slider_main'));
             destroyOwl($('.product-carousel'));
-            destroyOwl($('.Blog-carousel'));
             destroyOwl($('.brand-slider .owl-carousel'));
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -218,13 +202,12 @@ function Index() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const res = await apiClient.get('/admin/productsForHome');
+                const res = await apiClient.get('/productsForHome');
                 if (res.status >= 200 && res.status < 300) {
                     setProducts(res.data);
                 }
 
             } catch (err) {
-                console.log(err.response.data.message)
                 toast.error('خطا در واکشی محصولات');
             }
         }
@@ -669,129 +652,12 @@ function Index() {
                                 <header className="card-header">
                                     <h3 className="card-title"><span>مَسای مگ</span></h3>
                                 </header>
-                                <div className="Blog-carousel owl-carousel owl-theme">
-                                    <div className="item">
-                                        <a href="single-blog">
-                                            <img src="/src/StorePanel/assets/img/blog/post-1.jpg" className="img-fluid" alt="" />
-                                        </a>
-                                        <a href="single-blog">
-                                            <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">
-                                                این‌ بار هوش مصنوعی، تصاویری از کارخانه تولید عروس دریایی را افشا می‌کند!
-                                            </h2>
-                                        </a>
-                                        <div className="Blog_list max-sm:h-13 h-[4rem]">
-                                            <span className="Blog_author max-sm:hidden">
-                                                <i className="fa fa-user"></i>
-                                                رضایی
-                                            </span>
-                                            <span className="Blog_Date flex flex-row text-[1rem] w-full">
-                                                <i className="fa fa-calendar"></i>
-                                                ۱9 مهر 1402
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <a href="single-blog">
-                                            <img src="/src/StorePanel/assets/img/blog/post-2.jpg" className="img-fluid" alt="" />
-                                        </a>
-                                        <a href="single-blog">
-                                            <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">
-                                                خط سفید روی نمایشگر گلکسی A71 سامسونگ؛ ماجرا چیست؟
-                                            </h2>
-                                        </a>
-                                        <div className="Blog_list max-sm:h-13 h-[4rem]">
-                                            <span className="Blog_author max-sm:hidden">
-                                                <i className="fa fa-user"></i>
-                                                صادقی
-                                            </span>
-                                            <span className="Blog_Date flex flex-row text-[1rem] w-full">
-                                                <i className="fa fa-calendar "></i>
-                                                ۱4 اسفند 1402
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <a href="single-blog">
-                                            <img src="/src/StorePanel/assets/img/blog/post-3.jpg" className="img-fluid" alt="" />
-                                        </a>
-                                        <a href="single-blog">
-                                            <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">
-                                                بهترین گوشی های مناسب عکاسی در بازار ایران
-                                            </h2>
-                                        </a>
-                                        <div className="Blog_list max-sm:h-13 h-[4rem]">
-                                            <span className="Blog_author max-sm:hidden">
-                                                <i className="fa fa-user"></i>
-                                                میرعظیمی
-                                            </span>
-                                            <span className="Blog_Date flex flex-row text-[1rem] w-full">
-                                                <i className="fa fa-calendar"></i>
-                                                ۱4 شهریور 1402
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <a href="single-blog">
-                                            <img src="/src/StorePanel/assets/img/blog/post-4.jpg" className="img-fluid" alt="" />
-                                        </a>
-                                        <a href="single-blog">
-                                            <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">
-                                                هزینه ساخت بازی‌های انحصاری پلی استیشن با فیلم‌های بلاک‌باستر برابری می‌کند
-                                            </h2>
-                                        </a>
-                                        <div className="Blog_list max-sm:h-13 h-[4rem]">
-                                            <span className="Blog_author max-sm:hidden">
-                                                <i className="fa fa-user"></i>
-                                                میرعظیمی
-                                            </span>
-                                            <span className="Blog_Date flex flex-row text-[1rem] w-full">
-                                                <i className="fa fa-calendar"></i>
-                                                25 شهریور 1402
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <a href="single-blog">
-                                            <img src="/src/StorePanel/assets/img/blog/post-5.jpg" className="img-fluid" alt="" />
-                                        </a>
-                                        <a href="single-blog">
-                                            <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">
-                                                یک دهه سکوت شکست؛ مایکروسافت آمار فروش ایکس باکس را فاش کرد!
 
-                                            </h2>
-                                        </a>
-                                        <div className="Blog_list max-sm:h-13 h-[4rem]">
-                                            <span className="Blog_author max-sm:hidden">
-                                                <i className="fa fa-user"></i>
-                                                میرعظیمی
-                                            </span>
-                                            <span className="Blog_Date  flex flex-row text-[1rem] w-full">
-                                                <i className="fa fa-calendar "></i>
-                                                25 آذر 1402
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <a href="single-blog">
-                                            <img src="/src/StorePanel/assets/img/blog/post-6.jpg" className="img-fluid" alt="" />
-                                        </a>
-                                        <a href="single-blog">
-                                            <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">
-                                                بررسی تلویزیون 4K اسنوا؛ ۵۵ اینچی اقتصادی برای فیلم‌بازها!
-                                            </h2>
-                                        </a>
-                                        <div className="Blog_list max-sm:h-13 h-[4rem]">
-                                            <span className="Blog_author max-sm:hidden">
-                                                <i className="fa fa-user"></i>
-                                                میرعظیمی
-                                            </span>
-                                            <span className="Blog_Date  flex flex-row text-[1rem] w-full">
-                                                <i className="fa fa-calendar "></i>
-                                                10 دی 1402
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
+
+                                <BlogShow />
+
+
+
                             </div>
                         </div>
                     </div>
