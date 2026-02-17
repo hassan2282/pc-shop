@@ -84,7 +84,7 @@ function App() {
             <Route path="category-blog" element={<CategoryBlog />} />
             <Route path="category-search" element={<CategorySearch />} />
             <Route path="single-product" element={<SingleProduct />} />
-            <Route path="single-blog" element={<SingleBlog />} />
+            <Route path="single-blog/:id" element={<SingleBlog />} />
 
             <Route
               path="profile"
