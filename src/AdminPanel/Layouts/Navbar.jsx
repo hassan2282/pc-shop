@@ -84,7 +84,7 @@ function Navbar() {
               <Link to={`/admin/user/show/${user.id}`}>پروفایل<TbUser size={20} /></Link>
               <li><Link className="flex flex-row justify-between w-full" to={'/admin/ticket/all'}>تیکت‌ها<TbMail size={20} /></Link></li>
               <li>اعلان‌ها<TbBell size={20} /></li>
-              <Link to={'/'}>خروج<TbLogout size={20} /></Link>
+              <Link to={'/'}>وبسایت<TbLogout size={20} /></Link>
             </ul>
           </motion.div>
         }
