@@ -1050,9 +1050,9 @@ const handleLogout = (e) => {
                             <li>
                                 <a href="/store/category-search">سوالی دارید؟</a>
                             </li>
-                            <li>
-                                <a href="/store/category-search">فروشنده شوید</a>
-                            </li>
+                            <Link to='/store/aboute-us'>
+                                درباره ما
+                            </Link>
                         </ul>
                     </div>
                 </div>
@@ -2398,7 +2398,7 @@ const handleLogout = (e) => {
                                 <a href="/store/category-search" className="list__link">سوالی دارید؟</a>
                             </li>
                             <li className="list_style">
-                                <a href="/store/category-search" className="list__link">فروشنده شوید</a>
+                                <Link to="/store/about-us" className="list__link"> درباره ما</Link>
                             </li>
                             <ul className="nav_header-2">
                                 <li className="list_style">
