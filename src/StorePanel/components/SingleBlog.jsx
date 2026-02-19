@@ -20,7 +20,6 @@ function SingleBlog() {
                 }
 
             } catch (err) {
-                console.log(err?.response?.data?.message)
                 toast.error('خطا در واکشی مقاله');
             }
         }
