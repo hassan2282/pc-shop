@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 const BASE_URL = import.meta.env.VITE__BASEURL;
 
 function DraggableProducts({ products }) {
@@ -9,11 +10,11 @@ function DraggableProducts({ products }) {
                 products.map((product, index) => {
                     return (
                         <div key={index} className="">
-                            <a href="single-product" className='flex flex-col h-[20rem]'>
+                            <Link to={`/store/single-product/${product.id}`} className='flex flex-col h-[20rem]'>
                                 <img src={BASE_URL + "/storage/media/" + product?.media[0]?.name} className="img-fluid h-[40%]" alt="" />
-                            </a>
+                            </Link>
                             <h2 className="product_title flex w-full justify-center">
-                                <a href="single-product"> {product.title}  </a>
+                                <Link to={`/store/single-product/${product.id}`}> {product.title}  </Link>
                             </h2>
                             <div className="price p-3 justify-center items-center flex">
                                 <del><span>{Math.floor(product.price * 1.2)}<span>تومان</span></span></del>
