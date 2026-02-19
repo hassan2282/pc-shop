@@ -55,6 +55,7 @@ import Adm_tickets_show from "./AdminPanel/Components/Tickets/Adm_tickets_show.j
 import Adm_gate from "./AdminPanel/Components/Gate/Adm_gate.jsx";
 import Adm_gate_all from "./AdminPanel/Components/Gate/Adm_gate_all.jsx";
 import Adm_gate_add from "./AdminPanel/Components/Gate/Adm_gate_add.jsx";
+import Ticket from "./StorePanel/components/Ticket.jsx";
 
 
 function App() {
@@ -83,7 +84,7 @@ function App() {
             <Route path="home" element={<Index />} />
             <Route path="category-blog" element={<CategoryBlog />} />
             <Route path="category-search" element={<CategorySearch />} />
-            <Route path="single-product" element={<SingleProduct />} />
+            <Route path="single-product/:id" element={<SingleProduct />} />
             <Route path="single-blog/:id" element={<SingleBlog />} />
 
             <Route
@@ -194,11 +195,19 @@ function App() {
               path="password-update"
               element={<PasswordUpdate />}
             />
-            <Route path="about-us" element={<AboutUs />} />
+            <Route 
+            path="about-us" 
+            element={<AboutUs />} />
+
+
+            <Route 
+            path="ticket" 
+            element={<Ticket />} />
+
           </Route>
 
 
-          <Route path="/admin/*" element={ <Master />}>
+          <Route path="/admin/*" element={<Master />}>
             <Route path="admGate" element={<Adm_gate />} />
             <Route path="admGate/all" element={<Adm_gate_all />} />
             <Route path="admGate/add" element={<Adm_gate_add />} />
