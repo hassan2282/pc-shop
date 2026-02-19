@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const BASE_URL = import.meta.env.VITE__BASEURL;
 
 function ProductsSimpleShow({products}) {
@@ -12,15 +14,14 @@ function ProductsSimpleShow({products}) {
             products.map((sliderProduct, index) => {
               return (
                   <div key={index} className="item">
-                    <a href="single-product">
+                    <Link to={`/store/single-product/${sliderProduct.id}`}>
                       <img src={BASE_URL + "/storage/media/" + sliderProduct?.media[0]?.name} className="w-100" alt="" />
                       <img src="/src/StorePanel/assets/img/img_icon.png" className="type_icon" />
-
-                    </a>
+                    </Link>
                     <h3 className="product-title">
-                      <a href="single-product">
+                      <Link to={`/store/single-product/${sliderProduct.id}`}>
                         {sliderProduct.title}
-                      </a>
+                      </Link>
                     </h3>
                     <div className="price bg-[#E2F3F4] p-2 rounded-xl">
                       <del><span className="amount">{Math.floor(sliderProduct.price * 1.2)}<span>تومان</span></span> </del>
