@@ -3,62 +3,62 @@ import { TbLogout2 } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux"
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import apiClient from "../../apiClient";    
+import apiClient from "../../apiClient";
 
 function Header() {
-const isAuthenticated = useSelector((state) => state.isAuthenticated);
-const dispatch = useDispatch();
+    const isAuthenticated = useSelector((state) => state.isAuthenticated);
+    const dispatch = useDispatch();
 
-const storeUser = (res) => {
-    dispatch({ type: 'setUser', payload: { user: res.data } });
-}
+    const storeUser = (res) => {
+        dispatch({ type: 'setUser', payload: { user: res.data } });
+    }
 
     useEffect(() => {
         const fetchUser = async () => {
             try {
-            const res = await apiClient.post('auth/me');
-            if (res.status >= 200 && res.status < 300) {storeUser(res)}
+                const res = await apiClient.post('auth/me');
+                if (res.status >= 200 && res.status < 300) { storeUser(res) }
             } catch (err) {
-            err.status === 401 && dispatch({type: 'logout'})
+                err.status === 401 && dispatch({ type: 'logout' })
             }
         };
 
-  fetchUser();
-}, []);
+        fetchUser();
+    }, []);
 
-const handleLogout = (e) => {
-    e.preventDefault();
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    dispatch({
-        type: "logout",
-    })
-    toast.success('شما با موفقیت از حساب کاربری خود خارج شدید');
-}
+    const handleLogout = (e) => {
+        e.preventDefault();
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        dispatch({
+            type: "logout",
+        })
+        toast.success('شما با موفقیت از حساب کاربری خود خارج شدید');
+    }
 
-  return (
-    <header className="Masai-header default relative top-[-15px]">
+    return (
+        <header className="Masai-header default relative top-[-15px]">
 
-                <div className="top-section fullscreen-container ">
-            <img src="/src/StorePanel/assets/img/banner_img/bg_top.jpg" className="h-100"/>
-        </div>
+            <div className="top-section fullscreen-container ">
+                {/* <img src="/src/StorePanel/assets/img/banner_img/bg_top.jpg" className="h-100"/> */}
+            </div>
 
-        {/* <!--start mobile header --> */}
+            {/* <!--start mobile header --> */}
             <nav className="navbar direction-ltr fixed-top header-responsive">
                 <div className="container">
                     <div className="navbar-translate">
 
                         <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                                data-target="#navigation" aria-controls="navigation-index" aria-expanded="false"
-                                aria-label="Toggle navigation">
+                            data-target="#navigation" aria-controls="navigation-index" aria-expanded="false"
+                            aria-label="Toggle navigation">
                             <span className="navbar-toggler-bar bar1"></span>
                             <span className="navbar-toggler-bar bar2"></span>
                             <span className="navbar-toggler-bar bar3"></span>
                         </button>
                         <div className="search-nav default">
                             <form action="">
-                                <input type="text" placeholder="جستجو ..."/>
-                                <button type="submit"><img src="/src/StorePanel/assets/img/search.png" alt=""/></button>
+                                <input type="text" placeholder="جستجو ..." />
+                                <button type="submit"><img src="/src/StorePanel/assets/img/search.png" alt="" /></button>
                             </form>
 
                             <ul>
@@ -70,7 +70,7 @@ const handleLogout = (e) => {
                     <div className="collapse navbar-collapse justify-content-end" id="navigation">
                         <div className="logo-nav-res default text-center">
                             <a href="/store/category-search">
-                                <img src="/src/StorePanel/assets/img/logo.png"  alt=""/>
+                                <img src="/src/StorePanel/assets/img/logo.png" alt="" />
                             </a>
                         </div>
                         <ul className="navbar-nav default">
@@ -109,7 +109,7 @@ const handleLogout = (e) => {
                                             <li>
                                                 <a href="/store/category-search">شیائومی</a>
                                             </li>
-                                        
+
                                         </ul>
                                     </li>
                                     <li className="sub-menu">
@@ -124,7 +124,7 @@ const handleLogout = (e) => {
                                             <li>
                                                 <a href="/store/category-search">ویندوز</a>
                                             </li>
-                                        
+
                                         </ul>
                                     </li>
                                     <li className="sub-menu">
@@ -326,7 +326,7 @@ const handleLogout = (e) => {
                                             </li>
                                         </ul>
                                     </li>
-                                
+
                                 </ul>
                             </li>
                             <li className="sub-menu">
@@ -421,7 +421,7 @@ const handleLogout = (e) => {
                                             </li>
                                         </ul>
                                     </li>
-                                    
+
 
                                 </ul>
                             </li>
@@ -429,7 +429,7 @@ const handleLogout = (e) => {
                             <li className="sub-menu">
                                 <a href="/store/category-search">مودم</a>
                                 <ul>
-                                
+
                                     <li className="sub-menu">
                                         <a href="/store/category-search">برند ترین ها</a>
                                         <ul>
@@ -480,7 +480,7 @@ const handleLogout = (e) => {
                                             <li>
                                                 <a href="/store/category-search">گوشی تا 15 میلیون تومان</a>
                                             </li>
-                                        
+
 
                                         </ul>
                                     </li>
@@ -545,7 +545,7 @@ const handleLogout = (e) => {
 
                                         </ul>
                                     </li>
-                                    
+
                                 </ul>
                             </li>
 
@@ -1057,8 +1057,8 @@ const handleLogout = (e) => {
                     </div>
                 </div>
             </nav>
-        {/* <!-- end mobile header --> */}
-        
+            {/* <!-- end mobile header --> */}
+
             <div className="wrapper default">
                 {/* <!--start pc header --> */}
                 <header className="Masai-header default">
@@ -1067,37 +1067,37 @@ const handleLogout = (e) => {
                             <div className="col-lg-2 col-md-3 col-sm-4 col-5">
                                 <div className="logo-area default">
                                     <Link to="/store/home">
-                                        <img src="/src/StorePanel/assets/img/logo.png" alt=""/>
+                                        <img src="/src/StorePanel/assets/img/logo.png" alt="" />
                                     </Link>
                                 </div>
                             </div>
                             <div className="col-lg-8 col-md-5 col-sm-8 col-7">
                                 <div className="search-area default">
                                     <form action="" className="search">
-                                        <input type="text" placeholder="جستجو"/>
-                                        <button type="submit"><img src="/src/StorePanel/assets/img/search.png" alt=""/></button>
+                                        <input type="text" placeholder="جستجو" />
+                                        <button type="submit"><img src="/src/StorePanel/assets/img/search.png" alt="" /></button>
                                     </form>
                                 </div>
                             </div>
                             <div className="col-md-2 col-sm-12 flex flex-row justify-start items-center" dir="ltr">
-                                    {isAuthenticated &&
-                                        <div className="user_head">
-                                            <a onClick={handleLogout} className="flex flex-row hover:cursor-pointer justify-center items-center h-full bg-indigo-300">
-                                            خروج
-                                            <TbLogout2 size={24} color="#57b6bb"/>
-                                            </a>
-                                        </div>
-                                    }
-                                    {
-                                        isAuthenticated &&
-                                        <span className="divider ml-2"></span>
-                                    }
+                                {isAuthenticated &&
                                     <div className="user_head">
-                                        <a href={isAuthenticated ? "/store/profile" : "/store/login"} className="iconhead">
-                                            <i className="fa fa-user-large font-20" aria-hidden="true"></i>
+                                        <a onClick={handleLogout} className="flex flex-row hover:cursor-pointer justify-center items-center h-full bg-indigo-300">
+                                            خروج
+                                            <TbLogout2 size={24} color="#57b6bb" />
                                         </a>
                                     </div>
+                                }
+                                {
+                                    isAuthenticated &&
                                     <span className="divider ml-2"></span>
+                                }
+                                <div className="user_head">
+                                    <a href={isAuthenticated ? "/store/profile" : "/store/login"} className="iconhead">
+                                        <i className="fa fa-user-large font-20" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <span className="divider ml-2"></span>
                                 <div className="cart dropdown masai_dropdown">
 
                                     <a href="/store/category-search" className="dropdown-toggle iconhead" data-toggle="dropdown" id="navbar_a">
@@ -1105,20 +1105,20 @@ const handleLogout = (e) => {
                                     </a>
                                     <div className="dropdown-menu" aria-labelledby="navbar_a">
 
-                                        
+
                                         <ul className="m_cart-list">
                                             <li className="m_cart_li1">
                                                 <Link to="/store/single-product" className="m_cart-item">
                                                     <i className="fa fa-times" aria-hidden="true"></i>
 
-                                                
+
                                                     <div className="m_cart-item-content">
                                                         <div className="m_cart-item-image">
                                                             <img src="/src/StorePanel/assets/img/product_img/p_6.jpg" />
                                                         </div>
                                                         <div className="m_cart-item-details">
                                                             <div className="m_cart-item-title">
-                                                                ساعت هوشمند امیزفیت 
+                                                                ساعت هوشمند امیزفیت
                                                             </div>
                                                             <div className="m_cart-item-params">
                                                                 <div className="m_cart-item-props">
@@ -1136,7 +1136,7 @@ const handleLogout = (e) => {
 
 
                                                     <div className="m_cart-item-content">
-                                                        
+
                                                         <div className="m_cart-item-details">
                                                             <div className="m_cart-item-title">
                                                                 شیائومی مدل Poco X4
@@ -1171,7 +1171,7 @@ const handleLogout = (e) => {
                             </div>
                         </div>
                     </div>
-                    
+
                     <nav className="nav_header">
                         <ul className="nav__ullist">
                             <li className="list_style">
@@ -1184,14 +1184,14 @@ const handleLogout = (e) => {
                                                 <ul className="list_drobdown--item">
                                                     <li className="list_drobdown--items border_left--red">
                                                         <a href="/store/category-search"
-                                                        className="list__drobdown--link texr_header block_block">
+                                                            className="list__drobdown--link texr_header block_block">
                                                             همه محصولات موبایل
                                                         </a>
                                                     </li>
                                                     <ul className="ul_list">
                                                         <ul className="mega_meno--block">
-                                                        
-                                                        
+
+
                                                             <li className="list_mega border_left">
                                                                 <a href="/store/category-search" className="mega_link--link texr_header">گوشی براساس قیمت</a>
                                                             </li>
@@ -1232,7 +1232,7 @@ const handleLogout = (e) => {
                                                     </ul>
                                                     <ul className="ul_list--cecond">
                                                         <ul className="mega_meno__cecond">
-                                                            
+
                                                             <li className="list_mega border_left">
                                                                 <a href="/store/category-search" className="mega_link--link texr_header">
                                                                     رزولوشن عکس
@@ -1273,7 +1273,7 @@ const handleLogout = (e) => {
                                                             <li className="list__mega--itmes">
                                                                 <a href="/store/category-search" className="list__mega--link">گوشی پرچمدار</a>
                                                             </li>
-                                                            
+
                                                         </ul>
                                                     </ul>
                                                     <li className="list_drobdown--items border_left--red">
@@ -1306,7 +1306,7 @@ const handleLogout = (e) => {
                                                     <li className="list_drobdown--items">
                                                         <a href="/store/category-search" className="list__drobdown--link">شیائومی</a>
                                                     </li>
-                                                
+
                                                     <li className="list_drobdown--items border_left--red">
                                                         <a href="/store/category-search" className="list__drobdown--link texr_header">سیستم عامل</a>
                                                     </li>
@@ -1328,7 +1328,7 @@ const handleLogout = (e) => {
                                                 <ul className="list_drobdown--item">
                                                     <li className="list_drobdown--items border_left--red">
                                                         <a href="/store/category-search"
-                                                        className="list__drobdown--link texr_header block_block">
+                                                            className="list__drobdown--link texr_header block_block">
                                                             همه محصولات لپ تاپ
                                                         </a>
                                                     </li>
@@ -1397,7 +1397,7 @@ const handleLogout = (e) => {
                                                             <li className="list__mega--itmes">
                                                                 <a href="/store/category-search" className="list__mega--link">صفحه نمایش 24 اینچ</a>
                                                             </li>
-                                                        
+
 
                                                         </ul>
                                                     </ul>
@@ -1453,7 +1453,7 @@ const handleLogout = (e) => {
                                                 <ul className="list_drobdown--item">
                                                     <li className="list_drobdown--items border_left--red">
                                                         <a href="/store/category-search"
-                                                        className="list__drobdown--link texr_header block_block">
+                                                            className="list__drobdown--link texr_header block_block">
                                                             همه محصولات ساعت هوشمند
                                                         </a>
                                                     </li>
@@ -1504,7 +1504,7 @@ const handleLogout = (e) => {
 
                                                             <li className="list_mega border_left">
                                                                 <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                ساعت هوشمند دخترانه
+                                                                    ساعت هوشمند دخترانه
                                                                 </a>
                                                             </li>
                                                             <li className="list_mega border_left">
@@ -1576,7 +1576,7 @@ const handleLogout = (e) => {
                                                 <ul className="list_drobdown--item">
                                                     <li className="list_drobdown--items border_left--red">
                                                         <a href="/store/category-search"
-                                                        className="list__drobdown--link texr_header block_block">
+                                                            className="list__drobdown--link texr_header block_block">
                                                             همه محصولات مودم
                                                         </a>
                                                     </li>
@@ -1614,7 +1614,7 @@ const handleLogout = (e) => {
                                                             <li className="list_drobdown--items">
                                                                 <a href="/store/category-search" className="list__drobdown--link">همراه اول</a>
                                                             </li>
-                                                        
+
                                                         </ul>
                                                     </ul>
                                                     <ul className="ul_list--cecond">
@@ -1657,7 +1657,7 @@ const handleLogout = (e) => {
                                                             <li className="list__mega--itmes">
                                                                 <a href="/store/category-search" className="list__mega--link">مودم سفید</a>
                                                             </li>
-                                                        
+
                                                         </ul>
                                                     </ul>
                                                     <li className="list_mega border_left">
@@ -1696,10 +1696,10 @@ const handleLogout = (e) => {
                                                     <li className="list__mega--itmes">
                                                         <a href="/store/category-search" className="list__mega--link">مودم سامسونگ</a>
                                                     </li>
-                                                
-                                                    
 
-                                                    
+
+
+
                                                 </ul>
                                             </div>
                                         </li>
@@ -1709,7 +1709,7 @@ const handleLogout = (e) => {
                                                 <ul className="list_drobdown--item">
                                                     <li className="list_drobdown--items border_left--red">
                                                         <a href="/store/category-search"
-                                                        className="list__drobdown--link texr_header block_block">
+                                                            className="list__drobdown--link texr_header block_block">
                                                             همه محصولات تبلت
                                                         </a>
                                                     </li>
@@ -1854,7 +1854,7 @@ const handleLogout = (e) => {
                                                 <ul className="list_drobdown--item">
                                                     <li className="list_drobdown--items border_left--red">
                                                         <a href="/store/category-search"
-                                                        className="list__drobdown--link texr_header block_block">
+                                                            className="list__drobdown--link texr_header block_block">
                                                             همه محصولات کامپیوتر
                                                         </a>
                                                     </li>
@@ -1979,7 +1979,7 @@ const handleLogout = (e) => {
                                                 <ul className="list_drobdown--item">
                                                     <li className="list_drobdown--items border_left--red">
                                                         <a href="/store/category-search"
-                                                        className="list__drobdown--link texr_header block_block">
+                                                            className="list__drobdown--link texr_header block_block">
                                                             همه محصولات آیپد اپل
                                                         </a>
                                                     </li>
@@ -2102,7 +2102,7 @@ const handleLogout = (e) => {
                                                 <ul className="list_drobdown--item">
                                                     <li className="list_drobdown--items border_left--red">
                                                         <a href="/store/category-search"
-                                                        className="list__drobdown--link texr_header block_block">
+                                                            className="list__drobdown--link texr_header block_block">
                                                             همه محصولات تلویزیون
                                                         </a>
                                                     </li>
@@ -2228,14 +2228,14 @@ const handleLogout = (e) => {
                                                 <ul className="list_drobdown--item">
                                                     <li className="list_drobdown--items border_left--red">
                                                         <a href="/store/category-search"
-                                                        className="list__drobdown--link texr_header block_block">
+                                                            className="list__drobdown--link texr_header block_block">
                                                             همه محصولات هارد و فلش
                                                         </a>
                                                     </li>
                                                     <ul className="ul_list">
                                                         <ul className="mega_meno--block">
-                                                        
-                                                        
+
+
                                                             <li className="list_mega border_left">
                                                                 <a href="/store/category-search" className="mega_link--link texr_header">گوشی براساس قیمت</a>
                                                             </li>
@@ -2276,7 +2276,7 @@ const handleLogout = (e) => {
                                                     </ul>
                                                     <ul className="ul_list--cecond">
                                                         <ul className="mega_meno__cecond">
-                                                            
+
                                                             <li className="list_mega border_left">
                                                                 <a href="/store/category-search" className="mega_link--link texr_header">
                                                                     رزولوشن عکس
@@ -2317,7 +2317,7 @@ const handleLogout = (e) => {
                                                             <li className="list__mega--itmes">
                                                                 <a href="/store/category-search" className="list__mega--link">گوشی پرچمدار</a>
                                                             </li>
-                                                            
+
                                                         </ul>
                                                     </ul>
                                                     <li className="list_drobdown--items border_left--red">
@@ -2350,7 +2350,7 @@ const handleLogout = (e) => {
                                                     <li className="list_drobdown--items">
                                                         <a href="/store/category-search" className="list__drobdown--link">شیائومی</a>
                                                     </li>
-                                                
+
                                                     <li className="list_drobdown--items border_left--red">
                                                         <a href="/store/category-search" className="list__drobdown--link texr_header">بر اساس نوع</a>
                                                     </li>
@@ -2411,8 +2411,8 @@ const handleLogout = (e) => {
                 </header>
                 {/* <!-- end pc header --> */}
             </div>
-    </header>
-  )
+        </header>
+    )
 }
 
 export default Header
