@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const BASE_URL = import.meta.env.VITE__BASEURL;
 
 
@@ -23,18 +25,18 @@ function ProductsAdvanceShow({ products }) {
                                 <div key={index} className={`carousel-item finished ${index === 0 ? 'active' : ''}`}>
                                     <div className="row m-0">
                                         <div className="right-col col-5 d-flex imgboxofer">
-                                            <a className="w-100 text-center" href="single-product">
+                                            <Link to={`/store/single-product/${product.id}`} className="w-100 text-center">
                                                 <img
                                                     src={BASE_URL + "/storage/media/" + product?.media[0]?.name}
                                                     className="img-fluid"
                                                     alt=""
                                                 />
                                                 <span className="discount-percent">20 % تخفیف</span>
-                                            </a>
+                                            </Link>
                                         </div>
                                         <div className="left-col col-7">
                                             <h2 className="product-title">
-                                                <a href="single-product">{product?.title}</a>
+                                                 <Link to={`/store/single-product/${product.id}`} className="w-100 text-center">{product?.title}</Link>
                                             </h2>
                                             <hr className="hr-text" data-content={product?.category?.name} />
                                             <div className="row w-[90%] relative mb-5 h-10">
