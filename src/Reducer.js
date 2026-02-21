@@ -2,11 +2,12 @@ const initialState = {
     token: localStorage.getItem("token") || '',
     user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null,
     isAuthenticated: !!localStorage.getItem("token"),
+    cart: [],
 };
 
 
 const Reducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case "login":
             return {
                 ...state,
@@ -21,7 +22,7 @@ const Reducer = (state = initialState, action) => {
                 user: null,
                 token: null
             };
-            
+
         case "setUser":
             return {
                 ...state,
@@ -37,8 +38,14 @@ const Reducer = (state = initialState, action) => {
             return {
                 ...state,
                 user: updatedUser,
-            }    
+            }
 
+        case "purchase":
+            return {
+                ...state,
+                cart: [...state.cart, action.payload],
+            }
+            // localStorage.setItem("purchase", JSON.stringify(purchase));
             default:
                 return state;
             }
