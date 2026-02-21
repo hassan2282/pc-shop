@@ -50,7 +50,7 @@ function Adm_product_show() {
       }}
 
       className='flex flex-col relative justify-center items-center mt-3'>
-      <div className='flex flex-row w-[80%] h-full bg-white/30 rounded-xl backdrop-blur-sm justify-between p-5'>
+      <div className='flex flex-row w-[80%] h-full bg-white/30 rounded-xl backdrop-blur-xl justify-between p-5'>
         <div className='flex basis-1/3 flex-col border border-white/30 items-center justify-center overflow-hidden
          bg-white/30 w-full h-full space-y-5 rounded-xl p-3 mt-6'>
           <img src={preview && preview} alt='تصویر محصول' className='rounded-xl relative
@@ -141,7 +141,7 @@ function Adm_product_show() {
           </div>
         </div>
       </div>
-      <div className='grid bg-white/20 rounded-xl mt-4 backdrop-blur-2xl w-[80%]'>
+      <div className='grid bg-white/30 rounded-xl mt-4 backdrop-blur-2xl w-[80%]'>
         <span className='text-3xl p-2 m-5 text-blue-700'>ویژگی های محصول</span>
         <ul className='grid grid-cols-1 p-5 w-full
                       text-zinc-600
@@ -150,10 +150,9 @@ function Adm_product_show() {
             product?.attribute_values &&
             product?.attribute_values?.map((item, i) => {
               return (
-                <li key={i} className='flex flex-row items-center gap-1 *:bg-white/30 *:rounded-xl *:w-full 
-                  *:shadow-xs *:gap-y-2 *:shadow-zinc-400 *:h-14 *:text-lg
-                   *:p-2 p-2 *:hover:shadow-md *:duration-200 *:hover:bg-white/70
-                    cursor-pointer *:border *:border-white/70'>
+                <li key={i} className='flex flex-row items-center *:flex *:items-center *:justify-center gap-1 
+                *:bg-white/60 *:text-zinc-600 *:rounded-xl *:w-full 
+                   *:gap-y-1 *:shadow-zinc-400 *:p-2 *:text-sm'>
                   <span> {item.attribute?.name} </span>
                   <span> {item.value}</span>
                 </li>
