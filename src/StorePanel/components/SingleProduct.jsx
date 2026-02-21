@@ -1,15 +1,18 @@
-﻿import { useEffect, useState } from "react";
+﻿import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom"
 import apiClient from '../../apiClient'
 import { toast } from "react-toastify";
+import { TbMinus, TbPlus } from "react-icons/tb";
+import { useDispatch } from "react-redux";
 
 function SingleProduct() {
-
 
     const BASE_URL = import.meta.env.VITE__BASEURL;
     const { id } = useParams();
     const [product, setProduct] = useState();
     const [preview, setPreview] = useState();
+    const quantity = useRef();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchBlog = async () => {
@@ -31,6 +34,31 @@ function SingleProduct() {
 
     const previewHandler = (path) => {
         setPreview(path);
+    }
+
+
+
+    const handlePurchase = (product) => {
+        dispatch({
+            type: "purchase",
+            payload: product,
+        })
+        // localStorage.setItem('product', JSON.stringify(product));
+    }
+
+
+    const increase = () => {
+        if (quantity.current.value === '') {
+            quantity.current.value = 1;
+        }
+        let num = eval(quantity.current.value) + 1;
+        quantity.current.value = num;
+    }
+    const decrease = () => {
+        if (eval(quantity.current.value) !== '' && eval(quantity.current.value) !== 0) {
+            let num = eval(quantity.current.value) - 1;
+            quantity.current.value = num;
+        }
     }
 
 
@@ -79,7 +107,7 @@ function SingleProduct() {
                                                                 return (
                                                                     <div key={index} className="col-4 col-md-3 pd cursor-pointer hover:-translate-y-1 duration-300 *:shadow-sm hover:*:shadow-lg">
                                                                         <a>
-                                                                            <img onClick={()=>{previewHandler(item?.name)}} src={BASE_URL + '/storage/media/' + item?.name} className="img-thumb h-24 " alt="تصویر محصول" />
+                                                                            <img onClick={() => { previewHandler(item?.name) }} src={BASE_URL + '/storage/media/' + item?.name} className="img-thumb h-24 " alt="تصویر محصول" />
                                                                         </a>
                                                                     </div>
                                                                 )
@@ -165,24 +193,18 @@ function SingleProduct() {
 
                                                         <div className="col-12 col-lg-6 col-md-6">
 
-                                                            <p>زمان باقی مانده </p>
-                                                            <div className="countdown-timer" countdown="" data-date="06 12 2023 20:20:22">
-                                                                <ul className="text_countdown">
-                                                                    <li data-days="" className="number_countdown">35</li>
-                                                                    <li>روز</li>
-                                                                </ul>
-                                                                <ul className="text_countdown">
-                                                                    <li data-hours="" className="number_countdown">8</li>
-                                                                    <li>ساعت</li>
-                                                                </ul>
-                                                                <ul className="text_countdown">
-                                                                    <li data-minutes="" className="number_countdown">1</li>
-                                                                    <li>دقیقه</li>
-                                                                </ul>
-                                                                <ul className="text_countdown">
-                                                                    <li data-seconds="" className="number_countdown">35</li>
-                                                                    <li>ثانیه</li>
-                                                                </ul>
+                                                            <p>چندتا میخوای ؟</p>
+                                                            <div className="d-flex justify-center align-items-center mt-13 mt-md-15 w-100">
+                                                                <div onClick={increase} className="d-flex justify-center align-items-center h-12 w-25
+                                                                 border rounded-r-xl cursor-pointer hover:scale-95 duration-300">
+                                                                    <span className=""><TbPlus /></span>
+                                                                </div>
+                                                                <input ref={quantity} type="number" placeholder={1} className="
+                                                                 bg-[#46A9AE] w-50 h-10 text-center border "/>
+                                                                <div onClick={decrease} className="d-flex justify-center align-items-center h-12 w-25
+                                                                 border rounded-l-xl cursor-pointer hover:scale-95 duration-300">
+                                                                    <span className=""><TbMinus /></span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div className="col-12 col-lg-6 col-md-6 border_left">
@@ -190,9 +212,11 @@ function SingleProduct() {
                                                                 <del><span>{product && Math.floor(product.price * 1.2)}<span>تومان</span></span></del>
                                                                 <ins><span>{product && product.price}<span>تومان</span></span></ins>
                                                             </div>
-                                                            <div className="col-12 timer-title text--center">
-
-                                                                <a href="#" className="btn btn-main-masai big_btn">افزودن به سبد</a>
+                                                            <div className="d-flex justify-center align-items-center w-100 mt-[1rem]">
+                                                                <button onClick={() => handlePurchase(product && product)} style={{backgroundColor: '#46A9AE', borderRadius: '14px'}}
+                                                                 className="d-flex align-items-center justify-center h-12 w-100">
+                                                                    افزودن به سبد
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
