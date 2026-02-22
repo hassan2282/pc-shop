@@ -93,6 +93,7 @@ function Ticket() {
                 setTimeout(scrollToBottom, 100); // Small delay to ensure DOM is updated
             }
         } catch (err) {
+            toast.error(err.response.data.message);
             toast.error('خطا در فرایند ارسال تیکت');
         }
 
