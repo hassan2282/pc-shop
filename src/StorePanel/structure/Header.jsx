@@ -4,10 +4,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import apiClient from "../../apiClient";
+import PurchaseBasket from "../components/PurchaseBasket";
 
 function Header() {
     const isAuthenticated = useSelector((state) => state.isAuthenticated);
     const dispatch = useDispatch();
+    const [toggle, setToggle] = useState(false);
+    console.log(toggle)
 
     const storeUser = (res) => {
         dispatch({ type: 'setUser', payload: { user: res.data } });
@@ -1098,75 +1101,15 @@ function Header() {
                                     </a>
                                 </div>
                                 <span className="divider ml-2"></span>
-                                <div className="cart dropdown masai_dropdown">
-
-                                    <a href="/store/category-search" className="dropdown-toggle iconhead" data-toggle="dropdown" id="navbar_a">
+                                <div className="">
+                                    <div onClick={(e) => setToggle(!toggle)}  className="dropdown-toggle iconhead cursor-pointer" >
                                         <i className="fa fa-cart-arrow-down font-20" aria-hidden="true"></i>
-                                    </a>
-                                    <div className="dropdown-menu" aria-labelledby="navbar_a">
-
-
-                                        <ul className="m_cart-list">
-                                            <li className="m_cart_li1">
-                                                <Link to="/store/single-product" className="m_cart-item">
-                                                    <i className="fa fa-times" aria-hidden="true"></i>
-
-
-                                                    <div className="m_cart-item-content">
-                                                        <div className="m_cart-item-image">
-                                                            <img src="/src/StorePanel/assets/img/product_img/p_6.jpg" />
-                                                        </div>
-                                                        <div className="m_cart-item-details">
-                                                            <div className="m_cart-item-title">
-                                                                ساعت هوشمند امیزفیت
-                                                            </div>
-                                                            <div className="m_cart-item-params">
-                                                                <div className="m_cart-item-props">
-                                                                    <span>تعداد : 2</span>
-                                                                    <span>رنگ: سبز ارتشی</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </Link>
-                                            </li>
-                                            <li className="m_cart_li2">
-                                                <Link to="/store/single-product" className="m_cart-item">
-                                                    <i className="fa fa-times" aria-hidden="true"></i>
-
-
-                                                    <div className="m_cart-item-content">
-
-                                                        <div className="m_cart-item-details">
-                                                            <div className="m_cart-item-title">
-                                                                شیائومی مدل Poco X4
-                                                            </div>
-                                                            <div className="m_cart-item-params">
-                                                                <div className="m_cart-item-props">
-                                                                    <span>تعداد : 1</span>
-                                                                    <span>رنگ: مشکی</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="m_cart-item-image">
-                                                            <img src="/src/StorePanel/assets/img/product_img/p_9.jpg" />
-                                                        </div>
-                                                    </div>
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                        <div className="m_cart-header">
-                                            <div className="m_cart-total">
-                                                <span>مجموع سبد:</span>
-                                                <span> ۳۵,۲۵۳,۵۰۰</span>
-                                                <span> تومان</span>
-                                            </div>
-                                        </div>
-                                        <div className="btn_cart">
-                                            <Link to="/store/cart" className="btn btn_sabad">مشاهده سبد</Link>
-                                            <Link to="/store/final-payment" className="btn btn_pardakht btn-main-masai">پرداخت</Link>
-                                        </div>
                                     </div>
+                                    {toggle &&
+                                        <div className="d-flex flex-col absolute z-20 top-10 w-[19rem] border rounded-2xl bg-white">
+                                            <PurchaseBasket />
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>
