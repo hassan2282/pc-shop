@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom"
 import apiClient from '../../apiClient'
 import { toast } from "react-toastify";
 import { TbMinus, TbPlus } from "react-icons/tb";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function SingleProduct() {
 
@@ -12,6 +12,8 @@ function SingleProduct() {
     const [product, setProduct] = useState();
     const [preview, setPreview] = useState();
     const quantity = useRef();
+    const [count, setCount] = useState(1);
+    const cart = useSelector(state => state.cart);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -36,15 +38,22 @@ function SingleProduct() {
         setPreview(path);
     }
 
-
-
     const handlePurchase = (product) => {
-        dispatch({
-            type: "purchase",
-            payload: product,
-        })
-        // localStorage.setItem('product', JSON.stringify(product));
-    }
+
+            dispatch({
+                type: "purchase",
+                payload: {
+                    id: product.id,
+                    media: product.media[0]?.name,
+                    price: product.price,
+                    title: product.title,
+                    count: eval(quantity.current.value) || 1,
+                },
+            });
+
+            toast.success('محصول به سبد خرید اضافه شد');
+
+    };
 
 
     const increase = () => {
@@ -55,7 +64,7 @@ function SingleProduct() {
         quantity.current.value = num;
     }
     const decrease = () => {
-        if (eval(quantity.current.value) !== '' && eval(quantity.current.value) !== 0) {
+        if (eval(quantity.current.value) !== '' && eval(quantity.current.value) > 0) {
             let num = eval(quantity.current.value) - 1;
             quantity.current.value = num;
         }
@@ -200,7 +209,7 @@ function SingleProduct() {
                                                                     <span className=""><TbPlus /></span>
                                                                 </div>
                                                                 <input ref={quantity} type="number" placeholder={1} className="
-                                                                 bg-[#46A9AE] w-50 h-10 text-center border "/>
+                                                                 bg-[#46A9AE] w-50 h-10 text-center border text-white"/>
                                                                 <div onClick={decrease} className="d-flex justify-center align-items-center h-12 w-25
                                                                  border rounded-l-xl cursor-pointer hover:scale-95 duration-300">
                                                                     <span className=""><TbMinus /></span>
@@ -212,9 +221,9 @@ function SingleProduct() {
                                                                 <del><span>{product && Math.floor(product.price * 1.2)}<span>تومان</span></span></del>
                                                                 <ins><span>{product && product.price}<span>تومان</span></span></ins>
                                                             </div>
-                                                            <div className="d-flex justify-center align-items-center w-100 mt-[1rem]">
-                                                                <button onClick={() => handlePurchase(product && product)} style={{backgroundColor: '#46A9AE', borderRadius: '14px'}}
-                                                                 className="d-flex align-items-center justify-center h-12 w-100">
+                                                            <div className="d-flex justify-center align-items-center w-100 mt-[1rem] hover:scale-102 active:scale-96 duration-200">
+                                                                <button onClick={() => handlePurchase(product && product)} style={{ backgroundColor: '#46A9AE', borderRadius: '14px' }}
+                                                                    className="d-flex align-items-center justify-center h-12 w-100 text-white">
                                                                     افزودن به سبد
                                                                 </button>
                                                             </div>
