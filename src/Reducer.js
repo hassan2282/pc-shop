@@ -2,7 +2,7 @@ const initialState = {
     token: localStorage.getItem("token") || '',
     user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null,
     isAuthenticated: !!localStorage.getItem("token"),
-    cart: [],
+    cart: localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [],
 };
 
 
@@ -41,14 +41,30 @@ const Reducer = (state = initialState, action) => {
             }
 
         case "purchase":
+            const existingIndex = state.cart.findIndex(item => item.id === action.payload.id);
+            let updatedCart;
+
+            if (existingIndex >= 0) {
+                // آیتم وجود دارد: فقط count را به‌روز کن
+                updatedCart = state.cart.map((item, index) =>
+                    index === existingIndex
+                        ? { ...item, count: item.count + action.payload.count }
+                        : item
+                );
+            } else {
+                // آیتم جدید: به آرایه اضافه کن
+                updatedCart = [...state.cart, action.payload];
+            }
+
+            localStorage.setItem("cart", JSON.stringify(updatedCart));
             return {
                 ...state,
-                cart: [...state.cart, action.payload],
-            }
-            // localStorage.setItem("purchase", JSON.stringify(purchase));
-            default:
-                return state;
-            }
-        };
+                cart: updatedCart,
+            };
+
+        default:
+            return state;
+    }
+};
 
 export default Reducer;
