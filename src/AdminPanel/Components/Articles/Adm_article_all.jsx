@@ -9,11 +9,11 @@ import DefaultImg from '../../../StorePanel/assets/img/ico/png-9.png';
 
 
 function Adm_article_all() {
-  
+
   const [isLoading, setIsLoading] = useState(false);
   const [articles, setArticles] = useState();
   const BASE_URL = import.meta.env.VITE__BASEURL;
-  
+
 
   useEffect(() => {
     setIsLoading(true);
@@ -38,17 +38,17 @@ function Adm_article_all() {
 
 
   const deleteHandler = async (id) => {
-    try{
+    try {
       const res = await apiClient.delete(`/admin/articles/${id}`)
-  
-      if(res.status >= 200 && res.status < 300){
+
+      if (res.status >= 200 && res.status < 300) {
         toast.success('مقاله با موفقیت حذف شد');
         setArticles((prev) => prev.filter((item) => {
           return item.id !== id
         }))
       }
 
-    }catch(err){
+    } catch (err) {
       toast.error('خطا در فرایند حذف مقاله');
     }
   }
@@ -98,88 +98,92 @@ function Adm_article_all() {
       <div className='flex flex-col w-full justify-start items-center p-6 min-h-100 overflow-x-auto'>
         {
           !isLoading ?
-          <table className='w-full'>
-            <thead>
-              <tr className='w-full grid grid-cols-10 items-center bg-white/90 backdrop-blur-sm text-gray-700/90 rounded-xl
+            <table className='w-full'>
+              <thead>
+                <tr className='w-full grid grid-cols-10 items-center bg-white/90 backdrop-blur-sm text-gray-700/90 rounded-xl
             h-16 text-md justify-center text-center border border-gray-200 shadow-sm'>
-                <th className='col-span-1 font-semibold'>ردیف</th>
-                <th className='col-span-1 font-semibold'>آیدی</th>
-                <th className='col-span-1 font-semibold'>تصویر</th>
-                <th className='col-span-1 font-semibold'>عنوان</th>
-                <th className='col-span-1 font-semibold'>بازدید</th>
-                <th className='col-span-1 font-semibold'>نویسنده</th>
-                <th className='col-span-1 font-semibold'>وضعیت</th>
-                <th className='col-span-1 font-semibold'>دسته بندی</th>
-                <th className='col-span-2 font-semibold'>عملیات</th>
-              </tr>
-            </thead>
-            <tbody>
-            
-              {
+                  <th className='col-span-1 font-semibold'>ردیف</th>
+                  <th className='col-span-1 font-semibold'>آیدی</th>
+                  <th className='col-span-1 font-semibold'>تصویر</th>
+                  <th className='col-span-1 font-semibold'>عنوان</th>
+                  <th className='col-span-1 font-semibold'>بازدید</th>
+                  <th className='col-span-1 font-semibold'>نویسنده</th>
+                  <th className='col-span-1 font-semibold'>وضعیت</th>
+                  <th className='col-span-1 font-semibold'>دسته بندی</th>
+                  <th className='col-span-2 font-semibold'>عملیات</th>
+                </tr>
+              </thead>
+              <tbody>
 
-                articles &&
-                articles.map((item, index) => {
-                  return (
-                    <tr key={index} className='w-full grid grid-cols-10 items-center text-gray-600/90
+                {
+
+                  articles &&
+                  articles.map((item, index) => {
+                    return (
+                      <motion.tr
+                        initial={{ filter: "blur(10px)", opacity: 0 }}
+                        animate={{ filter: 'none', opacity: 1 }}
+                        transition={{ delay: 0.2 * index, duration: 0.4, ease: "easeOut" }}
+                        key={index} className='w-full grid grid-cols-10 items-center text-gray-600/90
                       h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl
                       cursor-pointer transition-all duration-200 border border-gray-100/50'>
-                      <td className='col-span-1'>{index + 1}</td>
-                      <td className='col-span-1'>#{item.id}</td>
-                      <td className='col-span-1 flex justify-center items-center'>
-                        <img 
-                        src={`${BASE_URL}/storage/media/${item.media}`} 
-                        onError={(e) => {
-                          e.currentTarget.src = DefaultImg;
-                        }}
-                        className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
-                      </td>
-                      <td className='col-span-1'>{item.title.length > 12 ? item.title.slice(0, 12) + '...' : item.title}</td>
-                      <td className='col-span-1'>{item.views}</td>
-                      <td className='col-span-1'>{item.author?.first_name + ' ' + item.author?.last_name}</td>
-                      <td className='col-span-1 justify-center items-center w-full flex'>
-                        {
-                          item.status
-                            ?
-                            <div className='flex items-center gap-1 bg-green-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                              <TbCheck size={16} className='text-green-600' />
-                              <span className='text-green-700 text-sm font-medium'>فعال</span>
-                            </div>
-                            :
-                            <div className='flex items-center gap-1 bg-red-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                              <TbX size={16} className='text-red-600' />
-                              <span className='text-red-700 text-sm font-medium'>غیرفعال</span>
-                            </div>
+                        <td className='col-span-1'>{index + 1}</td>
+                        <td className='col-span-1'>#{item.id}</td>
+                        <td className='col-span-1 flex justify-center items-center'>
+                          <img
+                            src={`${BASE_URL}/storage/media/${item.media}`}
+                            onError={(e) => {
+                              e.currentTarget.src = DefaultImg;
+                            }}
+                            className='w-12 h-12 rounded-xl border-2 border-white/50 shadow-md' />
+                        </td>
+                        <td className='col-span-1'>{item.title.length > 12 ? item.title.slice(0, 12) + '...' : item.title}</td>
+                        <td className='col-span-1'>{item.views}</td>
+                        <td className='col-span-1'>{item.author?.first_name + ' ' + item.author?.last_name}</td>
+                        <td className='col-span-1 justify-center items-center w-full flex'>
+                          {
+                            item.status
+                              ?
+                              <div className='flex items-center gap-1 bg-green-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
+                                <TbCheck size={16} className='text-green-600' />
+                                <span className='text-green-700 text-sm font-medium'>فعال</span>
+                              </div>
+                              :
+                              <div className='flex items-center gap-1 bg-red-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
+                                <TbX size={16} className='text-red-600' />
+                                <span className='text-red-700 text-sm font-medium'>غیرفعال</span>
+                              </div>
 
-                        }
+                          }
 
-                      </td>
-                      <td className='col-span-1 justify-center items-center w-full flex'>
-                        <div className='flex items-center gap-1 bg-gray-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                          <span className='text-blue-700 text-sm font-medium'>{item.category}</span>
-                        </div>
-                      </td>
-                      <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
-                        <Link to={`/admin/article/edit/${item.id}`} className='text-yellow-600 hover:text-yellow-700 
+                        </td>
+                        <td className='col-span-1 justify-center items-center w-full flex'>
+                          <div className='flex items-center gap-1 bg-gray-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
+                            <span className='text-blue-700 text-sm font-medium'>{item.category}</span>
+                          </div>
+                        </td>
+                        <td className='col-span-2 flex flex-row space-x-3 *:hover:scale-110 justify-center items-center'>
+                          <Link to={`/admin/article/edit/${item.id}`} className='text-yellow-600 hover:text-yellow-700 
                         transition-colors duration-200' title='ویرایش'>
-                          <TbEditCircle size={21} />
-                        </Link>
-                        <Link onClick={() => deleteHandler(item.id)} className='text-red-600 hover:text-red-700
+                            <TbEditCircle size={21} />
+                          </Link>
+                          <Link onClick={() => deleteHandler(item.id)} className='text-red-600 hover:text-red-700
                          transition-colors duration-200' title='حذف'>
-                          <TbTrashFilled size={21} />
-                        </Link>
-                      </td>
-                    </tr>
-                  )
-                })
+                            <TbTrashFilled size={21} />
+                          </Link>
+                        </td>
+                      </motion.tr>
+                    )
+                  })
 
 
-              }
+                }
 
 
-            </tbody>
-          </table>
-          :
-          <TbLoader className='flex animate-spin'  size={30}/>
+              </tbody>
+            </table>
+            :
+            <TbLoader className='flex animate-spin' size={30} />
         }
       </div>
     </motion.div>
