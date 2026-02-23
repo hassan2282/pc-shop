@@ -1,10 +1,11 @@
-import {  useState } from "react";
+import { useState } from "react";
 import { FcLock, FcUnlock } from "react-icons/fc";
 import { PiFingerprintThin } from "react-icons/pi";
 import { toast } from "react-toastify";
 import apiClient from "../../../apiClient";
 import { useNavigate } from "react-router-dom";
 import { TbLoader } from "react-icons/tb";
+import {motion} from 'motion/react';
 
 function Adm_gate() {
   const [toggle, setToggle] = useState(true);
@@ -15,39 +16,41 @@ function Adm_gate() {
   const [isLoading, setIsLoading] = useState(false);
 
   const validate = (gkey) => {
-    if(gkey.trim() === '' && gkey.trim().length < 15){
+    if (gkey.trim() === '' && gkey.trim().length < 15) {
       toast.error('رمز عبور معتبر نیست')
       return false;
-    }else{
+    } else {
       return true;
     }
-    
+
   }
 
 
   const submitHandler = async (e) => {
     e.preventDefault();
     setIsLoading(true)
-    if(validate(formData.gkey)) {
+    if (validate(formData.gkey)) {
       try {
         const res = await apiClient.post('/admin/gateGuard', formData, {
           withCredentials: true,
         })
-        if(res.status >= 200 && res.status < 300){
+        if (res.status >= 200 && res.status < 300) {
           res.data ?
             toast.success('به پنل مدیریت خوش آمدید') &&
-            navigate('/admin/index', {replace:true})
-          :
+            navigate('/admin/index', { replace: true })
+            :
             toast.error('رمز عبور وارد شده صحیح نمی‌باشد')
         }
       } catch (err) {
         toast.error(err?.response?.data?.message || 'خطا در اتصال به سرور');
-      }finally{
+      } finally {
         setIsLoading(false)
       }
     }
 
   };
+
+  
 
   return (
     <div
@@ -56,6 +59,19 @@ function Adm_gate() {
         items-center justify-center
         backdrop-blur-3xl z-100 top-0"
     >
+      <motion.div
+      animate={{rotate: 360}}
+      transition={{
+        repeat: Infinity,
+        duration: 30,
+        ease: "linear",
+      }}
+      className="absolute w-screen h-screen opacity-40">
+        <span className="absolute -z-0 bottom-50 right-200 w-[20rem] h-[20rem] blur-3xl rounded-full 
+      bg-gradient-to-r from-pink-700 to-purple-700"></span>
+        <span className="absolute -z-0 top-50 left-200 w-[20rem] h-[20rem] blur-3xl rounded-full 
+      bg-gradient-to-r from-purple-600 to-pink-600"></span>
+      </motion.div>
       {
         toggle ?
           <FcLock
@@ -96,7 +112,7 @@ function Adm_gate() {
           <input
             type="password"
             placeholder="رمز عبور را وارد کنید ..."
-            onChange={(e) => setFormData({gkey: e.target.value.trim()})}
+            onChange={(e) => setFormData({ gkey: e.target.value.trim() })}
             required
             className="
               flex
@@ -129,13 +145,14 @@ function Adm_gate() {
           >
             {
               isLoading ?
-              <TbLoader size={20} className="animate-spin" />
-              :
-            "ورود"  
+                <TbLoader size={20} className="animate-spin" />
+                :
+                "ورود"
             }
           </button>
         </form>
       </div>
+
     </div>
   );
 }
