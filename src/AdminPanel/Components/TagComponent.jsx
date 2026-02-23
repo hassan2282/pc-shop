@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import apiClient from '../../apiClient';
 import { toast } from 'react-toastify';
+import {motion} from 'motion/react'
 
 function TagComponent({ tags, onChange }) {
 
@@ -45,7 +46,7 @@ function TagComponent({ tags, onChange }) {
     const changeHandler = () => {
         const search = tagInputRef.current.value.toLowerCase().trim();
         setFilteredTags(
-            search === '' ? [] : fetchTags.filter((item) => 
+            search === '' ? [] : fetchTags.filter((item) =>
                 item.name.toLowerCase().includes(search) && !tags.includes(item.name)
             )
         );
@@ -96,12 +97,17 @@ function TagComponent({ tags, onChange }) {
                     tags &&
                     tags.map((item, index) => {
                         return (
-                            <option key={index} onClick={() => removeTag(index)} className='relative peer after:content-["حذف"] 
+                            <motion.option
+                                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 1.05, y: -20 }}
+                                transition={{ duration: 0.4, ease: "easeInOut" }}
+                                key={index} onClick={() => removeTag(index)} className='relative peer after:content-["حذف"] 
                                 after:flex after:justify-center after:items-center after:absolute
                                 after:inset-0 after:z-10 after:bg-red-600 after:rounded-xl active:scale-95 after:duration-200
                                 after:scale-x-0 hover:after:scale-x-100'>
                                 {item}
-                            </option>
+                            </motion.option>
                         )
                     })
                 }
