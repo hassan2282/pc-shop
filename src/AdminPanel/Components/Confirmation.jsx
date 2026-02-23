@@ -18,7 +18,7 @@ function Confirmation({setConfirm}) {
                 <div className='row-span-1 min-md:grid min-md:grid-cols-2 flex flex-col min-md:gap-5 gap-2 *:h-12 *:shadow-sm
                  *:shadow-zinc-500 *:hover:shadow-lg *:cursor-pointer *:hover:scale-105 *:duration-200 *:w-full p-2 *:p-2 *:rounded-xl '>
                     <button onClick={() => clickHandler(1)} className='bg-blue-600 text-center text-zinc-100'>بله</button>
-                    <button onClick={() => clickHandler(0)} className='bg-rose-600/90 text-center text-zinc-100'>خیر</button>
+                    <button onClick={() => clickHandler(0)} className='bg-[#024A70] text-center text-zinc-100'>خیر</button>
                 </div>
             </motion.div>
         </div>
