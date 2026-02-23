@@ -62,6 +62,13 @@ const Reducer = (state = initialState, action) => {
                 cart: updatedCart,
             };
 
+
+        case "deleteProduct":
+            return {
+                ...state,
+                cart: action.payload
+            }
+
         default:
             return state;
     }
