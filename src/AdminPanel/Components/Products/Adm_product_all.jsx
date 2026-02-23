@@ -114,7 +114,11 @@ function Adm_product_all() {
               products &&
               products.map((item, index) => {
                 return (
-                  <tr key={index} className='w-full grid grid-cols-10 items-center text-gray-600/90
+                  <motion.tr
+                    initial={{ filter: "blur(10px)", opacity: 0 }}
+                    animate={{ filter: 'none', opacity: 1 }}
+                    transition={{ delay: 0.2 * index, duration: 0.4, ease: "easeOut" }}
+                    key={index} className='w-full grid grid-cols-10 items-center text-gray-600/90
             h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
             cursor-pointer transition-all duration-200 border border-gray-100/50'>
                     <td className='col-span-1'>{index + 1}</td>
@@ -159,7 +163,7 @@ function Adm_product_all() {
                         <TbTrashFilled size={20} />
                       </Link>
                     </td>
-                  </tr>
+                  </motion.tr>
                 )
               })
             }
