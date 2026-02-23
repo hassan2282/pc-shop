@@ -107,7 +107,11 @@ function Adm_all_categories() {
               categories &&
               categories.map((item, index) => {
                 return (
-                  <tr key={item.id} className='w-full grid grid-cols-6 items-center text-gray-600/90
+                  <motion.tr
+                    initial={{ filter: "blur(10px)", opacity: 0 }}
+                    animate={{ filter: 'none', opacity: 1 }}
+                    transition={{ delay: 0.2 * index, duration: 0.4, ease: "easeOut" }}
+                    key={item.id} className='w-full grid grid-cols-6 items-center text-gray-600/90
                             h-16 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
                     <td className=''>{index + 1}</td>
@@ -143,7 +147,7 @@ function Adm_all_categories() {
                         <TbTrashFilled size={22} />
                       </Link>
                     </td>
-                  </tr>
+                  </motion.tr>
                 )
               })
             }
