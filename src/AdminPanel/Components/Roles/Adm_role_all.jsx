@@ -26,13 +26,13 @@ function Adm_role_all() {
   }, []);
 
   const deleteHandler = async (id) => {
-    try{
+    try {
       const removeRole = await apiClient.delete(`/admin/roles/${id}`);
-      if(removeRole.status >= 200 && removeRole.status < 300) {
+      if (removeRole.status >= 200 && removeRole.status < 300) {
         setRoles((prev) => prev.filter(limitedRole => limitedRole.id !== id));
         toast.success('نقش با موفقیت حذف شد')
       }
-    }catch(err){
+    } catch (err) {
       toast.error(err.response.data);
       toast.error('خطا در فرایند حذف نقش');
     }
@@ -105,7 +105,11 @@ function Adm_role_all() {
               roles &&
               roles.map((item, index) => {
                 return (
-                  <tr key={index} className='w-full grid grid-cols-8 items-center text-gray-600/90
+                  <motion.tr
+                    initial={{ filter: "blur(10px)", opacity: 0 }}
+                    animate={{ filter: 'none', opacity: 1 }}
+                    transition={{ delay: 0.2 * index, duration: 0.4, ease: "easeOut" }}
+                    key={index} className='w-full grid grid-cols-8 items-center text-gray-600/90
                             p-2 text-md justify-center text-center bg-white/60 hover:bg-blue-50/50 rounded-xl 
                             cursor-pointer transition-all duration-200 border border-gray-100/50'>
                     <td className=''>{index + 1}</td>
@@ -128,11 +132,11 @@ function Adm_role_all() {
                        duration-200' title='ویرایش'>
                         <TbEditCircle size={22} />
                       </Link>
-                      <Link onClick={()=>deleteHandler(item.id)} className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
+                      <Link onClick={() => deleteHandler(item.id)} className='text-red-600 hover:text-red-700 transition-colors duration-200' title='حذف'>
                         <TbTrashFilled size={22} />
                       </Link>
                     </td>
-                  </tr>
+                  </motion.tr>
                 )
               })
             }
