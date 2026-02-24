@@ -79,7 +79,11 @@ function Adm_tickets_all() {
               conversations &&
               conversations?.map((item, index) => {
                 return (
-                  <tr key={index} className='w-full grid grid-cols-7 items-center text-gray-600/90
+                  <motion.tr
+                    initial={{ filter: "blur(10px)", opacity: 0 }}
+                    animate={{ filter: 'none', opacity: 1 }}
+                    transition={{ delay: 0.2 * index, duration: 0.4, ease: "easeOut" }}
+                    key={index} className='w-full grid grid-cols-7 items-center text-gray-600/90
                             p-2 text-md justify-center text-center bg-white/20 hover:bg-white/70 rounded-xl 
                             cursor-pointer transition-all border border-gray-100/50'>
                     <td className=''>{index + 1}</td>
@@ -113,7 +117,7 @@ function Adm_tickets_all() {
                       </Link>
 
                     </td>
-                  </tr>
+                  </motion.tr>
                 )
               })
             }
