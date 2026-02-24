@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { easeInOut, motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
 import { FaCalendarDay, FaPhoneSquare, FaUser } from 'react-icons/fa'
 import { MdMarkEmailRead } from 'react-icons/md'
@@ -50,21 +50,21 @@ function Adm_tickets_show() {
   // تابع برای مدیریت اسکرول کاربر
   const handleScroll = () => {
     if (!container.current) return;
-    
+
     const { scrollTop, scrollHeight, clientHeight } = container.current;
     const isAtBottom = scrollHeight - scrollTop <= clientHeight + 50; // 50px tolerance
-    
+
     if (isAtBottom) {
       setShouldAutoScroll(true);
     } else {
       setShouldAutoScroll(false);
     }
-    
+
     // Clear any existing timeout
     if (scrollTimeoutRef.current) {
       clearTimeout(scrollTimeoutRef.current);
     }
-    
+
     // Set timeout to reset user scrolling flag
     scrollTimeoutRef.current = setTimeout(() => {
       setIsUserScrolling(false);
@@ -219,7 +219,11 @@ function Adm_tickets_show() {
                 limitedTickets?.map((ticket, index) => {
                   if (ticket.admin_id === null) {
                     return (
-                      <div key={index} className='relative rounded-2xl text-right w-[85%] rounded-tr-none m-3 p-2 backdrop-blur-lg bg-blue-400 z-40'>
+                      <motion.div
+                        initial={{ y: 10, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.4, ease: easeInOut }}
+                        key={index} className='relative rounded-2xl text-right w-[85%] rounded-tr-none m-3 p-2 backdrop-blur-lg bg-blue-400 z-40'>
                         <TbTriangleFilled size={20} className='absolute rotate-59 top-0 text-blue-400 right-0 translate-x-2 -translate-y-[4.4px] ' />
                         <p className='text-white'>{ticket.text}</p>
                         <span className='text-zinc-200 text-[9px] text-left' >{new Date(ticket.created_at).toLocaleDateString('fa-IR', {
@@ -230,11 +234,15 @@ function Adm_tickets_show() {
                           minute: '2-digit',
                         })}</span>
                         <TbX onClick={() => deleteHandler(ticket.id)} size={20} className=' absolute rounded-full left-1 bottom-[6px] bg-rose-600 p-1 text-white cursor-pointer hover:scale-110 duration-300' />
-                      </div>
+                      </motion.div>
                     )
                   } else {
                     return (
-                      <div key={index} className='relative text-left  rounded-2xl rounded-tl-none m-3 p-2 backdrop-blur-lg bg-sky-900 z-40'>
+                      <motion.div
+                        initial={{ y: 10, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.4, ease: easeInOut }}
+                        key={index} className='relative text-left  rounded-2xl rounded-tl-none m-3 p-2 backdrop-blur-lg bg-sky-900 z-40'>
                         <TbTriangleFilled size={20} className='absolute rotate-59 top-0 text-sky-900 left-0 -translate-x-2 -translate-y-[4.4px] ' />
                         <p className='text-white mb-2'>{ticket.text}</p>
                         <div className='flex flex-row text-left justify-end space-x-2 items-center text-[10px] text-gray-200'>
@@ -250,7 +258,7 @@ function Adm_tickets_show() {
                           <span className='text-rose-400'>{'ادمین شماره ' + ticket.admin_id}</span>
                         </div>
                         <TbX onClick={() => deleteHandler(ticket.id)} size={20} className='absolute bottom-[6px] right-1 rounded-full bg-rose-600 p-1 text-white cursor-pointer hover:scale-110 duration-300' />
-                      </div>
+                      </motion.div>
                     )
                   }
                 })
