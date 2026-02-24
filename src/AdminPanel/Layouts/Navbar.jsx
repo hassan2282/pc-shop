@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { TbArrowBadgeRight, TbBell, TbLogout, TbMail, TbUser } from "react-icons/tb"
 import { motion } from 'motion/react'
 import { Link } from "react-router-dom"
@@ -9,6 +9,9 @@ function Navbar() {
   const [ProfileToggle, setProfileToggle] = useState(false)
   const [MailToggle, setMailToggle] = useState(false)
   const [NotifToggle, setNotifToggle] = useState(false)
+  const profileWrapperRef = useRef();
+  const notifyWrapperRef = useRef();
+  const mailWrapperRef = useRef();
 
   const profileRef = useRef();
   const profile = () => {
@@ -32,6 +35,27 @@ function Navbar() {
     setLeft(emailRef.current.offsetLeft)
   }
 
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (profileRef.current && !profileRef.current.contains(event.target) && profileWrapperRef.current && !profileWrapperRef.current.contains(event.target)) {
+        setProfileToggle(false)
+      }
+      if (emailRef.current && !emailRef.current.contains(event.target) && mailWrapperRef.current && !mailWrapperRef.current.contains(event.target)) {
+        setMailToggle(false)
+      }
+      if (notifyRef.current && !notifyRef.current.contains(event.target) && notifyWrapperRef.current && !notifyWrapperRef.current.contains(event.target)) {
+        setNotifToggle(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+  }, []);
+
+
+
   const user = useSelector(state => state.user);
   const BASE_URL = import.meta.env.VITE__BASEURL;
 
@@ -42,10 +66,10 @@ function Navbar() {
           <span ref={profileRef} onClick={profile} className={`flex flex-row items-center backdrop-blur-sm
              bg-[#EFF4F9]/60 shadow-sm rounded-xl p-2 justify-center z-20 ${ProfileToggle && '*:rotate-90'} duration-200 text-zinc-700/70`}>
             <TbArrowBadgeRight size={25} className="duration-300 text-blue-800/60" />
-            {user?.username.length > 12 ? "..." + user?.username?.slice(0,11) : user?.username}
+            {user?.username.length > 12 ? "..." + user?.username?.slice(0, 11) : user?.username}
           </span>
           <Link to={`/admin/user/show/${user?.id}`}>
-            <img src={user?.profile ? BASE_URL+"/storage/media/"+user?.profile : '../../../src/StorePanel/assets/img/profile.jpg'} alt='user profile'
+            <img src={user?.profile ? BASE_URL + "/storage/media/" + user?.profile : '../../../src/StorePanel/assets/img/profile.jpg'} alt='user profile'
               className='flex max-md:hidden w-10 h-10 z-10 rounded-full shadow-md shadow-zinc-500' />
           </Link>
           <span
@@ -77,6 +101,7 @@ function Navbar() {
                 duration: 0.2,
               }
             }}
+            ref={profileWrapperRef}
             style={{ left: `${Left}px` }}
             className={`absolute z-20 w-[9rem] overflow-clip duration-300 top-13 p-1 backdrop-blur-sm bg-[#EFF4F9]/60 rounded-xl shadow-md `}>
             <ul className="flex flex-col w-full *:flex *:flex-row cursor-pointer text-zinc-600 *:justify-between *:shadow-xs *:p-2 
@@ -103,6 +128,7 @@ function Navbar() {
               }
             }}
             style={{ left: `${Left}px` }}
+            ref={notifyWrapperRef}
             className={`absolute w-[14rem] z-20 overflow-clip duration-300 top-13 p-1 backdrop-blur-2xl bg-[#FEFFFF]/40 rounded-xl shadow-md `}>
             <ul className="grid grid-cols-2 w-full *:hover:bg-blue-400/30 *:flex *:flex-row cursor-pointer *:justify-between *:gap-3
               *:p-2 *:rounded-xl *:duration-200">
@@ -159,6 +185,7 @@ function Navbar() {
               }
             }}
             style={{ left: `${Left}px` }}
+            ref={mailWrapperRef}
             className={`absolute w-[14rem] z-20 overflow-clip duration-300 top-13 p-1 backdrop-blur-2xl bg-[#FEFFFF]/40 rounded-xl shadow-md `}>
             <ul className="grid grid-cols-2 w-full cursor-pointer *:flex *:flex-row *:justify-between 
             *:gap-3 *:p-2 *:hover:bg-blue-400/30 *:duration-200 *:rounded-xl">
