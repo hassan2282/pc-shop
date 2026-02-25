@@ -1,4 +1,6 @@
-﻿function SuccessfulPayment() {
+﻿import { Link } from "react-router-dom"
+
+function SuccessfulPayment() {
   return (
     <div>
         <main className="single-product default">
@@ -7,17 +9,17 @@
                     <div className="col-12 text-center">
                         <ul className="order-steps">
                             <li>
-                                <a href="cart.html" className="active">
+                                <Link to="/store/cart"  className="active">
                                     <span>سبدخرید</span>
-                                </a>
+                                </Link>
                             </li>
                             <li className="active">
-                                <a href="shopping-payment.html" className="active active2">
+                                <Link to="/store/shopping-payment" className="active active2">
                                     <span>روش پرداخت</span>
-                                </a>
+                                </Link>
                             </li>
                             <li className="active">
-                                <a href="successful-payment.html" className="active active3">
+                                <a className="active active3">
                                     <span>پایان خرید</span>
                                 </a>
                             </li>
