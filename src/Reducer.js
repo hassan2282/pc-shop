@@ -3,6 +3,7 @@ const initialState = {
     user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null,
     isAuthenticated: !!localStorage.getItem("token"),
     cart: localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [],
+    address: JSON.parse(localStorage.getItem("address")) || [],
 };
 
 
@@ -39,6 +40,20 @@ const Reducer = (state = initialState, action) => {
                 ...state,
                 user: updatedUser,
             }
+
+
+        case "ADD_ADDRESS":
+            return {
+                ...state,
+                address: action.payload
+            }
+
+        case "DELETE_ADDRESS":
+            return {
+                ...state,
+                address: ''
+            }
+
 
         case "purchase":
             const existingIndex = state.cart.findIndex(item => item.id === action.payload.id);
@@ -83,6 +98,7 @@ const Reducer = (state = initialState, action) => {
                 ...state,
                 cart: action.payload
             }
+
 
         default:
             return state;
