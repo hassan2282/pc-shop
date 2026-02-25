@@ -1,4 +1,6 @@
-﻿function ShoppingPayment() {
+﻿import { Link } from "react-router-dom"
+
+function ShoppingPayment() {
   return (
     <div>
 
@@ -8,19 +10,19 @@
                     <div className="col-12 text-center">
                         <ul className="order-steps">
                             <li>
-                                <a href="cart.html"  className="active">
+                                <Link to="/store/cart"  className="active">
                                     <span>سبدخرید</span>
-                                </a>
+                                </Link>
                             </li>
                             <li  className="active">
-                                <a href="shopping-payment.html"  className="active active2">
+                                <a className="active active2">
                                     <span>روش پرداخت</span>
                                 </a>
                             </li>
                             <li >
-                                <a href="successful-payment.html" >
+                                <Link to="/store/successfull-payment" >
                                     <span>پایان خرید</span>
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -99,7 +101,7 @@
                                             <td>5,398,000 <span>تومان</span></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2"><a href="successful-payment.html" className="btn big_btn btn-main-masai"> اتصال به درگاه</a></td>
+                                            <td colspan="2"><Link to="/store/successfull-payment" className="btn big_btn btn-main-masai"> اتصال به درگاه</Link></td>
                                         </tr>
                                     </tbody>
                                 </table>
