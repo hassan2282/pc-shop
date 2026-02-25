@@ -337,18 +337,18 @@ function EditProfile() {
                       imgReview ? { backgroundImage: `url(${imgReview})` } :
                         user.profile ? { backgroundImage: `url(${BASE_URL}/storage/media/${user?.profile})` } : {}
                     }
-                    className={`relative bg-cover flex flex-col justify-center border-dotted hover:bg-blue-300 
+                    className={`relative bg-cover flex flex-col justify-center hover:bg-blue-300 
                         duration-200 hover:opacity-85 text-gray-600 border-[#54b4b9]
-                                border-3 rounded-md items-center w-full max-sm:h-60 h-92.5 mt-3 ${imgReview ? "bg-center" : ""
+                        rounded-md items-center w-full max-sm:h-60 h-92.5 mt-3 ${imgReview ? "bg-center" : ""
                       } `}
                   >
-                    {!imgReview & !user?.profile && (
+                    {(!imgReview && !user?.profile) && (
                       <>
                         <TbImageInPicture
                           size={60}
                           className="absolute max-md:w-[4rem] max-md:h-[4rem] z-10"
                         />
-                        <span className="absolute  mt-28 z-10">
+                        <span className="absolute mt-28 z-10">
                           لطفا تصویر خود را انتخاب کنید
                         </span>
                       </>
