@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TbLogout2 } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux"
 import { toast } from "react-toastify";
@@ -10,7 +10,7 @@ function Header() {
     const isAuthenticated = useSelector((state) => state.isAuthenticated);
     const dispatch = useDispatch();
     const [toggle, setToggle] = useState(false);
-    console.log(toggle)
+    const wrapperRef = useRef(null);
 
     const storeUser = (res) => {
         dispatch({ type: 'setUser', payload: { user: res.data } });
@@ -28,6 +28,20 @@ function Header() {
 
         fetchUser();
     }, []);
+
+    
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if(wrapperRef.current && !wrapperRef.current.contains(event.target)){
+                setToggle(false);
+            }
+        }
+        
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+    },[])
 
     const handleLogout = (e) => {
         e.preventDefault();
@@ -1101,13 +1115,13 @@ function Header() {
                                     </a>
                                 </div>
                                 <span className="divider ml-2"></span>
-                                <div className="">
+                                <div ref={wrapperRef} className="">
                                     <div onClick={(e) => setToggle(!toggle)}  className="dropdown-toggle iconhead cursor-pointer" >
                                         <i className="fa fa-cart-arrow-down font-20" aria-hidden="true"></i>
                                     </div>
                                     {toggle &&
                                         <div className="d-flex flex-col absolute z-20 top-10 w-[19rem] border rounded-2xl bg-white">
-                                            <PurchaseBasket />
+                                            <PurchaseBasket toggle={toggle} setToggle={setToggle}/>
                                         </div>
                                     }
                                 </div>
