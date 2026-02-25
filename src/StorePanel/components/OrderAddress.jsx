@@ -1,6 +1,6 @@
 ﻿import { Link, useNavigate } from "react-router-dom"
 import OrderSideBar from "../structure/OrderSideBar"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { use, useEffect, useRef, useState } from "react";
 import apiClient from "../../apiClient";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
@@ -11,12 +11,17 @@ function OrderAddress() {
 
     const user = useSelector((state) => state.user);
     const [address, setAddress] = useState();
+    const dispatch = useDispatch();
 
     const deleteAddress = async () => {
+        if(!address) return ;
         try {
             const res = await apiClient.delete(`delete-address/${address?.id}`)
             if (res.status >= 200 && res.status < 300) toast.success('آدرس با موفقیت حذف گردید')
             setAddress('');
+            dispatch({type:"DELETE_ADDRESS"})
+            localStorage.removeItem("address");
+            
         } catch (err) {
             toast.error('متاسفانه در فرایند حذف مشکلی بوجود آمده است');
         }
@@ -44,7 +49,10 @@ function OrderAddress() {
                                     <header className="card-header">
                                         <h3 className="card-title"><span>آدرس‌ها</span></h3>
                                         <div className="text-left">
-                                            <button onClick={deleteAddress} className="btn btn-main btn-danger" data-toggle="modal" data-target="#addressModal">حذف آدرس</button>
+                                            {
+                                                address &&
+                                                <button onClick={deleteAddress} className="btn btn-main btn-danger" data-toggle="modal" data-target="#addressModal">حذف آدرس</button>
+                                            }
                                             <Link to={'/store/address'} className="btn btn-main-masai" data-toggle="modal" data-target="#addressModal">ثبت آدرس</Link>
                                         </div>
                                     </header>
@@ -75,7 +83,7 @@ function OrderAddress() {
                                                                         duration: 0.5
                                                                     }
                                                                 }}
-                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200">
+                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200 sm:text-[10px] min-md:text-[15px]">
                                                                 <i className="fa fa-user-large colormain text-2xl" aria-hidden="true"></i>{user.first_name}
                                                             </motion.li>
                                                             <motion.li
@@ -91,7 +99,7 @@ function OrderAddress() {
                                                                         duration: 0.5
                                                                     }
                                                                 }}
-                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200">
+                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200 sm:text-[10px] min-md:text-[15px]">
                                                                 <i className="fa fa-user-large colormain text-2xl" aria-hidden="true"></i> {user.last_name}
                                                             </motion.li>
                                                             <motion.li
@@ -107,7 +115,7 @@ function OrderAddress() {
                                                                         duration: 0.5
                                                                     }
                                                                 }}
-                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200">
+                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200 sm:text-[10px] min-md:text-[15px]">
                                                                 <i className="fa fa-phone colormain text-2xl" aria-hidden="true"></i> {user.phone}
                                                             </motion.li>
                                                             <motion.li
@@ -123,7 +131,7 @@ function OrderAddress() {
                                                                         duration: 0.5
                                                                     }
                                                                 }}
-                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200">
+                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200 sm:text-[10px] min-md:text-[15px]">
                                                                 <i className="fa fa-map  colormain text-2xl" aria-hidden="true"></i> {address?.province?.name ? address?.province?.name : ' ثبت نشده '}
                                                             </motion.li>
                                                             <motion.li
@@ -139,7 +147,7 @@ function OrderAddress() {
                                                                         duration: 0.5
                                                                     }
                                                                 }}
-                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200">
+                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200 sm:text-[10px] min-md:text-[15px]">
                                                                 <i className="fa fa-map  colormain text-2xl" aria-hidden="true"></i> {address?.city?.name ? address?.city?.name : ' ثبت نشده'}
                                                             </motion.li>
                                                             <motion.li
@@ -155,7 +163,7 @@ function OrderAddress() {
                                                                         duration: 0.5
                                                                     }
                                                                 }}
-                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200">
+                                                            className="hover:shadow-lg hover:shadow-gray-300 duration-200 sm:text-[10px] min-md:text-[15px]">
                                                                 <i className="fa fa-envelope colormain text-2xl" aria-hidden="true"></i> {address?.postal_code ? address?.postal_code : ' ثبت نشده'}
                                                             </motion.li>
 
@@ -182,10 +190,10 @@ function OrderAddress() {
 
                                                             <div
                                                                 onClick={deleteAddress}
-                                                                className="absolute h-full justify-center items-center text-center text-white bg-[#5AB8BD]
+                                                                className="flex h-full justify-center items-center text-center text-white bg-[#5AB8BD]
                                                                      w-full rounded-xl z-30 duration-300">
-                                                                <AiFillDelete className=" text-[3rem] p-3 rounded-xl 
-                                                                     w-full h-full max-sm:text-[1rem] min-sm:text-[3rem] group-hover:bg-[#ffe8e8] group-hover:text-[#c40202] duration-300" />
+                                                                <AiFillDelete className=" text-[2rem] p-3 rounded-xl 
+                                                                     w-full h-full max-sm:text-[1rem] min-sm:text-[2rem] group-hover:bg-[#ffe8e8] group-hover:text-[#c40202] duration-300" />
                                                             </div>
                                                         </div>
 
