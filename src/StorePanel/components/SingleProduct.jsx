@@ -4,6 +4,7 @@ import apiClient from '../../apiClient'
 import { toast } from "react-toastify";
 import { TbMinus, TbPlus } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
+import { motion } from 'motion/react';
 
 function SingleProduct() {
 
@@ -40,18 +41,18 @@ function SingleProduct() {
 
     const handlePurchase = (product) => {
 
-            dispatch({
-                type: "purchase",
-                payload: {
-                    id: product.id,
-                    media: product.media[0]?.name,
-                    price: product.price,
-                    title: product.title,
-                    count: eval(quantity.current.value) || 1,
-                },
-            });
+        dispatch({
+            type: "purchase",
+            payload: {
+                id: product.id,
+                media: product.media[0]?.name,
+                price: product.price,
+                title: product.title,
+                count: eval(quantity.current.value) || 1,
+            },
+        });
 
-            toast.success('محصول به سبد خرید اضافه شد');
+        toast.success('محصول به سبد خرید اضافه شد');
 
     };
 
@@ -106,7 +107,13 @@ function SingleProduct() {
                                 <div className="row product_main_details">
                                     <div className="col-lg-5 col-md-6 col-sm-12">
                                         <div className="product-gallery default">
-                                            <img className="main_img_gallery h-120 object-contain" src={product && preview ? BASE_URL + '/storage/media/' + preview : BASE_URL + '/storage/media/' + product?.media[0]?.name} />
+                                            <motion.img
+                                                key={preview}
+                                                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                                exit={{ opacity: 0, scale: 1.05, y: -20 }}
+                                                transition={{ duration: 0.4, ease: "easeInOut" }}
+                                                className="main_img_gallery h-120 object-contain" src={product && preview ? BASE_URL + '/storage/media/' + preview : BASE_URL + '/storage/media/' + product?.media[0]?.name} />
                                             <section className="testimonial py-3" id="testimonial">
                                                 <div className="container">
                                                     <div className="row gallery">
@@ -114,9 +121,11 @@ function SingleProduct() {
                                                             product &&
                                                             product.media.map((item, index) => {
                                                                 return (
-                                                                    <div key={index} className="col-4 col-md-3 pd cursor-pointer hover:-translate-y-1 duration-300 *:shadow-sm hover:*:shadow-lg">
+                                                                    <div key={index} className="col min-w-[100px] overflow-x-scroll pd cursor-pointer hover:-translate-y-1
+                                                                     duration-300 *:shadow-sm hover:*:shadow-lg">
                                                                         <a>
-                                                                            <img onClick={() => { previewHandler(item?.name) }} src={BASE_URL + '/storage/media/' + item?.name} className="img-thumb h-24 " alt="تصویر محصول" />
+                                                                            <img onClick={() => { previewHandler(item?.name) }} src={BASE_URL + '/storage/media/' + item?.name} 
+                                                                             className="h-24 " alt="تصویر محصول" />
                                                                         </a>
                                                                     </div>
                                                                 )
@@ -175,6 +184,7 @@ function SingleProduct() {
                                                     {
                                                         product?.attribute_values &&
                                                         product?.attribute_values?.map((item, i) => {
+                                                            if(i < 12)
                                                             return (
                                                                 <li className="text-zinc-500" key={i}>
                                                                     <span> {item.attribute?.name} </span>
