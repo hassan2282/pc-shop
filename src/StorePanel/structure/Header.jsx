@@ -45,8 +45,7 @@ function Header() {
 
     const handleLogout = (e) => {
         e.preventDefault();
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
+        localStorage.clear();
         dispatch({
             type: "logout",
         })
@@ -1120,7 +1119,7 @@ function Header() {
                                         <i className="fa fa-cart-arrow-down font-20" aria-hidden="true"></i>
                                     </div>
                                     {toggle &&
-                                        <div className="d-flex flex-col absolute z-20 top-10 w-[19rem] border rounded-2xl bg-white">
+                                        <div className="d-flex flex-col absolute z-100 top-10 w-[19rem] border rounded-2xl bg-white">
                                             <PurchaseBasket toggle={toggle} setToggle={setToggle}/>
                                         </div>
                                     }
