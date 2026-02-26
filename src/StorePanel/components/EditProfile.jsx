@@ -156,11 +156,11 @@ function EditProfile() {
                            justify-center items-start gap-4 w-[98%] h-auto">
                 <form
                   onSubmit={handleInfoSubmit}
-                  className="flex flex-col justify-center items-center h-auto basis-full bg-[#e9fafc9a]
+                  className="flex flex-col justify-center items-center h-auto basis-full bg-[#F7FBFC]
                                         rounded-xl shadow shadow-gray-600 max-md:w-full
                                         *:flex *:flex-col *:p-2">
                   <div className=" flex flex-row justify-center items-center text-lg text-center
-                                 bg-[#a0d4d646] text-gray-600 rounded-t-lg w-full min-h-20 shadow-sm shadow-gray-900 mb-4">
+                                 bg-[#5BB9BE] text-gray-600 rounded-t-lg w-full min-h-20 shadow-sm shadow-gray-900 mb-4">
                     اطلاعات حساب کاربری
                   </div>
                   {Object.keys(errors).length > 0 && (
@@ -327,9 +327,9 @@ function EditProfile() {
 
                 <form
                   onSubmit={AvatarSubmit}
-                  className="flex flex-col relative justify-center items-center h-auto w-full rounded-xl shadow bg-[#e9fafc9a] shadow-gray-600"
+                  className="flex flex-col relative justify-center items-center h-auto w-full rounded-xl shadow bg-[#F7FBFC] shadow-gray-600"
                 >
-                  <div className="flex justify-center bg-[#a0d4d646] shadow-sm shadow-[#5d8a8b] items-center text-center h-19 text-lg rounded-t-lg w-full ">
+                  <div className="flex justify-center bg-[#5BB9BE] shadow-sm shadow-[#5d8a8b] items-center text-center h-19 text-lg rounded-t-lg w-full ">
                     ویرایش تصویر پروفایل
                   </div>
                   <div
@@ -339,7 +339,7 @@ function EditProfile() {
                     }
                     className={`relative bg-cover flex flex-col justify-center hover:bg-blue-300 
                         duration-200 hover:opacity-85 text-gray-600 border-[#54b4b9]
-                        rounded-md items-center w-full max-sm:h-60 h-92.5 mt-3 ${imgReview ? "bg-center" : ""
+                        rounded-md items-center w-full max-sm:h-60 h-92.5 ${imgReview ? "bg-center" : ""
                       } `}
                   >
                     {(!imgReview && !user?.profile) && (
@@ -365,7 +365,7 @@ function EditProfile() {
                       ref={AvatarRef}
                     />
                   </div>
-                  <div className="flex w-full h-32 justify-center items-end overflow-clip">
+                  <div className="flex w-full h-32 justify-center items-end overflow-clip mt-4">
                     <div className="flex flex-col w-full justify-center items-center p-2">
                       <span className="text-center p-2">
                         حداکثر حجم تصویر 2 مگابایت است و تصویر باید یکی از فرمت
