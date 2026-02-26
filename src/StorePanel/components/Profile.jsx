@@ -7,6 +7,7 @@ import { motion } from "motion/react"
 function Profile() {
 
     const user = useSelector(state => state.user);
+    const address = useSelector(state => state.address);
 
     return (
 
@@ -41,7 +42,7 @@ function Profile() {
                                                 }}
                                             className="">
                                                 <p>
-                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]">نام  :</span>
+                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]">نام  : </span>
                                                     <span className="text-[hsl(0,0%,30%)]">{user ? user.first_name : ' '}
                                                     </span>
                                                 </p>
@@ -61,7 +62,7 @@ function Profile() {
                                                 }}
                                             className="">
                                                 <p>
-                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]"> نام خانوادگی :</span>
+                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]"> نام خانوادگی : </span>
                                                     <span className="text-[hsl(0,0%,30%)]">
                                                         {user ? user.last_name : ' '}
                                                     </span>
@@ -82,8 +83,8 @@ function Profile() {
                                                 }}
                                             className="">
                                                 <p>
-                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]">پست الکترونیک :</span>
-                                                    <span className="text-[hsl(0,0%,30%)]">{user ? user.email : ' '}</span>
+                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]">نام کاربری : </span>
+                                                    <span className="text-[hsl(0,0%,30%)]">{user ? user.username : ''}</span>
                                                 </p>
                                             </motion.div>
                                             <motion.div
@@ -101,8 +102,8 @@ function Profile() {
                                                 }}
                                             className="">
                                                 <p>
-                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]">شماره تلفن همراه:</span>
-                                                    <span className="text-[hsl(0,0%,30%)]">{user ? user.phone : ' '}</span>
+                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]">پست الکترونیک : </span>
+                                                    <span className="text-[hsl(0,0%,30%)]">{user ? user.email : ' '}</span>
                                                 </p>
                                             </motion.div>
                                             <motion.div
@@ -120,8 +121,8 @@ function Profile() {
                                                 }}
                                             className="">
                                                 <p>
-                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]">کد پستی :</span>
-                                                    <span className="text-[hsl(0,0%,30%)]">(نامشخص)</span>
+                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]">شماره تلفن همراه : </span>
+                                                    <span className="text-[hsl(0,0%,30%)]">{user ? user.phone : ' '}</span>
                                                 </p>
                                             </motion.div>
                                             <motion.div
@@ -139,8 +140,8 @@ function Profile() {
                                                 }}
                                             className="">
                                                 <p>
-                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]">روش بازگرداندن پول من :</span>
-                                                    <span className="text-[hsl(0,0%,30%)]">ﺷﻤﺎره ﺷﺒﺎ</span>
+                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]">کد پستی : </span>
+                                                    <span className="text-[hsl(0,0%,30%)]">{address ? address.postal_code : '-'}</span>
                                                 </p>
                                             </motion.div>
                                             <motion.div
@@ -158,8 +159,8 @@ function Profile() {
                                                 }}
                                             className="">
                                                 <p>
-                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]">شغل :</span>
-                                                    <span className="text-[hsl(0,0%,30%)]">توسعه نرم افزار و برنامه نویسی</span>
+                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]">روش بازگرداندن پول : </span>
+                                                    <span className="text-[hsl(0,0%,30%)]">ﺷﻤﺎره ﺷﺒﺎ</span>
                                                 </p>
                                             </motion.div>
                                             <motion.div
@@ -177,8 +178,8 @@ function Profile() {
                                                 }}
                                             className="">
                                                 <p>
-                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]">تاریخ تولد :</span>
-                                                    <span className="text-[hsl(0,0%,30%)]">۱۳۷۰/۶/۱۴</span>
+                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]">نحوه آشنایی : </span>
+                                                    <span className="text-[hsl(0,0%,30%)]">گوگل</span>
                                                 </p>
                                             </motion.div>
                                             <motion.div
@@ -196,8 +197,8 @@ function Profile() {
                                                 }}
                                             className=" col-span-2">
                                                 <p>
-                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]">کد ملی :</span>
-                                                    <span className="text-[hsl(0,0%,30%)]">297865432</span>
+                                                    <span className="text-[hsl(0,0%,5%)] text-[1rem]">آدرس : </span>
+                                                    <span className="text-[hsl(0,0%,30%)]">{address ? address.address : 'ثبت نشده'}</span>
                                                 </p>
                                             </motion.div>
                                             <motion.div
@@ -232,7 +233,7 @@ function Profile() {
                                                 <p>لطفا آدرس محل سکونت یا محل کار خود را با دقت وارد نمایید</p>
                                             </div>
                                             <div className="text-center w-full flex justify-center items-center">
-                                                <Link to='/store/order-address' className="btn btn-main-masai big_btn">
+                                                <Link to='/store/address' className="btn btn-main-masai big_btn">
                                                     ثبت آدرس جدید
                                                 </Link>
                                             </div>
