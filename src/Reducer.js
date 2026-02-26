@@ -17,12 +17,7 @@ const Reducer = (state = initialState, action) => {
                 isAuthenticated: true,
             };
         case "logout":
-            return {
-                ...state,
-                isAuthenticated: false,
-                user: null,
-                token: null
-            };
+            return initialState;
 
         case "setUser":
             return {
@@ -97,6 +92,13 @@ const Reducer = (state = initialState, action) => {
             return {
                 ...state,
                 cart: action.payload
+            }
+
+
+        case "DELETE_CART":
+            return {
+                ...state,
+                cart: '',
             }
 
 
