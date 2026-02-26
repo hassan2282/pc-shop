@@ -1,42 +1,49 @@
-﻿import { Link } from "react-router-dom"
+﻿import { Link } from "react-router-dom";
+import {selectTotalPrice} from '../../Selectors';
+import { useSelector } from "react-redux";
 
 function ShoppingPayment() {
-  return (
-    <div>
 
-        <main className="cart-page default">
-            <div className="container">
-                <div className="row">
-                    <div className="col-12 text-center">
-                        <ul className="order-steps">
-                            <li>
-                                <Link to="/store/cart"  className="active">
-                                    <span>سبدخرید</span>
-                                </Link>
-                            </li>
-                            <li  className="active">
-                                <a className="active active2">
-                                    <span>روش پرداخت</span>
-                                </a>
-                            </li>
-                            <li >
-                                <Link to="/store/successfull-payment" >
-                                    <span>پایان خرید</span>
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    
+    const totalPrice = useSelector(selectTotalPrice);
 
-                    <div className="cart-page-content col-xl-12 col-lg-12 col-md-12">
-                        <header className="card-header">
-                            <h3 className="card-title"><span>انتخاب روش پرداخت</span></h3>
-                        </header>
-                        <div className="row cart_details">
-                           
-                            <div className="cart-page-content col-xl-8 col-lg-7 col-md-7 ">
-                    
+
+
+    return (
+        <div>
+
+            <main className="cart-page default">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12 text-center">
+                            <ul className="order-steps">
+                                <li>
+                                    <Link to="/store/cart" className="active">
+                                        <span>سبدخرید</span>
+                                    </Link>
+                                </li>
+                                <li className="active">
+                                    <a className="active active2">
+                                        <span>روش پرداخت</span>
+                                    </a>
+                                </li>
+                                <li >
+                                    <Link to="/store/successfull-payment" >
+                                        <span>پایان خرید</span>
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+
+
+
+                        <div className="cart-page-content col-xl-12 col-lg-12 col-md-12">
+                            <header className="card-header">
+                                <h3 className="card-title"><span>انتخاب روش پرداخت</span></h3>
+                            </header>
+                            <div className="row cart_details">
+
+                                <div className="cart-page-content col-xl-8 col-lg-7 col-md-7 ">
+
                                     <div className="plans">
                                         <label className="plan basic-plan" htmlFor="pay1">
                                             <input checked type="radio" name="plan" id="pay1" />
@@ -81,39 +88,39 @@ function ShoppingPayment() {
                                             </div>
                                         </label>
                                     </div>
-                               
-                               
-                             
-                            </div>
-                            <div className="cart-page-aside col-xl-4 col-lg-5 col-md-5 divider_details">
-                                <table className="table table_details">
-                                    <tbody>
-                                        <tr>
-                                            <td>قیمت کل سفارش:</td>
-                                            <td>5,398,000 <span>تومان</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>بسته‌بندی و ارسال:</td>
-                                            <td>وابسته به نوع ارسال</td>
-                                        </tr>
-                                        <tr className="all">
-                                            <td>قیمت قابل پرداخت:</td>
-                                            <td>5,398,000 <span>تومان</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2"><Link to="/store/successfull-payment" className="btn big_btn btn-main-masai"> اتصال به درگاه</Link></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+
+
+
+                                </div>
+                                <div className="cart-page-aside col-xl-4 col-lg-5 col-md-5 divider_details">
+                                    <table className="table table_details">
+                                        <tbody>
+                                            <tr>
+                                                <td>قیمت کل سفارش:</td>
+                                                <td>{totalPrice.toLocaleString()} <span>تومان</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>بسته‌بندی و ارسال:</td>
+                                                <td>وابسته به نوع ارسال</td>
+                                            </tr>
+                                            <tr className="all">
+                                                <td>قیمت قابل پرداخت:</td>
+                                                <td>{totalPrice.toLocaleString()} <span>تومان</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><Link to="/store/successfull-payment" className="btn big_btn btn-main-masai"> اتصال به درگاه</Link></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
+            </main>
 
-    </div>
-  )
+        </div>
+    )
 }
 
 export default ShoppingPayment
