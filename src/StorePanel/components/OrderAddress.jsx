@@ -1,7 +1,6 @@
 ﻿import { Link, useNavigate } from "react-router-dom"
 import OrderSideBar from "../structure/OrderSideBar"
 import { useDispatch, useSelector } from "react-redux"
-import { use, useEffect, useRef, useState } from "react";
 import apiClient from "../../apiClient";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { toast } from "react-toastify";
@@ -10,34 +9,23 @@ import {motion} from 'motion/react';
 function OrderAddress() {
 
     const user = useSelector((state) => state.user);
-    const [address, setAddress] = useState();
+    const address = useSelector((state) => state.address);
     const dispatch = useDispatch();
 
     const deleteAddress = async () => {
         if(!address) return ;
         try {
             const res = await apiClient.delete(`delete-address/${address?.id}`)
-            if (res.status >= 200 && res.status < 300) toast.success('آدرس با موفقیت حذف گردید')
-            setAddress('');
-            dispatch({type:"DELETE_ADDRESS"})
-            localStorage.removeItem("address");
-            
+            if (res.status >= 200 && res.status < 300){
+                dispatch({type:"DELETE_ADDRESS"})
+                localStorage.removeItem("address");
+                toast.success('آدرس با موفقیت حذف گردید')
+            }
         } catch (err) {
             toast.error('متاسفانه در فرایند حذف مشکلی بوجود آمده است');
         }
     }
 
-    useEffect(() => {
-        const fetchAddress = async () => {
-            try {
-                const res = await apiClient.get(`user-address/${user.id}`);
-                setAddress(res.data);
-            } catch (err) {
-                toast.error('لطفا اطلاعات آدرس خود را ثبت نمایید', { toastId: 'address-error' });
-            }
-        }
-        fetchAddress();
-    }, []);
     return (
         <div>
             <main className="order-delivered  default space-top-30">
@@ -132,7 +120,7 @@ function OrderAddress() {
                                                                     }
                                                                 }}
                                                             className="hover:shadow-lg hover:shadow-gray-300 duration-200 sm:text-[10px] min-md:text-[15px]">
-                                                                <i className="fa fa-map  colormain text-2xl" aria-hidden="true"></i> {address?.province?.name ? address?.province?.name : ' ثبت نشده '}
+                                                                <i className="fa fa-map  colormain text-2xl" aria-hidden="true"></i> {address?.province_name ? address?.province_name : ' ثبت نشده '}
                                                             </motion.li>
                                                             <motion.li
                                                                 initial={{
@@ -148,7 +136,7 @@ function OrderAddress() {
                                                                     }
                                                                 }}
                                                             className="hover:shadow-lg hover:shadow-gray-300 duration-200 sm:text-[10px] min-md:text-[15px]">
-                                                                <i className="fa fa-map  colormain text-2xl" aria-hidden="true"></i> {address?.city?.name ? address?.city?.name : ' ثبت نشده'}
+                                                                <i className="fa fa-map  colormain text-2xl" aria-hidden="true"></i> {address?.city_name ? address?.city_name : ' ثبت نشده'}
                                                             </motion.li>
                                                             <motion.li
                                                                 initial={{
