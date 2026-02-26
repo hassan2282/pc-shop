@@ -83,7 +83,7 @@ function Login() {
                 </h3>
               </header> */}
               <div className="w-full h-full">
-                <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center w-[95%] h-full p-4">
+                <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center w-[95%] h-full p-3">
                   <div className="space-y-5 w-full h-full">
                     <motion.div
                       initial={{
@@ -134,30 +134,10 @@ function Login() {
                           required
                           minLength={6}
                           maxLength={255}
-                          className="w-full p-2 h-14 rounded-full shadow-xs shadow-black/20 hover:shadow-lg duration-200 backdrop-blur-md bg-white/50"
+                          className="w-full p-2 h-14 rounded-full shadow-xs placeholder-gray-500 shadow-black/20 hover:shadow-lg duration-200 backdrop-blur-md bg-white/50"
                           type="password"
                           placeholder=" کلمه عبور شما"
                         />
-                      </div>
-                    </motion.div>
-
-                    <motion.div
-                      initial={{
-                        opacity: 0,
-                        scale: 0.8,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        scale: 1,
-                        transition: { duration: 1,delay: 0.6 },
-                      }}
-                    className="flex w-full justify-center items-center">
-                      <div className="">
-                        <label className="">
-                          <input type="checkbox" id="agree" />
-                          <span className="checkbox-check"></span>
-                        </label>
-                        <label htmlFor="agree"> مرا به خاطر بسپار</label>
                       </div>
                     </motion.div>
                     <motion.div 
@@ -187,9 +167,10 @@ function Login() {
                       }}
                     className="flex w-[97%] justify-center items-center ">
                       <button
+                      style={{borderRadius: '4rem'}}
                         type="submit"
-                        className="flex w-full relative justify-center items-center rounded-full overflow-clip shadow-sm shadow-black/60
-                         p-2 cursor-pointer hover:scale-102 active:scale-95 z-10 group border-dotted border-white border-1"
+                        className="d-flex w-full justify-center items-center rounded-xl shadow-sm shadow-gray-500
+                         p-2 cursor-pointer hover:scale-102 active:scale-95 duration-300 hover:bg-white/60 border-dotted border-white border-1"
                       >
                         {isLoading ? (
                           <AiOutlineLoading
@@ -199,9 +180,6 @@ function Login() {
                         ) : (
                           "ورود"
                         )}
-
-                        <span className="absolute w-15 h-15 rotate-45 z-30 backdrop-blur-md bg-white/60
-                        -left-12  scale-300 group-hover:translate-x-90 duration-700 max-md:hidden"></span>
                       </button>
                     </motion.div>
                     <motion.div 
