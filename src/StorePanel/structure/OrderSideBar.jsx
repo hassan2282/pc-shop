@@ -11,12 +11,10 @@ function OrderSideBar() {
 
   const logoutHandler = (e) => {
     e.preventDefault();
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-
-    dispatch({
-      type: "logout",
-    });
+    localStorage.clear();
+        dispatch({
+            type: "logout",
+        })
     toast.success("شما با موفقیت از حساب کاربری خود خارج شدید");
   };
 
@@ -27,7 +25,7 @@ function OrderSideBar() {
         <div className="img">
           <img
             alt="profile"
-            className="object-contain"
+            className="object-cover"
             src={
               user?.profile
                 ? `${BASE_URL}/storage/media/${user?.profile}`
