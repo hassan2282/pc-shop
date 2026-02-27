@@ -26,7 +26,7 @@ function PurchaseBasket({ toggle, setToggle }) {
                                 initial={{ x: 100, opacity: 0 }}
                                 animate={{ x: 0, opacity: 1 }}
                                 exit={{ x: 100, opacity: 0 }}
-                                transition={{ delay: 0.2 * index, duration: 0.5, ease: "easeInOut" }}
+                                transition={{ delay: 0.1 * index, duration: 0.2, ease: "easeInOut" }}
                                 key={index} className="flex justify-center items-center rounded-xl relative
                                                      bg-[#F1F9FA] border-b border-white h-20" dir='rtl'>
                                 <a href={`/store/single-product/${item.id}`} onClick={() => setToggle(!toggle)} className="d-flex flex-row">
