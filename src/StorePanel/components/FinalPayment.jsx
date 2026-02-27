@@ -1,53 +1,49 @@
 ﻿import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import apiClient from "../../apiClient";
-import {selectTotalPrice} from "../../Selectors";
+import { selectTotalPrice } from "../../Selectors";
+import { TbLoader } from "react-icons/tb";
 
 function FinalPayment() {
     const user = useSelector((state) => state.user);
-    const storedAddress = useSelector((state) => state.address);
     const cart = useSelector((state) => state.cart);
+    const storedAddress = useSelector((state) => state.address);
     const totalPrice = useSelector(selectTotalPrice);
-    const [address, setAddress] = useState({
-        province_id: "",
-        province_name: "",
-        city_id: "",
-        city_name: "",
-        postal_code: "",
-        address: "",
-    });
     const [provinces, setProvinces] = useState([]);
     const [cities, setCities] = useState([]);
     const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch();
+
     const [formData, setFormData] = useState({
+        id : '',
         first_name: "",
         last_name: "",
-        phone: "",
-        email: "",
+        province_id: "",
+        province_name: "",
+        city_id:  "",
+        city_name:  "",
+        postal_code:  "",
+        address:  "",
     });
 
 
-    // Keep inputs editable (do not bind input values directly to Redux state)
     useEffect(() => {
         setFormData({
+            id: user?.id,
             first_name: user?.first_name || "",
             last_name: user?.last_name || "",
-            phone: user?.phone || "",
-            email: user?.email || "",
+            province_id: storedAddress?.province_id || "",
+            province_name: storedAddress?.province_name || "",
+            city_id: storedAddress?.city_id || "",
+            city_name: storedAddress?.city_name || "",
+            postal_code: storedAddress?.postal_code || "",
+            address: storedAddress?.address || "",
         });
-    }, [user?.first_name, user?.last_name, user?.phone, user?.email]);
+    }, [user?.first_name, user?.last_name, user?.phone, user?.email, storedAddress]);
 
-    // Seed address from Redux/localStorage
-    useEffect(() => {
-        if (storedAddress && typeof storedAddress === "object" && !Array.isArray(storedAddress)) {
-            setAddress((prev) => ({
-                ...prev,
-                ...storedAddress,
-            }));
-        }
-    }, [storedAddress]);
 
     useEffect(() => {
         const fetchProvinces = async () => {
@@ -62,9 +58,10 @@ function FinalPayment() {
         fetchProvinces();
     }, []);
 
-    // Fetch cities whenever province changes (including initial address load)
+
+
     useEffect(() => {
-        const provinceId = address?.province_id;
+        const provinceId = formData?.province_id;
         if (!provinceId) {
             setCities([]);
             return;
@@ -80,7 +77,7 @@ function FinalPayment() {
         };
 
         fetchCities();
-    }, [address?.province_id]);
+    }, [formData?.province_id]);
 
 
 
@@ -93,12 +90,11 @@ function FinalPayment() {
             e.target?.selectedOptions?.[0]?.text || "";
 
         // با تغییر استان، شهر و نام شهر را هم ریست می‌کنیم
-        setAddress((prev) => ({
+        setFormData((prev) => ({
             ...prev,
             province_id: provinceId,
-            province_name: selectedProvinceName,
             city_id: "",
-            city_name: "",
+            province_name: selectedProvinceName,
         }));
 
         // cities are fetched by the useEffect listening on address.province_id
@@ -112,7 +108,7 @@ function FinalPayment() {
             e.target?.selectedOptions?.[0]?.text ||
             "";
 
-        setAddress((prev) => ({
+        setFormData((prev) => ({
             ...prev,
             city_id: cityId,
             city_name: selectedCityName,
@@ -122,16 +118,6 @@ function FinalPayment() {
 
     const changeHandler = (e) => {
         const { name, value } = e.target;
-
-        // Address fields are stored in `address` state
-        if (["postal_code", "address"].includes(name)) {
-            setAddress((prev) => ({
-                ...prev,
-                [name]: value,
-            }));
-            return;
-        }
-
         setFormData((prev) => ({
             ...prev,
             [name]: value,
@@ -139,6 +125,44 @@ function FinalPayment() {
     };
 
 
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        const savedAddress = {
+          id: formData.id,
+          province_id: formData.province_id,
+          province_name: formData.province_name ?? storedAddress.province_name,
+          city_id: formData.city_id,
+          postal_code: formData.postal_code,
+          address: formData.address,
+          city_name: formData.city_name ?? storedAddress.city_name,
+        };
+        try{
+            const res = await apiClient.post('/order/user-info',formData);
+            if(res.status >= 200 && res.status < 300){
+                dispatch({
+                    type: "ADD_ADDRESS",
+                    payload:savedAddress,
+                });
+                localStorage.setItem('address', JSON.stringify(savedAddress));
+                toast.success('اطلاعات کاربر با موفقیت ثبت شد');
+            }
+        }catch(err){
+            toast.error(err.response?.data?.message)
+            setLoading(false);
+        }finally{
+            setLoading(false);
+        }
+    }
+
+
+
+
+
+    const submitOrderInfo = async () => {
+        const res = await apiClient.post('/orders',[formData, cart]);
+        console.log(res.data);
+    }
 
     return (
         <div>
@@ -155,7 +179,7 @@ function FinalPayment() {
                                 <div className="account-box Final_payment_page">
 
                                     <div className="account-box-content">
-                                        <form className="form-account" onSubmit={(e) => e.preventDefault()}>
+                                        <form className="form-account">
                                             <div className="row">
                                                 <div className="col-md-8 col-sm-12">
                                                     <div className="row">
@@ -188,7 +212,7 @@ function FinalPayment() {
                                                                     className={`${errors?.errors?.province_id ? 'border-red-500 bg-red-300 border animate-pulse' : 'border-[#c0e5e7] bg-[#eaf6f7] border'}  p-2 w-full rounded-full`}
                                                                     name="province_id"
                                                                     type="number"
-                                                                    value={address?.province_id || ""}
+                                                                    value={formData?.province_id || ""}
                                                                     onChange={(e) => {
                                                                         provinceHandler(e);
                                                                     }}
@@ -213,7 +237,7 @@ function FinalPayment() {
                                                                     className={`${errors?.errors?.city_id ? 'border-red-500 bg-red-300 border animate-pulse' : 'border-[#c0e5e7] bg-[#eaf6f7] border'}  p-2 w-full rounded-full`}
                                                                     name="city_id"
                                                                     type="number"
-                                                                    value={address?.city_id || ""}
+                                                                    value={formData?.city_id || ""}
                                                                     onChange={cityHandler}
                                                                     required
                                                                     placeholder="شهر ها"
@@ -235,8 +259,8 @@ function FinalPayment() {
                                                                 <input
                                                                     className={`${errors?.errors?.postal_code ? 'border-red-500 bg-red-300 border animate-pulse' : 'border-[#c0e5e7] bg-[#eaf6f7] border'}  p-2 w-full rounded-full`}
                                                                     name="postal_code"
-                                                                    type="text"
-                                                                    value={address?.postal_code || ""}
+                                                                    type="number"
+                                                                    value={formData?.postal_code || ""}
                                                                     onChange={changeHandler}
                                                                     required
                                                                     placeholder="کد پستی"
@@ -246,9 +270,9 @@ function FinalPayment() {
                                                         <div className="col-md-6 col-sm-12">
                                                             <div className="form-account-title"><span>*</span> شماره تماس</div>
                                                             <div className="form-account-row">
-                                                                <input className="input_second input_all"
-                                                                    value={formData.phone}
-                                                                    onChange={changeHandler}
+                                                                <input className="input_second input_all cursor-not-allowed"
+                                                                    value={user?.phone ? user?.phone : 'ثبت نشده'}
+                                                                    disabled
                                                                     name="phone"
                                                                     type="text"
                                                                     placeholder=" شماره تماس شما" />
@@ -257,9 +281,9 @@ function FinalPayment() {
                                                         <div className="col-md-6 col-sm-12">
                                                             <div className="form-account-title"> پست الکترونیک</div>
                                                             <div className="form-account-row">
-                                                                <input className="input_second input_all" type="text"
-                                                                    value={formData.email}
-                                                                    name="email"
+                                                                <input className="input_second input_all cursor-not-allowed" type="text"
+                                                                    value={user?.email ? user?.email : 'ثبت نشده'}
+                                                                    disabled
                                                                     onChange={changeHandler}
                                                                     placeholder=" ایمیل شما" />
                                                             </div>
@@ -270,14 +294,14 @@ function FinalPayment() {
                                                                 <textarea
                                                                     onChange={changeHandler}
                                                                     name="address"
-                                                                    value={address?.address || ""}
+                                                                    value={formData?.address || ""}
                                                                     className="input_second input_all input_textarea text-right" rows="5"
                                                                     placeholder=" آدرس خود را وارد نمایید"></textarea>
                                                             </div>
                                                         </div>
                                                         <div className="col-12 d-flex justify-start">
                                                             <div className="form-account-agree">
-                                                                <button type="" className="btn big_btn btn-main-masai" >ثبت و تایید اطلاعات</button>
+                                                                <button onClick={submitHandler} className="btn big_btn btn-main-masai justify-center d-flex" >{loading ? <TbLoader size={20} className="animate-spin" /> : 'ثبت و تایید اطلاعات'}</button>
                                                             </div>
                                                         </div>
 
@@ -327,7 +351,7 @@ function FinalPayment() {
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td colSpan="2"><Link to="/store/shopping-payment" className="btn big_btn btn-main-masai">انتخاب شیوه پرداخت </Link></td>
+                                                                    <td colSpan="2"><Link onClick={submitOrderInfo} to="/store/shopping-payment" className="btn big_btn btn-main-masai">گام بعدی </Link></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
