@@ -43,21 +43,21 @@ function Register() {
                 formData
             );
             if (res.status >= 200 && res.status < 300) {
-                toast.success('کاربر با موفقیت افزوده شد');
                 const token = res.data.authorisation.original.access_token;
                 const refreshToken = res.data.authorisation.original.refresh_token || null;
                 const expiresIn = res.data.authorisation.expires_in || 604800; // Default to 1 week if not provided
 
                 // Use tokenManager to store tokens with expiry time
                 tokenManager.storeTokens(token, refreshToken, expiresIn);
-                localStorage.setItem('user', JSON.stringify(res.data.user));
                 dispatch({
                     type: "setUser",
                     payload: {
                         user: res.data.user,
                     }
                 })
+                localStorage.setItem('user', JSON.stringify(res.data.user));
                 navigate("/store/home", { replace: true })
+                toast.success('کاربر با موفقیت افزوده شد');
             }
 
         } catch (err) {
@@ -225,7 +225,8 @@ function Register() {
                                         transition: { duration: 0.5, delay: 1.3 },
                                     }}
                                     className="flex flex-col space-y-2 mt-3 w-full justify-center items-center">
-                                    <button type="submit" className="w-full p-3 bg-blue-600/50 hover:bg-sky-800 hover:text-white shadow-xs hover:shadow-md cursor-pointer
+                                    <button type="submit" style={{borderRadius:'3rem'}} className="w-full p-3 bg-blue-600/50 hover:bg-sky-800 hover:text-white 
+                                    shadow-xs hover:shadow-md cursor-pointer
                                      hover:scale-102 shadow-zinc-500 rounded-full duration-300 flex justify-center items-center">
                                         {isLoading ? <AiOutlineLoading className="animate-spin" size={20} /> : 'عضویت'}
                                     </button>
