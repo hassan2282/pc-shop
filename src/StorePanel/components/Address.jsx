@@ -41,12 +41,6 @@ function Address() {
             address: res.data?.address,
             user_id: user?.id,
           });
-
-          dispatch({
-            type: "ADD_ADDRESS",
-            payload: clientAddress,
-          });
-          localStorage.setItem("address", JSON.stringify(clientAddress))
         }
       } catch (err) {
         toast.error('آدرسی ثبت نیست', { toastId: 'address-error' });
@@ -54,6 +48,13 @@ function Address() {
     }
     fetchAddress();
   }, []);
+
+
+  dispatch({
+    type: "ADD_ADDRESS",
+    payload: clientAddress,
+  });
+  localStorage.setItem("address", JSON.stringify(clientAddress))
 
 
   useEffect(() => {
@@ -113,7 +114,6 @@ function Address() {
     const { name, value } = e.target;
     setClientAddress((prev) => ({ ...prev, [name]: value }));
   };
-
 
   const SubmitHandler = async (e) => {
     e.preventDefault();
@@ -185,7 +185,7 @@ function Address() {
       <main className="profile-user-page default space-top-30">
         <div className="container">
           <div className="row">
-            <div className="profile-page col-xl-9 col-lg-8 col-md-12 order-2">
+            <div className="d-flex col-xl-6 col-lg-8 col-md-12 col-12 order-2">
               <div className="row">
                 <div className="col-12">
                   <header className="card-header">
@@ -342,10 +342,10 @@ function Address() {
                                 delay: 1.4,
                                 duration: 1,
                               }
-                            }} className="flex justify-center items-center w-full">
+                            }} className="flex min-sm:flex-row max-sm:flex-col justify-center items-center w-full">
                             <button
                               type="submit"
-                              className={`btn big_btn btn-main-masai ${clientAddress?.id ? 'col-6' : 'col-12'} `}
+                              className={`btn big_btn btn-main-masai`}
                             >
                               {isLoading ? (
                                 <AiOutlineLoading
@@ -360,7 +360,7 @@ function Address() {
                               clientAddress?.id &&
                               <button
                                 onClick={(e) => deleteAddress(e)}
-                                className="btn big_btn btn-danger col-6"
+                                className="btn big_btn btn-danger"
                               >
                                 حذف
                               </button>
