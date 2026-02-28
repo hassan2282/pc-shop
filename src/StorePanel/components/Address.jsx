@@ -191,9 +191,10 @@ function Address() {
                   <header className="card-header">
                     <h3 className="card-title space-x-4 flex flex-row w-full">
                       <span>ثبت آدرس</span>
-                      <div className="p-2 rounded-md text-sm bg-[#5bbabf] cursor-pointer hover:scale-95 duration-150">
-                        <Link to='/store/order-address' className="text-white">مشاهده آدرس</Link>
-                      </div>
+                      <Link to='/store/order-address' className="rounded-md text-sm cursor-pointer
+                       hover:scale-95 duration-150">
+                        <button style={{borderRadius: '2rem'}} className="text-white bg-[#5bbabf] p-[0.6rem] rounded-md text-sm">مشاهده آدرس</button>
+                      </Link>
                     </h3>
                   </header>
                   <div className="flex content-section default w-full justify-start min-sm:pr-6 items-center p-3">
