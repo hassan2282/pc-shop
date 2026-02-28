@@ -56,6 +56,7 @@ import Adm_gate from "./AdminPanel/Components/Gate/Adm_gate.jsx";
 import Adm_gate_all from "./AdminPanel/Components/Gate/Adm_gate_all.jsx";
 import Adm_gate_add from "./AdminPanel/Components/Gate/Adm_gate_add.jsx";
 import Ticket from "./StorePanel/components/Ticket.jsx";
+import ListCategory from "./StorePanel/components/ListCategory.jsx";
 
 
 function App() {
@@ -83,6 +84,7 @@ function App() {
           <Route path="/store/*" element={<StoreContainer />}>
             <Route path="home" element={<Index />} />
             <Route path="category-blog" element={<CategoryBlog />} />
+            <Route path="list-category" element={<ListCategory />} />
             <Route path="category-search" element={<CategorySearch />} />
             <Route path="single-product/:id" element={<SingleProduct />} />
             <Route path="single-blog/:id" element={<SingleBlog />} />
@@ -195,14 +197,18 @@ function App() {
               path="password-update"
               element={<PasswordUpdate />}
             />
-            <Route 
-            path="about-us" 
-            element={<AboutUs />} />
+            <Route
+              path="about-us"
+              element={<AboutUs />} />
 
 
-            <Route 
-            path="ticket" 
-            element={<Ticket />} />
+            <Route
+              path="ticket"
+              element={
+                <PrivateRoute>
+                  <Ticket />
+                </PrivateRoute>
+              } />
 
           </Route>
 
