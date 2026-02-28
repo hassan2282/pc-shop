@@ -7,7 +7,7 @@ function Confirmation({setConfirm}) {
 
     return (
         <div
-            className='absolute top-0 left-0 flex z-70 justify-center items-center w-screen h-screen backdrop-blur-lg'>
+            className='absolute top-0 left-0 flex z-100 justify-center items-center w-full h-full backdrop-blur-lg'>
             <motion.div
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 100, scale: 1 }}
