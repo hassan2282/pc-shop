@@ -51,7 +51,7 @@ function EmailConfirm() {
 
     } catch (err) {
       console.log(err.response.data.message);
-      // toast.error(err.response.data.message);
+    
     } finally {
       setIsLoading(false)
     }
