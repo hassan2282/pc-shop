@@ -4,6 +4,10 @@ const initialState = {
     isAuthenticated: !!localStorage.getItem("token"),
     cart: localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [],
     address: JSON.parse(localStorage.getItem("address")) || [],
+    adminApprove: false,
+    adminRole: null,
+    clientPhone: '',
+    clientEmail: '',
 };
 
 
@@ -98,13 +102,38 @@ const Reducer = (state = initialState, action) => {
         case "DELETE_CART":
             return {
                 ...state,
-                cart: '',
+                cart: action.payload,
             }
+
+        case "ADMIN_ROLE":
+            return {
+                ...state,
+                adminRole: action.payload.role_id
+            }
+
+        case "ADMIN_APPROVE":
+            return {
+                ...state,
+                adminApprove: action.payload
+            }
+
+        case "CLIENT_PHONE":
+            return {
+                ...state,
+                clientPhone: action.payload
+            }
+
+        case "CLIENT_Email":
+            return {
+                ...state,
+                clientEmail: action.payload
+            }    
 
 
         default:
             return state;
     }
 };
+
 
 export default Reducer;

@@ -1,17 +1,21 @@
 import { useEffect, useRef, useState } from "react";
-import { TbLogout2 } from "react-icons/tb";
-import { useDispatch, useSelector } from "react-redux"
+import { TbBasket, TbCircleFilled, TbLogout2, TbUser } from "react-icons/tb";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import apiClient from "../../apiClient";
 import PurchaseBasket from "../components/PurchaseBasket";
+import { FcMenu, FcPackage } from "react-icons/fc";
 
 function Header() {
     const isAuthenticated = useSelector((state) => state.isAuthenticated);
+    const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
     const [toggle, setToggle] = useState(false);
     const wrapperRef = useRef(null);
-
+    const [categories, setCategories] = useState([]);
+    const [menuToggle, setMenuToggle] = useState(false);
+    const [clientAddress, setClientAddress] = useState([]);
     const storeUser = (res) => {
         dispatch({ type: 'setUser', payload: { user: res.data } });
     }
@@ -20,7 +24,9 @@ function Header() {
         const fetchUser = async () => {
             try {
                 const res = await apiClient.post('auth/me');
-                if (res.status >= 200 && res.status < 300) { storeUser(res) }
+                if (res.status >= 200 && res.status < 300) {
+                    storeUser(res)
+                }
             } catch (err) {
                 err.status === 401 && dispatch({ type: 'logout' })
             }
@@ -29,22 +35,36 @@ function Header() {
         fetchUser();
     }, []);
 
-    
+
+    useEffect(() => {
+        const allCategories = async () => {
+            try {
+                const { data, status } = await apiClient.get('/category/all');
+                if (status >= 200 && status < 300) {
+                    setCategories(data);
+                }
+            } catch (err) {
+                console.error("Error fetching categories:", err);
+            }
+        };
+        allCategories();
+    }, []);
+
+
     useEffect(() => {
         function handleClickOutside(event) {
-            if(wrapperRef.current && !wrapperRef.current.contains(event.target)){
+            if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
                 setToggle(false);
             }
         }
-        
+
         document.addEventListener("mousedown", handleClickOutside);
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         }
-    },[])
+    }, [])
 
     const handleLogout = (e) => {
-        e.preventDefault();
         localStorage.clear();
         dispatch({
             type: "logout",
@@ -52,1025 +72,288 @@ function Header() {
         toast.success('شما با موفقیت از حساب کاربری خود خارج شدید');
     }
 
+
+    useEffect(() => {
+        const fetchAddress = async () => {
+            try {
+                const res = await apiClient.get(`user-address/${user.id}`);
+                if (res.status >= 200 && res.status < 300) {
+                    setClientAddress({
+                        id: res.data?.id,
+                        province_id: res.data?.province.id,
+                        province_name: res.data?.province.name,
+                        city_id: res.data?.city.id,
+                        city_name: res.data?.city.name,
+                        postal_code: res.data?.postal_code,
+                        address: res.data?.address,
+                        user_id: user?.id,
+                    });
+                }
+            } catch (err) {
+                console.log('آدرسی ثبت نیست');
+            }
+        }
+        fetchAddress();
+    }, []);
+
+    dispatch({
+        type: "ADD_ADDRESS",
+        payload: clientAddress,
+    });
+    localStorage.setItem("address", JSON.stringify(clientAddress))
+
+
     return (
-        <header className="Masai-header default relative top-[-15px]">
+        // <header className="Masai-header default relative top-[-15px]">
+        <header className="flex flex-row justify-items-center items-center">
 
             <div className="top-section fullscreen-container ">
-                {/* <img src="/src/StorePanel/assets/img/banner_img/bg_top.jpg" className="h-100"/> */}
+                <img src="/src/StorePanel/assets/img/banner_img/bg_top.jpg" className="h-100" />
             </div>
-
             {/* <!--start mobile header --> */}
-            <nav className="navbar direction-ltr fixed-top header-responsive">
-                <div className="container">
-                    <div className="navbar-translate">
-
-                        <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                            data-target="#navigation" aria-controls="navigation-index" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span className="navbar-toggler-bar bar1"></span>
-                            <span className="navbar-toggler-bar bar2"></span>
-                            <span className="navbar-toggler-bar bar3"></span>
-                        </button>
-                        <div className="search-nav default">
-                            <form action="">
-                                <input type="text" placeholder="جستجو ..." />
-                                <button type="submit"><img src="/src/StorePanel/assets/img/search.png" alt="" /></button>
+            <nav className="fixed z-100 w-[90%] header-responsive top-5">
+                <div className="flex flex-row justify-between items-center backdrop-blur-xl bg-[#50b0b51c]
+                 border-t-1 border-t-white/60 shadow-xs shadow-zinc-400 p-3 rounded-full">
+                    <div className="d-flex max-sm:flex-col min-sm:flex-row w-100">
+                        <div className="d-flex flex-row justify-center items-center w-100" dir="ltr">
+                            <li ref={wrapperRef} className="max-md:flex hidden p-[0.6rem] cursor-pointer backdrop-blur-xl border shadow-sm rounded-full mx-2 text-zinc-600">
+                                <div onClick={(e) => setToggle(!toggle)} className="bg-transparent" >
+                                    <TbBasket size={23} className="hover:scale-105" />
+                                </div>
+                                {toggle &&
+                                    <div className="d-flex flex-col absolute min-md:top-20 max-md:top-15 left-0 -translate-x-8 max-md:bg-white min-md:backdrop-blur-2xl z-100 rounded-xl">
+                                        <PurchaseBasket toggle={toggle} setToggle={setToggle} />
+                                    </div>
+                                }
+                            </li>
+                            <form>
+                                <input style={{ borderRadius: '3rem' }} disabled className="border-2 border-info bg-white opacity-40" type="text" placeholder="جستجو ..." />
+                                <button className="mr-2" disabled><img src="/src/StorePanel/assets/img/search.png" alt="" /></button>
                             </form>
+                            <button onClick={() => setMenuToggle(!menuToggle)} className="min-xl:hidden" type="button">
+                                <FcMenu size={40} className="hover:scale-105" />
+                            </button>
 
-                            <ul>
-                                <li><a href="/store/category-search"><i className="fa fa-user-large colormain" aria-hidden="true"></i></a></li>
-                                <li><a href="/store/category-search"><i className="fa fa-cart-arrow-down colormain" aria-hidden="true"></i></a></li>
+                        </div>
+                        <div className="d-none d-md-block flex-row w-100 justify-items-center items-center-safe ">
+
+                            <ul className="d-flex flex-row max-sm:*:mt-4 w-100 h-100 *:bg-white/60 *:shadow-sm *:rounded-full
+                             *:shadow-gray-300 *:duration-300 gap-2
+                             justify-end max-sm:justify-around pl-2 items-center">
+                                <li className="justify-center items-center d-none d-md-block">
+                                    <Link to={isAuthenticated ? "/store/profile" : "/store/login"} className="bg-transparent">
+                                        <TbUser size={23} className="hover:scale-105" />
+                                    </Link>
+                                </li>
+                                <li ref={wrapperRef} className="min-sm:flex hidden p-[0.6rem] cursor-pointer backdrop-blur-xl border shadow-sm rounded-full mx-2 text-zinc-600">
+                                    <div onClick={(e) => setToggle(!toggle)} className="bg-transparent" >
+                                        <TbBasket size={23} className="hover:scale-105" />
+                                    </div>
+                                    {toggle &&
+                                        <div className="d-flex flex-col absolute min-md:top-20 max-sm:top-15 left-0 -translate-x-8 bg-white z-100 rounded-xl">
+                                            <PurchaseBasket toggle={toggle} setToggle={setToggle} />
+                                        </div>
+                                    }
+                                </li>
+                                <li>
+                                    {isAuthenticated &&
+                                        <div className="flex flex-row justify-center items-center">
+                                            <a href="/" onClick={handleLogout} className="flex flex-row 
+                                            hover:cursor-pointer justify-center items-center h-full bg-transparent">
+                                                <TbLogout2 size={23} />
+                                            </a>
+                                        </div>
+                                    }
+                                </li>
                             </ul>
                         </div>
                     </div>
-                    <div className="collapse navbar-collapse justify-content-end" id="navigation">
-                        <div className="logo-nav-res default text-center">
-                            <a href="/store/category-search">
-                                <img src="/src/StorePanel/assets/img/logo.png" alt="" />
-                            </a>
+
+
+                    {
+                        menuToggle &&
+                        <div className="absolute overflow-y-scroll top-18 rounded-xl right-0 bg-white shadow-xl" id="navigation">
+                            <div className="">
+                                <Link to="/store/category-search">
+                                    <img src="/src/StorePanel/assets/img/logo.png" alt="" />
+                                </Link>
+                            </div>
+                            <ul className="navbar-nav default *:hover:scale-102 p-2">
+                                {/* <li className="sub-menu">
+                                    <a>موبایل</Link>
+                                    <ul>
+                                        <li className="sub-menu">
+                                            <Link to="/store/category-search">لوازم جانبی</Link>
+                                            <ul>
+                                                <li>
+                                                    <Link to="/store/category-search">کیف گوشی</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">کاور گوشی</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">شارژر همراه</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">گارد گوشی</Link>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li className="sub-menu">
+                                            <Link to="/store/category-search">برند ترین ها</Link>
+                                            <ul>
+                                                <li>
+                                                    <Link to="/store/category-search">اپل</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">سامسونگ</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">هوآوی</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">شیائومی</Link>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+                                        <li className="sub-menu">
+                                            <Link to="/store/category-search">سیستم عامل</Link>
+                                            <ul>
+                                                <li>
+                                                    <Link to="/store/category-search">اندروید</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">آی او اس</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">ویندوز</Link>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+                                        <li className="sub-menu">
+                                            <Link to="/store/category-search">گوشی براساس قیمت</Link>
+                                            <ul>
+                                                <li>
+                                                    <Link to="/store/category-search">گوشی تا 2 میلیون تومان</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">گوشی تا 5 میلیون تومان</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">گوشی تا 7 میلیون تومان</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">گوشی تا 15 میلیون تومان</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">گوشی بالای 15 میلیون تومان</Link>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+
+                                        <li className="sub-menu">
+                                            <Link to="/store/category-search">گوشی براساس حافظه داخلی</Link>
+                                            <ul>
+                                                <li>
+                                                    <Link to="/store/category-search">گوشی تا 16 گیگابایت</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">گوشی تا 32 گیگابایت</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">گوشی تا 64 گیگابایت</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">گوشی تا 128 گیگابایت</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">گوشی تا 256 گیگابایت</Link>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li className="sub-menu">
+                                            <Link to="/store/category-search">رزولوشن عکس</Link>
+                                            <ul>
+                                                <li>
+                                                    <Link to="/store/category-search">تا 13 مگاپیکسل</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">تا 16 مگاپیکسل</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">تا 48 مگاپیکسل</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">تا 64 مگاپیکسل</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">تا 128 مگاپیکسل</Link>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li className="sub-menu">
+                                            <Link to="/store/category-search"> گوشی براساس کاربری</Link>
+                                            <ul>
+                                                <li>
+                                                    <Link to="/store/category-search">گوشی اقتصادی</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search"> گوشی میان رده</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">گوشی دانش آموزی</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">گوشی گیمینگ</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/store/category-search">گوشی پرچمدار</Link>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li> */}
+
+                                <li>
+                                    <Link to="/store/home"> فروشگاه</Link>
+                                </li>
+                                <li>
+                                    <Link to="/store/category-search"> دمو محصولات</Link>
+                                </li>
+                                <li>
+                                    <Link to="/store/list-category">دسته بندی محصولات</Link>
+                                </li>
+                                <li>
+                                    <Link to="/store/profile">صفحه پروفایل</Link>
+                                </li>
+                                {
+                                    !isAuthenticated &&
+                                    <li>
+                                        <a href={"/store/login"} >ورود | ثبت‌نام</a>
+                                    </li>
+                                }
+                                <li>
+                                    <Link to="/store/category-blog">لیست مقالات</Link>
+                                </li>
+                                <li>
+                                    <Link to="/store/ticket">چت آنلاین</Link>
+                                </li>
+                                <Link to='/store/about-us'>
+                                    درباره ما
+                                </Link>
+                                <li>
+                                    {isAuthenticated &&
+                                        <a href="/" onClick={handleLogout}>خروج</a>
+                                    }
+                                </li>
+                            </ul>
                         </div>
-                        <ul className="navbar-nav default">
-                            <li className="sub-menu">
-                                <a href="/store/category-search">موبایل</a>
-                                <ul>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">لوازم جانبی</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">کیف گوشی</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">کاور گوشی</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">شارژر همراه</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">گارد گوشی</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">برند ترین ها</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">اپل</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">سامسونگ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">هوآوی</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">شیائومی</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">سیستم عامل</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">اندروید</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">آی او اس</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">ویندوز</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">گوشی براساس قیمت</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">گوشی تا 2 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">گوشی تا 5 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">گوشی تا 7 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">گوشی تا 15 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">گوشی بالای 15 میلیون تومان</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">گوشی براساس حافظه داخلی</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">گوشی تا 16 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">گوشی تا 32 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">گوشی تا 64 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">گوشی تا 128 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">گوشی تا 256 گیگابایت</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">رزولوشن عکس</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">تا 13 مگاپیکسل</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تا 16 مگاپیکسل</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تا 48 مگاپیکسل</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تا 64 مگاپیکسل</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تا 128 مگاپیکسل</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search"> گوشی براساس کاربری</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">گوشی اقتصادی</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search"> گوشی میان رده</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">گوشی دانش آموزی</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">گوشی گیمینگ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">گوشی پرچمدار</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li className="sub-menu">
-                                <a href="/store/category-search">لپ تاپ</a>
-                                <ul>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">لوازم جانبی</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">کیف لپ تاپ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">کاور لپ تاپ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">شارژر لپ تاپ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">فن لپ تاپ</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">برند ترین ها</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">ایسوس</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">سامسونگ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">اچ پی</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">اپل</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">سیستم عامل</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">لینوکس</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">آی او اس</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">ویندوز</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">لپ تاپ براساس قیمت</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">لپ تاپ تا 15 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">لپ تاپ تا 25 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">لپ تاپ تا 40 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">لپ تاپ بالای 40 میلیون تومان</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">لپ تاپ براساس حافظه داخلی</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">لپ تاپ تا 16 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">لپ تاپ تا 32 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">لپ تاپ تا 64 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">لپ تاپ تا 128 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">لپ تاپ تا 256 گیگابایت</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">ابعاد صفحه نمایش</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 14 اینچ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 16 اینچ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 18 اینچ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 20 اینچ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 22 اینچ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 24 اینچ</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </li>
-                            <li className="sub-menu">
-                                <a href="/store/category-search">ساعت هوشمند</a>
-                                <ul>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">لوازم جانبی</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">کیف ساعت هوشمند</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">کاور ساعت هوشمند</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">شارژر ساعت هوشمند</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">فن ساعت هوشمند</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">برند ترین ها</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">ایسوس</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">سامسونگ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">اچ پی</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">اپل</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">سیستم عامل</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">لینوکس</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">آی او اس</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">ویندوز</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">ساعت هوشمند براساس قیمت</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">ساعت هوشمند تا 15 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">ساعت هوشمند تا 25 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">ساعت هوشمند تا 40 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">ساعت هوشمند بالای 40 میلیون تومان</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">ساعت هوشمند براساس حافظه داخلی</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">ساعت هوشمند تا 16 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">ساعت هوشمند تا 32 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">ساعت هوشمند تا 64 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">ساعت هوشمند تا 128 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">ساعت هوشمند تا 256 گیگابایت</a>
-                                            </li>
-                                        </ul>
-                                    </li>
+                    }
 
 
-                                </ul>
-                            </li>
-
-                            <li className="sub-menu">
-                                <a href="/store/category-search">مودم</a>
-                                <ul>
-
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">برند ترین ها</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">تی پی لینک</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">دی لینک</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">اچ پی</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">همراه اول</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">فرکانس تحت پوشش</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">1 گیگاهرتز</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">2.5 گیگاهرتز</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">4 گیگاهرتز</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">5.5 گیگاهرتز</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">گوشی براساس قیمت</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">گوشی تا 2 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">گوشی تا 5 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">گوشی تا 7 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">گوشی تا 15 میلیون تومان</a>
-                                            </li>
-
-
-                                        </ul>
-                                    </li>
-
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">مودم براساس رنگ</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">مودم قرمز</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">مودم قهوه ای</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">مودم آبی</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">مودم مشکی</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">مودم سفید</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">بر اساس برند</a>
-                                        <ul>
-                                            <li >
-                                                <a href="/store/category-search" >مودم همراه اول</a>
-                                            </li>
-                                            <li >
-                                                <a href="/store/category-search" >مودم ایرانسل</a>
-                                            </li>
-                                            <li >
-                                                <a href="/store/category-search" >مودم تی پی لینک</a>
-                                            </li>
-                                            <li >
-                                                <a href="/store/category-search" >مودم دی لینک</a>
-                                            </li>
-                                            <li >
-                                                <a href="/store/category-search" >مودم یوتل</a>
-                                            </li>
-                                            <li >
-                                                <a href="/store/category-search" >مودم ایسوس</a>
-                                            </li>
-                                            <li >
-                                                <a href="/store/category-search" >مودم تندا</a>
-                                            </li>
-                                            <li >
-                                                <a href="/store/category-search" >مودم سورنا</a>
-                                            </li>
-                                            <li >
-                                                <a href="/store/category-search" >مودم مسای</a>
-                                            </li>
-                                            <li >
-                                                <a href="/store/category-search" >مودم ال جی</a>
-                                            </li>
-                                            <li >
-                                                <a href="/store/category-search" >مودم سامسونگ</a>
-                                            </li>
-
-
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </li>
-
-                            <li className="sub-menu">
-                                <a href="/store/category-search">تبلت</a>
-                                <ul>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">لوازم جانبی</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">کیف تبلت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">کاور تبلت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">شارژر همراه</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">گارد تبلت</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">برند ترین ها</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">اپل</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">سامسونگ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">هوآوی</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">شیائومی</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">سیستم عامل</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">اندروید</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">آی او اس</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">ویندوز</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">تبلت براساس قیمت</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">تبلت تا 2 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تبلت تا 5 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تبلت تا 7 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تبلت تا 15 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تبلت بالای 15 میلیون تومان</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">تبلت براساس حافظه داخلی</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">تبلت تا 16 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تبلت تا 32 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تبلت تا 64 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تبلت تا 128 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تبلت تا 256 گیگابایت</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">رزولوشن عکس</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">تا 13 مگاپیکسل</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تا 16 مگاپیکسل</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تا 48 مگاپیکسل</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تا 64 مگاپیکسل</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تا 128 مگاپیکسل</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search"> تبلت براساس کاربری</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">تبلت اقتصادی</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search"> تبلت میان رده</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تبلت دانش آموزی</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تبلت گیمینگ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تبلت پرچمدار</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-
-
-                            <li className="sub-menu">
-                                <a href="/store/category-search">کامپیوتر</a>
-                                <ul>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">لوازم جانبی</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">کیف کامپیوتر</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">کاور کامپیوتر</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">شارژر کامپیوتر</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">فن کامپیوتر</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">برند ترین ها</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">ایسوس</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">سامسونگ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">اچ پی</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">اپل</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">سیستم عامل</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">لینوکس</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">آی او اس</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">ویندوز</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">کامپیوتر براساس قیمت</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">کامپیوتر تا 15 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">کامپیوتر تا 25 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">کامپیوتر تا 40 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">کامپیوتر بالای 40 میلیون تومان</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">کامپیوتر براساس حافظه داخلی</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">کامپیوتر تا 16 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">کامپیوتر تا 32 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">کامپیوتر تا 64 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">کامپیوتر تا 128 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">کامپیوتر تا 256 گیگابایت</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">ابعاد صفحه نمایش</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 14 اینچ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 16 اینچ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 18 اینچ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 20 اینچ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 22 اینچ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 24 اینچ</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </li>
-
-
-
-                            <li className="sub-menu">
-                                <a href="/store/category-search">آیپد اپل</a>
-                                <ul>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">لوازم جانبی</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">کیف آیپد اپل</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">کاور آیپد اپل</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">شارژر آیپد اپل</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">فن آیپد اپل</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">برند ترین ها</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">ایسوس</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">سامسونگ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">اچ پی</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">اپل</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">سیستم عامل</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">لینوکس</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">آی او اس</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">ویندوز</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">آیپد اپل براساس قیمت</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">آیپد اپل تا 15 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">آیپد اپل تا 25 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">آیپد اپل تا 40 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">آیپد اپل بالای 40 میلیون تومان</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">آیپد اپل براساس حافظه داخلی</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">آیپد اپل تا 16 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">آیپد اپل تا 32 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">آیپد اپل تا 64 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">آیپد اپل تا 128 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">آیپد اپل تا 256 گیگابایت</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-
-                                </ul>
-                            </li>
-
-
-
-
-
-
-                            <li className="sub-menu">
-                                <a href="/store/category-search">تلویزیون</a>
-                                <ul>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">لوازم جانبی</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">کیف تلویزیون</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">کاور تلویزیون</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">شارژر تلویزیون</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">فن تلویزیون</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">برند ترین ها</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">ایسوس</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">سامسونگ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">اچ پی</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">اپل</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">سیستم عامل</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">لینوکس</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">آی او اس</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">ویندوز</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">تلویزیون براساس قیمت</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">تلویزیون تا 15 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تلویزیون تا 25 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تلویزیون تا 40 میلیون تومان</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تلویزیون بالای 40 میلیون تومان</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">تلویزیون براساس حافظه داخلی</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">تلویزیون تا 16 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تلویزیون تا 32 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تلویزیون تا 64 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تلویزیون تا 128 گیگابایت</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">تلویزیون تا 256 گیگابایت</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="sub-menu">
-                                        <a href="/store/category-search">ابعاد صفحه نمایش</a>
-                                        <ul>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 14 اینچ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 16 اینچ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 18 اینچ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 20 اینچ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 22 اینچ</a>
-                                            </li>
-                                            <li>
-                                                <a href="/store/category-search">صفحه نمایش 24 اینچ</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="/store/category-search"> دمو محصولات</a>
-                            </li>
-                            <li>
-                                <a href="/store/category-search">تخفیفات و پیشنهادات</a>
-                            </li>
-                            <li>
-                                <a href="/store/category-search">مَسای امن</a>
-                            </li>
-                            <li>
-                                <a href="/store/category-search">مَسای پلاس</a>
-                            </li>
-                            <li>
-                                <a href="/store/category-search"> مَسای کلاب </a>
-                            </li>
-                            <li>
-                                <a href="/store/category-search">مَسای پی </a>
-                            </li>
-                            <li>
-                                <a href="/store/category-search">سوالی دارید؟</a>
-                            </li>
-                            <Link to='/store/aboute-us'>
-                                درباره ما
-                            </Link>
-                        </ul>
-                    </div>
                 </div>
             </nav>
             {/* <!-- end mobile header --> */}
@@ -1090,15 +373,15 @@ function Header() {
                             <div className="col-lg-8 col-md-5 col-sm-8 col-7">
                                 <div className="search-area default">
                                     <form action="" className="search">
-                                        <input type="text" placeholder="جستجو" />
-                                        <button type="submit"><img src="/src/StorePanel/assets/img/search.png" alt="" /></button>
+                                        <input disabled type="text" placeholder="جستجو" />
+                                        <button disabled ><img src="/src/StorePanel/assets/img/search.png" alt="" /></button>
                                     </form>
                                 </div>
                             </div>
                             <div className="col-md-2 col-sm-12 flex flex-row justify-start items-center" dir="ltr">
                                 {isAuthenticated &&
                                     <div className="user_head">
-                                        <a onClick={handleLogout} className="flex flex-row hover:cursor-pointer justify-center items-center h-full bg-indigo-300">
+                                        <a href="/" onClick={handleLogout} className="flex flex-row hover:cursor-pointer justify-center items-center h-full bg-indigo-300">
                                             خروج
                                             <TbLogout2 size={24} color="#57b6bb" />
                                         </a>
@@ -1109,18 +392,18 @@ function Header() {
                                     <span className="divider ml-2"></span>
                                 }
                                 <div className="user_head">
-                                    <a href={isAuthenticated ? "/store/profile" : "/store/login"} className="iconhead">
+                                    <Link to={isAuthenticated ? "/store/profile" : "/store/login"} className="iconhead">
                                         <i className="fa fa-user-large font-20" aria-hidden="true"></i>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <span className="divider ml-2"></span>
                                 <div ref={wrapperRef} className="">
-                                    <div onClick={(e) => setToggle(!toggle)}  className="dropdown-toggle iconhead cursor-pointer" >
+                                    <div onClick={(e) => setToggle(!toggle)} className="dropdown-toggle iconhead cursor-pointer" >
                                         <i className="fa fa-cart-arrow-down font-20" aria-hidden="true"></i>
                                     </div>
                                     {toggle &&
-                                        <div className="d-flex flex-col absolute z-100 top-10 w-[19rem] border rounded-2xl bg-white">
-                                            <PurchaseBasket toggle={toggle} setToggle={setToggle}/>
+                                        <div className="d-flex flex-col absolute z-100 top-10 w-[19rem] rounded-2xl bg-white/30 backdrop-blur-2xl">
+                                            <PurchaseBasket toggle={toggle} setToggle={setToggle} />
                                         </div>
                                     }
                                 </div>
@@ -1131,1227 +414,85 @@ function Header() {
                     <nav className="nav_header">
                         <ul className="nav__ullist">
                             <li className="list_style">
-                                <i className="fa fa-bars icon-icon" aria-hidden="true"></i><a href="/store/category-search" className="list__link">دسته بندی کالاها</a>
+                                <i className="fa fa-bars icon-icon" aria-hidden="true"></i><Link to="/store/category-search" className="list__link">دسته بندی کالاها</Link>
                                 <div className="submeno">
-                                    <ul className="main_meno-drobdown">
-                                        <li className="child_mno-drobdown">
-                                            <a href="/store/category-search" className="run">موبایل</a>
-                                            <div className="mega_meno">
-                                                <ul className="list_drobdown--item">
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search"
-                                                            className="list__drobdown--link texr_header block_block">
-                                                            همه محصولات موبایل
-                                                        </a>
-                                                    </li>
-                                                    <ul className="ul_list">
-                                                        <ul className="mega_meno--block">
+                                    {
+                                        categories &&
+                                        categories.filter((item) => item.parent_id === null).map((category, index) => {
+                                            return (
+                                                <ul key={index} className="main_meno-drobdown">
+                                                    <li className="child_mno-drobdown">
+                                                        <Link to="/store/category-search" className="run">{category.name}</Link>
+                                                        <div className="mega_meno">
+                                                            <ul className="list_drobdown--item">
+                                                                <li className="list_drobdown--items border_left--red">
+                                                                    <Link to="/store/category-search"
+                                                                        className="list__drobdown--link texr_header block_block">
+                                                                        همه محصولات {category.name}
+                                                                    </Link>
+                                                                </li>
+                                                                {
+                                                                    category.children &&
+                                                                    category.children.map((child, index) => {
+                                                                        return (
+                                                                            <ul key={index}>
+                                                                                <li className="list_drobdown--items border_left--red">
+                                                                                    <Link to="/store/category-search" className="list__drobdown--link texr_header">{child.name}</Link>
+                                                                                </li>
+                                                                                {
+                                                                                    child.children &&
+                                                                                    child.children.map((grandChild, index) => {
+                                                                                        return (
+                                                                                            <ul key={index} className="z-100">
+                                                                                                <li className="list_drobdown--items">
+                                                                                                    <Link to="/store/category-search" className="list__drobdown--link">{grandChild.name}</Link>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        )
+                                                                                    })
+                                                                                }
 
+                                                                            </ul>
+                                                                        )
+                                                                    })
+                                                                }
 
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">گوشی براساس قیمت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی تا 2 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link"> گوشی تا 5 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی تا 7 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی تا 15 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی بالای 15 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">گوشی براساس حافظه داخلی</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی تا 16 گیگابایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی تا 32 گیگا بایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی تا 32 گیگا بایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی تا 128 گیگابایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی تا 256 گیگابایت</a>
-                                                            </li>
-                                                        </ul>
-                                                    </ul>
-                                                    <ul className="ul_list--cecond">
-                                                        <ul className="mega_meno__cecond">
-
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    رزولوشن عکس
-                                                                </a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تا ۱۳ مگاپیکسل</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link"> تا ۱۶ مگاپیکسل</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تا ۴۸ مگاپیکسل</a>
-                                                            </li>
-                                                            <li className="list_mega ">
-                                                                <a href="/store/category-search" className="mega_link--link ">تا ۶۴ مگاپیکسل</a>
-                                                            </li>
-                                                            <li className="list_mega ">
-                                                                <a href="/store/category-search" className="mega_link--link ">تا ۱۰۸ مگاپیکسل</a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    گوشی براساس کاربری
-                                                                </a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی اقتصادی</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link"> گوشی میان رده</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی دانش آموزی</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی گیمینگ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی پرچمدار</a>
-                                                            </li>
-
-                                                        </ul>
-                                                    </ul>
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">لوازم جانبی</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">کیف گوشی </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">کاور گوشی </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link"> شارژر همراه</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">گارد گوشی</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">برند ترین ها</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">اپل</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">سامسونگ</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">هوآوی  </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">شیائومی</a>
-                                                    </li>
-
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">سیستم عامل</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link"> اندروید</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">آی او اس</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">ویندوز</a>
+                                                            </ul>
+                                                        </div>
                                                     </li>
                                                 </ul>
-                                            </div>
-                                        </li>
-                                        <li className="child_mno-drobdown">
-                                            <a href="/store/category-search" className="run">لپ تاپ</a>
-                                            <div className="mega_meno">
-                                                <ul className="list_drobdown--item">
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search"
-                                                            className="list__drobdown--link texr_header block_block">
-                                                            همه محصولات لپ تاپ
-                                                        </a>
-                                                    </li>
-                                                    <ul className="ul_list">
-                                                        <ul className="mega_meno--block">
-
-
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">لپ تاپ براساس قیمت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">لپ تاپ تا 15 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link"> لپ تاپ تا 25 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">لپ تاپ تا 40 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">لپ تاپ بالای 40 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">لپ تاپ براساس حافظه داخلی</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">لپ تاپ تا 120 گیگابایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">لپ تاپ تا 240 گیگا بایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">لپ تاپ تا 520 گیگا بایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">لپ تاپ تا 1024 گیگابایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">لپ تاپ بالای 1024 گیگابایت</a>
-                                                            </li>
-                                                        </ul>
-                                                    </ul>
-                                                    <ul className="ul_list--cecond">
-                                                        <ul className="mega_meno__cecond">
-
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    ابعاد صفحه نمایش
-                                                                </a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 14 اینچ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 16 اینچ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 18 اینچ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 20 اینچ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 22 اینچ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 24 اینچ</a>
-                                                            </li>
-
-
-                                                        </ul>
-                                                    </ul>
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">لوازم جانبی</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">کیف لپ تاپ </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">کاور لپ تاپ </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link"> شارژر لپ تاپ</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">خنک کنند لپ تاپ</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">برند ترین ها</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">ایسوس</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">سامسونگ</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">اچ پی  </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">اپل</a>
-                                                    </li>
-
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">سیستم عامل</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link"> لینوکس</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">آی او اس</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">ویندوز</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li className="child_mno-drobdown">
-                                            <a href="/store/category-search" className="run">ساعت هوشمند</a>
-                                            <div className="mega_meno">
-                                                <ul className="list_drobdown--item">
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search"
-                                                            className="list__drobdown--link texr_header block_block">
-                                                            همه محصولات ساعت هوشمند
-                                                        </a>
-                                                    </li>
-                                                    <ul className="ul_list">
-                                                        <ul className="mega_meno--block">
-
-
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">ساعت هوشمند براساس قیمت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">ساعت هوشمند تا 2 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link"> ساعت هوشمند تا 5 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">ساعت هوشمند تا 7 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">ساعت هوشمند تا 15 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">ساعت هوشمند بالای 15 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">ساعت هوشمند براساس حافظه داخلی</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">ساعت هوشمند تا 16 گیگابایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">ساعت هوشمند تا 32 گیگا بایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">ساعت هوشمند تا 32 گیگا بایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">ساعت هوشمند تا 128 گیگابایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">ساعت هوشمند تا 256 گیگابایت</a>
-                                                            </li>
-                                                        </ul>
-                                                    </ul>
-                                                    <ul className="ul_list--cecond">
-                                                        <ul className="mega_meno__cecond">
-
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    ساعت هوشمند دخترانه
-                                                                </a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    ساعت هوشمند پسرانه
-                                                                </a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    ساعت هوشمند هوشمند
-                                                                </a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    ساعت هوشمند پرچم دار
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </ul>
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">لوازم جانبی</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">کیف ساعت هوشمند </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">کاور ساعت هوشمند </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link"> شارژر همراه</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">گارد ساعت هوشمند</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">برند ترین ها</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">اپل</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">سامسونگ</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">هوآوی  </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">شیائومی</a>
-                                                    </li>
-
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">سیستم عامل</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link"> اندروید</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">آی او اس</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">ویندوز</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li className="child_mno-drobdown">
-                                            <a href="/store/category-search" className="run">مودم </a>
-                                            <div className="mega_meno">
-                                                <ul className="list_drobdown--item">
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search"
-                                                            className="list__drobdown--link texr_header block_block">
-                                                            همه محصولات مودم
-                                                        </a>
-                                                    </li>
-                                                    <ul className="ul_list">
-                                                        <ul className="mega_meno--block">
-
-
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">مودم براساس قیمت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">مودم تا 2 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link"> مودم تا 5 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">مودم تا 7 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">مودم تا 15 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list_drobdown--items border_left--red">
-                                                                <a href="/store/category-search" className="list__drobdown--link texr_header">برند ترین ها</a>
-                                                            </li>
-                                                            <li className="list_drobdown--items">
-                                                                <a href="/store/category-search" className="list__drobdown--link">تی پی لینک</a>
-                                                            </li>
-                                                            <li className="list_drobdown--items">
-                                                                <a href="/store/category-search" className="list__drobdown--link">دی لینک</a>
-                                                            </li>
-                                                            <li className="list_drobdown--items">
-                                                                <a href="/store/category-search" className="list__drobdown--link">اچ پی  </a>
-                                                            </li>
-                                                            <li className="list_drobdown--items">
-                                                                <a href="/store/category-search" className="list__drobdown--link">همراه اول</a>
-                                                            </li>
-
-                                                        </ul>
-                                                    </ul>
-                                                    <ul className="ul_list--cecond">
-                                                        <ul className="mega_meno__cecond">
-
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    فرکانس تحت پوشش
-                                                                </a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">1 گیگاهرتز</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">2.5 گیگاهرتز</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">4 گیگاهرتز</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">5.5 گیگاهرتز</a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    مودم براساس رنگ
-                                                                </a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">مودم قرمز</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link"> مودم قهوه ای</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">مودم آبی</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link"> مودم مشکی</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">مودم سفید</a>
-                                                            </li>
-
-                                                        </ul>
-                                                    </ul>
-                                                    <li className="list_mega border_left">
-                                                        <a href="/store/category-search" className="mega_link--link texr_header">مودم براساس برند</a>
-                                                    </li>
-                                                    <li className="list__mega--itmes">
-                                                        <a href="/store/category-search" className="list__mega--link">مودم همراه اول</a>
-                                                    </li>
-                                                    <li className="list__mega--itmes">
-                                                        <a href="/store/category-search" className="list__mega--link">مودم ایرانسل</a>
-                                                    </li>
-                                                    <li className="list__mega--itmes">
-                                                        <a href="/store/category-search" className="list__mega--link">مودم تی پی لینک</a>
-                                                    </li>
-                                                    <li className="list__mega--itmes">
-                                                        <a href="/store/category-search" className="list__mega--link">مودم دی لینک</a>
-                                                    </li>
-                                                    <li className="list__mega--itmes">
-                                                        <a href="/store/category-search" className="list__mega--link">مودم یوتل</a>
-                                                    </li>
-                                                    <li className="list__mega--itmes">
-                                                        <a href="/store/category-search" className="list__mega--link">مودم ایسوس</a>
-                                                    </li>
-                                                    <li className="list__mega--itmes">
-                                                        <a href="/store/category-search" className="list__mega--link">مودم تندا</a>
-                                                    </li>
-                                                    <li className="list__mega--itmes">
-                                                        <a href="/store/category-search" className="list__mega--link">مودم سورنا</a>
-                                                    </li>
-                                                    <li className="list__mega--itmes">
-                                                        <a href="/store/category-search" className="list__mega--link">مودم مسای</a>
-                                                    </li>
-                                                    <li className="list__mega--itmes">
-                                                        <a href="/store/category-search" className="list__mega--link">مودم ال جی</a>
-                                                    </li>
-                                                    <li className="list__mega--itmes">
-                                                        <a href="/store/category-search" className="list__mega--link">مودم سامسونگ</a>
-                                                    </li>
-
-
-
-
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li className="child_mno-drobdown">
-                                            <a href="/store/category-search" className="run">تبلت</a>
-                                            <div className="mega_meno">
-                                                <ul className="list_drobdown--item">
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search"
-                                                            className="list__drobdown--link texr_header block_block">
-                                                            همه محصولات تبلت
-                                                        </a>
-                                                    </li>
-                                                    <ul className="ul_list">
-                                                        <ul className="mega_meno--block">
-
-
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">تبلت براساس قیمت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تبلت تا 2 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link"> تبلت تا 5 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تبلت تا 7 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تبلت تا 15 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تبلت بالای 15 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">تبلت براساس حافظه داخلی</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تبلت تا 16 گیگابایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تبلت تا 32 گیگا بایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تبلت تا 32 گیگا بایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تبلت تا 128 گیگابایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تبلت تا 256 گیگابایت</a>
-                                                            </li>
-                                                        </ul>
-                                                    </ul>
-                                                    <ul className="ul_list--cecond">
-                                                        <ul className="mega_meno__cecond">
-
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    رزولوشن عکس
-                                                                </a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تا ۱۳ مگاپیکسل</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link"> تا ۱۶ مگاپیکسل</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تا ۴۸ مگاپیکسل</a>
-                                                            </li>
-                                                            <li className="list_mega ">
-                                                                <a href="/store/category-search" className="mega_link--link ">تا ۶۴ مگاپیکسل</a>
-                                                            </li>
-                                                            <li className="list_mega ">
-                                                                <a href="/store/category-search" className="mega_link--link ">تا ۱۰۸ مگاپیکسل</a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    تبلت براساس کاربری
-                                                                </a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تبلت اقتصادی</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link"> تبلت میان رده</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تبلت دانش آموزی</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تبلت گیمینگ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تبلت پرچمدار</a>
-                                                            </li>
-
-                                                        </ul>
-                                                    </ul>
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">لوازم جانبی</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">کیف تبلت </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">کاور تبلت </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link"> شارژر همراه</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">گارد تبلت</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">برند ترین ها</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">اپل</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">سامسونگ</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">هوآوی  </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">شیائومی</a>
-                                                    </li>
-
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">سیستم عامل</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link"> اندروید</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">آی او اس</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">ویندوز</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li className="child_mno-drobdown">
-                                            <a href="/store/category-search" className="run">کامپیوتر</a>
-                                            <div className="mega_meno">
-                                                <ul className="list_drobdown--item">
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search"
-                                                            className="list__drobdown--link texr_header block_block">
-                                                            همه محصولات کامپیوتر
-                                                        </a>
-                                                    </li>
-                                                    <ul className="ul_list">
-                                                        <ul className="mega_meno--block">
-
-
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">کامپیوتر براساس قیمت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">کامپیوتر تا 15 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link"> کامپیوتر تا 25 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">کامپیوتر تا 40 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">کامپیوتر بالای 40 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">کامپیوتر براساس حافظه داخلی</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">کامپیوتر تا 120 گیگابایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">کامپیوتر تا 240 گیگا بایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">کامپیوتر تا 520 گیگا بایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">کامپیوتر تا 1024 گیگابایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">کامپیوتر بالای 1024 گیگابایت</a>
-                                                            </li>
-                                                        </ul>
-                                                    </ul>
-                                                    <ul className="ul_list--cecond">
-                                                        <ul className="mega_meno__cecond">
-
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    ابعاد صفحه نمایش
-                                                                </a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 14 اینچ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 16 اینچ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 18 اینچ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 20 اینچ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 22 اینچ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 24 اینچ</a>
-                                                            </li>
-
-
-                                                        </ul>
-                                                    </ul>
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">لوازم جانبی</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">کیف کامپیوتر </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">کاور کامپیوتر </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link"> شارژر کامپیوتر</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">خنک کنند کامپیوتر</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">برند ترین ها</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">ایسوس</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">سامسونگ</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">اچ پی  </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">اپل</a>
-                                                    </li>
-
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">سیستم عامل</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link"> لینوکس</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">آی او اس</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">ویندوز</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li className="child_mno-drobdown">
-                                            <a href="/store/category-search" className="run">آیپد اپل</a>
-                                            <div className="mega_meno">
-                                                <ul className="list_drobdown--item">
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search"
-                                                            className="list__drobdown--link texr_header block_block">
-                                                            همه محصولات آیپد اپل
-                                                        </a>
-                                                    </li>
-                                                    <ul className="ul_list">
-                                                        <ul className="mega_meno--block">
-
-
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">آیپد اپل براساس قیمت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">آیپد اپل تا 2 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link"> آیپد اپل تا 5 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">آیپد اپل تا 7 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">آیپد اپل تا 15 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">آیپد اپل بالای 15 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">آیپد اپل براساس حافظه داخلی</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">آیپد اپل تا 16 گیگابایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">آیپد اپل تا 32 گیگا بایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">آیپد اپل تا 32 گیگا بایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">آیپد اپل تا 128 گیگابایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">آیپد اپل تا 256 گیگابایت</a>
-                                                            </li>
-                                                        </ul>
-                                                    </ul>
-                                                    <ul className="ul_list--cecond">
-                                                        <ul className="mega_meno__cecond">
-
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    آیپد اپل دخترانه
-                                                                </a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    آیپد اپل پسرانه
-                                                                </a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    آیپد اپل هوشمند
-                                                                </a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    آیپد اپل پرچم دار
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </ul>
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">لوازم جانبی</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">کیف آیپد اپل </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">کاور آیپد اپل </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link"> شارژر همراه</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">گارد آیپد اپل</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">برند ترین ها</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">اپل</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">سامسونگ</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">هوآوی  </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">شیائومی</a>
-                                                    </li>
-
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">سیستم عامل</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link"> اندروید</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">آی او اس</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">ویندوز</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li className="child_mno-drobdown">
-                                            <a href="/store/category-search" className="run">تلویزیون</a>
-                                            <div className="mega_meno">
-                                                <ul className="list_drobdown--item">
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search"
-                                                            className="list__drobdown--link texr_header block_block">
-                                                            همه محصولات تلویزیون
-                                                        </a>
-                                                    </li>
-                                                    <ul className="ul_list">
-                                                        <ul className="mega_meno--block">
-
-
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">تلویزیون براساس قیمت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تلویزیون تا 15 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link"> تلویزیون تا 25 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تلویزیون تا 40 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تلویزیون بالای 40 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">تلویزیون براساس حافظه داخلی</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تلویزیون تا 120 گیگابایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تلویزیون تا 240 گیگا بایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تلویزیون تا 520 گیگا بایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تلویزیون تا 1024 گیگابایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تلویزیون بالای 1024 گیگابایت</a>
-                                                            </li>
-                                                        </ul>
-                                                    </ul>
-                                                    <ul className="ul_list--cecond">
-                                                        <ul className="mega_meno__cecond">
-
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    ابعاد صفحه نمایش
-                                                                </a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 14 اینچ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 16 اینچ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 18 اینچ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 20 اینچ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 22 اینچ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">صفحه نمایش 24 اینچ</a>
-                                                            </li>
-
-
-                                                        </ul>
-                                                    </ul>
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">لوازم جانبی</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">کیف تلویزیون </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">کاور تلویزیون </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link"> شارژر تلویزیون</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">خنک کنند تلویزیون</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">برند ترین ها</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">ایسوس</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">سامسونگ</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">اچ پی  </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">اپل</a>
-                                                    </li>
-
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">سیستم عامل</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link"> لینوکس</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">آی او اس</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">ویندوز</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li className="child_mno-drobdown">
-                                            <a href="/store/category-search" className="run">هارد و فلش</a>
-                                            <div className="mega_meno">
-                                                <ul className="list_drobdown--item">
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search"
-                                                            className="list__drobdown--link texr_header block_block">
-                                                            همه محصولات هارد و فلش
-                                                        </a>
-                                                    </li>
-                                                    <ul className="ul_list">
-                                                        <ul className="mega_meno--block">
-
-
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">گوشی براساس قیمت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی تا 2 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link"> گوشی تا 5 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی تا 7 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی تا 15 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی بالای 15 میلیون تومان</a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">گوشی براساس حافظه داخلی</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی تا 16 گیگابایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی تا 32 گیگا بایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی تا 32 گیگا بایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی تا 128 گیگابایت</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی تا 256 گیگابایت</a>
-                                                            </li>
-                                                        </ul>
-                                                    </ul>
-                                                    <ul className="ul_list--cecond">
-                                                        <ul className="mega_meno__cecond">
-
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    رزولوشن عکس
-                                                                </a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تا ۱۳ مگاپیکسل</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link"> تا ۱۶ مگاپیکسل</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">تا ۴۸ مگاپیکسل</a>
-                                                            </li>
-                                                            <li className="list_mega ">
-                                                                <a href="/store/category-search" className="mega_link--link ">تا ۶۴ مگاپیکسل</a>
-                                                            </li>
-                                                            <li className="list_mega ">
-                                                                <a href="/store/category-search" className="mega_link--link ">تا ۱۰۸ مگاپیکسل</a>
-                                                            </li>
-                                                            <li className="list_mega border_left">
-                                                                <a href="/store/category-search" className="mega_link--link texr_header">
-                                                                    گوشی براساس کاربری
-                                                                </a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی اقتصادی</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link"> گوشی میان رده</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی دانش آموزی</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی گیمینگ</a>
-                                                            </li>
-                                                            <li className="list__mega--itmes">
-                                                                <a href="/store/category-search" className="list__mega--link">گوشی پرچمدار</a>
-                                                            </li>
-
-                                                        </ul>
-                                                    </ul>
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">لوازم جانبی</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">کیف گوشی </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">کاور گوشی </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link"> شارژر همراه</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">گارد گوشی</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">برند ترین ها</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">اپل</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">سامسونگ</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">هوآوی  </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">شیائومی</a>
-                                                    </li>
-
-                                                    <li className="list_drobdown--items border_left--red">
-                                                        <a href="/store/category-search" className="list__drobdown--link texr_header">بر اساس نوع</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link"> ssd </a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">sd</a>
-                                                    </li>
-                                                    <li className="list_drobdown--items">
-                                                        <a href="/store/category-search" className="list__drobdown--link">vd</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                            )
+                                        })
+                                    }
                                 </div>
                             </li>
                             <li className="list_style">
-                                <i className="fa fa-film icon-icon" aria-hidden="true"></i><a href="/store/category-search" className="list__link">دمو محصولات</a>
+                                <i className="fa fa-film icon-icon" aria-hidden="true"></i>
+                                <Link to="/store/category-search" className="list__link">
+                                    دمو محصولات
+                                </Link>
                             </li>
                             <li className="list_style">
-                                <i className="fa fa-percent icon-icon" aria-hidden="true"></i><a href="/store/category-search" className="list__link">
-                                    تخفیفات و
-                                    پیشنهادات
-                                </a>
+                                <i className="fa fa-percent icon-icon" aria-hidden="true"></i>
+                                <Link to="/store/list-category" className="list__link">
+                                    دسته‌بندی محصولات
+                                </Link>
                             </li>
                             <li className="list_style">
-                                <i className="fa fa-user-secret icon-icon" aria-hidden="true"></i><a href="/store/category-search" className="list__link">
-                                    مَسای امن
-                                </a>
+                                <i className="fa fa-user icon-icon" aria-hidden="true"></i>
+                                <Link to="/store/profile" className="list__link">
+                                    صفحه پروفایل
+                                </Link>
                             </li>
                             <li className="list_style">
-                                <i className="fa fa-plus icon-icon" aria-hidden="true"></i><a href="/store/category-search" className="list__link">مَسای پلاس</a>
+                                <i className="fa fa-newspaper icon-icon" aria-hidden="true"></i>
+                                <Link to="/store/category-blog" className="list__link">لیست مقالات</Link>
                             </li>
                             <li className="list_style">
-                                <i className="fa fa-link icon-icon" aria-hidden="true"></i>
-                                <a href="/store/category-search" className="list__link">مَسای کلاب</a>
-                            </li>
-                            <li className="list_style">
-                                <i className="fa fa-handshake-o icon-icon icon-color-2" aria-hidden="true"></i>
-                                <a href="/store/category-search" className="list__link">مَسای پی</a>
-                            </li>
-                            <li className="list_style">
-                                <a href="/store/category-search" className="list__link">سوالی دارید؟</a>
+                                <i className="fa fa-phone icon-icon" aria-hidden="true"></i>
+                                <Link to="/store/ticket" className="list__link">چت آنلاین
+                                    <TbCircleFilled className="absolute top-0 left-0 animate-pulse" color={'#52B1B7'} size={8} />
+                                </Link>
                             </li>
                             <li className="list_style">
                                 <Link to="/store/about-us" className="list__link"> درباره ما</Link>
@@ -2359,7 +500,9 @@ function Header() {
                             <ul className="nav_header-2">
                                 <li className="list_style">
                                     <i className="fa fa-map icon-icon" aria-hidden="true"></i>
-                                    <Link to="/store/address" className="list__link">انتخاب موقعیت</Link>
+                                    <Link to="/store/address" className="list__link">
+                                        انتخاب موقعیت
+                                    </Link>
                                 </li>
                             </ul>
                         </ul>

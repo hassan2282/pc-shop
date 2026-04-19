@@ -1,6 +1,6 @@
 import "./index.css";
-import { ToastContainer, toast } from "react-toastify";
-import { BrowserRouter, Link, Navigate, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Login from "./StorePanel/components/Login";
 import Index from "./StorePanel/components/Index";
 import Register from "./StorePanel/components/Register";
@@ -57,11 +57,40 @@ import Adm_gate_all from "./AdminPanel/Components/Gate/Adm_gate_all.jsx";
 import Adm_gate_add from "./AdminPanel/Components/Gate/Adm_gate_add.jsx";
 import Ticket from "./StorePanel/components/Ticket.jsx";
 import ListCategory from "./StorePanel/components/ListCategory.jsx";
-
+import Adm_category_tree from "./AdminPanel/Components/Categories/Adm_category_tree.jsx";
+import PhoneLogin from "./StorePanel/components/PhoneLogin.jsx";
+import PhoneConfirm from "./StorePanel/components/PhoneConfirm.jsx";
+import { useEffect, useState } from "react";
+import apiClient from "./apiClient.js";
+import NotFound from "./StorePanel/structure/NotFound.jsx";
+import ForgetPassword from "./StorePanel/components/ForgetPassword.jsx";
+import EmailConfirm from "./StorePanel/components/EmailConfirm.jsx";
+import SetNewPassword from "./StorePanel/components/SetNewPassword.jsx";
 
 function App() {
+  const [role, setRole] = useState();
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
-  const isAdmin = useSelector((state) => state.user?.role_id > 1);
+  const adminApprove = useSelector(state => state.adminApprove);
+
+  useEffect(() => {
+    const fetchClient = async () => {
+      if (isAuthenticated) {
+        try {
+          const res = await apiClient.post('auth/me');
+          if (res.status >= 200 && res.status < 300) {
+            setRole(res.data?.role_id);
+            storeUser(res)
+            dispatch({ type: 'ADMIN_ROLE', payload: { role_id: res.data?.role_id } });
+          }
+        } catch (err) {
+          err.status === 401 && dispatch({ type: 'logout' })
+        }
+      }
+    };
+
+    fetchClient();
+  }, []);
+
 
   return (
     <>
@@ -78,6 +107,27 @@ function App() {
             path="store/login"
             element={!isAuthenticated ? <Login /> : <Navigate to="/store/home" replace />}
           />
+          <Route
+            path="store/phone-login"
+            element={!isAuthenticated ? <PhoneLogin /> : <Navigate to="/store/home" replace />}
+          />
+          <Route
+            path="store/phone-confirm"
+            element={!isAuthenticated ? <PhoneConfirm /> : <Navigate to="/store/home" replace />}
+          />
+          <Route
+            path="store/forget-password"
+            element={!isAuthenticated ? <ForgetPassword /> : <Navigate to="/store/home" replace />}
+          />
+          <Route
+            path="store/email-confirm"
+            element={!isAuthenticated ? <EmailConfirm /> : <Navigate to="/store/home" replace />}
+          />
+          <Route
+            path="store/set-new-password"
+            element={!isAuthenticated ? <SetNewPassword /> : <Navigate to="/store/home" replace />}
+          />
+          
 
           <Route path="/" element={<Navigate to="/store/home" replace />} />
 
@@ -195,7 +245,11 @@ function App() {
             />
             <Route
               path="password-update"
-              element={<PasswordUpdate />}
+              element={
+                <PrivateRoute>
+                  <PasswordUpdate />
+                </PrivateRoute>
+              }
             />
             <Route
               path="about-us"
@@ -211,39 +265,43 @@ function App() {
               } />
 
           </Route>
+          {
+            isAuthenticated &&
+            <Route path="/admin/*" element={adminApprove ? <Master /> : <Adm_gate />}>
+              <Route path="admGate" element={<Adm_gate />} />
+              <Route path="admGate/all" element={<Adm_gate_all />} />
+              <Route path="admGate/add" element={<Adm_gate_add />} />
+              <Route path="index" element={<Adm_report_all />} />
+              <Route path="users/all" element={<Adm_all_users />} />
+              <Route path="users/add" element={<Adm_add_user />} />
+              <Route path="user/edit/:id" element={<Adm_edit_user />} />
+              <Route path="user/show/:id" element={<Adm_show_user />} />
+              <Route path="categories/all" element={<Adm_all_categories />} />
+              <Route path="category/add" element={<Adm_add_category />} />
+              <Route path="category/edit/:id" element={<Adm_edit_category />} />
+              <Route path="category/tree-view" element={<Adm_category_tree />} />
+              <Route path="role/all" element={<Adm_role_all />} />
+              <Route path="role/add" element={<Adm_role_add />} />
+              <Route path="role/edit/:id" element={<Adm_role_edit />} />
+              <Route path="permission/all" element={<Adm_permission_all />} />
+              <Route path="permission/add" element={<Adm_permission_add />} />
+              <Route path="permission/edit/:id" element={<Adm_permission_edit />} />
+              <Route path="product/all" element={<Adm_product_all />} />
+              <Route path="product/add" element={<Adm_product_add />} />
+              <Route path="product/edit/:id" element={<Adm_product_edit />} />
+              <Route path="product/show/:id" element={<Adm_product_show />} />
+              <Route path="article/all" element={<Adm_article_all />} />
+              <Route path="article/add" element={<Adm_article_add />} />
+              <Route path="article/edit/:id" element={<Adm_article_edit />} />
+              <Route path="order/all" element={<Adm_order_all />} />
+              <Route path="order/show/:id" element={<Adm_order_show />} />
+              <Route path="report/all" element={<Adm_report_all />} />
+              <Route path="ticket/all" element={<Adm_tickets_all />} />
+              <Route path="ticket/show/:id" element={<Adm_tickets_show />} />
+            </Route>
+          }
 
-
-          <Route path="/admin/*" element={<Master />}>
-            <Route path="admGate" element={<Adm_gate />} />
-            <Route path="admGate/all" element={<Adm_gate_all />} />
-            <Route path="admGate/add" element={<Adm_gate_add />} />
-            <Route path="index" element={<Adm_report_all />} />
-            <Route path="users/all" element={<Adm_all_users />} />
-            <Route path="users/add" element={<Adm_add_user />} />
-            <Route path="user/edit/:id" element={<Adm_edit_user />} />
-            <Route path="user/show/:id" element={<Adm_show_user />} />
-            <Route path="categories/all" element={<Adm_all_categories />} />
-            <Route path="category/add" element={<Adm_add_category />} />
-            <Route path="category/edit/:id" element={<Adm_edit_category />} />
-            <Route path="role/all" element={<Adm_role_all />} />
-            <Route path="role/add" element={<Adm_role_add />} />
-            <Route path="role/edit/:id" element={<Adm_role_edit />} />
-            <Route path="permission/all" element={<Adm_permission_all />} />
-            <Route path="permission/add" element={<Adm_permission_add />} />
-            <Route path="permission/edit/:id" element={<Adm_permission_edit />} />
-            <Route path="product/all" element={<Adm_product_all />} />
-            <Route path="product/add" element={<Adm_product_add />} />
-            <Route path="product/edit/:id" element={<Adm_product_edit />} />
-            <Route path="product/show/:id" element={<Adm_product_show />} />
-            <Route path="article/all" element={<Adm_article_all />} />
-            <Route path="article/add" element={<Adm_article_add />} />
-            <Route path="article/edit/:id" element={<Adm_article_edit />} />
-            <Route path="order/all" element={<Adm_order_all />} />
-            <Route path="order/show" element={<Adm_order_show />} />
-            <Route path="report/all" element={<Adm_report_all />} />
-            <Route path="ticket/all" element={<Adm_tickets_all />} />
-            <Route path="ticket/show/:id" element={<Adm_tickets_show />} />
-          </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <ToastContainer />
       </BrowserRouter>

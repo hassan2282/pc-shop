@@ -62,7 +62,7 @@ function Adm_add_user() {
       try {
         const response = await apiClient.get('/admin/roles');
         if (response.status >= 200 && response.status < 300) {
-          setRoles(response.data);
+          setRoles(response.data.original[1].data);
         }
       } catch (err) {
         toast.error('مشکل در یافتن نقش های کاربران')

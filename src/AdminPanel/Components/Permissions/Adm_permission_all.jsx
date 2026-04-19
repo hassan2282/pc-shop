@@ -3,26 +3,35 @@ import { TbEditCircle, TbSearch, TbTrashFilled } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import { IoMdCloseCircle } from 'react-icons/io'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import apiClient from '../../../apiClient'
 import { toast } from 'react-toastify'
+import Paginate from '../Paginate'
+import SearchFilter from '../SearchFilter'
 
 function Adm_permission_all() {
-  const [permissions, setPermissions] = useState();
+  const [permissions, setPermissions] = useState([]);
+  const [page, setPage] = useState(1);
+  const [count, setCount] = useState(1);
 
   useEffect(() => {
-    const fetchPermissions = async () => {
+    const fetchPermissions = async (page) => {
       try {
-        const res = await apiClient.get('/admin/permissions');
+        const res = await apiClient.get(`/admin/permissions?page=${page}`);
         if (res.status >= 200 && res.status < 300) {
-          setPermissions(res.data);
+          setCount(Math.ceil(res.data.original[0]));
+          setPermissions(res.data.original[1].data);
         }
       } catch (err) {
-        toast.error('خطا در فرایند واکشی دسترسی ها');
+        if (err.status >= 400 && err.status < 500) {
+          toast.error('به این بخش دسترسی ندارید')
+        } else {
+          toast.error('خطا در فرایند واکشی دسترسی ها');
+        }
       }
     }
-    fetchPermissions();
-  }, []);
+    fetchPermissions(page);
+  }, [page]);
 
   const deleteHandler = async (id) => {
     try {
@@ -59,18 +68,13 @@ function Adm_permission_all() {
         <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>
           <IoMdCloseCircle size={27} className='text-red-500' />
         </Link>
-        <h3 className='min-md:text-2xl text-lg font-bold text-gray-800'>مدیریت دسترسی ها</h3>
+        <h3 className='min-md:text-xl text-lg font-bold text-gray-800'>مدیریت دسترسی‌ها</h3>
         <div className='flex flex-row relative justify-center items-center space-x-4'>
-          <div className='relative flex justify-center items-center'>
-            <TbSearch size={20} className='absolute left-3 text-gray-400' />
-            <input
-              type='search'
-              className='w-[14rem] inset-shadow-sm shadow-xs hover:w-[20rem] h-12 rounded-xl p-3 bg-white/90
-               backdrop-blur-sm border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500
-               focus:border-transparent transition-all duration-200'
-              placeholder='جستجو...'
-            />
-          </div>
+
+
+          {/* <SearchFilter submitHandler={submitHandler} /> */}
+
+
           <Link to="/admin/permission/add" className='flex h-12 bg-blue-600 hover:bg-blue-700
           text-white items-center justify-center
            rounded-xl text-sm font-medium space-x-2 p-3 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl' >
@@ -94,7 +98,7 @@ function Adm_permission_all() {
           <tbody className=''>
             {
               permissions &&
-              permissions.map((item, index) => {
+              permissions?.map((item, index) => {
                 return (
                   <motion.tr
                     initial={{ filter: "blur(10px)", opacity: 0 }}
@@ -124,6 +128,7 @@ function Adm_permission_all() {
           </tbody>
         </table>
       </div>
+      <Paginate setPage={setPage} count={count} />
     </motion.div>
   )
 }

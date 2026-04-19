@@ -113,7 +113,15 @@ function SingleProduct() {
                                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                                 exit={{ opacity: 0, scale: 1.05, y: -20 }}
                                                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                                                className="main_img_gallery h-120 object-contain" src={product && preview ? BASE_URL + '/storage/media/' + preview : BASE_URL + '/storage/media/' + product?.media[0]?.name} />
+                                                className="main_img_gallery h-120 object-contain"
+                                                src={
+                                                    product?.media[0]
+                                                    ?
+                                                    BASE_URL + "/storage/media/" + product?.media[0]?.name
+                                                    :
+                                                    `../../src/StorePanel/assets/img/product_img/p_${Math.floor(Math.random(0, 1) * 23)}.jpg`
+                                                    } />
+                                                {/* src={product && preview ? BASE_URL + '/storage/media/' + preview : BASE_URL + '/storage/media/' + product?.media[0]?.name} /> */}
                                             <section className="testimonial py-3" id="testimonial">
                                                 <div className="container">
                                                     <div className="row gallery">
@@ -124,8 +132,8 @@ function SingleProduct() {
                                                                     <div key={index} className="col min-w-[100px] overflow-x-scroll pd cursor-pointer hover:-translate-y-1
                                                                      duration-300 *:shadow-sm hover:*:shadow-lg">
                                                                         <a>
-                                                                            <img onClick={() => { previewHandler(item?.name) }} src={BASE_URL + '/storage/media/' + item?.name} 
-                                                                             className="h-24 " alt="تصویر محصول" />
+                                                                            <img onClick={() => { previewHandler(item?.name) }} src={BASE_URL + '/storage/media/' + item?.name}
+                                                                                className="h-24 " alt="تصویر محصول" />
                                                                         </a>
                                                                     </div>
                                                                 )
@@ -184,13 +192,13 @@ function SingleProduct() {
                                                     {
                                                         product?.attribute_values &&
                                                         product?.attribute_values?.map((item, i) => {
-                                                            if(i < 12)
-                                                            return (
-                                                                <li className="text-zinc-500" key={i}>
-                                                                    <span> {item.attribute?.name} </span>
-                                                                    : {item.value}
-                                                                </li>
-                                                            )
+                                                            if (i < 12)
+                                                                return (
+                                                                    <li className="text-zinc-500" key={i}>
+                                                                        <span> {item.attribute?.name} </span>
+                                                                        : {item.value}
+                                                                    </li>
+                                                                )
                                                         })
                                                     }
                                                 </ul>
@@ -228,8 +236,8 @@ function SingleProduct() {
                                                         </div>
                                                         <div className="col-12 col-lg-6 col-md-6 border_left">
                                                             <div className="price space-15">
-                                                                <del><span>{product && Math.floor(product.price * 1.2)}<span>تومان</span></span></del>
-                                                                <ins><span>{product && product.price}<span>تومان</span></span></ins>
+                                                                <del><span>{product && Math.floor(product.price * 1.2).toLocaleString()}<span>تومان</span></span></del>
+                                                                <ins><span>{product && product.price.toLocaleString()}<span>تومان</span></span></ins>
                                                             </div>
                                                             <div className="d-flex justify-center align-items-center w-100 mt-[1rem] hover:scale-102 active:scale-96 duration-200">
                                                                 <button onClick={() => handlePurchase(product && product)} style={{ backgroundColor: '#46A9AE', borderRadius: '14px' }}

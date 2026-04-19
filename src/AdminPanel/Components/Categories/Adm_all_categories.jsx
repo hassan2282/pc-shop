@@ -1,31 +1,36 @@
-import { FaUserSecret } from 'react-icons/fa'
 import { TbCategoryPlus, TbCheck, TbEditCircle, TbSearch, TbTrashFilled } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import { IoMdCloseCircle } from 'react-icons/io'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { toast } from 'react-toastify'
 import apiClient from '../../../apiClient'
+import Paginate from '../Paginate'
+import SearchFilter from '../SearchFilter'
 
 function Adm_all_categories() {
   const [categories, setCategories] = useState([]);
+  const [page, setPage] = useState(1);
+  const [count, setCount] = useState(1);
+  const searchRef = useRef();
+  const [q, setQ] = useState('');
 
   useEffect(() => {
-    const allCategories = async () => {
+    const allCategories = async (page, q) => {
       try {
-        const fetchResponse = await apiClient.get('/admin/categories');
-
+        const fetchResponse = await apiClient.get(`/admin/categories?page=${page}&q=${q}`);
         if (fetchResponse.status >= 200 && fetchResponse.status < 300) {
-          setCategories(fetchResponse.data);
+          setCount(Math.ceil(fetchResponse.data[0]));
+          setCategories(fetchResponse.data[1].data);
         }
       } catch (err) {
-        toast.error('فرایند واکشی دسته بندی ها با شکست مواجه شد !')
+        toast.error('فرایند واکشی دسته بندی ها با شکست مواجه شد !');
       }
 
     }
 
-    allCategories();
-  }, []);
+    allCategories(page, q);
+  }, [page, q]);
 
 
   const deleteHandler = async (id) => {
@@ -38,8 +43,12 @@ function Adm_all_categories() {
 
     } catch (err) {
       toast.error('مشکل در فرایند حذف دسته بندی');
-      console.log(err.response.data)
     }
+  }
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setQ(searchRef.current.value.trim())
   }
 
   return (
@@ -64,23 +73,22 @@ function Adm_all_categories() {
         <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>
           <IoMdCloseCircle size={27} className='text-red-500' />
         </Link>
-        <h3 className='min-md:text-2xl text-lg font-bold text-gray-800'>مدیریت دسته بندی ها</h3>
+        <h3 className='min-md:text-xl text-lg font-bold text-gray-800'>مدیریت دسته بندی ها</h3>
         <div className='flex flex-row relative justify-center items-center space-x-4'>
-          <div className='relative flex justify-center items-center'>
-            <TbSearch size={20} className='absolute left-3 text-gray-400' />
-            <input
-              type='search'
-              className='w-[14rem] inset-shadow-sm shadow-xs hover:w-[20rem] h-12 rounded-xl p-3 bg-white/90 backdrop-blur-sm border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200'
-              placeholder='جستجو...'
-            />
-          </div>
+
+
+
+          <SearchFilter searchRef={searchRef} submitHandler={submitHandler} />
+
+
+
           <Link to="/admin/category/add" className='flex h-12 bg-blue-600 hover:bg-blue-700
           text-white items-center justify-center
            rounded-xl text-sm font-medium space-x-2 p-3 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl' >
             <TbCategoryPlus size={20} />
             <span>افزودن دسته بندی</span>
           </Link>
-          <Link to="" className='flex h-12 bg-blue-600 hover:bg-blue-700
+          <Link to="/admin/category/tree-view" className='flex h-12 bg-blue-600 hover:bg-blue-700
           text-white items-center justify-center
            rounded-xl text-sm font-medium space-x-2 p-3 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl' >
             <TbCategoryPlus size={20} />
@@ -128,13 +136,12 @@ function Adm_all_categories() {
                     </div> */}
                     </td>
                     <td className='col-span-1 justify-center items-center w-full flex'>
-                      <div className='flex items-center gap-1 bg-blue-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
-                        {/* <FaUserSecret size={16} className='text-blue-600' /> */}
+                      <div className='flex items-center gap-1 shadow-sm bg-blue-100/80 backdrop-blur-sm px-3 py-1 rounded-full'>
                         {
                           item.parent_id === null ?
                             <span className='text-rose-700 text-sm font-medium'>دسته بندی اصلی</span>
                             :
-                            <span className='text-blue-700 text-sm font-medium'>{item.parent.name}</span>
+                            <span className='text-blue-700 text-sm font-medium'>{item.parent?.name}</span>
 
                         }
                       </div>
@@ -155,6 +162,7 @@ function Adm_all_categories() {
           </tbody>
         </table>
       </div>
+      <Paginate setPage={setPage} count={count} />
     </motion.div>
   )
 }

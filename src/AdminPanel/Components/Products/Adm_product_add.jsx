@@ -48,7 +48,7 @@ function Adm_product_add() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const fetchResponse = await apiClient.get('/admin/categories');
+        const fetchResponse = await apiClient.get('/admin/category/all');
         if (fetchResponse.status >= 200 && fetchResponse.status < 300) {
           setCategories(fetchResponse.data);
         }
@@ -224,7 +224,6 @@ function Adm_product_add() {
         }
       }
     } catch (err) {
-      console.log(err)
       toast.error('خطا در فرایند ثبت محصول');
     } finally {
       setIsSubmitting(false)

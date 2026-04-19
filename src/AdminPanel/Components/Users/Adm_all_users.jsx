@@ -4,29 +4,43 @@ import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import { MdPersonAdd } from 'react-icons/md'
 import { IoMdCloseCircle } from 'react-icons/io'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { toast } from 'react-toastify'
 import apiClient from '../../../apiClient'
+import Paginate from '../Paginate'
+import SearchFilter from '../SearchFilter'
+import StatusFilter from '../StatusFilter'
 
 function Adm_all_users() {
 
   const [users, setUsers] = useState([]);
   const [isChangingStatus, setIsChangingStatus] = useState(false);
+  const [page, setPage] = useState(1);
+  const [count, setCount] = useState(1);
+  const searchRef = useRef();
+  const [q, setQ] = useState('');
+  const [status, setStatus] = useState('');
+  const [role, setRole] = useState('');
 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchUsers = async (page, q, status, role) => {
       try {
-        const res = await apiClient.get('/admin/users');
+        const res = await apiClient.get(`/admin/users?page=${page}&q=${q}&status=${status}&role=${role}`);
         if (res.status >= 200 && res.status < 300) {
-          setUsers(Array.isArray(res.data) ? res.data : []);
+          setCount(Math.ceil(res.data[0]));
+          setUsers(res.data[1].data);
         }
       } catch (err) {
-        toast.error('اطلاعات کاربران یافت نشد!')
+        if (err.status >= 400 && err.status < 500) {
+          toast.error('به این بخش دسترسی ندارید')
+        } else {
+          toast.error('اطلاعات کاربران یافت نشد!')
+        }
       }
     }
 
-    fetchUsers();
-  }, []);
+    fetchUsers(page, q, status, role);
+  }, [page, q, status, role]);
 
 
   const changeStatus = async (id) => {
@@ -58,6 +72,24 @@ function Adm_all_users() {
 
 
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setQ(searchRef.current.value.trim())
+  }
+
+  const statusChangeFilter = (e) => {
+    e.target.value ?
+      setStatus(eval(e.target.value))
+      : setStatus('');
+  }
+
+  const roleFilter = (e) => {
+    e.target.value ?
+      setRole(eval(e.target.value))
+      : setRole('');
+  }
+
+
   return (
     <motion.div
       initial={{
@@ -74,22 +106,24 @@ function Adm_all_users() {
         }
       }}
       className='flex flex-col items-center bg-white/30 backdrop-blur-xl rounded-2xl shadow-2xl border
-     border-white/20 mr-10 mt-4 min-h-96 w-[92%] min-w-[60rem] overflow-x-auto'>
+     border-white/20 mr-10 mt-4 min-h-96 w-[92%] min-w-[60rem]'>
       <div className='flex flex-row w-full justify-between items-center p-6 bg-white/30 
       backdrop-blur-md h-24 rounded-t-2xl border-b border-white/20'>
         <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>
           <IoMdCloseCircle size={27} className='text-red-500' />
         </Link>
-        <h3 className='text-2xl font-bold text-gray-800'>مدیریت کاربران</h3>
-        <div className='flex flex-row relative justify-center items-center space-x-4'>
-          <div className='relative flex justify-center items-center'>
-            <TbSearch size={20} className='absolute left-3 text-gray-400' />
-            <input
-              type='search'
-              className='w-[14rem] inset-shadow-sm shadow-xs hover:w-[20rem] h-12 rounded-xl p-3 bg-white/90 backdrop-blur-sm border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200'
-              placeholder='جستجو...'
-            />
-          </div>
+        <h3 className='text-xl font-bold text-gray-800'>مدیریت کاربران</h3>
+        <div className='flex flex-row relative justify-center items-center space-x-2'>
+
+
+          <SearchFilter searchRef={searchRef} submitHandler={submitHandler} />
+          <StatusFilter statusChangeFilter={statusChangeFilter} />
+          <select onChange={(e) => roleFilter(e)} className='border-white/90 border-1 bg-white/80 cursor-pointer rounded-xl p-2'>
+            <option value={''}>نقش کاربر</option>
+            <option value={1}>کاربر</option>
+            <option value={2}>ادمین</option>
+          </select>
+
           <Link to="/admin/users/add" className='flex h-12 bg-blue-600 hover:bg-blue-700
           text-white items-center justify-center
            rounded-xl text-sm font-medium space-x-2 p-3 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl' >
@@ -200,10 +234,10 @@ function Adm_all_users() {
             }
 
 
-
           </tbody>
         </table>
       </div>
+      <Paginate setPage={setPage} count={count} />
     </motion.div >
   )
 }

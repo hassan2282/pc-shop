@@ -5,16 +5,18 @@ import { toast } from "react-toastify";
 import apiClient from "../../../apiClient";
 import { useNavigate } from "react-router-dom";
 import { TbLoader } from "react-icons/tb";
-import {motion} from 'motion/react';
+import { motion } from 'motion/react';
+import { useDispatch } from "react-redux";
 
 function Adm_gate() {
+  
   const [toggle, setToggle] = useState(true);
   const [formData, setFormData] = useState({
     gkey: '',
   })
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-
+  const dispatch = useDispatch();
   const validate = (gkey) => {
     if (gkey.trim() === '' && gkey.trim().length < 15) {
       toast.error('رمز عبور معتبر نیست')
@@ -34,14 +36,17 @@ function Adm_gate() {
         const res = await apiClient.post('/admin/gateGuard', formData, {
           withCredentials: true,
         })
-        if (res.status >= 200 && res.status < 300) {
-          res.data ?
-            toast.success('به پنل مدیریت خوش آمدید') &&
+        if (res.data === true) {
+          dispatch({
+            type: "ADMIN_APPROVE",
+            payload: true,
+          })
             navigate('/admin/index', { replace: true })
-            :
-            toast.error('رمز عبور وارد شده صحیح نمی‌باشد')
+        }else{
+          toast.error('رمز عبور وارد شده صحیح نمی‌باشد')
         }
       } catch (err) {
+        console.log(err?.response?.data?.message)
         toast.error(err?.response?.data?.message || 'خطا در اتصال به سرور');
       } finally {
         setIsLoading(false)
@@ -50,23 +55,23 @@ function Adm_gate() {
 
   };
 
-  
+
 
   return (
     <div
       className="absolute min-w-screen overflow-clip
         min-h-screen flex flex-row
         items-center justify-center
-        backdrop-blur-3xl z-100 top-0"
+        backdrop-blur-3xl z-100 top-0 bg-[#efd3ff]"
     >
       <motion.div
-      animate={{rotate: 360}}
-      transition={{
-        repeat: Infinity,
-        duration: 30,
-        ease: "linear",
-      }}
-      className="absolute w-screen h-screen opacity-40">
+        animate={{ rotate: 360 }}
+        transition={{
+          repeat: Infinity,
+          duration: 30,
+          ease: "linear",
+        }}
+        className="absolute w-screen h-screen opacity-40">
         <span className="absolute -z-0 bottom-50 right-200 w-[20rem] h-[20rem] blur-3xl rounded-full 
       bg-gradient-to-r from-pink-700 to-purple-700"></span>
         <span className="absolute -z-0 top-50 left-200 w-[20rem] h-[20rem] blur-3xl rounded-full 

@@ -18,7 +18,11 @@ function Adm_gate_all() {
           setGate(res.data[0]);
         }
       } catch (err) {
-        toast.error('خطا در فرایند واکشی داده ها');
+        if(err.status >= 400 && err.status < 500){
+          toast.error('به این بخش دسترسی ندارید')
+        }else{
+          toast.error('خطا در فرایند واکشی داده ها');
+        }
       }
     }
     fetchGate();
@@ -62,7 +66,7 @@ function Adm_gate_all() {
         <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>
           <IoMdCloseCircle size={27} className='text-red-500' />
         </Link>
-        <h3 className='min-md:text-2xl text-lg font-bold text-stone-800'>مدیریت کد دسترسی</h3>
+        <h3 className='min-md:text-xl text-lg font-bold text-stone-800'>مدیریت کد دسترسی</h3>
         <div className='flex flex-row relative justify-center items-center space-x-4'>
 
           {
@@ -80,7 +84,19 @@ function Adm_gate_all() {
       <div className='flex flex-col w-full min-md:p-6 min-h-100 '>
         {
           gate &&
-          <div className="group relative">
+          <motion.div
+            initial={{
+              width: 0,
+              opacity: 0
+            }}
+            animate={{
+              width: "100%",
+              opacity: 1,
+              transition: {
+                duration: 0.8,
+              }
+            }}
+            className="group relative">
             <div
               className="absolute -inset-1 rounded-lg bg-gradient-to-r from-rose-600 via-red-500 to-orange-500 opacity-30 blur-lg transition-all duration-500 group-hover:opacity-70 group-hover:blur-xl"
             ></div>
@@ -129,7 +145,7 @@ function Adm_gate_all() {
                      justify-center rounded-lg bg-rose-500/50 hover:bg-rose-950 border-t border-rose-500"
                   >
                     <button className='text-red-800 cursor-pointer hover:text-red-700 transition-colors duration-200' title='حذف'>
-                      <TbTrashFilled size={17} />
+                      <TbTrashFilled size={17}/>
                     </button>
                     <div
                       className="absolute inset-0 rounded-lg bg-rose-500/10 blur-sm transition-all duration-300 group-hover:blur-md"
@@ -152,7 +168,7 @@ function Adm_gate_all() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
         }
 

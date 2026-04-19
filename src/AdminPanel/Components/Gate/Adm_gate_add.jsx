@@ -39,7 +39,11 @@ function Adm_gate_add() {
           navigate('/admin/admGate/all', {replace:true});
         }
       } catch (err) {
-        toast.error(err.response.data.message);
+        if(err.status >= 400 && err.status < 500){
+          toast.error('به این بخش دسترسی ندارید')
+        }else{
+          toast.error(err.response.data.message);
+        }
         
       }finally{
         setIsSubmitting(false)

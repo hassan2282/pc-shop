@@ -166,6 +166,8 @@
 .submeno{
     display: none;
     z-index: 1000;
+    margin-bottom: 20px;
+    box-shadow: 1px 1px 5px #bdbdbd;
 }
 .submeno:hover .img-head{
     z-index: 1000;
@@ -174,7 +176,7 @@
 .list_style:hover .submeno{
     display: inline-block;
     position: absolute;
-    background-color: #fff;
+    background-color: #F1F9FA;
     border-radius: 3px;
     margin-top: 2px;
     z-index: 1000;
@@ -182,7 +184,7 @@
     width: 150px;
     left: 11px;
     right: 0px;
-    top: 20px;
+    top: 15px;
 }
  
 .main_meno-drobdown
@@ -198,10 +200,10 @@
    
 }
 .child_mno-drobdown{
-    background-color:#fff
+    background-color:#fff;
 }
 .child_mno-drobdown:hover{
-     background-color:#F1F3F5!important;
+     background-color:#FFF!important;
     
    
 
@@ -222,14 +224,18 @@
 .main_meno-drobdown .mega_meno{
     position: absolute;
     line-height: 23px;
-    background: #F1F3F5;
+    background: #fcfeff;
     width: 700px;
-    height: 472px;
+    height: 450px;
     padding:10px;
     right:100%;
     top:0;
     display: none;
     transition: .5s;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border: 1px solid #d6f7ff;
+    box-shadow: 0.5px 0.5px 1px #999999;
 }
 .main_meno-drobdown
 li:hover .mega_meno{
@@ -238,7 +244,6 @@ li:hover .mega_meno{
 }
 .list_drobdown--items{
     padding: 4px;
-    
 }
 
 .list__drobdown--link:hover 

@@ -1,4 +1,8 @@
-﻿import win12Wallpaper from '../../AdminPanel/assets/img/wallpapers/win12.jpeg'
+﻿import axios from 'axios';
+import win12Wallpaper from '../../AdminPanel/assets/img/wallpapers/win12.jpeg'
+import { motion } from 'motion/react'
+import { useEffect } from 'react';
+
 import {
   TbBuildingStore,
   TbMail,
@@ -65,7 +69,7 @@ function AboutUs() {
       maxWidth: 760,
     },
     card: {
-      height:'100%',
+      height: '100%',
       borderRadius: 18,
       border: '1px solid rgba(84, 180, 185, 0.22)',
       background: 'rgba(255,255,255,0.62)',
@@ -123,6 +127,7 @@ function AboutUs() {
     },
   }
 
+
   return (
     <main className="single-product default" style={styles.page}>
       <div className="container">
@@ -143,31 +148,47 @@ function AboutUs() {
               </div>
 
               <div className="row g-3 mt-3">
-                <div className="col-12 col-md-4">
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.3 }}
+                  className="col-12 col-md-4">
                   <div style={styles.stat}>
                     <p style={styles.statValue}>+500</p>
                     <p style={styles.statLabel}>کالا برای عموم مردم</p>
                   </div>
-                </div>
-                <div className="col-12 col-md-4">
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.5 }}
+                  className="col-12 col-md-4">
                   <div style={styles.stat}>
                     <p style={styles.statValue}>تا 40٪</p>
                     <p style={styles.statLabel}>کمتر از قیمت بازار</p>
                   </div>
-                </div>
-                <div className="col-12 col-md-4">
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.7 }}
+                  className="col-12 col-md-4">
                   <div style={styles.stat}>
                     <p style={styles.statValue}>پشتیبانی</p>
                     <p style={styles.statLabel}>پاسخگویی سریع و محترمانه</p>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </div>
           </section>
 
           <section className="p-3 p-md-4">
             <div className="row g-3">
-              <div className="col-12 col-lg-7">
+              <motion.div
+                initial={{ opacity: 0, x: 60 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, delay: 0.4, ease: 'easeInOut' }}
+                className="col-12 col-lg-7">
                 <div style={styles.card} className=''>
                   <div style={styles.cardHeader}>
                     <h2 style={styles.cardTitle}>
@@ -212,9 +233,13 @@ function AboutUs() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="col-12 col-lg-5">
+              <motion.div
+                initial={{ opacity: 0, x: -60 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, delay: 0.4, ease: 'easeInOut' }}
+                className="col-12 col-lg-5">
                 <div style={styles.card}>
                   <div style={styles.cardHeader}>
                     <h2 style={styles.cardTitle}>
@@ -271,7 +296,7 @@ function AboutUs() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </section>
         </div>

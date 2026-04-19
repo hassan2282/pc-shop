@@ -30,17 +30,21 @@ function Adm_role_add() {
 
 
   useEffect(() => {
-    const fetchRoles = async () => {
+    const fetchPermissions = async () => {
       try {
-        const fetchResponse = await apiClient.get('/admin/permissions');
+        const fetchResponse = await apiClient.get('/admin/permission/all');
         if (fetchResponse.status >= 200 && fetchResponse.status < 300) {
           setPermissions(fetchResponse.data);
         }
       } catch (err) {
-        toast.error('خطا در فرایند واکشی دسترسی ها');
+        if(err.status >= 400 && err.status < 500){
+          toast.error('به این بخش دسترسی ندارید')
+        }else{
+          toast.error('خطا در فرایند واکشی دسترسی ها');
+        }
       }
     }
-    fetchRoles();
+    fetchPermissions();
   }, []);
 
 
@@ -55,7 +59,11 @@ function Adm_role_add() {
           setFormData({ name: '', permissions: [] }); 
         }
       } catch (err) {
-        toast.error('خطا در فرایند ثبت نقش جدید');
+        if(err.status >= 400 && err.status < 500){
+          toast.error('به این بخش دسترسی ندارید')
+        }else{
+          toast.error('خطا در فرایند ثبت نقش جدید');
+        }
         
       }finally{
         setIsSubmitting(false)

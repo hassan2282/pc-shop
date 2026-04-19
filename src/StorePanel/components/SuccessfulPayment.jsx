@@ -9,14 +9,14 @@ function SuccessfulPayment() {
                     <div className="col-12 text-center">
                         <ul className="order-steps">
                             <li>
-                                <Link to="/store/cart"  className="active">
+                                <a className="active">
                                     <span>سبدخرید</span>
-                                </Link>
+                                </a>
                             </li>
                             <li className="active">
-                                <Link to="/store/shopping-payment" className="active active2">
+                                <a className="active active2">
                                     <span>روش پرداخت</span>
-                                </Link>
+                                </a>
                             </li>
                             <li className="active">
                                 <a className="active active3">
@@ -26,9 +26,9 @@ function SuccessfulPayment() {
                         </ul>
                     </div>
                     <main className="cart default">
-                        <div className="container text-center cart_empty">
+                        <div className="flex flex-col w-full text-center justify-center items-center space-y-6 p-5">
 
-                            <img src="src/StorePanel/assets/img/successful-cart.png" className="" />
+                            <img src="/src/StorePanel/assets/img/successful-cart.png" className="w-[22rem] p-2" />
                             <h6>
                                تریک، سفارش با موفقیت دریافت شد 
                                

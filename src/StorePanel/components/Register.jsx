@@ -1,5 +1,5 @@
 ﻿import axios from "axios";
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { toast } from "react-toastify";
 import { AiOutlineLoading } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
@@ -26,6 +26,7 @@ function Register() {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -85,8 +86,8 @@ function Register() {
                                 transition: { delay: 0.5, duration: 1 },
                             }}
                             onSubmit={handleSubmit} className="flex flex-col justify-center items-center min-sm:w-[50%]
-                                                w-full bg-white/30 border border-white/40
-                                                backdrop-blur-xl shadow-sm shadow-black/20 p-4 md:p-8 rounded-3xl ">
+                                                w-full bg-white/30 border-t border-l border-white/60 
+                                                backdrop-blur-xl shadow-lg shadow-black/20 p-4 md:p-8 rounded-3xl ">
                             <div className="w-full h-full justify-center items-center grid
                              min-md:grid-cols-2 min-md:gap-4" dir="rtl">
                                 <div
@@ -203,17 +204,17 @@ function Register() {
                                     animate={{
                                         opacity: 1,
                                         scale: 1,
-                                        transition: { duration: 0.5, delay: 1.1 },
+                                        transition: { duration: 1, delay: 0.6 },
                                     }}
                                     className="flex w-full justify-center items-center">
-                                    <div className="flex items-center justify-center">
-                                        <label className="checkbox-form checkbox-primary flex items-center justify-center">
-                                        </label>
-                                        <label htmlFor="agree" className="text-sm text-white">
-                                            تمامی <a href="#" className="text-dark underline text-center">شرایط و قوانین</a>  استفاده از سرویس‌های سایت مَسای را به دقت مطالعه کرده و با آنها موافقت کامل دارم
-                                        </label>
-                                    </div>
+                                    <Link className="d-flex w-full justify-center items-center rounded-full shadow-sm shadow-gray-500
+                                        p-2 cursor-pointer hover:scale-102 active:scale-95 duration-300 py-[0.65rem] mt-3
+                                        border-t-white/60 border-t-1 text-center" to="/store/phone-login">
+                                        ورود با تلفن
+                                    </Link>
                                 </motion.div>
+
+
                                 <motion.div
                                     initial={{
                                         opacity: 0,
@@ -225,16 +226,39 @@ function Register() {
                                         transition: { duration: 0.5, delay: 1.3 },
                                     }}
                                     className="flex flex-col space-y-2 mt-3 w-full justify-center items-center">
-                                    <button type="submit" style={{borderRadius:'3rem'}} className="w-full p-3 bg-blue-600/50 hover:bg-sky-800 hover:text-white 
+                                    <button type="submit" style={{ borderRadius: '3rem' }} className="w-full p-3 bg-stone-700 hover:bg-sky-900 text-white 
                                     shadow-xs hover:shadow-md cursor-pointer
                                      hover:scale-102 shadow-zinc-500 rounded-full duration-300 flex justify-center items-center">
-                                        {isLoading ? <AiOutlineLoading className="animate-spin" size={20} /> : 'عضویت'}
+                                        {isLoading ? <AiOutlineLoading className="animate-spin" size={20} /> : 'ثبت نام '}
                                     </button>
-                                    <p className="text-white">
-                                        <span>قبلا ثبت نام کرده اید؟</span>
-                                        <Link to="/store/login" className="text-lg underline mx-2 text-zinc-700 hover:text-[#3d9ca1] transition-colors">ورود</Link>
-                                    </p>
                                 </motion.div>
+
+
+
+
+                                <motion.div
+                                    initial={{
+                                        opacity: 0,
+                                        scale: 0.8,
+                                    }}
+                                    animate={{
+                                        opacity: 1,
+                                        scale: 1,
+                                        transition: { duration: 0.5, delay: 1.1 },
+                                    }}
+                                    className="flex w-full justify-center items-center">
+                                    <div className="flex items-center justify-center">
+                                        <label className="checkbox-form checkbox-primary flex items-center justify-center">
+                                        </label>
+                                        <label htmlFor="agree" className="text-sm text-white">
+                                            تمامی <a href="#" className="text-dark underline text-center">شرایط و قوانین</a>  استفاده از سرویس‌های سایت مَسای را به دقت مطالعه کرده و با آنها موافقت کامل دارم
+                                        </label>
+                                    </div>
+                                </motion.div>
+                                <p className="text-white">
+                                    <span>قبلا ثبت نام کرده اید؟</span>
+                                    <Link to="/store/login" className="text-lg underline mx-2 text-zinc-700 hover:text-[#3d9ca1] transition-colors text-danger mt-2">ورود</Link>
+                                </p>
 
                                 <div className="flex w-full md:col-span-2 justify-center items-center text-dark">
                                     {(Object.keys(errors).length > 0 || errors.server) && (

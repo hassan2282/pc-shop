@@ -5,6 +5,7 @@ import ProductsAdvanceShow from './ProductsAdvanceShow';
 import ProductsSimpleShow from './ProductsSimpleShow';
 import DraggableProducts from './DraggableProducts';
 import BlogShow from './BlogShow';
+import { Link } from 'react-router-dom';
 
 function Index() {
 
@@ -322,7 +323,7 @@ function Index() {
                         {
                             products &&
                             <>
-                                <ProductsAdvanceShow products={products.slice(0, 5)} />
+                                <ProductsAdvanceShow products={products.slice(0, 6)} />
 
                             </>
                         }
@@ -338,9 +339,6 @@ function Index() {
 
 
 
-
-
-
                         <div className="col-12">
 
                             <div className="row banner-ads">
@@ -348,30 +346,30 @@ function Index() {
                                     <div className="row">
                                         <div className="col-6 col-lg-3">
                                             <div className="widget-banner card border_all">
-                                                <a href="category-search" target="_blank">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-fluid" src="/src/StorePanel/assets/img/banner_img/img-3.jpg" alt="" />
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                         <div className="col-6 col-lg-3">
                                             <div className="widget-banner card">
-                                                <a href="category-search" target="_top">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-fluid" src="/src/StorePanel/assets/img/banner_img/img-4.jpg" alt="" />
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                         <div className="col-6 col-lg-3">
                                             <div className="widget-banner card border_all">
-                                                <a href="category-search" target="_blank">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-fluid" src="/src/StorePanel/assets/img/banner_img/img-5.jpg" alt="" />
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                         <div className="col-6 col-lg-3">
                                             <div className="widget-banner card">
-                                                <a href="category-search" target="_top">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-fluid" src="/src/StorePanel/assets/img/banner_img/img-6.jpg" alt="" />
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
@@ -390,21 +388,21 @@ function Index() {
                                                         <img src="/src/StorePanel/assets/img/shegeft_1.png" />
                                                     </span>
                                                 </h3>
-                                                <div dir="ltr" className="flex flex-row relative max-sm:w-[1rem] max-sm:space-x-0 space-x-2 basis-1/2 max-sm:justify-center justify-start items-center" data-date="10 12 2023 20:20:22">
+                                                <div dir="ltr" className="flex flex-row relative max-sm:w-[1rem] max-sm:space-x-0 space-x-2 basis-1/2 max-sm:justify-center justify-start items-center">
                                                     <ul className="text_countdown">
-                                                        <li data-days className="border-2 p-3 max-sm:border-0 max-sm: border-gray-700 rounded-xl number_countdown">5</li>
+                                                        <li className="border-2 p-3 max-sm:border-0 max-sm: border-gray-700 rounded-xl number_countdown">5</li>
                                                         <li>روز</li>
                                                     </ul>
                                                     <ul className="text_countdown">
-                                                        <li data-hours className="border-2 p-3 max-sm:border-0 max-sm: border-gray-700 rounded-xl number_countdown">10</li>
+                                                        <li className="border-2 p-3 max-sm:border-0 max-sm: border-gray-700 rounded-xl number_countdown">10</li>
                                                         <li>ساعت</li>
                                                     </ul>
                                                     <ul className="text_countdown">
-                                                        <li data-minutes className="border-2 p-3 max-sm:border-0 max-sm: border-gray-700 rounded-xl number_countdown">25</li>
+                                                        <li className="border-2 p-3 max-sm:border-0 max-sm: border-gray-700 rounded-xl number_countdown">25</li>
                                                         <li>دقیقه</li>
                                                     </ul>
                                                     <ul className="text_countdown">
-                                                        <li data-seconds className="border-2 p-3 max-sm:border-0 max-sm: border-gray-700 rounded-xl number_countdown">08</li>
+                                                        <li className="border-2 p-3 max-sm:border-0 max-sm: border-gray-700 rounded-xl number_countdown">08</li>
                                                         <li>ثانیه</li>
                                                     </ul>
                                                 </div>
@@ -428,16 +426,16 @@ function Index() {
                                     <div className="row">
                                         <div className="col-12 col-lg-6">
                                             <div className="widget-banner card border_all">
-                                                <a href="category-search" target="_blank">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-fluid" src="/src/StorePanel/assets/img/banner_img/img-7.jpg" alt="" />
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                         <div className="col-12 col-lg-6">
                                             <div className="widget-banner card">
-                                                <a href="category-search" target="_top">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-fluid" src="/src/StorePanel/assets/img/banner_img/img-8.jpg" alt="" />
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
@@ -475,9 +473,9 @@ function Index() {
                             <div className="row">
                                 <div className="col-12">
                                     <div className="widget widget-banner card border_all">
-                                        <a href="category-search" target="_blank">
+                                        <Link to={"/store/category-search"}>
                                             <img className="img-fluid" src="/src/StorePanel/assets/img/banner_img/img-9.jpg" alt="" />
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -495,50 +493,50 @@ function Index() {
                                         <div className="row">
                                             <div className="col-6 col-md-2 contact-bigicon">
 
-                                                <a href="category-search" target="_blank">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-1.png" alt="" />
                                                     <b className="title-3 light-black">کالای دیجیتال</b>
-                                                </a>
+                                                </Link>
 
                                             </div>
                                             <div className="col-6 col-md-2 contact-bigicon">
 
-                                                <a href="category-search" target="_top">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-2.png" alt="" />
                                                     <b className="title-3 light-black">مودم</b>
-                                                </a>
+                                                </Link>
 
                                             </div>
                                             <div className="col-6 col-md-2 contact-bigicon">
 
-                                                <a href="category-search" target="_blank">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-3.png" alt="" />
                                                     <b className="title-3 light-black">تبلت</b>
-                                                </a>
+                                                </Link>
 
                                             </div>
                                             <div className="col-6 col-md-2 contact-bigicon">
 
-                                                <a href="category-search" target="_top">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-4.png" alt="" />
                                                     <b className="title-3 light-black">ماوس</b>
-                                                </a>
+                                                </Link>
 
                                             </div>
                                             <div className="col-6 col-md-2 contact-bigicon">
 
-                                                <a href="category-search" target="_top">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-5.png" alt="" />
                                                     <b className="title-3 light-black">هندزفری</b>
-                                                </a>
+                                                </Link>
 
                                             </div>
                                             <div className="col-6 col-md-2 contact-bigicon">
 
-                                                <a href="category-search" target="_top">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-6.png" alt="" />
                                                     <b className="title-3 light-black">ساعت هوشمند</b>
-                                                </a>
+                                                </Link>
 
                                             </div>
                                         </div>
@@ -547,50 +545,50 @@ function Index() {
                                         <div className="row">
                                             <div className="col-6 col-md-2 contact-bigicon">
 
-                                                <a href="category-search" target="_blank">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-7.png" alt="" />
                                                     <b className="title-3 light-black">کنسول خانگی</b>
-                                                </a>
+                                                </Link>
 
                                             </div>
                                             <div className="col-6 col-md-2 contact-bigicon">
 
-                                                <a href="category-search" target="_top">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-8.png" alt="" />
                                                     <b className="title-3 light-black">کیبورد (صفحه کلید)</b>
-                                                </a>
+                                                </Link>
 
                                             </div>
                                             <div className="col-6 col-md-2 contact-bigicon">
 
-                                                <a href="category-search" target="_blank">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-9.png" alt="" />
                                                     <b className="title-3 light-black">اسپیکر (بلندگو)</b>
-                                                </a>
+                                                </Link>
 
                                             </div>
                                             <div className="col-6 col-md-2 contact-bigicon">
 
-                                                <a href="category-search" target="_top">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-10.png" alt="" />
                                                     <b className="title-3 light-black">لپ تاپ و الترابوک</b>
-                                                </a>
+                                                </Link>
 
                                             </div>
                                             <div className="col-6 col-md-2 contact-bigicon">
 
-                                                <a href="category-search" target="_top">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-11.png" alt="" />
                                                     <b className="title-3 light-black">موبایل</b>
-                                                </a>
+                                                </Link>
 
                                             </div>
                                             <div className="col-6 col-md-2 contact-bigicon">
 
-                                                <a href="category-search" target="_top">
+                                                <Link to={"/store/category-search"}>
                                                     <img className="img-responsive imgpad" src="/src/StorePanel/assets/img/Masai/bigicon/img-12.png" alt="" />
                                                     <b className="title-3 light-black">هدفون، هدست </b>
-                                                </a>
+                                                </Link>
 
                                             </div>
                                         </div>
@@ -609,34 +607,34 @@ function Index() {
                                 </header>
                                 <div className="owl-carousel">
                                     <div className="item borderitem">
-                                        <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-1.jpg" alt="" /> </a>
+                                        <Link to={"/store/category-search"}> <img src="/src/StorePanel/assets/img/brands/brand-1.jpg" alt="" /> </Link>
                                     </div>
                                     <div className="item borderitem">
-                                        <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-2.jpg" alt="" /> </a>
+                                        <Link to={"/store/category-search"}> <img src="/src/StorePanel/assets/img/brands/brand-2.jpg" alt="" /> </Link>
                                     </div>
                                     <div className="item borderitem">
-                                        <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-3.jpg" alt="" /> </a>
+                                        <Link to={"/store/category-search"}> <img src="/src/StorePanel/assets/img/brands/brand-3.jpg" alt="" /> </Link>
                                     </div>
                                     <div className="item borderitem">
-                                        <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-4.jpg" alt="" /> </a>
+                                        <Link to={"/store/category-search"}> <img src="/src/StorePanel/assets/img/brands/brand-4.jpg" alt="" /> </Link>
                                     </div>
                                     <div className="item borderitem">
-                                        <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-5.jpg" alt="" /> </a>
+                                        <Link to={"/store/category-search"}> <img src="/src/StorePanel/assets/img/brands/brand-5.jpg" alt="" /> </Link>
                                     </div>
                                     <div className="item borderitem">
-                                        <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-6.jpg" alt="" /> </a>
+                                        <Link to={"/store/category-search"}> <img src="/src/StorePanel/assets/img/brands/brand-6.jpg" alt="" /> </Link>
                                     </div>
                                     <div className="item borderitem">
-                                        <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-7.jpg" alt="" /> </a>
+                                        <Link to={"/store/category-search"}> <img src="/src/StorePanel/assets/img/brands/brand-7.jpg" alt="" /> </Link>
                                     </div>
                                     <div className="item borderitem">
-                                        <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-8.jpg" alt="" /> </a>
+                                        <Link to={"/store/category-search"}> <img src="/src/StorePanel/assets/img/brands/brand-8.jpg" alt="" /> </Link>
                                     </div>
                                     <div className="item borderitem">
-                                        <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-9.jpg" alt="" /> </a>
+                                        <Link to={"/store/category-search"}> <img src="/src/StorePanel/assets/img/brands/brand-9.jpg" alt="" /> </Link>
                                     </div>
                                     <div className="item borderitem">
-                                        <a href="category-search"> <img src="/src/StorePanel/assets/img/brands/brand-10.jpg" alt="" /> </a>
+                                        <Link to={"/store/category-search"}> <img src="/src/StorePanel/assets/img/brands/brand-10.jpg" alt="" /> </Link>
                                     </div>
                                 </div>
                             </div>

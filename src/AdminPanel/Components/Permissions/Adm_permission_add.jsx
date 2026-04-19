@@ -38,7 +38,11 @@ function Adm_permission_add() {
           setFormData({ name: '' }); 
         }
       } catch (err) {
-        toast.error('خطا در فرایند ثبت دسترسی جدید');
+        if(err.status >= 400 && err.status < 500){
+          toast.error('به این بخش دسترسی ندارید')
+        }else{
+          toast.error('خطا در فرایند ثبت دسترسی جدید');
+        }
         
       }finally{
         setIsSubmitting(false)

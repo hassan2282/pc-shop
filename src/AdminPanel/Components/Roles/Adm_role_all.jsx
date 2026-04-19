@@ -7,23 +7,31 @@ import { IoMdCloseCircle } from 'react-icons/io'
 import { useEffect, useState } from 'react'
 import apiClient from '../../../apiClient'
 import { toast } from 'react-toastify'
+import Paginate from '../Paginate'
 
 function Adm_role_all() {
   const [roles, setRoles] = useState();
+  const [page, setPage] = useState(1);
+  const [count, setCount] = useState(1);
 
   useEffect(() => {
-    const fetchRoles = async () => {
+    const fetchRoles = async (page) => {
       try {
-        const res = await apiClient.get('/admin/roles');
+        const res = await apiClient.get(`/admin/roles?page=${page}`);
         if (res.status >= 200 && res.status < 300) {
-          setRoles(res.data);
+          setCount(Math.ceil(res.data.original[0]));
+          setRoles(res.data.original[1].data);
         }
       } catch (err) {
-        toast.error('خطا در فرایند واکشی نقش ها');
+        if (err.status >= 400 && err.status < 500) {
+          toast.error('به این بخش دسترسی ندارید')
+        } else {
+          toast.error('خطا در فرایند واکشی نقش ها');
+        }
       }
     }
-    fetchRoles();
-  }, []);
+    fetchRoles(page);
+  }, [page]);
 
   const deleteHandler = async (id) => {
     try {
@@ -61,9 +69,9 @@ function Adm_role_all() {
         <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>
           <IoMdCloseCircle size={27} className='text-red-500' />
         </Link>
-        <h3 className='min-md:text-2xl text-lg font-bold text-gray-800'>مدیریت نقش ها</h3>
+        <h3 className='min-md:text-xl text-lg font-bold text-gray-800'>مدیریت نقش ها</h3>
         <div className='flex flex-row relative justify-center items-center space-x-4'>
-          <div className='relative flex justify-center items-center'>
+          {/* <div className='relative flex justify-center items-center'>
             <TbSearch size={20} className='absolute left-3 text-gray-400' />
             <input
               type='search'
@@ -72,16 +80,17 @@ function Adm_role_all() {
                focus:border-transparent transition-all duration-200'
               placeholder='جستجو...'
             />
-          </div>
+          </div> */}
           <Link to="/admin/role/add" className='flex h-12 bg-blue-600 hover:bg-blue-700
           text-white items-center justify-center
-           rounded-xl text-sm font-medium space-x-2 p-3 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl' >
+           rounded-xl text-sm font-medium space-x-2 p-3 transition-all duration-200
+            transform hover:scale-105 shadow-lg hover:shadow-xl' >
             <span>افزودن نقش</span>
             <FaUnlockAlt size={20} />
           </Link>
           <Link to="/admin/admGate/all" className='flex h-12 bg-blue-600 hover:bg-blue-700
-          text-white items-center justify-center
-           rounded-xl text-sm font-medium space-x-2 p-3 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl' >
+            text-white items-center justify-center
+            rounded-xl text-sm font-medium space-x-2 p-3 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl' >
             <span>دسترسی به ادمین پنل</span>
             <FaUnlockAlt size={20} />
           </Link>
@@ -116,7 +125,7 @@ function Adm_role_all() {
                     <td className=''>#{item.id}</td>
                     <td className=''>{item.name}</td>
                     <td className=' justify-center items-center w-full flex col-span-4'>
-                      <ul className='grid grid-cols-5 gap-2 w-full *:py-2 px-10 *:rounded-xl text-sm *:border *:bg-blue-100/80 text-blue-600'>
+                      <ul className='flex flex-wrap gap-2 w-full *:flex *:p-2 *:rounded-xl text-sm *:border *:bg-blue-100/80 text-blue-600'>
                         {
                           item?.permissions &&
                           item?.permissions?.map((perm) => {
@@ -145,6 +154,8 @@ function Adm_role_all() {
           </tbody>
         </table>
       </div>
+      <Paginate setPage={setPage} count={count} />
+
     </motion.div>
   )
 }

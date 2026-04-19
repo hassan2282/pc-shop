@@ -13,10 +13,10 @@ function Cart() {
     const changeHandler = (e, index) => {
 
         const newCount = Number(e.target.value);
-        
+
         dispatch({
             type: "UPDATE_CART_ITEM_COUNT",
-            payload : {
+            payload: {
                 id: cart[index].id,
                 count: newCount < 0 ? 0 : newCount,
             }
@@ -25,7 +25,7 @@ function Cart() {
 
 
     const deleteHandler = (index) => {
-        const limitedCart = cart.filter((_,i) => i !== index);
+        const limitedCart = cart.filter((_, i) => i !== index);
         dispatch({
             type: "deleteProduct",
             payload: limitedCart,
@@ -37,9 +37,9 @@ function Cart() {
 
 
     const sendData = () => {
-        
 
-        navigator('/store/final-payment', {replace:true})
+
+        navigator('/store/final-payment', { replace: true })
     };
 
 
@@ -57,14 +57,14 @@ function Cart() {
                                     </a>
                                 </li>
                                 <li>
-                                    <Link to="/store/shopping-payment">
+                                    <a>
                                         <span>اطلاعات تکمیلی</span>
-                                    </Link>
+                                    </a>
                                 </li>
                                 <li>
-                                    <Link to="/store/successfull-payment">
+                                    <a>
                                         <span>پرداخت</span>
-                                    </Link>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -89,11 +89,12 @@ function Cart() {
                                             cart.map((item, index) => {
                                                 return (
                                                     <tr
-                                                     key={index}
-                                                      className="cart_item">
+                                                        key={index}
+                                                        className="cart_item">
                                                         <td className="d-flex flex-row">
-                                                            <img src={BASE_URL + '/storage/media/' + item.media} alt="" />
-                                                            <i onClick={()=>deleteHandler(index)} className="fa fa-times cursor-pointer hover:scale-110" aria-hidden="true"></i>
+                                                            <img src={item.media !== undefined ? BASE_URL + '/storage/media/' + item?.media?.name :
+                                                                `../src/StorePanel/assets/img/product_img/p_${Math.floor(Math.random(0, 1) * 23)}.jpg`} alt="" />
+                                                            <i onClick={() => deleteHandler(index)} className="fa fa-times cursor-pointer hover:scale-110" aria-hidden="true"></i>
                                                         </td>
                                                         <td>
                                                             <h3 className="cart_title">
@@ -113,7 +114,7 @@ function Cart() {
                                                                 <ins><span>{Math.round(item.price).toLocaleString()}<span>تومان</span></span></ins>
                                                             </div>
                                                         </td>
-                                                        <td><input onChange={(e) => changeHandler(e,index)} type="number" className="tedad" value={item.count} /></td>
+                                                        <td><input onChange={(e) => changeHandler(e, index)} min={1} type="number" className="tedad" value={item.count} /></td>
                                                         <td className="price_alltd"> {Math.round(item.price * item.count).toLocaleString()} <span>تومان</span></td>
                                                     </tr>
                                                 )
@@ -156,7 +157,7 @@ function Cart() {
                                                 <td>{totalPrice.toLocaleString()} <span>تومان</span></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2"><button onClick={sendData} className="btn big_btn btn-main-masai"> گام بعدی</button></td>
+                                                <td colSpan="2"><button onClick={sendData} className="btn big_btn btn-main-masai"> گام بعدی</button></td>
                                             </tr>
                                         </tbody>
                                     </table>

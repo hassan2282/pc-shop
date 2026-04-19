@@ -27,7 +27,8 @@ function ProductsAdvanceShow({ products }) {
                                         <div className="right-col col-5 d-flex imgboxofer">
                                             <Link to={`/store/single-product/${product.id}`} className="w-100 text-center">
                                                 <img
-                                                    src={BASE_URL + "/storage/media/" + product?.media[0]?.name}
+                                                    src={product.media[0] !== undefined ? BASE_URL + '/storage/media/' + product?.media[0]?.name :
+                                                        `../src/StorePanel/assets/img/product_img/p_${Math.floor(Math.random(0, 1) * 23)}.jpg`}
                                                     className="img-fluid"
                                                     alt=""
                                                 />
@@ -36,7 +37,7 @@ function ProductsAdvanceShow({ products }) {
                                         </div>
                                         <div className="left-col col-7">
                                             <h2 className="product-title">
-                                                 <Link to={`/store/single-product/${product.id}`} className="w-100 text-center">{product?.title}</Link>
+                                                <Link to={`/store/single-product/${product.id}`} className="w-100 text-center text-xl text-black">{product?.title}</Link>
                                             </h2>
                                             <hr className="hr-text" data-content={product?.category?.name} />
                                             <div className="row w-[90%] relative mb-5 h-10">
@@ -56,8 +57,8 @@ function ProductsAdvanceShow({ products }) {
                                                 </div>
                                             </div>
                                             <div className="price space-15">
-                                                <del><span>{Math.floor(product?.price * 1.2)}<span>تومان</span></span></del>
-                                                <ins><span>{product?.price}<span>تومان</span></span></ins>
+                                                <del><span>{Math.floor(product?.price * 1.2).toLocaleString()}<span>تومان</span></span></del>
+                                                <ins><span>{product?.price.toLocaleString()}<span > تومان </span></span></ins>
                                             </div>
                                             <div className="row space-15">
                                                 <div className="col-5 timer-title">

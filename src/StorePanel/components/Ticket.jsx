@@ -17,10 +17,11 @@ function Ticket() {
     const [Toggle, setToggle] = useState(false);
     const [selectedTicketId, setSelectedTicketId] = useState(null);
     const [conversation, setConversation] = useState(null);
-    const [limitedTickets, setLimitedTickets] = useState();
+    const [limitedTickets, setLimitedTickets] = useState([]);
     const [shouldAutoScroll, setShouldAutoScroll] = useState(true);
 
     const tickets = limitedTickets ?? [];
+
 
     useEffect(() => {
         const fetchRes = async () => {
@@ -68,27 +69,18 @@ function Ticket() {
             scrollToBottom();
         }
     }, [limitedTickets]);
-
     const sendTicket = async (e) => {
         e.preventDefault();
-        const localUser = JSON.parse(localStorage.getItem('user'));
-
-        const conversationId = conversation?.id;
-        if (!conversationId) {
-            toast.error('شناسه مکالمه یافت نشد');
-            return;
-        }
         try {
             const res = await apiClient.post('/userTicket', {
                 'text': ticketText.current.value,
-                'conversation_id': conversationId,
-                'user_id': localUser?.id,
+                'conversation_id': conversation?.id,
+                'user_id': user?.id,
             });
             if (res.status >= 200 && res.status < 300) {
                 toast.success('ارسال تیکت با موفقیت انجام شد');
                 ticketText.current.value = '';
-                setLimitedTickets((prev) => [...prev, res.data]);
-                // Ensure auto-scroll after sending message
+                setLimitedTickets((prev) => prev ? [...prev, res.data] : [res.data]);
                 setShouldAutoScroll(true);
                 setTimeout(scrollToBottom, 100); // Small delay to ensure DOM is updated
             }
@@ -104,7 +96,6 @@ function Ticket() {
             setToggle(false);
             try {
                 const res = await apiClient.delete(`/userTicket/${selectedTicketId}`);
-                console.log(res)
                 if (res.status >= 200 && res.status < 300) {
                     toast.success('حذف تیکت با موفقیت انجام شد');
                     setLimitedTickets((prev) => prev.filter((item) => item.id !== selectedTicketId));
@@ -142,36 +133,39 @@ function Ticket() {
                     <div className="row">
                         <div className="col-xl-9 col-lg-8 col-md-12 order-2">
                             <div className="row">
-                                <div className="col-lg-12">
+                                <div className="col-12">
                                     <div className="">
                                         <div className="">
-                                            <div className="d-flex position-relative align-items-center justify-content-center w-100">
-                                                 <motion.div
-                                                     initial={{ opacity: 0, y: 20 }}
-                                                     animate={{ opacity: 1, y: 0 }}
-                                                     transition={{ duration: 0.5 }}
-                                                     className="d-flex w-full position-sticky top-0 flex-row justify-content-center align-items-center"
-                                                 >
-                                                     {/* فرم اصلی */}
-                                                      <motion.div
-                                                          initial={{ opacity: 0, scale: 0.95 }}
-                                                          animate={{ opacity: 1, scale: 1 }}
-                                                          transition={{ duration: 0.5, delay: 0.2 }}
-                                                          className="w-100" >
+                                            <div className="d-flex position-relative align-items-center justify-content-center
+                                             w-full rounded-2xl">
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ duration: 0.5 }}
+                                                    className="d-flex w-full position-sticky top-0 flex-row justify-content-center align-items-center"
+                                                >
+                                                    {/* فرم اصلی */}
+                                                    <motion.div
+                                                        initial={{ opacity: 0, scale: 0.95 }}
+                                                        animate={{ opacity: 1, scale: 1 }}
+                                                        transition={{ duration: 0.5, delay: 0.2 }}
+                                                        className="w-full" >
 
-                                                          {/* Sticky messenger: stops naturally before footer (sticky constraint) */}
-                                                          <div className="">
-                                                              <div style={{borderRadius: '20px'}} className="card p-2 w-100 d-flex flex-column vh-100 position-sticky top-0 z-3 border border-dotted border-[#5EBCC1]">
+                                                        {/* Sticky messenger: stops naturally before footer (sticky constraint) */}
+                                                        <div className="">
+                                                            <div style={{ borderRadius: '20px', height: '700px' }} className="bg-[#FFFFFF]
+                                                              p-2 w-full d-flex flex-column position-sticky top-0 z-3 border border-dotted border-[#5EBCC1]">
 
-                                                                  <div
-                                                                      ref={container}
-                                                                      onScroll={handleScroll}
-                                                                      className="card-body p-0 flex-grow-1 overflow-auto position-relative bg-light"
-                                                                  >
+                                                                <div
+                                                                    ref={container}
+                                                                    onScroll={handleScroll}
+                                                                    className="card-body p-0 flex-grow-1 overflow-auto position-relative rounded-2xl"
+                                                                >
 
                                                                     {
                                                                         isLoading &&
-                                                                        <span className="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center z-3 bg-transparent bg-opacity-25">
+                                                                        <span className="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center
+                                                                         align-items-center z-3 bg-transparent bg-opacity-25">
                                                                             <div className="spinner-border text-light" role="status" aria-label="loading" />
                                                                         </span>
                                                                     }
@@ -186,13 +180,14 @@ function Ticket() {
                                                                     )}
 
                                                                     {
-                                                                        tickets.map((ticket, index) => {
+                                                                        tickets &&
+                                                                        tickets?.map((ticket, index) => {
                                                                             if (!ticket.admin_id) {
                                                                                 return (
                                                                                     <div key={index} className="d-flex justify-content-start m-1" dir="rtl">
-                                                                                        <div className="bg-[#54B4B9] text-white p-2 rounded-xl w-[60%]">
+                                                                                        <div className="backdrop-blur-xl bg-[#5CBABF] p-2 rounded-xl max-sm:w-full w-[60%]">
                                                                                             <div className="d-flex align-items-start justify-content-between gap-2">
-                                                                                                <p className="mb-1 small text-white" style={{ whiteSpace: 'pre-wrap', fontSize:'13px' }}>
+                                                                                                <p className="mb-1 small text-white" style={{ whiteSpace: 'pre-wrap', fontSize: '13px' }}>
                                                                                                     {ticket.text}
                                                                                                 </p>
                                                                                                 <button
@@ -205,7 +200,7 @@ function Ticket() {
                                                                                                 </button>
                                                                                             </div>
 
-                                                                                            <small className="d-flex flex-row justify-content-end align-items-center small text-white-50">
+                                                                                            <small className="d-flex flex-row justify-content-end align-items-center small text-zinc-600">
                                                                                                 {new Date(ticket.created_at).toLocaleDateString('fa-IR', {
                                                                                                     day: 'numeric',
                                                                                                     month: 'long',
@@ -220,9 +215,9 @@ function Ticket() {
                                                                             } else {
                                                                                 return (
                                                                                     <div key={index} className="d-flex justify-content-end p-3" dir="rtl">
-                                                                                        <div className="bg-dark text-white p-3 rounded-xl w-[60%]">
+                                                                                        <div className="bg-dark text-white p-3 rounded-xl max-sm:w-full w-[60%]">
                                                                                             <div className="d-flex align-items-start justify-content-between gap-2">
-                                                                                                <p className="mb-2 small" style={{ whiteSpace: 'pre-wrap', fontSize:'13px' }}>
+                                                                                                <p className="mb-2 small" style={{ whiteSpace: 'pre-wrap', fontSize: '13px' }}>
                                                                                                     {ticket.text}
                                                                                                 </p>
                                                                                                 <button
@@ -265,36 +260,36 @@ function Ticket() {
                                                                         </button>
                                                                     )}
 
-                                                                  </div>
+                                                                </div>
 
-                                                                  <div className="card-footer d-flex flex-row justify-center align-items-center bg-transparent border-0 p-2">
-                                                                      <form onSubmit={sendTicket} className="w-[95%]">
-                                                                          <div className="d-flex" dir="rtl">
-                                                                              <input
-                                                                                  ref={ticketText}
-                                                                                  type="text"
-                                                                                  name="text"
-                                                                                  required
-                                                                                  className="shadow-sm bg-[#F1F9FA] border w-100 border-[#3f3f3f] px-2 rounded-full text-black"
-                                                                                  placeholder="متن پیام ..."
-                                                                              />
-                                                                              <button
-                                                                                  type="submit"
-                                                                                  className="d-flex justify-center align-items-center w-25 text-white bg-[#54B4B9] h-12"
-                                                                                  style={{borderRadius: '50px'}}
-                                                                                  aria-label="send"
-                                                                                  title="ارسال پیام"
-                                                                              >
-                                                                                  <TbBrandTelegram size={22} />
-                                                                              </button>
-                                                                          </div>
-                                                                      </form>
-                                                                  </div>
-                                                              </div>
-                                                          </div>
+                                                                <div className="  d-flex flex-row justify-center align-items-center bg-transparent my-6 p-2">
+                                                                    <form onSubmit={sendTicket} className="w-[95%]">
+                                                                        <div className="d-flex" dir="rtl">
+                                                                            <input
+                                                                                ref={ticketText}
+                                                                                type="text"
+                                                                                name="text"
+                                                                                required
+                                                                                className="shadow-sm bg-[#ffffff] border w-100 border-[#3f3f3f] px-2 rounded-full text-black"
+                                                                                placeholder="متن پیام ..."
+                                                                            />
+                                                                            <button
+                                                                                type="submit"
+                                                                                className="d-flex justify-center align-items-center hover:scale-103 active:scale-95 duration-200 w-25 text-white bg-[#48ABB0] h-12"
+                                                                                style={{ borderRadius: '50px' }}
+                                                                                aria-label="send"
+                                                                                title="ارسال پیام"
+                                                                            >
+                                                                                <TbBrandTelegram size={22} />
+                                                                            </button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
-                                                      </motion.div>
-                                                  </motion.div>
+                                                    </motion.div>
+                                                </motion.div>
                                                 {
                                                     Toggle &&
                                                     <Confirmation setConfirm={confirmDelete} />

@@ -10,7 +10,6 @@ function OrderSideBar() {
   const dispatch = useDispatch();
 
   const logoutHandler = (e) => {
-    e.preventDefault();
     localStorage.clear();
         dispatch({
             type: "logout",
@@ -97,7 +96,7 @@ function OrderSideBar() {
             <Link to="/store/edit-profile" className="btn btn-main-masai">
               ویرایش اطلاعات
             </Link>
-            <a onClick={logoutHandler} className="btn btn-second-masai">
+            <a href="/" onClick={logoutHandler} className="btn btn-second-masai">
               خروج
             </a>
           </div>
@@ -177,7 +176,7 @@ function OrderSideBar() {
                 className="fa fa-map icon-icon colormain"
                 aria-hidden="true"
               ></i>
-              آدرس ها
+              آدرس 
             </Link>
 
 
@@ -290,7 +289,7 @@ function OrderSideBar() {
                 className="fa fa-map icon-icon colormain"
                 aria-hidden="true"
               ></i>
-              آدرس ها
+              آدرس
             </NavLink>
           </li>
 

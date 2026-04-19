@@ -134,12 +134,12 @@ function BlogShow() {
                 blogs.map((blog, index) => {
                     return (
                         <div key={blog?.id ?? index} className="item">
-                            <Link to={`/store/single-blog/${blog.id}`}>
+                            <Link to={`/store/single-blog/${blog.id}`} className=''>
                                 <img src={blog.media?.name
                                     ?
                                     BASE_URL + "/storage/media/" + blog.media?.name
                                     :
-                                    '/src/StorePanel/assets/img/ico/png-9.png'} className="h-48 object-contain" alt="" />
+                                    `../src/StorePanel/assets/img/blog/post-${Math.floor(Math.random(0, 1) * 6)}.jpg`} className="h-48 object-contain" alt="" />
                             </Link>
                             <a href="single-blog">
                                 <h2 className="Blog_title h-[4rem] max-sm:hidden overflow-clip">

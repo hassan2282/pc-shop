@@ -2,28 +2,48 @@ import { TbCheck, TbEye, TbSearch, TbX } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import { IoMdCloseCircle } from 'react-icons/io'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import apiClient from '../../../apiClient'
 import { toast } from 'react-toastify'
+import SearchFilter from '../SearchFilter'
+import StatusFilter from '../StatusFilter'
+import { MdPersonAdd } from 'react-icons/md'
+import Paginate from '../Paginate'
 
 function Adm_tickets_all() {
   const [conversations, setConversations] = useState();
+  const [count, setCount] = useState(1);
+  const [page, setPage] = useState(1);
+  const searchRef = useRef();
+  const [q, setQ] = useState('');
+  const [role, setRole] = useState('');
 
   useEffect(() => {
-    const fetchConversations = async () => {
+    const fetchConversations = async (page, q, status, role) => {
       try {
-        const res = await apiClient.get('/admin/conversations');
+        const res = await apiClient.get(`/admin/conversations?page=${page}&q=${q}&status=${status}&role=${role}`);
         if (res.status >= 200 && res.status < 300) {
-          setConversations(res.data);
+          setCount(Math.ceil(res.data[0]));
+          setConversations(res.data[1].data);
         }
       } catch (err) {
         toast.error('خطا در فرایند واکشی مکالمات');
       }
     }
-    fetchConversations();
-  }, []);
+    fetchConversations(page, q, status, role);
+  }, [page, q, status, role]);
 
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setQ(searchRef.current.value.trim())
+  }
+
+  const roleFilter = (e) => {
+    e.target.value ?
+      setRole(eval(e.target.value))
+      : setRole('');
+  }
 
   return (
     <motion.div
@@ -47,18 +67,25 @@ function Adm_tickets_all() {
         <Link to="/admin/index" className='text-gray-600 hover:scale-120 mr-3 transition-all duration-200'>
           <IoMdCloseCircle size={27} className='text-red-500' />
         </Link>
-        <h3 className='min-md:text-2xl text-lg font-bold text-gray-800'>مدیریت تیکت ها</h3>
-        <div className='flex flex-row relative justify-center items-center space-x-4'>
-          <div className='relative flex justify-center items-center'>
-            <TbSearch size={20} className='absolute left-3 text-gray-400' />
-            <input
-              type='search'
-              className='w-[14rem] inset-shadow-sm shadow-xs hover:w-[20rem] h-12 rounded-xl p-3 bg-white/90
-               backdrop-blur-sm border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500
-               focus:border-transparent transition-all duration-200'
-              placeholder='جستجو...'
-            />
-          </div>
+        <h3 className='min-md:text-xl text-lg font-bold text-gray-800'>مدیریت تیکت ها</h3>
+        <div className='flex flex-row relative justify-center items-center space-x-2'>
+
+
+          <SearchFilter searchRef={searchRef} submitHandler={submitHandler} />
+
+
+          <select onChange={(e) => roleFilter(e)} className='border-white/90 border-1 bg-white/80 cursor-pointer rounded-xl p-2'>
+            <option value={''}>فرستنده آخرین پیام</option>
+            <option value={1}>کاربر</option>
+            <option value={2}>ادمین</option>
+          </select>
+
+          <Link to="/admin/users/add" className='flex h-12 bg-blue-600 hover:bg-blue-700
+          text-white items-center justify-center
+           rounded-xl text-sm font-medium space-x-2 p-3 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl' >
+            <MdPersonAdd size={20} />
+            <span>افزودن کاربر</span>
+          </Link>
         </div>
       </div>
 
@@ -126,6 +153,7 @@ function Adm_tickets_all() {
           </tbody>
         </table>
       </div>
+      <Paginate setPage={setPage} count={count} />
     </motion.div>
   )
 }

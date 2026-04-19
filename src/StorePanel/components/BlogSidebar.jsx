@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function BlogSidebar({blogs}) {
     return (
@@ -17,7 +18,7 @@ function BlogSidebar({blogs}) {
                                     blogs.map((item, index) => {
                                         return (
 
-                                            <li key={index}><a className="" href=""> {item.category.name} </a></li>
+                                            <li key={index}><Link to={'/store/singleBlog/' + item.id}> {item.category.name} </Link></li>
 
                                         )
                                     })
@@ -37,7 +38,7 @@ function BlogSidebar({blogs}) {
                                     blogs &&
                                     blogs.map((item, index) => {
                                         return (
-                                            <li key={index}><a className="widget_blog_title_link" href="">{item.description.slice(0, 70) + ' ...'}</a></li>
+                                            <li key={index}><Link to={'/store/singleBlog/' + item.id}>{item.description.slice(0, 70) + ' ...'}</Link></li>
                                         )
                                     })
                                 }

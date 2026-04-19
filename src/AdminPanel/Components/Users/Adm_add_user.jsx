@@ -8,7 +8,6 @@ import { toast } from 'react-toastify'
 
 function Adm_add_user() {
   const [roles, setRoles] = useState([]);
-
   const [formData, setFormData] = useState({
     username: '',
     first_name: '',
@@ -24,12 +23,18 @@ function Adm_add_user() {
   useEffect( () =>{
     const fetchRoles = async () => {
       try{
-        const response = await apiClient.get('/admin/roles');
+        const response = await apiClient.get('/admin/role/all');
+        console.log(response);
         if(response.status >= 200 && response.status < 300) {
           setRoles(response.data);
         }
       }catch(err){
-        toast.error('مشکل در یافتن نقش های کاربران')
+        if(err.status >= 400 && err.status < 500){
+          toast.error('به این بخش دسترسی ندارید')
+        }else{
+          console.log(err.response.data.message)
+          toast.error('مشکل در یافتن نقش های کاربران')
+        }
       }
     } 
 
@@ -101,10 +106,12 @@ function Adm_add_user() {
       } catch (err) {
         if (err.response && err.response.data) {
           setErrors(err.response.data);
-          toast.error(err.response.data.message || 'خطا در افزودن کاربر');
         } else {
           setErrors({ server: 'خطایی در ارتباط با سرور رخ داد' });
           toast.error('خطا در ارتباط با سرور');
+        }
+        if(err.status >= 400 && err.status < 500){
+          toast.error('به این بخش دسترسی ندارید')
         }
       } finally {
         setIsSubmitting(false)

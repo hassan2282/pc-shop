@@ -1,11 +1,32 @@
-﻿import { Link } from "react-router-dom";
-import {selectTotalPrice} from '../../Selectors';
-import { useSelector } from "react-redux";
+﻿import { useState } from 'react';
+import { replace, useNavigate } from 'react-router-dom';
+import apiClient from '../../apiClient';
+import { toast } from 'react-toastify';
 
 function ShoppingPayment() {
 
-    const totalPrice = useSelector(selectTotalPrice);
+    const [final_amount, setFinal_amount] = useState();
+    const navigate = useNavigate();
 
+
+    const submitHandler = async () => {
+
+        try {
+            const res = await apiClient.get('/last-order');
+            console.log(res);
+            // if (res.status >= 200, res.status < 300) {
+            //     toast.success('تراکنش مربوط به سفارش ثبت شد');
+            //     localStorage.removeItem('cart');
+            //     dispatch({
+            //         type: "DELETE_CART",
+            //         payload: '',
+            //     })
+            // }
+        } catch (err) {
+            toast.error(err.response.data.message);
+        }
+
+    }
 
 
     return (
@@ -17,9 +38,9 @@ function ShoppingPayment() {
                         <div className="col-12 text-center">
                             <ul className="order-steps">
                                 <li>
-                                    <Link to="/store/cart" className="active">
+                                    <a className="active">
                                         <span>سبدخرید</span>
-                                    </Link>
+                                    </a>
                                 </li>
                                 <li className="active">
                                     <a className="active active2">
@@ -27,9 +48,9 @@ function ShoppingPayment() {
                                     </a>
                                 </li>
                                 <li >
-                                    <Link to="/store/successfull-payment" >
+                                    <a >
                                         <span>پایان خرید</span>
-                                    </Link>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -42,13 +63,15 @@ function ShoppingPayment() {
                             </header>
                             <div className="row cart_details">
 
+
+
                                 <div className="cart-page-content col-xl-8 col-lg-7 col-md-7 ">
 
                                     <div className="plans">
                                         <label className="plan basic-plan" htmlFor="pay1">
-                                            <input checked type="radio" name="plan" id="pay1" />
+                                            <input defaultChecked type="radio" name="plan" id="pay1" />
                                             <div className="plan-content">
-                                                <img loading="lazy" src="src/StorePanel/assets/img/ico/png-10.png" alt="" />
+                                                <img loading="lazy" src="/src/StorePanel/assets/img/ico/png-10.png" alt="" />
                                                 <div className="plan-details">
                                                     <span>پرداخت اینترنتی</span>
                                                     <p>از طریق کارت های عضو شتاب</p>
@@ -57,33 +80,33 @@ function ShoppingPayment() {
                                         </label>
 
                                         <label className="plan complete-plan" htmlFor="pay2">
-                                            <input type="radio" id="pay2" name="plan" />
+                                            <input disabled type="radio" id="pay2" name="plan" />
                                             <div className="plan-content">
-                                                <img loading="lazy" src="src/StorePanel/assets/img/ico/png-11.png" alt="" />
+                                                <img loading="lazy" src="/src/StorePanel/assets/img/ico/png-11.png" alt="" />
                                                 <div className="plan-details">
                                                     <span>پرداخت در محل </span>
-                                                    <p>با کارت بانکی</p>
+                                                    <p>به زودی ...</p>
                                                 </div>
                                             </div>
                                         </label>
 
                                         <label className="plan complete-plan" htmlFor="pay3">
-                                            <input type="radio" id="pay3" name="plan" />
+                                            <input disabled type="radio" id="pay3" name="plan" />
                                             <div className="plan-content">
-                                                <img loading="lazy" src="src/StorePanel/assets/img/ico/png-9.png" alt="" />
+                                                <img loading="lazy" src="/src/StorePanel/assets/img/ico/png-9.png" alt="" />
                                                 <div className="plan-details">
                                                     <span>خرید اقساطی </span>
-                                                    <p>با استفاده از مسای پی</p>
+                                                    <p>به زودی ...</p>
                                                 </div>
                                             </div>
                                         </label>
                                         <label className="plan complete-plan" htmlFor="pay4">
-                                            <input type="radio" id="pay4" name="plan" />
+                                            <input disabled type="radio" id="pay4" name="plan" />
                                             <div className="plan-content">
-                                                <img loading="lazy" src="src/StorePanel/assets/img/ico/png-8.png" alt="" />
+                                                <img loading="lazy" src="/src/StorePanel/assets/img/ico/png-8.png" alt="" />
                                                 <div className="plan-details">
                                                     <span>پرداخت اعتباری </span>
-                                                    <p>الان بخر بعدا پرداخت کن</p>
+                                                    <p>به زودی ...</p>
                                                 </div>
                                             </div>
                                         </label>
@@ -92,12 +115,14 @@ function ShoppingPayment() {
 
 
                                 </div>
+
+
                                 <div className="cart-page-aside col-xl-4 col-lg-5 col-md-5 divider_details">
                                     <table className="table table_details">
                                         <tbody>
                                             <tr>
                                                 <td>قیمت کل سفارش:</td>
-                                                <td>{totalPrice.toLocaleString()} <span>تومان</span></td>
+                                                <td>{final_amount && final_amount.toLocaleString()} <span>تومان</span></td>
                                             </tr>
                                             <tr>
                                                 <td>بسته‌بندی و ارسال:</td>
@@ -105,10 +130,10 @@ function ShoppingPayment() {
                                             </tr>
                                             <tr className="all">
                                                 <td>قیمت قابل پرداخت:</td>
-                                                <td>{totalPrice.toLocaleString()} <span>تومان</span></td>
+                                                <td>{final_amount && final_amount.toLocaleString()} <span>تومان</span></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2"><Link to="/store/successfull-payment" className="btn big_btn btn-main-masai"> اتصال به درگاه</Link></td>
+                                                <td colSpan="2"><button onClick={submitHandler} className="btn big_btn btn-main-masai"> اتصال به درگاه</button></td>
                                             </tr>
                                         </tbody>
                                     </table>

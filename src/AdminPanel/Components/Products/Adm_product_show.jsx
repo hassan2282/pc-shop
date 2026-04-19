@@ -1,4 +1,4 @@
-import { TbTruckDelivery } from 'react-icons/tb'
+import { TbEdit, TbTruckDelivery } from 'react-icons/tb'
 import { motion } from 'motion/react'
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react';
@@ -146,9 +146,12 @@ function Adm_product_show() {
                 <span className='flex flex-row z-10 justify-center items-center w-full sm:w-[9rem] text-center rounded-full text-sm sm:text-base
                  bg-blue-700 backdrop-blur-lg text-white py-2 px-3'>{product?.price} تومان</span>
               </div>
-              <div className='row-span-2 flex justify-center items-center'>
+              <div className='row-span-2 flex min-sm:flex-row max-sm:flex-col max-sm:space-y-2 max-sm:m-2 gap-2 justify-center items-center'>
+                <Link to={`/admin/product/edit/${product?.id}`} className='rounded-full flex justify-around items-center
+                 active:scale-95 w-full h-12 duration-300 bg-stone-700 text-blue-100 hover:text-orange-400
+                hover:scale-105 cursor-pointer shadow-sm shadow-zinc-600'>ویرایش<TbEdit size={20} /></Link>
                 <Link to={'/admin/product/all'} className='rounded-full flex justify-center items-center
-                 active:scale-95 w-full sm:w-[70%] h-12 duration-300 bg-blue-700 text-blue-100 
+                 active:scale-95 w-full h-12 duration-300 bg-blue-700 text-blue-100 
                 hover:scale-105 cursor-pointer shadow-sm shadow-zinc-600'>همه محصولات</Link>
               </div>
             </div>

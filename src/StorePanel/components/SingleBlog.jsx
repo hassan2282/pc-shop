@@ -2,6 +2,7 @@
 import { useParams } from "react-router-dom"
 import apiClient from "../../apiClient";
 import { toast } from "react-toastify";
+import BlogSidebar from "./BlogSidebar";
 
 function SingleBlog() {
 
@@ -85,52 +86,9 @@ function SingleBlog() {
                             </div>
                         </div>
 
-                        <div className="col-12 col-lg-3">
 
-                            <div className="sidebar_blog">
-                                <div className="widget_blog">
-                                    <div className="widget_blog_headbox">
-                                        <h3> دسته بندی ها </h3>
-                                    </div>
-                                    <div className="blog_list_widget_blog">
-                                        <div className="widget_blog_groups">
-                                            <ul className="widget_blog_posts">
-                                                {
-                                                    blogWithRels &&
-                                                    blogWithRels.map((item, index) => {
-                                                        return (
+                        <BlogSidebar blogs={blogWithRels} />
 
-                                                            <li key={index}><a className="" href=""> {item.category.name} </a></li>
-                                                            
-                                                        )        
-                                                    })
-                                                }
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="widget_blog marg_top20">
-                                    <div className="widget_blog_headbox">
-                                        <h3>آخرین مقالات </h3>
-                                    </div>
-                                    <div className="blog_list_widget_blog">
-                                        <div className="widget_blog_groups">
-                                            <ul className="widget_blog_posts">
-                                                {
-                                                    blogWithRels &&
-                                                    blogWithRels.map((item, index) => {
-                                                        return (
-                                                            <li key={index}><a className="widget_blog_title_link" href="">{item.description.slice(0,45) + ' ...'}</a></li>
-                                                        )        
-                                                    })
-                                                }
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
                 </div>
             </main>

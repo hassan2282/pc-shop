@@ -654,8 +654,6 @@ header.Masai-header .main-menu .list .amazing-item {
 /* ----------------- End Main-Menu */
 nav.header-responsive {
     display: none;
-    background-color: #fff;
-    height: 110px;
 }
 
 nav.header-responsive ul {
@@ -5116,7 +5114,7 @@ ul.order-steps::after {
     background: -webkit-linear-gradient(#2ec4b1, #82ccc3);
     right: -50%;
     bottom: -20px;
-    z-index: 1000;
+    z-index: 10;
 }
 
 .order-steps li a {
@@ -5142,7 +5140,7 @@ color: #2ec4b1;
     height: 20px;
     border-radius: 50%;
  background: -webkit-linear-gradient(#2ec4b1, #82ccc3);
-     z-index: 1000;
+     z-index: 10;
 }
 .order-steps li a.active::before {
       content: "\ea22";
@@ -5152,7 +5150,7 @@ color: #2ec4b1;
     top: 24px;
     color: #1D4A4D;
     font-size: 24px;
-    z-index: 999999;
+    z-index: 20;
    
 }
 .order-steps li a.active2::before {
@@ -6852,10 +6850,10 @@ color: #2ec4b1;
     }
 
     nav.header-responsive ul ul {
-        display: none;
+        /* display: none; */
         padding: 0;
         direction: ltr;
-        background-color: #eeeeee;
+        /* background-color: #eeeeee; */
     }
 
     nav.header-responsive ul ul li a {

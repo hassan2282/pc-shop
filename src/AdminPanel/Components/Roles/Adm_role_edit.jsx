@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import { TbUser, TbCheck } from 'react-icons/tb'
-import { Link, useParams } from 'react-router-dom'
+import { Link, replace, useNavigate, useParams } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io'
 import { FaUnlockAlt } from 'react-icons/fa'
 import { toast } from 'react-toastify'
@@ -13,7 +13,7 @@ function Adm_role_add() {
     name: '',
     permissions: [],
   })
-
+  const navigate = useNavigate();
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [permissions, setPermissions] = useState([]);
@@ -33,7 +33,7 @@ function Adm_role_add() {
   useEffect(() => {
     const fetchRoles = async () => {
       try {
-        const fetchResponse = await apiClient.get('/admin/permissions');
+        const fetchResponse = await apiClient.get('/admin/permission/all');
         if (fetchResponse.status >= 200 && fetchResponse.status < 300) {
           setPermissions(fetchResponse.data);
         }
@@ -65,7 +65,7 @@ function Adm_role_add() {
         }
       } catch (err) {
         toast.error('خطا در فرایند ویرایش نقش ');
-
+        navigate('/admin/role/all', {replace:true})
       } finally {
         setIsSubmitting(false)
       }
