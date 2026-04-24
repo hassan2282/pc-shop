@@ -118,7 +118,7 @@ function Adm_all_users() {
 
           <SearchFilter searchRef={searchRef} submitHandler={submitHandler} />
           <StatusFilter statusChangeFilter={statusChangeFilter} />
-          <select onChange={(e) => roleFilter(e)} className='border-white/90 border-1 bg-white/80 cursor-pointer rounded-xl p-2'>
+          <select onChange={(e) => roleFilter(e)} className='border-white/90 border-1 bg-white/80 focus:outline-none focus:ring-2 focus:ring-blue-600 cursor-pointer rounded-xl p-2'>
             <option value={''}>نقش کاربر</option>
             <option value={1}>کاربر</option>
             <option value={2}>ادمین</option>
