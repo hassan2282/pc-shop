@@ -11,7 +11,8 @@ function Adm_category_tree() {
     useEffect(() => {
         const allCategories = async () => {
             try {
-                const { data, status } = await apiClient.get('/admin/category/all');
+                const { data, status } = await apiClient.get('/category/all');
+                
                 if (status >= 200 && status < 300) {
                     setCategories(data);
                 }
