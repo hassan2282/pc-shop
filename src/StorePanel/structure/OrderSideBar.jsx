@@ -182,13 +182,13 @@ function OrderSideBar() {
 
             <Link to="/store/order-message" className="dropdown-item">
               <i className="fa fa-bell colormain" aria-hidden="true"></i>
-              تیکت ها
+              چت آنلاین
             </Link>
 
 
             <Link to="/store/order-message" className="dropdown-item">
               <i className="fa fa-bell colormain" aria-hidden="true"></i>
-              پیغام ها
+              اعلانات
             </Link>
 
 
@@ -300,7 +300,7 @@ function OrderSideBar() {
               activeclassname="active"
             >
               <i className="fa fa-box colormain" aria-hidden="true"></i>
-              تیکت ها
+              چت آنلاین
             </NavLink>
           </li>
 
@@ -311,7 +311,7 @@ function OrderSideBar() {
               activeclassname="active"
             >
               <i className="fa fa-bell colormain" aria-hidden="true"></i>
-              پیغام ها
+              تیکت ها
             </NavLink>
           </li>
 
