@@ -66,6 +66,8 @@ import NotFound from "./StorePanel/structure/NotFound.jsx";
 import ForgetPassword from "./StorePanel/components/ForgetPassword.jsx";
 import EmailConfirm from "./StorePanel/components/EmailConfirm.jsx";
 import SetNewPassword from "./StorePanel/components/SetNewPassword.jsx";
+import Adm_notify_all from "./AdminPanel/Components/Notifs/Adm_notify_all.jsx";
+import Adm_notify_show from "./AdminPanel/Components/Notifs/Adm_notify_show.jsx";
 
 function App() {
   const [role, setRole] = useState();
@@ -298,6 +300,8 @@ function App() {
               <Route path="report/all" element={<Adm_report_all />} />
               <Route path="ticket/all" element={<Adm_tickets_all />} />
               <Route path="ticket/show/:id" element={<Adm_tickets_show />} />
+              <Route path="notify/all" element={<Adm_notify_all />} />
+              <Route path="notify/show" element={<Adm_notify_show />} />
             </Route>
           }
 
