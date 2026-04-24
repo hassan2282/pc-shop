@@ -57,8 +57,8 @@ function Register() {
                     }
                 })
                 localStorage.setItem('user', JSON.stringify(res.data.user));
-                navigate("/store/home", { replace: true })
                 toast.success('کاربر با موفقیت افزوده شد');
+                window.location.replace("/store/home");
             }
 
         } catch (err) {
