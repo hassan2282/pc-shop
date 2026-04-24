@@ -72,17 +72,17 @@ function Navbar() {
             <img src={user?.profile ? BASE_URL + "/storage/media/" + user?.profile : '../../../src/StorePanel/assets/img/profile.jpg'} alt='user profile'
               className='flex max-md:hidden w-10 h-10 z-10 rounded-full shadow-md shadow-zinc-500' />
           </Link>
-          <span
+          <Link to={'/admin/ticket/all'}
             ref={emailRef} onClick={email}
             className="max-md:hidden rounded-full w-[2.6rem] z-20 h-[2.6rem] shadow-md hover:*:scale-120
              flex justify-center items-center backdrop-blur-sm bg-[#EFF4F9]/40">
-            <TbMail size={20} className=" duration-200" /></span>
+            <TbMail size={20} className=" duration-200" /></Link>
 
-          <span
+          <Link to={'/admin/notify/all'}
             ref={notifyRef} onClick={notify}
             className="max-md:hidden rounded-full w-[2.6rem] z-20 h-[2.6rem] shadow-md flex
              hover:*:scale-120 justify-center items-center bg-[#EFF4F9]/40 backdrop-blur-sm">
-            <TbBell size={20} className="duration-200" /></span>
+            <TbBell size={20} className="duration-200" /></Link>
         </div>
 
 
@@ -108,12 +108,12 @@ function Navbar() {
                           *:rounded-xl *:hover:bg-blue-400/30 *:duration-200">
               <Link to={`/admin/user/show/${user.id}`}>پروفایل<TbUser size={20} /></Link>
               <li><Link className="flex flex-row justify-between w-full" to={'/admin/ticket/all'}>تیکت‌ها<TbMail size={20} /></Link></li>
-              <li>اعلان‌ها<TbBell size={20} /></li>
+              <Link to={'/admin/notify/all'}>اعلان‌ها<TbBell size={20} /></Link >
               <Link to={'/'}>وبسایت<TbLogout size={20} /></Link>
             </ul>
           </motion.div>
         }
-        {
+        {/* {
           NotifToggle &&
           <motion.div
             initial={{
@@ -134,7 +134,7 @@ function Navbar() {
               *:p-2 *:rounded-xl *:duration-200">
               <div className="grid col-span-2 grid-cols-2 justify-between border-b border-b-stone-300 items-center h-10 text-xs text-zinc-700">
                 <span>اعلان ها</span>
-                <a href="#" className="hover:text-blue-800">مشاهده همه</a>
+                <Link to="/admin/notify/all" className="hover:text-blue-800">مشاهده همه</Link>
               </div>
               <li className="col-span-2">
                 <div className="grid grid-rows-3 col-span-2 gap-1 h-14 text-xs text-zinc-700" dir="rtl">
@@ -226,7 +226,7 @@ function Navbar() {
 
             </ul>
           </motion.div>
-        }
+        } */}
       </div>
     </div>
   )
