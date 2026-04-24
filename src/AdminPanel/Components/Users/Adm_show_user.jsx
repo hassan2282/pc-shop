@@ -79,7 +79,7 @@ function Adm_show_user() {
 
       <div className='min-sm:grid min-sm:col-span-3 gap-3 w-full max-sm:*:gap-10 min-md:w-[80%] h-[97%] min-sm:grid-rows-4 rounded-2xl z-10'>
         <div className='row-span-1 min-sm:grid min-sm:grid-cols-3 gap-2 max-sm:space-y-3 max-sm:mb-3 w-full
-        *:backdrop-blur-lg *:grid *:grid-cols-2 *:justify-center *:items-center h-full *:min-w-[8rem]
+        *:backdrop-blur-lg *:grid *:grid-cols-2 *:justify-center *:items-center h-full *:min-w-[8rem] py-3
          rounded-xl *:bg-white/50 *:hover:shadow-md *:hover:shadow-zinc-400 *:hover:scale-103 *:duration-300 *:cursor-pointer'>
 
           <div className='rounded-xl shadow-[0_2px_1px_#3333]'>
