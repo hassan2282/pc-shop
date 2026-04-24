@@ -48,7 +48,7 @@ function Adm_product_add() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const fetchResponse = await apiClient.get('/admin/category/all');
+        const fetchResponse = await apiClient.get('/category/all');
         if (fetchResponse.status >= 200 && fetchResponse.status < 300) {
           setCategories(fetchResponse.data);
         }
