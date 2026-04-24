@@ -22,7 +22,7 @@ function Adm_edit_category() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const fetchResponse = await apiClient.get('/admin/category/all');
+        const fetchResponse = await apiClient.get('/category/all');
 
         if (fetchResponse.status >= 200 && fetchResponse.status < 300) {
           const fetchedCategories = fetchResponse.data;
