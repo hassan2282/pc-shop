@@ -4,7 +4,7 @@ import { AiOutlineLoading } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "motion/react";
-import apiClient from "../../apiClient";
+import apiClient, { tokenManager } from "../../apiClient";
 import { FcLock } from "react-icons/fc";
 
 function SetNewPassword() {
@@ -12,7 +12,7 @@ function SetNewPassword() {
   const [formData, setFormData] = useState({
     email: clientEmail,
     password: "",
-    confirmation: "",
+    password_confirmation: "",
   });
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -28,14 +28,25 @@ function SetNewPassword() {
     setIsLoading(true);
 
     try {
-      const res = await apiClient.post("/auth/phone-verify", formData);
+      const res = await apiClient.post("/auth/new-pass", formData);
       if (res.status >= 200 && res.status < 300) {
+        const token = res.data.authorisation.original.access_token;
+        const refreshToken = res.data.authorisation.original.refresh_token || null;
+        const expiresIn = res.data.authorisation.expires_in || 604800; // Default to 1 week if not provided
+
+        // Use tokenManager to store tokens with expiry time
+        tokenManager.storeTokens(token, refreshToken, expiresIn);
+        localStorage.setItem('user', JSON.stringify(res.data.user));
+
         dispatch({
-          type: "CLIENT_PHONE",
-          payload: formData.phone,
+          type: "login",
+          payload: {
+            token: token,
+            user: res.data.user
+          }
         })
         toast.success("کد با موفقیت ارسال شد");
-        navigate("/store/phone-confirm", { replace: true });
+        navigate("/store/home", { replace: true });
       }
     } catch (err) {
       console.log(err.response.data.message)
@@ -108,8 +119,8 @@ function SetNewPassword() {
                     </div>
                     <div className="w-full">
                       <input
-                        name="confirmation"
-                        value={formData.confirmation}
+                        name="password_confirmation"
+                        value={formData.password_confirmation}
                         onChange={handleChange}
                         required
                         className="w-full p-3 rounded-full shadow-xs shadow-black/20 hover:shadow-lg bg-white/50 focus:outline-none focus:ring-2 focus:ring-[#009EA4]"
@@ -173,30 +184,8 @@ function SetNewPassword() {
                       </Link>
                     </motion.div>
 
-
-
                   </div>
 
-
-                  <motion.div
-
-                    initial={{
-                      opacity: 0,
-                      scale: 0.8,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      scale: 1,
-                      transition: { duration: 1, delay: 0.8 },
-                    }}
-                    className="rounded-xl">
-                    <p>
-                      <span>کاربر جدید هستید؟</span>
-                      <Link to="/store/register" className="text-lg mx-2 hover:text-blue-600 text-danger">
-                        عضویت
-                      </Link>
-                    </p>
-                  </motion.div>
                 </div>
               </form>
             </div>
