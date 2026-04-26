@@ -95,7 +95,7 @@ function Adm_notify_all() {
                                 transition={{ delay: 0.3 * index, duration: 0.4, ease: "easeOut" }}
                                 key={item.id} className="flex w-full">
                                 <div onClick={() => clickHandler(item.id, item.data.url)} className={`flex w-full   
-                                    backdrop-blur-md rounded-2xl shadow-lg border bg-white/60
+                                    backdrop-blur-md rounded-2xl shadow-lg border bg-white/60 ${item.read_at && 'grayscale-100 opacity-40'}
                                     border-white/30 p-3 gap-3 transition-all duration-200 hover:shadow-xl hover:bg-white/80`}>
                                     {/* Windows 11 style icon */}
                                     <div className="flex-shrink-0">
