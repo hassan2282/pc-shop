@@ -4,6 +4,8 @@ const BASE_URL = import.meta.env.VITE__BASEURL;
 
 
 function ProductsAdvanceShow({ products }) {
+
+
     return (
         <div className="col-9 hidden-xs hidden-md">
             <section id="offercarousel" className="carousel slide carousel-fade card border_all" data-ride="carousel">
