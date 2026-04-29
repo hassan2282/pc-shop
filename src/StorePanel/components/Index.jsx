@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+﻿import React, { Suspense, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import apiClient from '../../apiClient'
 import ProductsAdvanceShow from './ProductsAdvanceShow';
@@ -6,6 +6,8 @@ import ProductsSimpleShow from './ProductsSimpleShow';
 import DraggableProducts from './DraggableProducts';
 import BlogShow from './BlogShow';
 import { Link } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import { TbLoader } from 'react-icons/tb';
 
 function Index() {
 
@@ -200,21 +202,37 @@ function Index() {
     }, [products]);
 
 
-    useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const res = await apiClient.get('/productsForHome');
-                if (res.status >= 200 && res.status < 300) {
-                    setProducts(res.data);
-                }
+    // useEffect(() => {
+    //     const fetchProducts = async () => {
+    //         try {
+    //             const res = await apiClient.get('/productsForHome');
+    //             if (res.status >= 200 && res.status < 300) {
+    //                 setProducts(res.data);
+    //             }
 
-            } catch (err) {
-                toast.error('خطا در واکشی محصولات');
-            }
+    //         } catch (err) {
+    //             toast.error('خطا در واکشی محصولات');
+    //         }
+    //     }
+
+    //     fetchProducts();
+    // }, []);
+
+
+
+    const { data, error, isLoading, isError } = useQuery(
+        'productsForHome', // کلید کش
+        async () => {
+            const res = await apiClient.get('/productsForHome');
+            setProducts(res.data);
+            return res.data;
         }
-
-        fetchProducts();
-    }, []);
+    );
+    if (isLoading) return <div className='w-full justify-center items-center'><TbLoader size={24} className='animate-spin' /></div>;
+    if (isError) {
+        toast.error('خطا در واکشی محصولات');
+        return <div>Error</div>;
+    }
 
 
     return (
@@ -320,22 +338,12 @@ function Index() {
                     <div className="row">
 
 
-                        {
-                            products &&
+                        <Suspense fallback={<div>Loading...</div>}>
                             <>
-                                <ProductsAdvanceShow products={products.slice(0, 6)} />
-
+                                <ProductsAdvanceShow products={data.slice(0, 6)} />
+                                <ProductsSimpleShow products={data.slice(0, 8)} />
                             </>
-                        }
-
-
-                        {
-                            products &&
-                            <>
-                                <ProductsSimpleShow products={products.slice(0, 8)} />
-                            </>
-
-                        }
+                        </Suspense>
 
 
 
@@ -411,9 +419,9 @@ function Index() {
 
 
                                         {
-                                            products &&
+                                            data &&
 
-                                            <DraggableProducts products={products.slice(0, 10)} />
+                                            <DraggableProducts products={data.slice(0, 10)} />
                                         }
 
                                         <a href="category-search" className="view_more">مشاهده بیشتر</a>
@@ -450,9 +458,9 @@ function Index() {
                                             </h3>
                                         </header>
                                         {
-                                            products &&
+                                            data &&
 
-                                            <DraggableProducts products={[...products]
+                                            <DraggableProducts products={[...data]
                                                 .sort(() => 0.5 - Math.random())
                                                 .slice(0, 10)}
                                             />
