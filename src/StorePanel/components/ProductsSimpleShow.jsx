@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 const BASE_URL = import.meta.env.VITE__BASEURL;
 
 function ProductsSimpleShow({ products }) {
+
+
   return (
     <div className="col-3 hidden-xs hidden-md">
       <div style={{ height: '26.3rem' }} className="widget-bid-s widget card border_all">
