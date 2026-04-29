@@ -8,99 +8,126 @@ import PurchaseBasket from "../components/PurchaseBasket";
 import { FcMenu, FcPackage } from "react-icons/fc";
 
 function Header() {
+    const dispatch = useDispatch();
+
     const isAuthenticated = useSelector((state) => state.isAuthenticated);
     const user = useSelector((state) => state.user);
-    const dispatch = useDispatch();
+
     const [toggle, setToggle] = useState(false);
-    const wrapperRef = useRef(null);
-    const [categories, setCategories] = useState([]);
     const [menuToggle, setMenuToggle] = useState(false);
-    const [clientAddress, setClientAddress] = useState([]);
-    const storeUser = (res) => {
-        dispatch({ type: 'setUser', payload: { user: res.data } });
-    }
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const res = await apiClient.post('auth/me');
-                if (res.status >= 200 && res.status < 300) {
-                    storeUser(res)
-                }
-            } catch (err) {
-                err.status === 401 && dispatch({ type: 'logout' })
+    const wrapperRef = useRef(null);
+
+    //   /* ---------------- USER ---------------- /
+
+    const fetchUser = async () => {
+        const res = await apiClient.post("auth/me");
+        return res.data;
+    };
+
+    const { data: userData } = useQuery({
+        queryKey: ["user"],
+        queryFn: fetchUser,
+        staleTime: 1000 * 60 * 10, // 10 دقیقه کش
+        retry: false,
+        onSuccess: (data) => {
+            dispatch({
+                type: "setUser",
+                payload: { user: data },
+            });
+        },
+        onError: (err) => {
+            if (err?.response?.status === 401) {
+                dispatch({ type: "logout" });
             }
+        },
+    });
+
+
+
+    //   / ---------------- CATEGORIES ---------------- /
+    const fetchCategories = async () => {
+        const { data } = await apiClient.get("/category/all");
+        return data;
+    };
+
+    const { data: categories = [] } = useQuery({
+        queryKey: ["categories"],
+        queryFn: fetchCategories,
+        staleTime: 1000 * 60 * 30, // 30 دقیقه کش
+    });
+
+
+
+
+    //   / ---------------- ADDRESS ---------------- /
+    const fetchAddress = async () => {
+        const res = await apiClient.get(`user-address/${user?.id}`);
+        return {
+            id: res.data?.id,
+            province_id: res.data?.province?.id,
+            province_name: res.data?.province?.name,
+            city_id: res.data?.city?.id,
+            city_name: res.data?.city?.name,
+            postal_code: res.data?.postal_code,
+            address: res.data?.address,
+            user_id: user?.id,
         };
+    };
 
-        fetchUser();
-    }, []);
+    const { data: clientAddress } = useQuery({
+        queryKey: ["address", user?.id],
+        queryFn: fetchAddress,
+        enabled: !!user?.id,
+        staleTime: 1000 * 60 * 20,
+        retry: false,
+    });
 
-
+    //   / ---------------- SAVE ADDRESS TO REDUX ---------------- /
     useEffect(() => {
-        const allCategories = async () => {
-            try {
-                const { data, status } = await apiClient.get('/category/all');
-                if (status >= 200 && status < 300) {
-                    setCategories(data);
-                }
-            } catch (err) {
-                console.error("Error fetching categories:", err);
-            }
-        };
-        allCategories();
-    }, []);
+        if (clientAddress) {
+            dispatch({
+                type: "ADD_ADDRESS",
+                payload: clientAddress,
+            });
 
+            localStorage.setItem("address", JSON.stringify(clientAddress));
+        }
+    }, [clientAddress, dispatch]);
 
+    //   / ---------------- CLICK OUTSIDE ---------------- /
     useEffect(() => {
-        function handleClickOutside(event) {
-            if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        const handleClickOutside = (event) => {
+            if (
+                wrapperRef.current &&
+                !wrapperRef.current.contains(event.target)
+            ) {
                 setToggle(false);
             }
-        }
+        };
 
         document.addEventListener("mousedown", handleClickOutside);
+
         return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        }
-    }, [])
-
-    const handleLogout = (e) => {
-        localStorage.clear();
-        dispatch({
-            type: "logout",
-        })
-        toast.success('شما با موفقیت از حساب کاربری خود خارج شدید');
-    }
-
-
-    useEffect(() => {
-        const fetchAddress = async () => {
-            try {
-                const res = await apiClient.get(`user-address/${user.id}`);
-                if (res.status >= 200 && res.status < 300) {
-                    setClientAddress({
-                        id: res.data?.id,
-                        province_id: res.data?.province.id,
-                        province_name: res.data?.province.name,
-                        city_id: res.data?.city.id,
-                        city_name: res.data?.city.name,
-                        postal_code: res.data?.postal_code,
-                        address: res.data?.address,
-                        user_id: user?.id,
-                    });
-                }
-            } catch (err) {
-                console.log('آدرسی ثبت نیست');
-            }
-        }
-        fetchAddress();
+            document.removeEventListener(
+                "mousedown",
+                handleClickOutside
+            );
+        };
     }, []);
 
-    dispatch({
-        type: "ADD_ADDRESS",
-        payload: clientAddress,
-    });
-    localStorage.setItem("address", JSON.stringify(clientAddress))
+    //   / ---------------- LOGOUT ---------------- /
+    const handleLogout = () => {
+        localStorage.clear();
+
+        dispatch({
+            type: "logout",
+        });
+
+        toast.success(
+            "شما با موفقیت از حساب کاربری خود خارج شدید"
+        );
+    };
 
 
     return (
