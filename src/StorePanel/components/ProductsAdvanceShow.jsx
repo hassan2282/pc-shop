@@ -63,11 +63,11 @@ function ProductsAdvanceShow({ products }) {
                                                 <ins><span>{product?.price.toLocaleString()}<span > تومان </span></span></ins>
                                             </div>
                                             <div className="row space-15">
-                                                <div className="col-5 timer-title">
-                                                    <h5>یه ثانیه هم غنیمته</h5>
-                                                    <p>زمان باقی مانده </p>
+                                                <div className="col-9 timer-title">
+                                                    <h6 className="text-[#6EDADC]">{product?.description}</h6>
+                                                    <p>یه ثانیه هم غنیمته</p>
                                                 </div>
-                                                <div className="col-7">
+                                                {/* <div className="col-7">
                                                     <div className="countdown-timer" data-date="08 19 2023 20:20:22">
                                                         <ul className="text_countdown">
                                                             <li data-days className="number_countdown">0</li>
@@ -86,7 +86,7 @@ function ProductsAdvanceShow({ products }) {
                                                             <li>ثانیه</li>
                                                         </ul>
                                                     </div>
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
                                     </div>
