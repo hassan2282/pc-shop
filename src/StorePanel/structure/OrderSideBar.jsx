@@ -145,25 +145,9 @@ function OrderSideBar() {
               ></i>
               تحویل داده شده
             </Link>
-            <Link to="/store/order-current" className="dropdown-item ">
-              <i
-                className="fa fa-cart-arrow-down colormain"
-                aria-hidden="true"
-              ></i>{" "}
-              سفارش جاری
-            </Link>
-            <Link to="/store/order-cancelled" className="dropdown-item">
-              <i className="fa fa-times colormain" aria-hidden="true"></i>
-              لغو شده
-            </Link>
             <Link to="/store/orders-return" className="dropdown-item">
               <i className="fa fa-thumbs-down colormain" aria-hidden="true"></i>
               مرجوع محصول
-            </Link>
-
-            <Link to="/store/profile-favorites" className="dropdown-item">
-              <i className="fa fa-bookmark colormain" aria-hidden="true"></i>
-              لیست های من
             </Link>
 
             <Link to="/store/ticket" className="dropdown-item">
@@ -234,48 +218,12 @@ function OrderSideBar() {
 
           <li>
             <NavLink
-              to="/store/order-current"
-              // className="dropdown-item"
-              activeclassname="active"
-            >
-              <i
-                className="fa fa-box colormain"
-                aria-hidden="true"
-              ></i>
-              سفارش جاری
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to="/store/order-cancelled"
-              // className="dropdown-item"
-              activeclassname="active"
-            >
-              <i className="fa fa-times colormain" aria-hidden="true"></i>
-              لغو شده
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
               to="/store/orders-return"
               // className="dropdown-item"
               activeclassname="active"
             >
               <i className="fa fa-thumbs-down colormain" aria-hidden="true"></i>
               مرجوع محصول
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to="/store/profile-favorites"
-              // className="dropdown-item"
-              activeclassname="active"
-            >
-              <i className="fa fa-bookmark colormain" aria-hidden="true"></i>
-              لیست های من
             </NavLink>
           </li>
 
