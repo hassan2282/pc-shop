@@ -12,12 +12,10 @@ import SingleBlog from "./StorePanel/components/SingleBlog";
 import SuccessfulPayment from "./StorePanel/components/SuccessfulPayment";
 import FinalPayment from "./StorePanel/components/FinalPayment";
 import OrderAddress from "./StorePanel/components/OrderAddress";
-import OrderCancelled from "./StorePanel/components/OrderCancelled";
 import OrderCurrent from "./StorePanel/components/OrderCurrent";
 import OrderMessage from "./StorePanel/components/OrderMessage";
 import OrdersReturn from "./StorePanel/components/OrdersReturn";
 import ShoppingPayment from "./StorePanel/components/ShoppingPayment";
-import ProfileFavorites from "./StorePanel/components/ProfileFavorites";
 import PasswordUpdate from "./StorePanel/components/PasswordUpdate";
 import AboutUs from "./StorePanel/components/AboutUs";
 import { useSelector } from "react-redux";
@@ -156,14 +154,7 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route
-              path="profile-favorites"
-              element={
-                <PrivateRoute>
-                  <ProfileFavorites />
-                </PrivateRoute>
-              }
-            />
+            
             <Route
               path="cart"
               element={
@@ -201,14 +192,6 @@ function App() {
               element={
                 <PrivateRoute>
                   <Address />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="order-cancelled"
-              element={
-                <PrivateRoute>
-                  <OrderCancelled />
                 </PrivateRoute>
               }
             />
