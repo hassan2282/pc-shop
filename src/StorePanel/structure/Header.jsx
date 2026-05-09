@@ -5,7 +5,8 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import apiClient from "../../apiClient";
 import PurchaseBasket from "../components/PurchaseBasket";
-import { FcMenu, FcPackage } from "react-icons/fc";
+import { FcMenu } from "react-icons/fc";
+import { useQuery } from "react-query";
 
 function Header() {
     const dispatch = useDispatch();
@@ -58,20 +59,18 @@ function Header() {
     });
 
 
-
-
     //   / ---------------- ADDRESS ---------------- /
     const fetchAddress = async () => {
         const res = await apiClient.get(`user-address/${user?.id}`);
         return {
-            id: res.data?.id,
-            province_id: res.data?.province?.id,
-            province_name: res.data?.province?.name,
-            city_id: res.data?.city?.id,
-            city_name: res.data?.city?.name,
-            postal_code: res.data?.postal_code,
-            address: res.data?.address,
-            user_id: user?.id,
+            id: res.data?.id || '',
+            province_id: res.data?.province?.id || '',
+            province_name: res.data?.province?.name || '',
+            city_id: res.data?.city?.id || '',
+            city_name: res.data?.city?.name || '',
+            postal_code: res.data?.postal_code || '',
+            address: res.data?.address || '',
+            user_id: user?.id || '',
         };
     };
 
@@ -391,9 +390,10 @@ function Header() {
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-lg-2 col-md-3 col-sm-4 col-5">
-                                <div className="logo-area default">
+                                <div className="logo-area default flex justify-center items-center">
                                     <Link to="/store/home">
-                                        <img src="/src/StorePanel/assets/img/logo.png" alt="" />
+                                    <h3 className="text-[#6EDADC]">DT Store</h3>
+                                        {/* <img src="/src/StorePanel/assets/img/logo.png" alt="" /> */}
                                     </Link>
                                 </div>
                             </div>
