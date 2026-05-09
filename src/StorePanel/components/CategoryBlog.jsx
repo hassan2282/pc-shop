@@ -66,7 +66,7 @@ function CategoryBlog() {
                                     blogs &&
                                     blogs.map((blog, index) => {
                                         return (
-                                            <div className="col-xl-6 col-lg-6 col-md-6 col-12  ">
+                                            <div key={index} className="col-xl-6 col-lg-6 col-md-6 col-12  ">
                                                 <div className="blog_tag">
                                                     <Link to={`/store/single-blog/${blog.id}`}>
                                                         <img src={BASE_URL + "/storage/media/" + blog.media?.name} className="img-fluid" alt="" />
