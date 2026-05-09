@@ -7,7 +7,7 @@ import DraggableProducts from './DraggableProducts';
 import BlogShow from './BlogShow';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { TbLoader } from 'react-icons/tb';
+import { TbLoader, TbLoader2 } from 'react-icons/tb';
 
 function Index() {
 
@@ -228,7 +228,7 @@ function Index() {
             return res.data;
         }
     );
-    if (isLoading) return <div className='w-full justify-center items-center'><TbLoader size={24} className='animate-spin' /></div>;
+    if (isLoading) return <div className='flex w-full justify-center min-h-96 items-center'><TbLoader2 color='blue' size={28} className='animate-spin' /></div>;
     if (isError) {
         toast.error('خطا در واکشی محصولات');
         return <div>Error</div>;
@@ -279,26 +279,26 @@ function Index() {
                                 <div className=" col-3  contact-miniicon  text-center">
                                     <div className="space-5">
                                         <img src="/src/StorePanel/assets/img/Masai/minilogo/1.png" className="minilogo_w" />
-                                        <b className="title-3 light-black">مَسای مارکت</b>
+                                        <b className="title-3 light-black">مارکت فروشگاه</b>
                                     </div>
                                 </div>
                                 <div className="col-3  contact-miniicon  text-center">
                                     <div className="space-5">
                                         <img src="/src/StorePanel/assets/img/Masai/minilogo/2.png" className="minilogo_w" />
-                                        <b className="title-3 light-black">حراج مَسای</b>
+                                        <b className="title-3 light-black">قیمت مناسب</b>
                                     </div>
                                 </div>
                                 <div className="col-3  contact-miniicon  text-center">
                                     <div className="space-5">
                                         <img src="/src/StorePanel/assets/img/Masai/minilogo/3.png" className="minilogo_w" />
-                                        <b className="title-3 light-black">خرید اقساطی</b>
+                                        <b className="title-3 light-black">کیفیت بالا</b>
                                     </div>
                                 </div>
 
                                 <div className=" col-3  contact-miniicon  text-center">
                                     <div className="space-5">
                                         <img src="/src/StorePanel/assets/img/Masai/minilogo/4.png" className="minilogo_w" />
-                                        <b className="title-3 light-black">مَسای سرویس</b>
+                                        <b className="title-3 light-black">پرداخت امن</b>
                                     </div>
                                 </div>
                             </div>
@@ -306,16 +306,16 @@ function Index() {
                         <div className="col-sm-6">
                             <div className="row">
 
-                                <div className="col-3   contact-miniicon  text-center">
+                                <div className="col-3 contact-miniicon  text-center">
                                     <div className="space-5">
                                         <img src="/src/StorePanel/assets/img/Masai/minilogo/5.png" className="minilogo_w" />
-                                        <b className="title-3 light-black">ماه رمضان</b>
+                                        <b className="title-3 light-black">نماد اعتماد</b>
                                     </div>
                                 </div>
                                 <div className="col-3  contact-miniicon  text-center">
                                     <div className="space-5">
                                         <img src="/src/StorePanel/assets/img/Masai/minilogo/6.png" className="minilogo_w" />
-                                        <b className="title-3 light-black">مَسای پلاس</b>
+                                        <b className="title-3 light-black">ارسال سریع</b>
                                     </div>
                                 </div>
                                 <div className="col-3  contact-miniicon  text-center">
@@ -327,7 +327,7 @@ function Index() {
                                 <div className="col-3  contact-miniicon  text-center">
                                     <div className="space-5">
                                         <img src="/src/StorePanel/assets/img/Masai/minilogo/8.png" className="minilogo_w" />
-                                        <b className="title-3 light-black">بیشتر</b>
+                                        <b className="title-3 light-black">با ما همراه باشید</b>
                                     </div>
                                 </div>
 
