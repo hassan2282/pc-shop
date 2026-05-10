@@ -52,7 +52,7 @@ function Adm_product_all() {
       }
 
     } catch (err) {
-      toast.error('خطا در فرایند حذف مقاله');
+      toast.error('خطا در فرایند حذف محصول');
     }
   }
 
