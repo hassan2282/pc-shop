@@ -494,7 +494,7 @@ function Index() {
                         <div className="col-12">
                             <div className="brand-slider card border_all bglight">
                                 <header className="card-header">
-                                    <h3 className="card-title"><span>دسته بندی های مَسای</span></h3>
+                                    <h3 className="card-title"><span>دسته بندی های فروشگاه</span></h3>
                                 </header>
                                 <div className="row">
                                     <div className="col-12">
