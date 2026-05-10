@@ -390,10 +390,11 @@ function Header() {
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-lg-2 col-md-3 col-sm-4 col-5">
-                                <div className="logo-area default flex justify-center items-center">
+                                <div className="logo-area default flex flex-row justify-center items-center">
+                                    <p className="text-[#6EDADC]">لوگوی شما</p>
                                     <Link to="/store/home">
-                                    <h3 className="text-[#6EDADC]">DT Store</h3>
-                                        {/* <img src="/src/StorePanel/assets/img/logo.png" alt="" /> */}
+                                    {/* <h5 className="text-[#6EDADC]">لوگوی سایت</h5> */}
+                                        <img src="/src/StorePanel/assets/img/favicon.png" alt="" />
                                     </Link>
                                 </div>
                             </div>
